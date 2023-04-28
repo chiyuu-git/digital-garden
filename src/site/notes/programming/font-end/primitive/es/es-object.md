@@ -2252,7 +2252,7 @@ instanceof 运算符用于测试 **构造函数** 的 prototype 属性是否出�
 ```js
     语法：对象 instanceof 构造函数
     console.log(per instanceof Person); //true
-    ```
+```
 
 **注意**
 
@@ -2267,7 +2267,7 @@ instanceof 运算符用于测试 **构造函数** 的 prototype 属性是否出�
     console.log(str instanceof String) // true
     console.log(Object.prototype.toString.call('123')) // string
     console.log(Object.prototype.toString.call(str)) // string
-    ```
+```
 
 ### ===
 
@@ -2340,7 +2340,7 @@ a();
 - Array.prototype 的类型 **也是数组**，类似的 Number.prototype 是 number 类型的对象
 - 实例本身是没有 `constructor` 属性的，`constructor` 属性在原型上，为了保持一致性，所以 `Array.prototype` 也是 `Array`
 
-## 封装 Type 函数
+### 封装 Type 函数
 
 写一个 type 函数能检测各种类型的值
 
@@ -2389,7 +2389,7 @@ function type(obj) {
 }
 ```
 
-## Isfunction
+### Isfunction
 
 有了 type 函数后，我们可以对常用的判断直接封装，比如 isFunction:
 
@@ -2399,7 +2399,7 @@ function isFunction(obj) {
 }
 ```
 
-## Isarray
+### Isarray
 
 ```js
 var isArray = Array.isArray || function( obj ) {
@@ -2409,7 +2409,7 @@ var isArray = Array.isArray || function( obj ) {
 
 原型和构造函数都有被修改的可能性
 
-## Isarraylike
+### Isarraylike
 
 isArrayLike，看名字可能会让我们觉得这是判断类数组对象的，其实不仅仅是这样，jQuery 实现的 isArrayLike，数组和类数组都会返回 true
 
@@ -2509,7 +2509,7 @@ var isArrayLike = function(collection) {
 };
 ```
 
-## Isplainobject
+### Isplainobject
 
 plainObject 来自于 jQuery，可以翻译成纯粹的对象，所谓 " 纯粹的对象 "，就是该对象是通过 "{}" 或 "new Object" 创建的，该对象含有零个或者多个键值对。
 
@@ -2589,7 +2589,7 @@ console.log(Object.prototype.toString.call(Ctor)); // [object Function]
 
 **因此**：这里要判断的其实是两个函数是否一样
 
-## Isemptyobject
+### Isemptyobject
 
 用 `for...in` 遍历
 
@@ -2634,7 +2634,7 @@ if (Object.keys(object).length === 0) {
 return false // 如果不为空，则会执行到这一步，返回true
 ```
 
-## Iswondow
+### Iswondow
 
 Window 对象作为客户端 JavaScript 的全局对象，它有一个 window 属性指向自身，这点在 [《JavaScript深入之变量对象》](https://github.com/mqyqingfeng/Blog/issues/5) 中讲到过。我们可以利用这个特性判断是否是 Window 对象。
 
@@ -2644,7 +2644,7 @@ function isWindow( obj ) {
 }
 ```
 
-## Iselement
+### Iselement
 
 isElement 判断是不是 DOM 元素。
 
