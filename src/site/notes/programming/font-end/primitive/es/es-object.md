@@ -2267,9 +2267,10 @@ instanceof 运算符用于测试 **构造函数** 的 prototype 属性是否出�
     console.log(str instanceof String) // true
     console.log(Object.prototype.toString.call('123')) // string
     console.log(Object.prototype.toString.call(str)) // string
+
 ```
 
-### ===
+### 全等运算符
 
 可以判断: undefined, null
 
