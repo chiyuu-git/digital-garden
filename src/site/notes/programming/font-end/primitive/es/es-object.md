@@ -2259,15 +2259,14 @@ instanceof 运算符用于测试 **构造函数** 的 prototype 属性是否出�
 - **Object** 是所有对象的祖先，所以任何对象和 Object 做 instanceof 运算符都会返回 true
 - 基础数据类型 调用 instanceof 不会发生装箱现象，因此基础数据类型不是任何类的实例
 
-    ```js
-    const str = new String('123')
-    
-    console.log('123' instanceof String) // false
-    console.log('123' instanceof Object) // false
-    console.log(str instanceof String) // true
-    console.log(Object.prototype.toString.call('123')) // string
-    console.log(Object.prototype.toString.call(str)) // string
+```js
+const str = new String('123')
 
+console.log('123' instanceof String) // false
+console.log('123' instanceof Object) // false
+console.log(str instanceof String) // true
+console.log(Object.prototype.toString.call('123')) // string
+console.log(Object.prototype.toString.call(str)) // string
 ```
 
 ### 全等运算符
