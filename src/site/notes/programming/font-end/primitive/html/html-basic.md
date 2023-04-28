@@ -114,7 +114,6 @@ DOCTYPE，或者称为 Document Type Declaration（文档类型声明，缩写 D
 | almost standards mode       | limited-quirks mode | CSS1Compat                 |
 | quirks mode                 | quirks mode         | BackCompat                 |
 
-
 ### document.compatMode
 
 document.compatMode 属性最初由微软在 IE 中创造出来，这是一个只读的属性，返回一个字符串，只可能存在两种返回值:
@@ -172,7 +171,7 @@ html 标签我们更关心的是语义，而不是表现形式
 
 ## 常用标签
 
-### h1 标签
+### H1 标签
 
 h1 标签并不是没有用，因为搜索引擎检索的时候，检索完 title 会立即查看 h1 的内容，会影响搜索引擎的排名。
 
@@ -884,7 +883,6 @@ MIME 类型对大小写不敏感，但是传统写法都是小写。
 | `audio`       | 表明是某种音频文件                                                      | `audio/midi`, `audio/mpeg, audio/webm, audio/ogg, audio/wav`                                                                                    |
 | `video`       | 表明是某种视频文件                                                      | `video/webm`, `video/ogg`                                                                                                                       |
 | `application` | 表明是某种二进制数据                                                    | `application/octet-stream`, `application/pkcs12`, `application/vnd.mspowerpoint`, `application/xhtml+xml`, `application/xml`, `application/pdf` |
-
 
 对于 text 文件类型若没有特定的 subtype，就使用 `text/plain`。类似的，二进制文件没有特定或已知的 subtype，即使用 `application/octet-stream`。
 
