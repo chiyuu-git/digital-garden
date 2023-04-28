@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/font-end/primitive/css/css-3/flex/","tags":["gardenEntry","gardenEntry"]}
+{"dg-publish":true,"permalink":"/programming/font-end/primitive/css/css-3/flex/","tags":["gardenEntry"]}
 ---
 
 
