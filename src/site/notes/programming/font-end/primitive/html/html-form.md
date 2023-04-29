@@ -5,7 +5,7 @@
 
 # 表单
 
-[html表单指南](https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Forms)
+[html 表单指南](https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Forms)
 
 表单的作用就是用来将用户信息提交给服务器的, 比如：百度的搜索框 注册 登录这些操作都需要填写表单
 
@@ -29,13 +29,13 @@
 
 大部分用来定义表单小部件的元素都有一些他们自己的属性。然而，在所有表单元素中都有一组通用属性，它们可以对这些小部件进行控制。下面是这些通用属性的列表:
 
-| 属性名称    | 默认值    | 描述                                                         |
-| :---------- | :-------- | :----------------------------------------------------------- |
-| `autofocus` | (*false*) | 这个布尔属性允许您指定当页面加载时元素应该自动具有输入焦点，除非用户覆盖它，例如通过键入不同的控件。文档中只有一个与表单相关的元素可以指定这个属性。 |
-| `disabled`  | (*false*) | 这个布尔属性表示用户不能与元素交互。如果没有指定这个属性，元素将从包含它的元素继承设置，例如 fliedset; 如果没有包含在设定了 `disabled` 属性的元素里，那么这个元素就是可用的。 |
-| `form`      |           | 小部件与之相关联的表单元素。属性值必需是同个文档中的 form 元素的 `id` 属性。理论上，它允许您在 form 元素之外设置一个表单小部件。然而，在实践中，没有任何支持该特性的浏览器。 |
-| `name`      |           | 元素的名称; 这是跟表单数据一起提交的。                        |
-| `value`     |           | 元素的初始值。                                               |
+| 属性名称    | 默认值    | 描述                                                                                                                                                                          |
+| :---------- | :-------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `autofocus` | (_false_) | 这个布尔属性允许您指定当页面加载时元素应该自动具有输入焦点，除非用户覆盖它，例如通过键入不同的控件。文档中只有一个与表单相关的元素可以指定这个属性。                          |
+| `disabled`  | (_false_) | 这个布尔属性表示用户不能与元素交互。如果没有指定这个属性，元素将从包含它的元素继承设置，例如 fliedset; 如果没有包含在设定了 `disabled` 属性的元素里，那么这个元素就是可用的。 |
+| `form`      |           | 小部件与之相关联的表单元素。属性值必需是同个文档中的 form 元素的 `id` 属性。理论上，它允许您在 form 元素之外设置一个表单小部件。然而，在实践中，没有任何支持该特性的浏览器。  |
+| `name`      |           | 元素的名称; 这是跟表单数据一起提交的。                                                                                                                                        |
+| `value`     |           | 元素的初始值。                                                                                                                                                                |
 
 ## Form 标签
 
@@ -68,17 +68,21 @@ display:inline-block
 通过伪类设置 placeholder 的样式
 
 ```css
-::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-	color:    #909;
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #909;
 }
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #909;
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #909;
 }
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #909;
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #909;
 }
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    #909;
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #909;
 }
 ```
 
@@ -89,16 +93,16 @@ outline 输入框 获取到焦点时会高亮, 设置属性值为 none
 ![1549447847294](/img/user/programming/font-end/primitive/html/html-form/1549447847294.png)
 
 ```html
-<input type="text" autocomplete="off"/>
+<input type="text" autocomplete="off" />
 ```
 
 ## 密码框
 
 ```html
-<input type='password' />
+<input type="password" />
 ```
 
-输入的内容以 * 显示
+输入的内容以 \* 显示
 
 # 单选按钮
 
@@ -134,7 +138,7 @@ button 有默认的边框
 
 一个 float right
 
- 改变盒模型即可解决
+改变盒模型即可解决
 
 > 一般不使用 button 元素，因为默认样式的表现比较奇怪，需要进行许多初始化操作
 >
@@ -181,21 +185,21 @@ https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input/week
 可以通过 **label 属性** 来指定分组的名字
 
 ```html
-  <select name="" id="" multiple size='10'>
-    <optgroup label="女明星">
-      <!-- 在下拉列表中使用option标签来创建一个一个列表项 -->
-      <option value="fbb">范冰冰</option>
-      <option value="lxr">林心如</option>
-      <option value="zw">赵薇</option>
-    </optgroup>
-  
-    <optgroup label="男明星">
-      <option value="zbs" selected="selected">赵本山</option>
-      <option value="ldh">刘德华</option>
-      <option value="pcj">潘长江</option>
-    </optgroup>
-  </select>
-  ```
+<select name="" id="" multiple size="10">
+  <optgroup label="女明星">
+    <!-- 在下拉列表中使用option标签来创建一个一个列表项 -->
+    <option value="fbb">范冰冰</option>
+    <option value="lxr">林心如</option>
+    <option value="zw">赵薇</option>
+  </optgroup>
+
+  <optgroup label="男明星">
+    <option value="zbs" selected="selected">赵本山</option>
+    <option value="ldh">刘德华</option>
+    <option value="pcj">潘长江</option>
+  </optgroup>
+</select>
+```
 
 ## Size 属性
 
@@ -219,18 +223,17 @@ resize:none;
 
 设置了 for 属性，你可以单击关联的标签来聚焦或者激活 input，以及 input 本身。这种增加的命中区域为激活 input 提供了方便，包括那些使用触摸屏设备的。
 
-  ```html
-  <label for="pwd">密码 </label>
-  <input type='password' id='pwd' name='pwd' />
-  ```
+```html
+<label for="pwd">密码 </label> <input type="password" id="pwd" name="pwd" />
+```
 
 另外，你也可以将 `<input>` 直接放在 `<label>` 里，这种情况就不需要 `for` 和 `id` 属性了，因为这时关联是隐含的：
 
-  ```html
-  <div class="preference">
-      <label>Do you like peas?<input type="checkbox" name="peas"></label>
-  </div>
-  ```
+```html
+<div class="preference">
+  <label>Do you like peas?<input type="checkbox" name="peas" /></label>
+</div>
+```
 
 ### 注意
 
@@ -251,15 +254,15 @@ resize:none;
 在 fieldset 可以使用 legend 子标签，来指定组名
 
 ```html
-  <form action="test.php" method="post">
-    <fieldset>
-      <legend>Title</legend>
-      <input type="radio" id="radio"/> <label for="radio">Click me</label>
-    </fieldset>
-  </form>
+<form action="test.php" method="post">
+  <fieldset>
+    <legend>Title</legend>
+    <input type="radio" id="radio" /> <label for="radio">Click me</label>
+  </fieldset>
+</form>
 ```
 
-  ![1556868310769](/img/user/programming/font-end/primitive/html/html-form/1556868310769.png)
+![1556868310769](/img/user/programming/font-end/primitive/html/html-form/1556868310769.png)
 
 https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Forms/How_to_structure_an_HTML_form
 
@@ -271,18 +274,18 @@ https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Forms/How_to_structure_an_HT
 
 datalist 会包含一组 **option 元素**，这些元素表示其表单控件的可选值，它的 id 必须要和 **input 中的 list 属性** 一致
 
-  ```html
-  <input type="text" placeholder="你最喜欢的女明星是？" list="zdy"></input>
-  <!--placehoder其实是h5新增的属性-->
-  <datalist id="zdy">
-    <option value="1">10岁的周冬雨</option>
-    <option value="2">20岁的周冬雨</option>
-    <option value="3">30岁的周冬雨</option>
-    <option value="4">40岁的周冬雨</option>
-  </datalist>
-  ```
+```html
+<input type="text" placeholder="你最喜欢的女明星是？" list="zdy"></input>
+<!--placehoder其实是h5新增的属性-->
+<datalist id="zdy">
+  <option value="1">10岁的周冬雨</option>
+  <option value="2">20岁的周冬雨</option>
+  <option value="3">30岁的周冬雨</option>
+  <option value="4">40岁的周冬雨</option>
+</datalist>
+```
 
-  ![1553166177305|200](/img/user/programming/font-end/primitive/html/html-form/1553166177305.png)
+![1553166177305|200](/img/user/programming/font-end/primitive/html/html-form/1553166177305.png)
 
 ## 列表标签:details
 
@@ -294,14 +297,14 @@ summary**标签**: 用作 一个 `<details>` 元素的一个内容摘要（标�
 
 ```html
 <details>
-	<summary>尚硅谷男生张晓飞</summary>
-	<p>一个神一样的男人</p>
-	<p>一个神一样的男人</p>
-	<p>一个神一样的男人</p>
+  <summary>尚硅谷男生张晓飞</summary>
+  <p>一个神一样的男人</p>
+  <p>一个神一样的男人</p>
+  <p>一个神一样的男人</p>
 </details>
 ```
 
-  ![1548061076971|200](/img/user/programming/font-end/primitive/html/html-form/1548061076971.png)
+![1548061076971|200](/img/user/programming/font-end/primitive/html/html-form/1548061076971.png)
 
 ## Type:email :email 地址类型
 
@@ -344,9 +347,9 @@ input 元素由于拥有诸多属性而异常强大，其中前文举例说明�
 
 下面的表格列出了所有属性，每个属性都有简短的描述。表格后的列表更详细地描述了各个属性及它们与哪些 ` type` 相关。
 
-+ 与大部分或者全部 `type` 都相关的属性会讲述更多细节。
-+ 一些针对特定 `type` 的属性，或者所有 `type` 都有，但在特定的 ` type` 上有特定表现的属性，会在相应的 `type` 页面中说明。
-+ 这个元素包含全局属性，一些针对 input 元素有额外意义的全局属性也会特别说明。
+- 与大部分或者全部 `type` 都相关的属性会讲述更多细节。
+- 一些针对特定 `type` 的属性，或者所有 `type` 都有，但在特定的 ` type` 上有特定表现的属性，会在相应的 `type` 页面中说明。
+- 这个元素包含全局属性，一些针对 input 元素有额外意义的全局属性也会特别说明。
 
 # 新增表单属性
 
@@ -361,10 +364,10 @@ pattern : 正则验证，pattern="\d{1,5}"，不用转义
 formaction: 在 submit 里定义提交地址
 
 ```html
-  <form action="http://www.baidu.com">
-    <input type="submit"  value="提交" />
-    <input type="submit"  value="提交" formaction="http://atguigu.com"/>
-  </form>
+<form action="http://www.baidu.com">
+  <input type="submit" value="提交" />
+  <input type="submit" value="提交" formaction="http://atguigu.com" />
+</form>
 ```
 
 # 表单验证反馈
@@ -376,12 +379,12 @@ node.addEventListener("invalid",fn1);
 表单验证失败时触发事件
 
 ```js
-  window.onload=function(){
-    var inputEl = document.querySelector("input");
-    inputEl.addEventListener("invalid",function(){
-      console.log(this.validity)
-    })
-  }
+window.onload = function () {
+  var inputEl = document.querySelector("input");
+  inputEl.addEventListener("invalid", function () {
+    console.log(this.validity);
+  });
+};
 ```
 
 ![1548063481942|200](/img/user/programming/font-end/primitive/html/html-form/1548063481942.png)
@@ -409,22 +412,22 @@ customError: 不符合自定义验证返回 true
 **setCustomValidity()**
 
 ```js
-  window.onload=function(){
-    var inputEl = document.querySelector("input");
-    var submit = document.querySelectorAll("input")[1];
-    submit.onclick=function(){
-      var val = inputEl.value;
-      if(val=="xfz"){
-        submit.setCustomValidity("请不要输入敏感词")
-      }else{
-        //传入空串才能通过验证
-        submit.setCustomValidity("")
-      }
+window.onload = function () {
+  var inputEl = document.querySelector("input");
+  var submit = document.querySelectorAll("input")[1];
+  submit.onclick = function () {
+    var val = inputEl.value;
+    if (val == "xfz") {
+      submit.setCustomValidity("请不要输入敏感词");
+    } else {
+      //传入空串才能通过验证
+      submit.setCustomValidity("");
     }
-    submit.addEventListener("invalid",function(){
-      console.log(submit.validity)
-    })
-  }
+  };
+  submit.addEventListener("invalid", function () {
+    console.log(submit.validity);
+  });
+};
 ```
 
 ## 关闭验证
@@ -437,14 +440,14 @@ formnovalidate 属性
 
 HTML 表单如何打包数据文件是由 enctype 这个属性决定的。enctype 有以下几种取值：
 
-  + application/x-www-form-urlencoded 在发送前编码所有字符（默认）（空格被编码为’+’，特殊字符被编码为 ASCII 十六进制字符）
-  + multipart/form-data 不对字符编码。在使用包含文件上传控件的表单时，必须使用该值。
-  + text/plain 空格转换为 “+” 加号，但不对特殊字符编码。
+- application/x-www-form-urlencoded 在发送前编码所有字符（默认）（空格被编码为’+’，特殊字符被编码为 ASCII 十六进制字符）
+- multipart/form-data 不对字符编码。在使用包含文件上传控件的表单时，必须使用该值。
+- text/plain 空格转换为 “+” 加号，但不对特殊字符编码。
 
 默认 enctype=application/x-www-form-urlencoded，所以表单的内容会按 URL 规则编码，然后根据表单的提交方法：
 
-  + method=’get’ 编码后的表单内容附加在请求连接后
-  + method=’post’ 编码后的表单内容作为 post 请求的正文内容
+- method=’get’ 编码后的表单内容附加在请求连接后
+- method=’post’ 编码后的表单内容作为 post 请求的正文内容
 
 我们通过抓包软件来分析一下这几种方式产生的请求的差别
 
@@ -456,8 +459,8 @@ HTML 表单如何打包数据文件是由 enctype 这个属性决定的。enctyp
 
 结果：
 
-  + `"hello world"` 被编码为 `%22hello+world%22`，特殊字符和空格都被编码
-  + `type='file'` 提交的文件内容并没有被提交，只是把文件名编码到了 URL 中
+- `"hello world"` 被编码为 `%22hello+world%22`，特殊字符和空格都被编码
+- `type='file'` 提交的文件内容并没有被提交，只是把文件名编码到了 URL 中
 
 ## 实验二
 
@@ -467,8 +470,8 @@ HTML 表单如何打包数据文件是由 enctype 这个属性决定的。enctyp
 
 结果：
 
-  + `"hello world"` 被编码为 `%22hello+world%22`，特殊字符和空格都被编码
-  + `type='file'` 提交的文件内容并没有被提交，只是把文件名编码到了 **正文** 中
+- `"hello world"` 被编码为 `%22hello+world%22`，特殊字符和空格都被编码
+- `type='file'` 提交的文件内容并没有被提交，只是把文件名编码到了 **正文** 中
 
 ## 实验三
 
@@ -492,10 +495,14 @@ HTML 表单如何打包数据文件是由 enctype 这个属性决定的。enctyp
 
 input elements of type **image** are used to create graphical submit buttons, i.e. submit buttons that take the form of an image rather than text.
 
-  ```html
-  <input type="image" id="image" alt="Login"
-         src="/media/examples/login-button.png">
-  ```
+```html
+<input
+  type="image"
+  id="image"
+  alt="Login"
+  src="/media/examples/login-button.png"
+/>
+```
 
 # File Input 标签
 
@@ -512,7 +519,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/API/File
 ## 访问被选择的文件
 
 ```html
-<input type="file" id="input">
+<input type="file" id="input" />
 ```
 
 通过 File API，我们可以访问 [`FileList`](https://developer.mozilla.org/zh-CN/docs/Web/API/FileList)，它包含了表示用户所选文件的 [`File`](https://developer.mozilla.org/zh-CN/docs/Web/API/File) 对象
@@ -524,15 +531,15 @@ https://developer.mozilla.org/zh-CN/docs/Web/API/File
 使用传统的 DOM 选择器访问一个被选择的文件：
 
 ```js
-const selectedFile = document.getElementById('input').files[0];
+const selectedFile = document.getElementById("input").files[0];
 ```
 
-![](https://raw.githubusercontent.com/chiyu-git/chiyu-pic/master/20200321174523.png)
+![](https://raw.githubusercontent.com/chiyu-git/chiyuu-pic/master/20200321174523.png)
 
 ### Change 事件
 
 ```html
-<input type="file" id="input" onchange="handleFiles(this.files)">
+<input type="file" id="input" onchange="handleFiles(this.files)" />
 ```
 
 当用户选择一个文件时，`handleFiles()` 方法会用一个 [`FileList`](https://developer.mozilla.org/zh-CN/docs/Web/API/FileList) 对象作为参数被调用，[`FileList`](https://developer.mozilla.org/zh-CN/docs/Web/API/FileList) 对象包含表示用户选择的文件的 [`File`](https://developer.mozilla.org/zh-CN/docs/Web/API/File) 对象。
@@ -540,7 +547,7 @@ const selectedFile = document.getElementById('input').files[0];
 如果你想让用户选择多个文件，只需在 `input` 元素上使用 `multiple` 属性：
 
 ```html
-<input type="file" id="input" multiple onchange="handleFiles(this.files)">
+<input type="file" id="input" multiple onchange="handleFiles(this.files)" />
 ```
 
 在这个例子中，对于每个用户选择的文件，传递给 `handleFiles()` 方法的文件列表都包含一个对应的 [`File`](https://developer.mozilla.org/zh-CN/docs/Web/API/File) 对象。
@@ -550,14 +557,14 @@ const selectedFile = document.getElementById('input').files[0];
 访问其实可以理解成获取文件的路径，之后可以通过 Fetch 或者 XHR 去拿到数据
 
 ```js
-const selectedFile = fileInput.current.files[0]
-const reader = new FileReader() //这里是核心！！！读取操作就是由它完成的。
-reader.readAsText(selectedFile) //读取文件的内容
-reader.onload = function(){
-  console.log("读取结果：", this.result) //当读取完成之后会回调这个函数，然后此时文件的内容存储到了result中。直接操作即可。
-  const list = JSON.parse(this.result)
-  setCandidateList([...candidateList,...list])
-}
+const selectedFile = fileInput.current.files[0];
+const reader = new FileReader(); //这里是核心！！！读取操作就是由它完成的。
+reader.readAsText(selectedFile); //读取文件的内容
+reader.onload = function () {
+  console.log("读取结果：", this.result); //当读取完成之后会回调这个函数，然后此时文件的内容存储到了result中。直接操作即可。
+  const list = JSON.parse(this.result);
+  setCandidateList([...candidateList, ...list]);
+};
 ```
 
 ### 使用隐藏的 File Input 元素
@@ -590,8 +597,8 @@ Yup 工具库
 
 ```js
 // <input type="text" id="my-input" />
-var input = document.getElementById('my-input');
-input.addEventListener('keypress', checkName, false);
+var input = document.getElementById("my-input");
+input.addEventListener("keypress", checkName, false);
 
 function checkName(e) {
   if (e.charCode < 97 || e.charCode > 122) {
@@ -634,7 +641,9 @@ function checkName(e) {
 
 ```js
 //使得文本框中只能输入字母
-if(event.keyCode >= 48 && event.keyCode <= 57){return false;}
+if (event.keyCode >= 48 && event.keyCode <= 57) {
+  return false;
+}
 ```
 
 ### 方案三
@@ -642,7 +651,7 @@ if(event.keyCode >= 48 && event.keyCode <= 57){return false;}
 onfocus=this.blur() 点击事件触发失去焦点事件，相当于无法选中
 
 ```html
-<input type="text" *name*="input1" value="中国" *onfocus*=this.blur()>
+<input type="text" *name*="input1" value="中国" *onfocus*="this.blur()" />
 ```
 
 ### 方案四
@@ -650,7 +659,7 @@ onfocus=this.blur() 点击事件触发失去焦点事件，相当于无法选中
 readonly ：不可以修改，可以选中复制
 
 ```html
-<input type="text" name="input1" value="中国" readonly="readonly ">
+<input type="text" name="input1" value="中国" readonly="readonly " />
 ```
 
 ### 方案五
@@ -658,7 +667,7 @@ readonly ：不可以修改，可以选中复制
 disabled：不可用，不可以点击
 
 ```html
-<input type="text" name="input1" value="中国" disabled="disabled">
+<input type="text" name="input1" value="中国" disabled="disabled" />
 ```
 
 ### 方案六
