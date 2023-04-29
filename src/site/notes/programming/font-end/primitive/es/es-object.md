@@ -2399,7 +2399,7 @@ function isFunction(obj) {
 }
 ```
 
-### Isarray
+### IsArray
 
 ```js
 var isArray = Array.isArray || function( obj ) {
