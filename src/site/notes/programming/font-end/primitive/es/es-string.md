@@ -423,35 +423,6 @@ ES6
 
 数组 join
 
-## 生成一段填充字符串
-
-先调用数组的fill方法，再转换成字符串
-
-使用Array.from()
-
-```js
-Array.from({ length: 2 }, () => 'jack')
-// ['jack', 'jack']
-```
-
-使用ES8的padStart/End方法
-
-**推荐方案：**使用repeat方法
-
-```js
-'x'.repeat(3) // "xxx"
-'hello'.repeat(2) // "hellohello"
-'na'.repeat(0) // ""
-```
-
-## 反转字符串
-
-```js
-str.split('').reverse().join('')
-```
-
-或者使用循环配合栈结构
-
 ## 在字符串索引处插入
 
 转化为数组，使用splice(index,0,str)
@@ -488,6 +459,27 @@ S = result.join('');
 ```
 
 重新拼接
+
+## 生成一段填充字符串
+
+先调用数组的fill方法，再转换成字符串
+
+使用Array.from()
+
+```js
+Array.from({ length: 2 }, () => 'jack')
+// ['jack', 'jack']
+```
+
+使用ES8的padStart/End方法
+
+**推荐方案**: 使用repeat方法
+
+```js
+'x'.repeat(3) // "xxx"
+'hello'.repeat(2) // "hellohello"
+'na'.repeat(0) // ""
+```
 
 ## 字典排序
 
