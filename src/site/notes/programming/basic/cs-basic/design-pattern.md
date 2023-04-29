@@ -3,13 +3,6 @@
 ---
 
 
----
-aliases: [' 设计模式 ']
-tags: []
-date-created: 2022-09-04-Sun, 2:15:52 pm
-date-modified: 2023-01-03-Tue, 4:38:41 pm
----
-
 https://zhuanlan.zhihu.com/p/134050236
 
 # 设计模式
