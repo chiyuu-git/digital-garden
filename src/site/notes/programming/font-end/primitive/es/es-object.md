@@ -135,6 +135,40 @@ var obj = {a}
 
 不建议使用 in，性能不好，因为原型链往往很长
 
+### Instanceof
+
+instanceof 运算符用于测试 **构造函数** 的 prototype 属性是否出现在对象的原型链中的任何位置
+
+判断对象的是否是某个 **具体类**（构造函数的实例）
+
+**返回值**
+
+- 如果该对象是构造函数的实例，则返回 true，否则返回 false
+
+**示例**
+
+```js
+    语法：对象 instanceof 构造函数
+    console.log(per instanceof Person); //true
+```
+
+**注意**
+
+- **Object** 是所有对象的祖先，所以任何对象和 Object 做 instanceof 运算符都会返回 true
+- 基础数据类型 调用 instanceof 不会发生装箱现象，因此基础数据类型不是任何类的实例
+
+```js
+const str = new String('123')
+
+console.log('123' instanceof String) // false
+console.log('123' instanceof Object) // false
+console.log(str instanceof String) // true
+console.log(Object.prototype.toString.call('123')) // string
+console.log(Object.prototype.toString.call(str)) // string
+```
+
+![es-proto](programming/font-end/primitive/es/es-proto.md#Instanceof%20原理)
+
 ### hasOwnProperty()
 
 这个方法可以用来检查对象自身中是否含有某个属性，
@@ -717,7 +751,7 @@ ES6 提出“Same-value equality”（同值相等）算法，用来解决这个
 
 ## 基本概念
 
-ECMAScript 对象中目前存在的 **属性描述符** 主要有两种, **数据描述符 (数据属性)和存取描述符(访问器属性)**:
+ECMAScript 对象中目前存在的 **属性描述符** 主要有两种, **数据描述符 (数据属性) 和存取描述符 (访问器属性)**:
 
 + 数据描述符是一个拥有可写或不可写值的属性
 + 存取描述符是由一对 getter-setter 函数功能来描述的属性
@@ -2237,37 +2271,9 @@ typeof NaN // number
 
 ECMAScript 提出了一个修复（通过 opt-in），但 [被拒绝](http://wiki.ecmascript.org/doku.php?id=harmony:typeof_null)。这将导致 typeof null === 'object'。
 
-### Instanceof:
+### Instanceof
 
-instanceof 运算符用于测试 **构造函数** 的 prototype 属性是否出现在对象的原型链中的任何位置
-
-判断对象的是否是某个 **具体类**（构造函数的实例）
-
-**返回值**
-
-- 如果该对象是构造函数的实例，则返回 true，否则返回 false
-
-**示例**
-
-```js
-    语法：对象 instanceof 构造函数
-    console.log(per instanceof Person); //true
-```
-
-**注意**
-
-- **Object** 是所有对象的祖先，所以任何对象和 Object 做 instanceof 运算符都会返回 true
-- 基础数据类型 调用 instanceof 不会发生装箱现象，因此基础数据类型不是任何类的实例
-
-```js
-const str = new String('123')
-
-console.log('123' instanceof String) // false
-console.log('123' instanceof Object) // false
-console.log(str instanceof String) // true
-console.log(Object.prototype.toString.call('123')) // string
-console.log(Object.prototype.toString.call(str)) // string
-```
+![es-object](programming/font-end/primitive/es/es-object.md#Instanceof)
 
 ### 全等运算符
 
