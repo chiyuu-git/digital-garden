@@ -854,3 +854,9 @@ jsDelivr 是国外的一家优秀的公共 CDN 服务提供商，它可以加速
 如果在仓库选择了 **release** 进行发布，那么 **@** 后面可以写版本号，如 **[https://cdn.jsdelivr.net/gh/harry3633/blogmianao@1.0/openwrt/menu.png](https://cdn.jsdelivr.net/gh/harry3633/blogmianao@1.0/openwrt/menu.png)**，一般来说作为图库没必要搞这么复杂，大概只有一些 css，js 文件加速才会用到吧。
 
 注意 jsDeliver 不支持加载超过 20M 的资源，所以图片还是不要搞大了，我一般都是先在 [tinypng.com](https://mianao.info/go/aHR0cHM6Ly90aW55cG5nLmNvbS8) 压缩后再放到 GitHub，据说 Github 仓库的容量有 1G 的上限，也有说硬性限制是 100G，反正对我的 blog 来说够用了，不够再开个仓库了。
+
+# 图床
+
+picGo 太垃圾了, 每次用都要调试很久, 心累了, 再也不碰
+
+[路过图床](https://imgse.com/account/awaiting-confirmation)
