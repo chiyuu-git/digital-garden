@@ -52,7 +52,7 @@ arr = [function(){},function(){}]
 console.log(arr[0]); //10
 ```
 
-如果读取不存在的索引，不会报错，而是返回 undefined
+如果读取不存在的索引，不会报错，而是返回 undefined. 负数索引也是合法的
 
 索引和属性很类似
 
@@ -1295,6 +1295,24 @@ splice 是删除个数
 
 用 filter 筛选返回
 
+## 获取数组的最后一个元素
+
+### Pop & Push
+
+先 pop 从返回值中获取, 再 push 回去
+
+### Length - 1 @recommand
+
+如果数组 length 为 0, 应该拿到 0, 这样拿到 -1, 负数索引? 负数索引是合法的, 所以这种方法最好
+
+如果数组 length 为 1, 也应该拿到 0
+
+如果数组 length 为 n, 应该拿到 n - 1 (n > 0)
+
+### slice(-1, -2)
+
+返回一个新的数组, 浅引用, 如果是 undefined, 需要重新 push 进去才行
+
 ## Reduce 扩展功能
 
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
@@ -1550,10 +1568,11 @@ let difference = new Set([...a].filter(x => !b.has(x)));
 
 基本上数组相关的题目都是遍历的把，不知道这个 tag 是否有意义
 
-| File                                                               |
-| ------------------------------------------------------------------ |
-| [[programming/basic/leetcode/485. 最大连续 1 的个数\|485. 最大连续 1 的个数]] |
-| [[programming/basic/leetcode/495. 提莫攻击\|495. 提莫攻击]]             |
+| File                                                                             |
+| -------------------------------------------------------------------------------- |
+| [[programming/basic/leetcode/598. Range Addition II\|598. Range Addition II]] |
+| [[programming/basic/leetcode/495. 提莫攻击\|495. 提莫攻击]]                           |
+| [[programming/basic/leetcode/485. 最大连续 1 的个数\|485. 最大连续 1 的个数]]               |
 
 { .block-language-dataview}
 
