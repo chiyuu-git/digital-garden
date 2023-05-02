@@ -795,9 +795,9 @@ customName(); // 'foo'
 
 #### 表现一
 
-- **本质上**，`export default` 就是输出一个叫做 `default` 的变量或方法，所以它后面不能跟**变量声明语句**。
+**本质上**，`export default` 就是输出一个叫做 `default` 的变量或方法，所以它后面不能跟**变量声明语句**。
 
-  ```javascript
+```javascript
   // 正确
   export var a = 1;
   
@@ -809,27 +809,27 @@ customName(); // 'foo'
   export default var a = 1;
   ```
 
-- 上面代码中，`export default a` 的含义是将变量 `a` 的值赋给变量 `default`。所以，最后一种写法会报错。
+上面代码中，`export default a` 的含义是将变量 `a` 的值赋给变量 `default`。所以，最后一种写法会报错。
 
 #### 表现二
 
-- **本质上**，`export default` 就是输出一个叫做 `default` 的变量或方法，所以可以直接将一个值写在 `export default` 之后。
+**本质上**，`export default` 就是输出一个叫做 `default` 的变量或方法，所以可以直接将一个值写在 `export default` 之后。
 
-  ```javascript
+```javascript
   // 正确
   export default 42;
   
   // 报错
   export 42;
-  ```
+```
 
-- 上面代码中，后一句报错是因为没有指定对外的接口，而前一句指定对外**接口**为 `default`。
+上面代码中，后一句报错是因为没有指定对外的接口，而前一句指定对外**接口**为 `default`。
 
 #### 表现三
 
-- **本质上**，`export default` 就是输出一个叫做 `default` 的变量或方法，然后系统允许你为它取任意名字。所以，下面的写法是有效的。
+**本质上**，`export default` 就是输出一个叫做 `default` 的变量或方法，然后系统允许你为它取任意名字。所以，下面的写法是有效的。
 
-  ```javascript
+```javascript
   // modules.js
   function add(x, y) {
     return x * y;
@@ -842,11 +842,11 @@ customName(); // 'foo'
   import { default as foo } from 'modules';
   // 等同于
   // import foo from 'modules';
-  ```
+```
 
-#### **表现四：默认完全导入**
+#### 表现四：默认完全导入
 
-- ```js
+```js
   // es6.mjs
   export var a = 1
   export var d = 1
@@ -857,10 +857,11 @@ customName(); // 'foo'
   import * as test from './es6.mjs'
   
   console.log(test); // [Module] { a: 1, d: 1, default: 2 }
-  ```
+```
 
-+ default 做为一个属性名
-+ 注意：默认导入和完全导入的区别，默认导入也只是完全导入的一个 default 属性而已
+default 做为一个属性名
+
+注意：默认导入和完全导入的区别，默认导入也只是完全导入的一个 default 属性而已
 
 ### 对比
 
@@ -972,23 +973,23 @@ export { default as es6 } from './someModule';
 
 ### 注意
 
-+ `export * from` 命令会忽略模块的 `default` 方法。
+`export * from` 命令会忽略模块的 `default` 方法。
 
-- 下面三种 `import` 语句，没有对应的复合写法。
+下面三种 `import` 语句，没有对应的复合写法。
 
-  ```javascript
+```javascript
   import * as someIdentifier from "someModule";
   import someIdentifier from "someModule";
   import someIdentifier, { namedIdentifier } from "someModule";
-  ```
+```
 
-- 为了做到形式的对称，现在有 [提案](https://github.com/leebyron/ecmascript-export-default-from)，提出补上这三种复合写法。
+为了做到形式的对称，现在有 [提案](https://github.com/leebyron/ecmascript-export-default-from)，提出补上这三种复合写法。
 
-  ```javascript
+```javascript
   export * as someIdentifier from "someModule";
   export someIdentifier from "someModule";
   export someIdentifier, { namedIdentifier } from "someModule";
-  ```
+```
 
 ### 模块的继承
 
@@ -1086,34 +1087,37 @@ import {db, users} from './constants/index';
 
 ### 简介
 
-- 前面介绍过，`import` 命令会被 JavaScript 引擎静态分析，先于模块内的其他语句执行（`import` 命令叫做“连接” binding 其实更合适）。所以，下面的代码会报错。
+前面介绍过，`import` 命令会被 JavaScript 引擎静态分析，先于模块内的其他语句执行（`import` 命令叫做“连接” binding 其实更合适）。所以，下面的代码会报错。
 
-  ```javascript
+```javascript
   // 报错
   if (x === 2) {
     import MyModual from './myModual';
   }
-  ```
+```
 
-- 上面代码中，引擎处理 `import` 语句是在编译时，这时不会去分析或执行 `if` 语句，所以 `import` 语句放在 `if` 代码块之中毫无意义，因此会报句法错误，而不是执行时错误。也就是说，`import` 和 `export` 命令只能在模块的顶层，不能在代码块之中（比如，在 `if` 代码块之中，或在函数之中）。
-- 这样的设计，固然有利于编译器提高效率，但也导致无法在运行时加载模块。在语法上，**条件加载**就不可能实现。如果 `import` 命令要取代 Node 的 `require` 方法，这就形成了一个障碍。因为 `require` 是运行时加载模块，`import` 命令无法取代 `require` 的动态加载功能。
+上面代码中，引擎处理 `import` 语句是在编译时，这时不会去分析或执行 `if` 语句，所以 `import` 语句放在 `if` 代码块之中毫无意义，因此会报句法错误，而不是执行时错误。也就是说，`import` 和 `export` 命令只能在模块的顶层，不能在代码块之中（比如，在 `if` 代码块之中，或在函数之中）。
 
-  ```javascript
+这样的设计，固然有利于编译器提高效率，但也导致无法在运行时加载模块。在语法上，**条件加载**就不可能实现。如果 `import` 命令要取代 Node 的 `require` 方法，这就形成了一个障碍。因为 `require` 是运行时加载模块，`import` 命令无法取代 `require` 的动态加载功能。
+
+```javascript
   const path = './' + fileName;
   const myModual = require(path);
-  ```
+```
 
-- 上面的语句就是动态加载，`require` 到底加载哪一个模块，只有运行时才知道。`import` 命令做不到这一点。
-- 因此，有一个 [提案](https://github.com/tc39/proposal-dynamic-import)，建议引入 `import()` 函数，完成动态加载。
+上面的语句就是动态加载，`require` 到底加载哪一个模块，只有运行时才知道。`import` 命令做不到这一点。
 
-  ```javascript
+因此，有一个 [提案](https://github.com/tc39/proposal-dynamic-import)，建议引入 `import()` 函数，完成动态加载。
+
+```javascript
   import(specifier)
-  ```
+```
 
-- 上面代码中，`import` 函数的参数 `specifier`，**指定所要加载的模块的位置**。`import` 命令能够接受什么参数，`import()` 函数就能接受什么参数，两者区别主要是后者为动态加载。
-- `import()` 返回一个 Promise 对象。下面是一个例子。
+上面代码中，`import` 函数的参数 `specifier`，**指定所要加载的模块的位置**。`import` 命令能够接受什么参数，`import()` 函数就能接受什么参数，两者区别主要是后者为动态加载。
 
-  ```javascript
+`import()` 返回一个 Promise 对象。下面是一个例子。
+
+```javascript
   const main = document.querySelector('main');
   
   import(`./section-modules/${someVariable}.js`)
@@ -1123,20 +1127,22 @@ import {db, users} from './constants/index';
     .catch(err => {
       main.textContent = err.message;
     });
-  ```
+```
 
-- `import()` 函数可以用在任何地方，不仅仅是模块，非模块的脚本也可以使用。它是运行时执行，也就是说，什么时候运行到这一句，就会加载指定的模块。另外，`import()` 函数与所加载的模块没有静态连接关系，这点也是与 `import` 语句不相同。
-- **总结**：`import()` 类似于 Node 的 `require` 方法，**区别主要是**
+`import()` 函数可以用在任何地方，不仅仅是模块，非模块的脚本也可以使用。它是运行时执行，也就是说，什么时候运行到这一句，就会加载指定的模块。另外，`import()` 函数与所加载的模块没有静态连接关系，这点也是与 `import` 语句不相同。
+
+**总结**：`import()` 类似于 Node 的 `require` 方法，**区别主要是**
+
   - **前者是异步加载，后者是同步加载。**
   - 前者返回的是一个 Promise 对象，后者是一个普通对象
 
 ### 适用场合
 
-**（1）按需加载**
+#### （1）按需加载
 
-- `import()` 可以在需要的时候，再加载某个模块。
+`import()` 可以在需要的时候，再加载某个模块。
 
-  ```javascript
+```javascript
   button.addEventListener('click', event => {
     import('./dialogBox.js')
     .then(dialogBox => {
@@ -1146,68 +1152,69 @@ import {db, users} from './constants/index';
       /* Error handling */
     })
   });
-  ```
+```
 
-- 上面代码中，`import()` 方法放在 `click` 事件的监听函数之中，只有用户点击了按钮，才会加载这个模块
+上面代码中，`import()` 方法放在 `click` 事件的监听函数之中，只有用户点击了按钮，才会加载这个模块
 
-**（2）条件加载**
+#### （2）条件加载
 
-- `import()` 可以放在 `if` 代码块，根据不同的情况，加载不同的模块。
+`import()` 可以放在 `if` 代码块，根据不同的情况，加载不同的模块。
 
-  ```javascript
+```javascript
   if (condition) {
     import('moduleA').then(...);
   } else {
     import('moduleB').then(...);
   }
-  ```
+```
 
-- 上面代码中，如果满足条件，就加载模块 A，否则加载模块 B。
+上面代码中，如果满足条件，就加载模块 A，否则加载模块 B。
 
-**（3）动态的模块路径**
+#### （3）动态的模块路径
 
-- `import()` 允许模块路径动态生成。
+`import()` 允许模块路径动态生成。
 
-  ```javascript
+```javascript
   import(f())
   .then(...);
-  ```
+```
 
-- 上面代码中，根据函数 `f` 的返回结果，加载不同的模块。
+上面代码中，根据函数 `f` 的返回结果，加载不同的模块。
 
 ### 注意点
 
-- `import()` 加载模块成功以后，这个模块会作为一个对象，当作 `then` 方法的参数。因此，可以使用对象解构赋值的语法，获取输出接口。
+`import()` 加载模块成功以后，这个模块会作为一个对象，当作 `then` 方法的参数。因此，可以使用对象解构赋值的语法，获取输出接口。
 
-  ```javascript
+```javascript
   import('./myModule.js')
   .then(({export1, export2}) => {
     // ...·
   });
-  ```
+```
 
-- 上面代码中，`export1` 和 `export2` 都是 `myModule.js` 的输出接口，可以解构获得。
-- 如果模块有 `default` 输出接口，可以用参数直接获得。
+上面代码中，`export1` 和 `export2` 都是 `myModule.js` 的输出接口，可以解构获得。
 
-  ```javascript
+如果模块有 `default` 输出接口，可以用参数直接获得。
+
+```javascript
   import('./myModule.js')
   .then(myModule => {
     console.log(myModule.default);
   });
-  ```
+```
 
-- 上面的代码也可以使用具名输入的形式。
+上面的代码也可以使用具名输入的形式。
 
-  ```javascript
+```javascript
   import('./myModule.js')
   .then(({default: theDefault}) => {
     console.log(theDefault);
   });
   ```
 
-- 如果想同时加载多个模块，可以采用下面的写法。
+如果想同时加载多个模块，可以采用下面的写法。
 
-  ```javascript
+```javascript
   Promise.all([
     import('./module1.js'),
     import('./module2.js'),
@@ -1216,11 +1223,11 @@ import {db, users} from './constants/index';
   .then(([module1, module2, module3]) => {
      ···
   });
-  ```
+```
 
-- `import()` 也可以用在 async 函数之中。
+`import()` 也可以用在 async 函数之中。
 
-  ```javascript
+```javascript
   async function main() {
     const myModule = await import('./myModule.js');
     const {export1, export2} = await import('./myModule.js');
@@ -1232,7 +1239,7 @@ import {db, users} from './constants/index';
       ]);
   }
   main();
-  ```
+```
 
 # ES6 模块与 CommonJS 模块 @@@
 
@@ -2062,62 +2069,70 @@ var a = require('a');
 
 ### CommonJS 模块的加载原理
 
-- 介绍 ES6 如何处理“循环加载”之前，先介绍目前最流行的 CommonJS 模块格式的加载原理。
-- CommonJS 的一个模块，就是一个脚本文件。`require` 命令第一次加载该脚本，就会执行整个脚本，然后在内存生成一个对象。
+介绍 ES6 如何处理“循环加载”之前，先介绍目前最流行的 CommonJS 模块格式的加载原理。
 
-  ```javascript
+CommonJS 的一个模块，就是一个脚本文件。`require` 命令第一次加载该脚本，就会执行整个脚本，然后在内存生成一个对象。
+
+```javascript
   {
     id: '...',
     exports: { ... },
     loaded: true,
     ...
   }
-  ```
+```
 
-- 上面代码就是 Node 内部加载模块后生成的一个对象。该对象的 `id` 属性是**模块名**，`exports` 属性是模块输出的各个接口，`loaded` 属性是一个布尔值，表示该模块的脚本是否执行完毕。其他还有很多属性，这里都省略了。
-- 以后需要用到这个模块的时候，就会到 `exports` 属性上面取值。即使再次执行 `require` 命令，也不会再次执行该模块，而是到缓存之中取值。也就是说，**CommonJS 模块无论加载多少次，都只会在第一次加载时运行一次，以后再加载，就返回第一次运行的结果，除非手动清除系统缓存**。
+上面代码就是 Node 内部加载模块后生成的一个对象。该对象的 `id` 属性是**模块名**，`exports` 属性是模块输出的各个接口，`loaded` 属性是一个布尔值，表示该模块的脚本是否执行完毕。其他还有很多属性，这里都省略了。
+
+以后需要用到这个模块的时候，就会到 `exports` 属性上面取值。即使再次执行 `require` 命令，也不会再次执行该模块，而是到缓存之中取值。也就是说，**CommonJS 模块无论加载多少次，都只会在第一次加载时运行一次，以后再加载，就返回第一次运行的结果，除非手动清除系统缓存**。
 
 ### CommonJS 模块的循环加载
 
-- CommonJS 模块的重要特性是加载时执行，即脚本代码在 `require` 的时候，就会全部执行。一旦出现某个模块被 " 循环加载 "，就只输出已经执行的部分，还未执行的部分不会输出。
-- 让我们来看，Node [官方文档](https://nodejs.org/api/modules.html#modules_cycles) 里面的例子。脚本文件 `a.js` 代码如下。
+CommonJS 模块的重要特性是加载时执行，即脚本代码在 `require` 的时候，就会全部执行。一旦出现某个模块被 " 循环加载 "，就只输出已经执行的部分，还未执行的部分不会输出。
 
-  ```javascript
+让我们来看，Node [官方文档](https://nodejs.org/api/modules.html#modules_cycles) 里面的例子。脚本文件 `a.js` 代码如下。
+
+```javascript
   exports.done = false;
   var b = require('./b.js');
   console.log('在 a.js 之中，b.done = %j', b.done);
   exports.done = true;
   console.log('a.js 执行完毕');
-  ```
+```
 
-- 上面代码之中，`a.js` 脚本先输出一个 `done` 变量，然后加载另一个脚本文件 `b.js`。注意，此时 `a.js` 代码就停在这里，等待 `b.js` 执行完毕，再往下执行。
-- 再看 `b.js` 的代码。
+上面代码之中，`a.js` 脚本先输出一个 `done` 变量，然后加载另一个脚本文件 `b.js`。注意，此时 `a.js` 代码就停在这里，等待 `b.js` 执行完毕，再往下执行。
 
-  ```javascript
+再看 `b.js` 的代码。
+
+```javascript
   exports.done = false;
   var a = require('./a.js');
   console.log('在 b.js 之中，a.done = %j', a.done);
   exports.done = true;
   console.log('b.js 执行完毕');
-  ```
+```
 
-- 上面代码之中，`b.js` 执行到第二行，就会去加载 `a.js`，这时，就发生了“循环加载”。系统会去 `a.js` 模块对应对象的 `exports` 属性取值，可是因为 `a.js` 还没有执行完，**从 `exports` 属性只能取回已经执行的部分，而不是最后的值。**
-- `a.js` 已经执行的部分，只有一行。
+上面代码之中，`b.js` 执行到第二行，就会去加载 `a.js`，这时，就发生了“循环加载”。系统会去 `a.js` 模块对应对象的 `exports` 属性取值，可是因为 `a.js` 还没有执行完，**从 `exports` 属性只能取回已经执行的部分，而不是最后的值。**
 
-  ```javascript
+`a.js` 已经执行的部分，只有一行。
+
+```javascript
   exports.done = false;
-  ```
+```
 
-- 因此，对于 `b.js` 来说，它从 `a.js` 只输入一个变量 `done`，值为 `false`。
-- 然后，`b.js` 接着往下执行，等到全部执行完毕，再把执行权交还给 `a.js`。于是，`a.js` 接着往下执行，直到执行完毕。我们写一个脚本 `main.js`，验证这个过程。
-- ```javascript
+因此，对于 `b.js` 来说，它从 `a.js` 只输入一个变量 `done`，值为 `false`。
+
+然后，`b.js` 接着往下执行，等到全部执行完毕，再把执行权交还给 `a.js`。于是，`a.js` 接着往下执行，直到执行完毕。我们写一个脚本 `main.js`，验证这个过程。
+
+```javascript
   var a = require('./a.js');
   var b = require('./b.js');
   console.log('在 main.js 之中, a.done=%j, b.done=%j', a.done, b.done);
-  ```
-- 执行 `main.js`，运行结果如下。
+```
 
-  ```bash
+执行 `main.js`，运行结果如下。
+
+```bash
   $ node main.js
   
   在 b.js 之中，a.done = false
@@ -2125,18 +2140,19 @@ var a = require('a');
   在 a.js 之中，b.done = true
   a.js 执行完毕
   在 main.js 之中, a.done=true, b.done=true
-  ```
+```
 
-- 上面的代码证明了两件事。一是，在 `b.js` 之中，`a.js` 没有执行完毕，只执行了第一行。二是，`main.js` 执行到第二行时，不会再次执行 `b.js`，而是输出缓存的 `b.js` 的执行结果，即它的第四行。
+上面的代码证明了两件事。一是，在 `b.js` 之中，`a.js` 没有执行完毕，只执行了第一行。二是，`main.js` 执行到第二行时，不会再次执行 `b.js`，而是输出缓存的 `b.js` 的执行结果，即它的第四行。
 
-  ```javascript
+```javascript
   exports.done = true;
-  ```
+```
 
-- 总之，CommonJS 输入的是被输出值的拷贝，不是引用。
-- 另外，由于 CommonJS 模块遇到循环加载时，返回的是当前已经执行的部分的值，而不是代码全部执行后的值，两者可能会有差异。所以，输入变量的时候，必须非常小心。
+总之，CommonJS 输入的是被输出值的拷贝，不是引用。
 
-  ```javascript
+另外，由于 CommonJS 模块遇到循环加载时，返回的是当前已经执行的部分的值，而不是代码全部执行后的值，两者可能会有差异。所以，输入变量的时候，必须非常小心。
+
+```javascript
   var a = require('a'); // 安全的写法
   var foo = require('a').foo; // 危险的写法
   
@@ -2147,9 +2163,9 @@ var a = require('a');
   exports.bad = function (arg) {
     return foo('bad', arg); // 使用的是一个部分加载时的值
   };
-  ```
+```
 
-- 上面代码中，如果发生循环加载，`require('a').foo` 的值很可能后面会被改写，改用 `require('a')` 会更保险一点。
+上面代码中，如果发生循环加载，`require('a').foo` 的值很可能后面会被改写，改用 `require('a')` 会更保险一点。
 
 ### ES6 模块的循环加载
 
@@ -2244,10 +2260,11 @@ export function odd(n) {
 }
 ```
 
-- 上面代码中，`even.js` 里面的函数 `even` 有一个参数 `n`，只要不等于 0，就会减去 1，传入加载的 `odd()`。`odd.js` 也会做类似操作。
-- 运行上面这段代码，结果如下。
+上面代码中，`even.js` 里面的函数 `even` 有一个参数 `n`，只要不等于 0，就会减去 1，传入加载的 `odd()`。`odd.js` 也会做类似操作。
 
-  ```javascript
+运行上面这段代码，结果如下。
+
+```javascript
   $ babel-node
   > import * as m from './even.js';
   > m.even(10);
@@ -2258,10 +2275,11 @@ export function odd(n) {
   true
   > m.counter
   17
-  ```
+```
 
-- 上面代码中，参数 `n` 从 10 变为 0 的过程中，`even()` 一共会执行 6 次，所以变量 `counter` 等于 6。第二次调用 `even()` 时，参数 `n` 从 20 变为 0，`even()` 一共会执行 11 次，加上前面的 6 次，所以变量 `counter` 等于 17。
-- 这个例子要是改写成 CommonJS，就根本无法执行，会报错。
+上面代码中，参数 `n` 从 10 变为 0 的过程中，`even()` 一共会执行 6 次，所以变量 `counter` 等于 6。第二次调用 `even()` 时，参数 `n` 从 20 变为 0，`even()` 一共会执行 11 次，加上前面的 6 次，所以变量 `counter` 等于 17。
+
+这个例子要是改写成 CommonJS，就根本无法执行，会报错。
 
   ```javascript
   // even.js
@@ -2280,7 +2298,7 @@ export function odd(n) {
   }
   ```
 
-- 上面代码中，`even.js` 加载 `odd.js`，而 `odd.js` 又去加载 `even.js`，形成“循环加载”。这时，执行引擎就会输出 `even.js` 已经执行的部分（不存在任何结果），所以在 `odd.js` 之中，变量 `even` 等于 `undefined`，等到后面调用 `even(n - 1)` 就会报错。
+上面代码中，`even.js` 加载 `odd.js`，而 `odd.js` 又去加载 `even.js`，形成“循环加载”。这时，执行引擎就会输出 `even.js` 已经执行的部分（不存在任何结果），所以在 `odd.js` 之中，变量 `even` 等于 `undefined`，等到后面调用 `even(n - 1)` 就会报错。
 
   ```bash
   $ node
