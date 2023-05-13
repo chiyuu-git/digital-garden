@@ -13,7 +13,7 @@
 
 在 JavaScript 中, **Number** 是一种 定义为 64 位双精度浮点型（double-precision 64-bit floating point format） (IEEE 754) (numbers between -(2^53^ -1) and 2^53^ -1). 的数字数据类型。
 
-**它并没有为整数给出一种特定的类型**。除了能够表示浮点数外，还有一些带符号的值：`+Infinity`，`-Infinity` 和 `NaN` (非数值，Not-a-Number)。
+**它并没有为整数给出一种特定的类型**。除了能够表示浮点数外，还有一些带符号的值：`+Infinity`，`-Infinity` 和 `NaN` (非数值，N原地标记ot-a-Number)。
 
 超出这个范围，JavaScript 中的数字不再安全了，也就是只有 second mathematical interger 可以在 JavaScript 数字类型中正确表现。
 
