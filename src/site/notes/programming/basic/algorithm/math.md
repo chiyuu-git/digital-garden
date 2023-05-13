@@ -7,6 +7,8 @@
 
 # 最大公约数
 
+gcd
+
 ## 辗转相 (模) 除法
 
 ```js
@@ -81,6 +83,10 @@ function getGreatestCommonDivisor(a,b){
 
 # 最小公倍数
 
+least commom multiple 
+
+lcm
+
 # [263. 丑数](https://leetcode-cn.com/problems/ugly-number/)
 
 丑数就是只包含质因数 `2, 3, 5` 的**正整数**。
@@ -114,9 +120,9 @@ var isUgly = function(num) {
 
 ## 分析
 
-- **最优化分析：**4 和从 6 开始的所有丑数，都是在其前面的某个丑数乘以 `2, 3, 5` 的结果
-- 就是从一个基准数 1 开始，算 1\*2、1\*3、1\*5 的最小值，得出结果 1*2 最小，再将对应 Index++ 即可，结果就是每个数都会各自与 2 3 5 相乘，乘过了就轮到下一个
-- ```js
+**最优化分析：**4 和从 6 开始的所有丑数，都是在其前面的某个丑数乘以 `2, 3, 5` 的结果
+就是从一个基准数 1 开始，算 1\*2、1\*3、1\*5 的最小值，得出结果 1*2 最小，再将对应 Index++ 即可，结果就是每个数都会各自与 2 3 5 相乘，乘过了就轮到下一个
+```js
   var nthUglyNumber = function (n) {
     let index2 = 0, index3 = 0, index5 = 0
     let T = []
