@@ -11,15 +11,15 @@
 | ------------------------------------------------------------------------------ | --------------------- |
 | [[programming/font-end/primitive/es/es-date\|es-date]]                      | [[programming/font-end/primitive/es/es-date#faq\|es-date#faq]]       |
 | [[programming/font-end/primitive/es/es-proto\|es-proto]]                    | [[programming/font-end/primitive/es/es-proto#faq\|es-proto#faq]]      |
-| [[programming/font-end/primitive/es/es-string\|es-string]]                  | [[programming/font-end/primitive/es/es-string#faq\|es-string#faq]]     |
-| [[programming/font-end/primitive/browser-api/dom-selection\|dom-selection]] | [[programming/font-end/primitive/browser-api/dom-selection#faq\|dom-selection#faq]] |
-| [[programming/font-end/primitive/browser-api/dom-interface\|dom-interface]] | [[programming/font-end/primitive/browser-api/dom-interface#faq\|dom-interface#faq]] |
 | [[programming/font-end/primitive/browser-api/bom\|bom]]                     | [[programming/font-end/primitive/browser-api/bom#faq\|bom#faq]]           |
+| [[programming/font-end/primitive/browser-api/dom-interface\|dom-interface]] | [[programming/font-end/primitive/browser-api/dom-interface#faq\|dom-interface#faq]] |
+| [[programming/font-end/primitive/browser-api/dom-selection\|dom-selection]] | [[programming/font-end/primitive/browser-api/dom-selection#faq\|dom-selection#faq]] |
+| [[programming/font-end/primitive/es/es-array\|es-array]]                    | [[programming/font-end/primitive/es/es-array#faq\|es-array#faq]]      |
 | [[programming/font-end/primitive/es/es-async-2\|es-async-2]]                | [[programming/font-end/primitive/es/es-async-2#faq\|es-async-2#faq]]    |
 | [[programming/font-end/primitive/es/es-basic\|es-basic]]                    | [[programming/font-end/primitive/es/es-basic#faq\|es-basic#faq]]      |
 | [[programming/font-end/primitive/es/es-number\|es-number]]                  | [[programming/font-end/primitive/es/es-number#faq\|es-number#faq]]     |
-| [[programming/font-end/primitive/es/es-array\|es-array]]                    | [[programming/font-end/primitive/es/es-array#faq\|es-array#faq]]      |
 | [[programming/font-end/primitive/es/es-object\|es-object]]                  | [[programming/font-end/primitive/es/es-object#faq\|es-object#faq]]     |
+| [[programming/font-end/primitive/es/es-string\|es-string]]                  | [[programming/font-end/primitive/es/es-string#faq\|es-string#faq]]     |
 | [[programming/font-end/primitive/es/es-regexp\|es-regexp]]                  | [[programming/font-end/primitive/es/es-regexp#faq\|es-regexp#faq]]     |
 
 { .block-language-dataview}
@@ -96,6 +96,33 @@ a = a[1];
 a = [b,b=a]0];
 // ES6
 [a,b] = [b,a];
+```
+
+[344. 反转字符串 - 力扣（LeetCode）](https://leetcode.cn/problems/reverse-string/submissions/)
+
+双指针比负 index 效率更高, 因为不需要运算
+
+```js
+/**
+ * @param {character[]} s
+ * @return {void} Do not return anything, modify s in-place instead.
+ */
+var reverseString = function(s) {
+    // 直接循环交换就可以了
+    // for (let i = 0; i < (s.length + 1) / 2 - 1; i++) {
+    //     // 交换的焦虑不高哇
+    //     // [s[s.length -1 -i], s[i]] = [s[i], s[s.length - 1 - i]]
+    //     // 交换的效率是一样的
+    //     // const temp = s[i];
+    //     // s[i] = s[s.length - 1 - i]
+    //     // s[s.length - 1 - i] = temp;
+    // }
+    for (let left = 0, right = s.length - 1; left < right; left++, right--) {
+        [s[right], s[left]] = [s[left], s[right]]
+    }
+    return s
+};
+
 ```
 
 ## String Template One Line
@@ -264,6 +291,7 @@ function each(obj, callback) {
 each 函数和 eachWithCall 函数唯一的区别就是 eachWithCall 调用了 call，从结果我们可以推测出，call 会导致性能损失，但也正是 call 的存在，我们才能将 this 指向循环中当前的元素。
 
 现在完全可以用 `for...of` 代替
+
 # 防抖
 
 防抖的原理就是：你尽管触发事件，但是我一定在事件触发 n 秒后才执行，如果你在一个事件触发的 n 秒内又触发了这个事件，那我就以新的事件的时间为准，n 秒后才执行，总之，就是要等你触发完事件 n 秒内不再触发事件，我才执行，真是任性呐!
@@ -881,6 +909,7 @@ _(2).addOne(); // 3
 至此，我们算是实现了同时支持面向对象风格和函数风格。
 
 ![es-object](programming/font-end/primitive/es/es-object.md#混入模式)
+
 ## 导出
 
 终于到了讲最后一步 `root._ = _`，我们直接看源码：
