@@ -3,7 +3,7 @@
 ---
 
 
-用的太少了,  工作了两年几乎没用过, 而且很难理解, 考前突袭不要花太多时间在这上面了
+用的太少了, 工作了两年几乎没用过, 而且很难理解, 考前突袭不要花太多时间在这上面了
 
 # 正则表达式
 
@@ -741,7 +741,7 @@ console.log(result);
 
 `(?=.*[0-9])` 代表：任意个任意字符后得跟着一个数字，在这样一段字符串的前面, 这意味着，在这个**位置**后面的字符串必须包含一个数子
 
-`(?=.*[0-9])^`：意味着这个位置必须在开头，因为空字符是可以有多个的, 这意味着：从头开始匹配, 直到有一个字符后面跟着一个数字, 这匹配到的子串自然是在开头的位置的. 
+`(?=.*[0-9])^`：意味着这个位置必须在开头，因为空字符是可以有多个的, 这意味着：从头开始匹配, 直到有一个字符后面跟着一个数字, 这匹配到的子串自然是在开头的位置的.
 
 > 脱字符和先行断言的关系到底是什么? 还是没搞懂, 感觉脱字符是用在后面的字符匹配上的
 
@@ -2136,13 +2136,14 @@ str.replace(regexp|substr, newSubStr|function)
 
 #### 使用字符串作为参数
 
-+ ```js
+```js
     var re = /(\w+)\s(\w+)/;
     var str = "John Smith";
     var newstr = str.replace(re, "$2, $1");
     // Smith, John
     console.log(newstr);
     ```
+	
 + 当第二个参数是字符串时，如下的字符有特殊的含义：
 
     ```
@@ -2179,28 +2180,33 @@ str.replace(regexp|substr, newSubStr|function)
 
 #### 指定一个函数作为参数
 
-+ 你可以指定一个函数作为第二个参数。在这种情况下，当匹配执行后，该函数就会执行。 函数的返回值作为替换字符串。
+你可以指定一个函数作为第二个参数。在这种情况下，当匹配执行后，该函数就会执行。 函数的返回值作为替换字符串。
 
-    > 注意：上面提到的特殊替换参数在这里不能被使用。
+> 注意：上面提到的特殊替换参数在这里不能被使用。
 
-+ 另外要注意的是，如果第一个参数是正则表达式，并且其为全局匹配模式，那么这个方法将被多次调用，每次匹配都会被调用。
-+ 下面是该函数的参数：
-    + match：匹配的子串。（对应于上述的 $&。）
-    + p1,p2, ...：假如 replace() 方法的第一个参数是一个 [`RegExp`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/RegExp) 对象，则代表第 n 个括号匹配的字符串。（对应于上述的\$1，$2 等。）例如，如果是用 `/(\a+)(\b+)/` 这个来匹配，`p1` 就是匹配的 `\a+`，`p2` 就是匹配的 `\b+`。
-    + offset：匹配到的子字符串在原字符串中的偏移量。（比如，如果原字符串是 `'abcd'`，匹配到的子字符串是 `'bc'`，那么这个参数将会是 1）
-    + string：被匹配到的原字符串
-+ 精确的参数个数依赖于 `replace()` 的第一个参数是否是一个正则表达式（[`RegExp`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/RegExp)）对象，以及这个正则表达式中**指定了多少个括号子串**。
-+ **总的参数个数等于：(match + 捕获分组数 + offset + string) * 1**
-+ 下面的例子将会使 `newString` 变成 `'abc - 12345 - #$*%'`：
+另外要注意的是，如果第一个参数是正则表达式，并且其为全局匹配模式，那么这个方法将被多次调用，每次匹配都会被调用。
 
-    ```js
-    function replacer(match, p1, p2, p3, offset, string) {
-      // p1 is nondigits, p2 digits, and p3 non-alphanumerics
-      return [p1, p2, p3].join(' - ');
-    }
-    var newString = 'abc12345#$*%'.replace(/(\D*)(\d*)(\W*)/, replacer);
-    console.log(newString);  // abc - 12345 - #$*%
-    ```
+下面是该函数的参数：
+
++ match：匹配的子串。（对应于上述的 $&。）
++ p1,p2, ...：假如 replace() 方法的第一个参数是一个 [`RegExp`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/RegExp) 对象，则代表第 n 个括号匹配的字符串。（对应于上述的\$1，$2 等。）例如，如果是用 `/(\a+)(\b+)/` 这个来匹配，`p1` 就是匹配的 `\a+`，`p2` 就是匹配的 `\b+`。
++ offset：匹配到的子字符串在原字符串中的偏移量。（比如，如果原字符串是 `'abcd'`，匹配到的子字符串是 `'bc'`，那么这个参数将会是 1）
++ string：被匹配到的原字符串
+
+精确的参数个数依赖于 `replace()` 的第一个参数是否是一个正则表达式（[`RegExp`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/RegExp)）对象，以及这个正则表达式中**指定了多少个括号子串**。
+
+**总的参数个数等于：(match + 捕获分组数 + offset + string) * 1**
+
+下面的例子将会使 `newString` 变成 `'abc - 12345 - #$*%'`：
+
+```js
+function replacer(match, p1, p2, p3, offset, string) {
+  // p1 is nondigits, p2 digits, and p3 non-alphanumerics
+  return [p1, p2, p3].join(' - ');
+}
+var newString = 'abc12345#$*%'.replace(/(\D*)(\d*)(\W*)/, replacer);
+console.log(newString);  // abc - 12345 - #$*%
+```
 
 如果没有匹配呢？没有匹配的话函数不会执行，replace 返回原字符串
 
