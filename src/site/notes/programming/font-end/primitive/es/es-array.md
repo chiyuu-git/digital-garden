@@ -1570,17 +1570,16 @@ let difference = new Set([...a].filter(x => !b.has(x)));
 
 | File                                                                             |
 | -------------------------------------------------------------------------------- |
-| [[programming/basic/leetcode/598. Range Addition II\|598. Range Addition II]] |
-| [[programming/basic/leetcode/495. 提莫攻击\|495. 提莫攻击]]                           |
 | [[programming/basic/leetcode/485. 最大连续 1 的个数\|485. 最大连续 1 的个数]]               |
+| [[programming/basic/leetcode/495. 提莫攻击\|495. 提莫攻击]]                           |
+| [[programming/basic/leetcode/598. Range Addition II\|598. Range Addition II]] |
 | [[programming/basic/leetcode/396. 旋转函数\|396. 旋转函数]]                           |
 
 { .block-language-dataview}
 
 ## Sort Array
 
-| File                                                                                   |
-| -------------------------------------------------------------------------------------- |
-| [[programming/basic/leetcode/414. Third Maximum Number\|414. Third Maximum Number]] |
+| File |
+| ---- |
 
 { .block-language-dataview}
