@@ -5,6 +5,8 @@
 
 5/3
 
+[加、减、乘、除、方、根及指对数的英文表达 - 知乎](https://zhuanlan.zhihu.com/p/136367900)
+
 # 最大公约数
 
 gcd
@@ -397,21 +399,7 @@ var nthSuperUglyNumber = function(n, primes) {
 + 长度为 n 和 m 相乘，则长度肯定小于 m + n + 1; 将每次相乘的结果放入数组中，在下次计算的时候加上当前位上的值.
 
   ```js
-  var multiply = function(num1, num2) {
-    let result = []
-    // m 长度 * n 长度，总长度不会超过 m + n + 1;
-    for (let i = num1.length-1; i >= 0; i--) {
-      for (let j = num2.length-1; j >= 0; j--) {
-        let s = num1[i]*1 * num2[j]*1 + (result[i + j + 1] || 0)
-        result[i + j + 1] = s % 10
-        // 位操作取整，进位
-        result[i + j] = (s / 10 | 0) + (result[i + j] || 0)
-      }
-    }
-  
-    while(result[0] === 0) result.shift()
-    return result.join("") || "0";
-  }
+
   
   console.log(multiply('55','55'))
   ```
