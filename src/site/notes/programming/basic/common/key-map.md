@@ -42,4 +42,50 @@ nmap ]l :forward
 
 # Vim
 
-![Key Map](vim/vim-basic.md#Key%20Map)
+![vim-config](programming/basic/common/vim/vim-config.md#Key%20Map)
+
+# Init New Computer
+
+设置软件开机自动启动
+
+快速在新电脑使用需要的环境
+
+iterm2
+
+zsh highlight config
+
++ download oh-my-zsh
++ [解决Mac下修改/etc/sudoers文件的问题\_mac sudoers\_CharlesLeeps的博客-CSDN博客](https://blog.csdn.net/sinat_36652514/article/details/91358520)
++ https://zhuanlan.zhihu.com/p/524453008
+
+scroll-reverse
+
+karabiner
+
++ 改变 mac 到 commad 为 ctrl
+
+rescureTime
+
+sizeUp
+
+catchMouse
+
+obsidian
+
+微云
+
+vscode
+
++ 添加 vscode 到右键快捷启动
++ [Mac下将Open With VSCode添加到"服务" - 简书](https://www.jianshu.com/p/97d802c9ce8b)
++ solved press and hold [visual studio code - How do I press and hold a key and have it repeat in VSCode? - Stack Overflow](https://stackoverflow.com/questions/39972335/how-do-i-press-and-hold-a-key-and-have-it-repeat-in-vscode)
+
+node nvm nrm
+
+git ssh. 公钥 配置
+
+homebrew
+
+vim config
+
+obsidian config soft link
