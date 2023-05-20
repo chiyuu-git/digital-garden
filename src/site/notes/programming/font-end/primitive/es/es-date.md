@@ -131,7 +131,7 @@ new Date(dateString)
 
 如果提供了至少两个参数，其余的参数均会 **默认设置为 1**（如果没有提供 day 参数）或者 0。
 
-```js
+```text
 new Date(year, month[, day[, hour[, minutes[, seconds[, milliseconds]]]]]);
 ```
 
@@ -139,7 +139,7 @@ new Date(year, month[, day[, hour[, minutes[, seconds[, milliseconds]]]]]);
 
 ### **注意**
 
-需要注意的是只能通过调用 Date 构造函数来实例化日期对象：以常规函数调用它（即不加 [new](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) 操作符）将会返回一个字符串，而不是一个日期对象。另外，不像其他 JavaScript 类型，**Date 对象没有字面量格式**。
+需要注意的是只能通过调用 Date 构造函数来实例化日期对象：以常规函数调用它（即不加 [new](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) 操作符）将会返回一个字符串，而不是一个日期对象。另外，不像其他 JavaScript 类型，**Date 对象没有字面量格式**
 
 接受一个溢出的 **日期字符串**，只能向后溢出一天
 
