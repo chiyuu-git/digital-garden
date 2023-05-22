@@ -131,8 +131,8 @@ new Date(dateString)
 
 如果提供了至少两个参数，其余的参数均会 **默认设置为 1**（如果没有提供 day 参数）或者 0。
 
-```text
-new Date(year, month[, day[, hour[, minutes[, seconds[, milliseconds]]]]]);
+```js
+new Date(year, month, day, hour, minutes, sconeds, milliseconds);
 ```
 
 > 当 Date 作为构造函数调用并传入多个参数时，所定义参数代表的是 **当地时间**。如果需要世界协调时，使用 new Date({{jsxref("Date.UTC()", "Date.UTC(...)")}}) 和相同参数
