@@ -130,6 +130,22 @@
   } 
 ```
 
+```js
+class Node {
+    data = null;
+    next = null;
+
+    constructor(data) {
+        this.data = data;
+    }
+
+}
+class LinkedList {
+    head = null;
+    length = 0;
+}
+```
+
 ### append()
 
 看一段完整的添加节点代码：
@@ -310,6 +326,72 @@ indexOf 方法接收一个元素的值，如果在列表中找到它，就返回
     // 即使返回-1，也会被remove的边界限制
     return this.removeAt(index) 
   } 
+```
+
+### removeAll()
+
+```js
+    /**
+     * 删除所有值为 val 的元素
+     */
+    removeAll(val) {
+        const dummyHead = new Node(0);
+        dummyHead.next = this.head;
+        let cur = this.head;
+        let prev = dummyHead;
+
+        while(cur !== null) {
+            if (cur.data === val) {
+                // 链表引用链跳过了 cur, 即实现了删除
+                prev.next = cur.next;
+                cur = cur.next;
+                this.length--;
+            }
+            else {
+                prev = cur;
+                cur = cur.next;
+            }
+        }
+
+        this.head = dummyHead.next;
+        return dummyHead.next;
+    }
+
+    removeALLRecursion(cur = this.head, val) {
+        if (cur === null) {
+            return cur;
+        }
+
+        cur.next = this.removeALLRecursion(cur.next, val);
+        return cur.data === val ? cur.next : cur;
+    }
+```
+
+### removeNthFromEnd()
+
+```js
+    removeNthFromEnd(n) {
+        const dummyHead = new Node(0);
+        dummyHead.next = this.head;
+		
+        this.removeNthFromEndRecursion(dummyHead, n);
+        this.head = dummyHead.next;
+        return dummyHead.next;
+    }
+		
+    removeNthFromEndRecursion = function(cur = this.head, n) {
+        // 因为是删除倒数的, 所以用递归的写法特别合适, 用迭代反而处理起来不方便
+        if (cur.next === null) {
+            return 1
+        }
+        let reverseCount = this.removeNthFromEndRecursion(cur.next, n)
+		
+        if (reverseCount === n) {
+            cur.next = cur.next.next;
+        }
+		
+        return ++reverseCount
+    };
 ```
 
 ### 其他方法
