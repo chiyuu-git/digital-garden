@@ -329,10 +329,10 @@ var nthSuperUglyNumber = function(n, primes) {
 
 **示例**
 
-+ ```
+```
   输入: num1 = "2", num2 = "3"
   输出: "6"
-  ```
+```
 
 #### 逐位相乘
 
