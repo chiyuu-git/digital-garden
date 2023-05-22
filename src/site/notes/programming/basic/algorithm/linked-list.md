@@ -3,7 +3,7 @@
 ---
 
 
-# 基础
+# 概念
 
 链表是另一个重要的线性数据结构，刚一看可能看起来像数组，但在内存分配，内部结构以及如何执行插入和删除的基本操作方面有所不同。
 
@@ -31,60 +31,9 @@
 
 数组和链表的对比，并不能局限于时间复杂度。而且，在实际开发中，不能仅仅利用复杂度分析就决定使用哪个数据结构来存储数据。针对不同的类型项目来权衡。当然，在大前端，还是数组用的最多。
 
-## 翻转列表
+# 链表的实现
 
-### 迭代
-
-三指针法
-
-```js
-/**
- * 三指针法实现迭代翻转
- */
-reverseListIteration() {
-	let cur = this.head;
-	let prev = null;
-	let next = null;
-	
-	while(cur!== null) {
-		next = cur.next;
-		// next 指向 prev 这一步实现了翻转
-		cur.next = prev;
-		// 更新迭代变量
-		prev = cur;
-		cur = next;
-	}
-	
-	// 更新头节点
-	this.head = prev;
-}
-```
-
-断链之前要保存，第一步，第二部
-
-### 递归
-
-递归版本稍微复杂一些，其关键在于反向工作。假设列表的其余部分已经被反转，现在我该如何反转它前面的部分？
-
-![](/img/user/programming/basic/algorithm/linked-list/image-20230522104201584.png)
-
-要小心的是 n 1 的下一个必须指向 Ø 。如果你忽略了这一点，你的链表中可能会产生循环。如果使用大小为 2 的链表测试代码，则可能会捕获此错误。
-
-  ```js
-  var reverseList = function(head) {
-  	if(head==null || head.next==null) return head
-    let prev = reverseList(head.next)
-    head.next.next = head
-    head.next = null
-    return prev // 递归传递反转后的头结点
-  }
-  ```
-
-理解起来太复杂了, 感觉意义不大, 不是适合使用递归的场景, 所有的循环都可以写成递归
-
-## 链表的实现
-
-### 基本操作
+## 基本操作
 
 - InsertAtHead —— 在链表**头部**插入指定元素
 - append —— 在链表**末尾**插入指定元素
@@ -96,7 +45,7 @@ reverseListIteration() {
 - indexOf—— 返回链表中的指定元素
 - isEmpty —— 如果链表为空，返回 true
 
-### 链表的实现
+## 链表的实现
 
 我们一般设计的链表有两个类。`Node` 类用来表示节点，`LinkedList` 类提供了一些辅助方法，比如说结点的增删改查，以及显示列表元素等方法。 接下来看看如何用 `js` 代码表示一个链表。
 
@@ -118,7 +67,7 @@ reverseListIteration() {
 
 `Node` 类包含两个属性：`data` 用来保存节点上的数据，`next` 用来保存指向下一个节点的链接。
 
-#### 理解指针或引用的含义
+### 理解指针或引用的含义
 
 指针或者引用，他们的意思都是一样的，都是存储所指对象的内存地址。
 
@@ -126,7 +75,7 @@ reverseListIteration() {
 
 结点中的 next 指针，储存了下一个结点的内存地址
 
-#### 警惕指针丢失和内存泄露
+### 警惕指针丢失和内存泄露
 
 在写链表代码的时候，尤其是我们的指针，会不断的改变，指来指去的。所以在写的时候，一定注意不要弄丢了指针。
 
@@ -139,7 +88,7 @@ reverseListIteration() {
 
 新结点指向 p 指针原本指向的结点，然后 p 指针再指向新结点
 
-#### 重点留意边界条件处理
+### 重点留意边界条件处理
 
 当我们向一个空链表中插入第一个结点时，就需要特殊处理了。当链表为空时，也就是链表的 head 为空，那直接赋值即可，如下：
 
@@ -155,7 +104,7 @@ reverseListIteration() {
   - 如果链表只有一个结点时，代码是否能正常工作？
   - 如果在处理头结点和尾结点时，代码是否能正常工作？
 
-#### LinkList 类骨架
+### LinkList 类骨架
 
 ```js
   function LinkedList() { 
@@ -181,7 +130,7 @@ reverseListIteration() {
   } 
 ```
 
-#### append()
+### append()
 
 看一段完整的添加节点代码：
 
@@ -213,7 +162,7 @@ reverseListIteration() {
 
 > 列表最后一个节点的下一个元素始终是 null。 我们知道它会是列表的最后一项。
 
-#### removeAt()
+### removeAt()
 
 再来看单链表结点的删除操作。如果在 p 结点后删除一个结点，只需要关注一步即可：
 
@@ -270,7 +219,7 @@ reverseListIteration() {
 
 ![](/img/user/programming/basic/algorithm/linked-list/image-20230522103623120.png)
 
-#### insert()
+### insert()
 
 使用这个方法可以在任意位置插入一个元素。
 
@@ -313,7 +262,7 @@ reverseListIteration() {
 
 ![](/img/user/programming/basic/algorithm/linked-list/image-20230522103704328.png)
 
-#### toString()
+### toString()
 
 toString 方法会把 LinkedList 对象转换成一个字符串
 
@@ -332,7 +281,7 @@ toString 方法会把 LinkedList 对象转换成一个字符串
   
 ```
 
-#### indexOf()
+### indexOf()
 
 indexOf 方法接收一个元素的值，如果在列表中找到它，就返回元素的位置，否则返回 -1。
 
@@ -351,7 +300,7 @@ indexOf 方法接收一个元素的值，如果在列表中找到它，就返回
     }
 ```
 
-#### remove()
+### remove()
 
 在实现了 indexOf() 的基础上，实现根据数据值删除节点
 
@@ -363,7 +312,7 @@ indexOf 方法接收一个元素的值，如果在列表中找到它，就返回
   } 
 ```
 
-#### 其他方法
+### 其他方法
 
 ```js
   this.isEmpty = function() { 
@@ -381,7 +330,84 @@ indexOf 方法接收一个元素的值，如果在列表中找到它，就返回
 
 head 变量是 LinkedList 类的私有变量（这意味着它不能在 LinkedList 实例外部被访问和更改，只有通过 LinkedList 实例才可以）。但是，如果我们需要在类的实现外部循环访问列表，就需要提供一种获取类的第一个元素的方法。
 
-### 单链表（单向）
+## 翻转链表
+
+### 迭代
+
+三指针法
+
+```js
+/**
+ * 三指针法实现迭代翻转
+ */
+reverseListIteration() {
+	let cur = this.head;
+	let prev = null;
+	let next = null;
+	
+	while(cur!== null) {
+		next = cur.next;
+		// next 指向 prev 这一步实现了翻转
+		cur.next = prev;
+		// 更新迭代变量
+		prev = cur;
+		cur = next;
+	}
+	
+	// 更新头节点
+	this.head = prev;
+}
+```
+
+断链之前要保存，第一步，第二部
+
+### 递归
+
+递归版本稍微复杂一些，其关键在于反向工作。假设列表的其余部分已经被反转，现在我该如何反转它前面的部分？
+
+![](/img/user/programming/basic/algorithm/linked-list/image-20230522104201584.png)
+
+要小心的是 n 1 的下一个必须指向 Ø 。如果你忽略了这一点，你的链表中可能会产生循环。如果使用大小为 2 的链表测试代码，则可能会捕获此错误。
+
+  ```js
+    /**
+     * 递归实现翻转
+     */
+    reverseListRecursion(cur = this.head) {
+        if (cur.next === null) {
+            this.head = cur;
+            return cur;
+        };
+
+        let prev = this.reverseListRecursion(cur.next);
+        cur.next.next = cur;
+        cur.next = null;
+
+        this.head = prev;
+        return prev;
+    }
+  ```
+
+# 链表完整代码
+
+## 链表递归的理解
+
+链表的定义具有递归性质, 因此链表的题目常可以用递归的方法求解.
+
+所有的循环都可以写成递归, 所以递归的本质是和循环一样的, 关键就是停止的条件:
+
++ 循环停止的条件
++ 递归停止的条件
+
+链表的递归关键是反向工作, 将 head 变量改成 cur 更容易理解, 直接从递归停止的函数开始一层层往上翻就可以实现了
+
+## 通过 dummyHead 避免特判
+
+通过在开始前创建一个哑节点 dummyHead, dummyHead.next 指向 head, 来避免对 head 的特判
+
+# 链表的类型
+
+## 单链表（单向）
 
 最简单最常用的是 **单链表**，此链表的每个结点只包含一个指针域。
 
@@ -389,7 +415,7 @@ head 变量是 LinkedList 类的私有变量（这意味着它不能在 LinkedLi
 
 我们可以判断当前结点的 next 是否为空，就知道循环是否结束。
 
-### 循环链表
+## 循环链表
 
 将单链表中尾结点的指针由空指针指向头节点，就使整个单链表形成一个环，这种头尾相接的单链表就简称为循环链表。
 
@@ -399,7 +425,7 @@ head 变量是 LinkedList 类的私有变量（这意味着它不能在 LinkedLi
 
 那头结点又是怎么确定呢? 由私有变量唯一指定，每次遍历都是从他开始
 
-### 双向链表
+## 双向链表
 
 双向链表是在单链表的每个结点中，再设置一个指向其前驱结点的指针域。所以在双向链表中的结点都有**两个指针域**，一个指向直接后继，另一个指向直接前驱。
 
@@ -409,7 +435,7 @@ head 变量是 LinkedList 类的私有变量（这意味着它不能在 LinkedLi
 
 虽然两个指针比较浪费存储空间，但是可以支持双向遍历，这样也带来了双向链表操作的灵活性。
 
-#### DoublyLinkedList 类
+### DoublyLinkedList 类
 
 ```js
   function DoublyLinkedList() { 
@@ -433,7 +459,7 @@ head 变量是 LinkedList 类的私有变量（这意味着它不能在 LinkedLi
 
 我们也可以访问一个特定节点的**下一个或前一个元素**。在单向链表中，如果迭代列表时错过了要找的元素，就需要回到列表起点，重新开始迭代。这是双向链表的一个优点。
 
-#### insert()
+### insert()
 
 向双向链表中插入一个新项跟（单向）链表非常类似。区别在于，单向链表只要控制一个 next 指针，而双向链表则要同时控制 next 和 prev（previous，前一个）这两个指针。
 
@@ -502,7 +528,7 @@ head 变量是 LinkedList 类的私有变量（这意味着它不能在 LinkedLi
 
 我们可以对 insert 和 remove 这两个方法的实现做一些改进。在结果为否的情况下，我们可以把元素插入到列表的尾部。性能也可以有所改进，比如，如果 position 大于 length/2，就最好从尾部开始迭代，而不是从头开始（这样就能迭代更少列表中的元素）
 
-#### remove()
+### remove()
 
 从双向链表中移除元素跟单向链表非常类似。唯一的区别就是还需要设置前一个位置的指针。
 
@@ -568,7 +594,7 @@ head 变量是 LinkedList 类的私有变量（这意味着它不能在 LinkedLi
 
 ![](/img/user/programming/basic/algorithm/linked-list/image-20230522104032961.png)
 
-### 双向循环链表
+## 双向循环链表
 
 既然单链表可以有循环链表，那么双向链表当然也可以是循环链表。你可以停下来想想双向循环链表长什么样子。
 
@@ -581,5 +607,3 @@ head 变量是 LinkedList 类的私有变量（这意味着它不能在 LinkedLi
 ## 返回链表中倒数第 N 个节点
 
 ## 移除链表中的重复值
-
-## 链表完整代码
