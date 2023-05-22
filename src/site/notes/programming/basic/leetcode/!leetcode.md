@@ -11,9 +11,11 @@
 
 对于一些简单题, 直接看题解, 看看有没有值得学习的方案, 有再记录下来, 不要直接上手做了, 省点时间
 
+hard 没有思路就直接看答案, 一般都不会考这么难的
+
 没有顺利解答的, 要标记一下, 使用 solved 标记
 
-国内面试 200 题足以, 常考的是链表、字符串、动态规划, 但是要面试外企的话需要 500 题
+国内面试 200 题足以, 常考的是链表、字符串、动态规划, 但是要面试外企的话需要 500 题, 工作年限越长, 算法考的越少
 
 ### 分类列表
 
@@ -22,7 +24,14 @@
 + 字符串
 	+ 数字与字符串间转换, 做完了第一行就行, 第一行倒数第一个也没做, 留着以后做吧
 	+ 字符串匹配只做了前 2 题, 第 2 题还是 unsolved
-	+ 中心扩展法的两题也先不做了, 感觉是动态规划的衍生题目
++ 中心扩展法的两题也先不做了, 感觉是动态规划的衍生题目
+	+ 数与位
+	+ 数字的位操作, 做到 231
+	+ 简单数学题, 只做了第一题, 感觉考的不会太多, 太离谱了
++ 栈
+	+ 388 没做, 看着就烦
+	+ 括号匹配: 32 没做
+	+ 递归的也先不做, 因为这里的重点是如何用栈去解决递归问题, 得想学好递归再回来简化
 
 ### 题解大全
 
@@ -84,13 +93,14 @@
 
 ### Solution Tips
 
-| File                                                   | overview                    |
-| ------------------------------------------------------ | --------------------------- |
-| [[programming/basic/leetcode/495. 提莫攻击\|495. 提莫攻击]] | [[programming/basic/leetcode/495. 提莫攻击#solution tips\|495. 提莫攻击#solution tips]] |
+| File                                                         | overview                       |
+| ------------------------------------------------------------ | ------------------------------ |
+| [[programming/basic/leetcode/495. 提莫攻击\|495. 提莫攻击]]       | [[programming/basic/leetcode/495. 提莫攻击#solution tips\|495. 提莫攻击#solution tips]]    |
+| [[programming/basic/leetcode/636. 函数的独占时间\|636. 函数的独占时间]] | [[programming/basic/leetcode/636. 函数的独占时间#solution tips\|636. 函数的独占时间#solution tips]] |
 
 { .block-language-dataview}
 
-+ 想不明白的时候多画时序图
+想不明白的时候多画时序图
 
 ## 节省空间复杂度的方法
 
@@ -132,6 +142,13 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 
 | File                                                                                                                           | difficulty | etags                                                                                                                                      | date-created                |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- |
+| [[programming/basic/leetcode/591. 标签验证器\|591. 标签验证器]]                                                                       | hard       | <ul><li>#leetcode/stack</li><li>#leetcode/unsolved</li></ul>                                                                               | 2023-05-21-Sun, 6:43:37 pm  |
+| [[programming/basic/leetcode/20. 有效的括号\|20. 有效的括号]]                                                                         | easy       | <ul><li>#leetcode/stack</li></ul>                                                                                                          | 2023-05-21-Sun, 6:16:14 pm  |
+| [[programming/basic/leetcode/71. 简化路径\|71. 简化路径]]                                                                           | medium     | <ul><li>#leetcode/stack</li></ul>                                                                                                          | 2023-05-20-Sat, 9:42:39 pm  |
+| [[programming/basic/leetcode/682. 棒球比赛\|682. 棒球比赛]]                                                                         | easy       | <ul><li>#leetcode/stack</li></ul>                                                                                                          | 2023-05-20-Sat, 9:34:41 pm  |
+| [[programming/basic/leetcode/492. 构造矩形\|492. 构造矩形]]                                                                         | easy       | <ul><li>#leetcode/math</li></ul>                                                                                                           | 2023-05-20-Sat, 7:18:15 pm  |
+| [[programming/basic/leetcode/231. 2 的幂\|231. 2 的幂]]                                                                         | easy       | <ul><li>#leetcode/math</li><li>#leetcode/bit-manipulation</li></ul>                                                                        | 2023-05-20-Sat, 5:17:27 pm  |
+| [[programming/basic/leetcode/9. 回文数\|9. 回文数]]                                                                               | easy       | <ul><li>#leetcode/palindrome</li></ul>                                                                                                     | 2023-05-20-Sat, 4:32:14 pm  |
 | [[programming/basic/leetcode/7. 整数反转\|7. 整数反转]]                                                                             | medium     | <ul><li>#leetcode/math/high-precision-compulation</li></ul>                                                                                | 2023-05-20-Sat, 4:13:40 pm  |
 | [[programming/basic/leetcode/686. 重复叠加字符串匹配\|686. 重复叠加字符串匹配]]                                                               | medium     | <ul><li>#leetcode/string/match</li><li>#leetcode/unsolved</li></ul>                                                                        | 2023-05-19-Fri, 4:27:11 pm  |
 | [[programming/basic/leetcode/68. 文本左右对齐\|68. 文本左右对齐]]                                                                       | hard       | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/string/transform</li></ul>                                                            | 2023-05-18-Thu, 3:33:41 pm  |
@@ -157,7 +174,7 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 | [[programming/basic/leetcode/423. 从英文中重建数字\|423. 从英文中重建数字]]                                                                 | medium     | <ul><li>#leetcode/string/hash-table</li></ul>                                                                                              | 2023-05-14-Sun, 1:29:08 am  |
 | [[programming/basic/leetcode/451. 根据字符出现频率排序\|451. 根据字符出现频率排序]]                                                             | medium     | <ul><li>#leetcode/string/hash-table</li><li>#leetcode/bucket-sort</li></ul>                                                                | 2023-05-14-Sun, 1:29:08 am  |
 | [[programming/basic/leetcode/49. 字母异位词分组\|49. 字母异位词分组]]                                                                     | medium     | <ul><li>#leetcode/string/ascii</li><li>#leetcode/string/sort</li><li>#leetcode/string/hash-table</li></ul>                                 | 2023-05-14-Sun, 1:29:08 am  |
-| [[programming/basic/leetcode/125. Valid Palindrome\|125. Valid Palindrome]]                                                 | easy       | <ul><li>#leetcode/string/palindrome</li></ul>                                                                                              | 2023-05-13-Sat, 1:29:08 am  |
+| [[programming/basic/leetcode/125. Valid Palindrome\|125. Valid Palindrome]]                                                 | easy       | <ul><li>#leetcode/palindrome</li></ul>                                                                                                     | 2023-05-13-Sat, 1:29:08 am  |
 | [[programming/basic/leetcode/14. Longest Common Prefix\|14. Longest Common Prefix]]                                         | easy       | <ul><li>#leetcode/longest-common-prefix</li></ul>                                                                                          | 2023-05-13-Sat, 1:29:08 am  |
 | [[programming/basic/leetcode/520. Detect Capital\|520. Detect Capital]]                                                     | easy       | <ul><li>#leetcode/string</li></ul>                                                                                                         | 2023-05-13-Sat, 1:29:08 am  |
 | [[programming/basic/leetcode/541. 反转字符串 II\|541. 反转字符串 II]]                                                                 | easy       | <ul><li>#leetcode/string/reverse</li></ul>                                                                                                 | 2023-05-13-Sat, 1:29:08 am  |
@@ -191,5 +208,7 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 | [[programming/basic/leetcode/495. 提莫攻击\|495. 提莫攻击]]                                                                         | easy       | <ul><li>#leetcode/array/traverse</li><li>#leetcode/time-sequence</li></ul>                                                                 | 2022-09-07-Wed, 11:17:06 pm |
 | [[programming/basic/leetcode/628. Maximum Product of Three Numbers\|628. Maximum Product of Three Numbers]]                 | easy       | <ul><li>#leetcode/pattern/categorized-discussion</li><li>#leetcode/top-k</li><li>#leetcode/math</li></ul>                                  | 2022-09-06-Tue, 11:09:41 pm |
 | [[programming/basic/leetcode/5. 最长回文子串\|5. 最长回文子串]]                                                                         | medium     | <ul><li>#leetcode</li></ul>                                                                                                                | \-                          |
+| [[programming/basic/leetcode/224. 基本计算器\|224. 基本计算器]]                                                                       | hard       | <ul><li>#leetcode/stack</li><li>#leetcode/math</li><li>#leetcode/unsolved</li></ul>                                                        | \-                          |
+| [[programming/basic/leetcode/636. 函数的独占时间\|636. 函数的独占时间]]                                                                   | medium     | <ul><li>#leetcode/stack</li><li>#leetcode/time-sequence</li></ul>                                                                          | \-                          |
 
 { .block-language-dataview}
