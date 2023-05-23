@@ -31,6 +31,8 @@
 
 数组和链表的对比，并不能局限于时间复杂度。而且，在实际开发中，不能仅仅利用复杂度分析就决定使用哪个数据结构来存储数据。针对不同的类型项目来权衡。当然，在大前端，还是数组用的最多。
 
+需要先通过 On 的时间复杂度访问, 再执行 O1 的插入删除操作, 所以最终数组和链表的操作时间复杂度都是一样的
+
 # 链表的实现
 
 ## 基本操作
@@ -469,7 +471,7 @@ reverseListIteration() {
 
   ```js
     /**
-     * 递归实现翻转
+     * 后序遍历 递归实现翻转
      */
     reverseListRecursion(cur = this.head) {
         if (cur.next === null) {
@@ -486,9 +488,33 @@ reverseListIteration() {
     }
   ```
 
+```js
+    reverseListForwardRecursion(prev = null, cur = this.head) {
+
+        const next = cur.next;
+        cur.next = prev;
+        prev = cur;
+        cur = next;
+
+        if (cur === null) {
+            this.head = prev;
+            return prev;
+        }
+
+        this.reverseListForwardRecursion(prev, cur)
+    }
+```
 ### swapPairs
 
 ![24. 两两交换链表中的节点](../leetcode/24.%20两两交换链表中的节点.md)
+
+### reverseBetween
+
+![92. 反转链表 II](../leetcode/92.%20反转链表%20II.md)
+
+### reverseKGroup
+
+![25. K 个一组翻转链表](../leetcode/25.%20K%20个一组翻转链表.md)
 
 ## 总结
 
@@ -510,6 +536,13 @@ reverseListIteration() {
 链表的递归关键是反向工作, 将 head 变量改成 cur 更容易理解, 直接从递归停止的函数开始一层层往上翻就可以实现了
 
 只翻一次就够了, 只需要处理好单次调用里的逻辑就好了
+
+链表的递归也可以理解为深度优先遍历: 根据对节点的操作时机, 可以分为前序遍历和后序遍历
+
++ 如果是前序遍历，那么你可以想象前面的链表都处理好了，怎么处理的不用管
++ 如果是后续遍历，那么你可以想象后面的链表都处理好了，怎么处理的不用管
+
+前序遍历容易改写成不需要栈的递归,  不那么准确的说, 可以更容易改成 while 
 
 ### 通过 dummyHead 避免特判
 
@@ -715,3 +748,7 @@ reverseListIteration() {
 ## 检测链表中的循环
 
 ## 移除链表中的重复值
+
+## 合并链表
+
+![21. 合并两个有序链表](../leetcode/21.%20合并两个有序链表.md)
