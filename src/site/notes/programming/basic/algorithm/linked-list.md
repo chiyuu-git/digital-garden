@@ -45,8 +45,6 @@
 - indexOf—— 返回链表中的指定元素
 - isEmpty —— 如果链表为空，返回 true
 
-## 链表的实现
-
 我们一般设计的链表有两个类。`Node` 类用来表示节点，`LinkedList` 类提供了一些辅助方法，比如说结点的增删改查，以及显示列表元素等方法。 接下来看看如何用 `js` 代码表示一个链表。
 
   ```js
@@ -67,7 +65,7 @@
 
 `Node` 类包含两个属性：`data` 用来保存节点上的数据，`next` 用来保存指向下一个节点的链接。
 
-### 理解指针或引用的含义
+## 理解指针或引用的含义
 
 指针或者引用，他们的意思都是一样的，都是存储所指对象的内存地址。
 
@@ -75,7 +73,7 @@
 
 结点中的 next 指针，储存了下一个结点的内存地址
 
-### 警惕指针丢失和内存泄露
+## 警惕指针丢失和内存泄露
 
 在写链表代码的时候，尤其是我们的指针，会不断的改变，指来指去的。所以在写的时候，一定注意不要弄丢了指针。
 
@@ -88,7 +86,7 @@
 
 新结点指向 p 指针原本指向的结点，然后 p 指针再指向新结点
 
-### 重点留意边界条件处理
+## 重点留意边界条件处理
 
 当我们向一个空链表中插入第一个结点时，就需要特殊处理了。当链表为空时，也就是链表的 head 为空，那直接赋值即可，如下：
 
@@ -104,7 +102,7 @@
   - 如果链表只有一个结点时，代码是否能正常工作？
   - 如果在处理头结点和尾结点时，代码是否能正常工作？
 
-### LinkList 类骨架
+## LinkList 类骨架
 
 ```js
   function LinkedList() { 
@@ -146,7 +144,7 @@ class LinkedList {
 }
 ```
 
-### append()
+## append()
 
 看一段完整的添加节点代码：
 
@@ -178,7 +176,25 @@ class LinkedList {
 
 > 列表最后一个节点的下一个元素始终是 null。 我们知道它会是列表的最后一项。
 
-### removeAt()
+```JS
+    append(data) {
+        if (this.head === null) {
+            this.head = new Node(data)
+        }
+        else {
+            let cur = this.head;
+            while (cur.next !== null) {
+                cur = cur.next;
+            }
+            // 跳出循环之后, cur 为尾结点, cur.next 为 null
+            cur.next = new Node(data);
+        }
+        // 更新链表长度
+        this.length++;
+    }
+```
+
+## removeAt()
 
 再来看单链表结点的删除操作。如果在 p 结点后删除一个结点，只需要关注一步即可：
 
@@ -235,7 +251,7 @@ class LinkedList {
 
 ![](/img/user/programming/basic/algorithm/linked-list/image-20230522103623120.png)
 
-### insert()
+## insert()
 
 使用这个方法可以在任意位置插入一个元素。
 
@@ -278,7 +294,7 @@ class LinkedList {
 
 ![](/img/user/programming/basic/algorithm/linked-list/image-20230522103704328.png)
 
-### toString()
+## toString()
 
 toString 方法会把 LinkedList 对象转换成一个字符串
 
@@ -297,7 +313,7 @@ toString 方法会把 LinkedList 对象转换成一个字符串
   
 ```
 
-### indexOf()
+## indexOf()
 
 indexOf 方法接收一个元素的值，如果在列表中找到它，就返回元素的位置，否则返回 -1。
 
@@ -316,7 +332,7 @@ indexOf 方法接收一个元素的值，如果在列表中找到它，就返回
     }
 ```
 
-### remove()
+## remove()
 
 在实现了 indexOf() 的基础上，实现根据数据值删除节点
 
@@ -328,7 +344,7 @@ indexOf 方法接收一个元素的值，如果在列表中找到它，就返回
   } 
 ```
 
-### removeAll()
+## removeAll()
 
 ```js
     /**
@@ -367,7 +383,7 @@ indexOf 方法接收一个元素的值，如果在列表中找到它，就返回
     }
 ```
 
-### removeNthFromEnd()
+## removeNthFromEnd()
 
 ```js
     removeNthFromEnd(n) {
@@ -394,7 +410,7 @@ indexOf 方法接收一个元素的值，如果在列表中找到它，就返回
     };
 ```
 
-### 其他方法
+## 其他方法
 
 ```js
   this.isEmpty = function() { 
@@ -470,9 +486,19 @@ reverseListIteration() {
     }
   ```
 
-# 链表完整代码
+### swapPairs
 
-## 链表递归的理解
+![24. 两两交换链表中的节点](../leetcode/24.%20两两交换链表中的节点.md)
+
+## 总结
+
+### 链表迭代的理解
+
+往往涉及多个指针, prev, cur, next
+
+想改哪一个就先改哪一个, 但是如果有循环依赖就必须抽一个 temp 了.否则很容易想得太混乱, 所以最保险的方法还是先用临时变量保存下来, 之后再简化临时变量就行
+
+### 链表递归的理解
 
 链表的定义具有递归性质, 因此链表的题目常可以用递归的方法求解.
 
@@ -483,7 +509,9 @@ reverseListIteration() {
 
 链表的递归关键是反向工作, 将 head 变量改成 cur 更容易理解, 直接从递归停止的函数开始一层层往上翻就可以实现了
 
-## 通过 dummyHead 避免特判
+只翻一次就够了, 只需要处理好单次调用里的逻辑就好了
+
+### 通过 dummyHead 避免特判
 
 通过在开始前创建一个哑节点 dummyHead, dummyHead.next 指向 head, 来避免对 head 的特判
 
@@ -685,7 +713,5 @@ reverseListIteration() {
 # FAQ
 
 ## 检测链表中的循环
-
-## 返回链表中倒数第 N 个节点
 
 ## 移除链表中的重复值
