@@ -134,14 +134,15 @@ class Stack {
 
 # 基本应用
 
-| File                                                         | difficulty | etags                                                                               | date-created               |
-| ------------------------------------------------------------ | ---------- | ----------------------------------------------------------------------------------- | -------------------------- |
-| [[programming/basic/leetcode/682. 棒球比赛\|682. 棒球比赛]]       | easy       | <ul><li>#leetcode/stack</li></ul>                                                   | 2023-05-20-Sat, 9:34:41 pm |
-| [[programming/basic/leetcode/71. 简化路径\|71. 简化路径]]         | medium     | <ul><li>#leetcode/stack</li></ul>                                                   | 2023-05-20-Sat, 9:42:39 pm |
-| [[programming/basic/leetcode/224. 基本计算器\|224. 基本计算器]]     | hard       | <ul><li>#leetcode/stack</li><li>#leetcode/math</li><li>#leetcode/unsolved</li></ul> | \-                         |
-| [[programming/basic/leetcode/20. 有效的括号\|20. 有效的括号]]       | easy       | <ul><li>#leetcode/stack</li></ul>                                                   | 2023-05-21-Sun, 6:16:14 pm |
-| [[programming/basic/leetcode/636. 函数的独占时间\|636. 函数的独占时间]] | medium     | <ul><li>#leetcode/stack</li><li>#leetcode/time-sequence</li></ul>                   | \-                         |
-| [[programming/basic/leetcode/591. 标签验证器\|591. 标签验证器]]     | hard       | <ul><li>#leetcode/stack</li><li>#leetcode/unsolved</li></ul>                        | 2023-05-21-Sun, 6:43:37 pm |
+| File                                                         | difficulty | etags                                                                                                             | date-created               |
+| ------------------------------------------------------------ | ---------- | ----------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| [[programming/basic/leetcode/682. 棒球比赛\|682. 棒球比赛]]       | easy       | <ul><li>#leetcode/stack</li></ul>                                                                                 | 2023-05-20-Sat, 9:34:41 pm |
+| [[programming/basic/leetcode/71. 简化路径\|71. 简化路径]]         | medium     | <ul><li>#leetcode/stack</li></ul>                                                                                 | 2023-05-20-Sat, 9:42:39 pm |
+| [[programming/basic/leetcode/224. 基本计算器\|224. 基本计算器]]     | hard       | <ul><li>#leetcode/stack</li><li>#leetcode/math</li><li>#leetcode/unsolved</li></ul>                               | \-                         |
+| [[programming/basic/leetcode/20. 有效的括号\|20. 有效的括号]]       | easy       | <ul><li>#leetcode/stack</li></ul>                                                                                 | 2023-05-21-Sun, 6:16:14 pm |
+| [[programming/basic/leetcode/636. 函数的独占时间\|636. 函数的独占时间]] | medium     | <ul><li>#leetcode/stack</li><li>#leetcode/time-sequence</li></ul>                                                 | \-                         |
+| [[programming/basic/leetcode/591. 标签验证器\|591. 标签验证器]]     | hard       | <ul><li>#leetcode/stack</li><li>#leetcode/unsolved</li></ul>                                                      | 2023-05-21-Sun, 6:43:37 pm |
+| [[programming/basic/leetcode/445. 两数相加 II\|445. 两数相加 II]] | medium     | <ul><li>#leetcode/linked-list</li><li>#leetcode/math/high-precision-compulation</li><li>#leetcode/stack</li></ul> | 2023-05-23-Tue, 4:10:35 pm |
 
 { .block-language-dataview}
 
@@ -232,3 +233,7 @@ MinStack.prototype.getMin = function() {
   return this.stack[this.stack.length-1]
 };
 ```
+
+# solution tips
+
+逆序处理, 翻转, 都可以想想栈
