@@ -32,6 +32,7 @@ hard 没有思路就直接看答案, 一般都不会考这么难的
 	+ 388 没做, 看着就烦
 	+ 括号匹配: 32 没做
 	+ 递归的也先不做, 因为这里的重点是如何用栈去解决递归问题, 得想学好递归再回来简化
+ + 链表最后一题没做
 
 ### 题解大全
 
@@ -142,7 +143,10 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 
 | File                                                                                                                           | difficulty | etags                                                                                                                                      | date-created                |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- |
-| [[programming/basic/leetcode/24. 两两交换链表中的节点\|24. 两两交换链表中的节点]]                                                               | medium     | <ul><li>#leetcode</li></ul>                                                                                                                | 2023-05-23-Tue, 10:03:40 am |
+| [[programming/basic/leetcode/21. 合并两个有序链表\|21. 合并两个有序链表]]                                                                   | medium     | <ul><li>#leetcode/linked-list</li></ul>                                                                                                    | 2023-05-23-Tue, 4:23:46 pm  |
+| [[programming/basic/leetcode/445. 两数相加 II\|445. 两数相加 II]]                                                                   | medium     | <ul><li>#leetcode/linked-list</li><li>#leetcode/math/high-precision-compulation</li><li>#leetcode/stack</li></ul>                          | 2023-05-23-Tue, 4:10:35 pm  |
+| [[programming/basic/leetcode/25. K 个一组翻转链表\|25. K 个一组翻转链表]]                                                                 | hard       | <ul><li>#leetcode/linked-list</li><li>#leetcode/unsolved</li></ul>                                                                         | 2023-05-23-Tue, 3:05:28 pm  |
+| [[programming/basic/leetcode/24. 两两交换链表中的节点\|24. 两两交换链表中的节点]]                                                               | medium     | <ul><li>#leetcode/linked-list</li></ul>                                                                                                    | 2023-05-23-Tue, 10:03:40 am |
 | [[programming/basic/leetcode/61. 旋转链表\|61. 旋转链表]]                                                                           | medium     | <ul><li>#leetcode/linked-list/rotate</li><li>#leetcode/linked-list/traverse</li></ul>                                                      | 2023-05-22-Mon, 7:41:43 pm  |
 | [[programming/basic/leetcode/19. 删除链表的倒数第 N 个结点\|19. 删除链表的倒数第 N 个结点]]                                                       | medium     | <ul><li>#leetcode/linked-list</li><li>#leetcode/double-pointer/fast-slow</li></ul>                                                         | 2023-05-22-Mon, 4:06:36 pm  |
 | [[programming/basic/leetcode/591. 标签验证器\|591. 标签验证器]]                                                                       | hard       | <ul><li>#leetcode/stack</li><li>#leetcode/unsolved</li></ul>                                                                               | 2023-05-21-Sun, 6:43:37 pm  |
@@ -214,5 +218,7 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 | [[programming/basic/leetcode/224. 基本计算器\|224. 基本计算器]]                                                                       | hard       | <ul><li>#leetcode/stack</li><li>#leetcode/math</li><li>#leetcode/unsolved</li></ul>                                                        | \-                          |
 | [[programming/basic/leetcode/636. 函数的独占时间\|636. 函数的独占时间]]                                                                   | medium     | <ul><li>#leetcode/stack</li><li>#leetcode/time-sequence</li></ul>                                                                          | \-                          |
 | [[programming/basic/leetcode/430. 扁平化多级双向链表\|430. 扁平化多级双向链表]]                                                               | medium     | <ul><li>#leetcode/linked-list</li><li>#leetcode/traverse/dfs</li></ul>                                                                     | \-                          |
+| [[programming/basic/leetcode/92. 反转链表 II\|92. 反转链表 II]]                                                                     | medium     | <ul><li>#leetcode/linked-list</li><li>#leetcode/unsolved</li></ul>                                                                         | \-                          |
+| [[programming/basic/leetcode/2. 两数相加\|2. 两数相加]]                                                                             | medium     | <ul><li>#leetcode/linked-list</li><li>#leetcode/math/high-precision-compulation</li></ul>                                                  | \-                          |
 
 { .block-language-dataview}
