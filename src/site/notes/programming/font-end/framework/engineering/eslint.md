@@ -172,6 +172,10 @@ for i len
 
 可以赋值为 undefined, 或者重新创建赋值一个有值字段对象
 
+### 循环和递归
+
+时间效率上，看具体语言实现了，有尾递归优化的几乎一样。没有 [尾递归优化](https://www.zhihu.com/search?q=%E5%B0%BE%E9%80%92%E5%BD%92%E4%BC%98%E5%8C%96&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A%22128969831%22%7D) 就要看调用和返回的时间成本大小，但也慢不多，主要是有额外的空间成本。
+
 ## 约定优于配置
 
 约定优于配置（convention over configuration），也称作按约定编程，是一种软件设计范式，旨在减少软件开发人员需做决定的数量，获得简单的好处，而又不失灵活性。
