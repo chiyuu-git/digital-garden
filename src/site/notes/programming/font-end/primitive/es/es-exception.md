@@ -159,13 +159,8 @@ try {
 
 如果代码包含语法错误，那么 `try-catch` 将无法正常工作，例如含有不匹配的花括号
 
-```text
-try {
-  {{{{{{{{{{{{
-} catch (err) {
-  alert("引擎无法理解这段代码，它是无效的")
-}
-```
+![](/img/user/programming/font-end/primitive/es/es-exception/image-20230525102711466.png)
+
 
 JavaScript 引擎首先会读取代码，然后运行它。在读取阶段发生的错误被称为“解析时间（parse-time）”错误，并且无法恢复（从该代码内部）。这是因为引擎无法理解该代码。
 
