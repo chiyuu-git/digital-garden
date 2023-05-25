@@ -191,7 +191,6 @@ function instanceof(left, right) {
 不论是原始数据类型还是引用数据类型，因为他们都是实例，所以不一定有 `prototype` 属性，但是都具有隐式原型
 
 ```js
-  console.log(typeof `${{Object}}`.prototype,{Object},typeof `${{}}`.prototype)
   console.log(typeof '123')
   console.log('123'.prototype)
   console.log((123).prototype)
