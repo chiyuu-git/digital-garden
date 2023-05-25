@@ -5,6 +5,8 @@
 
 # 对撞指针
 
+[发现算法之美-双指针之对撞指针 - 知乎](https://zhuanlan.zhihu.com/p/374545334)
+
 ## [15. 三数之和](https://leetcode-cn.com/problems/3sum/)
 
 ### 题目
