@@ -153,17 +153,17 @@ try {
 
 要做到类似的效果，只能是细粒度的 try catch
 
-## Try-catch 仅对运行时的 Error 有效
+## try-catch 仅对运行时的 Error 有效
 
-要使得 `try...catch` 能工作，代码必须是可执行的。换句话说，它必须是有效的 JavaScript 代码。
+要使得 `try-catch` 能工作，代码必须是可执行的。换句话说，它必须是有效的 JavaScript 代码。
 
-如果代码包含语法错误，那么 `try...catch` 将无法正常工作，例如含有不匹配的花括号
+如果代码包含语法错误，那么 `try-catch` 将无法正常工作，例如含有不匹配的花括号
 
 ```text
 try {
   {{{{{{{{{{{{
 } catch (err) {
-  alert("引擎无法理解这段代码，它是无效的");
+  alert("引擎无法理解这段代码，它是无效的")
 }
 ```
 
@@ -171,7 +171,7 @@ JavaScript 引擎首先会读取代码，然后运行它。在读取阶段发生
 
 所以，`try...catch` 只能处理有效代码中出现的错误。这类错误被称为“运行时的错误（runtime errors）”，有时被称为“异常（exceptions）”。
 
-## try...catch 同步执行
+## try-catch 同步执行
 
 如果在“计划的（scheduled）”代码中发生异常，例如在 `setTimeout` 中，则 `try...catch` 不会捕获到异常：
 
