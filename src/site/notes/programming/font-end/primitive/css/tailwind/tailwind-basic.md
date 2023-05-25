@@ -1136,7 +1136,7 @@ https://tailwindcss.com/docs/responsive-design
 
 因为 `tailwindcss` 默认长度相关的配置是基于 `rem` 的，而 `PC` 端的项目大多数时候我们都是固定一个宽度，左右留白，所以大多数情况下，设计稿都会在固定一个宽度内，元素的大小宽高边距单位都是 `px`，所以我们需要对默认的做一些特定配置来适配我们的项目
 
-```text
+```js
 const spacing = {
   0: 0,
   4: '4px',
@@ -1181,7 +1181,7 @@ Now, you can just do this: `<div class="container"></div>`
 
 可能对于移动端适配，现在流行的就是 `viewport` 方案了，也可能有的项目还在用 `flexable` 方案，但是我们又不想手动换算 `px` 到 `rem` 或 `vw`，虽然社区也有类似 `pxtorem` 或者 `pxtovw` 这种 `postcss` 的插件，但解决问题的方法还是不够优雅，可能是因为插件的维护的不积极，可能是插件不好用，不兼容 `postcss8`(`pxtovw` 说的就是你 )，既然我们都有 `tailwindcss` 了，那就让这些配置变的更简单一些吧！如果你们设计同学提供了常用的间距方案，比如 `4px` 的倍数或者 `6px` 的倍数，现在假设设计同学的设计稿都是 `750px` 的，我们就可以基于此来写两个函数方法来处理 `pxtorem` 和 `pxtovw` 的任务，如果你们是 `flexable` 方案就用 `pxToRem`，如果是 `viewport` 的适配方案就用 `pxToVmin`。
 
-```text
+```js
 function pxToRem(variable) {
   return `${variable / 75}rem`
 }
