@@ -85,7 +85,7 @@ function getGreatestCommonDivisor(a,b){
 
 # 最小公倍数
 
-least commom multiple 
+least commom multiple
 
 lcm
 
@@ -123,7 +123,9 @@ var isUgly = function(num) {
 ## 分析
 
 **最优化分析：**4 和从 6 开始的所有丑数，都是在其前面的某个丑数乘以 `2, 3, 5` 的结果
+
 就是从一个基准数 1 开始，算 1\*2、1\*3、1\*5 的最小值，得出结果 1*2 最小，再将对应 Index++ 即可，结果就是每个数都会各自与 2 3 5 相乘，乘过了就轮到下一个
+
 ```js
   var nthUglyNumber = function (n) {
     let index2 = 0, index3 = 0, index5 = 0
@@ -193,7 +195,7 @@ var nthSuperUglyNumber = function(n, primes) {
 
 ### 当作字符串
 
-+ ```js
+```js
   var reverse = function(x) {
       var str = x.toString()
       var ret = 0
@@ -212,7 +214,7 @@ var nthSuperUglyNumber = function(n, primes) {
 
 ### 数学位移
 
-+ ```java
+```java
   class Solution {
     public int reverse(int x) {
       int rev = 0;
@@ -232,36 +234,6 @@ var nthSuperUglyNumber = function(n, primes) {
 
 ## 加法
 
-### [2. 两数相加](https://leetcode-cn.com/problems/add-two-numbers/)
-
-+ 链表
-
-  ```js
-  var addTwoNumbers = function(l1, l2) {
-    function ListNode(val){
-      this.val = val
-      this.next = null
-    }
-    let i = l1
-    let j = l2
-    let rest = 0
-    let dummyHead  = cur = new ListNode(0)
-    while(i!=null||j!=null){
-      const x = (i==null)?0:i.val
-      const y = (j==null)?0:j.val
-      const sum = x + y + rest
-      rest = Math.floor(sum/10)
-      cur.next = new ListNode(sum % 10);
-      cur = cur.next
-      // 保证位数不对等，为null的一直是null
-      if(l1 !=null) i = l1.next
-      if(l2 !=null) j = l2.next
-    }
-  
-    if(rest!=0) cur.next = new ListNode(rest)
-    return dummyHead.next 
-  };
-  ```
 ### [989. 数组形式的整数加法](https://leetcode-cn.com/problems/add-to-array-form-of-integer/)
 
 #### 逐位相加
@@ -285,7 +257,7 @@ var nthSuperUglyNumber = function(n, primes) {
 
 **实现**
 
-+ ```js
+```js
   输入：A = [1,2,0,0], K = 34
   输出：[1,2,3,4]
   解释：1200 + 34 = 1234
@@ -413,7 +385,7 @@ var nthSuperUglyNumber = function(n, primes) {
 
 #### [69. x 的平方根](https://leetcode-cn.com/problems/sqrtx/)
 
-+ ```js
+```js
   var mySqrt = function(x) {
     if(x==0) return 0
     let left=1,right=x>>>1
