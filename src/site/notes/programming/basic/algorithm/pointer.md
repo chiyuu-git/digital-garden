@@ -13,65 +13,15 @@
 
 + [167. 两数之和 II - 输入有序数组](../leetcode/167.%20两数之和%20II%20-%20输入有序数组.md)
 + [15. 三数之和](../leetcode/15.%20三数之和.md)
++ [18. 四数之和](../leetcode/18.%20四数之和.md)
++ [633. 平方数之和](../leetcode/633.%20平方数之和.md)
 + 这种思路与 [11. 盛最多水的容器](https://leetcode-cn.com/problems/container-with-most-water/) 中的双指针解法也是类似的。
 
 哈希表:
 
 + [1. 两数之和](../leetcode/1.%20两数之和.md)
-+ [18. 四数之和](../leetcode/18.%20四数之和.md)
-
-## [18. 四数之和](https://leetcode-cn.com/problems/4sum/)
-
-### 双循环 + 对撞指针
-
-```js
-  /**
-   * @param {number[]} nums
-   * @param {number} target
-   * @return {number}
-   */
-  var fourSum = function (nums, target) {
-    let ret = [];
-    let len = nums.length;
-    nums.sort((a, b) => a - b);
-    for (let i = 0; i < len - 3; ) {
-      // 右侧三个指针，减三
-      for (let j = i + 1; j < len - 2; ) {
-        // 右侧两个指针，减二
-        let left = j + 1; // 从j+1开始
-        let right = len - 1;
-        while (left < right) {
-          const sum = nums[i] + nums[j] + nums[left] + nums[right];
-          if (sum == target) {
-            ret.push([nums[i], nums[j], nums[left], nums[right]]);
-          }
-          if (sum >= target) {
-            // 太大了，变小
-            while (nums[right] === nums[--right]) {}
-          }
-          if (sum <= target) {
-            // 太小了，变大
-            while (nums[left] === nums[++left]) {}
-          }
-        }
-        while (nums[j] === nums[++j]) {}
-      }
-      while (nums[i] === nums[++i]) {}
-    }
-    return ret;
-  };
-  ```
 
 ## [11. 盛最多水的容器](https://leetcode-cn.com/problems/container-with-most-water/)
-
-### 题目
-
-![img](https://aliyun-lc-upload.oss-cn-hangzhou.aliyuncs.com/aliyun-lc-upload/uploads/2018/07/25/question_11.jpg)
-
-```
-  输入: [1,8,6,2,5,4,8,3,7]
-  输出: 49
-```
 
 ### 暴力法
 
