@@ -370,6 +370,11 @@ sudo vi /etc/hosts
 sudo killall -HUP mDNSResponder
 ```
 
+### win
+
+```
+ipconfig /flushdns
+```
 # Iterm 2
 
 ## 恢复窗口
