@@ -301,18 +301,17 @@ class LinkedList {
 toString 方法会把 LinkedList 对象转换成一个字符串
 
 ```js
-  this.toString = function(){ 
-   
-    let current = head, //{1} 
-    string = '';    //{2} 
-   
-    while (current) {   //{3} 
-      string +=current.data +(current.next ? '->' : '');//{4} 
-      current = current.next;          //{5} 
-    } 
-    return string;              //{6} 
-  }; 
-  
+    toString() {
+
+        let current = head,
+            string = '';
+
+        while (current) {
+            string += current.data + (current.next ? '->' : '');
+            current = current.next;
+        }
+        return string;
+    };
 ```
 
 ## indexOf()
