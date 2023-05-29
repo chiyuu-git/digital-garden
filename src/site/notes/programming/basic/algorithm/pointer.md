@@ -53,10 +53,10 @@
 
 无序的只能去除指定值, 因为去除重复数相当于是要去除多个指定值了, 所以无序的做不到
 
-- [[programming/basic/leetcode/83. 删除排序链表中的重复元素\|83. 删除排序链表中的重复元素]]
 - [[programming/basic/leetcode/80. 删除有序数组中的重复项 II\|80. 删除有序数组中的重复项 II]]
-- [[programming/basic/leetcode/27. 移除元素\|27. 移除元素]]
 - [[programming/basic/leetcode/26. 删除有序数组中的重复项\|26. 删除有序数组中的重复项]]
+- [[programming/basic/leetcode/27. 移除元素\|27. 移除元素]]
+- [[programming/basic/leetcode/83. 删除排序链表中的重复元素\|83. 删除排序链表中的重复元素]]
 - [[programming/basic/leetcode/82. 删除排序链表中的重复元素 II\|82. 删除排序链表中的重复元素 II]]
 
 { .block-language-dataview}
@@ -306,6 +306,8 @@ splice 使用注意点：`nums.length` 是动态变化的，删除之后要 ` i-
 **哈希表**：插入、删除、搜索都是常数级
 
 > 数组：插入和删除是线性的，搜索也是线性的, 数组其实也是哈希表的一种形态
+
+不是连续的结构就可以考虑使用哈希表存储数据
 
 [438. Find All Anagrams in a String](../leetcode/438.%20Find%20All%20Anagrams%20in%20a%20String.md)
 
