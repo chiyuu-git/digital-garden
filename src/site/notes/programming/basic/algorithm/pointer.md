@@ -277,6 +277,18 @@ splice 使用注意点：`nums.length` 是动态变化的，删除之后要 ` i-
 
 ## Solution Tips
 
+```js
+while (right < len) {
+	// expand window
+	// ... do something
+
+	while (left...) {
+		// narrow window
+		// do something
+	}
+}
+```
+
 ### 关键词
 
 子串, 子数组
@@ -295,6 +307,8 @@ splice 使用注意点：`nums.length` 是动态变化的，删除之后要 ` i-
 
 [209. 长度最小的子数组](../leetcode/209.%20长度最小的子数组.md)
 
+[424. 替换后的最长重复字符](../leetcode/424.%20替换后的最长重复字符.md)
+
 ### 维护窗口的数据结构
 
 找到维护窗口的合理数据结构, 是解题的关键
@@ -302,6 +316,8 @@ splice 使用注意点：`nums.length` 是动态变化的，删除之后要 ` i-
 单纯的变量: 常见的 sum, 减去一个, 加上一个
 
 自平衡二叉树：插入、删除、搜索都是 O(log k)
+
+[220. 存在重复元素 III](../leetcode/220.%20存在重复元素%20III.md)
 
 **哈希表**：插入、删除、搜索都是常数级
 
@@ -313,401 +329,9 @@ splice 使用注意点：`nums.length` 是动态变化的，删除之后要 ` i-
 
 [3. 无重复字符的最长子串](../leetcode/3.%20无重复字符的最长子串.md)
 
-## [217. 存在重复元素](https://leetcode-cn.com/problems/contains-duplicate/)
+[424. 替换后的最长重复字符](../leetcode/424.%20替换后的最长重复字符.md)
 
-## [219. 存在重复元素 II](https://leetcode-cn.com/problems/contains-duplicate-ii/)
-
-### 分析
-
-维护了个 k 大小的滑动窗口，然后在这个窗口里面搜索是否存在跟当前元素相等的元素
-
-## [220. 存在重复元素 III](https://leetcode-cn.com/problems/contains-duplicate-iii/)
-
-### 线性搜索 超时
-
-将每个元素与它之前的 _k_ 个元素比较，查看它们的数值之差是不是在 _t_ 以内。
-
-解决这个问题需要找到一组满足以下条件的 _i_ 和 _j_：
-
-![1563855257489](/img/user/programming/basic/algorithm/pointer/1563855257489.png)
-
-我们需要维护了一个 k 大小的滑动窗口。这种情况下，第一个条件始终是满足的，只需要通过线性搜索来检查第二个条件是否满足就可以了
-
-```java
-  public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
-      for (int i = 0; i < nums.length; ++i) {
-          for (int j = Math.max(i - k, 0); j < i; ++j) {
-              if (Math.abs(nums[i] - nums[j]) <= t) return true;
-          }
-      }
-      return false;
-  }
-  // Time limit exceeded.
-```
-
-### 二叉搜索树 【JAVA 通过，JS 超时】
-
-如果窗口中维护的元素是有序的，只需要用二分搜索检查条件二是否是满足的就可以了。利用自平衡二叉搜索树，可以在对数时间内通过 插入 和 删除 来对滑动窗口内元素排序。
-
-方法一 **真正的瓶颈** 在于检查第二个条件是否满足需要扫描滑动窗口中所有的元素。因此我们需要考虑的是有没有比全扫描更好的方法。
-
-如果窗口内的元素是有序的，那么用两次二分搜索就可以找到 x+t 和 x-t 这两个边界值了。
-
-然而不幸的是，窗口中的元素是无序的。这里有一个初学者非常容易犯的错误，那就是将滑动窗口维护成一个有序的数组。虽然在有序数组中 搜索 只需要花费对数时间，但是为了让数组保持有序，我们不得不做插入和删除的操作，而这些操作是非常不高效的。想象一下，如果你有一个 k 大小的有序数组，当你插入一个新元素 x 的时候。虽然可以在 O(logk) 时间内找到这个元素应该插入的位置，但最后还是需要 O(k) 的时间来将 x 插入这个有序数组。因为必须得把当前元素应该插入的位置之后的所有元素往后移一位。当你要删除一个元素的时候也是同样的道理。在删除了下标为 i 的元素之后，还需要把下标 i 之后的所有元素往前移一位。因此，这种做法并不会比方法一更好。
-
-为了能让算法的效率得到真正的提升，我们需要引入一个支持 插入，搜索，删除 操作的 **动态** 数据结构，那就是自平衡二叉搜索树。
-
-下面给出整个算法的伪代码：
-
-  - 初始化一颗空的二叉搜索树 set
-  - 对于每个元素 x，遍历整个数组
-    - 在 set 上查找大于等于 x 的最小的数，如果 `s−x≤t ` 则返回 true
-    - 在 set 上查找小于等于 x 的最大的数，如果 `x−g≤t ` 则返回 true
-    - 在 set 中插入 x
-    - 如果树的大小超过了 k, 则移除最早加入树的那个数。
-  - 返回 false
-
-```js
-  var containsNearbyAlmostDuplicate = function (nums, k, t) {
-    const len = nums.length;
-    const tree = new BinarySearchTree();
-    for (let i = 0; i < len; i++) {
-      const ceil = tree.ceiling(nums[i]);
-      if (ceil != null && ceil <= nums[i] + t) return true;
-
-      const floor = tree.floor(nums[i]);
-      if (floor != null && nums[i] <= floor + t) return true;
-
-      tree.insert(nums[i]);
-      if (tree.size() > k) tree.remove(nums[i - k]);
-    }
-    return false;
-  };
-  let nums = [1, 5, 9, 1, 5, 9],
-    k = 2,
-    t = 3;
-  console.log(containsNearbyDuplicate(nums, k));
-```
-
-### 桶
-
-回到这个问题，我们尝试去解决的最大的问题在于：
-
-  1. 对于给定的元素 x*x*, 在窗口中是否有存在区间 [x-t, x+t] 内的元素？
-  2. 我们能在常量时间内完成以上判断嘛？
-
-我们不妨把把每个元素当做一个人的生日来考虑一下吧。假设你是班上新来的一位学生，你的生日在 三月 的某一天，你想知道班上是否有人生日跟你生日在 t=30 天以内。在这里我们先假设每个月都是 30 天，很明显，我们只需要检查所有生日在 二月，三月，四月 的同学就可以了。
-
-之所以能这么做的原因在于，我们知道每个人的生日都属于一个桶，我们把这个桶称作月份！每个桶所包含的区间范围都是 t，这能极大的简化我们的问题。很显然，任何不在同一个桶或相邻桶的两个元素之间的距离一定是大于 t 的。
-
-我们把上面提到的桶的思想应用到这个问题里面来，我们设计一些桶，让他们分别包含区间 ..., `[0,t]`, `[t+1, 2t+1]` ,..., 我们把桶来当做窗口，于是每次我们只需要检查 x 所属的那个桶和相邻桶中的元素就可以了。终于，我们可以 **在常量时间解决在窗口中搜索的问题** 了。
-
-还有一件值得注意的事，这个问题和桶排序的不同之处在于每次我们的桶里只需要 **包含最多一个元素** 就可以了，因为如果任意一个桶中包含了两个元素，那么这也就是意味着这两个元素是 足够接近的 了，这时候我们就直接得到答案了。因此，我们只需使用一个标签为桶序号的散列表就可以了。
-
-```js
-  var containsNearbyAlmostDuplicate = function (nums, k, t) {
-    if (t < 0) return false;
-    const map = {};
-    // 防止0造成的infinity
-    const bucketSize = t + 1;
-    for (let i = 0; i < nums.length; i++) {
-      const bucketID = getID(nums[i], bucketSize);
-      if (
-        map[bucketID] !== undefined &&
-        Math.abs(nums[i] - map[bucketID]) <= t
-      ) {
-        return true;
-      }
-      if (
-        map[bucketID - 1] !== undefined &&
-        Math.abs(nums[i] - map[bucketID - 1]) <= t
-      ) {
-        return true;
-      }
-      if (
-        map[bucketID + 1] !== undefined &&
-        Math.abs(nums[i] - map[bucketID + 1]) <= t
-      ) {
-        return true;
-      }
-      map[bucketID] = nums[i];
-      if (i > k - 1) {
-        const removeID = getID(nums[i - k], bucketSize);
-        map[removeID] = undefined;
-      }
-    }
-    function getID(x, w) {
-      return Math.floor(x / w);
-    }
-    return false;
-  };
-```
-
-## [3. 无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/)
-
-### 转化为低阶动态规划
-
-对字符串进行去重，去重之后找到最长公共子串即是
-
-不可以，去重之后就变成子序列了，而不是子串
-
-### 暴力法
-
-暴力循环所有子串，然后判断是不是包含重复字符，并且更新相应的最长长度
-
-### 滑动窗口
-
-在暴力法中，我们会反复检查一个子字符串是否含有有重复的字符，但这是没有必要的。如果从索引 i 到 j - 1 之间的子字符串 $s_{ij}$ 已经被检查为没有重复字符。我们只需要检查 s[j] 对应的字符是否已经存在于子字符串 $s_{ij}$ 中。
-
-要检查一个字符是否已经在子字符串中，我们可以检查整个子字符串，这将产生一个复杂度为 `O(n^2)` 的算法，但我们可以做得更好。
-
-通过使用 HashSet 作为滑动窗口，我们可以用 O\*(1) 的时间来完成对字符是否在当前的子字符串中的检查。
-
-我们使用 HashSet 将字符存储在当前窗口 ` [i, j)`（最初 j = i）中。 然后我们向右侧滑动索引 j，如果它不在 HashSet 中，我们会继续滑动 j。直到 `s[j]` 已经存在于 HashSet 中。此时，我们找到的没有重复字符的最长子字符串将会以索引 i 开头。如果我们对所有的 i 这样做，就可以得到答案。
-
-```js
-  var lengthOfLongestSubstring = function (s) {
-    const set = new Set();
-    let max = 0;
-    for (let i = 0; i < s.length; i++) {
-      for (let j = i; j < s.length; j++) {
-        // 遇到了重复的字符串 break
-        if (set.has(s[j])) break;
-        else set.add(s[j]);
-      }
-      // 跳出了内循环，更新长度
-      max = Math.max(max, set.size);
-      set.clear();
-    }
-    return max;
-  };
-```
-
-**复杂度分析**
-
-时间复杂度：O(2n)=O(n)，在最糟糕的情况下，每个字符将被 i 和 j 访问两次。
-
-空间复杂度：O(min(m,n))，与之前的方法相同。滑动窗口法需要 O(k) 的空间，其中 k 表示 Set 的大小。而 Set 的大小取决于字符串 nn 的大小以及字符集 / 字母 m 的大小。
-
-### 优化的滑动窗口
-
-上述的方法最多需要执行 2n 个步骤。事实上，它可以被进一步优化为仅需要 n 个步骤。我们可以定义字符到索引的映射，而不是使用集合来判断一个字符是否存在。 当我们找到重复的字符时，我们可以立即跳过该窗口。
-
-也就是说，如果 `s[j]` 在 `[i, j)` 范围内有与 索引 `j'` 重复的字符，我们不需要逐渐增加 `i` 。 我们可以直接跳过 `[i，j']` 范围内的所有元素，并将 `i` 变为 `j'+1`。
-
-因为以 `[i, j')` 范围内每一个字符开头的最长的子串，都会在 `j` 处与 `j'` 重复，所以我们直接从 `j'+1` 开始即可
-
-```js
-  var lengthOfLongestSubstring = function (s) {
-    const map = new Map();
-    let max = 0;
-    for (let i = 0, j = 0; j < s.length; j++) {
-      if (map.has(s[j])) {
-        // 有重复时 i 从 j'+1 处开始
-        i = Math.max(map.get(s[j]) + 1, i);
-      }
-      // 如果重复了也要更新s[j]的值，所以在判断外执行该语句
-      map.set(s[j], j);
-      max = Math.max(max, j - i + 1);
-    }
-    return max;
-  };
-```
-
-## [438. 找到字符串中所有字母异位词](https://leetcode-cn.com/problems/find-all-anagrams-in-a-string/)
-
-### 固定窗口法
-
-维护一个子串大小的窗口，判断窗口内的子串是否是异位词
-
-虽然说是异位词，但是在本题中，相同的也 ok
-
-```js
-  var findAnagrams = function (s, p) {
-    const len = s.length,
-      k = p.length;
-    const res = [];
-    // p的哈希表
-    const pMap = getMap(p);
-	
-    for (let i = 0, j = i + k; j < len + 1; i++, j++) {
-      const sub = s.slice(i, j);
-      const subMap = getMap(sub);
-      let match = true;
-      for (const [key, val] of Object.entries(pMap)) {
-        // 不用判断hasOwn，如果没有则是undefined
-        if (subMap[key] !== val) {
-          match = false;
-          break;
-        }
-      }
-      match && res.push(i);
-    }
-    return res;
-	
-    function getMap(str) {
-      const map = {};
-      for (let i = 0; i < str.length; i++) {
-        const key = str[i].charCodeAt();
-        if (map.hasOwnProperty(key)) map[key]++;
-        else map[key] = 1;
-      }
-      return map;
-    }
-  };
-  let s = "cbaebabacd",
-    p = "abc";
-  console.log(findAnagrams(s, p));
-  ```
-
-### 判断优化
-
-滑动窗口模板如此，优化的地方在于是否符合题意得判断
-
-不用每一次都重新生成一个新的哈希表，只需要改变上一次字符，换成新的字符，也没有必要用 chaCodeAt
-
-```js
-  var findAnagrams = function (s, p) {
-    const len = s.length,
-      k = p.length;
-    const res = [];
-    // p的哈希表
-    const pMap = getMap(p);
-    const subMap = getMap(s.slice(0, k));
-    for (let i = 0, j = i + k; j < len + 1; i++, j++) {
-      let match = true;
-      for (const [key, val] of Object.entries(pMap)) {
-        // 不用判断hasOwn，如果没有则是undefined
-        if (subMap[key] !== val) {
-          match = false;
-          break;
-        }
-      }
-      match && res.push(i);
-      // 令map[s[i]]=undefined，map[s[j+1]]++
-      subMap[s[i]]--;
-      if (subMap[s[j]] === 0 || subMap[s[j]] === undefined) subMap[s[j]] = 1;
-      else subMap[s[j]]++;
-    }
-    return res;
-	
-    function getMap(str) {
-      const map = {};
-      for (let i = 0; i < str.length; i++) {
-        const key = str[i];
-        if (map.hasOwnProperty(key)) map[key]++;
-        else map[key] = 1;
-      }
-      return map;
-    }
-  };
-  let s = "cbaebabacd",
-    p = "abc";
-  console.log(findAnagrams(s, p));
-```
-
-### Match 进一步优化
-
-```js
-  var findAnagrams = function (s, p) {
-    const len = s.length,
-      k = p.length;
-    const res = [];
-    // p的哈希表
-    const needs = getMap(p);
-    // initial match
-    let match = 0;
-    const sub = s.slice(0, k);
-    const subMap = {};
-    for (let i = 0; i < sub.length; i++) {
-      const char = sub[i];
-      if (needs.hasOwnProperty(char)) {
-        subMap[char] === undefined ? (subMap[char] = 1) : subMap[char]++;
-        if (subMap[char] === needs[char]) match++;
-      }
-    }
-    for (let i = 0, j = i + k; j <= len; i++, j++) {
-      if (match === needs.length) res.push(i);
-      const charI = s[i];
-	
-      if (needs.hasOwnProperty(charI)) {
-        subMap[charI]--;
-        if (subMap[charI] !== needs[charI] && match > 0) match--;
-      }
-      const charJ = s[j];
-      if (needs.hasOwnProperty(charJ)) {
-        subMap[charJ] === undefined ? (subMap[charJ] = 1) : subMap[charJ]++;
-        if (subMap[charJ] === needs[charJ]) match++;
-      }
-    }
-    return res;
-	
-    function getMap(str) {
-      const map = {};
-      map.length = 0;
-      for (let i = 0; i < str.length; i++) {
-        const key = str[i];
-        if (map.hasOwnProperty(key)) map[key]++;
-        else {
-          map[key] = 1;
-          map.length++;
-        }
-      }
-      return map;
-    }
-  };
-```
-
-### 滑动窗口法
-
-```js
-  var findAnagrams = function (s, p) {
-    const len = s.length;
-    // p的哈希表
-    const needs = getMap(p);
-    const subMap = {};
-    let left = 0,
-      right = 0;
-    let res = [];
-    let match = 0; // 记录已经匹配needs的长度
-    while (right < len) {
-      const char = s[right];
-      if (needs.hasOwnProperty(char)) {
-        subMap[char] === undefined ? (subMap[char] = 1) : subMap[char]++;
-        // 等于，在等于的那一刻match++
-        if (subMap[char] === needs[char]) match++;
-      }
-      // 不可以等于
-      while (match === needs.length && left < len) {
-        // 子串的长度相符，添加left
-        if (right - left + 1 === p.length) res.push(left);
-        const char = s[left];
-        // 再次判断是否符合
-        if (needs.hasOwnProperty(char)) {
-          subMap[char]--;
-          // 在小于的那一刻--
-          if (subMap[char] < needs[char]) match--;
-        }
-        left++;
-      }
-      right++;
-    }
-    return res;
-    function getMap(str) {
-      const map = {};
-      map.length = 0;
-      for (let i = 0; i < str.length; i++) {
-        const key = str[i];
-        if (map.hasOwnProperty(key)) map[key]++;
-        else {
-          map[key] = 1;
-          map.length++;
-        }
-      }
-      return map;
-    }
-  };
-```
+[219. 存在重复元素 II](../leetcode/219.%20存在重复元素%20II.md)
 
 ## [76. 最小覆盖子串](https://leetcode-cn.com/problems/minimum-window-substring/)
 
@@ -915,6 +539,7 @@ splice 使用注意点：`nums.length` 是动态变化的，删除之后要 ` i-
 ### 再进一步优化
 
 <https://leetcode-cn.com/problems/minimum-window-substring/solution/zui-xiao-fu-gai-zi-chuan-by-leetcode-2/>
+
 
 # 判圈算法
 
