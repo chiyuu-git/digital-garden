@@ -132,11 +132,11 @@
 
 ```js
 class Node {
-    data = null;
+    val = null;
     next = null;
 
     constructor(data) {
-        this.data = data;
+        this.val = data;
     }
 
 }
@@ -303,11 +303,11 @@ toString 方法会把 LinkedList 对象转换成一个字符串
 ```js
     toString() {
 
-        let current = head,
+        let current = this.head,
             string = '';
 
         while (current) {
-            string += current.data + (current.next ? '->' : '');
+            string += current.val + (current.next ? '->' : '');
             current = current.next;
         }
         return string;
