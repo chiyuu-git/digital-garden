@@ -395,7 +395,7 @@ npm adduser --registry=http://registry.npm.baidu-int.com
 
 用户名：`重要！发布scoped包时会用到`
 
-密码：***Ke
+密码：\*\*\*Ke
 
 ```
 npm whoami 
