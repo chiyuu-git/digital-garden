@@ -3,6 +3,20 @@
 ---
 
 
+# 双指针
+
+这几道题感觉没有啥模板, 就是要根据题意活用双指针
+
+[86. 分隔链表](../leetcode/86.%20分隔链表.md)
+
+[328. 奇偶链表](../leetcode/328.%20奇偶链表.md)
+
+[160. 相交链表](../leetcode/160.%20相交链表.md)
+
+[88. 合并两个有序数组](../leetcode/88.%20合并两个有序数组.md)
+
+[475. 供暖器](../leetcode/475.%20供暖器.md)
+
 # 同向双指针
 
 [611. 有效三角形的个数](../leetcode/611.%20有效三角形的个数.md): 同向多指针, 三数不等式, 寻找得是区间, 而不是排除. 同样是通过排序, 降低一层循环
@@ -31,7 +45,7 @@
 
 快慢指针算法是一种常见的算法技巧，通常用于解决链表相关问题。该算法利用两个指针，在链表上同时移动，但每次移动的步长不同，以达到特定的目的
 
-> 从这个定义来看, 严格意义上的快慢指针不包含数组原地删除那一块逻辑
+> 从这个定义来看, 严格意义上的快慢指针不包含数组原地删除那一块逻辑, 但是官解上都说了是快慢指针, 所以就放在一起吧
 
 ## 处理链表
 
@@ -45,13 +59,147 @@
 
 [19. 删除链表的倒数第 N 个结点](../leetcode/19.%20删除链表的倒数第%20N%20个结点.md)
 
-### 处理环
-
-判断链表是否存在环：使用快慢指针，如果存在环，快指针最终会追上慢指针，可以通过比较两个指针是否相等来判断是否存在环。
+[143. 重排链表](../leetcode/143.%20重排链表.md)
 
 ### 处理回文链表
 
 判断链表的回文结构：使用快慢指针和反转链表的技巧，可以判断链表是否是回文结构。快指针每次移动两步，慢指针每次移动一步，当快指针到达链表尾部时，慢指针指向链表的中间节点。然后反转慢指针后面的链表，再使用两个指针从头和中间开始同时遍历比较，如果节点值不相等，则链表不是回文结构。
+
+### 处理环
+
+判断链表是否存在环：
+
++ 使用快慢指针，如果存在环，快指针最终会追上慢指针，可以通过比较两个指针是否相等来判断是否存在环。
++ 不存在环的话就会遍历结束
+
+感觉不如哈希表快? 参考 [160. 相交链表](../leetcode/160.%20相交链表.md) 的处理, 记录一下, 如果重复了就存在环
+
+但是哈希表不能判断环的长度? 可以的, 记录的时候同时记一下长度就行, 然后重复的时候就是环的长度, 第一个重复的点就是环的起点, 但是这种题目的考点更多还是希望能够使用快慢指针实现
+
+[141. 环形链表](../leetcode/141.%20环形链表.md)
+
+[142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)
+
+## 判圈算法
+
+Flyod 龟兔算法 快慢指针
+
+### 原理
+
+对于赛道来说，如果赛道中有环，那么速度快的兔子一定会在某个地点追上乌龟，并且兔子所跑的距离减去乌龟所跑的距离，一定是环长度的整数倍。
+
+假设令龟、兔为指针，并且指向起点位置，兔子每次移动两个节点，乌龟每次移动一个节点。如果两者在起始节点外相遇，则说明有环。如果兔子在走到链表尾部还没有与乌龟相遇，说明无环。
+
+### 环长度
+
+通过上述算法判断出存在环 C 时，显然龟兔位于同一节点 B，此时，令兔子保持不动，而乌龟不断推进，记录移动距离，等再次相遇时，移动步数即环 C 长度。
+
+### 环起点
+
+乌龟所跑距离为 `S = m + n + aC`（C 为环长度),
+
+兔子所跑距离为 `2S = m + n + bC`（因为兔子速度为乌龟 `2` 倍）
+
+故得 `S = (b - a)C = m + n + aC => (b - 2a)C = m + n`, 由此可知，`m + n` 为环 `C` 长度整数倍
+
+两者相遇之后, 让兔子回到起点 H, 乌龟停留在相遇点 B, 随后, 同时让乌龟与兔子不断推进一步, 兔子移动 m 到达点 A, 距离点 B 还有 n, 乌龟移动 m 也会到达点 A, 再走 n 就饶了 `(b-2a)` 圈，到达点 B
+
+所以龟兔会在点 A 相遇，之后一直为伴走距离 n 再次到达点 B
+
+  ![](https://raw.githubusercontent.com/chiyuu-git/chiyuu-pic/master/20170423200520994.png)
+
+### 实现
+
+```js
+function flyodCircle(head) {
+  let rabbit = head,
+    tortoise = head;
+  do {
+    // 兔子先走，走两步
+    if (rabbit.next != null) rabbit = rabbit.next;
+    else return false;
+    if (rabbit.next != null) rabbit = rabbit.next;
+    else return false;
+	
+    tortoise = tortoise.next;
+  } while (rabbit !== tortoise);
+  // 出循环，此时龟兔相遇在点B
+  // 求环长度C
+  let circleLen = 0;
+  do {
+    tortoise = tortoise.next;
+    circleLen++;
+  } while (tortoise !== rabbit);
+  // 求环起点A
+  tortoise = head;
+  while (tortoise !== rabbit) {
+    tortoise = tortoise.next;
+    rabbit = rabbit.next;
+  }
+  // 出循环，此时龟兔相遇在起点A
+  const start = tortoise;
+  return { start, circleLen };
+}
+```
+
+### 时间复杂度
+
+如果乌龟走到环起点 P 时，此时显然兔子已经在环内某节点，之后兔子最多走一圈就会与乌龟相遇。假设链表起始节点到环起点距离为 m， 环长度为 n, 故时间复杂度为 O(m + n)
+
+### 空间复杂度
+
+算法仅需要创建指针 `tortoise,rabbit` ，环长 `circleLen` 以及环起点 `start` 故空间复杂度为 O(1)
+
+## Brent 龟兔算法
+
+### 原理
+
+这是一个倍增算法，让乌龟保持不动，兔子走 `2^i ` 步，看这个过程中龟兔有没有相遇，没有的话，让乌龟的位置变成兔子的位置（如果乌龟位置一直不变，它可能不会进入环中），让兔子走 `2^(i+1)` 步，看看会不会相遇，如此循环。这个算法也是 O(n) 的，但是它会比 Floyd 表现的更好，且 Floyd 是这个算法最差时的表现。
+
+### 求环的长度
+
+因为乌龟一直处在兔子更改步长上限时的位置，所以更改步长后，兔子走了几步与乌龟相遇，环的长度就是几步（就是代码中的 count 变量）
+
+### 求环的起点
+
+Floyd 判圈算法利用了乌龟和兔子的距离是环长整数倍的性质来求出起点，所以可以让乌龟回到起点，兔子回到距离起点 C（C 指环的长度）处，然后接下来的步骤和 Floyd 一样。
+
+### 实现
+
+```js
+function breantCycle(head) {
+  let rabbit = (tortoise = head);
+  let stride = 2,
+    count = 0;
+  do {
+    while (count <= stride) {
+      if (rabbit !== tortise) {
+        rabbit = rabbit.next;
+        if (rabbit === null) return false;
+        count++;
+      } else {
+        break;
+      }
+    }
+    tortoise = rabbit;
+    interval *= 2;
+    count = 0;
+  } while (rabbit !== tortoise);
+  // 出循环，龟兔相遇
+  const circleLen = count;
+  // 求环起点A
+  tortoise = rabbit = head;
+  while (count > 0) {
+    rabbit = rabbit.next;
+    count--;
+  }
+  while (tortoise !== rabbit) {
+    tortoise = tortoise.next;
+    rabbit = rabbit.next;
+  }
+  return;
+}
+```
 
 ## 数组原地删除
 
@@ -73,75 +221,7 @@
 
 { .block-language-dataview}
 
-## [283. 移动零](https://leetcode-cn.com/problems/move-zeroes/)
-
-## 分析
-
-splice 使用注意点：`nums.length` 是动态变化的，删除之后要 ` i--`，否则可能会跳过元素
-
-  ```js
-  var moveZeroes = function (nums) {
-    const zero = [];
-    for (let i = 0; i < nums.length; i++) {
-      if (nums[i] === 0) {
-        zero.push(nums.splice(i, 1)[0]);
-        i--;
-      }
-    }
-    return nums.push(...zero);
-  };
-  ```
-
-### 方法二：空间最优，操作局部优化（双指针）
-
-这种方法与上面的工作方式相同，即先满足一个需求，然后满足另一个需求。它以一种巧妙的方式做到了这一点。上述问题也可以用另一种方式描述，“将所有非 0 元素置于数组前面，保持它们的相对顺序相同”
-
-这是双指针的方法。由变量 “cur” 表示的快速指针负责处理新元素
-
-  1. 如果新找到的元素不是 0，我们就在最后找到的非 0 元素之后记录它。最后找到的非 0 元素的位置由慢指针 “lastNonZero” 变量表示
-  2. 当我们不断发现新的非 0 元素时，我们只是在第 “lastNonZero+1” 个索引处覆盖它们。此覆盖不会导致任何数据丢失，因为我们已经处理了其中的内容（如果它是非 0 的，则它现在已经写入了相应的索引，或者如果它是 0，则稍后将进行处理）
-在 “cur” 索引到达数组的末尾之后，我们现在知道所有非 0 元素都已按原始顺序移动到数组的开头。现在是时候满足其他要求了，“将所有 0 移动到末尾”。我们现在只需要从 “lastNonZero+1” 索引开始用 0 填充所有索引。
-
-```js
-  var moveZeroes = function (nums) {
-    let lastNonZero = -1;
-    for (let i = 0; i < nums.length; i++) {
-      if (nums[i] !== 0) nums[++lastNonZero] = nums[i];
-    }
-    for (let i = lastNonZero + 1; i < nums.length; i++) {
-      nums[i] = 0;
-    }
-    return nums;
-  };
-  let nums = [0, 1, 0, 3, 12];
-	
-  console.log(moveZeroes(nums));
-```
-
-### 最优解
-
-前一种方法的操作是局部优化的。例如，所有（除最后一个）前导零的数组：[0，0，0，…，0，1]。对数组执行多少写操作？对于前面的方法，它写 0 n−1 次，这是不必要的。我们本可以只写一次。怎么用？… 只需固定非 0 元素。
-
-最优方法也是上述解决方案的一个细微扩展。一个简单的实现是，如果当前元素是非 0 的，那么它的正确位置最多可以是当前位置或者更早的位置。如果是后者，则当前位置最终将被非 0 或 0 占据，该非 0 或 0 位于大于 “cur” 索引的索引处。我们马上用 0 填充当前位置，这样不像以前的解决方案，我们不需要在下一个迭代中回到这里。
-
-换句话说，代码将保持以下不变：
-
-  1. 慢指针（lastNonZero）之前的所有元素都是非零的。
-  2. 当前指针和慢速指针之间的所有元素都是零。
-因此，当我们遇到一个非零元素时，我们需要交换当前指针和慢速指针指向的元素，然后前进两个指针。如果它是零元素，我们只前进当前指针。
-
-```js
-  var moveZeroes = function (nums) {
-    let lastNonZero = -1;
-    for (let i = 0; i < nums.length; i++) {
-      if (nums[i] !== 0) {
-        lastNonZero++;
-        [nums[lastNonZero], nums[i]] = [nums[i], nums[lastNonZero]];
-      }
-    }
-    return nums;
-  };
-```
+[283. 移动零](../leetcode/283.%20移动零.md) 与合并数组好像, 即是原地算法, 但是又和之前的原地标记不同, 这里借用的是双指针, 数组原地删除、 数组原地交换, 数组原地合并, 这几个很类似, 要好好总结一下才行
 
 ## [234. 回文链表](https://leetcode-cn.com/problems/palindrome-linked-list/)
 
@@ -551,139 +631,6 @@ while (right < len) {
 ### 再进一步优化
 
 <https://leetcode-cn.com/problems/minimum-window-substring/solution/zui-xiao-fu-gai-zi-chuan-by-leetcode-2/>
-
-# 判圈算法
-
-## Flyod 龟兔算法
-
-- 对于赛道来说，如果赛道中有环，那么速度快的兔子一定会在某个地点追上乌龟，并且兔子所跑的距离减去乌龟所跑的距离，一定是环长度的整数倍。
-- 快慢指针
-
-### 原理
-
-假设令龟、兔为指针，并且指向起点位置，兔子每次移动两个节点，乌龟每次移动一个节点。如果两者在起始节点外相遇，则说明有环。如果兔子在走到链表尾部还没有与乌龟相遇，说明无环。
-
-### 环长度
-
-通过上述算法判断出存在环 C 时，显然龟兔位于同一节点 B，此时，令兔子保持不动，而乌龟不断推进，记录移动距离，等再次相遇时，移动步数即环 C 长度。
-
-### 环起点
-
-乌龟所跑距离为 `S = m + n + aC`（C 为环长度),
-
-兔子所跑距离为 `2S = m + n + bC`（因为兔子速度为乌龟 `2` 倍）
-
-故得 `S = (b - a)C = m + n + aC ==> (b - 2a)C = m + n`, 由此可知，`m + n` 为环 `C` 长度整数倍
-
-让兔子回到起点 H，乌龟停留在相遇点 B，随后，同时让乌龟与兔子不断推进一步，兔子移动 m 到达点 A，距离点 B 还有 n，乌龟移动 m 也会到达点 A，再走 n 就饶了 `(b-2a)` 圈，到达点 B
-
-所以龟兔会在点 A 相遇，之后一直为伴走距离 n 再次到达点 B
-
-  ![](https://raw.githubusercontent.com/chiyuu-git/chiyuu-pic/master/20170423200520994.png)
-
-### 实现
-
-```js
-function flyodCircle(head) {
-  let rabbit = head,
-    tortoise = head;
-  do {
-    // 兔子先走，走两步
-    if (rabbit.next != null) rabbit = rabbit.next;
-    else return false;
-    if (rabbit.next != null) rabbit = rabbit.next;
-    else return false;
-	
-    tortoise = tortoise.next;
-  } while (rabbit !== tortoise);
-  // 出循环，此时龟兔相遇在点B
-  // 求环长度C
-  let circleLen = 0;
-  do {
-    tortoise = tortoise.next;
-    circleLen++;
-  } while (tortoise !== rabbit);
-  // 求环起点A
-  tortoise = head;
-  while (tortoise !== rabbit) {
-    tortoise = tortoise.next;
-    rabbit = rabbit.next;
-  }
-  // 出循环，此时龟兔相遇在起点A
-  const start = tortoise;
-  return { start, circleLen };
-}
-```
-
-### 时间复杂度
-
-如果乌龟走到环起点 P 时，此时显然兔子已经在环内某节点，之后兔子最多走一圈就会与乌龟相遇。假设链表起始节点到环起点距离为 m， 环长度为 n, 故时间复杂度为 O(m + n)
-
-### 空间复杂度
-
-算法仅需要创建指针 `tortoise,rabbit` ，环长 `circleLen` 以及环起点 `start` 故空间复杂度为 O(1)
-
-## Brent 龟兔算法
-
-### 原理
-
-这是一个倍增算法，让乌龟保持不动，兔子走 `2^i ` 步，看这个过程中龟兔有没有相遇，没有的话，让乌龟的位置变成兔子的位置（如果乌龟位置一直不变，它可能不会进入环中），让兔子走 `2^(i+1)` 步，看看会不会相遇，如此循环。这个算法也是 O(n) 的，但是它会比 Floyd 表现的更好，且 Floyd 是这个算法最差时的表现。
-
-### 求环的长度
-
-因为乌龟一直处在兔子更改步长上限时的位置，所以更改步长后，兔子走了几步与乌龟相遇，环的长度就是几步（就是代码中的 count 变量）
-
-### 求环的起点
-
-Floyd 判圈算法利用了乌龟和兔子的距离是环长整数倍的性质来求出起点，所以可以让乌龟回到起点，兔子回到距离起点 C（C 指环的长度）处，然后接下来的步骤和 Floyd 一样。
-
-### 实现
-
-```js
-function breantCycle(head) {
-  let rabbit = (tortoise = head);
-  let stride = 2,
-    count = 0;
-  do {
-    while (count <= stride) {
-      if (rabbit !== tortise) {
-        rabbit = rabbit.next;
-        if (rabbit === null) return false;
-        count++;
-      } else {
-        break;
-      }
-    }
-    tortoise = rabbit;
-    interval *= 2;
-    count = 0;
-  } while (rabbit !== tortoise);
-  // 出循环，龟兔相遇
-  const circleLen = count;
-  // 求环起点A
-  tortoise = rabbit = head;
-  while (count > 0) {
-    rabbit = rabbit.next;
-    count--;
-  }
-  while (tortoise !== rabbit) {
-    tortoise = tortoise.next;
-    rabbit = rabbit.next;
-  }
-  return;
-}
-```
-
-## [141. 环形链表](https://leetcode-cn.com/problems/linked-list-cycle/)
-
-  ![img](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist.png)
-
-### 哈希表
-
-- 储存每个节点的引用，用 map 来判断是否重复
-- 复杂度 O(n)
-
-### 判圈算法
 
 ## [287. 寻找重复数](https://leetcode-cn.com/problems/find-the-duplicate-number/)
 
