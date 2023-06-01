@@ -322,7 +322,7 @@ a 的伪类选择器包含以上五个，顺序是 lvha
   /*如果不是p标签，即使是第一个子元素也无法选中*/
   ```
 
-![1548642952892](/img/user/programming/font-end/primitive/css/css-basic/1548642952892.png) ![1548642956534](/img/user/programming/font-end/primitive/css/css-basic/1548642956534.png)
+![1548642952892 | 200](/img/user/programming/font-end/primitive/css/css-basic/1548642952892.png) ![1548642956534 | 200](/img/user/programming/font-end/primitive/css/css-basic/1548642956534.png)
 
 **:last-child**
 
