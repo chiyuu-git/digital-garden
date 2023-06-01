@@ -45,7 +45,7 @@ Size——获取数组内所有元素的总数
 
 # Stack
 
-[stack](stack.md)
+[stack](../data-structure/stack.md)
 
 # 队列
 
