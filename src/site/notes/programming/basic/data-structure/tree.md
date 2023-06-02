@@ -36,6 +36,14 @@
 
 完美二叉树：每一层的子节点都是满的
 
+### 完全二叉树
+
+According to Wikipedia, every level, except possibly the last, is completely filled in a complete binary tree, and all nodes in the last level are as far left as possible. It can have between 1 and 2h nodes inclusive at the last level h.
+
+只有一个节点也是完全二叉树
+
+### 二叉搜索树
+
 二叉搜索树（BST）是二叉树的一种，但是它只允许你在**左侧节点存储（比父节点）小的值**，在**右侧节点存储（比父节点）大（或者等于）的值**。上一节的图中就展现了一棵二叉搜索树。
 
 对于每一棵二叉搜索树树（子树），根节点就是这些数据的**中位数** @@@
@@ -45,14 +53,22 @@
 ## Binary Search Tree 类
 
 ```js
-function BinarySearchTree() {
-  const Node = function (key) { //{1}
-    this.val = this.key = key 
-    this.left = null
-    this.right = null
-  }
-  let root = null //{2}
+class TreeNode { //{1}
+    val = null
+    key = null
+    left = null
+    right = null
+
+    constructor(val) {
+        this.val = val;
+        this.key = val;
+    }
 }
+
+class BinarySearchTree {
+    root = null; //{2}
+}
+
 ```
 
 下图展现了二叉搜索树数据结构的组织方式：
@@ -84,18 +100,18 @@ function BinarySearchTree() {
 - floor(key)：返回小于等于 key 的最大值
 - remove(key)：从树中移除某个键。
 
-## insert()
+# insert()
 
 下面的代码是用来向树插入一个新键的算法的第一部分：
 
 ```js
-this.normalInsert = function (key) {
-  const newNode = new Node(key);
-  if (root === null) root = newNode;
-  else insertNode(root, newNode);
-  // 返回插入的节点
-  return newNode;
-};
+    insert(key) {
+        const node = new TreeNode(key);
+        if (this.root === null) this.root = node;
+        else this.insertNode(this.root, node);
+        // 返回插入的节点
+        return node;
+    }
 ```
 
 要向树中插入一个新的节点（或项），要经历三个步骤：
@@ -105,24 +121,24 @@ this.normalInsert = function (key) {
 3. 将节点加在非根节点的其他位置。这种情况下，需要一个私有的**辅助函数** insertNode ，函数定义如下：
 
 ```js
-function insertNode(node, newNode) {
-  if (newNode.key < node.key) {
-    //{4}
-    if (node.left === null) {
-      //{5}
-      node.left = newNode //{6}
-    } else {
-      insertNode(node.left, newNode) //{7}
+    insertNode(node, newNode) {
+        if (newNode.key < node.key) {
+            //{4}
+            if (node.left === null) {
+                //{5}
+                node.left = newNode //{6}
+            } else {
+                this.insertNode(node.left, newNode) //{7}
+            }
+        } else {
+            if (node.right === null) {
+                //{8}
+                node.right = newNode //{9}
+            } else {
+                this.insertNode(node.right, newNode) //{10}
+            }
+        }
     }
-  } else {
-    if (node.right === null) {
-      //{8}
-      node.right = newNode //{9}
-    } else {
-      insertNode(node.right, newNode) //{10}
-    }
-  }
-}
 ```
 
 如果树非空，需要找到插入新节点的位置。因此，在调用 insertNode 方法时要通过参数传入**树的根节点和要插入的节点。**
@@ -145,16 +161,16 @@ function insertNode(node, newNode) {
 
 让我们通过一个例子来更好地理解这个过程。
 
+首先插入第一个节点，这种情况下，树中有一个单独的节点，根指针将会指向它。源代码的行{2}将会执行。
+
 ```js
 var tree = new BinarySearchTree();
-tree.insert(11);
 ```
-
-首先插入第一个节点，这种情况下，树中有一个单独的节点，根指针将会指向它。源代码的行{2}将会执行。
 
 接着输入：
 
 ```js
+tree.insert(11);
 tree.insert(7);
 tree.insert(15);
 tree.insert(5);
@@ -323,8 +339,10 @@ var levelOrder = function (root) {
   while (queue.length > 0) {
     const node = queue.shift();
     res.push(node.key);
+
     if (node.left != null) queue.push(node.left);
-    else res.push(null); // null 可以用于辨识树的结构，连续的两个null，即是一个叶节点
+    // null 可以用于辨识树的结构，连续的两个null，即是一个叶节点
+    else res.push(null); 
 
     if (node.right != null) queue.push(node.right);
     else res.push(null);
@@ -334,6 +352,31 @@ var levelOrder = function (root) {
 ```
 
 往队列添加所有后继节点
+
+层次遍历其实也可以有先后之分的, 因为数组的性能原因, shift 操作是比较好时的, 最好是能通过 push 和 pop 来遍历所有的后代节点.
+
+但是这样的话就会后进的先遍历, 相当于是左右节点互换了一下位置? 这样的话再让 left 和 right 的顺序换一换就可以正常顺序展示了, 性能更好
+
+```js
+var countNodes = function(node) {
+    const queue = [node];
+    let count = 0;
+
+    while (queue.length > 0) {
+        const n = queue.pop();
+
+        if (n !== null) {
+            console.log('n: ', n.key);
+            count++;
+			// left 和 right 顺序调换, 以使用 pop 方法遍历, 相当于是用栈
+            queue.push(n.right);
+            queue.push(n.left);
+        }
+    }
+
+    return count;
+};
+```
 
 # depth()
 
@@ -497,7 +540,7 @@ var deserialize = function (data) {
 };
 ```
 
-# Search
+# search()
 
 搜索树中的值
 
@@ -1113,7 +1156,9 @@ tree.insert(11);
 
 # 哈夫曼树
 
-# 用递归解决问题
+# 总结
+
+## 用递归解决问题
 
 在前面的章节中，我们已经介绍了如何利用递归求解树的遍历。 递归是解决树的相关问题最有效和最常用的方法之一。
 
@@ -1172,8 +1217,6 @@ left_ans = bottom_up(root.left)       // call function recursively for left chil
 right_ans = bottom_up(root.right)     // call function recursively for right child
 return answers                        // answer <-- left_ans, right_ans, root.val
 ```
-
-## 总结
 
 了解递归并利用递归解决问题并不容易。
 
@@ -1492,55 +1535,11 @@ return answers                        // answer <-- left_ans, right_ans, root.va
   }
   ```
 
-# 同时遍历
+# 遍历
 
 ## 二叉树相等
 
-### 题目
-
-- Given two binary trees, write a function to check if they are equal or not.
-- Two binary trees are considered equal if they are structurally identical and the nodes have the same value.
-
-### 递归法
-
-- 判断两棵树是否相同，最直接的方法是用递归，假设两棵树的根节点分别是 nodeOne、nodeTwo，则它们相同的前提是 nodeOne 和 nodeTwo 的值相同，并且它们的左右子树也分别相同，显然对左右子树可以递归地调用原函数。
-
-  ```java
-  function isEqual(m,n){
-    if(m === null && m === null) return true
-  	if(m === null || n === null) return false // 其中一个为空
-    if(m.key === n.key){
-      return isEqual(m.left,n.left) && isEqual(m.right,n.right)
-    }
-    return false
-  }
-  BinarySearchTree.isEqual = isEqual
-  ```
-
-### 迭代法
-
-- 运用迭代法的话，只需要维护一个栈，如果 nodeOne、nodeTwo 的值相同，则依次将 nodeOne->left，nodeTwo->left ，nodeOne->right，nodeTwo->right 入栈，然后下一次循环开始时，就判断栈顶的 nodeOne->right 和 nodeTwo->right 的值是否相同，相同的话，再把它们的左右孩子依次入栈，循环以上过程，直到碰到值不相等或者栈为空。【迭代法的算法流程可参考下面图解】
-
-  ```java
-  function isEqual(m,n){
-    const stack = new Stack()
-    stack.push(m)
-    stack.push(n)
-    while(!stack.isEmpty()){
-      const p = stack.pop()
-      const q = stack.pop()
-      if(p===null && q===null) continue
-      if(p===null || q===null) return false // 其中一个为空
-      if(p.key !== q.key) return false
-  
-      stack.push(p.left)
-      stack.push(q.left)
-      stack.push(p.right)
-      stack.push(q.right)
-    }
-    return true
-  }
-  ```
+![100. 相同的树](../leetcode/100.%20相同的树.md)
 
 ## 对称二叉树
 
@@ -1635,8 +1634,6 @@ return answers                        // answer <-- left_ans, right_ans, root.va
     }
   }
   ```
-
-# 遍历
 
 ## 根据遍历确定树
 
