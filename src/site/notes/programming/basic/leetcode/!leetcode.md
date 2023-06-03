@@ -51,13 +51,18 @@ hard 没有思路就直接看答案, 一般都不会考这么难的
 + https://leetcode-solution-leetcode-pp.gitbook.io/leetcode-solution/medium/get-kth-magic-number-lcci
 + [ac_oier - 力扣（LeetCode）](https://leetcode.cn/u/ac_oier/)
 + https://xiaochen1024.com/series/6196129fc1553b002e57bef5/6196208ec1553b002e57bef6
-
+[搞定大厂算法面试之leetcode精讲](https://xiaochen1024.com/courseware/60b4f11ab1aa91002eb53b18)
 # 总结
 
 深度遍历与栈，深度遍历可以通过栈形式的迭代代替
 
 广度遍历与队列，广度遍历只能通过队列形式，无法通过递归
 
+## 递归改迭代
+
+用一个额外的变量维护结果. 
++ 链表的 prev cur
++ 树的层次遍历队列
 
 ## Index 问题
 
@@ -163,6 +168,13 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 
 | File                                                                                                                           | difficulty | etags                                                                                                                                                                        | unsolved | date-created                |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------- |
+| [[programming/basic/leetcode/572. 另一棵树的子树\|572. 另一棵树的子树]]                                                                   | medium     | <ul><li>#leetcode/tree/traverse</li><li>#leetcode/kmp</li><li>#leetcode/sub/consecutive</li></ul>                                                                            | false    | 2023-06-03-Sat, 8:42:12 pm  |
+| [[programming/basic/leetcode/508. 出现次数最多的子树元素和\|508. 出现次数最多的子树元素和]]                                                         | medium     | <ul><li>#leetcode/tree/traverse</li><li>#leetcode/hash-table/count</li></ul>                                                                                                 | false    | 2023-06-03-Sat, 8:04:36 pm  |
+| [[programming/basic/leetcode/617. 合并二叉树\|617. 合并二叉树]]                                                                       | easy       | <ul><li>#leetcode/tree/traverse</li></ul>                                                                                                                                    | false    | 2023-06-03-Sat, 7:29:10 pm  |
+| [[programming/basic/leetcode/437. 路径总和 III\|437. 路径总和 III]]                                                                 | medium     | <ul><li>#leetcode/tree/traverse</li><li>#leetcode/prefix-sum</li><li>#leetcode/unsolved</li></ul>                                                                            | true     | 2023-06-03-Sat, 5:12:15 pm  |
+| [[programming/basic/leetcode/226. 翻转二叉树\|226. 翻转二叉树]]                                                                       | easy       | <ul><li>#leetcode/tree/traverse</li></ul>                                                                                                                                    | false    | 2023-06-03-Sat, 12:57:46 pm |
+| [[programming/basic/leetcode/101. 对称二叉树\|101. 对称二叉树]]                                                                       | easy       | <ul><li>#leetcode/tree/traverse</li></ul>                                                                                                                                    | false    | 2023-06-03-Sat, 12:28:38 pm |
+| [[programming/basic/leetcode/654. 最大二叉树\|654. 最大二叉树]]                                                                       | medium     | <ul><li>#leetcode/tree/traverse</li><li>#leetcode/stack/monotonic-stack</li><li>#leetcode/unsolved</li></ul>                                                                 | true     | 2023-06-03-Sat, 10:12:52 pm |
 | [[programming/basic/leetcode/222. 完全二叉树的节点个数\|222. 完全二叉树的节点个数]]                                                             | easy       | <ul><li>#leetcode/tree/traverse</li><li>#leetcode/tree/complete</li></ul>                                                                                                    | false    | 2023-06-02-Fri, 5:08:35 pm  |
 | [[programming/basic/leetcode/100. 相同的树\|100. 相同的树]]                                                                         | easy       | <ul><li>#leetcode/tree/traverse</li></ul>                                                                                                                                    | false    | 2023-06-02-Fri, 10:33:53 am |
 | [[programming/basic/leetcode/457. Circular Array Loop\|457. Circular Array Loop]]                                           | medium     | <ul><li>#leetcode/pointer/fast-slow</li></ul>                                                                                                                                | false    | 2023-05-31-Wed, 7:55:16 pm  |
@@ -232,7 +244,7 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 | [[programming/basic/leetcode/9. 回文数\|9. 回文数]]                                                                               | easy       | <ul><li>#leetcode/palindrome</li></ul>                                                                                                                                       | false    | 2023-05-20-Sat, 4:32:14 pm  |
 | [[programming/basic/leetcode/7. 整数反转\|7. 整数反转]]                                                                             | medium     | <ul><li>#leetcode/math/high-precision-computation</li></ul>                                                                                                                  | false    | 2023-05-20-Sat, 4:13:40 pm  |
 | [[programming/basic/leetcode/5. 最长回文子串\|5. 最长回文子串]]                                                                         | medium     | <ul><li>#leetcode/palindrome</li><li>#leetcode/unsolved</li></ul>                                                                                                            | true     | 2023-05-19-Fri, 5:01:31 pm  |
-| [[programming/basic/leetcode/686. 重复叠加字符串匹配\|686. 重复叠加字符串匹配]]                                                               | medium     | <ul><li>#leetcode/string/match</li><li>#leetcode/unsolved</li></ul>                                                                                                          | true     | 2023-05-19-Fri, 4:27:11 pm  |
+| [[programming/basic/leetcode/686. 重复叠加字符串匹配\|686. 重复叠加字符串匹配]]                                                               | medium     | <ul><li>#leetcode/sub/consecutive</li><li>#leetcode/unsolved</li><li>#leetcode/kmp</li></ul>                                                                                 | true     | 2023-05-19-Fri, 4:27:11 pm  |
 | [[programming/basic/leetcode/68. 文本左右对齐\|68. 文本左右对齐]]                                                                       | hard       | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/string/transform</li></ul>                                                                                              | false    | 2023-05-18-Thu, 3:33:41 pm  |
 | [[programming/basic/leetcode/6. N 字形变换\|6. N 字形变换]]                                                                         | medium     | <ul><li>#leetcode/string/transform</li><li>#leetcode/unsolved</li></ul>                                                                                                      | true     | 2023-05-17-Wed, 3:03:16 pm  |
 | [[programming/basic/leetcode/482. 密钥格式化\|482. 密钥格式化]]                                                                       | easy       | <ul><li>#leetcode/string/transform</li><li>#leetcode/string/regexp</li></ul>                                                                                                 | false    | 2023-05-17-Wed, 2:40:46 pm  |
