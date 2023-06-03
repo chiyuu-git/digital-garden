@@ -24,7 +24,7 @@
 - 至少有一个**子节点**的节点称为**内部节点**（7、5、9、15、13 和 20 是内部节点）。
 - 没有子元素的节点称为外部节点或**叶节点**（3、6、8、10、12、14、18 和 25 是叶节点）。
 
-有关树的另一个术语是**子树**。子树由节点和它的后代构成。例如，节点 13、12 和 14 构成了上图中树的一棵子树。
+有关树的另一个术语是**子树**。子树由节点和它的后代构成。例如，节点 13、12 和 14 构成了上图中树的一棵子树。子树必须包含最外部的叶子结点
 
 节点的一个属性是**深度**，节点的深度取决于**自身**的祖先节点的数量。比如，节点 3 有 3 个祖先节点（5、7 和 11），它的深度为 3。
 
@@ -1241,64 +1241,6 @@ return answers                        // answer <-- left_ans, right_ans, root.va
 
 # 二叉树变换
 
-## [226. 翻转二叉树](https://leetcode-cn.com/problems/invert-binary-tree/)
-
-### 题目
-
-+ 翻转一棵二叉树
-
-  ```
-       4
-     /   \
-    2     7
-   / \   / \
-  1   3 6   9
-  
-       4
-     /   \
-    7     2
-   / \   / \
-  9   6 3   1
-  ```
-
-### 递归法
-
-+ 让左等于右，右等于左，然后递归左右
-
-  ```js
-  var invertTree = function(node) {
-    if(node==null) return null
-    let left = node.left,
-        right = node.right
-    node.left = right
-    node.right = left
-    invertTree(node.left)
-    invertTree(node.right)
-    return node
-  }
-  ```
-
-### 迭代法
-
-+ 其实都一样，保存一个 root 的引用即可
-
-  ```js
-  var invertTree = function(root) {
-    if(root==null) return null
-    const stack = [root]
-    while(stack.length>0){
-      const cur = stack.pop()
-      let left = cur.left,
-          right = cur.right
-      cur.left = right
-      cur.right = left
-      if(cur.left) stack.push(cur.left)
-      if(cur.right) stack.push(cur.right)
-    }
-    return root
-  }
-  ```
-
 ## [116. 填充每个节点的下一个右侧节点指针](https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/)
 
 ### 题目
@@ -1537,105 +1479,39 @@ return answers                        // answer <-- left_ans, right_ans, root.va
 
 # 遍历
 
-## 二叉树相等
+## 基础
+
+### 二叉树相等
 
 ![100. 相同的树](../leetcode/100.%20相同的树.md)
 
-## 对称二叉树
+### 对称二叉树
 
-### 题目
+![101. 对称二叉树](../leetcode/101.%20对称二叉树.md)
 
-- 给定一个二叉树，检查它是否是镜像对称的。
-- 例如，二叉树 `[1,2,2,3,4,4,3]` 是对称的。
+### 翻转二叉树
 
-  ```
-      1
-     / \
-    2   2
-   / \ / \
-  3  4 4  3
-  ```
+![226. 翻转二叉树](../leetcode/226.%20翻转二叉树.md)
 
-- 但是下面这个 `[1,2,2,null,3,null,3]` 则不是镜像对称的:
+### 617. 合并二叉树
 
-  ```
-      1
-     / \
-    2   2
-     \   \
-     3    3
-  ```
+![617. 合并二叉树](../leetcode/617.%20合并二叉树.md)
 
-### 递归法
+### 543. 二叉树的直径
 
-- 判断一棵二叉树本身是否是镜像对称的，这个问题可以转化为：二叉树的左子树与右子树是否是镜像对称的。
-- 问题一经转化，就有一种似曾相识的感觉，上一篇文章刚分析过判断两棵二叉树是否相等的问题，而这道题只不过是把“相等”换为“对称”，方法其实是一样的！
-- 因为是对称，所以是左节点和右节点比较
+[543. 二叉树的直径 - 力扣（LeetCode）](https://leetcode.cn/problems/diameter-of-binary-tree/)
 
-  ```js
-  var isSymmetric = function(root) {
-  	return isMirror(root,root)
-    function isMirror(m,n){
-      if(m === null && m === null) return true
-      if(m === null || n === null) return false // 其中一个为空
-      return (m.val === n.val)
-        &&isMirror(m.left,n.right) 
-        && isMirror(m.right,n.left)
-    }
-  }
-  ```
+## 进阶
 
-## [617. 合并二叉树](https://leetcode-cn.com/problems/merge-two-binary-trees/)
+### 508. 出现次数最多的子树元素和
 
-### 题目
+![508. 出现次数最多的子树元素和](../leetcode/508.%20出现次数最多的子树元素和.md)
 
-- 给定两个二叉树，想象当你将它们中的一个覆盖到另一个上时，两个二叉树的一些节点便会重叠。
+### 437. 路径总和 III
 
-  你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，否则不为 NULL 的节点将直接作为新二叉树的节点。
+![437. 路径总和 III](../leetcode/437.%20路径总和%20III.md)
 
-  ```
-  输入: 
-  	Tree 1                     Tree 2                  
-            1                         2                             
-           / \                       / \                            
-          3   2                     1   3                        
-         /                           \   \                      
-        5                             4   7                  
-  输出: 
-  合并后的树:
-  	     3
-  	    / \
-  	   4   5
-  	  / \   \ 
-  	 5   4   7
-  ```
-
-### 分析
-
-- 同时遍历两棵树
-
-  ```js
-  function TreeNode(val){
-    this.val = val
-    this.left = this.right = null
-  }
-  var mergeTrees = function(t1, t2) {
-    if(t1===null) return t2
-    if(t2===null) return t1
-    return dfs(t1,t2)
-    function dfs(node1,node2){
-      if(node1===null) return node2
-      if(node2===null) return node1
-      const node = new TreeNode()
-      node.val = node1.val + node2.val
-      node.left = dfs(node1.left,node2.left)
-      node.right = dfs(node1.right,node2.right)
-      return node
-    }
-  }
-  ```
-
-## 根据遍历确定树
+# 根据遍历确定树
 
 知道前序中序、中序后序遍历序列，那么可以唯一确定一棵二叉树，但是知道前序后序遍历序列就不一定能唯一确定一棵二叉树。
 
@@ -1866,91 +1742,6 @@ return answers                        // answer <-- left_ans, right_ans, root.va
 
 + 用栈代替递归调用栈，参考 I
 
-## [437. 路径总和 III](https://leetcode-cn.com/problems/path-sum-iii/)
-
-### 题目
-
-+ 给定一个二叉树，它的每个结点都存放着一个整数值。
-+ 找出路径和等于给定数值的路径总数。
-+ 路径不需要从根节点开始，也不需要在叶子节点结束，但是路径方向必须是向下的（只能从父节点到子节点）。
-+ 二叉树不超过 1000 个节点，且节点数值范围是 [-1000000,1000000] 的整数。
-
-  ```
-  root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8
-  
-        10
-       /  \
-      5   -3
-     / \    \
-    3   2   11
-   / \   \
-  3  -2   1
-  
-  返回 3。和等于 8 的路径有:
-  
-  1.  5 -> 3
-  2.  5 -> 2 -> 1
-  3.  -3 -> 11
-  ```
-
-### 双重递归
-
-```js
-  var pathSum = function(root, sum) {
-    if(root===null) return 0
-    let path = 0 
-    dfs(root,sum)
-    return path
-    // 前序遍历每个节点，对每个节点调用acc函数
-    function dfs(node,sum){
-      if(node===null) return 
-      acc(node,sum,0)
-      dfs(node.left,sum)
-      dfs(node.right,sum)
-    }
-    // 计算以当前节点为起点的路径是否符合题意
-    function acc(node,sum,cur){
-      if(node===null) return
-  
-      cur += node.val
-      if(cur===sum) return path++
-      
-      acc(node.left,sum,cur)
-      acc(node.right,sum,cur)
-    }
-  }
-```
-
-### 从叶节点开始
-
-+ 显然，这种双递归的写法，有很多路径的重复计算
-+ 这种计数问题，需要不重不漏，双递归通过不同起点保证不重，每个起点完整的搜索保证不漏
-+ 换一种思路: 每次遍历到一个结点的时候，将其纳入路径当中，检查包含这个点时，会不会产生一个合法路径。由于之前这个点压根没出现，而现在必须包含，因此产生的方案是一定不重的： 包含本根结点的 && 不包含本根结点的
-+ 利用了二叉树的一个特性，向下走有两条路，而从下向上走只有一条路（正是只有一条路这一点，免去了一个递归寻路的过程，只需沿着数组向前看就行）
-
-  ```js
-  var pathSum = function(root, sum) {
-    if(root===null) return 0
-    let path = 0,
-        stack = [] 
-    dfs(root,sum)
-    return path
-  
-    function dfs(node,sum){
-      if(node===null) return
-      stack.push(node.val)
-      let cur = 0
-      for(let i = stack.length - 1; i >= 0; i--){
-        cur += stack[i]
-        if(cur === sum) path++
-      }
-      dfs(node.left,sum)
-      dfs(node.right,sum)
-      stack.pop()
-    }
-  }
-  ```
-
 ## [236. 二叉树的最近公共祖先](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/)
 
 ### 题目
@@ -2148,44 +1939,6 @@ return answers                        // answer <-- left_ans, right_ans, root.va
   }
   ```
 
-## [543. 二叉树的直径](https://leetcode-cn.com/problems/diameter-of-binary-tree/)
-
-### 题目
-
-+ 给定一棵二叉树，你需要计算它的直径长度。一棵二叉树的直径长度是任意两个结点路径长度中的最大值。这条路径可能穿过根结点。
-
-  ```
-            1
-           / \
-          2   3
-         / \     
-        4   5    
-  返回 3, 它的长度是路径 [4,2,1,3] 或者 [5,2,1,3]。
-  注意：两结点之间的路径长度是以它们之间边的数目表示。
-  ```
-
-### 分析
-
-+ 等于左边的深度，加上右子树的深度，没有说是平衡树，不一定经过根节点
-+ 遍历每一个节点，经过该节点的最大直径，就是该节点左子树的深度加上右子树的深度
-
-  ```js
-  var diameterOfBinaryTree = function(root) {
-    if(root===null) return 0
-    let max = 0
-    dfs(root)
-    return max
-    
-    function dfs(node){
-      if(node===null) return 0
-      const leftDepth = dfs(node.left),
-            rightDepth = dfs(node.right)
-      const depth = Math.max(leftDepth,rightDepth)+1
-      max = Math.max(leftDepth+rightDepth,max)
-      return depth
-    }
-  }
-  ```
 
 # 总结
 
