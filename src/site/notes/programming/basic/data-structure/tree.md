@@ -100,7 +100,7 @@ class BinarySearchTree {
 - floor(key)：返回小于等于 key 的最大值
 - remove(key)：从树中移除某个键。
 
-# insert()
+## insert()
 
 下面的代码是用来向树插入一个新键的算法的第一部分：
 
@@ -157,7 +157,7 @@ class BinarySearchTree {
 - 如果有右侧子节点，同样需要递归调用 insertNode 方法
 - 但是要用来和新节点比较的节点将会是右侧子节点。
 
-## 示例
+### 示例
 
 让我们通过一个例子来更好地理解这个过程。
 
@@ -200,347 +200,7 @@ tree.insert(25);
 
 ![1554603493487](/img/user/programming/basic/data-structure/tree/1554603493487.png)
 
-# 深度优先遍历
-
-遍历一棵树是指访问树的每个节点并对它们进行某种操作的过程。但是我们应该怎么去做呢？
-
-应该从树的顶端还是底端开始呢？从左开始还是从右开始呢？
-
-访问树的所有节点有三种方式：中序、先序和后序。
-
-## 中序遍历
-
-中序遍历是一种以**上行顺序**访问 BST 所有节点的遍历方式, 也就是以从**最小到最大**的顺序访问所有节点.我们来看它的实现：
-
-```js
-this.inOrderTraverse = function (callback) {
-  inOrderTraverseNode(root, callback); //{1}
-};
-```
-
-inOrderTraverse 方法接收一个回调函数作为参数。回调函数用来定义我们**对遍历到的每个节点进行的操作**
-
-> 这也叫作访问者模式，要了解更多关于访问者模式的信息，请参考 http://en.wikipedia.org/wiki/Visitor_pattern）。
-
-由于我们在 BST 中最常实现的算法是递归，这里使用了一个私有的辅助函数，来接收一个节点和对应的回调函数作为参数（行{1}）。
-
-```js
-var inOrderTraverseNode = function (node, callback) {
-  if (node !== null) {
-    //{2}
-    inOrderTraverseNode(node.left, callback); //{3}
-    callback(node.key); //{4}
-    inOrderTraverseNode(node.right, callback); //{5}
-  }
-};
-```
-
-要通过中序遍历的方法遍历一棵树，首先要检查以参数形式传入的节点是否为 null
-
-> 这就是停止递归继续执行的判断条件——行{2}——递归算法的基本条件
-> 同样的从根节点开始递归
-
-然后，递归调用相同的函数来访问左侧子节点（行{3}）。接着对这个节点进行一些操作（callback），然后再访问右侧子节点（行{5}）。
-
-我们试着在之前展示的树上执行下面的方法：
-
-```js
-function printNode(value) {
-  //{6}
-  console.log(value);
-}
-tree.inOrderTraverse(printNode); //{7}
-```
-
-3 5 6 7 8 9 10 11 12 13 14 15 18 20 25 （每个数字将会输出在不同的行）
-
-下图展示了访问的路径：
-
-![1554605385643](/img/user/programming/basic/data-structure/tree/1554605385643.png)
-
-## 先序遍历
-
-先序遍历是以**父节点优先于后代节点**的顺序访问每个节点的
-
-```js
-this.preOrderTraverse = function (callback) {
-  preOrderTraverseNode(root, callback);
-};
-```
-
-```js
-var preOrderTraverseNode = function (node, callback) {
-  if (node !== null) {
-    callback(node.key); //{1}
-    preOrderTraverseNode(node.left, callback); //{2}
-    preOrderTraverseNode(node.right, callback); //{3}
-  }
-};
-```
-
-先序遍历和中序遍历的不同点是，先序遍历会先访问节点本身（行{1}），然后再访问它的左侧子节点（行{2}），最后是右侧子节点（行{3}），而中序遍历的执行顺序是：{2}、{1}和{3}。
-
-下面的图描绘了 preOrderTraverse 方法的访问路径：
-
-![1554605791244](/img/user/programming/basic/data-structure/tree/1554605791244.png)
-
-## 后序遍历
-
-后序遍历则是**先访问节点的后代节点，再访问节点本身**。后序遍历的一种应用是计算一个目录和它的子目录中所有文件所占空间的大小。
-
-```js
-this.postOrderTraverse = function (callback) {
-  postOrderTraverseNode(root, callback);
-};
-```
-
-```js
-var postOrderTraverseNode = function (node, callback) {
-  if (node !== null) {
-    postOrderTraverseNode(node.left, callback); //{1}
-    postOrderTraverseNode(node.right, callback); //{2}
-    callback(node.key); //{3}
-  }
-};
-```
-
-这个例子中，后序遍历会先访问左侧子节点（行{1}），然后是右侧子节点（行{2}），最后是父节点本身（行{3}）。
-
-你会发现，中序、先序和后序遍历的实现方式是很相似的，唯一不同的是行{1}、{2}和{3}的执行顺序。
-
-下面的图描绘了 postOrderTraverse 方法的访问路径：
-
-![1554605962009](/img/user/programming/basic/data-structure/tree/1554605962009.png)
-
-## 总结
-
-前中后指的是 callback 的执行位置
-
-中序遍历，根节点，在中间出现
-
-中序遍历的一种应用就是对树进行**排序**操作
-
-先序遍历，根节点，最先出现
-
-先序遍历的一种应用是打印一个结构化的文档。
-
-后序遍历，根节点，最后出现
-
-# 广度优先遍历
-
-又叫层次遍历
-
-```js
-// 层次遍历、广度优先搜索
-var levelOrder = function (root) {
-  if (root === null) return "";
-  const queue = [root];
-  const res = [];
-  while (queue.length > 0) {
-    const node = queue.shift();
-    res.push(node.key);
-
-    if (node.left != null) queue.push(node.left);
-    // null 可以用于辨识树的结构，连续的两个null，即是一个叶节点
-    else res.push(null); 
-
-    if (node.right != null) queue.push(node.right);
-    else res.push(null);
-  }
-  return res;
-};
-```
-
-往队列添加所有后继节点
-
-层次遍历其实也可以有先后之分的, 因为数组的性能原因, shift 操作是比较好时的, 最好是能通过 push 和 pop 来遍历所有的后代节点.
-
-但是这样的话就会后进的先遍历, 相当于是左右节点互换了一下位置? 这样的话再让 left 和 right 的顺序换一换就可以正常顺序展示了, 性能更好
-
-```js
-var countNodes = function(node) {
-    const queue = [node];
-    let count = 0;
-
-    while (queue.length > 0) {
-        const n = queue.pop();
-
-        if (n !== null) {
-            console.log('n: ', n.key);
-            count++;
-			// left 和 right 顺序调换, 以使用 pop 方法遍历, 相当于是用栈
-            queue.push(n.right);
-            queue.push(n.left);
-        }
-    }
-
-    return count;
-};
-```
-
-# depth()
-
-```js
-// this.depth = maxDepth(root) 有没有保存闭包的区别
-this.depth = function () {
-  return maxDepth(root);
-};
-function maxDepth(node) {
-  if (node === null) return 0;
-  const leftDepth = maxDepth(node.left);
-  const rightDepth = maxDepth(node.right);
-  return Math.max(leftDepth, rightDepth) + 1;
-}
-```
-
-深度优先，标记深度
-
-https://leetcode.cn/problems/add-one-row-to-tree/submissions/
-
-# print()
-
-```js
-// 本质：标记深度的 前中后序遍历
-this.print = function () {
-  const level = [];
-  traverse(root, 0, level);
-  return level;
-};
-function traverse(node, depth, level) {
-  // 新的一层，新建该层的数组
-  if (depth > level.length - 1) level.push([]);
-
-  if (node === null) {
-    level[depth].push(node);
-  } else {
-    level[depth].push(node.key);
-    traverse(node.left, depth + 1, level);
-    traverse(node.right, depth + 1, level);
-  }
-}
-```
-
-深度优先，标记深度
-
-# serialize()
-
-[297. 二叉树的序列化与反序列化](https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/)
-
-## 题目
-
-序列化是将一个数据结构或者对象转换为连续的比特位的操作，进而可以将转换后的数据存储在一个文件或者内存中，同时也可以通过网络传输到另一个计算机环境，采取相反方式重构得到原数据。
-
-请设计一个算法来实现二叉树的序列化与反序列化。这里不限定你的序列 / 反序列化算法执行逻辑，你只需要保证一个二叉树可以被序列化为一个字符串并且将这个字符串反序列化为原始的树结构。
-
-```
-示例:
-你可以将以下二叉树：
-	 1
-  / \
-  2   3
-     / \
-    4   5
-// 序列化为 "[1,2,3,null,null,4,5]"
-```
-
-提示: 这与 LeetCode 目前使用的方式一致，详情请参阅 LeetCode 序列化二叉树的格式。你并非必须采取这种方式，你也可以采用其他的方法解决这个问题。
-
-说明: 不要使用类的成员 / 全局 / 静态变量来存储状态，你的序列化和反序列化算法应该是无状态的。
-
-## 序列化
-
-### 深度优先 - 先序遍历
-
-![image.png](/img/user/programming/basic/data-structure/tree/22aa4f1f4325669c02d898729d72d5cd56cb47ea00d82528d4df15239ed46c35-image.png)
-
-```js
-var serialize = function (node, res = []) {
-  if (node !== null) {
-    res.push(node.val); //{1}
-    serialize(node.left, res); //{2}
-    serialize(node.right, res); //{3}
-  } else {
-    res.push(null);
-  }
-  // 序列化成字符串
-  return res.toString();
-};
-```
-
-字符串形式 null 被序列化成空位，更加节省空间
-
-### 广度优先 - 层次遍历
-
-```js
-var serialize = function(root) {
-  if(root===null) return JSON.stringify([null]
-  const queue = [root]
-  const res = []
-  while(queue.length>0){
-    const node = queue.shift()
-    res.push(node.val)
-    if(node.left!=null) queue.push(node.left)
-    else res.push(null)
-
-    if(node.right!=null) queue.push(node.right)
-    else res.push(null)
-  }
-  // 序列化成JSON
-  return JSON.stringify(res)
-}
-```
-
-与层次遍历的区别在于叶节点的 null 也需要 push，用于标记树的结构
-
-## 反序列化
-
-### 解析 JSON
-
-```js
-var deserialize = function (data) {
-  const serialize = JSON.parse(data);
-  return recursion(serialize);
-};
-function recursion(arr) {
-  if (arr[0] === null) return arr.shift();
-
-  const root = new Node(arr.shift());
-  root.left = recursion(arr);
-  root.right = recursion(arr);
-
-  return root;
-}
-```
-
-### 解析字符串
-
-`const serialize = data.split(',')`
-
-null 被序列化为空 > `["2", "1", "", "", "4", "3", "", "", …]`
-
-JSON 则是 `[1,2,null,null,3,4,null,null,5,null,null]`
-
-```js
-var deserialize = function (data) {
-  const serialize = data.split(",");
-  const rt = recursion(serialize);
-  return rt;
-  function recursion(arr) {
-    if (arr[0] === "") {
-      arr.shift();
-      return null;
-    }
-
-    const root = new Node(arr.shift());
-    root.left = recursion(arr);
-    root.right = recursion(arr);
-
-    return root;
-  }
-};
-```
-
-# search()
+## search()
 
 搜索树中的值
 
@@ -550,7 +210,7 @@ var deserialize = function (data) {
 - 搜索最大值
 - 搜索特定的值
 
-## 搜索最小值和最大值
+### 搜索最小值和最大值
 
 我们使用下面的树作为示例：
 
@@ -562,7 +222,7 @@ var deserialize = function (data) {
 
 这种特点在我们实现搜索树节点的最小值和最大值的方法时能给予我们很大的帮助。
 
-### 搜索最小值
+#### 搜索最小值
 
 首先，我们来看寻找树的最小键的方法：
 
@@ -588,7 +248,7 @@ var minNode = function (node) {
 
 minNode 方法允许我们**从树中任意一个节点开始寻找最小的键**。我们可以使用它来找到一棵树或它的子树中最小的键。因此，我们在调用 minNode 方法的时候传入树的根节点（行{1}），因为我们想要找到整棵树的最小键。
 
-### 搜索最大值
+#### 搜索最大值
 
 ```js
 this.max = function () {
@@ -611,7 +271,7 @@ var maxNode = function (node) {
 
 因此，对于寻找最小值，总是沿着树的左边；而对于寻找最大值，总是沿着树的右边。
 
-## 搜索特定值
+### 搜索特定值
 
 在之前的章节中，我们同样实现了 find、search 或 get 方法来查找数据结构中的一个特定的值（和之前章节中实现的 has 方法相似）。我们将同样在 BST 中实现搜索的方法，来看它的实现：
 
@@ -651,7 +311,7 @@ searchNode 方法可以用来寻找一棵树或它的任意子树中的一个特
 - 如果要找的键比当前的节点大，那么就从右侧子节点开始继续搜索（行{6}）
 - 否则就说明要找的键和当前节点的键相等，就返回 true 来表示找到了这个键（行{7}）
 
-## ceiling(key) 和 floor(key)
+### ceiling(key) 和 floor(key)
 
 `ceiling(key)` 函数：返回大于等于 `key` 的最小元素，如果不存在，返回空。
 
@@ -708,7 +368,7 @@ function ceilingNode(node, key) {
 }
 ```
 
-# remove()
+## remove()
 
 ```js
 this.remove = function (key) {
@@ -786,7 +446,7 @@ function findMinNode(node) {
 }
 ```
 
-## 移除一个叶节点
+### 移除一个叶节点
 
 第一种情况是该节点是一个没有左侧或右侧子节点的叶节点——行{9}。在这种情况下，我们要做的就是给这个节点赋予 null 值来移除它（行{9}）。但是当学习了链表的实现之后，我们知道仅仅赋一个 null 值是不够的，还需要处理指针。在这里，这个节点没有任何子节点，但是它有一个父节点，需要通过返回 null 来将对应的父节点指针赋予 null 值（行{11}）
 
@@ -798,7 +458,7 @@ function findMinNode(node) {
 
 ![1554617676771](/img/user/programming/basic/data-structure/tree/1554617676771.png)
 
-## 移除有一个左侧或右侧子节点的节点
+### 移除有一个左侧或右侧子节点的节点
 
 现在我们来看第二种情况，移除有一个左侧子节点或右侧子节点的节点。这种情况下，需要跳过这个节点，直接将父节点指向它的指针指向子节点
 
@@ -810,7 +470,7 @@ function findMinNode(node) {
 
 ![1554617885924](/img/user/programming/basic/data-structure/tree/1554617885924.png)
 
-## 移除有两个子节点的节点
+### 移除有两个子节点的节点
 
 现在是第三种情况，也是最复杂的情况，那就是要移除的节点有两个子节点——左侧子节点和右侧子节点。要移除有两个子节点的节点，需要执行四个步骤。
 
@@ -1241,340 +901,6 @@ return answers                        // answer <-- left_ans, right_ans, root.va
 
 # 二叉树变换
 
-## [116. 填充每个节点的下一个右侧节点指针](https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/)
-
-### 题目
-
-- 给定一个完美二叉树，其所有叶子节点都在同一层，每个父节点都有两个子节点。二叉树定义如下：
-
-  ```js
-  struct Node {
-    int val;
-    Node *left;
-    Node *right;
-    Node *next;
-  }
-  ```
-
-- 填充它的每个 next 指针，让这个指针指向其下一个右侧节点。如果找不到下一个右侧节点，则将 next 指针设置为 NULL。
-- 初始状态下，所有 next 指针都被设置为 NULL。
-
-  ![img](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/02/15/116_sample.png)
-
-### 分析
-
-- 第一个想到层次遍历，但是层次遍历没办法知道深度，也就是无法确定下一个是不是 NULL
-- 还是使用深度优先，递归传递深度
-
-### 实现
-
-- 层次遍历打印，最后在遍历 level 进行拼接
-
-  ```js
-  const {BST} = require('./utils/structure/BST')
-  const bst = new BST()
-  bst.insert(1)
-  bst.insert(2)
-  bst.insert(3)
-  bst.insert(4)
-  bst.insert(5)
-  bst.insert(6)
-  bst.insert(7)
-  
-  
-  var connect = function(root) {
-    const level = []
-    preorder(root,0,level)
-    level.forEach((subQueue) => {
-      subQueue.forEach((node,index,subQueue) => {
-        if(node!==null) node.next = subQueue[index+1] || null
-      })
-    })
-    return root
-  
-    function preorder(node,depth,level){
-      if(depth>level.length-1) level.push([])
-  
-      if (node === null) {
-        level[depth].push(node)
-      } else {
-        level[depth].push(node)
-        preorder(node.left, depth + 1, level)
-        preorder(node.right, depth + 1, level)
-      }
-    }
-  }
-  console.log(connect(bst.root()))
-  ```
-
-- 因为是完全二叉树，可以在队列里直接指定
-
-### 递归法
-
-- 因为是完全二叉树，每个节点都是满的，所以在父节点处就可以处理完：
-  - 左子节点的 next 是右子节点
-  - 如果父节点的 next 不为 null，则右节点的 next 等于父节点 next 的左子节点
-
-  ```c++
-  var connect = function(root) {
-    // 完全二叉树，左边没有，右边也没有
-    if(root==null || root.left==null) return root
-    root.left.next = root.right
-    if(root.next !=null){
-      root.right.next = root.next.left
-    }
-    connect(root.left)
-    connect(root.right)
-  }
-  ```
-
-## [117. 填充每个节点的下一个右侧节点指针 II](https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node-ii/)
-
-### 题目
-
-- 给定一个二叉树
-
-  ```
-  struct Node {
-    int val;
-    Node *left;
-    Node *right;
-    Node *next;
-  }
-  ```
-
-- 填充它的每个 next 指针，让这个指针指向其下一个右侧节点。如果找不到下一个右侧节点，则将 next 指针设置为 NULL。
-- 初始状态下，所有 next 指针都被设置为 NULL
-
-  ![img](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/02/15/117_sample.png)
-
-### 递归法
-
-- 不是完全二叉树了，甚至不是平衡二叉树
-
-  ```js
-  var connect = function (root) {
-    if (root == null) return root
-  
-    if (root.left != null) {
-      if (root.right != null) {
-        // 若右子树不为空，则左子树的 next 即为右子树
-        root.left.next = root.right
-      } else {
-        // 若右子树为空，则左子树的 next 由根节点的 next 得出，next为根节点的父节点的右子树
-        root.left.next = nextNode(root.next)
-      }
-    }
-    if (root.right != null) {
-      // 右子树的 next 由根节点的 next 得出
-      root.right.next = nextNode(root.next)
-    }
-    // 先确保 root.right 下的节点的已完全连接，因 root.left 下的节点的连接
-    // 需要 root.next 下的节点的信息，root.next肯定是祖先的右子树
-    // 若 root.next 下的节点未完全连
-    // 接（即先对 root.left 递归），则 root.next 下的信息链不完整，将
-    // 返回错误的信息。可能出现的错误情况如下图所示。此时，底层最左边节点将无
-    // 法获得正确的 next 信息：
-    //                  o root
-    //                 / \
-    //     root.left  o —— o  root.right
-    //               /    / \
-    //              o —— o   o
-    //             /        / \
-    //            o        o   o
-    connect(root.right)
-    connect(root.left)
-    return root
-  
-    function nextNode(node) {
-      while (node != null) {
-        if (node.left != null) return node.left
-        if (node.right != null) return node.right
-        node = node.next
-      }
-      return null
-    }
-  }
-  ```
-
-### 队列
-
-- 一次读取一整行的 node
-
-  ```js
-  var connect = function(root) {
-    if(root == null)return root;
-    const queue = [root]
-    while(queue.length>0){
-      let cur = null
-      // 一次读取一整行的node，静态化
-      const size = queue.length
-      for(let i=0;i<size;i++){
-        const temp = queue.shift()
-        if(cur !=null) cur.next = temp
-        cur = temp
-        // 这里改变了队列的长度，所以前面必须静态化
-        if(temp.left!=null) queue.push(temp.left)
-        if(temp.right!=null) queue.push(temp.right)
-      }
-    }
-    return root
-  }
-  ```
-
-## [538. 把二叉搜索树转换为累加树](https://leetcode-cn.com/problems/convert-bst-to-greater-tree/)
-
-### 题目
-
-- 给定一个二叉搜索树（Binary Search Tree），把它转换成为累加树（Greater Tree)，使得每个节点的值是原来的节点值加上所有大于它的节点值之和。
-
-  ```
-  输入: 二叉搜索树:
-                5
-              /   \
-             2     13
-  
-  输出: 转换为累加树:
-               18
-              /   \
-            20     13
-  ```
-
-### 中序遍历 - 改
-
-- 根节点加上右节点，左节点加上中节点
-
-  ```js
-  var convertBST = function(root) {
-    if(root===null) return null
-    inorder(root)
-    return root
-    function inorder(node){
-      if(node===null) return
-      inorder(node.right)
-      node.val += node.right.val
-      inroder(node.left)
-    }
-  }
-  ```
-
-- 想法错了，中节点也要考虑右节点的左节点的值
-- 修正：用一个私有变量保存累加值
-
-  ```js
-  var convertBST = function(root) {
-    if(root===null) return null
-    let sum = 0
-    inorder(root)
-    return root
-    function inorder(node){
-      if(node===null) return
-      inorder(node.right)
-      node.val +=sum
-      sum = node.val
-      inorder(node.left)
-    }
-  }
-  ```
-
-# 遍历
-
-## 基础
-
-### 二叉树相等
-
-![100. 相同的树](../leetcode/100.%20相同的树.md)
-
-### 对称二叉树
-
-![101. 对称二叉树](../leetcode/101.%20对称二叉树.md)
-
-### 翻转二叉树
-
-![226. 翻转二叉树](../leetcode/226.%20翻转二叉树.md)
-
-### 617. 合并二叉树
-
-![617. 合并二叉树](../leetcode/617.%20合并二叉树.md)
-
-### 543. 二叉树的直径
-
-[543. 二叉树的直径 - 力扣（LeetCode）](https://leetcode.cn/problems/diameter-of-binary-tree/)
-
-## 进阶
-
-### 508. 出现次数最多的子树元素和
-
-![508. 出现次数最多的子树元素和](../leetcode/508.%20出现次数最多的子树元素和.md)
-
-### 437. 路径总和 III
-
-![437. 路径总和 III](../leetcode/437.%20路径总和%20III.md)
-
-# 根据遍历确定树
-
-知道前序中序、中序后序遍历序列，那么可以唯一确定一棵二叉树，但是知道前序后序遍历序列就不一定能唯一确定一棵二叉树。
-
-链接：https://www.nowcoder.com/questionTerminal/9fb40807179a4fe2bcd12abcaabda891?toCommentId=45662
-
-简单解法： 先序序列得到 根节点为 A，根节点为 A，再根据中序序列得到，B 在 A 的右子树中，此时可以推出：后序序列最后两个是 BA。
-
-再看，A 的左子树先序序列为 DCEFGH，得到左子树的根为 D，所以后序序列的倒数第三个是 D，得到 DBA，只有 D 符合。
-
-## [105. 从前序与中序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
-
-### 题目
-
-- 根据一棵树的前序遍历与中序遍历构造二叉树。
-- 注意：你可以假设树中没有重复的元素。
-
-  ```
-  前序遍历 preorder = [3,9,20,15,7]
-  中序遍历 inorder =  [9,3,15,20,7]
-  返回如下的二叉树：
-      3
-     / \
-    9  20
-      /  \
-     15   7
-  ```
-
-### 分析
-
-- 首先，preorder 中的第一个元素一定是树的根，这个根又将 inorder 序列分成了左右两棵子树。现在我们只需要将先序遍历的数组中删除根元素，然后重复上面的过程处理左右两棵子树。
-
-### 实现
-
-```java
-  function TreeNode(val) {
-    this.val = val;
-    this.left = this.right = null;
-  }
-  var buildTree = function(preorder,inorder) {
-    let preIndex = 0
-    const map = {}
-    for (const [index,val] of inorder.entries()) {
-      map[val] = index
-    }
-    return helper(0,inorder.length)
-  
-    function helper(left,right){
-      if(left===right) return null
-  
-      // 根据前序遍历获得根节点
-      const rootVal = preorder[preIndex]
-      const root = new TreeNode(rootVal)
-  
-      // 根据中序遍历分为左右树
-      const index = map[rootVal]
-      preIndex++
-      root.left = helper(left,index)
-      root.right = helper(index+1,right)
-      return root
-    }
-  }
-  ```
-
 ## [106. 从中序与后序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)
 
 ### 实现
@@ -1607,140 +933,7 @@ return answers                        // answer <-- left_ans, right_ans, root.va
       return root
     }
   }
-  ```
-
-## [112. 路径总和](https://leetcode-cn.com/problems/path-sum/)
-
-### 题目
-
-- 给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。
-- 说明: 叶子节点是指没有子节点的节点。
-- 示例:
-  给定如下二叉树，以及目标和 sum = 22，
-
-  ```
-            5
-           / \
-          4   8
-         /   / \
-        11  13  4
-       /  \      \
-      7    2      1
-  ```
-
-- 返回 true, 因为存在目标和为 22 的根节点到叶子节点的路径 5->4->11->2。
-
-### 前序遍历
-
-- 最直接的方法就是利用递归，遍历整棵树：如果当前节点不是叶子，对它的所有孩子节点，递归调用 hasPathSum 函数，其中 sum 值减去当前节点的权值；如果当前节点是叶子，检查 sum 值是否为 0，也就是是否找到了给定的目标和。
-
-  ```js
-  var hasPathSum = function(node, sum) {
-    if(node===null) return false
-  
-    sum -= node.val
-    if(node.left===null && node.right===null){
-      return sum===0
-    }
-    return  hasPathSum(node.left,sum) || hasPathSum(node.right,sum)
-  }
-  ```
-
-**复杂度分析**
-
-- 时间复杂度：我们访问每个节点一次，时间复杂度为 O(N) ，其中 N 是节点个数。
-- 空间复杂度：最坏情况下，整棵树是非平衡的，例如每个节点都只有一个孩子，递归会调用 N 次（树的高度），因此栈的空间开销是 O(N)。但在最好情况下，树是完全平衡的，高度只有 log(N)，因此在这种情况下空间复杂度只有 O(log(N))
-
-### 迭代
-
-- 我们可以用栈将递归转成迭代的形式。深度优先搜索在除了最坏情况下都比广度优先搜索更快。最坏情况是指满足目标和的 root->leaf 路径是最后被考虑的，这种情况下深度优先搜索和广度优先搜索代价是相通的。
-- 利用深度优先策略访问每个节点，同时更新剩余的目标和。
-- 所以我们从包含根节点的栈开始模拟，剩余目标和为 `sum - root.val`
-- 然后开始迭代：
-  - 弹出当前元素，如果当前剩余目标和为 0 并且在叶子节点上返回 True
-  - 如果剩余和不为零并且还处在非叶子节点上，将当前节点的所有孩子以及对应的剩余和压入栈中。
-
-```java
-  var hasPathSum = function(root, sum) {
-    if(root===null) return false
-    const nodeStack = new Stack()
-    const sumStack = new Stack()
-    nodeStack.push(root)
-    sumStack.push(sum-root.val)
-  
-    while(!nodeStack.isEmpty()){
-      const node = nodeStack.pop()
-      const curSum = sumStack.pop()
-      if (node.right == null && node.left == null && curSum === 0){
-        // 和递归时不同，不能返回curSum===0，这就是递归和迭代的区别
-        return true
-      }
-      if (node.right != null) {
-        nodeStack.push(node.right);
-        sumStack.push(curSum - node.right.val)
-      }
-      if (node.left != null) {
-        nodeStack.push(node.left);
-        sumStack.push(curSum - node.left.val)
-      }
-    }
-    return false
-  }
-  ```
-
-## [113. 路径总和 II](https://leetcode-cn.com/problems/path-sum-ii/)
-
-### 题目
-
-+ 给定一个二叉树和一个目标和，找到所有从根节点到叶子节点路径总和等于给定目标和的路径。
-
-  ```
-  示例:
-  给定如下二叉树，以及目标和 sum = 22
-                5
-               / \
-              4   8
-             /   / \
-            11  13  4
-           /  \    / \
-          7    2  5   1
-  [
-     [5,4,11,2],
-     [5,8,4,5]
-  ]
-  ```
-
-### 递归
-
-+ 前序遍历，直到叶节点
-
-  ```js
-  var pathSum = function(root, sum) {
-    if(root===null) return 0
-    const res = []
-    dfs(root,sum)
-    return res
-    function dfs(node,sum,path=[]){
-      if(node===null) return
-      path.push(node.val)
-      // 保证是叶节点
-      if(sum===node.val && node.left==null && node.right==null) res.push([...path])
-      dfs(node.left,sum-node.val,path)
-      dfs(node.right,sum-node.val,path)
-      path.pop()
-    }
-  }
-  const {BST} = require('./utils/structure/BST')
-  const bst = new BST()
-  bst.insert(1)
-  bst.insert(2)
-  
-  console.log(pathSum(bst.root(),1))
-  ```
-
-### 迭代
-
-+ 用栈代替递归调用栈，参考 I
+```
 
 ## [236. 二叉树的最近公共祖先](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/)
 
@@ -1770,7 +963,7 @@ return answers                        // answer <-- left_ans, right_ans, root.va
 
   ![img](https://pic.leetcode-cn.com/Figures/236/236_LCA_Binary_10.png)
 
-+ ```java
+```java
   const {BST} = require('./utils/structure/BST')
   const bst = new BST()
   let p = bst.insert(1)
@@ -1798,7 +991,8 @@ return answers                        // answer <-- left_ans, right_ans, root.va
   }
   
   console.log(lowestCommonAncestor(bst.root(),p,q))
-  ```
+```
+
 + 问题在于已经找到了最近的公共祖先之后，还有很多多余的遍历，无法中断遍历
 
 **复杂度分析**
@@ -1822,7 +1016,7 @@ return answers                        // answer <-- left_ans, right_ans, root.va
      1. 如果 `one_node_found` 是 true 的，那么我们需要检查被弹出的顶部节点是否可能是找到的节点的祖先之一。
      2. 在这种情况下，我们需要将 `LCA_index` 减少一个。因为其中一位祖先被弹出了。 当同时找到 `p` 和 `q` 时，LCA_index 将指向堆栈中包含 `p` 和 `q ` 之间所有公共祖先的索引。并且 `LCA_index` 元素具有 `p` 和 `q` 之间的最近公共祖先。
 
-+ ```java
+```java
   import javafx.util.*;
   
   class Solution {
@@ -1917,7 +1111,7 @@ return answers                        // answer <-- left_ans, right_ans, root.va
       return null;
     }
   }
-  ```
+```
 
   ```js
   var lowestCommonAncestor = function(root, p, q) {
@@ -1939,12 +1133,62 @@ return answers                        // answer <-- left_ans, right_ans, root.va
   }
   ```
 
+## [538. 把二叉搜索树转换为累加树](https://leetcode-cn.com/problems/convert-bst-to-greater-tree/)
 
-# 总结
+### 题目
 
-- 树的前序后序中序其实都是深度优先遍历的一种，深度优先遍历可以通过栈的形式从递归转换为迭代
-- 树的层次遍历就是广度优先遍历，通过队列实现
-- 因为 JS 没有自带的工具库，实现迭代所需的栈结构
+- 给定一个二叉搜索树（Binary Search Tree），把它转换成为累加树（Greater Tree)，使得每个节点的值是原来的节点值加上所有大于它的节点值之和。
+
+  ```
+  输入: 二叉搜索树:
+                5
+              /   \
+             2     13
+  
+  输出: 转换为累加树:
+               18
+              /   \
+            20     13
+  ```
+
+### 中序遍历 - 改
+
+- 根节点加上右节点，左节点加上中节点
+
+  ```js
+  var convertBST = function(root) {
+    if(root===null) return null
+    inorder(root)
+    return root
+    function inorder(node){
+      if(node===null) return
+      inorder(node.right)
+      node.val += node.right.val
+      inroder(node.left)
+    }
+  }
+  ```
+
+- 想法错了，中节点也要考虑右节点的左节点的值
+- 修正：用一个私有变量保存累加值
+
+  ```js
+  var convertBST = function(root) {
+    if(root===null) return null
+    let sum = 0
+    inorder(root)
+    return root
+    function inorder(node){
+      if(node===null) return
+      inorder(node.right)
+      node.val +=sum
+      sum = node.val
+      inorder(node.left)
+    }
+  }
+  ```
+
+# 遍历
 
 # 字典树
 
