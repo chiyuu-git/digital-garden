@@ -637,6 +637,7 @@ Command + shift + L 可以快捷打印 console
             "type": "node",
             "request": "attach",
             "restart": true,
+			// 如果环境 PickProcess 命令执行失败, 可以查找到进程 id 直接填进去就好了
             "processId": "${command:PickProcess}"
         }
     ]
