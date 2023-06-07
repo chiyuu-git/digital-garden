@@ -3,9 +3,7 @@
 ---
 
 
-# 遍历
-
-## 深度优先遍历
+# 深度优先遍历
 
 遍历一棵树是指访问树的每个节点并对它们进行某种操作的过程。但是我们应该怎么去做呢？
 
@@ -13,7 +11,7 @@
 
 访问树的所有节点有三种方式：中序、先序和后序。
 
-### 中序遍历
+## 中序遍历
 
 中序遍历是一种以**上行顺序**访问 BST 所有节点的遍历方式, 也就是以从**最小到最大**的顺序访问所有节点.我们来看它的实现：
 
@@ -63,7 +61,7 @@ tree.inOrderTraverse(printNode); //{7}
 
 ![1554605385643](/img/user/programming/basic/data-structure/tree-traverse/1554605385643.png)
 
-### 先序遍历
+## 先序遍历
 
 先序遍历是以**父节点优先于后代节点**的顺序访问每个节点的
 
@@ -89,74 +87,25 @@ var preOrderTraverseNode = function (node, callback) {
 
 ![1554605791244](/img/user/programming/basic/data-structure/tree-traverse/1554605791244.png)
 
-### 后序遍历
-
-后序遍历则是**先访问节点的后代节点，再访问节点本身**。后序遍历的一种应用是计算一个目录和它的子目录中所有文件所占空间的大小。
+### N 叉树的前序遍历
 
 ```js
-this.postOrderTraverse = function (callback) {
-  postOrderTraverseNode(root, callback);
+var preorder = function(root) {
+    const res = [];
+    helper(root, res);
+    return res;
+}
+
+const helper = (root, res) => {
+    if (root === null) {
+        return;
+    }
+    res.push(root.val);
+    for (const ch of root.children) {
+        helper(ch, res);
+    }
 };
 ```
-
-```js
-var postOrderTraverseNode = function (node, callback) {
-  if (node !== null) {
-    postOrderTraverseNode(node.left, callback); //{1}
-    postOrderTraverseNode(node.right, callback); //{2}
-    callback(node.key); //{3}
-  }
-};
-```
-
-这个例子中，后序遍历会先访问左侧子节点（行{1}），然后是右侧子节点（行{2}），最后是父节点本身（行{3}）。
-
-你会发现，中序、先序和后序遍历的实现方式是很相似的，唯一不同的是行{1}、{2}和{3}的执行顺序。
-
-下面的图描绘了 postOrderTraverse 方法的访问路径：
-
-![1554605962009](/img/user/programming/basic/data-structure/tree-traverse/1554605962009.png)
-
-### 总结
-
-前中后指的是 callback 的执行位置
-
-中序遍历，根节点，在中间出现
-
-中序遍历的一种应用就是对树进行**排序**操作
-
-先序遍历，根节点，最先出现
-
-先序遍历的一种应用是打印一个结构化的文档。
-
-后序遍历，根节点，最后出现
-
-## 广度优先遍历
-
-又叫层次遍历
-
-```js
-// 层次遍历、广度优先搜索
-var levelOrder = function (root) {
-  if (root === null) return "";
-  const queue = [root];
-  const res = [];
-  while (queue.length > 0) {
-    const node = queue.shift();
-    res.push(node.key);
-
-    if (node.left != null) queue.push(node.left);
-    // null 可以用于辨识树的结构，连续的两个null，即是一个叶节点
-    else res.push(null); 
-
-    if (node.right != null) queue.push(node.right);
-    else res.push(null);
-  }
-  return res;
-};
-```
-
-往队列添加所有后继节点, 要实现真正的层次遍历, 必须使用 shift 和 pop 的组合, 这样才是一层层的遍历.
 
 ### 先序遍历的迭代形式
 
@@ -187,7 +136,96 @@ var countNodes = function(node) {
 };
 ```
 
-## DFS Vs BFS
+## 后序遍历
+
+后序遍历则是**先访问节点的后代节点，再访问节点本身**。后序遍历的一种应用是计算一个目录和它的子目录中所有文件所占空间的大小。
+
+```js
+this.postOrderTraverse = function (callback) {
+  postOrderTraverseNode(root, callback);
+};
+```
+
+```js
+var postOrderTraverseNode = function (node, callback) {
+  if (node !== null) {
+    postOrderTraverseNode(node.left, callback); //{1}
+    postOrderTraverseNode(node.right, callback); //{2}
+    callback(node.key); //{3}
+  }
+};
+```
+
+这个例子中，后序遍历会先访问左侧子节点（行{1}），然后是右侧子节点（行{2}），最后是父节点本身（行{3}）。
+
+你会发现，中序、先序和后序遍历的实现方式是很相似的，唯一不同的是行{1}、{2}和{3}的执行顺序。
+
+下面的图描绘了 postOrderTraverse 方法的访问路径：
+
+![1554605962009](/img/user/programming/basic/data-structure/tree-traverse/1554605962009.png)
+
+## 总结
+
+前中后指的是 callback 的执行位置
+
+中序遍历，根节点，在中间出现
+
+中序遍历的一种应用就是对树进行**排序**操作
+
+先序遍历，根节点，最先出现
+
+先序遍历的一种应用是打印一个结构化的文档。
+
+后序遍历，根节点，最后出现
+
+## Morris 遍历
+
+无论是递归还是迭代形式, 因为有系统栈的存在, 所以空间复杂度都是 On
+
+在 mirros 遍历中不使用栈, 而是使用空闲指针来保存回溯的线索, 从而达到 O(1) 的空间复杂度
+
+貌似和二叉树的线索化是相同的, link 一下 线索二叉树
+
+当他的 mostRight 指向 null 时，就是第一次访问，当他的 mostRight 指向 cur 时，就是第二次访问。
+
+[神级遍历——morris - 知乎](https://zhuanlan.zhihu.com/p/101321696)
+
+[【数据结构与算法】Morris遍历详解 - 掘金](https://juejin.cn/post/7021341254457753631)
+
+[经典算法小评(2)——Morris树遍历算法](https://ghh3809.github.io/2018/08/06/morris-traversal/)
+
+[Morris Traversal方法遍历二叉树（非递归，不用栈，O(1)空间） - AnnieKim - 博客园](https://www.cnblogs.com/anniekim/archive/2013/06/15/morristraversal.html)
+
+[Morris遍历（值得学习的二叉树遍历方法）\_Lazy mode的博客-CSDN博客](https://blog.csdn.net/Codeoh/article/details/108738591)
+
+# 广度优先遍历
+
+又叫层次遍历
+
+```js
+// 层次遍历、广度优先搜索
+var levelOrder = function (root) {
+  if (root === null) return "";
+  const queue = [root];
+  const res = [];
+  while (queue.length > 0) {
+    const node = queue.shift();
+    res.push(node.key);
+
+    if (node.left != null) queue.push(node.left);
+    // null 可以用于辨识树的结构，连续的两个null，即是一个叶节点
+    else res.push(null); 
+
+    if (node.right != null) queue.push(node.right);
+    else res.push(null);
+  }
+  return res;
+};
+```
+
+往队列添加所有后继节点, 要实现真正的层次遍历, 必须使用 shift 和 pop 的组合, 这样才是一层层的遍历.
+
+# DFS Vs BFS
 
 - 树的前序后序中序其实都是深度优先遍历的一种，深度优先遍历可以通过栈的形式从递归转换为迭代
 - 树的层次遍历就是广度优先遍历，通过队列实现
@@ -197,7 +235,7 @@ DFS 可以传参数, 利用函数的调用栈节省空间复杂度, 如果是 su
 
 BFS 不能传参数, 只能传队列, 一个存储节点正常走遍历, 另一个存储节点对应题意所需的信息, 当然可以用一个对象把节点和信息都囊括在一个队列当中
 
-## depth()
+# depth()
 
 ```js
 // this.depth = maxDepth(root) 有没有保存闭包的区别
@@ -216,21 +254,21 @@ function maxDepth(node) {
 
 https://leetcode.cn/problems/add-one-row-to-tree/submissions/
 
-### 199. 二叉树的右视图
+## 199. 二叉树的右视图
 
 [199. 二叉树的右视图](../leetcode/199.%20二叉树的右视图.md)
 
-### 116. 填充每个节点的下一个右侧节点指针
+## 116. 填充每个节点的下一个右侧节点指针
 
 [116. 填充每个节点的下一个右侧节点指针](../leetcode/116.%20填充每个节点的下一个右侧节点指针.md)
 
-### 117. 填充每个节点的下一个右侧节点指针 II
+## 117. 填充每个节点的下一个右侧节点指针 II
 
 ![117. 填充每个节点的下一个右侧节点指针 II](tree-traverse/117. 填充每个节点的下一个右侧节点指针 II.md)
 
-## print()
+# print()
 
-### DFS
+## DFS
 
 ```js
 // 本质：标记深度的 前中后序遍历
@@ -255,7 +293,7 @@ function traverse(node, depth, level) {
 
 深度优先，标记深度
 
-### BFS
+## BFS
 
 层次遍历如何实现 print 函数呢? 层次遍历如何标记深度呢?
 
@@ -284,11 +322,11 @@ var levelOrder = function(root) {
 };
 ```
 
-### printPath
+## printPath
 
 ![257. 二叉树的所有路径](tree-traverse/257. 二叉树的所有路径.md)
 
-## serialize()
+# serialize()
 
 [297. 二叉树的序列化与反序列化](https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/)
 
@@ -311,9 +349,9 @@ var levelOrder = function(root) {
 
 说明: 不要使用类的成员 / 全局 / 静态变量来存储状态，你的序列化和反序列化算法应该是无状态的。
 
-### 序列化
+## 序列化
 
-#### 深度优先 - 先序遍历
+### 深度优先 - 先序遍历
 
 ![image.png](/img/user/programming/basic/data-structure/tree-traverse/22aa4f1f4325669c02d898729d72d5cd56cb47ea00d82528d4df15239ed46c35-image.png)
 
@@ -333,7 +371,7 @@ var serialize = function (node, res = []) {
 
 字符串形式 null 被序列化成空位，更加节省空间
 
-#### 广度优先 - 层次遍历
+### 广度优先 - 层次遍历
 
 ```js
 var serialize = function(root) {
@@ -356,9 +394,9 @@ var serialize = function(root) {
 
 与层次遍历的区别在于叶节点的 null 也需要 push，用于标记树的结构
 
-### 反序列化
+## 反序列化
 
-#### 解析 JSON
+### 解析 JSON
 
 ```js
 var deserialize = function (data) {
@@ -376,7 +414,7 @@ function recursion(arr) {
 }
 ```
 
-#### 解析字符串
+### 解析字符串
 
 `const serialize = data.split(',')`
 
@@ -404,61 +442,61 @@ var deserialize = function (data) {
 };
 ```
 
-## 基础
+# 基础
 
-### 二叉树相等
+## 二叉树相等
 
 ![100. 相同的树](tree-traverse/100. 相同的树.md)
 
-### 对称二叉树
+## 对称二叉树
 
 ![101. 对称二叉树](tree-traverse/101. 对称二叉树.md)
 
-### 翻转二叉树
+## 翻转二叉树
 
 ![226. 翻转二叉树](tree-traverse/226. 翻转二叉树.md)
 
-### 617. 合并二叉树
+## 617. 合并二叉树
 
 ![617. 合并二叉树](tree-traverse/617. 合并二叉树.md)
 
-### 543. 二叉树的直径
+## 543. 二叉树的直径
 
 [543. 二叉树的直径 - 力扣（LeetCode）](https://leetcode.cn/problems/diameter-of-binary-tree/)
 
-## 进阶
+# 进阶
 
-### 508. 出现次数最多的子树元素和
+## 508. 出现次数最多的子树元素和
 
-![508. 出现次数最多的子树元素和](tree-traverse/508. 出现次数最多的子树元素和.md)
+[508. 出现次数最多的子树元素和](../leetcode/508.%20出现次数最多的子树元素和.md)
 
-## 遍历路径
+# 遍历路径
 
 更一般的特性是由父节点传递信息给子节点, 这样就可以和 depth 类型统一起来了
 
 大一统理论 / 万有理论
 
-### 257. 二叉树的所有路径
+## 257. 二叉树的所有路径
 
 [257. 二叉树的所有路径](../leetcode/257.%20二叉树的所有路径.md)
 
-### 112. 路径总和
+## 112. 路径总和
 
-![112. 路径总和](tree-traverse/112. 路径总和.md)
+[112. 路径总和](../leetcode/112.%20路径总和.md)
 
-### 113. 路径总和 II
+## 113. 路径总和 II
 
-![113. 路径总和 II](tree-traverse/113. 路径总和 II.md)
+[113. 路径总和 II](../leetcode/113.%20路径总和%20II.md)
 
-### 437. 路径总和 III
+## 437. 路径总和 III
 
-![437. 路径总和 III](tree-traverse/437. 路径总和 III.md)
+[437. 路径总和 III](../leetcode/437.%20路径总和%20III.md)
 
-### 129. 求根节点到叶节点数字之和
+## 129. 求根节点到叶节点数字之和
 
-![129. 求根节点到叶节点数字之和](tree-traverse/129. 求根节点到叶节点数字之和.md)
+[129. 求根节点到叶节点数字之和](../leetcode/129.%20求根节点到叶节点数字之和.md)
 
-## 根据遍历确定树
+# 根据遍历确定树
 
 知道前序中序、中序后序遍历序列，那么可以唯一确定一棵二叉树，但是知道前序后序遍历序列就不一定能唯一确定一棵二叉树。
 
@@ -473,7 +511,6 @@ var deserialize = function (data) {
 ### 题目
 
 - 根据一棵树的前序遍历与中序遍历构造二叉树。
-
 - 注意：你可以假设树中没有重复的元素。
 
   ```
@@ -522,5 +559,3 @@ var deserialize = function (data) {
     }
   }
 ```
-
-## 
