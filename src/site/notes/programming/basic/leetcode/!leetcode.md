@@ -88,10 +88,10 @@ hard 没有思路就直接看答案, 一般都不会考这么难的
 
 | File                                                                                                                           | solution tips overview                                          |
 | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- |
-| [[programming/basic/leetcode/41. First Missing Positive\|41. First Missing Positive]]                                       | [[programming/basic/leetcode/41. First Missing Positive#solution tips\|41. First Missing Positive#solution tips]]                    |
-| [[programming/basic/leetcode/442. Find All Duplicates in an Array\|442. Find All Duplicates in an Array]]                   | [[programming/basic/leetcode/442. Find All Duplicates in an Array#solution tips\|442. Find All Duplicates in an Array#solution tips]]          |
-| [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array\|448. Find All Numbers Disappeared in an Array]] | [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array#solution tips\|448. Find All Numbers Disappeared in an Array#solution tips]] |
 | [[programming/basic/leetcode/645. Set Mismatch\|645. Set Mismatch]]                                                         | [[programming/basic/leetcode/645. Set Mismatch#solution tips\|645. Set Mismatch#solution tips]]                             |
+| [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array\|448. Find All Numbers Disappeared in an Array]] | [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array#solution tips\|448. Find All Numbers Disappeared in an Array#solution tips]] |
+| [[programming/basic/leetcode/442. Find All Duplicates in an Array\|442. Find All Duplicates in an Array]]                   | [[programming/basic/leetcode/442. Find All Duplicates in an Array#solution tips\|442. Find All Duplicates in an Array#solution tips]]          |
+| [[programming/basic/leetcode/41. First Missing Positive\|41. First Missing Positive]]                                       | [[programming/basic/leetcode/41. First Missing Positive#solution tips\|41. First Missing Positive#solution tips]]                    |
 
 { .block-language-dataview}
 
@@ -99,8 +99,8 @@ hard 没有思路就直接看答案, 一般都不会考这么难的
 
 | File                                                                                                           | solution tips overview                                  |
 | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| [[programming/basic/leetcode/414. Third Maximum Number\|414. Third Maximum Number]]                         | [[programming/basic/leetcode/414. Third Maximum Number#solution tips\|414. Third Maximum Number#solution tips]]             |
 | [[programming/basic/leetcode/628. Maximum Product of Three Numbers\|628. Maximum Product of Three Numbers]] | [[programming/basic/leetcode/628. Maximum Product of Three Numbers#solution tips\|628. Maximum Product of Three Numbers#solution tips]] |
+| [[programming/basic/leetcode/414. Third Maximum Number\|414. Third Maximum Number]]                         | [[programming/basic/leetcode/414. Third Maximum Number#solution tips\|414. Third Maximum Number#solution tips]]             |
 
 { .block-language-dataview}
 
@@ -115,8 +115,8 @@ hard 没有思路就直接看答案, 一般都不会考这么难的
 
 | File                                                         | overview                       |
 | ------------------------------------------------------------ | ------------------------------ |
-| [[programming/basic/leetcode/495. 提莫攻击\|495. 提莫攻击]]       | [[programming/basic/leetcode/495. 提莫攻击#solution tips\|495. 提莫攻击#solution tips]]    |
 | [[programming/basic/leetcode/636. 函数的独占时间\|636. 函数的独占时间]] | [[programming/basic/leetcode/636. 函数的独占时间#solution tips\|636. 函数的独占时间#solution tips]] |
+| [[programming/basic/leetcode/495. 提莫攻击\|495. 提莫攻击]]       | [[programming/basic/leetcode/495. 提莫攻击#solution tips\|495. 提莫攻击#solution tips]]    |
 
 { .block-language-dataview}
 
@@ -168,7 +168,7 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 
 | File                                                                                                                           | difficulty | etags                                                                                                                                                                        | unsolved | date-created                |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------- |
-| [[programming/basic/leetcode/117. 填充每个节点的下一个右侧节点指针 II\|117. 填充每个节点的下一个右侧节点指针 II]]                                           | medium     | <ul><li>#leetcode/tree/traverse/depth</li></ul>                                                                                                                              | false    | 2023-06-06-Tue, 7:50:36 pm  |
+| [[programming/basic/leetcode/117. 填充每个节点的下一个右侧节点指针 II\|117. 填充每个节点的下一个右侧节点指针 II]]                                           | medium     | <ul><li>#leetcode/tree/traverse/depth</li><li>#leetcode/linked-list</li></ul>                                                                                                | false    | 2023-06-06-Tue, 7:50:36 pm  |
 | [[programming/basic/leetcode/116. 填充每个节点的下一个右侧节点指针\|116. 填充每个节点的下一个右侧节点指针]]                                                 | medium     | <ul><li>#leetcode/tree/traverse/depth</li></ul>                                                                                                                              | false    | 2023-06-06-Tue, 7:44:44 pm  |
 | [[programming/basic/leetcode/655. 输出二叉树\|655. 输出二叉树]]                                                                       | medium     | <ul><li>#leetcode/tree/traverse</li><li>#leetcode/unsolved</li><li>#leetcode/tree/index</li></ul>                                                                            | true     | 2023-06-06-Tue, 7:23:54 pm  |
 | [[programming/basic/leetcode/199. 二叉树的右视图\|199. 二叉树的右视图]]                                                                   | medium     | <ul><li>#leetcode/tree/traverse</li></ul>                                                                                                                                    | false    | 2023-06-06-Tue, 6:12:20 pm  |
