@@ -107,35 +107,6 @@ const helper = (root, res) => {
 };
 ```
 
-### 先序遍历的迭代形式
-
-相对的, 下面这种做法其实是先序遍历的迭代形式:
-
-因为数组的性能原因, shift 操作是比较耗时的, 最好是能通过 push 和 pop 来遍历所有的后代节点.
-
-但是这样的话就会后进的先遍历, 相当于是左右节点互换了一下位置? 这样的话再让 left 和 right 的顺序换一换就可以正常顺序展示了, 性能更好
-
-```js
-var countNodes = function(node) {
-    const queue = [node];
-    let count = 0;
-
-    while (queue.length > 0) {
-        const n = queue.pop();
-
-        if (n !== null) {
-            console.log('n: ', n.key);
-            count++;
-			// left 和 right 顺序调换, 以使用 pop 方法遍历, 相当于是用栈
-            queue.push(n.right);
-            queue.push(n.left);
-        }
-    }
-
-    return count;
-};
-```
-
 ## 后序遍历
 
 后序遍历则是**先访问节点的后代节点，再访问节点本身**。后序遍历的一种应用是计算一个目录和它的子目录中所有文件所占空间的大小。
@@ -178,7 +149,149 @@ var postOrderTraverseNode = function (node, callback) {
 
 后序遍历，根节点，最后出现
 
+1. 确定终止条件
+2. 确定单层递归的逻辑
+3. 需要用到什么参数就补充什么参数, 再确定返回值即可
+
+## 前中后序遍历的迭代形式
+
+本质上来说, 递归形式是利用了系统的栈, 改成迭代形式的话, 只要我们自己实现了和系统一样的栈就可以了. 其他逻辑都是相同的
+
+遍历的节点和处理的节点是两个不同的逻辑, 在前序遍历遍历中, 遍历的节点和处理的节点是同一个, 所以处理起来会比较容易.
+
+但是中序遍历和后序遍历中, 要区别开来, 实现就有难度了
+
+### 先序遍历的迭代形式
+
+相对的, 下面这种做法其实是先序遍历的迭代形式:
+
+因为数组的性能原因, shift 操作是比较耗时的, 最好是能通过 push 和 pop 来遍历所有的后代节点.
+
+但是这样的话就会后进的先遍历, 相当于是左右节点互换了一下位置? 这样的话再让 left 和 right 的顺序换一换就可以正常顺序展示了, 性能更好
+
+```js
+var countNodes = function(node) {
+    const stack = [node];
+    let count = 0;
+
+    while (stack.length > 0) {
+        const n = stack.pop();
+
+        if (n !== null) {
+            console.log('n: ', n.key);
+            count++;
+			// left 和 right 顺序调换, 以使用 pop 方法遍历, 相当于是用栈
+            stack.push(n.right);
+            stack.push(n.left);
+        }
+    }
+
+    return count;
+};
+```
+
+### 中序遍历的迭代形式
+
+因为访问的顺序和处理的顺序是不一样的, 我们需要一个指针来记录当前需要处理的节点
+
+栈用来模拟遍历的顺序
+
+查看动图: [二叉树的中序遍历 - 二叉树的中序遍历 - 力扣（LeetCode）](https://leetcode.cn/problems/binary-tree-inorder-traversal/solution/er-cha-shu-de-zhong-xu-bian-li-by-leetcode-solutio/)
+
+```js
+var inorderTraversal = function(root) {
+    const res = [];
+    const stack = [];
+    let cur = root;
+    while (cur || stack.length) {
+        // 一直访问左子节点, 直到左子节点为空, 就到达了需要处理的元素
+        while (cur) {
+            stack.push(cur);
+            cur = cur.left;
+        }
+        cur = stack.pop();
+        res.push(cur.val);
+        // 然后访问右子节点, 如果不为空那么下一轮遍历中就会继续访问其左子节点
+        // 若为空, 则再次弹出 stack 中元素进行处理, 此时即是: 左子节点处理完了, 右子节点为空, 那么就回去处理父节点了
+        cur = cur.right;
+    }
+    return res;
+};
+```
+
+### 后序遍历的迭代形式
+
+```js
+var postorderTraversal = function(root) {
+    const res = [];
+    const stack = [];
+    let cur = root;
+    // 用于标记右子树已经访问过了, 这样才能从避免无限迭代右子树
+    let prev = null;
+    while (cur || stack.length) {
+        while (cur !== null) {
+            stack.push(cur);
+            cur = cur.left;
+        }
+        cur = stack.pop();
+        if (cur.right === null || cur.right === prev) {
+            res.push(cur.val);
+            prev = cur;
+            // next loop will pop
+            cur = null;
+        }
+        else {
+            stack.push(cur);
+            cur = cur.right;
+        }
+    }
+
+    return res;
+};
+```
+
+#### 后序遍历 N 叉树
+
+```js
+var postorder = function(root) {
+    const res = [];
+    if (root == null) {
+        return res;
+    }
+    const map = new Map();
+    const stack = [];
+    let node = root;
+    while (stack.length || node) {
+        while (node) {
+            stack.push(node);
+            const children = node.children;
+            if (children && children.length > 0) {
+                map.set(node, 0);
+                node = children[0];
+            } else {
+                node = null;
+            }
+        }
+        node = stack[stack.length - 1];
+        const index = (map.get(node) || 0) + 1;
+        const children = node.children;
+        if (children && children.length > index) {
+            map.set(node, index);
+            node = children[index];
+        } else {
+            res.push(node.val);
+            stack.pop();
+            map.delete(node);
+            node = null;
+        }
+    }
+    return res;
+};
+```
+
 ## Morris 遍历
+
+不是一定要掌握的
 
 无论是递归还是迭代形式, 因为有系统栈的存在, 所以空间复杂度都是 On
 
