@@ -1568,11 +1568,7 @@ let difference = new Set([...a].filter(x => !b.has(x)));
 
 基本上数组相关的题目都是遍历的把，不知道这个 tag 是否有意义
 
-| File                                                                             |
-| -------------------------------------------------------------------------------- |
-| [[programming/basic/leetcode/598. Range Addition II\|598. Range Addition II]] |
-| [[programming/basic/leetcode/495. 提莫攻击\|495. 提莫攻击]]                           |
-| [[programming/basic/leetcode/485. 最大连续 1 的个数\|485. 最大连续 1 的个数]]               |
-| [[programming/basic/leetcode/396. 旋转函数\|396. 旋转函数]]                           |
+| File |
+| ---- |
 
 { .block-language-dataview}
