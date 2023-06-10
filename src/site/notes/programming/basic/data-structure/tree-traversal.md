@@ -155,32 +155,34 @@ var postOrderTraverseNode = function (node, callback) {
 2. 确定单层递归的逻辑
 3. 需要用到什么参数就补充什么参数, 再确定返回值即可
 
-## 前中后序遍历的迭代形式
+## 前中后序遍历的迭代形式 @@@
 
 本质上来说, 递归形式是利用了系统的栈, 改成迭代形式的话, 只要我们自己实现了和系统一样的栈就可以了. 其他逻辑都是相同的
 
-遍历的节点和处理的节点是两个不同的逻辑, 在前序遍历遍历中, 遍历的节点和处理的节点是同一个, 所以处理起来会比较容易.
+遍历的节点和处理的节点是两个不同的逻辑, 在前序遍历中, 遍历的节点和处理的节点是同一个, 所以处理起来会比较容易.
 
 但是中序遍历和后序遍历中, 要区别开来, 实现就有难度了
 
-对于实际题型中的 前序遍历的迭代形式, 没必要细究了, 本来遍历的迭代形式最多就是考考最常见的前中后序就已经够难了
+掌握前序和中序的迭代形式即可, 后序不用太在意, 实在不行就用前序 reverse 处理
+
+迭代形式的一个好处是可以提前结束迭代, 不用递归完全部的节点
 
 ### 先序遍历的迭代形式
-
-下面这种做法其实是先序遍历的迭代形式, 但是长得与层次遍历非常像
 
 因为数组的性能原因, shift 操作是比较耗时的, 最好是能通过 push 和 pop 来遍历所有的后代节点.
 
 但是这样的话就会后进的先遍历, 相当于是左右节点互换了一下位置? 这样的话再让 left 和 right 的顺序换一换就可以正常顺序展示了, 性能更好
 
+下面这种做法其实是先序遍历的迭代形式, 但是长得与层次遍历非常像
+
 ```js
 var countNodes = function(node) {
     const stack = [node];
     let count = 0;
-
+	
     while (stack.length > 0) {
         const n = stack.pop();
-
+		
         if (n !== null) {
             console.log('n: ', n.key);
             count++;
@@ -222,6 +224,8 @@ var inorderTraversal = function(root) {
     return res;
 };
 ```
+
+也可以用 prev 思路, 其实更好理解一点, cur.left === prev, 那么就该访问 right 了
 
 ### 后序遍历的迭代形式
 
@@ -330,14 +334,15 @@ var levelOrder = function (root) {
   const res = [];
   while (queue.length > 0) {
     const node = queue.shift();
-    res.push(node.key);
 
-    if (node.left != null) queue.push(node.left);
-    // null 可以用于辨识树的结构，连续的两个null，即是一个叶节点
-    else res.push(null); 
-
-    if (node.right != null) queue.push(node.right);
-    else res.push(null);
+    if (node) {
+	    res.push(node.val);
+	    queue.push(node.left);
+	    queue.push(node.right);
+    }
+    else {
+	    res.push(null)
+    }
   }
   return res;
 };
@@ -360,6 +365,87 @@ var levelOrder = function (root) {
 DFS 可以传参数, 利用函数的调用栈节省空间复杂度, 如果是 sum 类型的, 可以 return 0,
 
 BFS 不能传参数, 只能传队列, 一个存储节点正常走遍历, 另一个存储节点对应题意所需的信息, 当然可以用一个对象把节点和信息都囊括在一个队列当中
+
+## 用递归解决问题
+
+在前面的章节中，我们已经介绍了如何利用递归求解树的遍历。 递归是解决树的相关问题最有效和最常用的方法之一。
+
+我们知道，树可以以递归的方式定义为一个节点（根节点），它包括一个值和一个指向其他节点指针的列表。 递归是树的特性之一。 因此，许多树问题可以通过递归的方式来解决。 对于每个递归层级，我们只能关注单个节点内的问题，并通过递归调用函数来解决其子节点问题。
+
+通常，我们可以通过 “自顶向下” 或 “自底向上” 的递归来解决树问题。
+
+## “自顶向下” 的解决方案
+
+“自顶向下” 意味着在每个递归层级，我们将首先访问节点来计算一些值，并在递归调用函数时将这些值传递到子节点。 所以 “自顶向下” 的解决方案可以被认为是一种**前序遍历**。 具体来说，递归函数 `top_down(root, params)` 的原理是这样的：
+
+```
+return specific value for null node
+update the answer if needed                      // anwer <-- params
+left_ans = top_down(root.left, left_params)      // left_params <-- root.val, params
+right_ans = top_down(root.right, right_params)   // right_params <-- root.val, params
+return the answer if needed                      // answer <-- left_ans, right_ans
+```
+
+### 示例
+
+思考这样一个问题：给定一个二叉树，请寻找它的最大深度。
+
+我们知道根节点的深度是 `0`。 对于每个节点，如果我们知道某节点的深度，那我们将知道它子节点的深度。 因此，在调用递归函数的时候，将节点的深度传递为一个参数，那么所有的节点都知道它们自身的深度。 而对于叶节点，我们可以通过更新深度从而获取最终答案。 这里是递归函数 `maximum_depth(root, depth)` 的伪代码：
+
+  ```
+  return if root is null
+  if root is a leaf node:
+       answer = max(answer, depth)         // update the answer if needed
+  maximum_depth(root.left, depth + 1)      // call the function recursively for left child
+  maximum_depth(root.right, depth + 1)     // call the function recursively for right child
+  ```
+
+### 示例
+
+让我们继续讨论前面关于树的最大深度的问题，但是使用不同的思维方式：对于树的单个节点，以节点自身为根的子树的最大深度 `x` 是多少？
+
+如果我们知道一个根节点，以其**左**子节点为根的最大深度为 `left` 和以其**右**子节点为根的最大深度为 `right`，我们是否可以回答前面的问题？ 当然可以，我们可以选择它们之间的最大值，再加上 1 来获得根节点所在的子树的最大深度。 那就是 `x = max（left，right）+ 1`。
+
+这意味着对于每一个节点来说，我们都可以在解决它子节点的问题之后得到答案。 因此，我们可以使用“自底向上“的方法。下面是递归函数 `maximum_depth(root)` 的伪代码：
+
+  ```
+  return 0 if root is null                 // return 0 for null node
+  left_depth = maximum_depth(root.left)
+  right_depth = maximum_depth(root.right)
+  return max(left_depth, right_depth) + 1  // return depth of the subtree rooted at root
+  ```
+
+## “自底向上” 的解决方案
+
+“自底向上” 是另一种递归方法。 在每个递归层次上，我们首先对所有子节点递归地调用函数，然后根据返回值和根节点本身的值得到答案。 这个过程可以看作是**后序遍历**的一种。 通常， “自底向上” 的递归函数 `bottom_up(root)` 为如下所示：
+
+```
+return specific value for null node
+left_ans = bottom_up(root.left)       // call function recursively for left child
+right_ans = bottom_up(root.right)     // call function recursively for right child
+return answers                        // answer <-- left_ans, right_ans, root.val
+```
+
+了解递归并利用递归解决问题并不容易。
+
+当遇到树问题时，请先思考一下两个问题：
+
+1. 你能确定一些参数，从该节点自身解决出发寻找答案吗？
+2. 你可以使用这些参数和节点本身的值来决定什么应该是传递给它子节点的参数吗？
+
+如果答案都是肯定的，那么请尝试使用 “`自顶向下`” 的递归来解决此问题。
+
+或者你可以这样思考：对于树中的任意一个节点，如果你知道它子节点的答案，你能计算出该节点的答案吗？ 如果答案是肯定的，那么 “`自底向上`” 的递归可能是一个不错的解决方法。
+
+## 常问的树面试问题
+
+找到一个二叉树的高度
+
+找到一个二叉搜索树中第 k 个最大值
+
+找到距离根部“k”个距离的节点
+
+找到一个二叉树中给定节点的祖先（ancestors）
 
 # 同时遍历两棵树
 
@@ -644,10 +730,11 @@ sub-tree 类型, 往往不好使用层次遍历?
 
 ## 前序序列化
 
-| File                                                                 | difficulty | etags                                                                                                                                | date-created                |
-| -------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- |
-| [[programming/basic/leetcode/606. 根据二叉树创建字符串\|606. 根据二叉树创建字符串]]   | easy       | <ul><li>#leetcode/tree/serialize</li></ul>                                                                                           | 2023-06-08-Thu, 7:27:39 pm  |
-| [[programming/basic/leetcode/331. 验证二叉树的前序序列化\|331. 验证二叉树的前序序列化]] | medium     | <ul><li>#leetcode/tree/serialize</li><li>#leetcode/graph/degree</li><li>#leetcode/unsolved</li></ul>                                 | 2023-06-08-Thu, 8:39:33 pm  |
-| [[programming/basic/leetcode/652. 寻找重复的子树\|652. 寻找重复的子树]]         | medium     | <ul><li>#leetcode/tree/serialize</li><li>#leetcode/hash-table</li><li>#leetcode/sub/consecutive</li><li>#leetcode/unsolved</li></ul> | 2023-06-09-Fri, 10:16:18 am |
+| File                                                                   | difficulty | etags                                                                                                                                | date-created                |
+| ---------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- |
+| [[programming/basic/leetcode/297. 二叉树的序列化与反序列化\|297. 二叉树的序列化与反序列化]] | hard       | <ul><li>#leetcode/tree/serialize</li><li>#leetcode/unsolved</li></ul>                                                                | 2023-06-08-Thu, 7:16:40 pm  |
+| [[programming/basic/leetcode/606. 根据二叉树创建字符串\|606. 根据二叉树创建字符串]]     | easy       | <ul><li>#leetcode/tree/serialize</li></ul>                                                                                           | 2023-06-08-Thu, 7:27:39 pm  |
+| [[programming/basic/leetcode/331. 验证二叉树的前序序列化\|331. 验证二叉树的前序序列化]]   | medium     | <ul><li>#leetcode/tree/serialize</li><li>#leetcode/graph/degree</li><li>#leetcode/unsolved</li></ul>                                 | 2023-06-08-Thu, 8:39:33 pm  |
+| [[programming/basic/leetcode/652. 寻找重复的子树\|652. 寻找重复的子树]]           | medium     | <ul><li>#leetcode/tree/serialize</li><li>#leetcode/hash-table</li><li>#leetcode/sub/consecutive</li><li>#leetcode/unsolved</li></ul> | 2023-06-09-Fri, 10:16:18 am |
 
 { .block-language-dataview}
