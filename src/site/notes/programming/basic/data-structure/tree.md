@@ -389,76 +389,57 @@ removeNode 方法的复杂之处在于我们要处理不同的运行场景，当
 我们来看 removeNode 方法的实现：
 
 ```js
-var removeNode = function (node, key) {
-  if (node === null) {
-    //{2}
-    return null;
-  }
-  if (key < node.key) {
-    //{3}
-    node.left = removeNode(node.left, key); //{4}
-    return node; //{5}
-  } else if (key > node.key) {
-    //{6}
-    node.right = removeNode(node.right, key); //{7}
-    return node; //{8}
-  } else {
-    //键等于node.key
+var deleteNode = function (root, key) {
+    // 第一步找到节点, 根据 bst 的性质来递归是找的最快的
+    return dfs(root, key)
 
-    //第一种情况——一个叶节点
-    if (node.left === null && node.right === null) {
-      //{9}
-      node = null; //{10}
-      return node; //{11}
+    function dfs(node, key) {
+        if (node === null) return node;
+
+        if (node.val === key) {
+            // 执行删除逻辑
+            if (node.left === null && node.right === null) {
+                // 要删除的节点是叶子节点, 直接删除就好了
+                return null;
+            }
+            else if (node.left === null || node.right === null) {
+                // 要删除的节点仅有一个子节点, 直接拼接子节点就行, 依然符合 bst
+                return node.left || node.right
+            }
+            else {
+                // 要删除的节点有两个子节点, 要找到右子树中最小的那个节点, 才能维持 bst
+                let cur = node.right;
+                while (cur.left !== null) {
+                    prev = cur;
+                    cur = cur.left;
+                }
+
+                // 删除当前 node, 值替换
+                node.val = cur.val;
+                // 删除替换的 node, 引用删除
+                node.right = dfs(node.right, cur.val)
+                return node;
+            }
+        }
+        else if (key < node.val){
+            node.left = dfs(node.left, key);
+        }
+        else {
+            node.right = dfs(node.right, key);
+        }
+
+        return node;
     }
-
-    //第二种情况——一个只有一个子节点的节点
-    if (node.left === null) {
-      //{12}
-      node = node.right; //{13}
-      return node; //{14}
-    } else if (node.right === null) {
-      //{15}
-      node = node.left; //{16}
-      return node; //{17}
-    }
-
-    //第三种情况——一个有两个子节点的节点
-    var aux = findMinNode(node.right); //{18}
-    node.key = aux.key; //{19}
-    node.right = removeNode(node.right, aux.key); //{20}
-    return node; //{21}
-  }
 };
 ```
 
-我们来看行{2}，如果正在检测的节点是 null，那么说明键不存在于树中，所以返回 null。
-
-然后，我们要做的第一件事，就是在树中找到要移除的节点。因此，
-
-- 如果要找的键比当前节点的值小（行{3}），就沿着树的左边找到下一个节点（行{4}）。
-- 如果要找的键比当前节点的值大（行{6}），那么就沿着树的右边找到下一个节点（行{7}）。
-
 如果我们找到了要找的键（键和 node.key 相等），就需要处理三种不同的情况。
-
-findMinNode 方法如下：
-
-```js
-function findMinNode(node) {
-  while (node && node.left !== null) {
-    node = node.left;
-  }
-  return node;
-}
-```
 
 ### 移除一个叶节点
 
-第一种情况是该节点是一个没有左侧或右侧子节点的叶节点——行{9}。在这种情况下，我们要做的就是给这个节点赋予 null 值来移除它（行{9}）。但是当学习了链表的实现之后，我们知道仅仅赋一个 null 值是不够的，还需要处理指针。在这里，这个节点没有任何子节点，但是它有一个父节点，需要通过返回 null 来将对应的父节点指针赋予 null 值（行{11}）
+第一种情况是该节点是一个没有左侧或右侧子节点的叶节点——行。在这种情况下，我们要做的就是给这个节点赋予 null 值来移除它。但是当学习了链表的实现之后，我们知道仅仅赋一个 null 值是不够的，还需要处理指针。在这里，这个节点没有任何子节点，但是它有一个父节点，需要通过返回 null 来将对应的父节点指针赋予 null 值
 
 现在节点的值已经是 null 了，父节点指向它的指针也会接收到这个值，这也是我们要在函数中返回节点的值的原因。父节点总是会接收到函数的返回值。另一种可行的办法是将父节点和节点本身都作为参数传入方法内部
-
-如果回头来看方法的第一行代码，会发现我们在行{4}和行{7}更新了节点左右指针的值，同样也在行{5}和行{8}返回了更新后的节点
 
 下图展现了移除一个叶节点的过程
 
@@ -497,13 +478,15 @@ findMinNode 方法的实现和 min 方法的实现方式是一样的。唯一不
 
 ![449. 序列化和反序列化二叉搜索树](programming/basic/leetcode/449.%20序列化和反序列化二叉搜索树.md#Solution%20Tips)
 
-| File                                                                     | difficulty | etags                                                                                            | date-created               |
-| ------------------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------ | -------------------------- |
-| [[programming/basic/leetcode/449. 序列化和反序列化二叉搜索树\|449. 序列化和反序列化二叉搜索树]] | medium     | <ul><li>#leetcode/tree/traversal</li><li>#leetcode/unsolved</li><li>#leetcode/tree/bst</li></ul> | 2023-06-09-Fri, 3:12:46 pm |
-| [[programming/basic/leetcode/700. 二叉搜索树中的搜索\|700. 二叉搜索树中的搜索]]         | easy       | <ul><li>#leetcode/tree/bst</li><li>#leetcode/tree/traverse/sub-tree</li></ul>                    | 2023-06-09-Fri, 5:36:56 pm |
-| [[programming/basic/leetcode/530. 二叉搜索树的最小绝对差\|530. 二叉搜索树的最小绝对差]]     | easy       | <ul><li>#leetcode/tree/bst</li></ul>                                                             | 2023-06-09-Fri, 7:33:01 pm |
-| [[programming/basic/leetcode/538. 把二叉搜索树转换为累加树\|538. 把二叉搜索树转换为累加树]]   | medium     | <ul><li>#leetcode/tree/bst</li></ul>                                                             | 2023-06-09-Fri, 7:50:18 pm |
-| [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素\|230. 二叉搜索树中第K小的元素]]   | medium     | <ul><li>#leetcode/tree/bst</li><li>#leetcode/top-k</li></ul>                                     | 2023-06-09-Fri, 8:13:39 pm |
+| File                                                                     | difficulty | etags                                                                                            | date-created                |
+| ------------------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------ | --------------------------- |
+| [[programming/basic/leetcode/449. 序列化和反序列化二叉搜索树\|449. 序列化和反序列化二叉搜索树]] | medium     | <ul><li>#leetcode/tree/traversal</li><li>#leetcode/unsolved</li><li>#leetcode/tree/bst</li></ul> | 2023-06-09-Fri, 3:12:46 pm  |
+| [[programming/basic/leetcode/700. 二叉搜索树中的搜索\|700. 二叉搜索树中的搜索]]         | easy       | <ul><li>#leetcode/tree/bst</li><li>#leetcode/tree/traverse/sub-tree</li></ul>                    | 2023-06-09-Fri, 5:36:56 pm  |
+| [[programming/basic/leetcode/530. 二叉搜索树的最小绝对差\|530. 二叉搜索树的最小绝对差]]     | easy       | <ul><li>#leetcode/tree/bst</li></ul>                                                             | 2023-06-09-Fri, 7:33:01 pm  |
+| [[programming/basic/leetcode/538. 把二叉搜索树转换为累加树\|538. 把二叉搜索树转换为累加树]]   | medium     | <ul><li>#leetcode/tree/bst</li></ul>                                                             | 2023-06-09-Fri, 7:50:18 pm  |
+| [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素\|230. 二叉搜索树中第K小的元素]]   | medium     | <ul><li>#leetcode/tree/bst</li><li>#leetcode/top-k</li><li>#leetcode/avl</li></ul>               | 2023-06-09-Fri, 8:13:39 pm  |
+| [[programming/basic/leetcode/98. 验证二叉搜索树\|98. 验证二叉搜索树]]               | medium     | <ul><li>#leetcode/tree/bst</li></ul>                                                             | 2023-06-10-Sat, 12:51:22 pm |
+| [[programming/basic/leetcode/669. 修剪二叉搜索树\|669. 修剪二叉搜索树]]             | medium     | <ul><li>#leetcode/tree/bst</li></ul>                                                             | 2023-06-10-Sat, 3:59:42 pm  |
 
 { .block-language-dataview}
 
@@ -608,6 +591,30 @@ if (heightNode(node.left) - heightNode(node.right) > 1) {
 if (heightNode(node.right) - heightNode(node.left) > 1) {
   // 旋转 {4}
 }
+```
+
+### isBalanced()
+
+```js
+var isBalanced = function (root) {
+    return dfs(root) >= 0
+    
+    function dfs(node) {
+        if (node === null) return 0;
+
+        const leftHigh = dfs(node.left);
+        const rightHigh = dfs(node.right);
+
+        if (leftHigh === -1
+            || rightHigh === -1
+            || Math.abs(rightHigh - leftHigh) > 1
+        ) {
+            return -1;
+        }
+
+        return Math.max(leftHigh, rightHigh) + 1
+    }
+};
 ```
 
 ## AVL 旋转
