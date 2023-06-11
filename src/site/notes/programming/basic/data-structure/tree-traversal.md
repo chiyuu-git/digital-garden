@@ -198,9 +198,11 @@ var countNodes = function(node) {
 
 ### 中序遍历的迭代形式
 
-因为访问的顺序和处理的顺序是不一样的, 我们需要一个指针来记录当前需要处理的节点
+因为访问的顺序和处理的顺序是不一样的
 
-栈用来模拟遍历的顺序
+我们需要一个额外的指针来记录当前的节点, 该指针代表着遍历的顺序
+
+栈表示的是要处理的节点的顺序
 
 查看动图: [二叉树的中序遍历 - 二叉树的中序遍历 - 力扣（LeetCode）](https://leetcode.cn/problems/binary-tree-inorder-traversal/solution/er-cha-shu-de-zhong-xu-bian-li-by-leetcode-solutio/)
 
@@ -217,8 +219,11 @@ var inorderTraversal = function(root) {
         }
         cur = stack.pop();
         res.push(cur.val);
-        // 然后访问右子节点, 如果不为空那么下一轮遍历中就会继续访问其左子节点
-        // 若为空, 则再次弹出 stack 中元素进行处理, 此时即是: 左子节点处理完了, 右子节点为空, 那么就回去处理父节点了
+		// 因为 cur 会一直找到子树最左叶子节点, 所以 cur 一定会走如下的流程:
+		// 1. cur 是最左叶子节点, 处理完毕
+		// 2. 最左叶子节点的 cur.right 一定为 null, cur 回退到 mid, 左中都处理完了
+		// 3. 然后 中.right 如果为空, 那么将 左中是为一个整体, 这两组成的最左子树已经遍历完了, 再次回退到上一个 mid
+		// 4. 如果 中.right 不为空, 那么就对右子树重复 1 - 4 的流程
         cur = cur.right;
     }
     return res;
@@ -243,8 +248,8 @@ var postorderTraversal = function(root) {
         }
         cur = stack.pop();
         if (cur.right === null || cur.right === prev) {
-			// 右子节点为 null, 右子树已经处理完了
-			// 右子节点为 prev, 右子树也已经处理完了
+			// 右子节点为 null, cur 一定是左叶子节点, 直接处理
+			// 右子节点为 prev, 右子树也已经处理完了, 避免重复递归
             res.push(cur.val);
             prev = cur;
             // next loop will pop
