@@ -472,24 +472,6 @@ findMinNode 方法的实现和 min 方法的实现方式是一样的。唯一不
 
 ![1554618074255](/img/user/programming/basic/data-structure/tree/1554618074255.png)
 
-## 中序遍历与二叉搜索树
-
-二叉搜索树的一大特点就是
-
-![449. 序列化和反序列化二叉搜索树](programming/basic/leetcode/449.%20序列化和反序列化二叉搜索树.md#Solution%20Tips)
-
-| File                                                                     | difficulty | etags                                                                                            | date-created                |
-| ------------------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------ | --------------------------- |
-| [[programming/basic/leetcode/449. 序列化和反序列化二叉搜索树\|449. 序列化和反序列化二叉搜索树]] | medium     | <ul><li>#leetcode/tree/traversal</li><li>#leetcode/unsolved</li><li>#leetcode/tree/bst</li></ul> | 2023-06-09-Fri, 3:12:46 pm  |
-| [[programming/basic/leetcode/700. 二叉搜索树中的搜索\|700. 二叉搜索树中的搜索]]         | easy       | <ul><li>#leetcode/tree/bst</li><li>#leetcode/tree/traverse/sub-tree</li></ul>                    | 2023-06-09-Fri, 5:36:56 pm  |
-| [[programming/basic/leetcode/530. 二叉搜索树的最小绝对差\|530. 二叉搜索树的最小绝对差]]     | easy       | <ul><li>#leetcode/tree/bst</li></ul>                                                             | 2023-06-09-Fri, 7:33:01 pm  |
-| [[programming/basic/leetcode/538. 把二叉搜索树转换为累加树\|538. 把二叉搜索树转换为累加树]]   | medium     | <ul><li>#leetcode/tree/bst</li></ul>                                                             | 2023-06-09-Fri, 7:50:18 pm  |
-| [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素\|230. 二叉搜索树中第K小的元素]]   | medium     | <ul><li>#leetcode/tree/bst</li><li>#leetcode/top-k</li><li>#leetcode/avl</li></ul>               | 2023-06-09-Fri, 8:13:39 pm  |
-| [[programming/basic/leetcode/98. 验证二叉搜索树\|98. 验证二叉搜索树]]               | medium     | <ul><li>#leetcode/tree/bst</li></ul>                                                             | 2023-06-10-Sat, 12:51:22 pm |
-| [[programming/basic/leetcode/669. 修剪二叉搜索树\|669. 修剪二叉搜索树]]             | medium     | <ul><li>#leetcode/tree/bst</li></ul>                                                             | 2023-06-10-Sat, 3:59:42 pm  |
-
-{ .block-language-dataview}
-
 # AVL 自平衡树
 
 BST 存在一个问题：取决于你添加的节点数，树的一条边可能会非常深；也就是说，树的一条分支会有很多层，而其他的分支却只有几层。
@@ -837,6 +819,43 @@ tree.insert(11);
 
 ## 完成 Remove 方法
 
+# 中序遍历与二叉搜索树
+
+二叉搜索树的一大特点就是
+
+![449. 序列化和反序列化二叉搜索树](programming/basic/leetcode/449.%20序列化和反序列化二叉搜索树.md#Solution%20Tips)
+
+| File                                                                     | difficulty | etags                                                                                                                               | date-created                |
+| ------------------------------------------------------------------------ | ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| [[programming/basic/leetcode/449. 序列化和反序列化二叉搜索树\|449. 序列化和反序列化二叉搜索树]] | medium     | <ul><li>#leetcode/tree/traversal</li><li>#leetcode/unsolved</li><li>#leetcode/tree/bst</li></ul>                                    | 2023-06-09-Fri, 3:12:46 pm  |
+| [[programming/basic/leetcode/700. 二叉搜索树中的搜索\|700. 二叉搜索树中的搜索]]         | easy       | <ul><li>#leetcode/tree/bst</li><li>#leetcode/tree/traverse/sub-tree</li></ul>                                                       | 2023-06-09-Fri, 5:36:56 pm  |
+| [[programming/basic/leetcode/530. 二叉搜索树的最小绝对差\|530. 二叉搜索树的最小绝对差]]     | easy       | <ul><li>#leetcode/tree/bst</li></ul>                                                                                                | 2023-06-09-Fri, 7:33:01 pm  |
+| [[programming/basic/leetcode/538. 把二叉搜索树转换为累加树\|538. 把二叉搜索树转换为累加树]]   | medium     | <ul><li>#leetcode/tree/bst</li></ul>                                                                                                | 2023-06-09-Fri, 7:50:18 pm  |
+| [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素\|230. 二叉搜索树中第K小的元素]]   | medium     | <ul><li>#leetcode/tree/bst</li><li>#leetcode/top-k</li><li>#leetcode/avl</li></ul>                                                  | 2023-06-09-Fri, 8:13:39 pm  |
+| [[programming/basic/leetcode/98. 验证二叉搜索树\|98. 验证二叉搜索树]]               | medium     | <ul><li>#leetcode/tree/bst</li></ul>                                                                                                | 2023-06-10-Sat, 12:51:22 pm |
+| [[programming/basic/leetcode/669. 修剪二叉搜索树\|669. 修剪二叉搜索树]]             | medium     | <ul><li>#leetcode/tree/bst</li></ul>                                                                                                | 2023-06-10-Sat, 3:59:42 pm  |
+| [[programming/basic/leetcode/95. 不同的二叉搜索树 II\|95. 不同的二叉搜索树 II]]       | medium     | <ul><li>#leetcode/dp/exhaustion</li><li>#leetcoe/tree/bst</li><li>#leetcode/unsolved</li><li>#leetcode/divide-and-conquer</li></ul> | 2023-06-11-Sun, 3:37:01 pm  |
+| [[programming/basic/leetcode/108. 将有序数组转换为二叉搜索树\|108. 将有序数组转换为二叉搜索树]] | easy       | <ul><li>#leetcoe/tree/bst</li><li>#leetcode/divide-and-conquer</li></ul>                                                            | 2023-06-11-Sun, 4:57:08 pm  |
+| [[programming/basic/leetcode/109. 有序链表转换二叉搜索树\|109. 有序链表转换二叉搜索树]]     | medium     | <ul><li>#leetcoe/tree/bst</li><li>#leetcode/divide-and-conquer</li><li>#leetcode/unsolved</li></ul>                                 | 2023-06-11-Sun, 6:46:29 pm  |
+
+{ .block-language-dataview}
+
+## Low & High 构造
+
+95
+
+108 都是这种题型, 还有好几题
+
+就是把二叉搜索树的升序排列特点利用来分治处理
+
+| File                                                                     | difficulty | etags                                                                                                                               | date-created               |
+| ------------------------------------------------------------------------ | ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| [[programming/basic/leetcode/95. 不同的二叉搜索树 II\|95. 不同的二叉搜索树 II]]       | medium     | <ul><li>#leetcode/dp/exhaustion</li><li>#leetcoe/tree/bst</li><li>#leetcode/unsolved</li><li>#leetcode/divide-and-conquer</li></ul> | 2023-06-11-Sun, 3:37:01 pm |
+| [[programming/basic/leetcode/108. 将有序数组转换为二叉搜索树\|108. 将有序数组转换为二叉搜索树]] | easy       | <ul><li>#leetcoe/tree/bst</li><li>#leetcode/divide-and-conquer</li></ul>                                                            | 2023-06-11-Sun, 4:57:08 pm |
+| [[programming/basic/leetcode/109. 有序链表转换二叉搜索树\|109. 有序链表转换二叉搜索树]]     | medium     | <ul><li>#leetcoe/tree/bst</li><li>#leetcode/divide-and-conquer</li><li>#leetcode/unsolved</li></ul>                                 | 2023-06-11-Sun, 6:46:29 pm |
+
+{ .block-language-dataview}
+
 # 红黑树
 
 尽管 AVL 树是自平衡的，其插入或移除节点的性能并不总是最好的。更好的选择是红黑树。
@@ -1075,61 +1094,6 @@ tree.insert(11);
       const top = stack.pop()
       const parentNode = top[0],
             parentState = top[1]
-    }
-  }
-  ```
-
-## [538. 把二叉搜索树转换为累加树](https://leetcode-cn.com/problems/convert-bst-to-greater-tree/)
-
-### 题目
-
-- 给定一个二叉搜索树（Binary Search Tree），把它转换成为累加树（Greater Tree)，使得每个节点的值是原来的节点值加上所有大于它的节点值之和。
-
-  ```
-  输入: 二叉搜索树:
-                5
-              /   \
-             2     13
-  
-  输出: 转换为累加树:
-               18
-              /   \
-            20     13
-  ```
-
-### 中序遍历 - 改
-
-- 根节点加上右节点，左节点加上中节点
-
-  ```js
-  var convertBST = function(root) {
-    if(root===null) return null
-    inorder(root)
-    return root
-    function inorder(node){
-      if(node===null) return
-      inorder(node.right)
-      node.val += node.right.val
-      inroder(node.left)
-    }
-  }
-  ```
-
-- 想法错了，中节点也要考虑右节点的左节点的值
-- 修正：用一个私有变量保存累加值
-
-  ```js
-  var convertBST = function(root) {
-    if(root===null) return null
-    let sum = 0
-    inorder(root)
-    return root
-    function inorder(node){
-      if(node===null) return
-      inorder(node.right)
-      node.val +=sum
-      sum = node.val
-      inorder(node.left)
     }
   }
   ```
