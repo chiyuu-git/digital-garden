@@ -866,39 +866,14 @@ tree.insert(11);
 
 # 二叉树变换
 
-## [106. 从中序与后序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)
+同样是分治的思想
 
-### 实现
+| File                                                                         | difficulty | etags                                                                                                              | date-created                |
+| ---------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------- |
+| [[programming/basic/leetcode/105. 从前序与中序遍历序列构造二叉树\|105. 从前序与中序遍历序列构造二叉树]] | medium     | <ul><li>#leetcode/tree/traverse/sub-tree</li><li>#leetcode/divide-and-conquer</li><li>#leetcode/unsolved</li></ul> | 2023-06-12-Mon, 2:25:56 pm  |
+| [[programming/basic/leetcode/106. 从中序与后序遍历序列构造二叉树\|106. 从中序与后序遍历序列构造二叉树]] | medium     | <ul><li>#leetcode/tree/traverse/sub-tree</li><li>#leetcode/divide-and-conquer</li><li>#leetcode/unsolved</li></ul> | 2023-06-13-Tue, 10:14:12 am |
 
-```js
-  function TreeNode(val) {
-    this.val = val;
-    this.left = this.right = null;
-  }
-  var buildTree = function(inorder,postorder) {
-    let postIndex = postorder.length-1
-    const map = {}
-    for (const [index,val] of inorder.entries()) {
-      map[val] = index
-    }
-    return helper(0,inorder.length)
-  
-    function helper(left,right){
-      if(left===right) return null
-  
-      // 根据后序遍历获得根节点
-      const rootVal = postorder[postIndex]
-      const root = new TreeNode(rootVal)
-  
-      // 根据中序遍历分为左右树
-      const index = map[rootVal]
-      postIndex--
-      root.right = helper(index+1,right)
-      root.left = helper(left,index)
-      return root
-    }
-  }
-```
+{ .block-language-dataview}
 
 ## [236. 二叉树的最近公共祖先](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/)
 
