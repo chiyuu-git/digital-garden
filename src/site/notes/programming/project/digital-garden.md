@@ -33,3 +33,7 @@
 通过 CNAME 指向服务
 
 [How to Resolve the "err\_too\_many\_redirects" Error](https://vercel.com/guides/resolve-err-too-many-redirects-when-using-cloudflare-proxy-with-vercel)
+
+# 博客优化参考
+
+[编程技术系列文章 · BMPI](https://www.bmpi.dev/dev/)
