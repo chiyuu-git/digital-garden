@@ -99,10 +99,10 @@ hard 没有思路就直接看答案, 一般都不会考这么难的
 
 | File                                                                                                                           | solution tips overview                                          |
 | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- |
-| [[programming/basic/leetcode/645. Set Mismatch\|645. Set Mismatch]]                                                         | [[programming/basic/leetcode/645. Set Mismatch#solution tips\|645. Set Mismatch#solution tips]]                             |
-| [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array\|448. Find All Numbers Disappeared in an Array]] | [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array#solution tips\|448. Find All Numbers Disappeared in an Array#solution tips]] |
-| [[programming/basic/leetcode/442. Find All Duplicates in an Array\|442. Find All Duplicates in an Array]]                   | [[programming/basic/leetcode/442. Find All Duplicates in an Array#solution tips\|442. Find All Duplicates in an Array#solution tips]]          |
 | [[programming/basic/leetcode/41. First Missing Positive\|41. First Missing Positive]]                                       | [[programming/basic/leetcode/41. First Missing Positive#solution tips\|41. First Missing Positive#solution tips]]                    |
+| [[programming/basic/leetcode/442. Find All Duplicates in an Array\|442. Find All Duplicates in an Array]]                   | [[programming/basic/leetcode/442. Find All Duplicates in an Array#solution tips\|442. Find All Duplicates in an Array#solution tips]]          |
+| [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array\|448. Find All Numbers Disappeared in an Array]] | [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array#solution tips\|448. Find All Numbers Disappeared in an Array#solution tips]] |
+| [[programming/basic/leetcode/645. Set Mismatch\|645. Set Mismatch]]                                                         | [[programming/basic/leetcode/645. Set Mismatch#solution tips\|645. Set Mismatch#solution tips]]                             |
 
 { .block-language-dataview}
 
@@ -110,9 +110,9 @@ hard 没有思路就直接看答案, 一般都不会考这么难的
 
 | File                                                                                                           | solution tips overview                                  |
 | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| [[programming/basic/leetcode/628. Maximum Product of Three Numbers\|628. Maximum Product of Three Numbers]] | [[programming/basic/leetcode/628. Maximum Product of Three Numbers#solution tips\|628. Maximum Product of Three Numbers#solution tips]] |
-| [[programming/basic/leetcode/414. Third Maximum Number\|414. Third Maximum Number]]                         | [[programming/basic/leetcode/414. Third Maximum Number#solution tips\|414. Third Maximum Number#solution tips]]             |
 | [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素\|230. 二叉搜索树中第K小的元素]]                                         | [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素#solution tips\|230. 二叉搜索树中第K小的元素#solution tips]]                     |
+| [[programming/basic/leetcode/414. Third Maximum Number\|414. Third Maximum Number]]                         | [[programming/basic/leetcode/414. Third Maximum Number#solution tips\|414. Third Maximum Number#solution tips]]             |
+| [[programming/basic/leetcode/628. Maximum Product of Three Numbers\|628. Maximum Product of Three Numbers]] | [[programming/basic/leetcode/628. Maximum Product of Three Numbers#solution tips\|628. Maximum Product of Three Numbers#solution tips]] |
 
 { .block-language-dataview}
 
@@ -127,8 +127,8 @@ hard 没有思路就直接看答案, 一般都不会考这么难的
 
 | File                                                         | overview                       |
 | ------------------------------------------------------------ | ------------------------------ |
-| [[programming/basic/leetcode/636. 函数的独占时间\|636. 函数的独占时间]] | [[programming/basic/leetcode/636. 函数的独占时间#solution tips\|636. 函数的独占时间#solution tips]] |
 | [[programming/basic/leetcode/495. 提莫攻击\|495. 提莫攻击]]       | [[programming/basic/leetcode/495. 提莫攻击#solution tips\|495. 提莫攻击#solution tips]]    |
+| [[programming/basic/leetcode/636. 函数的独占时间\|636. 函数的独占时间]] | [[programming/basic/leetcode/636. 函数的独占时间#solution tips\|636. 函数的独占时间#solution tips]] |
 
 { .block-language-dataview}
 
@@ -314,8 +314,8 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 | [[programming/basic/leetcode/423. 从英文中重建数字\|423. 从英文中重建数字]]                                                                 | medium     | <ul><li>#leetcode/string/hash-table</li></ul>                                                                                                                                | false    | 2023-05-14-Sun, 1:29:08 am  |
 | [[programming/basic/leetcode/451. 根据字符出现频率排序\|451. 根据字符出现频率排序]]                                                             | medium     | <ul><li>#leetcode/string/hash-table</li><li>#leetcode/bucket-sort</li></ul>                                                                                                  | false    | 2023-05-14-Sun, 1:29:08 am  |
 | [[programming/basic/leetcode/49. 字母异位词分组\|49. 字母异位词分组]]                                                                     | medium     | <ul><li>#leetcode/string/ascii</li><li>#leetcode/string/sort</li><li>#leetcode/string/hash-table</li></ul>                                                                   | false    | 2023-05-14-Sun, 1:29:08 am  |
-| [[programming/basic/leetcode/125. Valid Palindrome\|125. Valid Palindrome]]                                                 | easy       | <ul><li>#leetcode/palindrome</li></ul>                                                                                                                                       | false    | 2023-05-13-Sat, 1:29:08 am  |
 | [[programming/basic/leetcode/14. Longest Common Prefix\|14. Longest Common Prefix]]                                         | easy       | <ul><li>#leetcode/longest-common-prefix</li></ul>                                                                                                                            | false    | 2023-05-13-Sat, 1:29:08 am  |
+| [[programming/basic/leetcode/125. Valid Palindrome\|125. Valid Palindrome]]                                                 | easy       | <ul><li>#leetcode/palindrome</li></ul>                                                                                                                                       | false    | 2023-05-13-Sat, 1:29:08 am  |
 | [[programming/basic/leetcode/520. Detect Capital\|520. Detect Capital]]                                                     | easy       | <ul><li>#leetcode/string</li></ul>                                                                                                                                           | false    | 2023-05-13-Sat, 1:29:08 am  |
 | [[programming/basic/leetcode/541. 反转字符串 II\|541. 反转字符串 II]]                                                                 | easy       | <ul><li>#leetcode/string/reverse</li></ul>                                                                                                                                   | false    | 2023-05-13-Sat, 1:29:08 am  |
 | [[programming/basic/leetcode/238. 除自身以外数组的乘积\|238. 除自身以外数组的乘积]]                                                             | medium     | <ul><li>#leetcode/prefix-sum</li></ul>                                                                                                                                       | false    | 2023-05-10-Wed, 1:29:08 am  |
