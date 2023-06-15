@@ -834,9 +834,10 @@ tree.insert(11);
 | [[programming/basic/leetcode/530. 二叉搜索树的最小绝对差\|530. 二叉搜索树的最小绝对差]]     | easy       | <ul><li>#leetcode/tree/bst</li></ul>                                                                                                | 2023-06-09-Fri, 7:33:01 pm  |
 | [[programming/basic/leetcode/538. 把二叉搜索树转换为累加树\|538. 把二叉搜索树转换为累加树]]   | medium     | <ul><li>#leetcode/tree/bst</li></ul>                                                                                                | 2023-06-09-Fri, 7:50:18 pm  |
 | [[programming/basic/leetcode/669. 修剪二叉搜索树\|669. 修剪二叉搜索树]]             | medium     | <ul><li>#leetcode/tree/bst</li></ul>                                                                                                | 2023-06-10-Sat, 3:59:42 pm  |
-| [[programming/basic/leetcode/700. 二叉搜索树中的搜索\|700. 二叉搜索树中的搜索]]         | easy       | <ul><li>#leetcode/tree/bst</li><li>#leetcode/tree/traverse/sub-tree</li></ul>                                                       | 2023-06-09-Fri, 5:36:56 pm  |
+| [[programming/basic/leetcode/700. 二叉搜索树中的搜索\|700. 二叉搜索树中的搜索]]         | easy       | <ul><li>#leetcode/tree/bst</li><li>#leetcode/tree/traversal/sub-tree</li></ul>                                                      | 2023-06-09-Fri, 5:36:56 pm  |
 | [[programming/basic/leetcode/95. 不同的二叉搜索树 II\|95. 不同的二叉搜索树 II]]       | medium     | <ul><li>#leetcode/dp/exhaustion</li><li>#leetcoe/tree/bst</li><li>#leetcode/unsolved</li><li>#leetcode/divide-and-conquer</li></ul> | 2023-06-11-Sun, 3:37:01 pm  |
 | [[programming/basic/leetcode/98. 验证二叉搜索树\|98. 验证二叉搜索树]]               | medium     | <ul><li>#leetcode/tree/bst</li></ul>                                                                                                | 2023-06-10-Sat, 12:51:22 pm |
+| [[programming/basic/leetcode/235. 二叉搜索树的最近公共祖先\|235. 二叉搜索树的最近公共祖先]]   | medium     | <ul><li>#leetcode/tree/traversal</li><li>#leetcode/tree/bst</li><li>#leetcode/tree/ansector</li></ul>                               | 2023-06-15-Thu, 11:48:03 am |
 
 { .block-language-dataview}
 
@@ -868,10 +869,10 @@ tree.insert(11);
 
 同样是分治的思想
 
-| File                                                                         | difficulty | etags                                                                                                              | date-created                |
-| ---------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------- |
-| [[programming/basic/leetcode/105. 从前序与中序遍历序列构造二叉树\|105. 从前序与中序遍历序列构造二叉树]] | medium     | <ul><li>#leetcode/tree/traverse/sub-tree</li><li>#leetcode/divide-and-conquer</li><li>#leetcode/unsolved</li></ul> | 2023-06-12-Mon, 2:25:56 pm  |
-| [[programming/basic/leetcode/106. 从中序与后序遍历序列构造二叉树\|106. 从中序与后序遍历序列构造二叉树]] | medium     | <ul><li>#leetcode/tree/traverse/sub-tree</li><li>#leetcode/divide-and-conquer</li><li>#leetcode/unsolved</li></ul> | 2023-06-13-Tue, 10:14:12 am |
+| File                                                                         | difficulty | etags                                                                                                               | date-created                |
+| ---------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| [[programming/basic/leetcode/105. 从前序与中序遍历序列构造二叉树\|105. 从前序与中序遍历序列构造二叉树]] | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/divide-and-conquer</li><li>#leetcode/unsolved</li></ul> | 2023-06-12-Mon, 2:25:56 pm  |
+| [[programming/basic/leetcode/106. 从中序与后序遍历序列构造二叉树\|106. 从中序与后序遍历序列构造二叉树]] | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/divide-and-conquer</li><li>#leetcode/unsolved</li></ul> | 2023-06-13-Tue, 10:14:12 am |
 
 { .block-language-dataview}
 
