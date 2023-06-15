@@ -1154,6 +1154,8 @@ xhr.open();
 
 这几个事件, 兼容性非常好, 可以放心使用
 
+## 和 Change Input 的区别是什么?
+
 # beforeInput
 
 DOM 事件 **`beforeinput`** 在 [`<input>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input), [`<select>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select) 或 [`<textarea>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea) 的值即将被修改前触发。这个事件也可以在 [`contenteditable`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/contentEditable "contenteditable") 被设置为 `true` 的元素和打开 [`designMode`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/designMode "designMode") 后的任何元素上被触发。
