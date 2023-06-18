@@ -317,15 +317,113 @@ var postorder = function(root) {
 
 当他的 mostRight 指向 null 时，就是第一次访问，当他的 mostRight 指向 cur 时，就是第二次访问。
 
-[神级遍历——morris - 知乎](https://zhuanlan.zhihu.com/p/101321696)
-
 [【数据结构与算法】Morris遍历详解 - 掘金](https://juejin.cn/post/7021341254457753631)
 
-[经典算法小评(2)——Morris树遍历算法](https://ghh3809.github.io/2018/08/06/morris-traversal/)
+### 前驱节点
 
-[Morris Traversal方法遍历二叉树（非递归，不用栈，O(1)空间） - AnnieKim - 博客园](https://www.cnblogs.com/anniekim/archive/2013/06/15/morristraversal.html)
+指的是前中后序任意一种遍历顺序中, 当前节点的前一个遍历的节点.
 
-[Morris遍历（值得学习的二叉树遍历方法）\_Lazy mode的博客-CSDN博客](https://blog.csdn.net/Codeoh/article/details/108738591)
+对于中序遍历来说, 左中右, 左就是中的前躯节点.
+
+对于一个复杂的二叉树来说, 中的前躯节点是左子树的最右子节点
+
+morris 遍历的最大特征就是通过找到前躯节点, 让前驱节点的空闲指针指向后驱节点, 以此来省略调用栈带来的空间复杂度.
+
+但是寻找前驱节点的过程会造成时间复杂度的上升, 但是总体还是 On 复杂度
+
+### 中序遍历
+
+我们在中序遍历的时候，一定先遍历左子树，然后遍历当前节点，最后遍历右子树。
+
+在常规方法中，我们用递归回溯或者是栈来保证遍历完左子树可以再回到当前节点，但这需要我们付出额外的空间代价。
+
+我们需要用一种巧妙地方法可以在 O(1) 的空间下，**遍历完左子树可以再回到当前节点**。我们希望当前的节点在遍历完当前点的前驱之后被遍历，我们可以考虑修改它的前驱节点的 right 指针。当前节点的前驱节点的 right 指针可能本来就指向当前节点（前驱是当前节点的父节点），也可能是当前节点左子树最右下的节点。如果是后者，我们希望遍历完这个前驱节点之后再回到当前节点，可以将它的 right 指针指向当前节点。
+
+Morris 中序遍历的一个重要步骤就是寻找当前节点的前驱节点，并且 Morris 中序遍历寻找下一个点始终是通过转移到 right 指针指向的位置来完成的。
+
++ 如果当前节点没有左子树，则遍历这个点，然后跳转到当前节点的右子树。
++ 如果当前节点有左子树，那么它的前驱节点一定在左子树上，我们可以在左子树上一直向右行走，找到当前点的前驱节点。
+  + 如果前驱节点没有右子树，就将前驱节点的 right 指针指向当前节点。这一步是为了在遍历完前驱节点后能找到前驱节点的后继，也就是当前节点。
+  + 如果前驱节点的右子树为当前节点，说明前驱节点已经被遍历过并被修改了 right 指针，这个时候我们重新将前驱的右孩子设置为空，遍历当前的点，然后跳转到当前节点的右子树。
+
+因此我们可以得到这样的代码框架:
+
+```js
+var morris = function(root) {
+    let cur = root
+    // 用于记录前驱节点, 想要与 previous 区分开来, 用的 front
+    let front = null;
+    while (cur !== null) {
+        if (cur.left === null) {
+			// 遍历 cur, 遍历的是叶子节点, 并且让 cur 回到后驱节点去了
+            console.log(cur.val);
+            cur = cur.right;
+            continue;
+        }
+        front = cur.left;
+        // 找到前驱节点
+        while (front.right !== null && front.right !== cur) {
+            front = front.right;
+        }
+        if (front.right === null) {
+            // 绑定后驱节点
+            front.right = cur;
+            cur = cur.left;
+        } else {
+            front.right = null;
+            // 遍历 cur, 遍历的是左中右的中, 同时让 cur 继续处理右子树
+            console.log(cur.val);
+            cur = cur.right;
+        }
+    }
+    return answer;
+};
+```
+
+```js
+var findMode = function(root) {
+    let base = 0, count = 0, maxCount = 0;
+    let answer = [];
+
+    const update = (x) => {
+        if (x === base) {
+            ++count;
+        } else {
+            count = 1;
+            base = x;
+        }
+        if (count === maxCount) {
+            answer.push(base);
+        }
+        if (count > maxCount) {
+            maxCount = count;
+            answer = [base];
+        }
+    }
+
+    let cur = root, pre = null;
+    while (cur !== null) {
+        if (cur.left === null) {
+            update(cur.val);
+            cur = cur.right;
+            continue;
+        }
+        pre = cur.left;
+        while (pre.right !== null && pre.right !== cur) {
+            pre = pre.right;
+        }
+        if (pre.right === null) {
+            pre.right = cur;
+            cur = cur.left;
+        } else {
+            pre.right = null;
+            update(cur.val);
+            cur = cur.right;
+        }
+    }
+    return answer;
+};
+```
 
 # 广度优先遍历
 
