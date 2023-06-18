@@ -32,14 +32,15 @@ hard 没有思路就直接看答案, 一般都不会考这么难的
 	+ 388 没做, 看着就烦
 	+ 括号匹配: 32 没做
 	+ 递归的也先不做, 因为这里的重点是如何用栈去解决递归问题, 得想学好递归再回来简化
- + 链表最后一题没做
- + 哈希表
-	 + 哈希表最后一题没做
-  + 贪心算法都没有做, 等之后和动态规划一起处理吧
-  + 双指针
-	  + 头尾指针, 最后一题接雨水没做, 属于动态规划 + 栈的复合题目, 最后再总结吧
-	  + 滑动窗口, 最后两道困难题没有做, 留着总结完之后再尝试吧
-	  + 快慢指针最后一题, 多方法没做的
++ 链表最后一题没做
++ 哈希表
+ + 哈希表最后一题没做
++ 贪心算法都没有做, 等之后和动态规划一起处理吧
++ 双指针
+  + 头尾指针, 最后一题接雨水没做, 属于动态规划 + 栈的复合题目, 最后再总结吧
+  + 滑动窗口, 最后两道困难题没有做, 留着总结完之后再尝试吧
+  + 快慢指针最后一题, 多方法没做的
++ 四叉树没做
 
 ### 题解大全
 
@@ -51,7 +52,9 @@ hard 没有思路就直接看答案, 一般都不会考这么难的
 + https://leetcode-solution-leetcode-pp.gitbook.io/leetcode-solution/medium/get-kth-magic-number-lcci
 + [ac_oier - 力扣（LeetCode）](https://leetcode.cn/u/ac_oier/)
 + https://xiaochen1024.com/series/6196129fc1553b002e57bef5/6196208ec1553b002e57bef6
+
 [搞定大厂算法面试之leetcode精讲](https://xiaochen1024.com/courseware/60b4f11ab1aa91002eb53b18)
+
 # 总结
 
 深度遍历与栈，深度遍历可以通过栈形式的迭代代替
@@ -60,11 +63,13 @@ hard 没有思路就直接看答案, 一般都不会考这么难的
 
 ## 递归改迭代
 
-用一个额外的变量维护结果. 
+用一个额外的变量维护结果.
+
 + 链表的 prev cur
 + 树的层次遍历队列
 
 [[programming/basic/data-structure/linked-list\|linked-list]]
+
 [[programming/basic/data-structure/tree-traversal\|../data-structure/tree-traversal]]
 
 两种数据结构都很常使用递归和迭代, 可以稍微总结一下递归的套路、迭代的套路
@@ -180,6 +185,9 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 
 | File                                                                                                                           | difficulty | etags                                                                                                                                                                        | unsolved | date-created                |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------- |
+| [[programming/basic/leetcode/99. 恢复二叉搜索树\|99. 恢复二叉搜索树]]                                                                     | medium     | <ul><li>#leetcode/tree/traversal</li><li>#leetcode/unsolved</li></ul>                                                                                                        | true     | 2023-06-17-Sat, 9:32:40 pm  |
+| [[programming/basic/leetcode/501. 二叉搜索树中的众数\|501. 二叉搜索树中的众数]]                                                               | medium     | <ul><li>#leetcode/tree/traversal/morris</li><li>#leetcode/hash-table/count</li></ul>                                                                                         | false    | 2023-06-16-Fri, 10:36:36 am |
+| [[programming/basic/leetcode/236. 二叉树的最近公共祖先\|236. 二叉树的最近公共祖先]]                                                             | medium     | <ul><li>#leetcode/tree/traversal</li><li>#leetcode/tree/ansector</li><li>#leetcode/unsolved</li></ul>                                                                        | true     | 2023-06-15-Thu, 7:20:18 pm  |
 | [[programming/basic/leetcode/235. 二叉搜索树的最近公共祖先\|235. 二叉搜索树的最近公共祖先]]                                                         | medium     | <ul><li>#leetcode/tree/traversal</li><li>#leetcode/tree/bst</li><li>#leetcode/tree/ansector</li></ul>                                                                        | false    | 2023-06-15-Thu, 11:48:03 am |
 | [[programming/basic/leetcode/114. 二叉树展开为链表\|114. 二叉树展开为链表]]                                                                 | medium     | <ul><li>#leetcode/tree/transform</li><li>#leetcode/linked-list/transoform</li></ul>                                                                                          | false    | 2023-06-14-Wed, 7:33:31 pm  |
 | [[programming/basic/leetcode/106. 从中序与后序遍历序列构造二叉树\|106. 从中序与后序遍历序列构造二叉树]]                                                   | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/divide-and-conquer</li><li>#leetcode/unsolved</li></ul>                                                          | true     | 2023-06-13-Tue, 10:14:12 am |
