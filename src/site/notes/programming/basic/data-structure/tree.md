@@ -48,6 +48,10 @@ According to Wikipedia, every level, except possibly the last, is completely fil
 
 对于每一棵二叉搜索树树（子树），根节点就是这些数据的**中位数** @@@
 
+### 线索二叉树
+
+[Morris 遍历](tree-traversal.md#Morris%20遍历)
+
 # BST 二叉搜索树
 
 ## Binary Search Tree 类
