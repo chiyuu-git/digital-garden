@@ -43,10 +43,6 @@ Size——获取数组内所有元素的总数
 
 重新排列数组中的正值和负值
 
-# Stack
-
-[stack](../data-structure/stack.md)
-
 # 队列
 
 与栈类似，队列是另一种线性数据结构，以顺序方式存储元素。只允许在表的前端（front）进行删除操作，在表的后端（end）进行插入操作，和栈一样，队列是一种操作受限制的线性表。进行插入操作的端称为**队尾**，进行删除操作的端称为**队首**。
@@ -540,10 +536,6 @@ console.log('The winner is: ' + winner);
   }
   ```
 
-# Linked-list
-
-[linked-list](../data-structure/linked-list.md)
-
 # 集合
 
 ## 概述
@@ -943,6 +935,7 @@ console.log('The winner is: ' + winner);
 ## ES6——Weak Map 类和 WeakSet 类
 
 除了 Set 和 Map 这两种新的数据结构，ES6 还增加了它们的弱化版本，WeakSet 和 WeakMap。
+
 基本上，Map 和 Set 与其弱化版本之间仅有的区别是：
 
   - WeakSet 或 WeakMap 类没有 entries、keys 和 values 等方法；
@@ -951,5 +944,3 @@ console.log('The winner is: ' + winner);
 创建和使用这两个类主要是为了性能。WeakSet 和 WeakMap 是弱化的（用对象作为键），没有强引用的键。这使得 JavaScript 的垃圾回收器可以从中清除整个入口。
 
 另一个优点是，必须用键才可以取出值。这些类没有 entries、keys 和 values 等迭代器方法，因此，除非你知道键，否则没有办法取出值。这印证了我们在第 3 章的做法，即使用 WeakMap 类封装 ES6 类的私有属性。
-
-+ 
