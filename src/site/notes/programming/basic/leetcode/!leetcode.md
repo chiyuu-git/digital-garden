@@ -80,6 +80,10 @@ hard 没有思路就直接看答案, 一般都不会考这么难的
 2. 确定单层递归的逻辑
 3. 需要用到什么参数就补充什么参数, 再确定返回值即可
 
+### 递归与回溯
+
+[backtracking](../algorithm/backtracking.md)
+
 ## Index 问题
 
 有 n 个 item, 每个 item 的 index 从 0 开始, 每个 item 的前后都可以插入新的 item
@@ -202,6 +206,11 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 
 | File                                                                                                                           | difficulty | etags                                                                                                                                                                        | unsolved | date-created                |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------- |
+| [[programming/basic/leetcode/216. 组合总和 III\|216. 组合总和 III]]                                                                 | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/backtracking/sub</li><li>#leetcode/sub/sequence</li></ul>                                                       | false    | 2023-06-21-Wed, 4:14:57 pm  |
+| [[programming/basic/leetcode/77. 组合\|77. 组合]]                                                                               | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/sub/sequence</li></ul>                                                                                          | false    | 2023-06-21-Wed, 2:45:54 pm  |
+| [[programming/basic/leetcode/526. 优美的排列\|526. 优美的排列]]                                                                       | medium     | <ul><li>#leetcode/backtracking</li><li>#leetcode/unsolved</li><li>#leetcode/dp/status-compression</li></ul>                                                                  | true     | 2023-06-20-Tue, 4:48:50 pm  |
+| [[programming/basic/leetcode/397. 整数替换\|397. 整数替换]]                                                                         | medium     | <ul><li>#leetcode/dp/memo</li><li>#leetcode/math</li><li>#leetcode/unsolved</li></ul>                                                                                        | true     | 2023-06-20-Tue, 2:55:57 pm  |
+| [[programming/basic/leetcode/17. 电话号码的字母组合\|17. 电话号码的字母组合]]                                                                 | medium     | <ul><li>#leetcode/backtracking/combination</li></ul>                                                                                                                         | false    | 2023-06-20-Tue, 2:25:19 pm  |
 | [[programming/basic/leetcode/565. 数组嵌套\|565. 数组嵌套]]                                                                         | medium     | <ul><li>#leetcode/graph/circle</li><li>#leetcode/space/in-place</li><li>#leetcode/unsovled</li><li>#leetcode/array/natural-array</li></ul>                                   | false    | 2023-06-18-Sun, 9:45:38 pm  |
 | [[programming/basic/leetcode/99. 恢复二叉搜索树\|99. 恢复二叉搜索树]]                                                                     | medium     | <ul><li>#leetcode/tree/traversal</li><li>#leetcode/unsolved</li></ul>                                                                                                        | true     | 2023-06-17-Sat, 9:32:40 pm  |
 | [[programming/basic/leetcode/501. 二叉搜索树中的众数\|501. 二叉搜索树中的众数]]                                                               | medium     | <ul><li>#leetcode/tree/traversal/morris</li><li>#leetcode/hash-table/count</li></ul>                                                                                         | false    | 2023-06-16-Fri, 10:36:36 am |
@@ -375,6 +384,5 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 | [[programming/basic/leetcode/485. 最大连续 1 的个数\|485. 最大连续 1 的个数]]                                                             | easy       | <ul><li>#leetcode/array/traversal</li></ul>                                                                                                                                  | false    | 2022-09-08-Thu, 10:33:59 pm |
 | [[programming/basic/leetcode/495. 提莫攻击\|495. 提莫攻击]]                                                                         | easy       | <ul><li>#leetcode/array/traversal</li><li>#leetcode/time-sequence</li></ul>                                                                                                  | false    | 2022-09-07-Wed, 11:17:06 pm |
 | [[programming/basic/leetcode/628. Maximum Product of Three Numbers\|628. Maximum Product of Three Numbers]]                 | easy       | <ul><li>#leetcode/pattern/categorized-discussion</li><li>#leetcode/top-k</li><li>#leetcode/math</li></ul>                                                                    | false    | 2022-09-06-Tue, 11:09:41 pm |
-| [[programming/basic/leetcode/Untitled\|Untitled]]                                                                           | \-         | <ul><li>#leetcode</li></ul>                                                                                                                                                  | false    | \-                          |
 
 { .block-language-dataview}
