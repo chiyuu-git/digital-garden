@@ -37,6 +37,20 @@
 + [633. 平方数之和](../leetcode/633.%20平方数之和.md)
 + [11. 盛最多水的容器](../leetcode/11.%20盛最多水的容器.md) 单纯的头尾指针
 
+| File                                                                             | difficulty | etags                                                                                                                                          |
+| -------------------------------------------------------------------------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| [[programming/basic/leetcode/633. 平方数之和\|633. 平方数之和]]                         | medium     | <ul><li>#leetcode/math/squre</li><li>#leetcode/pointer/collision-pointer</li></ul>                                                             |
+| [[programming/basic/leetcode/167. 两数之和 II - 输入有序数组\|167. 两数之和 II - 输入有序数组]]   | medium     | <ul><li>#leetcode/pointer/collision-pointer</li><li>#leetcode/binary-search</li><li>#leetcode/unsolved</li></ul>                               |
+| [[programming/basic/leetcode/18. 四数之和\|18. 四数之和]]                             | medium     | <ul><li>#leetcode/hash-table/count</li><li>#leetcode/pointer/collision-pointer</li><li>#leetcode/skip-dup</li></ul>                            |
+| [[programming/basic/leetcode/345. 反转字符串中的元音字母\|345. 反转字符串中的元音字母]]             | easy       | <ul><li>#leetcode/pointer/collision-pointer</li></ul>                                                                                          |
+| [[programming/basic/leetcode/680. 验证回文串 II\|680. 验证回文串 II]]                   | easy       | <ul><li>#leetcode/pointer/collision-pointer</li><li>#leetcode/palindrome</li></ul>                                                             |
+| [[programming/basic/leetcode/15. 三数之和\|15. 三数之和]]                             | medium     | <ul><li>#leetcode/pointer/collision-pointer</li><li>#leetcode/skip-dup</li></ul>                                                               |
+| [[programming/basic/leetcode/16. 最接近的三数之和\|16. 最接近的三数之和]]                     | medium     | <ul><li>#leetcode/pointer/collision-pointer</li><li>#leetcode/unsolved</li></ul>                                                               |
+| [[programming/basic/leetcode/27. 移除元素\|27. 移除元素]]                             | easy       | <ul><li>#leetcode/pointer/collision-pointer</li><li>#leetcode/pointer/fast-slow</li><li>#leetcode/space/in-place</li></ul>                     |
+| [[programming/basic/leetcode/653. 两数之和 IV - 输入二叉搜索树\|653. 两数之和 IV - 输入二叉搜索树]] | easy       | <ul><li>#leetcode/tree/traversal</li><li>#leetcode/hash-table</li><li>#leetcode/unsolved</li><li>#leetcode/pointer/collision-pointer</li></ul> |
+
+{ .block-language-dataview}
+
 哈希表:
 
 + [1. 两数之和](../leetcode/1.%20两数之和.md)
