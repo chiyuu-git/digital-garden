@@ -16,12 +16,30 @@
 ## 回溯的常用场景
 
 1. 组合问题：N 个数里面按一定规则找出 k 个数的集合
-2. 切割问题：一个字符串按一定规则有几种切割方式
+2. 切割问题：一个字符串按一定规则有几种切割方式 (切割问题, 其实是一种组合问题)
 3. 子集问题：一个 N 个数的集合里有多少符合条件的子集
 4. 排列问题：N 个数按一定规则全排列，有几种排列方式
 5. 棋盘问题：N 皇后，解数独等等
 
 for 循环不能解决的穷举问题
+
+### 什么时候使用 Used 数组，什么时候使用 Begin 变量
+
+有些朋友可能会疑惑什么时候使用 used 数组，什么时候使用 begin 变量。这里为大家简单总结一下：
+
+排列问题，讲究顺序（即 `[2, 2, 3]` 与 `[2, 3, 2]` 视为不同列表时），需要记录哪些数字已经使用过，此时用 used 数组；
+
+组合问题，不讲究顺序（即 `[2, 2, 3]` 与 `[2, 3, 2]` 视为相同列表时），需要按照某种顺序搜索，此时使用 begin 变量。
+
+注意：具体问题应该具体分析， 理解算法的设计思想 是至关重要的，请不要死记硬背。
+
+| File                                                       | difficulty | etags                                                                                                               |
+| ---------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------- |
+| [[programming/basic/leetcode/18. 四数之和\|18. 四数之和]]       | medium     | <ul><li>#leetcode/hash-table/count</li><li>#leetcode/pointer/collision-pointer</li><li>#leetcode/skip-dup</li></ul> |
+| [[programming/basic/leetcode/15. 三数之和\|15. 三数之和]]       | medium     | <ul><li>#leetcode/pointer/collision-pointer</li><li>#leetcode/skip-dup</li></ul>                                    |
+| [[programming/basic/leetcode/40. 组合总和 II\|40. 组合总和 II]] | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/skip-dup</li></ul>                                     |
+
+{ .block-language-dataview}
 
 ## 回溯法与 N 叉树
 
@@ -43,6 +61,7 @@ void backtracking(参数) {
     }
 
 	// 这里的 for 循环就是遍历 n 叉树的 n 个子节点
+
     for (选择：本层集合中元素（树中节点孩子的数量就是集合的大小）) {
         处理节点;
         backtracking(路径，选择列表); // 递归
@@ -71,6 +90,8 @@ void dfs(int cur, int n) {
     dfs(cur + 1, n, k);
 }
 ```
+
+[131. 分割回文串](../leetcode/131.%20分割回文串.md) 只能使用二元思路的题目
 
 # 组合问题
 
@@ -232,21 +253,22 @@ for (int i = startIndex; i <= n - (k - path.size()) + 1; i++)
 ```js
 let result = []
 let path = []
-var combine = function(n, k) {
-  result = []
-  combineHelper(n, k, 1)
-  return result
+var combine = function (n, k) {
+    result = []
+    combineHelper(n, k, 1)
+    return result
 };
 const combineHelper = (n, k, startIndex) => {
-  if (path.length === k) {
-    result.push([...path])
-    return
-  }
-  for (let i = startIndex; i <= n - (k - path.length) + 1; ++i) {
-    path.push(i)
-    combineHelper(n, k, i + 1)
-    path.pop()
-  }
+    if (path.length === k) {
+        result.push([...path])
+        return
+    }
+    // let i = curIndex, 随着 index 不断扩大, 实现避免重复
+    for (let i = startIndex; i <= n - (k - path.length) + 1; ++i) {
+        path.push(i)
+        combineHelper(n, k, i + 1)
+        path.pop()
+    }
 }
 ```
 
@@ -282,5 +304,8 @@ var combine = function(n, k) {
 | [[programming/basic/leetcode/17. 电话号码的字母组合\|17. 电话号码的字母组合]] | medium     | <ul><li>#leetcode/backtracking/combination</li></ul>                                                                   |
 | [[programming/basic/leetcode/77. 组合\|77. 组合]]               | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/sub/sequence</li></ul>                                    |
 | [[programming/basic/leetcode/216. 组合总和 III\|216. 组合总和 III]] | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/backtracking/sub</li><li>#leetcode/sub/sequence</li></ul> |
+| [[programming/basic/leetcode/39. 组合总和\|39. 组合总和]]           | medium     | <ul><li>#leetcode/backtracking/combination</li></ul>                                                                   |
+| [[programming/basic/leetcode/40. 组合总和 II\|40. 组合总和 II]]     | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/skip-dup</li></ul>                                        |
+| [[programming/basic/leetcode/131. 分割回文串\|131. 分割回文串]]       | medium     | <ul><li>#leetcode/backtracking/combination/partition</li><li>#leetcode/dp/memo</li><li>#leetcode/unsolved</li></ul>    |
 
 { .block-language-dataview}
