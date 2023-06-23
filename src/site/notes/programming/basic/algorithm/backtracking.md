@@ -17,7 +17,7 @@
 
 1. 组合问题：N 个数里面按一定规则找出 k 个数的集合
 2. 切割问题：一个字符串按一定规则有几种切割方式 (切割问题, 其实是一种组合问题)
-3. 子集问题：一个 N 个数的集合里有多少符合条件的子集
+3. 子集问题：一个 N 个数的集合里有多少符合条件的子集 (也是一种组合问题)
 4. 排列问题：N 个数按一定规则全排列，有几种排列方式
 5. 棋盘问题：N 皇后，解数独等等
 
@@ -33,13 +33,21 @@ for 循环不能解决的穷举问题
 
 注意：具体问题应该具体分析， 理解算法的设计思想 是至关重要的，请不要死记硬背。
 
-| File                                                       | difficulty | etags                                                                                                               |
-| ---------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------- |
-| [[programming/basic/leetcode/18. 四数之和\|18. 四数之和]]       | medium     | <ul><li>#leetcode/hash-table/count</li><li>#leetcode/pointer/collision-pointer</li><li>#leetcode/skip-dup</li></ul> |
-| [[programming/basic/leetcode/15. 三数之和\|15. 三数之和]]       | medium     | <ul><li>#leetcode/pointer/collision-pointer</li><li>#leetcode/skip-dup</li></ul>                                    |
-| [[programming/basic/leetcode/40. 组合总和 II\|40. 组合总和 II]] | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/skip-dup</li></ul>                                     |
+| File                                                       | difficulty | etags                                                                                                                                                                                |
+| ---------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [[programming/basic/leetcode/18. 四数之和\|18. 四数之和]]       | medium     | <ul><li>#leetcode/hash-table/count</li><li>#leetcode/pointer/collision-pointer</li><li>#leetcode/skip-dup</li></ul>                                                                  |
+| [[programming/basic/leetcode/15. 三数之和\|15. 三数之和]]       | medium     | <ul><li>#leetcode/pointer/collision-pointer</li><li>#leetcode/skip-dup</li></ul>                                                                                                     |
+| [[programming/basic/leetcode/40. 组合总和 II\|40. 组合总和 II]] | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/skip-dup</li></ul>                                                                                                      |
+| [[programming/basic/leetcode/90. 子集 II\|90. 子集 II]]     | medium     | <ul><li>#leetcode/backtracking/combination/subset</li><li>#leetcode/sub/subset</li><li>#leetcode/backtracking/binary</li><li>#leetcode/unsolved</li><li>#leetcode/skip-dup</li></ul> |
+| [[programming/basic/leetcode/491. 递增子序列\|491. 递增子序列]]   | medium     | <ul><li>#leetcode/backtracking/combination/subset</li><li>#leetcode/sub/subset</li><li>#leetcode/backtracking/binary</li><li>#leetcode/unsolved</li><li>#leetcode/skip-dup</li></ul> |
 
 { .block-language-dataview}
+
+### 有同学问了，什么时候 For 可以从 0 开始呢？
+
+求排列问题的时候，就要从 0 开始，因为集合是有序的，{1, 2} 和{2, 1}是两个集合，排列问题我们后续的文章就会讲到的。
+
+组合问题, 就从 startIndex 开始
 
 ## 回溯法与 N 叉树
 
@@ -299,13 +307,96 @@ var combine = function(n, k) {
 
 ## 相关题目
 
-| File                                                           | difficulty | etags                                                                                                                  |
-| -------------------------------------------------------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------- |
-| [[programming/basic/leetcode/17. 电话号码的字母组合\|17. 电话号码的字母组合]] | medium     | <ul><li>#leetcode/backtracking/combination</li></ul>                                                                   |
-| [[programming/basic/leetcode/77. 组合\|77. 组合]]               | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/sub/sequence</li></ul>                                    |
-| [[programming/basic/leetcode/216. 组合总和 III\|216. 组合总和 III]] | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/backtracking/sub</li><li>#leetcode/sub/sequence</li></ul> |
-| [[programming/basic/leetcode/39. 组合总和\|39. 组合总和]]           | medium     | <ul><li>#leetcode/backtracking/combination</li></ul>                                                                   |
-| [[programming/basic/leetcode/40. 组合总和 II\|40. 组合总和 II]]     | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/skip-dup</li></ul>                                        |
-| [[programming/basic/leetcode/131. 分割回文串\|131. 分割回文串]]       | medium     | <ul><li>#leetcode/backtracking/combination/partition</li><li>#leetcode/dp/memo</li><li>#leetcode/unsolved</li></ul>    |
+| File                                                           | difficulty | etags                                                                                                                                                                                |
+| -------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [[programming/basic/leetcode/17. 电话号码的字母组合\|17. 电话号码的字母组合]] | medium     | <ul><li>#leetcode/backtracking/combination</li></ul>                                                                                                                                 |
+| [[programming/basic/leetcode/77. 组合\|77. 组合]]               | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/sub/sequence</li></ul>                                                                                                  |
+| [[programming/basic/leetcode/216. 组合总和 III\|216. 组合总和 III]] | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/backtracking/binary</li><li>#leetcode/sub/sequence</li></ul>                                                            |
+| [[programming/basic/leetcode/39. 组合总和\|39. 组合总和]]           | medium     | <ul><li>#leetcode/backtracking/combination</li></ul>                                                                                                                                 |
+| [[programming/basic/leetcode/40. 组合总和 II\|40. 组合总和 II]]     | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/skip-dup</li></ul>                                                                                                      |
+| [[programming/basic/leetcode/131. 分割回文串\|131. 分割回文串]]       | medium     | <ul><li>#leetcode/backtracking/combination/partition</li><li>#leetcode/dp/memo</li><li>#leetcode/unsolved</li></ul>                                                                  |
+| [[programming/basic/leetcode/93. 复原 IP 地址\|93. 复原 IP 地址]]   | medium     | <ul><li>#leetcode/backtracking/combination/partition</li><li>#leetcode/unsolved</li></ul>                                                                                            |
+| [[programming/basic/leetcode/78. 子集\|78. 子集]]               | medium     | <ul><li>#leetcode/backtracking/combination/subset</li><li>#leetcode/sub/subset</li><li>#leetcode/backtracking/binary</li><li>#leetcode/unsolved</li></ul>                            |
+| [[programming/basic/leetcode/90. 子集 II\|90. 子集 II]]         | medium     | <ul><li>#leetcode/backtracking/combination/subset</li><li>#leetcode/sub/subset</li><li>#leetcode/backtracking/binary</li><li>#leetcode/unsolved</li><li>#leetcode/skip-dup</li></ul> |
+| [[programming/basic/leetcode/491. 递增子序列\|491. 递增子序列]]       | medium     | <ul><li>#leetcode/backtracking/combination/subset</li><li>#leetcode/sub/subset</li><li>#leetcode/backtracking/binary</li><li>#leetcode/unsolved</li><li>#leetcode/skip-dup</li></ul> |
 
 { .block-language-dataview}
+
+# 切割问题
+
+二元思路更容易理解成组合的特殊形式: 是否要拼接上当前字符
+
+N 叉树思路更贴近切割的概念: 通过 for 循环 index 来判断下一个切割, 到底在哪里
+
+| File                                                         | difficulty | etags                                                                                                               |
+| ------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------- |
+| [[programming/basic/leetcode/131. 分割回文串\|131. 分割回文串]]     | medium     | <ul><li>#leetcode/backtracking/combination/partition</li><li>#leetcode/dp/memo</li><li>#leetcode/unsolved</li></ul> |
+| [[programming/basic/leetcode/93. 复原 IP 地址\|93. 复原 IP 地址]] | medium     | <ul><li>#leetcode/backtracking/combination/partition</li><li>#leetcode/unsolved</li></ul>                           |
+
+{ .block-language-dataview}
+
+# 子集问题
+
+## 78. 子集
+
+如果把 子集问题、组合问题、分割问题都抽象为一棵树的话，**那么组合问题和分割问题都是收集树的叶子节点，而子集问题是找树的所有节点！**
+
+其实子集也是一种组合问题，因为它的集合是无序的，子集{1,2} 和 子集{2,1}是一样的。
+
+那么既然是无序，取过的元素不会重复取，写回溯算法的时候，for 就要从 startIndex 开始，而不是从 0 开始！
+
+有同学问了，什么时候 for 可以从 0 开始呢？
+
+求排列问题的时候，就要从 0 开始，因为集合是有序的，{1, 2} 和{2, 1}是两个集合，排列问题我们后续的文章就会讲到的。
+
+以示例中 `nums = [1,2,3]` 为例把求子集抽象为树型结构，如下：
+
+![](/img/user/programming/basic/algorithm/backtracking/image-20230622121007274.png)
+
+从图中红线部分，可以看出**遍历这个树的时候，把所有节点都记录下来，就是要求的子集集合**。
+
+### 方案一: N 叉树思路
+
+```js
+var subsets = function(nums) {
+    let result = []
+    let path = []
+    function backtracking(startIndex) {
+        result.push([...path])
+        for(let i = startIndex; i < nums.length; i++) {
+            path.push(nums[i])
+            backtracking(i + 1)
+            path.pop()
+        }
+    }
+    backtracking(0)
+    return result
+};
+```
+
+### 方案二: 回溯 + 二元思路
+
+```js
+var subsets = function(nums) {
+    // 感觉和组合问题也是很类似的呀
+    // 两种思路: 一种加法, 一种减法
+    // 二元思路: 加法, 是否挑选当前元素加入集合
+    // 减法思路: for 循环 slice index
+    const res = [];
+    dfs([], 0);
+    return res;
+
+
+    function dfs(path, index) {
+        if (index === nums.length) {
+            res.push([...path])
+            return;
+        }
+
+        path.push(nums[index]);
+        dfs(path, index + 1);
+        path.pop();
+        dfs(path, index + 1);
+    }
+};
+```
