@@ -400,3 +400,13 @@ var subsets = function(nums) {
     }
 };
 ```
+
+| File                                                     | difficulty | etags                                                                                                                                                                                |
+| -------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [[programming/basic/leetcode/78. 子集\|78. 子集]]         | medium     | <ul><li>#leetcode/backtracking/combination/subset</li><li>#leetcode/sub/subset</li><li>#leetcode/backtracking/binary</li><li>#leetcode/unsolved</li></ul>                            |
+| [[programming/basic/leetcode/90. 子集 II\|90. 子集 II]]   | medium     | <ul><li>#leetcode/backtracking/combination/subset</li><li>#leetcode/sub/subset</li><li>#leetcode/backtracking/binary</li><li>#leetcode/unsolved</li><li>#leetcode/skip-dup</li></ul> |
+| [[programming/basic/leetcode/491. 递增子序列\|491. 递增子序列]] | medium     | <ul><li>#leetcode/backtracking/combination/subset</li><li>#leetcode/sub/subset</li><li>#leetcode/backtracking/binary</li><li>#leetcode/unsolved</li><li>#leetcode/skip-dup</li></ul> |
+
+{ .block-language-dataview}
+
+# 排列问题
