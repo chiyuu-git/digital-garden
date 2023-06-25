@@ -40,6 +40,7 @@ for 循环不能解决的穷举问题
 | [[programming/basic/leetcode/40. 组合总和 II\|40. 组合总和 II]] | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/skip-dup</li></ul>                                                                                                      |
 | [[programming/basic/leetcode/90. 子集 II\|90. 子集 II]]     | medium     | <ul><li>#leetcode/backtracking/combination/subset</li><li>#leetcode/sub/subset</li><li>#leetcode/backtracking/binary</li><li>#leetcode/unsolved</li><li>#leetcode/skip-dup</li></ul> |
 | [[programming/basic/leetcode/491. 递增子序列\|491. 递增子序列]]   | medium     | <ul><li>#leetcode/backtracking/combination/subset</li><li>#leetcode/sub/subset</li><li>#leetcode/backtracking/binary</li><li>#leetcode/unsolved</li><li>#leetcode/skip-dup</li></ul> |
+| [[programming/basic/leetcode/47. 全排列 II\|47. 全排列 II]]   | medium     | <ul><li>#leetcode/backtracking/permutation</li><li>#leetcode/skip-dup</li></ul>                                                                                                      |
 
 { .block-language-dataview}
 
@@ -100,6 +101,19 @@ void dfs(int cur, int n) {
 ```
 
 [131. 分割回文串](../leetcode/131.%20分割回文串.md) 只能使用二元思路的题目
+
+## 与动态规划的区别
+
+### 共同点
+
++ 用于求解多阶段决策问题。多阶段决策问题即：
++ 求解一个问题分为很多步骤（阶段）；
++ 每一个步骤（阶段）可以有多种选择。
+
+### 不同点
+
++ 动态规划只需要求我们评估最优解是多少，最优解对应的具体解是什么并不要求。因此很适合应用于评估一个方案的效果；
++ 回溯算法可以搜索得到所有的方案（当然包括最优解），但是本质上它是一种遍历算法，时间复杂度很高。
 
 # 组合问题
 
