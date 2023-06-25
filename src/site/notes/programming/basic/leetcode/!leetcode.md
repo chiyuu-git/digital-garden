@@ -205,6 +205,7 @@ hard 没有思路就直接看答案, 一般都不会考这么难的
 | [[programming/basic/leetcode/40. 组合总和 II\|40. 组合总和 II]] | [[programming/basic/leetcode/40. 组合总和 II#solution tips\|40. 组合总和 II#solution tips]] |
 | [[programming/basic/leetcode/90. 子集 II\|90. 子集 II]]     | [[programming/basic/leetcode/90. 子集 II#solution tips\|90. 子集 II#solution tips]]   |
 | [[programming/basic/leetcode/491. 递增子序列\|491. 递增子序列]]   | [[programming/basic/leetcode/491. 递增子序列#solution tips\|491. 递增子序列#solution tips]]  |
+| [[programming/basic/leetcode/47. 全排列 II\|47. 全排列 II]]   | [[programming/basic/leetcode/47. 全排列 II#solution tips\|47. 全排列 II#solution tips]]  |
 
 { .block-language-dataview}
 
@@ -219,6 +220,8 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 
 | File                                                                                                                           | difficulty | etags                                                                                                                                                                                | unsolved | date-created                |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | --------------------------- |
+| [[programming/basic/leetcode/47. 全排列 II\|47. 全排列 II]]                                                                       | medium     | <ul><li>#leetcode/backtracking/permutation</li><li>#leetcode/skip-dup</li></ul>                                                                                                      | false    | 2023-06-24-Sat, 10:46:34 am |
+| [[programming/basic/leetcode/46. 全排列\|46. 全排列]]                                                                             | medium     | <ul><li>#leetcode/backtracking/permutation</li></ul>                                                                                                                                 | false    | 2023-06-24-Sat, 10:19:14 am |
 | [[programming/basic/leetcode/491. 递增子序列\|491. 递增子序列]]                                                                       | medium     | <ul><li>#leetcode/backtracking/combination/subset</li><li>#leetcode/sub/subset</li><li>#leetcode/backtracking/binary</li><li>#leetcode/unsolved</li><li>#leetcode/skip-dup</li></ul> | true     | 2023-06-22-Thu, 7:49:52 pm  |
 | [[programming/basic/leetcode/90. 子集 II\|90. 子集 II]]                                                                         | medium     | <ul><li>#leetcode/backtracking/combination/subset</li><li>#leetcode/sub/subset</li><li>#leetcode/backtracking/binary</li><li>#leetcode/unsolved</li><li>#leetcode/skip-dup</li></ul> | true     | 2023-06-22-Thu, 3:06:59 pm  |
 | [[programming/basic/leetcode/78. 子集\|78. 子集]]                                                                               | medium     | <ul><li>#leetcode/backtracking/combination/subset</li><li>#leetcode/sub/subset</li><li>#leetcode/backtracking/binary</li><li>#leetcode/unsolved</li></ul>                            | true     | 2023-06-22-Thu, 11:55:52 am |
