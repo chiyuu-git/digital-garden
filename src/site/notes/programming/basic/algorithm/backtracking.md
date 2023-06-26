@@ -424,3 +424,12 @@ var subsets = function(nums) {
 { .block-language-dataview}
 
 # 排列问题
+
+| File                                                     | difficulty | etags                                                                           |
+| -------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------- |
+| [[programming/basic/leetcode/46. 全排列\|46. 全排列]]       | medium     | <ul><li>#leetcode/backtracking/permutation</li></ul>                            |
+| [[programming/basic/leetcode/47. 全排列 II\|47. 全排列 II]] | medium     | <ul><li>#leetcode/backtracking/permutation</li><li>#leetcode/skip-dup</li></ul> |
+
+{ .block-language-dataview}
+
+# 棋盘问题
