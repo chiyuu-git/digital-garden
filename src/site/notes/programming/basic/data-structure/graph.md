@@ -203,6 +203,83 @@
 
 ![1554685310014|200](/img/user/programming/basic/data-structure/graph/1554685310014.png)
 
+## Class 实现
+
+```js
+class Graph {
+    vertices = [];
+    adjList = new Map();
+
+    addVertex(vertex) {
+        this.vertices.push(vertex);
+        this.adjList.set(vertex, []);
+    }
+
+    addEdge(v, u) {
+        this.adjList.get(v).push(u)
+    }
+
+    toString() {
+        let s = "";
+        for (let i = 0; i < this.vertices.length; i++) {
+            //{10}
+            s += this.vertices[i] + " -> ";
+            // 遍历该顶点的邻接表
+            const neighbors = this.adjList.get(this.vertices[i]); //{11}
+            for (let j = 0; j < neighbors.length; j++) {
+                //{12}
+                s += neighbors[j] + " ";
+            }
+            s += "\n"; //{13}
+        }
+        return s;
+    }
+
+    dfs (callback) {
+        const color = this.initializeColor();
+
+        // 直接从 vertices 数组开始递归, 所以不需要起始顶点
+        for (let i = 0; i < this.vertices.length; i++) {
+            if (color[this.vertices[i]] === "white") {
+                this.dfsVisit(this.vertices[i], color, callback);
+            }
+        }
+    }
+
+    initializeColor() {
+        const color = {};
+        for (let i = 0; i < this.vertices.length; i++) {
+            color[this.vertices[i]] = "white"; //{1}
+        }
+        return color;
+    }
+
+    dfsVisit(v, color, callback) {
+        color[v] = "grey";
+        // 第一次遍历顶点时打印
+        if (callback) callback(v);
+
+        const neighbors = this.adjList.get(v);
+        // 按照字典序排序
+        neighbors.sort();
+        for (let i = 0; i < neighbors.length; i++) {
+            const u = neighbors[i];
+            if (color[u] === "white") {
+                this.dfsVisit(u, color, callback);
+            }
+            else {
+                // 每次遍历顶点时打印
+                if (callback) callback(u);
+            }
+        }
+        color[v] = "black";
+    }
+
+
+
+}
+```
+
 # 图的遍历
 
 和树数据结构类似，我们可以访问图的所有节点。有两种算法可以对图进行遍历：广度优先搜索（Breadth-First Search，BFS）和深度优先搜索（Depth-First Search，DFS）。
