@@ -370,11 +370,12 @@ sudo vi /etc/hosts
 sudo killall -HUP mDNSResponder
 ```
 
-### win
+### Win
 
 ```
 ipconfig /flushdns
 ```
+
 # Iterm 2
 
 ## 恢复窗口
@@ -580,21 +581,21 @@ Command + shift + L 可以快捷打印 console
 ## Jest
 
 ```json
-{
-    "type": "node",
-    "request": "launch",
-    "protocol": "inspector",
-    "name": "Jest Debug",
-    "program": "${workspaceRoot}/node_modules/jest/bin/jest",
-    "stopOnEntry": false,
-    "args": ["--runInBand", "--env=jsdom", "${fileBasename}"],
-    "runtimeArgs": [
-        "--inspect-brk"
-     ],
-     "cwd": "${workspaceRoot}",
-     "sourceMaps": true,
-     "console": "integratedTerminal"
-}
+        {
+            "type": "node",
+            "request": "launch",
+            "protocol": "inspector",
+            "name": "Jest Debug",
+            "program": "${workspaceRoot}/node_modules/jest/bin/jest",
+            "stopOnEntry": false,
+            "args": ["--runInBand", "--env=jsdom", "${fileBasename}"],
+            "runtimeArgs": [
+                "--inspect-brk"
+            ],
+            "cwd": "${workspaceRoot}",
+            "sourceMaps": true,
+            "console": "integratedTerminal"
+        }
 ```
 
 ```json
@@ -866,3 +867,11 @@ jsDelivr 是国外的一家优秀的公共 CDN 服务提供商，它可以加速
 picGo 太垃圾了, 每次用都要调试很久, 心累了, 再也不碰
 
 [路过图床](https://imgse.com/account/awaiting-confirmation)
+
+# Charles
+
+## 初始化配置
+
+[Mac端Charles+手机端配置\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1xV4y1M7Vb/?spm_id_from=333.337.search-card.all.click&vd_source=db8a4b4129af2e1d7a3e3f6357bb4d45)
+
+注意关闭电脑的其他代理: proxy omega 关闭, 度管家也要退出
