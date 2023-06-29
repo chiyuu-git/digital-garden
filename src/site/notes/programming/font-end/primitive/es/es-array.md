@@ -544,7 +544,7 @@ ES6 扩展
 
 ### Array.from() 第二参数
 
-- `Array.from` 还可以接受第二个参数，作用类似于数组的 `map` 方法，用来对每个元素进行处理，将处理后的值放入返回的数组。
+`Array.from` 还可以接受第二个参数，作用类似于数组的 `map` 方法，用来对每个元素进行处理，将处理后的值放入返回的数组。
 
   ```js
   Array.from(arrayLike, x => x * x);
@@ -555,7 +555,7 @@ ES6 扩展
   // [1, 4, 9]
   ```
 
-- 下面的例子是取出一组 DOM 节点的文本内容。
+下面的例子是取出一组 DOM 节点的文本内容。
 
   ```js
   let spans = document.querySelectorAll('span.name');
@@ -567,14 +567,14 @@ ES6 扩展
   let names2 = Array.from(spans, s => s.textContent)
   ```
 
-- 下面的例子将数组中布尔值为 `false` 的成员转为 `0`。
+下面的例子将数组中布尔值为 `false` 的成员转为 `0`。
 
   ```js
   Array.from([1, , 2, , 3], (n) => n || 0)
   // [1, 0, 2, 0, 3]
   ```
 
-- 另一个例子是返回各种数据的类型。
+另一个例子是返回各种数据的类型。
 
   ```js
   function typesOf () {
@@ -590,14 +590,14 @@ ES6 扩展
 
 ### Array.from() 总结
 
-- `Array.from()` 可以将各种值转为真正的数组，并且还提供 `map` 功能。这实际上意味着，只要有一个原始的数据结构，你就可以先对它的值进行处理，然后转成规范的数组结构，进而就可以使用数量众多的数组方法。
+`Array.from()` 可以将各种值转为真正的数组，并且还提供 `map` 功能。这实际上意味着，只要有一个原始的数据结构，你就可以先对它的值进行处理，然后转成规范的数组结构，进而就可以使用数量众多的数组方法。
 
   ```js
   Array.from({ length: 2 }, () => 'jack')
   // ['jack', 'jack']
   ```
 
-- 上面代码中，`Array.from` 的第一个参数指定了第二个参数运行的次数。这种特性可以让该方法的用法变得非常灵活。
+上面代码中，`Array.from` 的第一个参数指定了第二个参数运行的次数。这种特性可以让该方法的用法变得非常灵活。
 
 ## Array.of()
 
@@ -1563,6 +1563,34 @@ let intersect = new Set([...a].filter(x => b.has(x)));
 let difference = new Set([...a].filter(x => !b.has(x)));
 // Set {1}
 ```
+
+## 构建多维数组
+
+for 循环
+
+new Array fill 空串 再 map, 因为 new Array 实际上只更新了 length 属性, 没有真正的 index
+
+Array.from() 官方推荐的构建方式, 不光是有 length 属性, 还有真正的 index , 默认值为 undefined, 第二个参数位置还可以直接 map
+
+```js
+    const rowRestMatrix = Array.from(
+        { length: 9 },
+        () => Array.from({ length: 9 }).fill(true)
+    )
+    const colRestMatrix = Array.from(
+        { length: 9 },
+        () => Array.from({ length: 9 }).fill(true)
+    )
+    const nineRestMatrix = Array.from(
+        { length: 3 },
+        () => Array.from(
+            { length: 3 },
+            () => Array.from({ length: 9 }).fill(true)
+        )
+    [)]
+```
+
+![es-array](programming/font-end/primitive/es/es-array.md#Array%20from%20第二参数)
 
 ## Traverse Array
 
