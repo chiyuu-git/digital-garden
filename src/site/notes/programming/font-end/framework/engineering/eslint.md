@@ -12,10 +12,10 @@
 
 | File                                                              | overview                   |
 | ----------------------------------------------------------------- | -------------------------- |
-| [[programming/font-end/primitive/es/es-array\|es-array]]       | [[programming/font-end/primitive/es/es-array#experience\|es-array#experience]]    |
 | [[programming/font-end/primitive/es/es-function\|es-function]] | [[programming/font-end/primitive/es/es-function#experience\|es-function#experience]] |
 | [[programming/font-end/primitive/es/es-number\|es-number]]     | [[programming/font-end/primitive/es/es-number#experience\|es-number#experience]]   |
 | [[programming/font-end/primitive/es/es-regexp\|es-regexp]]     | [[programming/font-end/primitive/es/es-regexp#experience\|es-regexp#experience]]   |
+| [[programming/font-end/primitive/es/es-array\|es-array]]       | [[programming/font-end/primitive/es/es-array#experience\|es-array#experience]]    |
 
 { .block-language-dataview}
 
@@ -1993,3 +1993,9 @@ npx depcruise --output-type dot --max-depth 1 logger | dot -T svg > app.sv
 看 src 目录下的依赖关系
 
 需要设置 ts config、webpack config 这样才能识别路径别名
+
+[代码分析工具](../../../basic/common/代码分析工具.md)
+
+# 如何阅读源码
+
+[如何阅读源码 —— 以 Vetur 为例 - 知乎](https://zhuanlan.zhihu.com/p/395405684)
