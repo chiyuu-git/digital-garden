@@ -34,13 +34,15 @@ hard 没有思路就直接看答案, 一般都不会考这么难的
 	+ 递归的也先不做, 因为这里的重点是如何用栈去解决递归问题, 得想学好递归再回来简化
 + 链表最后一题没做
 + 哈希表
- + 哈希表最后一题没做
+	+ 哈希表最后一题没做
 + 贪心算法都没有做, 等之后和动态规划一起处理吧
 + 双指针
-  + 头尾指针, 最后一题接雨水没做, 属于动态规划 + 栈的复合题目, 最后再总结吧
-  + 滑动窗口, 最后两道困难题没有做, 留着总结完之后再尝试吧
-  + 快慢指针最后一题, 多方法没做的
+	+ 头尾指针, 最后一题接雨水没做, 属于动态规划 + 栈的复合题目, 最后再总结吧
+	+ 滑动窗口, 最后两道困难题没有做, 留着总结完之后再尝试吧
+	+ 快慢指针最后一题, 多方法没做的
 + 四叉树没做
++ 回溯法, 有一些没做, 按照随想录走的, 剩余的做查漏补, go to next!
+	+ 几个回溯法的都先跳过, 直接从 BFS 开始
 
 ### 题解大全
 
@@ -60,6 +62,12 @@ hard 没有思路就直接看答案, 一般都不会考这么难的
 深度遍历与栈，深度遍历可以通过栈形式的迭代代替
 
 广度遍历与队列，广度遍历只能通过队列形式，无法通过递归
+
+## 减少特判
+
+dummyHead
+
+网格问题, 填充额外的行, col 不用填充, 读取到 undefined 自动结束递归
 
 ## 递归改迭代
 
@@ -119,9 +127,9 @@ hard 没有思路就直接看答案, 一般都不会考这么难的
 
 | File                                                                                                           | solution tips overview                                  |
 | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素\|230. 二叉搜索树中第K小的元素]]                                         | [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素#solution tips\|230. 二叉搜索树中第K小的元素#solution tips]]                     |
 | [[programming/basic/leetcode/414. Third Maximum Number\|414. Third Maximum Number]]                         | [[programming/basic/leetcode/414. Third Maximum Number#solution tips\|414. Third Maximum Number#solution tips]]             |
 | [[programming/basic/leetcode/628. Maximum Product of Three Numbers\|628. Maximum Product of Three Numbers]] | [[programming/basic/leetcode/628. Maximum Product of Three Numbers#solution tips\|628. Maximum Product of Three Numbers#solution tips]] |
+| [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素\|230. 二叉搜索树中第K小的元素]]                                         | [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素#solution tips\|230. 二叉搜索树中第K小的元素#solution tips]]                     |
 
 { .block-language-dataview}
 
@@ -209,7 +217,6 @@ hard 没有思路就直接看答案, 一般都不会考这么难的
 
 { .block-language-dataview}
 
-
 ## ACM 考点
 
 https://oi-wiki.org/string/minimal-string/
@@ -221,6 +228,8 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 | File                                                                                                                           | difficulty | etags                                                                                                                                                                                | unsolved | date-created                |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | --------------------------- |
 | [[programming/basic/leetcode/37. 解数独\|37. 解数独]]                                                                             | hard       | <ul><li>#leetcode/backtracking/permutation/sudoku</li><li>#leetcode/bit-manipulation</li><li>#leetcode/unsolved</li><li>#leetcode/matrix</li></ul>                                   | true     | 2023-06-29-Thu, 8:52:53 am  |
+| [[programming/basic/leetcode/200. 岛屿数量\|200. 岛屿数量]]                                                                         | medium     | <ul><li>#leetcode/grid/island</li><li>#leetcode/graph/traversal</li><li>#leetcode/unsolved</li><li>#leetcode/union-find</li></ul>                                                    | true     | 2023-06-29-Thu, 6:33:11 pm  |
+| [[programming/basic/leetcode/133. 克隆图\|133. 克隆图]]                                                                           | medium     | <ul><li>#leetcode/graph/traversal</li><li>#leetcode/unsolved</li></ul>                                                                                                               | true     | 2023-06-29-Thu, 2:10:23 pm  |
 | [[programming/basic/leetcode/51. N 皇后\|51. N 皇后]]                                                                           | hard       | <ul><li>#leetcode/backtracking/permutation/chessboard</li><li>#leetcode/bit-manipulation</li><li>#leetcode/unsolved</li><li>#leetcode/matrix</li></ul>                               | true     | 2023-06-27-Tue, 8:38:11 am  |
 | [[programming/basic/leetcode/332. 重新安排行程\|332. 重新安排行程]]                                                                     | hard       | <ul><li>#leetcode/backtracking</li><li>#leetcode/traversal/dfs</li><li>#leetcode/graph/path</li></ul>                                                                                | false    | 2023-06-25-Sun, 10:45:29 am |
 | [[programming/basic/leetcode/47. 全排列 II\|47. 全排列 II]]                                                                       | medium     | <ul><li>#leetcode/backtracking/permutation</li><li>#leetcode/skip-dup</li></ul>                                                                                                      | false    | 2023-06-24-Sat, 10:46:34 am |
@@ -235,8 +244,8 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 | [[programming/basic/leetcode/216. 组合总和 III\|216. 组合总和 III]]                                                                 | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/backtracking/binary</li><li>#leetcode/sub/sequence</li></ul>                                                            | false    | 2023-06-21-Wed, 4:14:57 pm  |
 | [[programming/basic/leetcode/77. 组合\|77. 组合]]                                                                               | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/sub/sequence</li></ul>                                                                                                  | false    | 2023-06-21-Wed, 2:45:54 pm  |
 | [[programming/basic/leetcode/526. 优美的排列\|526. 优美的排列]]                                                                       | medium     | <ul><li>#leetcode/backtracking</li><li>#leetcode/unsolved</li><li>#leetcode/dp/status-compression</li></ul>                                                                          | true     | 2023-06-20-Tue, 4:48:50 pm  |
-| [[programming/basic/leetcode/397. 整数替换\|397. 整数替换]]                                                                         | medium     | <ul><li>#leetcode/dp/memo</li><li>#leetcode/math</li><li>#leetcode/unsolved</li></ul>                                                                                                | true     | 2023-06-20-Tue, 2:55:57 pm  |
-| [[programming/basic/leetcode/17. 电话号码的字母组合\|17. 电话号码的字母组合]]                                                                 | medium     | <ul><li>#leetcode/backtracking/combination</li></ul>                                                                                                                                 | false    | 2023-06-20-Tue, 2:25:19 pm  |
+| [[programming/basic/leetcode/397. 整数替换\|397. 整数替换]]                                                                         | medium     | <ul><li>#leetcode/dp/memo</li><li>#leetcode/math</li><li>#leetcode/unsolved</li><li>#leetcode/graph/traversal/dfs</li></ul>                                                          | true     | 2023-06-20-Tue, 2:55:57 pm  |
+| [[programming/basic/leetcode/17. 电话号码的字母组合\|17. 电话号码的字母组合]]                                                                 | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/graph/traversal/dfs</li></ul>                                                                                           | false    | 2023-06-20-Tue, 2:25:19 pm  |
 | [[programming/basic/leetcode/565. 数组嵌套\|565. 数组嵌套]]                                                                         | medium     | <ul><li>#leetcode/graph/circle</li><li>#leetcode/space/in-place</li><li>#leetcode/unsolved</li><li>#leetcode/array/natural-array</li></ul>                                           | true     | 2023-06-18-Sun, 9:45:38 pm  |
 | [[programming/basic/leetcode/99. 恢复二叉搜索树\|99. 恢复二叉搜索树]]                                                                     | medium     | <ul><li>#leetcode/tree/traversal</li><li>#leetcode/unsolved</li></ul>                                                                                                                | true     | 2023-06-17-Sat, 9:32:40 pm  |
 | [[programming/basic/leetcode/501. 二叉搜索树中的众数\|501. 二叉搜索树中的众数]]                                                               | medium     | <ul><li>#leetcode/tree/traversal/morris</li><li>#leetcode/hash-table/count</li></ul>                                                                                                 | false    | 2023-06-16-Fri, 10:36:36 am |
@@ -250,7 +259,7 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 | [[programming/basic/leetcode/95. 不同的二叉搜索树 II\|95. 不同的二叉搜索树 II]]                                                             | medium     | <ul><li>#leetcode/dp/exhaustion</li><li>#leetcoe/tree/bst</li><li>#leetcode/unsolved</li><li>#leetcode/divide-and-conquer</li></ul>                                                  | true     | 2023-06-11-Sun, 3:37:01 pm  |
 | [[programming/basic/leetcode/669. 修剪二叉搜索树\|669. 修剪二叉搜索树]]                                                                   | medium     | <ul><li>#leetcode/tree/bst</li></ul>                                                                                                                                                 | false    | 2023-06-10-Sat, 3:59:42 pm  |
 | [[programming/basic/leetcode/98. 验证二叉搜索树\|98. 验证二叉搜索树]]                                                                     | medium     | <ul><li>#leetcode/tree/bst</li></ul>                                                                                                                                                 | false    | 2023-06-10-Sat, 12:51:22 pm |
-| [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素\|230. 二叉搜索树中第K小的元素]]                                                         | medium     | <ul><li>#leetcode/tree/bst</li><li>#leetcode/top-k</li><li>#leetcode/avl</li></ul>                                                                                                   | false    | 2023-06-09-Fri, 8:13:39 pm  |
+| [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素\|230. 二叉搜索树中第K小的元素]]                                                         | medium     | <ul><li>#leetcode/tree/bst</li><li>#leetcode/top-k</li><li>#leetcode/tree/avl</li></ul>                                                                                              | false    | 2023-06-09-Fri, 8:13:39 pm  |
 | [[programming/basic/leetcode/538. 把二叉搜索树转换为累加树\|538. 把二叉搜索树转换为累加树]]                                                         | medium     | <ul><li>#leetcode/tree/bst</li></ul>                                                                                                                                                 | false    | 2023-06-09-Fri, 7:50:18 pm  |
 | [[programming/basic/leetcode/530. 二叉搜索树的最小绝对差\|530. 二叉搜索树的最小绝对差]]                                                           | easy       | <ul><li>#leetcode/tree/bst</li></ul>                                                                                                                                                 | false    | 2023-06-09-Fri, 7:33:01 pm  |
 | [[programming/basic/leetcode/700. 二叉搜索树中的搜索\|700. 二叉搜索树中的搜索]]                                                               | easy       | <ul><li>#leetcode/tree/bst</li><li>#leetcode/tree/traversal/sub-tree</li></ul>                                                                                                       | false    | 2023-06-09-Fri, 5:36:56 pm  |
@@ -410,5 +419,6 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 | [[programming/basic/leetcode/485. 最大连续 1 的个数\|485. 最大连续 1 的个数]]                                                             | easy       | <ul><li>#leetcode/array/traversal</li></ul>                                                                                                                                          | false    | 2022-09-08-Thu, 10:33:59 pm |
 | [[programming/basic/leetcode/495. 提莫攻击\|495. 提莫攻击]]                                                                         | easy       | <ul><li>#leetcode/array/traversal</li><li>#leetcode/time-sequence</li></ul>                                                                                                          | false    | 2022-09-07-Wed, 11:17:06 pm |
 | [[programming/basic/leetcode/628. Maximum Product of Three Numbers\|628. Maximum Product of Three Numbers]]                 | easy       | <ul><li>#leetcode/pattern/categorized-discussion</li><li>#leetcode/top-k</li><li>#leetcode/math</li></ul>                                                                            | false    | 2022-09-06-Tue, 11:09:41 pm |
+| [[programming/basic/leetcode/542. 01 矩阵\|542. 01 矩阵]]                                                                       | medium     | <ul><li>#leetcode</li></ul>                                                                                                                                                          | false    | \-                          |
 
 { .block-language-dataview}
