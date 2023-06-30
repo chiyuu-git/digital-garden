@@ -121,7 +121,7 @@ void dfs(int cur, int n) {
 
 [77. 组合](https://leetcode.cn/problems/combinations/)
 
-![pCG6VPg.png](https://s1.ax1x.com/2023/06/21/pCG6VPg.png)
+![pCG6VPg.png|400](https://s1.ax1x.com/2023/06/21/pCG6VPg.png)
 
 直接的解法当然是使用 for 循环，例如示例中 k 为 2，很容易想到 用两个 for 循环，这样就可以输出 和示例中一样的结果。
 
@@ -323,7 +323,7 @@ var combine = function(n, k) {
 
 | File                                                           | difficulty | etags                                                                                                                                                                                |
 | -------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [[programming/basic/leetcode/17. 电话号码的字母组合\|17. 电话号码的字母组合]] | medium     | <ul><li>#leetcode/backtracking/combination</li></ul>                                                                                                                                 |
+| [[programming/basic/leetcode/17. 电话号码的字母组合\|17. 电话号码的字母组合]] | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/graph/traversal/dfs</li></ul>                                                                                           |
 | [[programming/basic/leetcode/77. 组合\|77. 组合]]               | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/sub/sequence</li></ul>                                                                                                  |
 | [[programming/basic/leetcode/216. 组合总和 III\|216. 组合总和 III]] | medium     | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/backtracking/binary</li><li>#leetcode/sub/sequence</li></ul>                                                            |
 | [[programming/basic/leetcode/39. 组合总和\|39. 组合总和]]           | medium     | <ul><li>#leetcode/backtracking/combination</li></ul>                                                                                                                                 |
@@ -433,5 +433,3 @@ var subsets = function(nums) {
 | [[programming/basic/leetcode/37. 解数独\|37. 解数独]]       | hard       | <ul><li>#leetcode/backtracking/permutation/sudoku</li><li>#leetcode/bit-manipulation</li><li>#leetcode/unsolved</li><li>#leetcode/matrix</li></ul>     |
 
 { .block-language-dataview}
-
-# 棋盘问题
