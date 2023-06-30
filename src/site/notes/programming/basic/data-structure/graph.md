@@ -311,6 +311,14 @@ class Graph {
 
 广度优先搜索算法会从指定的第一个顶点开始遍历图，先访问其所有的相邻点，就像一次访问图的一层。换句话说，就是先宽后深地访问顶点，如下图所示：
 
+> 给定源顶点是在特定情况下使用 BFS 算法的要求，如求解最短路径。但如果只是要遍历整个图而不关注最短路径，那么 BFS 可以从任意一个顶点开始，最终都能遍历到所有的节点。
+
+求解最短路径, 正是 BFS 最最常见的场景
+
+常用的场景
+
+常用的用途
+
 ![1554685757535](/img/user/programming/basic/data-structure/graph/1554685757535.png)
 
 以下是从顶点 v 开始的广度优先搜索算法所遵循的步骤：
@@ -421,6 +429,14 @@ function dfsVisit(v, color, callback) {
 
 ![1554705028085](/img/user/programming/basic/data-structure/graph/1554705028085.png)
 
+## 注意
+
+黑白灰三种状态的标记更适合处理复杂的状态, 一般的遍历只需要记住这个节点已经遍历过了就行了, 是类似 boolean 的二元枚举状态
+
+其实只需要邻接表就可以理清一副图了，为什么要需要 vertices 数组呢？ 因为不是所有的顶点都是想通的, 不相通的顶点就需要通过 vertices 数组继续完成遍历
+
+如果是有向图，出度邻接表，可能会遗漏出度为 0 的那个顶点（终点），但是仍然可以通过边到达该顶点
+
 # 常问的图面试问题：
 
 - 实现广度优先搜索和深度优先搜索
@@ -428,256 +444,225 @@ function dfsVisit(v, color, callback) {
 - 计算一张图中的边的数量
 - 找到两个顶点之间的最短路径
 
-# 疑问
+# 网格类问题
 
-其实只需要邻接表就可以理清一副图了，为什么要需要 vertices 数组呢？
+## 基本概念
 
-如果是有向图，出度邻接表，可能会遗漏出度为 0 的那个顶点（终点），但是仍然可以通过边到达该顶点
+我们所熟悉的 DFS（深度优先搜索）问题通常是在树或者图结构上进行的。而我们今天要讨论的 DFS 问题，是在一种「网格」结构中进行的。岛屿问题是这类网格 DFS 问题的典型代表。网格结构遍历起来要比二叉树复杂一些，如果没有掌握一定的方法，DFS 代码容易写得冗长繁杂。
 
-# 遍历
+本文将以岛屿问题为例，展示网格类问题 DFS 通用思路，以及如何让代码变得简洁。
 
-## [133. 克隆图](https://leetcode-cn.com/problems/clone-graph/)
+我们首先明确一下岛屿问题中的网格结构是如何定义的，以方便我们后面的讨论。
 
-### 题目
+网格问题是由 m×n 个小方格组成一个网格，每个小方格与其上下左右四个方格认为是相邻的，要在这样的网格上进行某种搜索。
 
-+ 给定无向 [**连通**](https://baike.baidu.com/item/连通图/6460995?fr=aladdin) 图中一个节点的引用，返回该图的 [**深拷贝**](https://baike.baidu.com/item/深拷贝/22785317?fr=aladdin)（克隆）。图中的每个节点都包含它的值 `val`（`Int`） 和其邻居的列表（`list[Node]`）。
+岛屿问题是一类典型的网格问题。每个格子中的数字可能是 0 或者 1。我们把数字为 0 的格子看成海洋格子，数字为 1 的格子看成陆地格子，这样相邻的陆地格子就连接成一个岛屿。
 
-  ![img](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/02/23/113_sample.png)
+![](/img/user/programming/basic/data-structure/graph/image-20230629185208787.png)
 
-  ```
-  输入：
-  {"$id":"1","neighbors":[{"$id":"2","neighbors":[{"$ref":"1"},{"$id":"3","neighbors":[{"$ref":"2"},{"$id":"4","neighbors":[{"$ref":"3"},{"$ref":"1"}],"val":4}],"val":3}],"val":2},{"$ref":"4"}],"val":1}
-  
-  解释：
-  节点 1 的值是 1，它有两个邻居：节点 2 和 4 。
-  节点 2 的值是 2，它有两个邻居：节点 1 和 3 。
-  节点 3 的值是 3，它有两个邻居：节点 2 和 4 。
-  节点 4 的值是 4，它有两个邻居：节点 1 和 3 。
-  ```
+在这样一个设定下，就出现了各种岛屿问题的变种，包括岛屿的数量、面积、周长等。不过这些问题，基本都可以用 DFS 遍历来解决。
 
-### 分析
+## DFS 的基本结构
 
-+ 关键点在于遍历图的时候，怎么获取到克隆图的对应节点。因此，我们通过一个 map 去联系原图和克隆图，`map[node.val]=cloneNode`，这样我们在遍历原图的时候，就可以通过 map 获取到克隆的节点，再把邻边赋值给克隆节点的 `neighbors` 即可
+对于网格上的 DFS，我们完全可以参考二叉树的 DFS，写出网格 DFS 的两个要素：
 
-### Dfs 递归
+首先，网格结构中的格子有多少相邻结点？答案是上下左右四个。对于格子 (r, c) 来说（r 和 c 分别代表行坐标和列坐标），四个相邻的格子分别是 (r-1, c)、(r+1, c)、(r, c-1)、(r, c+1)。换句话说，网格结构是「四叉」的。
 
-+ 深度遍历，克隆
+其次，网格 DFS 中的 base case 是什么？从二叉树的 base case 对应过来，应该是网格中不需要继续遍历、`grid[r][c]` 会出现数组下标越界异常的格子，也就是那些超出网格范围的格子。
 
-  ```js
-  /**
-   * // Definition for a Node.
-   * function Node(val,neighbors) {
-   *    this.val = val;
-   *    this.neighbors = neighbors;
-   * }
-   */
-  /**
-   * @param {Node} node
-   * @return {Node}
-   */
-  function clone(node,map={}) {
-    const cloneNode = new Node(node.val)
-    map[node.val] = cloneNode
-    cloneNode.neighbors = node.neighbors.map((neighbor)=>{
-      if(neighbor.val in map) return map[neighbor.val]
-      return clone(neighbor,map)
-    })
-    return cloneNode
-  }
-  var cloneGraph = function(node) {
-    return clone(node)
-  }
-  ```
+这一点稍微有些反直觉，坐标竟然可以临时超出网格的范围？这种方法我称为「先污染后治理」—— 甭管当前是在哪个格子，先往四个方向走一步再说，如果发现走出了网格范围再赶紧返回。这跟二叉树的遍历方法是一样的，先递归调用，发现 root == null 再返回。
 
-### Bfs
+这样，我们得到了网格 DFS 遍历的框架代码：
+
+```java
+void dfs(int[][] grid, int r, int c) {
+    // 判断 base case
+    // 如果坐标 (r, c) 超出了网格范围，直接返回
+    if (!inArea(grid, r, c)) {
+        return;
+    }
+    // 访问上、下、左、右四个相邻结点
+    dfs(grid, r - 1, c);
+    dfs(grid, r + 1, c);
+    dfs(grid, r, c - 1);
+    dfs(grid, r, c + 1);
+}
+
+// 判断坐标 (r, c) 是否在网格中
+boolean inArea(int[][] grid, int r, int c) {
+    return 0 <= r && r < grid.length 
+        	&& 0 <= c && c < grid[0].length;
+}
+```
+
+### 如何避免重复遍历
+
+网格结构的 DFS 与二叉树的 DFS 最大的不同之处在于，遍历中可能遇到遍历过的结点。这是因为，网格结构本质上是一个「图」，我们可以把每个格子看成图中的结点，每个结点有向上下左右的四条边。在图中遍历时，自然可能遇到重复遍历结点。
+
+这时候，DFS 可能会不停地「兜圈子」，永远停不下来
+
+如何避免这样的重复遍历呢？答案是标记已经遍历过的格子。以岛屿问题为例，我们需要在所有值为 1 的陆地格子上做 DFS 遍历。每走过一个陆地格子，就把格子的值改为 2，这样当我们遇到 2 的时候，就知道这是遍历过的格子了。也就是说，每个格子可能取三个值：
+
+- 0 —— 海洋格子
+- 1 —— 陆地格子（未遍历过）
+- 2 —— 陆地格子（已遍历过）
+
+我们在框架代码中加入避免重复遍历的语句：
 
 ```js
-  var cloneGraph = function (node) {
-    if (node == null) return null
-    const map = {}
-    const cloneNode = new Node(node.val, [])
-    map[node.val] = cloneNode
-    // shift & push
-    const queue = [node]
-    while (queue.length > 0) {
-      const cur = queue.shift()
-      
-      for (let i = 0; i < cur.neighbors.length; i++) {
-        const n = cur.neighbors[i]
-        if (!map.hasOwnProperty(n.val)) {
-          map[n.val] = new Node(n.val, [])
-          queue.push(n)
-        }
-        map[cur.val].neighbors.push(map[n.val])
-      }
-    }
-    return cloneNode
-  }
-  ```
+// 增加填充行, 参考的是 dummyHead 的逻辑
+const startRow = Array.from({length: grid[0].length}, () => '0');
+const endRow = Array.from({length: grid[0].length}, () => '0');
+grid.unshift(startRow);
+grid.push(endRow);
 
-# 染色问题
+function dfs(r, c) {
+	// if (!inArea(grid, r, c)) return;
+	if (grid[r][c] !== '1') return;
 
-## [1042. 不邻接植花](https://leetcode-cn.com/problems/flower-planting-with-no-adjacent/) @@@
+	// 已经遍历过的岛屿标记为 2
+	grid[r][c] = '2';
 
-### 题目
+	// 继续递归四个方向
+	dfs(r - 1, c);
+	dfs(r + 1, c);
+	dfs(r, c + 1);
+	dfs(r, c - 1);
+}
 
-+ 有 N 个花园，按从 1 到 N 标记。在每个花园中，你打算种下四种花之一。
-+ paths[i] = [x, y] 描述了花园 x 到花园 y 的双向路径。
-+ 另外，没有花园有 3 条以上的路径可以进入或者离开。
-+ 你需要为每个花园选择一种花，使得通过路径相连的任何两个花园中的花的种类互不相同。
-+ 以数组形式返回选择的方案作为答案 answer，其中 answer[i] 为在第 (i+1) 个花园中种植的花的种类。花的种类用 1, 2, 3, 4 表示。
-+ 保证存在答案。
+function inArea(grid, r, c) {
+	// 仔细想一下这个判断其实很重复, 有点没有必要
+	// 首先 r 只有第一行和最后一行可能越界
+	// 然后 col 即使越界了也没有关系, 读取到 undefined, bad case 直接结束递归了
+	// 所以只需要给最开头和最后加上一个填充行就好了
+	if (r > grid.length -1 || c > grid[0].length - 1) return false;
+	if (r < 0 || c < 0) return false;
+	return true;
+}
+```
 
-  ```
-  输入：N = 3, paths = [[1,2],[2,3],[3,1]]
-  输出：[1,2,3]
-  ```
+这样，我们就得到了一个岛屿问题、乃至各种网格问题的通用 DFS 遍历方法。以下所讲的几个例题，其实都只需要在 DFS 遍历框架上稍加修改而已。
 
-### 分析
+小贴士： 在一些题解中，可能会把「已遍历过的陆地格子」标记为和海洋格子一样的 0，美其名曰「陆地沉没方法」，即遍历完一个陆地格子就让陆地「沉没」为海洋。这种方法看似很巧妙，但实际上有很大隐患，因为这样我们就无法区分「海洋格子」和「已遍历过的陆地格子」了。如果题目更复杂一点，这很容易出 bug。
 
-+ 这是一道简单题，限制每个节点的度为 3，同时提供四种颜色，因此不需要回溯
+## 岛屿问题
 
-  - 存储邻接点信息
-  - 遍历所有节点，对于每个节点，查看其邻接点颜色，使用不同的颜色染色即可
+在 LeetCode 中，「岛屿问题」是一个网格系列问题，比如：
 
-+ ```js
-  var gardenNoAdj = function(N, paths) {
-    const adjList = []
-    // 初始化邻接表 base 0
-    for (let i = 0; i < N; i++) {
-      adjList[i] = []
-    }
-    // 初始化路径信息
-    for (const path of paths) {
-      // path[0] 到 path[1] 双向路径
-      // 转化为base0
-      const [a,b] = [path[0]-1,path[1]-1]
-      adjList[a].push(b)
-      adjList[b].push(a)
-    }
-    const res =[]
-    // res base 0
-    for (let i = 0; i < N; i++) {
-      const used = new Array(N+1)
-      const neighbors = adjList[i]
-      // 记录当前节点的已涂色的邻接点的色彩
-      for (const n of neighbors) {
-        if(n<i) used[res[n]] = true
-      }
-      // 为当前节点染色
-      for (let j = 1; j <= 4; j++) {
-        if(!used[j]){
-          res[i] = j
-          break
-        }
-      }
-    }
-    return res
-  }
-  
-  let N = 3, paths = [[1,2],[2,3],[3,1]]
-  console.log(gardenNoAdj(N,paths))
-  ```
-+ 1000+ms 需要优化
+| File                                                   | difficulty | etags                                                                                                                             |
+| ------------------------------------------------------ | ---------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| [[programming/basic/leetcode/200. 岛屿数量\|200. 岛屿数量]] | medium     | <ul><li>#leetcode/grid/island</li><li>#leetcode/graph/traversal</li><li>#leetcode/unsolved</li><li>#leetcode/union-find</li></ul> |
 
-# 最短路径算法
+{ .block-language-dataview}
+
+- [463. 岛屿的周长](https://leetcode.cn/problems/island-perimeter/)
+- [695. 岛屿的最大面积](https://leetcode.cn/problems/max-area-of-island/)
+
+# 最短路径问题
 
 ## 使用 BFS 寻找最短路径
 
-- 到目前为止，我们只展示了 BFS 算法的工作原理。我们可以用该算法做更多事情，而不只是输出被访问顶点的顺序。例如，考虑如何来解决下面这个问题。
-- 给定一个图 G 和源顶点 v，找出对每个顶点 u，u 和 v 之间最短路径的距离（以边的数量计）。
-- 对于给定顶点 v，广度优先算法会访问所有与其距离为 1 的顶点，接着是距离为 2 的顶点，以此类推。所以，可以用广度优先算法来解这个问题。我们可以修改 bfs 方法以返回给我们一些信息：
-  - 从 v 到 u 的距离 d[u]；
-  - 前溯点 pred[u]，用来推导出从 v 到其他每个顶点 u 的最短路径。
-- 让我们来看看改进过的广度优先方法的实现：
+到目前为止，我们只展示了 BFS 算法的工作原理。我们可以用该算法做更多事情，而不只是输出被访问顶点的顺序。例如，考虑如何来解决下面这个问题。
+
+给定一个图 G 和源顶点 v，找出对每个顶点 u，u 和 v 之间最短路径的距离（以边的数量计）。
+
+对于给定顶点 v，广度优先算法会访问所有与其距离为 1 的顶点，接着是距离为 2 的顶点，以此类推。所以，可以用广度优先算法来解这个问题。我们可以修改 bfs 方法以返回给我们一些信息：
+
+  - 从 v 到 u 的距离 `d[u]`；
+  - 前溯点 `pred[u]`，用来推导出从 v 到其他每个顶点 u 的最短路径。
+
+让我们来看看改进过的广度优先方法的实现：
 
   ```js
-  this.bfs2Graph = function(v){  
-    const color = initializeColor(), 
-          queue = new Queue(), 
-          d = {},    //{1} 
-          pred = {}; //{2} 
-    queue.enqueue(v); 
-    for (let i=0; i<vertices.length; i++){
-      // 初始化每个顶点到源点的距离为0
-      const test = vertices[i]
-      d[vertices[i]] = 0
-      // 前溯点为null
-      pred[vertices[i]] = null
+this.bfs2Graph = function (v) {
+    const color = initializeColor(),
+        queue = new Queue(),
+        d = {},    //{1} 
+        pred = {}; //{2} 
+    queue.enqueue(v);
+    for (let i = 0; i < vertices.length; i++) {
+        // 初始化每个顶点到源点的距离为0
+        d[vertices[i]] = 0
+        // 前溯点为null
+        pred[vertices[i]] = null
     }
-    while (!queue.isEmpty()){ 
-      const v = queue.dequeue(), 
-            neighbors = adjList.get(v) 
-      color[v] = 'grey' 
-      for (i=0; i<neighbors.length; i++){ 
-        var w = neighbors[i] 
-        if (color[w] === 'white'){ 
-          color[w] = 'grey' 
-          // 前溯点的距离+1
-          pred[w] = v               //{6} 
-          d[w] = d[v] + 1           //{7} 
-          queue.enqueue(w) 
-        } 
-      } 
-      color[v] = 'black' 
+    while (!queue.isEmpty()) {
+        const v = queue.dequeue(),
+            neighbors = adjList.get(v)
+        color[v] = 'grey'
+        for (i = 0; i < neighbors.length; i++) {
+            var w = neighbors[i]
+            if (color[w] === 'white') {
+                color[w] = 'grey'
+                // 前溯点的距离+1
+                pred[w] = v               //{6} 
+                d[w] = d[v] + 1           //{7} 
+                queue.enqueue(w)
+            }
+        }
+        color[v] = 'black'
     }
     return { //{8} 
-      distances: d, 
-      predecessors: pred 
+        distances: d,
+        predecessors: pred
     }
-  }
+}
   ```
 
-- 初始化每个顶点到源点的距离为 0（行{4}），用 null 来初始化数组 pred。
-- 当我们发现顶点 vertex 的邻点 w 时，则设置 w 的前溯点值为 u（行{7}）。我们还通过给 d[u] 加 1 来设置 v 和 w 之间的距离（vertex 是 w 的前溯点，d[vertex] 的值已经更新了）。
-- 方法最后返回了一个包含 d 和 pred 的对象（行{8}）。
+初始化每个顶点到源点的距离为 0（行{4}），用 null 来初始化数组 pred。
+
+当我们发现顶点 vertex 的邻点 w 时，则设置 w 的前溯点值为 u（行{7}）。我们还通过给 `d[u]` 加 1 来设置 v 和 w 之间的距离（vertex 是 w 的前溯点，`d[vertex]` 的值已经更新了）。
+
+方法最后返回了一个包含 d 和 pred 的对象（行{8}）。
 
   ```js
   var shortestPathA = graph.BFS(myVertices[0]); 
   console.log(shortestPathA); 
   ```
 
-  ![1554698147689](/img/user/programming/basic/data-structure/graph/1554698147689.png)
+![1554698147689](/img/user/programming/basic/data-structure/graph/1554698147689.png)
 
-- 通过前溯点数组，我们可以用下面这段代码来构建从顶点 A 到其他顶点的路径：
+通过前溯点数组，我们可以用下面这段代码来构建从顶点 A 到其他顶点的路径：
 
   ```js
-  this.bfs2Graph = function(v){  
+this.bfs2Graph = function (v) {
     /.../
     // 利用前溯点对象打印路径
     const start = v,
-          path = new Stack()
+        path = new Stack()
     // 刨去起点
     const ends = [...vertices]
-    ends.splice(ends.indexOf(start),1)
+    ends.splice(ends.indexOf(start), 1)
     for (let i = 0; i < ends.length; i++) {
-      let end = ends[i]
-      while(end!==start){
-        path.push(end)
-        // 变更为前溯点，回溯到start为止
-        end = pred[end]
-      }
-      // 循环结束，栈中保存了该条路径，除了源顶点(A)外的顶点
-      let s = start
-      while(!path.isEmpty()){
-        // 逐个出栈拼接路径
-        s += ' - ' + path.pop()
-      }
-      console.log(s)
+        let end = ends[i]
+        while (end !== start) {
+            path.push(end)
+            // 变更为前溯点，回溯到start为止
+            end = pred[end]
+        }
+        // 循环结束，栈中保存了该条路径，除了源顶点(A)外的顶点
+        let s = start
+        while (!path.isEmpty()) {
+            // 逐个出栈拼接路径
+            s += ' - ' + path.pop()
+        }
+        console.log(s)
     }
     console.log(s)
     return { //{8} 
-      distances: d, 
-      predecessors: pred 
+        distances: d,
+        predecessors: pred
     }
-  }
+}
   ```
 
-- 对于每个其他顶点（除了起点——行{10}），我们会计算顶点 A 到它的路径。我们从顶点数组得到 end（行{11}），然后会创建一个栈来存储路径值（行{12}）。
-- 变量 v 被赋值为其前溯点的值，这样我们能够反向追溯这条路径。将变量 v 添加到栈中（行{14}）。最后，源顶点也会被添加到栈中，以得到完整路径。
-- 这之后，我们创建了一个 s 字符串，并将源顶点赋值给它（相当于它是最后一个加入栈中的，所以它是第一个被弹出的项 ——行{16}）。当栈是非空的，我们就从栈中移出一个项并将其拼接到字符串 s 的后面（行{18}）。最后（行{19}）在控制台上输出路径。
+对于每个其他顶点（除了起点——行{10}），我们会计算顶点 A 到它的路径。我们从顶点数组得到 end（行{11}），然后会创建一个栈来存储路径值（行{12}）。
 
-  ![1554699059738](/img/user/programming/basic/data-structure/graph/1554699059738.png)
+变量 v 被赋值为其前溯点的值，这样我们能够反向追溯这条路径。将变量 v 添加到栈中（行{14}）。最后，源顶点也会被添加到栈中，以得到完整路径。
+
+这之后，我们创建了一个 s 字符串，并将源顶点赋值给它（相当于它是最后一个加入栈中的，所以它是第一个被弹出的项 ——行{16}）。当栈是非空的，我们就从栈中移出一个项并将其拼接到字符串 s 的后面（行{18}）。最后（行{19}）在控制台上输出路径。
+
+![1554699059738|300](/img/user/programming/basic/data-structure/graph/1554699059738.png)
 
 ## 深入学习最短路径算法
 
@@ -848,6 +833,72 @@ function dfsVisit(v, color, callback) {
   ```
 
 + 对图中每一个顶点执行 Dijkstra 算法，也可以得到相同的结果。
+
+# 染色问题
+
+## [1042. 不邻接植花](https://leetcode-cn.com/problems/flower-planting-with-no-adjacent/) @@@
+
+### 题目
+
++ 有 N 个花园，按从 1 到 N 标记。在每个花园中，你打算种下四种花之一。
++ paths[i] = [x, y] 描述了花园 x 到花园 y 的双向路径。
++ 另外，没有花园有 3 条以上的路径可以进入或者离开。
++ 你需要为每个花园选择一种花，使得通过路径相连的任何两个花园中的花的种类互不相同。
++ 以数组形式返回选择的方案作为答案 answer，其中 answer[i] 为在第 (i+1) 个花园中种植的花的种类。花的种类用 1, 2, 3, 4 表示。
++ 保证存在答案。
+
+  ```
+  输入：N = 3, paths = [[1,2],[2,3],[3,1]]
+  输出：[1,2,3]
+  ```
+
+### 分析
+
++ 这是一道简单题，限制每个节点的度为 3，同时提供四种颜色，因此不需要回溯
+
+  - 存储邻接点信息
+  - 遍历所有节点，对于每个节点，查看其邻接点颜色，使用不同的颜色染色即可
+
+```js
+  var gardenNoAdj = function(N, paths) {
+    const adjList = []
+    // 初始化邻接表 base 0
+    for (let i = 0; i < N; i++) {
+      adjList[i] = []
+    }
+    // 初始化路径信息
+    for (const path of paths) {
+      // path[0] 到 path[1] 双向路径
+      // 转化为base0
+      const [a,b] = [path[0]-1,path[1]-1]
+      adjList[a].push(b)
+      adjList[b].push(a)
+    }
+    const res =[]
+    // res base 0
+    for (let i = 0; i < N; i++) {
+      const used = new Array(N+1)
+      const neighbors = adjList[i]
+      // 记录当前节点的已涂色的邻接点的色彩
+      for (const n of neighbors) {
+        if(n<i) used[res[n]] = true
+      }
+      // 为当前节点染色
+      for (let j = 1; j <= 4; j++) {
+        if(!used[j]){
+          res[i] = j
+          break
+        }
+      }
+    }
+    return res
+  }
+  
+  let N = 3, paths = [[1,2],[2,3],[3,1]]
+  console.log(gardenNoAdj(N,paths))
+  ```
+
+1000+ms 需要优化
 
 # 题集
 
