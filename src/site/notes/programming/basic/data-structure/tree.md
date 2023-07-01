@@ -839,9 +839,9 @@ tree.insert(11);
 | [[programming/basic/leetcode/530. 二叉搜索树的最小绝对差\|530. 二叉搜索树的最小绝对差]]     | easy       | <ul><li>#leetcode/tree/bst</li></ul>                                                                                                | 2023-06-09-Fri, 7:33:01 pm  |
 | [[programming/basic/leetcode/538. 把二叉搜索树转换为累加树\|538. 把二叉搜索树转换为累加树]]   | medium     | <ul><li>#leetcode/tree/bst</li></ul>                                                                                                | 2023-06-09-Fri, 7:50:18 pm  |
 | [[programming/basic/leetcode/669. 修剪二叉搜索树\|669. 修剪二叉搜索树]]             | medium     | <ul><li>#leetcode/tree/bst</li></ul>                                                                                                | 2023-06-10-Sat, 3:59:42 pm  |
+| [[programming/basic/leetcode/700. 二叉搜索树中的搜索\|700. 二叉搜索树中的搜索]]         | easy       | <ul><li>#leetcode/tree/bst</li><li>#leetcode/tree/traversal/sub-tree</li></ul>                                                      | 2023-06-09-Fri, 5:36:56 pm  |
 | [[programming/basic/leetcode/95. 不同的二叉搜索树 II\|95. 不同的二叉搜索树 II]]       | medium     | <ul><li>#leetcode/dp/exhaustion</li><li>#leetcoe/tree/bst</li><li>#leetcode/unsolved</li><li>#leetcode/divide-and-conquer</li></ul> | 2023-06-11-Sun, 3:37:01 pm  |
 | [[programming/basic/leetcode/98. 验证二叉搜索树\|98. 验证二叉搜索树]]               | medium     | <ul><li>#leetcode/tree/bst</li></ul>                                                                                                | 2023-06-10-Sat, 12:51:22 pm |
-| [[programming/basic/leetcode/700. 二叉搜索树中的搜索\|700. 二叉搜索树中的搜索]]         | easy       | <ul><li>#leetcode/tree/bst</li><li>#leetcode/tree/traversal/sub-tree</li></ul>                                                      | 2023-06-09-Fri, 5:36:56 pm  |
 
 { .block-language-dataview}
 
