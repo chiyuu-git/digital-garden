@@ -221,7 +221,7 @@ Mutation Observer 有以下特点:
 
 **示例**
 
-- ```js
+```js
     var article = document.querySelector('article');
     
     var  options = {
@@ -230,10 +230,10 @@ Mutation Observer 有以下特点:
     } ;
     
     observer.observe(article, options);
-    ```
-- 上面代码中，`observe` 方法接受两个参数，第一个是所要观察的 DOM 元素是 `article`，第二个是所要观察的变动类型（子节点变动和属性变动）。
+```
++ 上面代码中，`observe` 方法接受两个参数，第一个是所要观察的 DOM 元素是 `article`，第二个是所要观察的变动类型（子节点变动和属性变动）。
 
-    ```js
+```js
     // 开始监听文档根节点（即<html>标签）的变动
     mutationObserver.observe(document.documentElement, {
       attributes: true,
@@ -243,7 +243,7 @@ Mutation Observer 有以下特点:
       attributeOldValue: true,
       characterDataOldValue: true
     });
-    ```
+```
 
 - 下面的例子是观察新增的子节点。
 
@@ -266,27 +266,27 @@ Mutation Observer 有以下特点:
 
 ### disconnect()，takeRecords（）
 
-- `disconnect` 方法用来停止观察。调用该方法后，DOM 再发生变动，也不会触发观察器。
+`disconnect` 方法用来停止观察。调用该方法后，DOM 再发生变动，也不会触发观察器。
 
-    ```js
+```js
     observer.disconnect();
-    ```
+```
 
-- [`MutationObserver`](https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver) 的 `takeRecords()` 方法返回已检测到但尚未由观察者的回调函数处理的所有匹配 DOM 更改的列表，使变更队列保持为空。
+[`MutationObserver`](https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver) 的 `takeRecords()` 方法返回已检测到但尚未由观察者的回调函数处理的所有匹配 DOM 更改的列表，使变更队列保持为空。
 
-    ```
+```
     observer.takeRecords();
-    ```
+```
 
-- 此方法最常见的使用场景是在断开观察者之前立即获取所有未处理的更改记录，以便在停止观察者时可以处理任何未处理的更改。
+此方法最常见的使用场景是在断开观察者之前立即获取所有未处理的更改记录，以便在停止观察者时可以处理任何未处理的更改。
 
-    ```js
+```js
     // 保存所有没有被观察器处理的变动
     var changes = mutationObserver.takeRecords();
     
     // 停止观察
     mutationObserver.disconnect();
-    ```
+```
 
 ## MutationRecord 对象
 
