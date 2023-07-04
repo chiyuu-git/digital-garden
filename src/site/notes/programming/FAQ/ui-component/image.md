@@ -248,3 +248,33 @@ WebP 图片是一种新的图像格式，由 Google 开发。与 png、jpg 相�
 ## 体积与分辨率与质量的关系
 
 图片体积和尺寸、质量的关系比较复杂，因为涉及到图片内容的特性（复杂图片更难压缩、简单图像更容易压缩）、压缩方法等多种因素的影响。通常可以这么理解：尺寸越大、质量越高，则体积越大。
+
+# 图片宽高比 1:1
+
+by chatgpt
+
+```css
+.square-container {
+  width: 100%; /* 设置容器的宽度 */
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 100%; /* 通过设置 padding-bottom 为百分比值，约束容器的高度为宽度的相同百分比 */
+}
+
+.square-container img {
+  width: 100%; /* 图像宽度设置为 100%，占满容器宽度 */
+  height: auto; /* 图像高度自适应，保持原始比例 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto; /* 使用 margin: auto 居中图像 */
+}
+```
+
+这段代码中，`.square-container` 的宽度被设置为 100% 以占满其父容器的宽度。通过设置 `padding-bottom` 为 100%，容器的高度将与宽度相等，因为 padding 值是基于容器宽度计算的。
+
+图像通过 `position: absolute` 和对应的 `top`, `left`, `bottom`, `right` 属性被居中显示在容器中。`margin: auto` 用于在垂直和水平方向上将图像居中。
+
+这样，无论图像的实际宽度是多少，容器的高度都会按照宽高比 1:1 进行约束。
