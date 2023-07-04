@@ -210,7 +210,7 @@ Mutation Observer 有以下特点:
     2. **attributes**：属性的变动
     3. **characterData**：节点内容或节点文本的变动
 
-    > characterData 必须监视文本节点才有用
+> characterData 必须监视文本节点才有用
 
 - 想要观察哪一种变动类型，就在 `option` 对象中指定它的值为 `true`。需要注意的是，必须同时指定 `childList`、`attributes` 和 `characterData` 中的一种或多种，若未均指定将报错。
 - 除了变动类型，`options` 对象还可以设定以下属性：
