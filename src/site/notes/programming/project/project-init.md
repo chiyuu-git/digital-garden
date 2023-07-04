@@ -2800,3 +2800,5 @@ module.exports = {
 [eslint-config-jest-enzyme](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FFormidableLabs%2Fenzyme-matchers%2Ftree%2Fmaster%2Fpackages%2Feslint-config-jest-enzyme): jest 和 enzyme 专用的校验规则，保证一些断言语法可以让 Eslint 识别而不会发出警告。
 
 [eslint-plugin-jest](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fjest-community%2Feslint-plugin-jest): Jest 专用的 Eslint 规则校验插件.
+
+# 项目支持 AB 实验
