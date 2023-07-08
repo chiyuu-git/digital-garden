@@ -103,6 +103,8 @@
 
 [55. 跳跃游戏](../leetcode/55.%20跳跃游戏.md)
 
+[45. 跳跃游戏 II](../leetcode/45.%20跳跃游戏%20II.md)
+
 # 背包问题
 
 各种大米，小米，糯米，黄米，等重量 20kg 以内，价格最高
@@ -146,3 +148,12 @@ Kruskal 算法
 # 直接法 + 模拟法
 
 [605. 种花问题](../leetcode/605.%20种花问题.md)
+
+# 区间问题
+
+| File                                                                 | difficulty | etags                                                                                                   | date-created               |
+| -------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------- | -------------------------- |
+| [[programming/basic/leetcode/452. 用最少数量的箭引爆气球\|452. 用最少数量的箭引爆气球]] | medium     | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/unsolved</li><li>#leetcode/math/interval</li></ul> | 2023-07-08-Sat, 8:20:17 pm |
+| [[programming/basic/leetcode/435. 无重叠区间\|435. 无重叠区间]]             | medium     | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/math/interval</li></ul>                            | 2023-07-08-Sat, 9:18:12 pm |
+
+{ .block-language-dataview}
