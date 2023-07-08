@@ -63,6 +63,20 @@ hard 没有思路就直接看答案, 一般都不会考这么难的
 
 广度遍历与队列，广度遍历只能通过队列形式，无法通过递归
 
+## 注意入参
+
+提交有 case 不通过是有惩罚的
+
+最常见的问题: 示例给出的都是大于 0 的正数, 我会下意识的以为所有的输入都是正数, 但是其实是会有负数的
+
+这时候初始化值就不能为 0, 而应该是 `Number.MIN_SAFE_INTERGER`
+
+## 优先队列
+
+一个数组, 排序的同时, 要获取每个数的 order , 要对应上原来的位置
+
+[135. 分发糖果](135.%20分发糖果.md)
+
 ## 减少特判
 
 dummyHead
@@ -116,10 +130,10 @@ dummyHead
 
 | File                                                                                                                           | solution tips overview                                          |
 | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- |
-| [[programming/basic/leetcode/41. First Missing Positive\|41. First Missing Positive]]                                       | [[programming/basic/leetcode/41. First Missing Positive#solution tips\|41. First Missing Positive#solution tips]]                    |
-| [[programming/basic/leetcode/442. Find All Duplicates in an Array\|442. Find All Duplicates in an Array]]                   | [[programming/basic/leetcode/442. Find All Duplicates in an Array#solution tips\|442. Find All Duplicates in an Array#solution tips]]          |
-| [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array\|448. Find All Numbers Disappeared in an Array]] | [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array#solution tips\|448. Find All Numbers Disappeared in an Array#solution tips]] |
 | [[programming/basic/leetcode/645. Set Mismatch\|645. Set Mismatch]]                                                         | [[programming/basic/leetcode/645. Set Mismatch#solution tips\|645. Set Mismatch#solution tips]]                             |
+| [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array\|448. Find All Numbers Disappeared in an Array]] | [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array#solution tips\|448. Find All Numbers Disappeared in an Array#solution tips]] |
+| [[programming/basic/leetcode/442. Find All Duplicates in an Array\|442. Find All Duplicates in an Array]]                   | [[programming/basic/leetcode/442. Find All Duplicates in an Array#solution tips\|442. Find All Duplicates in an Array#solution tips]]          |
+| [[programming/basic/leetcode/41. First Missing Positive\|41. First Missing Positive]]                                       | [[programming/basic/leetcode/41. First Missing Positive#solution tips\|41. First Missing Positive#solution tips]]                    |
 
 { .block-language-dataview}
 
@@ -127,9 +141,9 @@ dummyHead
 
 | File                                                                                                           | solution tips overview                                  |
 | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素\|230. 二叉搜索树中第K小的元素]]                                         | [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素#solution tips\|230. 二叉搜索树中第K小的元素#solution tips]]                     |
-| [[programming/basic/leetcode/414. Third Maximum Number\|414. Third Maximum Number]]                         | [[programming/basic/leetcode/414. Third Maximum Number#solution tips\|414. Third Maximum Number#solution tips]]             |
 | [[programming/basic/leetcode/628. Maximum Product of Three Numbers\|628. Maximum Product of Three Numbers]] | [[programming/basic/leetcode/628. Maximum Product of Three Numbers#solution tips\|628. Maximum Product of Three Numbers#solution tips]] |
+| [[programming/basic/leetcode/414. Third Maximum Number\|414. Third Maximum Number]]                         | [[programming/basic/leetcode/414. Third Maximum Number#solution tips\|414. Third Maximum Number#solution tips]]             |
+| [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素\|230. 二叉搜索树中第K小的元素]]                                         | [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素#solution tips\|230. 二叉搜索树中第K小的元素#solution tips]]                     |
 
 { .block-language-dataview}
 
@@ -144,8 +158,8 @@ dummyHead
 
 | File                                                         | overview                       |
 | ------------------------------------------------------------ | ------------------------------ |
-| [[programming/basic/leetcode/495. 提莫攻击\|495. 提莫攻击]]       | [[programming/basic/leetcode/495. 提莫攻击#solution tips\|495. 提莫攻击#solution tips]]    |
 | [[programming/basic/leetcode/636. 函数的独占时间\|636. 函数的独占时间]] | [[programming/basic/leetcode/636. 函数的独占时间#solution tips\|636. 函数的独占时间#solution tips]] |
+| [[programming/basic/leetcode/495. 提莫攻击\|495. 提莫攻击]]       | [[programming/basic/leetcode/495. 提莫攻击#solution tips\|495. 提莫攻击#solution tips]]    |
 
 { .block-language-dataview}
 
@@ -207,10 +221,10 @@ dummyHead
 
 | File                                                                                                                           | solution tips overview                                          |
 | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- |
-| [[programming/basic/leetcode/41. First Missing Positive\|41. First Missing Positive]]                                       | [[programming/basic/leetcode/41. First Missing Positive#solution tips\|41. First Missing Positive#solution tips]]                    |
-| [[programming/basic/leetcode/442. Find All Duplicates in an Array\|442. Find All Duplicates in an Array]]                   | [[programming/basic/leetcode/442. Find All Duplicates in an Array#solution tips\|442. Find All Duplicates in an Array#solution tips]]          |
-| [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array\|448. Find All Numbers Disappeared in an Array]] | [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array#solution tips\|448. Find All Numbers Disappeared in an Array#solution tips]] |
 | [[programming/basic/leetcode/565. 数组嵌套\|565. 数组嵌套]]                                                                         | [[programming/basic/leetcode/565. 数组嵌套#solution tips\|565. 数组嵌套#solution tips]]                                     |
+| [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array\|448. Find All Numbers Disappeared in an Array]] | [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array#solution tips\|448. Find All Numbers Disappeared in an Array#solution tips]] |
+| [[programming/basic/leetcode/442. Find All Duplicates in an Array\|442. Find All Duplicates in an Array]]                   | [[programming/basic/leetcode/442. Find All Duplicates in an Array#solution tips\|442. Find All Duplicates in an Array#solution tips]]          |
+| [[programming/basic/leetcode/41. First Missing Positive\|41. First Missing Positive]]                                       | [[programming/basic/leetcode/41. First Missing Positive#solution tips\|41. First Missing Positive#solution tips]]                    |
 
 { .block-language-dataview}
 
@@ -218,12 +232,12 @@ dummyHead
 
 | File                                                       | solution tips overview        |
 | ---------------------------------------------------------- | ----------------------------- |
-| [[programming/basic/leetcode/15. 三数之和\|15. 三数之和]]       | [[programming/basic/leetcode/15. 三数之和#solution tips\|15. 三数之和#solution tips]]    |
-| [[programming/basic/leetcode/18. 四数之和\|18. 四数之和]]       | [[programming/basic/leetcode/18. 四数之和#solution tips\|18. 四数之和#solution tips]]    |
-| [[programming/basic/leetcode/40. 组合总和 II\|40. 组合总和 II]] | [[programming/basic/leetcode/40. 组合总和 II#solution tips\|40. 组合总和 II#solution tips]] |
-| [[programming/basic/leetcode/47. 全排列 II\|47. 全排列 II]]   | [[programming/basic/leetcode/47. 全排列 II#solution tips\|47. 全排列 II#solution tips]]  |
-| [[programming/basic/leetcode/491. 递增子序列\|491. 递增子序列]]   | [[programming/basic/leetcode/491. 递增子序列#solution tips\|491. 递增子序列#solution tips]]  |
 | [[programming/basic/leetcode/90. 子集 II\|90. 子集 II]]     | [[programming/basic/leetcode/90. 子集 II#solution tips\|90. 子集 II#solution tips]]   |
+| [[programming/basic/leetcode/491. 递增子序列\|491. 递增子序列]]   | [[programming/basic/leetcode/491. 递增子序列#solution tips\|491. 递增子序列#solution tips]]  |
+| [[programming/basic/leetcode/47. 全排列 II\|47. 全排列 II]]   | [[programming/basic/leetcode/47. 全排列 II#solution tips\|47. 全排列 II#solution tips]]  |
+| [[programming/basic/leetcode/40. 组合总和 II\|40. 组合总和 II]] | [[programming/basic/leetcode/40. 组合总和 II#solution tips\|40. 组合总和 II#solution tips]] |
+| [[programming/basic/leetcode/18. 四数之和\|18. 四数之和]]       | [[programming/basic/leetcode/18. 四数之和#solution tips\|18. 四数之和#solution tips]]    |
+| [[programming/basic/leetcode/15. 三数之和\|15. 三数之和]]       | [[programming/basic/leetcode/15. 三数之和#solution tips\|15. 三数之和#solution tips]]    |
 
 { .block-language-dataview}
 
@@ -237,8 +251,15 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 
 | File                                                                                                                           | difficulty | etags                                                                                                                                                                                     | unsolved | date-created                |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------- |
-| [[programming/basic/leetcode/45. 跳跃游戏 II\|45. 跳跃游戏 II]]                                                                     | medium     | <ul><li>#leetcode/greedy-algorithm</li></ul>                                                                                                                                              | false    | 2023-07-07-Fri, 9:06:04 am  |
-| [[programming/basic/leetcode/55. 跳跃游戏\|55. 跳跃游戏]]                                                                           | medium     | <ul><li>#leetcode/greedy-algorithm</li></ul>                                                                                                                                              | false    | 2023-07-06-Thu, 8:10:20 pm  |
+| [[programming/basic/leetcode/435. 无重叠区间\|435. 无重叠区间]]                                                                       | medium     | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/math/interval</li></ul>                                                                                                              | false    | 2023-07-08-Sat, 9:18:12 pm  |
+| [[programming/basic/leetcode/452. 用最少数量的箭引爆气球\|452. 用最少数量的箭引爆气球]]                                                           | medium     | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/unsolved</li><li>#leetcode/math/interval</li></ul>                                                                                   | true     | 2023-07-08-Sat, 8:20:17 pm  |
+| [[programming/basic/leetcode/406. 根据身高重建队列\|406. 根据身高重建队列]]                                                                 | medium     | <ul><li>#leetcode/hash-table/order</li><li>#leetcode/unsolved</li><li>#leetcode/greedy-algorithm/arrangement</li><li>#leetcode/priority-queue</li><li>#leetcode/sort</li></ul>            | true     | 2023-07-08-Sat, 3:44:39 pm  |
+| [[programming/basic/leetcode/45. 跳跃游戏 II\|45. 跳跃游戏 II]]                                                                     | medium     | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/unsolved</li></ul>                                                                                                                   | true     | 2023-07-07-Fri, 9:06:04 am  |
+| [[programming/basic/leetcode/860. 柠檬水找零\|860. 柠檬水找零]]                                                                       | easy       | <ul><li>#leetcode/greedy-algorithm</li></ul>                                                                                                                                              | false    | 2023-07-07-Fri, 3:33:00 pm  |
+| [[programming/basic/leetcode/135. 分发糖果\|135. 分发糖果]]                                                                         | hard       | <ul><li>#leetcode/hash-table/order</li><li>#leetcode/unsolved</li><li>#leetcode/greedy-algorithm/arrangement</li><li>#leetcode/priority-queue</li></ul>                                   | true     | 2023-07-07-Fri, 2:57:11 pm  |
+| [[programming/basic/leetcode/134. 加油站\|134. 加油站]]                                                                           | medium     | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/unsolved</li></ul>                                                                                                                   | true     | 2023-07-07-Fri, 2:20:06 pm  |
+| [[programming/basic/leetcode/1005. K 次取反后最大化的数组和\|1005. K 次取反后最大化的数组和]]                                                     | easy       | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/math</li></ul>                                                                                                                       | false    | 2023-07-07-Fri, 10:36:09 am |
+| [[programming/basic/leetcode/55. 跳跃游戏\|55. 跳跃游戏]]                                                                           | medium     | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/unsolved</li></ul>                                                                                                                   | true     | 2023-07-06-Thu, 8:10:20 pm  |
 | [[programming/basic/leetcode/122. 买卖股票的最佳时机 II\|122. 买卖股票的最佳时机 II]]                                                         | medium     | <ul><li>#leetcode/brainteasers</li><li>#leetcode/math/monotone</li><li>#leetcode/dp</li><li>#leetcode/unsolved</li><li>#leetcode/greedy-algoritm</li><li>#leetcode/sub/sequence</li></ul> | true     | 2023-07-06-Thu, 7:50:10 pm  |
 | [[programming/basic/leetcode/53. 最大子数组和\|53. 最大子数组和]]                                                                       | medium     | <ul><li>#leetcode/brainteasers</li><li>#leetcode/dp</li><li>#leetcode/unsolved</li><li>#leetcode/greedy-algoritm</li><li>#leetcode/sub/onsecutive</li></ul>                               | true     | 2023-07-06-Thu, 7:37:09 pm  |
 | [[programming/basic/leetcode/376. 摆动序列\|376. 摆动序列]]                                                                         | medium     | <ul><li>#leetcode/brainteasers</li><li>#leetcode/math/monotone</li><li>#leetcode/dp</li><li>#leetcode/unsolved</li><li>#leetcode/greedy-algoritm</li><li>#leetcode/sub/sequence</li></ul> | true     | 2023-07-06-Thu, 10:37:33 am |
@@ -341,7 +362,7 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 | [[programming/basic/leetcode/15. 三数之和\|15. 三数之和]]                                                                           | medium     | <ul><li>#leetcode/pointer/collision-pointer</li><li>#leetcode/skip-dup</li></ul>                                                                                                          | false    | 2023-05-26-Fri, 2:49:19 pm  |
 | [[programming/basic/leetcode/680. 验证回文串 II\|680. 验证回文串 II]]                                                                 | easy       | <ul><li>#leetcode/pointer/collision-pointer</li><li>#leetcode/palindrome</li></ul>                                                                                                        | false    | 2023-05-26-Fri, 2:13:29 pm  |
 | [[programming/basic/leetcode/345. 反转字符串中的元音字母\|345. 反转字符串中的元音字母]]                                                           | easy       | <ul><li>#leetcode/pointer/collision-pointer</li></ul>                                                                                                                                     | false    | 2023-05-26-Fri, 12:33:28 pm |
-| [[programming/basic/leetcode/605. 种花问题\|605. 种花问题]]                                                                         | easy       | <ul><li>#leetcode/greedy-algorithm/straight</li><li>#leetcode/unsolved</li></ul>                                                                                                          | true     | 2023-05-26-Fri, 12:01:50 pm |
+| [[programming/basic/leetcode/605. 种花问题\|605. 种花问题]]                                                                         | easy       | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/unsolved</li></ul>                                                                                                                   | true     | 2023-05-26-Fri, 12:01:50 pm |
 | [[programming/basic/leetcode/525. 连续数组\|525. 连续数组]]                                                                         | medium     | <ul><li>#leetcode/hash-table</li><li>#leetcode/prefix-sum</li><li>#leetcode/unsolved</li></ul>                                                                                            | true     | 2023-05-26-Fri, 10:02:58 am |
 | [[programming/basic/leetcode/523. 连续的子数组和\|523. 连续的子数组和]]                                                                   | medium     | <ul><li>#leetcode/hash-table</li><li>#leetcode/prefix-sum</li><li>#leetcode/unsolved</li><li>#leetcode/sub/consecutive</li></ul>                                                          | true     | 2023-05-25-Thu, 8:47:00 pm  |
 | [[programming/basic/leetcode/560. 和为 K 的子数组\|560. 和为 K 的子数组]]                                                               | medium     | <ul><li>#leetcode/hash-table</li><li>#leetcode/prefix-sum</li><li>#leetcode/unsolved</li><li>#leetcode/sub/consecutive</li></ul>                                                          | true     | 2023-05-25-Thu, 5:48:31 pm  |
@@ -414,8 +435,8 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 | [[programming/basic/leetcode/498. 对角线遍历\|498. 对角线遍历]]                                                                       | medium     | <ul><li>#leetcode/array/matrix/traversal</li></ul>                                                                                                                                        | false    | 2023-05-10-Wed, 1:29:08 am  |
 | [[programming/basic/leetcode/189. Rotate Array\|189. Rotate Array]]                                                         | medium     | <ul><li>#leetcode/array/rotate</li><li>#leetcode/space/in-place</li><li>#leetcode/traversal/dfs</li><li>#leetcode/solved</li></ul>                                                        | false    | 2023-05-09-Tue, 1:29:08 am  |
 | [[programming/basic/leetcode/396. 旋转函数\|396. 旋转函数]]                                                                         | medium     | <ul><li>#leetcode/array/traversal</li><li>#leetcode/dp</li><li>#leetcode/array/rotate</li></ul>                                                                                           | false    | 2023-05-09-Tue, 1:29:08 am  |
-| [[programming/basic/leetcode/59. Spiral Matrix II\|59. Spiral Matrix II]]                                                   | medium     | <ul><li>#leetcode/array/matrix/traversal</li><li>#leetcode/array/matrix/transform</li></ul>                                                                                               | false    | 2023-05-09-Tue, 1:29:08 am  |
 | [[programming/basic/leetcode/54. 螺旋矩阵\|54. 螺旋矩阵]]                                                                           | medium     | <ul><li>#leetcode/array/matrix/traversal</li><li>#leetcode/array/matrix/transform</li></ul>                                                                                               | false    | 2023-05-09-Tue, 1:29:08 am  |
+| [[programming/basic/leetcode/59. Spiral Matrix II\|59. Spiral Matrix II]]                                                   | medium     | <ul><li>#leetcode/array/matrix/traversal</li><li>#leetcode/array/matrix/transform</li></ul>                                                                                               | false    | 2023-05-09-Tue, 1:29:08 am  |
 | [[programming/basic/leetcode/73. 矩阵置零\|73. 矩阵置零]]                                                                           | medium     | <ul><li>#leetcode/array/matrix</li><li>#leetcode/space/in-place</li></ul>                                                                                                                 | false    | 2023-05-09-Tue, 1:29:08 am  |
 | [[programming/basic/leetcode/48. Rotate Image\|48. Rotate Image]]                                                           | medium     | <ul><li>#leetcode/array/matrix/transform</li><li>#leetcode/space/in-place</li><li>#leetcode/traversal/dfs</li><li>#leetcode/solved</li></ul>                                              | false    | 2023-05-02-Tue, 1:29:08 am  |
 | [[programming/basic/leetcode/566. Reshape the Matrix\|566. Reshape the Matrix]]                                             | easy       | <ul><li>#leetcode/array/matrix/transform</li></ul>                                                                                                                                        | false    | 2023-05-01-Mon, 12:28:33 pm |
