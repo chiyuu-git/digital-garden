@@ -140,9 +140,9 @@ class Stack {
 | [[programming/basic/leetcode/224. 基本计算器\|224. 基本计算器]]     | hard       | <ul><li>#leetcode/stack</li><li>#leetcode/math</li><li>#leetcode/unsolved</li></ul>                                    | 2023-05-21-Sun, 5:47:35 pm  |
 | [[programming/basic/leetcode/445. 两数相加 II\|445. 两数相加 II]] | medium     | <ul><li>#leetcode/linked-list</li><li>#leetcode/math/high-precision-computation</li><li>#leetcode/stack</li></ul>      | 2023-05-23-Tue, 4:10:35 pm  |
 | [[programming/basic/leetcode/591. 标签验证器\|591. 标签验证器]]     | hard       | <ul><li>#leetcode/stack</li><li>#leetcode/unsolved</li></ul>                                                           | 2023-05-21-Sun, 6:43:37 pm  |
+| [[programming/basic/leetcode/636. 函数的独占时间\|636. 函数的独占时间]] | medium     | <ul><li>#leetcode/stack</li><li>#leetcode/time-sequence</li></ul>                                                      | 2023-05-21-Sun, 6:24:26 pm  |
 | [[programming/basic/leetcode/654. 最大二叉树\|654. 最大二叉树]]     | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/stack/monotonic-stack</li><li>#leetcode/unsolved</li></ul> | 2023-06-03-Sat, 10:12:52 pm |
 | [[programming/basic/leetcode/682. 棒球比赛\|682. 棒球比赛]]       | easy       | <ul><li>#leetcode/stack</li></ul>                                                                                      | 2023-05-20-Sat, 9:34:41 pm  |
-| [[programming/basic/leetcode/636. 函数的独占时间\|636. 函数的独占时间]] | medium     | <ul><li>#leetcode/stack</li><li>#leetcode/time-sequence</li></ul>                                                      | 2023-05-21-Sun, 6:24:26 pm  |
 | [[programming/basic/leetcode/71. 简化路径\|71. 简化路径]]         | medium     | <ul><li>#leetcode/stack</li></ul>                                                                                      | 2023-05-20-Sat, 9:42:39 pm  |
 
 { .block-language-dataview}
