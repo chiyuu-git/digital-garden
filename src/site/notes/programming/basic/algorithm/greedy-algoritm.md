@@ -151,9 +151,16 @@ Kruskal 算法
 
 # 区间问题
 
-| File                                                                 | difficulty | etags                                                                                                   | date-created               |
-| -------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------- | -------------------------- |
-| [[programming/basic/leetcode/452. 用最少数量的箭引爆气球\|452. 用最少数量的箭引爆气球]] | medium     | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/unsolved</li><li>#leetcode/math/interval</li></ul> | 2023-07-08-Sat, 8:20:17 pm |
-| [[programming/basic/leetcode/435. 无重叠区间\|435. 无重叠区间]]             | medium     | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/math/interval</li></ul>                            | 2023-07-08-Sat, 9:18:12 pm |
+在遍历的过程中, 不断更新能达到的最远边界, 所以跳跃问题也可以归到这一类
+
+[55. 跳跃游戏](../leetcode/55.%20跳跃游戏.md)
+
+[45. 跳跃游戏 II](../leetcode/45.%20跳跃游戏%20II.md)
+
+| File                                                                 | difficulty | etags                                                                                                                        | date-created                |
+| -------------------------------------------------------------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| [[programming/basic/leetcode/452. 用最少数量的箭引爆气球\|452. 用最少数量的箭引爆气球]] | medium     | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/unsolved</li><li>#leetcode/math/interval</li></ul>                      | 2023-07-08-Sat, 8:20:17 pm  |
+| [[programming/basic/leetcode/435. 无重叠区间\|435. 无重叠区间]]             | medium     | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/math/interval</li><li>#leetcode/dp</li><li>#leetcode/unsolved</li></ul> | 2023-07-08-Sat, 9:18:12 pm  |
+| [[programming/basic/leetcode/763. 划分字母区间\|763. 划分字母区间]]           | medium     | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/math/interval</li><li>#leetcode/unsolved</li></ul>                      | 2023-07-09-Sun, 10:52:30 am |
 
 { .block-language-dataview}
