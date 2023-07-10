@@ -746,6 +746,7 @@ sub-tree 类型, 往往不好使用层次遍历?
 | [[programming/basic/leetcode/654. 最大二叉树\|654. 最大二叉树]]                     | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/stack/monotonic-stack</li><li>#leetcode/unsolved</li></ul>                 | 2023-06-03-Sat, 10:12:52 pm |
 | [[programming/basic/leetcode/687. 最长同值路径\|687. 最长同值路径]]                   | medium     | <ul><li>#leetcode/tree/traversal/path</li><li>#leetcode/tree/traversal/sub-tree</li></ul>                                              | 2023-06-04-Sun, 3:01:09 pm  |
 | [[programming/basic/leetcode/700. 二叉搜索树中的搜索\|700. 二叉搜索树中的搜索]]             | easy       | <ul><li>#leetcode/tree/bst</li><li>#leetcode/tree/traversal/sub-tree</li></ul>                                                         | 2023-06-09-Fri, 5:36:56 pm  |
+| [[programming/basic/leetcode/968. 监控二叉树\|968. 监控二叉树]]                     | hard       | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/dp</li><li>#leetcode/unsolved</li><li>#leetcode/tree/traversal/sub-tree</li></ul> | 2023-07-09-Sun, 8:14:47 pm  |
 
 { .block-language-dataview}
 
@@ -765,67 +766,7 @@ sub-tree 类型, 往往不好使用层次遍历?
 
 # 根据遍历确定树
 
-知道前序中序、中序后序遍历序列，那么可以唯一确定一棵二叉树，但是知道前序后序遍历序列就不一定能唯一确定一棵二叉树。
-
-链接：https://www.nowcoder.com/questionTerminal/9fb40807179a4fe2bcd12abcaabda891?toCommentId=45662
-
-简单解法： 先序序列得到 根节点为 A，根节点为 A，再根据中序序列得到，B 在 A 的右子树中，此时可以推出：后序序列最后两个是 BA。
-
-再看，A 的左子树先序序列为 DCEFGH，得到左子树的根为 D，所以后序序列的倒数第三个是 D，得到 DBA，只有 D 符合。
-
-## [105. 从前序与中序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
-
-### 题目
-
-- 根据一棵树的前序遍历与中序遍历构造二叉树。
-- 注意：你可以假设树中没有重复的元素。
-
-  ```
-  前序遍历 preorder = [3,9,20,15,7]
-  中序遍历 inorder =  [9,3,15,20,7]
-  返回如下的二叉树：
-      3
-     / \
-    9  20
-      /  \
-     15   7
-  ```
-
-### 分析
-
-- 首先，preorder 中的第一个元素一定是树的根，这个根又将 inorder 序列分成了左右两棵子树。现在我们只需要将先序遍历的数组中删除根元素，然后重复上面的过程处理左右两棵子树。
-
-### 实现
-
-```java
-  function TreeNode(val) {
-    this.val = val;
-    this.left = this.right = null;
-  }
-  var buildTree = function(preorder,inorder) {
-    let preIndex = 0
-    const map = {}
-    for (const [index,val] of inorder.entries()) {
-      map[val] = index
-    }
-    return helper(0,inorder.length)
-  
-    function helper(left,right){
-      if(left===right) return null
-  
-      // 根据前序遍历获得根节点
-      const rootVal = preorder[preIndex]
-      const root = new TreeNode(rootVal)
-  
-      // 根据中序遍历分为左右树
-      const index = map[rootVal]
-      preIndex++
-      root.left = helper(left,index)
-      root.right = helper(index+1,right)
-      return root
-    }
-  }
-```
+[105. 从前序与中序遍历序列构造二叉树](../leetcode/105.%20从前序与中序遍历序列构造二叉树.md)
 
 # serialize()
 
