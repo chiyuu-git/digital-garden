@@ -425,11 +425,11 @@ var subsets = function(nums) {
 
 # 排列问题
 
-| File                                                     | difficulty | etags                                                                                                                                                  |
-| -------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [[programming/basic/leetcode/46. 全排列\|46. 全排列]]       | medium     | <ul><li>#leetcode/backtracking/permutation</li></ul>                                                                                                   |
-| [[programming/basic/leetcode/47. 全排列 II\|47. 全排列 II]] | medium     | <ul><li>#leetcode/backtracking/permutation</li><li>#leetcode/skip-dup</li></ul>                                                                        |
-| [[programming/basic/leetcode/51. N 皇后\|51. N 皇后]]     | hard       | <ul><li>#leetcode/backtracking/permutation/chessboard</li><li>#leetcode/bit-manipulation</li><li>#leetcode/unsolved</li><li>#leetcode/matrix</li></ul> |
-| [[programming/basic/leetcode/37. 解数独\|37. 解数独]]       | hard       | <ul><li>#leetcode/backtracking/permutation/sudoku</li><li>#leetcode/bit-manipulation</li><li>#leetcode/unsolved</li><li>#leetcode/matrix</li></ul>     |
+| File                                                     | difficulty | etags                                                                                                                                                        |
+| -------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [[programming/basic/leetcode/46. 全排列\|46. 全排列]]       | medium     | <ul><li>#leetcode/backtracking/permutation</li></ul>                                                                                                         |
+| [[programming/basic/leetcode/47. 全排列 II\|47. 全排列 II]] | medium     | <ul><li>#leetcode/backtracking/permutation</li><li>#leetcode/skip-dup</li></ul>                                                                              |
+| [[programming/basic/leetcode/51. N 皇后\|51. N 皇后]]     | hard       | <ul><li>#leetcode/backtracking/permutation/chessboard</li><li>#leetcode/bit-manipulation</li><li>#leetcode/unsolved</li><li>#leetcode/array/matrix</li></ul> |
+| [[programming/basic/leetcode/37. 解数独\|37. 解数独]]       | hard       | <ul><li>#leetcode/backtracking/permutation/sudoku</li><li>#leetcode/bit-manipulation</li><li>#leetcode/unsolved</li><li>#leetcode/array/matrix</li></ul>     |
 
 { .block-language-dataview}
