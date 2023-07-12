@@ -41,7 +41,7 @@ https://segmentfault.com/a/1190000012829866/
 
 我们先看第一行，物品 0 的体积为 2，价值为 6：
 
-- 当容量为 0 时，什么也放不下，因此第一个格式只能填 0，程序表示为 ${f(0,0) = 0}$ 或者 ${f[0](#) = 0}$
+- 当容量为 0 时，什么也放不下，因此第一个格式只能填 0，程序表示为 ${f(0,0) = 0}$
 - 当 ${j=1}$ 时，依然放不下 ${w_0}$，因此依然为 0，${f(0, 1) = 0}$
 - 当 ${j=2}$ 时，能放下 ${w_0}$，于是有 ${f(0, 2)\ = \ v_0=6}$
 - 当 ${j=3}$ 时，也能放下 ${w_0}$，但我们只有一个物品 0，因此它的值依然是 6
@@ -125,31 +125,38 @@ https://segmentfault.com/a/1190000012829866/
 ![clipboard.png](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/bV1ZOc.png)
 
 ```js
- function knapsack(weights, values, W){
-    var n = weights.length -1
+function knapsack(weights, values, W) {
+    var n = weights.length - 1
     var f = [[]]
-    for(var j = 0; j <= W; j++){
-        if(j < weights[0]){ //如果容量不能放下物品0的重量，那么价值为0
-           f[0][j] = 0
-        }else{ //否则等于物体0的价值
-           f[0][j] = values[0]
+    for (var j = 0; j <= W; j++) {
+        if (j < weights[0]) { 
+	        //如果容量不能放下物品0的重量，那么价值为0
+            f[0][j] = 0
+        } 
+        else {
+            //否则等于物体0的价值
+            f[0][j] = values[0]
         }
     }
-    for(var j = 0; j <= W; j++){
-        for(var i = 1; i <= n; i++ ){
-            if(!f[i]){ //创建新一行
+    for (var j = 0; j <= W; j++) {
+        for (var i = 1; i <= n; i++) {
+            if (!f[i]) { 
+	            //创建新一行
                 f[i] = []
             }
-            if(j < weights[i]){ //等于之前的最优值
-                f[i][j] = f[i-1][j]
-            }else{
-                f[i][j] = Math.max(f[i-1][j], f[i-1][j-weights[i]] + values[i]) 
+            if (j < weights[i]) { 
+	            //等于之前的最优值
+                f[i][j] = f[i - 1][j]
+            } 
+            else {
+                f[i][j] = Math.max(f[i - 1][j], f[i - 1][j - weights[i]] + values[i])
             }
         }
     }
     return f[n][W]
 }
-var a = knapsack([2,2,6,5,4],[6,3,5,4,6],10)
+var a = knapsack([2, 2, 6, 5, 4], [6, 3, 5, 4, 6], 10)
+
 console.log(a)
 ```
 
@@ -160,28 +167,41 @@ console.log(a)
 现在方法里面有两个大循环，它们可以合并成一个。
 
 ```js
-  function knapsack(weights, values, W){
+function knapsack(weights, values, W) {
     var n = weights.length;
     var f = new Array(n)
-    for(var i = 0 ; i < n; i++){
-      f[i] = []
+    for (var i = 0; i < n; i++) {
+        f[i] = []
     }
-    for(var i = 0; i < n; i++ ){
-      for(var j = 0; j <= W; j++){
-        if(i === 0){ //第一行
-          f[i][j] = j < weights[i] ? 0 : values[i]
-        }else{
-          if(j < weights[i]){ //等于之前的最优值
-            f[i][j] = f[i-1][j]
-          }else{
-            f[i][j] = Math.max(f[i-1][j], f[i-1][j-weights[i]] + values[i]) 
-          }
+
+    for (var i = 0; i < n; i++) {
+        for (var j = 0; j <= W; j++) {
+            if (i === 0) {
+                //第一行
+                f[i][j] = j < weights[i] ? 0 : values[i]
+            } else {
+                if (j < weights[i]) {
+                    //等于之前的最优值
+                    f[i][j] = f[i - 1][j]
+                } else {
+                    f[i][j] = Math.max(f[i - 1][j], f[i - 1][j - weights[i]] + values[i])
+                }
+            }
         }
-      }
     }
-    return f[n-1][W]
-  }
+    return f[n - 1][W]
+}
 ```
+
+先遍历物品，然后遍历背包重量, **先遍历背包，再遍历物品，也是可以的**
+
+![](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/image-20230711105754664.png)
+
+![](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/image-20230711105757570.png)
+
+大家可以看出，虽然两个 for 循环遍历的次序不同，但是 dp[i][j] 所需要的数据就是左上角，根本不影响 dp[i][j] 公式的推导
+
+但先遍历物品再遍历背包这个顺序更好理解。
 
 ### 初始化
 
@@ -190,22 +210,27 @@ console.log(a)
 ![clipboard.png](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/bV1ZOk.png)
 
 ```js
-  function knapsack(weights, values, W){
-      var n = weights.length;
-      var f = new Array(n)
-      f[-1] = new Array(W+1).fill(0) //负1行，因为有W+1次内循环
-      for(var i = 0 ; i < n ; i++){ //注意边界，没有等号
-          f[i] = new Array(W).fill(0)
-          for(var j=0; j<=W; j++){ //注意边界，有等号,因为重量等于10最大
-              if( j < weights[i] ){ //注意边界， 没有等号
-                  f[i][j] = f[i-1][j]
-              }else{
-                  f[i][j] = Math.max(f[i-1][j], f[i-1][j-weights[i]]+values[i]);//case 3
-              }
-          }
-      }
-      return f[n-1][W]
-  }
+function knapsack(weights, values, W) {
+    var n = weights.length;
+    var f = new Array(n)
+    //负1行，因为有W+1次内循环
+    f[-1] = new Array(W + 1).fill(0)
+    for (var i = 0; i < n; i++) {
+        //注意边界，没有等号
+        f[i] = new Array(W).fill(0)
+        for (var j = 0; j <= W; j++) {
+            //注意边界，有等号,因为重量等于10最大
+            if (j < weights[i]) {
+                //注意边界， 没有等号
+                f[i][j] = f[i - 1][j]
+            } else {
+                //case 3
+                f[i][j] = Math.max(f[i - 1][j], f[i - 1][j - weights[i]] + values[i]);
+            }
+        }
+    }
+    return f[n - 1][W]
+}
 ```
 
 | w    | v    | i\j  | 0    | 1    | 2    | 3    | 4    | 5    | 6    | 7    | 8    | 9    | 10   |      |
@@ -305,7 +330,7 @@ weights 为每个物品的重量，values 为每个物品的价值，W 是背包
 
 ![clipboard.png](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/bV1ZOs.png)
 
-f 中的 -1 就变成没有意义，因为没有第 -1 行，而 weights[0], values[0] 继续有效，${f(0,j)}$ 也有意义，因为我们全部放到一个一维数组中。于是:
+f 中的 -1 就变成没有意义，因为没有第 -1 行，而 `weights[0], values[0]` 继续有效，${f(0,j)}$ 也有意义，因为我们全部放到一个一维数组中。于是:
 
 ![clipboard.png](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/bV1ZOv.png)
 
@@ -313,7 +338,13 @@ f 中的 -1 就变成没有意义，因为没有第 -1 行，而 weights[0], val
 
 假设有物体 ${\cal z}$ 容量 2，价值 ${v_z}$ 很大，背包容量为 5，如果 j 的循环顺序不是逆序，那么外层循环跑到物体 ${\cal z}$ 时， 内循环在 ${j=2}$ 时 ，${\cal z}$ 被放入背包。当 ${j=4}$ 时，寻求最大价值，物体 z 放入背包，${f(4)=max(f(4),f(2)+v_z) }$， 这里毫无疑问后者最大。 但此时 ${f(2)+v_z}$ 中的 ${f(2)}$ 已经装入了一次 ${\cal z}$，这样一来 ${\cal z}$ 被装入两次不符合要求， 如果逆序循环 j， 这一问题便解决了。
 
-从后面往前方参考的是没有修改过的上一行，本质上是不断的修改同一行
+**从后面往前方参考的是没有修改过的上一行，本质上是不断的修改同一行**
+
+**`dp[i][j]` 表示从下标为 `[0-i]` 的物品里任意取，放进容量为 j 的背包，价值总和最大是多少**
+
+**在一维 dp 数组中，`dp[j]` 表示：容量为 j 的背包，所背的物品价值可以最大为 `dp[j]`**
+
+实际上一维数组的含义是在动态变化的, 在可选物品为 `[0-i]` 时, `dp[j]` 表示：容量为 j 的背包，所背的物品价值可以最大为 `dp[j]`
 
 javascript 实现：
 
@@ -334,12 +365,23 @@ javascript 实现：
   console.log(b)
 ```
 
+### 一维数组先遍历物品再遍历重量
+
+也是可以的, 只不过是从横着的一行, 变成了竖着的一列, 同样是需要从后往前遍历, 才能保证数据是上一次的, 避免重复
+
+此时 `dp[j]` 的含义是什么呢? 可选择物品 `[0-j]`, 在所有背包重量下, 最大的价值是多少, 相当于要直接求出答案了, 所以更换 for 循环顺序就不可能求出答案了.
+
+至少这种情况下是不能倒序的, 只能从少物品开始, 那样每次遍历的顺序都会把之前的值给覆盖掉, 所以还是不行, 一维数组不能调换 for 循环的顺序
+
 ## 选择物品
 
-- 上面讲解了如何求得最大价值，现在我们看到底选择了哪些物品，这个在现实中更有意义。许多书与博客很少提到这一点，就算给出的代码也不对，估计是在设计状态矩阵就出错了。
-- 仔细观察矩阵，从 ${f(n-1,W)}$ 逆着走向 ${f(0,0)}$，设 i=n-1,j=W，如果 ${f(i,j)}$==${f(i-1,j-w_i)+v_i}$ 说明包里面有第 i 件物品，因此我们只要当前行不等于上一行的总价值，就能挑出第 i 件物品，然后 j 减去该物品的重量，一直找到 j = 0 就行了。
+上面讲解了如何求得最大价值，现在我们看到底选择了哪些物品，这个在现实中更有意义。许多书与博客很少提到这一点，就算给出的代码也不对，估计是在设计状态矩阵就出错了。
 
-  ```
+仔细观察矩阵，从 ${f(n-1,W)}$ 逆着走向 ${f(0,0)}$，设 i=n-1,j=W，如果 ${f(i,j)}$ === ${f(i-1,j-w_i)+v_i}$
+
+说明包里面有第 i 件物品，因此我们只要当前行不等于上一行的总价值，就能挑出第 i 件物品，然后 j 减去该物品的重量，一直找到 j = 0 就行了。
+
+```js
   function knapsack(weights, values, W){
       var n = weights.length;
       var f = new Array(n)
@@ -371,17 +413,17 @@ javascript 实现：
   console.log(a)
   var b = knapsack([2,2,6,5,4],[6,3,5,4,6],10)
   console.log(b)
-  ```
+```
 
-  ![image_1c3k62d511dtgo7gud815q866m16.png-22.8kB](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/1460000012829873.png)
+![image_1c3k62d511dtgo7gud815q866m16.png-22.8kB](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/1460000012829873.png)
 
-  ![image_1c3k617gc6jp10pn1ean1lv81boqp.png-28.5kB](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/1460000012829874.png)
+![image_1c3k617gc6jp10pn1ean1lv81boqp.png-28.5kB](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/1460000012829874.png)
 
-## 1.4 递归法解 01 背包
+## 递归法解 01 背包
 
-- 由于这不是动态规则的解法，大家多观察方程就理解了：
+由于这不是动态规则的解法，大家多观察方程就理解了：
 
-  ```
+```js
   function knapsack(n, W, weights, values, selected) {
       if (n == 0 || W == 0) {
           //当物品数量为0，或者背包容量为0时，最优解为0
@@ -416,7 +458,7 @@ javascript 实现：
           console.log("选择了物品"+i+ " 其重量为"+ ws[i]+" 其价值为"+vs[i])
       }
   })
-  ```
+```
 
 ![image_1c3kfq8nhddj12m11eh1r68189520.png-16.8kB](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/1460000012829876.png)
 
