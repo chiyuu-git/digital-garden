@@ -2952,6 +2952,25 @@ class Square {
 }
 ```
 
+### Type Parameters in Static Members
+
+泛型类的静态成员永远不能引用类的类型参数
+
+因为类的范型是在实例化的时候动态定义的, 而静态成员是类自身的属性, 类型只能是固定的, 不能随着实例化动态变化
+
+[TypeScript: Documentation - Classes](https://www.typescriptlang.org/docs/handbook/2/classes.html#type-parameters-in-static-members)
+
+## `this`at Runtime in Classes
+
+[TypeScript: Documentation - Classes](https://www.typescriptlang.org/docs/handbook/2/classes.html#this-at-runtime-in-classes)
+
+```ts
+// TypeScript input with 'this' parameter
+function fn(this: SomeType, x: number) {
+  /* ... */
+}
+```
+
 ## 类与接口
 
 接口（Interfaces）可以用于对「对象的形状（Shape）」进行描述。
