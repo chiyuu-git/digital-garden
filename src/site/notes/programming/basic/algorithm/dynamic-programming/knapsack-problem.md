@@ -462,34 +462,53 @@ javascript 实现：
 
 ![image_1c3kfq8nhddj12m11eh1r68189520.png-16.8kB](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/1460000012829876.png)
 
+## 题目
+
+01 背包：[416. 分割等和子集](https://leetcode-cn.com/problems/partition-equal-subset-sum/) [474. 一和零](https://leetcode-cn.com/problems/ones-and-zeroes/) [494. 目标和](https://leetcode-cn.com/problems/target-sum/) [879. 盈利计划](https://leetcode-cn.com/problems/profitable-schemes/) [1049. 最后一块石头的重量 II](https://leetcode-cn.com/problems/last-stone-weight-ii/) [1230. 抛掷硬币](https://leetcode-cn.com/problems/toss-strange-coins/)
+
+完全背包：[1449. 数位成本和为目标值的最大数字](https://leetcode-cn.com/problems/form-largest-integer-with-digits-that-add-up-to-target/) [322. 零钱兑换](https://leetcode-cn.com/problems/coin-change/) [518. 零钱兑换 II](https://leetcode-cn.com/problems/coin-change-2/) [279. 完全平方数](https://leetcode-cn.com/problems/perfect-squares/)
+
+欢迎补充
+
+| File                                                                     | difficulty | etags                                                                                                                                              | date-created               |
+| ------------------------------------------------------------------------ | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| [[programming/basic/leetcode/416. 分割等和子集\|416. 分割等和子集]]               | medium     | <ul><li>#leetcode/dp/knapsack/0-1</li><li>#leetcode/unsolved</li></ul>                                                                             | 2023-07-11-Tue, 6:47:18 pm |
+| [[programming/basic/leetcode/1049. 最后一块石头的重量 II\|1049. 最后一块石头的重量 II]] | medium     | <ul><li>#leetcode/dp/knapsack/0-1</li><li>#leetcode/unsolved</li></ul>                                                                             | 2023-07-11-Tue, 8:02:47 pm |
+| [[programming/basic/leetcode/494. 目标和\|494. 目标和]]                     | medium     | <ul><li>#leetcode/dp/knapsack/0-1</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li></ul> | 2023-07-12-Wed, 6:43:08 pm |
+| [[programming/basic/leetcode/474. 一和零\|474. 一和零]]                     | medium     | <ul><li>#leetcode/dp/knapsack/0-1</li><li>#leetcode/backtracking/memo</li></ul>                                                                    | 2023-07-12-Wed, 8:40:02 pm |
+
+{ .block-language-dataview}
+
 # 完全背包问题
 
-## 2.1 问题描述：
+## 问题描述：
 
-- 有 ${n}$ 件物品和 ${1}$ 个容量为 W 的背包。每种物品没有上限，第 ${i}$ 件物品的重量为 ${weights[i]}$，价值为 ${values[i]}$，求解将哪些物品装入背包可使价值总和最大。
+有 ${n}$ 件物品和 ${1}$ 个容量为 W 的背包。**每种物品没有上限**，第 ${i}$ 件物品的重量为 ${weights[i]}$，价值为 ${values[i]}$，求解将哪些物品装入背包可使价值总和最大。
 
-## 2.2 问题分析：
+## 问题分析：
 
-- 最简单思路就是把完全背包拆分成 01 背包，就是把 01 背包中状态转移方程进行扩展，也就是说 01 背包只考虑放与不放进去两种情况，而完全背包要考虑 放 0、放 1、放 2...的情况，
+最简单思路就是把完全背包拆分成 01 背包，就是把 01 背包中状态转移方程进行扩展，也就是说 01 背包只考虑放与不放进去两种情况，而完全背包要考虑 放 0、放 1、放 2...的情况，
 
-  ![clipboard.png](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/bV1ZOy.png)
+![clipboard.png](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/bV1ZOy.png)
 
-- 这个 k 当然不是无限的，它受背包的容量与单件物品的重量限制，即 ${j/weights[i]}$。假设我们只有 1 种商品，它的重量为 20，背包的容量为 60，那么它就应该放 3 个，在遍历时，就 0、1、2、3 地依次尝试。
-- 程序需要求解 ${n*W}$ 个状态，每一个状态需要的时间为 ${O（W/w_i）}$，总的复杂度为 ${O(nW*Σ(W/w_i))}$。
-- 我们再回顾 01 背包经典解法的核心代码
+这个 k 当然不是无限的，它受背包的容量与单件物品的重量限制，即 ${j/weights[i]}$。假设我们只有 1 种商品，它的重量为 20，背包的容量为 60，那么它就应该放 3 个，在遍历时，就 0、1、2、3 地依次尝试。
 
-  ```
+程序需要求解 ${n*W}$ 个状态，每一个状态需要的时间为 ${O（W/w_i）}$，总的复杂度为 ${O(nW*Σ(W/w_i))}$。
+
+我们再回顾 01 背包经典解法的核心代码
+
+```js
   for(var i = 0 ; i < n ; i++){ 
      for(var j=0; j<=W; j++){ 
          f[i][j] = Math.max(f[i-1][j], f[i-1][j-weights[i]]+values[i]))
         }
      }
   }
-  ```
+```
 
-- 现在多了一个 k，就意味着多了一重循环
+现在多了一个 k，就意味着多了一重循环
 
-  ```
+```js
   for(var i = 0 ; i < n ; i++){ 
      for(var j=0; j<=W; j++){ 
          for(var k = 0; k < j / weights[i]; k++){
@@ -498,55 +517,61 @@ javascript 实现：
         }
      }
   }
-  ```
+```
 
-  > 考虑硬币最少找零的问题，因为价值是递增，所以直接全部塞满，剩下的再参考上一行，但是这里价值不一定是递增的，所以需要多一层循环，来判断，超出 k 的个数变动中价值最高的那个 `f[i][j]`
-  >
-  > javascript 的完整实现：
->
-  > ```
-  > function completeKnapsack(weights, values, W){
-  >     var f = [], n = weights.length;
-  >     f[-1] = [] //初始化边界
-  >     for(var i = 0; i <= W; i++){
-  >         f[-1][i] = 0
-  >     }
-  >     for (var i = 0;i < n;i++){
-  >         f[i] = new Array(W+1)
-  >         for (var j = 0;j <= W;j++) {
-  >             f[i][j] = 0;
-  >             var bound = j / weights[i];
-  >             for (var k = 0;k <= bound;k++) {
-  >                 f[i][j] = Math.max(f[i][j], f[i - 1][j - k * weights[i]] + k * values[i]);
-  >             }
-  >         }
-  >     }
-  >     return f[n-1][W];
-  > }
-  > //物品个数n = 3，背包容量为W = 5，则背包可以装下的最大价值为40.
-  > var a = completeKnapsack([3,2,2],[5,10,20], 5) 
-  > console.log(a) //40
-  > ```
+考虑硬币最少找零的问题，因为价值是递增，所以直接全部塞满，剩下的再参考上一行，但是这里价值不一定是递增的，所以需要多一层循环，来判断，超出 k 的个数变动中价值最高的那个 `f[i][j]`
 
-## 2.3 O(nW) 优化
+```js
+function completeKnapsack(weights, values, W){
+    var f = [], n = weights.length;
+    f[-1] = [] //初始化边界
+    for(var i = 0; i <= W; i++){
+        f[-1][i] = 0
+    }
+    for (var i = 0;i < n;i++){
+        f[i] = new Array(W+1)
+        for (var j = 0;j <= W;j++) {
+            f[i][j] = 0;
+            var bound = j / weights[i];
+            for (var k = 0;k <= bound;k++) {
+                f[i][j] = Math.max(f[i][j], f[i - 1][j - k * weights[i]] + k * values[i]);
+            }
+        }
+    }
+    return f[n-1][W];
+}
+//物品个数n = 3，背包容量为W = 5，则背包可以装下的最大价值为40.
+var a = completeKnapsack([3,2,2],[5,10,20], 5) 
+console.log(a) //40
+```
 
-- 我们再进行优化，改变一下 f 思路，让 ${f(i,j)}$ 表示出在前 i 种物品中选取若干件物品放入容量为 j 的背包所得的最大价值。
-- 所以说，对于第 i 件物品有放或不放两种情况，而放的情况里又分为放 1 件、2 件、......${j/w_i}$ 件
-- 如果不放, 那么 ${f(i,j)=f(i-1,j)}$；
-- 如果放，那么当前背包中应该出现至少一件第 i 种物品，所以 f(i,j) 中至少应该出现一件第 i 种物品,即 ${f(i,j)=f(i,j-w_i)+v_i}$，为什么会是 ${f(i,j-w_i)+v_i}$？
-- 因为我们要把当前物品 i 放入包内，因为物品 i 可以无限使用，所以要用 ${f(i,j-w_i)}$；如果我们用的是 ${f(i-1,j-w_i)}$，${f(i-1,j-w_i)}$ 的意思是说，我们只有一件当前物品 i，所以我们在放入物品 i 的时候需要考虑到第 i-1 个物品的价值 ${f(i-1,j-w_i)}$；但是现在我们有无限件当前物品 i，我们不用再考虑第 i-1 个物品了，我们所要考虑的是在当前容量下是否再装入一个物品 i，而 ${(j-w_i)}$ 的意思是指要确保 ${f(i,j)}$ 至少有一件第 i 件物品，所以要预留 c(i) 的空间来存放一件第 i 种物品。总而言之，如果放当前物品 i 的话，它的状态就是它自己 "i"，而不是上一个 "i-1"。
-- 只要参考同一行就好了，因为在同一行容量是递增的，k 的可能数量也是逐步增加的
-- 所以说状态转移方程为：
+## O(nW) 优化
 
-  ![clipboard.png](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/bV1ZOF.png)
+> 以下的讨论都是基于二维 dp 数组的, 所以 i - 1 代表上一行.
 
-- 与 01 背包的相比，只是一点点不同，我们也不需要三重循环了
+我们再进行优化，改变一下 f 思路，让 ${f(i,j)}$ 表示出在前 i 种物品中选取若干件物品放入容量为 j 的背包所得的最大价值。
 
-  ![clipboard.png](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/bV1ZOI.png)
+所以说，对于第 i 件物品有放或不放两种情况，而放的情况里又分为放 1 件、2 件、......${j/w_i}$ 件
 
-- javascript 的完整实现：
+如果不放, 那么 ${f(i,j)=f(i-1,j)}$；取上一行的
 
-  ```
+如果放，那么当前背包中应该出现至少一件第 i 种物品，所以 f(i,j) 中至少应该出现一件第 i 种物品,即 ${f(i,j)=f(i,j-w_i)+v_i}$，为什么会是 ${f(i,j-w_i)+v_i}$？
+
++ 因为我们要把当前物品 i 放入包内，因为物品 i 可以无限使用，所以要用 ${f(i,j-w_i)}$；
++ 如果我们用的是 ${f(i-1,j-w_i)}$，${f(i-1,j-w_i)}$ 的意思是说，我们只有一件当前物品 i，所以我们在放入物品 i 的时候需要考虑到第 i-1 个物品的价值 ${f(i-1,j-w_i)}$；
++ 但是现在我们有无限件当前物品 i，我们不用再考虑第 i-1 个物品了，我们所要考虑的是在当前容量下是否再装入一个物品 i，而 ${(j-w_i)}$ 的意思是指要确保 ${f(i,j)}$ 至少有一件第 i 件物品，所以要预留 c(i) 的空间来存放一件第 i 种物品。总而言之，如果放当前物品 i 的话，它的状态就是它自己 "i"，而不是上一个 "i-1"。
+
+**只要参考同一行就好了**，因为在同一行容量是递增的，k 的可能数量也是逐步增加的
+
+所以说状态转移方程为：
+
+![clipboard.png](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/bV1ZOF.png)
+
+与 01 背包的相比，只是一点点不同，我们也不需要三重循环了
+
+![clipboard.png](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/bV1ZOI.png)
+
+```js
   function unboundedKnapsack(weights, values, W) {
       var f = [],
           n = weights.length;
@@ -572,14 +597,15 @@ javascript 实现：
   console.log(a);
   var b = unboundedKnapsack([2, 3, 4, 7], [1, 3, 5, 9], 10); //输出12
   console.log(b);
-  ```
+```
 
-- 我们可以继续优化此算法，可以用一维数组写
-- 我们用 ${f(j)}$ 表示当前可用体积 j 的价值，我们可以得到和 01 背包一样的递推式：
+我们可以继续优化此算法，可以用一维数组写
 
-  ![clipboard.png](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/bV1ZOL.png)
+我们用 ${f(j)}$ 表示当前可用体积 j 的价值，我们可以得到**和 01 背包一样的递推式**：
 
-  ```
+![clipboard.png](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/bV1ZOL.png)
+
+```js
   function unboundedKnapsack(weights, values, W) {
     var n = weights.length,
       f = new Array(W + 1).fill(0);
@@ -596,7 +622,19 @@ javascript 实现：
   console.log(a);
   var b = unboundedKnapsack([2, 3, 4, 7], [1, 3, 5, 9], 10); //输出12
   console.log(b);
-  ```
+```
+
+## 遍历顺序的讨论
+
+### 遍历顺序
+
+完全背包, 一维数组只能从小到大遍历, 因为要参考的是这一行的, 所以要让大的可以参考刚刚遍历过的小的
+
+作为对比, 01 背包, 一维数组只能从大到小遍历, 因为要参考的是上一行的, 所以要让小的留着, 大的才可以参考
+
+### 两个 for 循环的位置
+
+可以调转, 01 背包中不能调转是因为 01 背包一维数组是从后往前遍历的, 不能根据多个物品的情况推出少数物品的情况, 而是要根据少数物品的情况, 推出多个物品的情况. 而在完全背包中, 一维数组是从前往后遍历的, 无论是从少物品开始, 还是从少重量开始, 都是可以正常参考的, 多的 case 参考少的 case
 
 # 多重背包问题
 
