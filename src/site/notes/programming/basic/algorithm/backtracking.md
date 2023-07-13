@@ -334,6 +334,9 @@ var combine = function(n, k) {
 | [[programming/basic/leetcode/90. 子集 II\|90. 子集 II]]         | medium     | <ul><li>#leetcode/backtracking/combination/subset</li><li>#leetcode/sub/subset</li><li>#leetcode/backtracking/binary</li><li>#leetcode/unsolved</li><li>#leetcode/skip-dup</li></ul> |
 | [[programming/basic/leetcode/491. 递增子序列\|491. 递增子序列]]       | medium     | <ul><li>#leetcode/backtracking/combination/subset</li><li>#leetcode/sub/subset</li><li>#leetcode/backtracking/binary</li><li>#leetcode/unsolved</li><li>#leetcode/skip-dup</li></ul> |
 | [[programming/basic/leetcode/494. 目标和\|494. 目标和]]           | medium     | <ul><li>#leetcode/dp/knapsack/0-1</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li></ul>                                   |
+| [[programming/basic/leetcode/518. 零钱兑换 II\|518. 零钱兑换 II]]   | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li></ul>                              |
+| [[programming/basic/leetcode/322. 零钱兑换\|322. 零钱兑换]]         | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li></ul>                              |
+| [[programming/basic/leetcode/279. 完全平方数\|279. 完全平方数]]       | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li><li>#leetcode/math/squre</li></ul> |
 
 { .block-language-dataview}
 
@@ -426,11 +429,12 @@ var subsets = function(nums) {
 
 # 排列问题
 
-| File                                                     | difficulty | etags                                                                                                                                                        |
-| -------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [[programming/basic/leetcode/46. 全排列\|46. 全排列]]       | medium     | <ul><li>#leetcode/backtracking/permutation</li></ul>                                                                                                         |
-| [[programming/basic/leetcode/47. 全排列 II\|47. 全排列 II]] | medium     | <ul><li>#leetcode/backtracking/permutation</li><li>#leetcode/skip-dup</li></ul>                                                                              |
-| [[programming/basic/leetcode/51. N 皇后\|51. N 皇后]]     | hard       | <ul><li>#leetcode/backtracking/permutation/chessboard</li><li>#leetcode/bit-manipulation</li><li>#leetcode/unsolved</li><li>#leetcode/array/matrix</li></ul> |
-| [[programming/basic/leetcode/37. 解数独\|37. 解数独]]       | hard       | <ul><li>#leetcode/backtracking/permutation/sudoku</li><li>#leetcode/bit-manipulation</li><li>#leetcode/unsolved</li><li>#leetcode/array/matrix</li></ul>     |
+| File                                                       | difficulty | etags                                                                                                                                                        |
+| ---------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [[programming/basic/leetcode/46. 全排列\|46. 全排列]]         | medium     | <ul><li>#leetcode/backtracking/permutation</li></ul>                                                                                                         |
+| [[programming/basic/leetcode/47. 全排列 II\|47. 全排列 II]]   | medium     | <ul><li>#leetcode/backtracking/permutation</li><li>#leetcode/skip-dup</li></ul>                                                                              |
+| [[programming/basic/leetcode/51. N 皇后\|51. N 皇后]]       | hard       | <ul><li>#leetcode/backtracking/permutation/chessboard</li><li>#leetcode/bit-manipulation</li><li>#leetcode/unsolved</li><li>#leetcode/array/matrix</li></ul> |
+| [[programming/basic/leetcode/37. 解数独\|37. 解数独]]         | hard       | <ul><li>#leetcode/backtracking/permutation/sudoku</li><li>#leetcode/bit-manipulation</li><li>#leetcode/unsolved</li><li>#leetcode/array/matrix</li></ul>     |
+| [[programming/basic/leetcode/377. 组合总和 Ⅳ\|377. 组合总和 Ⅳ]] | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/permutation</li><li>#leetcode/unsolved</li></ul>      |
 
 { .block-language-dataview}
