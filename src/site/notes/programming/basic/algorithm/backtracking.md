@@ -333,6 +333,7 @@ var combine = function(n, k) {
 | [[programming/basic/leetcode/78. 子集\|78. 子集]]               | medium     | <ul><li>#leetcode/backtracking/combination/subset</li><li>#leetcode/sub/subset</li><li>#leetcode/backtracking/binary</li><li>#leetcode/unsolved</li></ul>                            |
 | [[programming/basic/leetcode/90. 子集 II\|90. 子集 II]]         | medium     | <ul><li>#leetcode/backtracking/combination/subset</li><li>#leetcode/sub/subset</li><li>#leetcode/backtracking/binary</li><li>#leetcode/unsolved</li><li>#leetcode/skip-dup</li></ul> |
 | [[programming/basic/leetcode/491. 递增子序列\|491. 递增子序列]]       | medium     | <ul><li>#leetcode/backtracking/combination/subset</li><li>#leetcode/sub/subset</li><li>#leetcode/backtracking/binary</li><li>#leetcode/unsolved</li><li>#leetcode/skip-dup</li></ul> |
+| [[programming/basic/leetcode/494. 目标和\|494. 目标和]]           | medium     | <ul><li>#leetcode/dp/knapsack/0-1</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li></ul>                                   |
 
 { .block-language-dataview}
 
