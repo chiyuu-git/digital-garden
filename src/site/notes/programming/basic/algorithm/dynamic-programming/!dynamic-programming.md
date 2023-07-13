@@ -176,108 +176,11 @@
 
 { .block-language-dataview}
 
+# 背包问题
+
+[knapsack-problem](knapsack-problem.md)
+
 # 容器问题
-
-## 最少硬币找零问题详解
-
-### 问题
-
-- 给定 4 种面额的硬币 1 分，2 分，5 分，6 分，如果要找**11 分**的零钱，怎么做才能使得找的硬币数量总和**最少**
-- 可以理解为：**容量**是 11
-
-### 分析
-
-- **特性：**
-  - 只有 11 分的组合才满足结果，但是不妨碍我们列出未达到 11 分的情况
-  - 硬币的数量是无限的
-- **共性：**
-  - 在表格中，价格从上到下递增。我们填表分析的时候，其实是事先默认了这种递增的关系
-  - **分析第 i 行时，它的物品组合仅能是小于等于 i 的情况**
-  - 逐行填写表格，每一行的结果都是目前最优的选择，新一行的选择参考于上一行
-- **填表分析：**
-  - `T[i][j]` 是硬币数量
-
-  ![img](!dynamic-programming/163a13b1855aaede)
-
-### 逐行分析
-
-**i = 0**
-
-- 初始行，可以选择的只有 1 分的硬币
-- 只有 1 分的硬币，则对应的容量是多少就需要多少颗 1 分硬币 `T[0][j]=j/val[0]`
-
-**i = 1**
-
-- 在这一行，可以由 1 分硬币 和 2 分硬币 进行自由组合，并且由于价值的递增，我们优先考虑填入 2 分硬币
-- **优选项：**2 分硬币
-- 当容量 `j` 小于 2 时，无法填入 2 分硬币，那么最优的情况就和初始行一致，参考上一行 `T[i-1][j]`
-- 当容量 `j` 大于 2 时，可以填入 2 分硬币
-  - 先填满 2 分硬币 `Math.floor(j/val[i])`
-  - 再判断剩余的容量是多少 `remain = j%val[i]`
-  - 参考上一行**该**剩余容量的选择 `T[i-1][remain]`
-  - 总的数量：`Math.floor(j/val[i])+ T[i-1][remain]`。再和上一行的最优情况做对比，选择数量**最小**
-
-  ```js
-  T[i][j] = Math.min(priorityResult, T[i - 1][j])
-  ```
-
-### 输出结果
-
-- 组合
-- 由于这些原则的限制，数量最少的肯定在最后一行最后一格
-- 如果这一行和上一行的最后一格相等，说明是**继承**了上一行，找到最优行的位置，优选项组合的一部分，用优选项填满，再根据剩余的容量，找到其他硬币，最后输出返回
-
-### 实现
-
-- ```js
-  function lessCoin(val, sum, n) {
-    let T = []
-    for (let i = 0; i < n; i++) {
-      T[i] = [];
-      for (let j = 0; j <= sum; j++) {
-        // 因为新的结果参照于旧的结果，也就是参照于上一行
-        if (i === 0) {
-          //第一行,只有一种选择，容量是多少，就需要多少颗
-          T[i][j] = j/val[i]
-        } else {
-          // 不是第一行，以优选项填满，剩余容量查询上一行
-          let priorityCount = Math.floor(j/val[i])
-          let remain = j%val[i]
-          // 该行的优选结果
-          let priorityResult = priorityCount + T[i-1][remain]
-          T[i][j] = Math.min(priorityResult, T[i - 1][j])
-        }
-      }
-    }
-    findValue(val,sum,n,T)
-    return T;
-  }
-  function findValue(val, sum, n, T) {
-  
-    var i = n - 1, j = sum;
-    while (i > 0 && j > 0) {
-  
-      if (T[i][j] != T[i - 1][j]) {
-        console.log('选择硬币' + val[i] + ',数量' + Math.floor(j/val[i]) + ',价值：' + Math.floor(j/val[i])*val[i]);
-        j = j%val[i];
-        i--;
-      } else {
-        i--;  //如果相等，那么就到 i-1 行
-      }
-    }
-    if (i == 0) {
-      if (T[i][j] != 0) { //那么第一行的物品也可以取
-        console.log('选择硬币' + val[i] + ',数量' + Math.floor(j/val[i]) + ',价值：' + Math.floor(j/val[i])*val[i]);
-      }
-    }
-  }
-  var values = [1, 2, 5, 6],
-    sum = 11,
-    n = values.length
-  
-  console.log(lessCoin(values, sum, n));
-  ```
-- ![1555303439831](/img/user/programming/basic/algorithm/dynamic-programming/!dynamic-programming/1555303439831.png)
 
 ## 买橙子 - 无法找零
 
@@ -297,7 +200,8 @@
   + 总共需要买 `n` 个
 + 状态转移方程：优先选择优选项，剩余的容量参考之前的
   + `dp[i][j]=Math.min(dp[i-1,j],dp[i][j-bags[i]]+bags[i])`
-+ ```js
+
+```js
   function buyOrange(n){
     // 只有两种袋子
     const bags = [6,8]
@@ -328,7 +232,8 @@
   
   let n = 20
   console.log(buyOrange(n))
-  ```
+```
+
 + 正确做法参考：
 
   ```java
@@ -383,10 +288,6 @@
   + 余数不为 0
     + 是否是 6 的倍数，返回袋数
     + 返回 -1
-
-## 容器问题总结
-
-+ **剩余的容量，参考之前的最佳选择**
 
 # 递推型
 
