@@ -61,7 +61,7 @@ https://segmentfault.com/a/1190000012829866/
 
 ![img](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/image-20230710203305071.png)
 
-当背包容量少于物品価积时，总价值为 0，否则为物品的价值
+当背包容量少于物品价值时，总价值为 0，否则为物品的价值
 
 ### 第二行
 
@@ -87,6 +87,8 @@ https://segmentfault.com/a/1190000012829866/
 | 6    | 5    | 2    |      |      |      |      |      |      |      |      |      |      |      |
 | 5    | 4    | 3    |      |      |      |      |      |      |      |      |      |      |      |
 | 4    | 6    | 4    |      |      |      |      |      |      |      |      |      |      |      |
+
+从第二行, 我们可以得出 `f(i,j)=max{f(0,j),f(0,j-w_1)+v_1`
 
 ### 第三行
 
@@ -344,34 +346,48 @@ f 中的 -1 就变成没有意义，因为没有第 -1 行，而 `weights[0], va
 
 **在一维 dp 数组中，`dp[j]` 表示：容量为 j 的背包，所背的物品价值可以最大为 `dp[j]`**
 
-实际上一维数组的含义是在动态变化的, 在可选物品为 `[0-i]` 时, `dp[j]` 表示：容量为 j 的背包，所背的物品价值可以最大为 `dp[j]`
-
-javascript 实现：
+**实际上一维数组的含义是在动态变化的, 在可选物品为 `[0-i]` 时, `dp[j]` 表示：容量为 j 的背包，所背的物品价值可以最大为 `dp[j]`**
 
 ```js
-  function knapsack(weights, values, W){
-      var n = weights.length;
-      var f = new Array(W+1).fill(0)
-      for(var i = 0; i < n; i++) {
-          // j<weight[i]的与上一轮相等
-          for(var j = W; j >= weights[i]; j--){  
-              f[j] = Math.max(f[j], f[j-weights[i]] +values[i]);
-          }
-          console.log(f.concat()) //调试
-      }
-      return f[W];
-  }
-  var b = knapsack([2,2,6,5,4],[6,3,5,4,6],10)
-  console.log(b)
+function knapsack(weights, values, W) {
+    var n = weights.length;
+    var dp = new Array(W + 1).fill(0)
+    for (var i = 0; i < n; i++) {
+        // j<weight[i]的与上一轮相等
+        for (var j = W; j >= weights[i]; j--) {
+            // dp[j] 即是不放入 weights[i]
+            // dp[j - weights[i]] + values[i] 即是放入 weights[i]
+            dp[j] = Math.max(dp[j], dp[j - weights[i]] + values[i]);
+        }
+        console.log(dp.concat()) //调试
+    }
+    return dp[W];
+}
+var b = knapsack([2, 2, 6, 5, 4], [6, 3, 5, 4, 6], 10)
+console.log(b)
 ```
 
-### 一维数组先遍历物品再遍历重量
+### 一维数组先遍重量再遍历物品
 
-也是可以的, 只不过是从横着的一行, 变成了竖着的一列, 同样是需要从后往前遍历, 才能保证数据是上一次的, 避免重复
+从横着的一行, 变成了竖着的一列, 同样是需要从后往前遍历, 才能保证数据是上一次的, 避免重复
 
-此时 `dp[j]` 的含义是什么呢? 可选择物品 `[0-j]`, 在所有背包重量下, 最大的价值是多少, 相当于要直接求出答案了, 所以更换 for 循环顺序就不可能求出答案了.
+此时 `dp[j]` 的含义是什么呢? 可以选择所有物品, 在 `j` 背包重量下, 最大的价值是多少
 
-至少这种情况下是不能倒序的, 只能从少物品开始, 那样每次遍历的顺序都会把之前的值给覆盖掉, 所以还是不行, 一维数组不能调换 for 循环的顺序
+01 背包, 一维数组最重要的特点就是参考的值是上一行的, 所以需要倒序遍历
+
+那么 j 依然是倒序, 相当于在第一轮 for 循环结束时要求的就已经是: 在背包容量为 9, 可选的物品为所有物品时最大的价值. 相当于要在第一层 for 循环就求出答案了, 显然是不可能的.
+
+那么只能是让 j 顺序增大, 顺序遍历的话又导致上一列的内容被覆盖了, 参考的值会越变越大
+
+所以还是不行, 一维数组不能调换 for 循环的顺序
+
+所以 `dp[j]` 的含义不能这样定了, 得改改. 改成类似 `dp[i]` 的概念, 但是 `dp[i]` 没有办法参考已有的值? 或者说参考形式不能是 `dp[j -nums[i]]` 的这种形式, 但是也找不到其他状态转移方程了, 所以 `dp[j]` 的含义是改不了的.
+
+状态转移方程约束了我们只能以重量作为 `j` 的含义
+
++ 在背包容量为 9, 可选的物品为所有物品时最大的价值
++ 在背包容量为 8, 可选的物品为所有物品时最大的价值
++ 容量增大, 没有办法参考前面的数组, 无法建立状态转移方程
 
 ## 选择物品
 
@@ -636,37 +652,79 @@ console.log(a) //40
 
 可以调转, 01 背包中不能调转是因为 01 背包一维数组是从后往前遍历的, 不能根据多个物品的情况推出少数物品的情况, 而是要根据少数物品的情况, 推出多个物品的情况. 而在完全背包中, 一维数组是从前往后遍历的, 无论是从少物品开始, 还是从少重量开始, 都是可以正常参考的, 多的 case 参考少的 case
 
+# 求方案数量
+
+组合还是排列?
+
+| File                                                         | difficulty | etags                                                                                                                                                                                | date-created                |
+| ------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- |
+| [[programming/basic/leetcode/494. 目标和\|494. 目标和]]         | medium     | <ul><li>#leetcode/dp/knapsack/0-1</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li></ul>                                   | 2023-07-12-Wed, 6:43:08 pm  |
+| [[programming/basic/leetcode/518. 零钱兑换 II\|518. 零钱兑换 II]] | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li></ul>                              | 2023-07-13-Thu, 10:30:11 am |
+| [[programming/basic/leetcode/377. 组合总和 Ⅳ\|377. 组合总和 Ⅳ]]   | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/permutation</li><li>#leetcode/unsolved</li></ul>                              | 2023-07-13-Thu, 12:31:27 pm |
+| [[programming/basic/leetcode/322. 零钱兑换\|322. 零钱兑换]]       | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li></ul>                              | 2023-07-13-Thu, 3:52:39 pm  |
+| [[programming/basic/leetcode/279. 完全平方数\|279. 完全平方数]]     | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li><li>#leetcode/math/squre</li></ul> | 2023-07-13-Thu, 4:21:26 pm  |
+
+{ .block-language-dataview}
+
+[零钱兑换II和爬楼梯问题到底有什么不同？](https://leetcode.cn/problems/coin-change-ii/solution/ling-qian-dui-huan-iihe-pa-lou-ti-wen-ti-dao-di-yo/)
+
+# 遍历顺序问题
+
+物品和背包重量, 两个大的 for 循环, 研究遍历顺序的问题, 都是直接调换两个 for 循环的顺序即可, 因为条件不同, 所以更换 i 和 j 的位置意义有限
+
+01 背包一维数组, 只能是先遍历物品, 再遍历重量
+
+![knapsack-problem](programming/basic/algorithm/dynamic-programming/knapsack-problem.md#一维数组先遍重量再遍历物品)
+
+求方案数量时: 完全背包
+
++ 如果求组合数就是外层 for 循环遍历物品，内层 for 遍历背包
++ 如果求排列数就是外层 for 遍历背包，内层 for 循环遍历物品
+
+还是回到 `dp[j]` 的定义本身, 在 target 为 j 时, 所能选择的方案总数
+
++ 如果 j 在外层循环, 相当于是 j 固定了, 可选的硬币面额从 `coins[0]` 到 `coins[n - 1]`
+
+因为外层循环是遍历从 1 到 target 的值，内层循环是遍历数组 nums 的值，在计算 `dp[i]` 的值时， nums 中的每个小于等于 i 的元素都可能作为元素之和等于 i 的排列的最后一个元素。例如， 1 和 3 都在数组 nums 中，计算 `dp[4]` 的时候，排列的最后一个元素可以是 1 也可以是 3，因此 `dp[1]` 和 `dp[3]` 都会被考虑到，即不同的顺序都会被考虑到。
+
+如果把遍历 nums（物品）放在外循环，遍历 target 的作为内循环的话，举一个例子：计算 dp[4] 的时候，结果集只有 {1,3} 这样的集合，不会有{3,1}这样的集合，因为 nums 遍历放在外层，3 只能出现在 1 后面！
+
+那 01 背包呢?
+
 # 多重背包问题
 
-## 3.1 问题描述：
+## 问题描述：
 
-- 有 ${n}$ 件物品和 ${1}$ 个容量为 W 的背包。每种物品最多有 numbers[i] 件可用，第 ${i}$ 件物品的重量为 ${weights[i]}$，价值为 ${values[i]}$，求解将哪些物品装入背包可使价值总和最大。
+有 ${n}$ 件物品和 ${1}$ 个容量为 W 的背包。每种物品最多有 numbers[i] 件可用，第 ${i}$ 件物品的重量为 ${weights[i]}$，价值为 ${values[i]}$，求解将哪些物品装入背包可使价值总和最大。
 
-## 3.2 问题分析：
+## 问题分析：
 
-- 多重背包就是一个进化版完全背包。在我们做完全背包的第一个版本中，就是将它转换成 01 背包，然后限制 k 的循环
-- 直接套用 01 背包的一维数组解法
+多重背包就是一个进化版完全背包。在我们做完全背包的第一个版本中，就是将它转换成 01 背包，然后限制 k 的循环
 
-  ```
-  function knapsack(weights, values, numbers,  W){
-      var n = weights.length;
-      var f= new Array(W+1).fill(0)
-      for(var i = 0; i < n; i++) {
-          for(var k=0; k<numbers[i]; k++)//其实就是把这类物品展开，调用numbers[i]次01背包代码  
-           for(var j=W; j>=weights[i]; j--)//正常的01背包代码  
-               f[j]=Math.max(f[j],f[j-weights[i]]+values[i]);  
-      }
-      return f[W];
-  }
-  var b = knapsack([2,3,1 ],[2,3,4],[1,4,1],6)
-  console.log(b)
-  ```
+直接套用 01 背包的一维数组解法
 
-## 3.3 使用二进制优化
+```js
+function knapsack(weights, values, numbers, W) {
+    var n = weights.length;
+    var f = new Array(W + 1).fill(0)
+    for (var i = 0; i < n; i++) {
+        //其实就是把这类物品展开，调用numbers[i]次01背包代码
+        for (var k = 0; k < numbers[i]; k++)
+            //正常的01背包代码
+            for (var j = W; j >= weights[i]; j--)
+                f[j] = Math.max(f[j], f[j - weights[i]] + values[i]);
+    }
+    return f[W];
+}
+var b = knapsack([2, 3, 1], [2, 3, 4], [1, 4, 1], 6)
+console.log(b)
+```
 
-- 其实说白了我们最朴素的多重背包做法是将有数量限制的相同物品看成多个不同的 0-1 背包。这样的时间复杂度为 ${O(W*Σn(i))}$, W 为空间容量 ，n(i) 为每种背包的数量限制。如果这样会超时，我们就得考虑更优的拆分方法，由于拆成 1 太多了，我们考虑拆成二进制数，对于 13 的数量，我们拆成 1，2，4，6（有个 6 是为了凑数）。 19 我们拆成 1，2，4，8，4 （最后的 4 也是为了凑和为 19）。经过这样的拆分我们可以组合出任意的小于等于 n(i) 的数目（二进制啊，必然可以）。j 极大程度缩减了等效为 0-1 背包时候的数量。 大概可以使时间复杂度缩减为 ${O(W*log(ΣN(i))}$；
+## 使用二进制优化
 
-  ```
+其实说白了我们最朴素的多重背包做法是将有数量限制的相同物品看成多个不同的 0-1 背包。这样的时间复杂度为 ${O(W*Σn(i))}$, W 为空间容量 ，n(i) 为每种背包的数量限制。如果这样会超时，我们就得考虑更优的拆分方法，由于拆成 1 太多了，我们考虑拆成二进制数，对于 13 的数量，我们拆成 1，2，4，6（有个 6 是为了凑数）。 19 我们拆成 1，2，4，8，4 （最后的 4 也是为了凑和为 19）。经过这样的拆分我们可以组合出任意的小于等于 n(i) 的数目（二进制啊，必然可以）。j 极大程度缩减了等效为 0-1 背包时候的数量。 大概可以使时间复杂度缩减为 ${O(W*log(ΣN(i))}$；
+
+```
   定理：一个正整数n可以被分解成1,2,4,…,2^(k-1),n-2^k+1（k是满足n-2^k+1>0的最大整数）的形式，且1～n之内的所有整数均可以唯一表示成1,2,4,…,2^(k-1),n-2^k+1中某几个数的和的形式。
   
   证明如下：
@@ -678,9 +736,9 @@ console.log(a) //40
   （3）如果t>=2^k,设s=n-2^k+1，则t-s<=2^k-1，因而t-s可以表示成1,2,4,…,2^(k-1)中某几个数的和的形式，进而t可以表示成1,2,4,…,2^(k-1)，s中某几个数的和（加数中一定含有s）的形式。
   
   （证毕！）
-  ```
+```
 
-  ```
+```js
   function mKnapsack(weights, values, numbers, W) {
       var kind = 0; //新的物品种类
       var ws = []; //新的物品重量
@@ -721,30 +779,32 @@ console.log(a) //40
   
   var b = mKnapsack([2,3,1 ],[2,3,4],[1,4,1],6)
   console.log(b) //9
-  ```
+```
 
-# 混合背包问题
+# 进阶背包问题
+
+## 混合背包问题
 
 - 不同的物品选择不同的背包即可
 
   ![1564155547916](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/1564155547916.png)
 
-# 二维费用背包问题
+## 二维费用背包问题
 
-## 问题描述
+### 问题描述
 
 - 二维费用的背包问题是指：对于每件物品，具有两种不同的费用，选择这件物品必须同时付出这两种费用。对于每种费用都有一个可付出的最大值（背包容量）。
 - 问怎样选择物品可以得到最大的价值。设第 `i` 件物品所需的两种费用分别为 `Ci` 和 `Di`。两种费用可付出的最大值（也即两种背包容量）分别为 `V` 和 `U`。物品的价值为 `Wi`。
 
-## 问题分析
+### 问题分析
 
 - 费用加了一维，只需状态也加一维即可。设 F[i, v, u] 表示前 i 件物品付出两种费用分别为 v 和 u 时可获得的最大价值。状态转移方程就是：
 
   ![1564155685943](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/1564155685943.png)
 
-## Fate
+### Fate
 
-### 题目
+#### 题目
 
 - 最近 xhd 正在玩一款叫做 FATE 的游戏，为了得到极品装备，xhd 在不停的杀怪做任务。久而久之 xhd 开始对杀怪产生的厌恶感，但又不得不通过杀怪来升完这最后一级。现在的问题是，xhd 升掉最后一级还需 n 的经验值，xhd 还留有 m 的忍耐度，每杀一个怪 xhd 会得到相应的经验，并减掉相应的忍耐度。当忍耐度降到 0 或者 0 以下时，xhd 就不会玩这游戏。xhd 还说了他最多只杀 s 只怪。请问他能升掉这最后一级吗？
 - 输入数据有多组：
@@ -771,7 +831,7 @@ console.log(a) //40
   3.杀4只两经验怪+一只1经验怪，剩余1点忍耐
   ```
 
-### 分析
+#### 分析
 
 - 状态：经验
 - 费用：杀怪数和忍耐度
