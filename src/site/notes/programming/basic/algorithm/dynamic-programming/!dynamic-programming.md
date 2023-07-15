@@ -29,6 +29,8 @@
 
 # 解题步骤
 
+## 思路一
+
 做动规题目的时候，很多同学会陷入一个误区，就是以为把状态转移公式背下来，照葫芦画瓢改改，就开始写代码，甚至把题目 AC 之后，都不太清楚 `dp[i]` 表示的是什么。
 
 这就是一种朦胧的状态，然后就把题给过了，遇到稍稍难一点的，可能直接就不会了，然后看题解，然后继续照葫芦画瓢陷入这种恶性循环中
@@ -56,6 +58,19 @@
 一些同学知道递推公式，但搞不清楚 dp 数组应该如何初始化，或者正确的遍历顺序，以至于记下来公式，但写的程序怎么改都通过不了。
 
 后序的讲解的大家就会慢慢感受到这五步的重要性了
+
+## 思路二
+
+动态规划的的四个解题步骤是：
+
+- 定义子问题
+- 写出子问题的递推关系
+- 确定 DP 数组的计算顺序
+- 空间优化（可选）
+
+要分析题目, 找出子问题, 但是很多时候分析题目能读懂就不错了, 感觉很难找出子问题与子问题之间的联系
+
+这里定义子问题其实就是定义了 `dp[i]`
 
 # 动态规划应该如何 Debug
 
@@ -164,11 +179,13 @@
 
 背包问题, 也可以使用记忆化搜索 + 递归解决
 
+因为递归 + 回溯, 其实是暴力法, 所以理论上来说是可以解决所有的问题的, 所有的动态规划问题都可以通过 回溯/递归 + 记忆化搜索解决, 问题是时间复杂度, 还是有可能不通过
+
 | File                                                               | difficulty | etags                                                                                                                                                                                         | date-created                |
 | ------------------------------------------------------------------ | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
 | [[programming/basic/leetcode/95. 不同的二叉搜索树 II\|95. 不同的二叉搜索树 II]] | medium     | <ul><li>#leetcode/dp/fibonaci</li><li>#leetcoe/tree/bst</li><li>#leetcode/unsolved</li><li>#leetcode/divide-and-conquer</li></ul>                                                             | 2023-06-11-Sun, 3:37:01 pm  |
 | [[programming/basic/leetcode/509. 斐波那契数\|509. 斐波那契数]]           | easy       | <ul><li>#leetcode/math/sequence/fibonaci</li><li>#leetcode/recursive</li><li>#leetcode/dp/fibonaci</li><li>#leetcode/space/scrolling-array</li><li>#leetcode/math/fast-power/matrix</li></ul> | 2023-07-10-Mon, 9:40:29 am  |
-| [[programming/basic/leetcode/70. 爬楼梯\|70. 爬楼梯]]                 | easy       | <ul><li>#leetcode/dp/fibonaci</li><li>#leetcode/audition</li></ul>                                                                                                                            | 2023-07-10-Mon, 12:40:02 pm |
+| [[programming/basic/leetcode/70. 爬楼梯\|70. 爬楼梯]]                 | easy       | <ul><li>#leetcode/dp/fibonaci</li><li>#leetcode/dp/combination</li><li>#leetcode/audition</li></ul>                                                                                           | 2023-07-10-Mon, 12:40:02 pm |
 | [[programming/basic/leetcode/746. 使用最小花费爬楼梯\|746. 使用最小花费爬楼梯]]   | easy       | <ul><li>#leetcode/dp/fibonaci</li></ul>                                                                                                                                                       | 2023-07-10-Mon, 2:36:24 pm  |
 | [[programming/basic/leetcode/62. 不同路径\|62. 不同路径]]               | medium     | <ul><li>#leetcode/dp/fibonaci</li></ul>                                                                                                                                                       | 2023-07-10-Mon, 4:27:58 pm  |
 | [[programming/basic/leetcode/63. 不同路径 II\|63. 不同路径 II]]         | medium     | <ul><li>#leetcode/dp/fibonaci</li></ul>                                                                                                                                                       | 2023-07-10-Mon, 4:46:49 pm  |
@@ -290,6 +307,18 @@
     + 返回 -1
 
 # 递推型
+
+斐波那契是不是也算是递推型的问题呢?
+
+所有的 dp 都是由子问题求解而来的, 是不是都可以算作递推呢?
+
+| File                                                           | difficulty | etags                                                                                                                  | date-created                |
+| -------------------------------------------------------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| [[programming/basic/leetcode/198. 打家劫舍\|198. 打家劫舍]]         | medium     | <ul><li>#leetcode/dp/iteration</li><li>#leetcode/backtracking/memo</li><li>#leetcode/dp/array</li></ul>                | 2023-07-14-Fri, 9:51:08 am  |
+| [[programming/basic/leetcode/213. 打家劫舍 II\|213. 打家劫舍 II]]   | medium     | <ul><li>#leetcode/dp/iteration</li><li>#leetcode/backtracking/memo</li><li>#leetcode/dp/array</li></ul>                | 2023-07-14-Fri, 10:56:11 am |
+| [[programming/basic/leetcode/337. 打家劫舍 III\|337. 打家劫舍 III]] | medium     | <ul><li>#leetcode/dp/iteration</li><li>#leetcode/backtracking/memo</li><li>#leetcode/tree/traversal/sub-tree</li></ul> | 2023-07-14-Fri, 11:53:56 am |
+
+{ .block-language-dataview}
 
 ## 最佳收益
 
