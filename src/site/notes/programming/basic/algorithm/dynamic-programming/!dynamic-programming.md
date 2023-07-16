@@ -320,6 +320,22 @@
 
 { .block-language-dataview}
 
+# 多状态
+
+本质也是递推型
+
+[剑指 Offer 63. 股票的最大利润](https://leetcode-cn.com/problems/gu-piao-de-zui-da-li-run-lcof/)
+
+| File                                                                     | difficulty | etags                                                                                                                                                                                                  | date-created                |
+| ------------------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- |
+| [[programming/basic/leetcode/122. 买卖股票的最佳时机 II\|122. 买卖股票的最佳时机 II]]   | medium     | <ul><li>#leetcode/brainteasers</li><li>#leetcode/math/monotone</li><li>#leetcode/dp/multi-status</li><li>#leetcode/unsolved</li><li>#leetcode/greedy-algoritm</li><li>#leetcode/sub/sequence</li></ul> | 2023-07-06-Thu, 7:50:10 pm  |
+| [[programming/basic/leetcode/121. 买卖股票的最佳时机\|121. 买卖股票的最佳时机]]         | easy       | <ul><li>#leetcode/array/traversal</li><li>#leetcode/greedy-algorithm</li><li>#leetcode/dp/multi-status</li><li>#leetcode/unsolved</li></ul>                                                            | 2023-07-14-Fri, 3:55:55 pm  |
+| [[programming/basic/leetcode/123. 买卖股票的最佳时机 III\|123. 买卖股票的最佳时机 III]] | hard       | <ul><li>#leetcode/dp/multi-status</li><li>#leetcode/backtracking/memo</li><li>#leetcode/unsolved</li></ul>                                                                                             | 2023-07-15-Sat, 11:28:51 am |
+| [[programming/basic/leetcode/309. 最佳买卖股票时机含冷冻期\|309. 最佳买卖股票时机含冷冻期]]   | medium     | <ul><li>#leetcode/dp/multi-status</li><li>#leetcode/backtracking/memo</li></ul>                                                                                                                        | 2023-07-15-Sat, 7:25:06 pm  |
+| [[programming/basic/leetcode/188. 买卖股票的最佳时机 IV\|188. 买卖股票的最佳时机 IV]]   | hard       | <ul><li>#leetcode/dp/multi-status</li><li>#leetcode/backtracking/memo</li></ul>                                                                                                                        | 2023-07-15-Sat, 7:52:03 pm  |
+
+{ .block-language-dataview}
+
 ## 最佳收益
 
 ### [1025. 除数博弈](https://leetcode-cn.com/problems/divisor-game/)
