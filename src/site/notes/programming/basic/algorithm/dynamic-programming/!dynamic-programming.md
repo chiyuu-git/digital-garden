@@ -645,240 +645,26 @@
 
 # 序列型
 
+| File                                                                           | difficulty | etags                                                                                                                                                                                                  | date-created                |
+| ------------------------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- |
+| [[programming/basic/leetcode/122. 买卖股票的最佳时机 II\|122. 买卖股票的最佳时机 II]]         | medium     | <ul><li>#leetcode/brainteasers</li><li>#leetcode/math/monotone</li><li>#leetcode/dp/multi-status</li><li>#leetcode/unsolved</li><li>#leetcode/greedy-algoritm</li><li>#leetcode/sub/sequence</li></ul> | 2023-07-06-Thu, 7:50:10 pm  |
+| [[programming/basic/leetcode/376. 摆动序列\|376. 摆动序列]]                         | medium     | <ul><li>#leetcode/brainteasers</li><li>#leetcode/math/monotone</li><li>#leetcode/dp</li><li>#leetcode/unsolved</li><li>#leetcode/greedy-algoritm</li><li>#leetcode/sub/sequence</li></ul>              | 2023-07-06-Thu, 10:37:33 am |
+| [[programming/basic/leetcode/392. 判断子序列\|392. 判断子序列]]                       | easy       | <ul><li>#leetcode/sub/sequence</li><li>#leetcode/dp/lcs</li><li>#leetcode/unsolved</li><li>#leetcode/double-pointer</li></ul>                                                                          | 2023-05-15-Mon, 8:38:50 pm  |
+| [[programming/basic/leetcode/467. 环绕字符串中唯一的子字符串\|467. 环绕字符串中唯一的子字符串]]       | medium     | <ul><li>#leetcode/string/hash-table</li><li>#leetcode/dp</li><li>#leetcode/prefix-sum</li><li>#leetcode/solved</li><li>#leetcode/sub/consecutive</li></ul>                                             | 2023-05-15-Mon, 1:29:08 am  |
+| [[programming/basic/leetcode/524. 通过删除字母匹配到字典里最长单词\|524. 通过删除字母匹配到字典里最长单词]] | medium     | <ul><li>#leetcode/sub/sequence</li><li>#leetcode/dp/lcs</li><li>#leetcode/unsolved</li></ul>                                                                                                           | 2023-05-16-Tue, 11:35:07 am |
+| [[programming/basic/leetcode/53. 最大子数组和\|53. 最大子数组和]]                       | medium     | <ul><li>#leetcode/brainteasers</li><li>#leetcode/dp</li><li>#leetcode/solved</li><li>#leetcode/greedy-algoritm</li><li>#leetcode/sub/onsecutive</li></ul>                                              | 2023-07-06-Thu, 7:37:09 pm  |
+| [[programming/basic/leetcode/300. 最长递增子序列\|300. 最长递增子序列]]                   | medium     | <ul><li>#leetcode/dp</li><li>#leetcode/sub/sequence</li><li>#leetcode/greedy-algorithm</li><li>#leetcode/binary-search</li><li>#leetcode/unsolved</li></ul>                                            | 2023-07-16-Sun, 10:13:53 am |
+| [[programming/basic/leetcode/718. 最长重复子数组\|718. 最长重复子数组]]                   | medium     | <ul><li>#leetcode/dp</li><li>#leetcode/sub/consecutive</li><li>#leetcode/unsolved</li></ul>                                                                                                            | 2023-07-16-Sun, 1:05:51 pm  |
+| [[programming/basic/leetcode/1143. 最长公共子序列\|1143. 最长公共子序列]]                 | easy       | <ul><li>#leetcode/dp</li><li>#leetcode/sub/sequence</li><li>#leetcode/unsolved</li></ul>                                                                                                               | 2023-07-16-Sun, 10:37:07 am |
+| [[programming/basic/leetcode/1035. 不相交的线\|1035. 不相交的线]]                     | medium     | <ul><li>#leetcode/dp</li><li>#leetcode/sub/sequence</li><li>#leetcode/unsolved</li></ul>                                                                                                               | 2023-07-16-Sun, 7:54:32 pm  |
+
+{ .block-language-dataview}
+
 ## 最长公共子序列 LCS
-
-### 问题
-
-- 给定两个字符串序列 **abcadf** , **acbad**，求这两个字符串的**最长**公共子序列
-
-### 分析
-
-- **共性：**
-  - **分析第 i 行第 j 列时，它的字符组合仅能是小于等于 i 且小于等于 j 的情况。**
-
-    > 比如我们要填写 `T[2][2]` 时，那么此时等同于求字符串 **ac**,**ab**的最长公共子序列，填写 `T[4][5]` 时，那么此时等同于求 **acba**，**abcad**的最长公共子序列长度。
-
-  - 逐行填写表格，每一行的结果都是目前最优的选择，新一行的选择参考于上一行
-- **填表分析：**
-  - 我们给两个子序列前面都加一个空字符，即
-
-    ```js
-    str1 = ["","a","c","b","a","d"],
-    str2 = ["","a","b","c","a","d","f"],
-    ```
-
-  - 这一步其实就是初始化的操作，因为这类问题横向纵向都需要分析
-  - 为什么填一堆 0 呢？表示字符串无法匹配，你可以理解这是一种辅助的计算方式，**在分析具体子序列时，不把构建的空字符纳入考虑范围**。
-  - 使用 `T[i][j]` 表示组合的子序列长度。
-
-  ![img](!dynamic-programming/163a772c80859c7d)
-
-### 逐行分析
-
-**i = 1**
-
-- `i=1 j=1`：此时等同于求字符串 **a**和**a**的最长公共子序列长度，很显然结果为 1。
-- `i=1 j=2`：此时等同于求字符串 **a**和**ab**的最长公共子序列长度，结果为 1。
-- `i=1 j=3`：此时等同于求字符串 **a**和**abc**的最长公共子序列长度，结果为 1。
-- 只要一个序列只有一个字符，那么另一个序列无论多长，它们的最长公共子序列长度最多只能为 1。所以 i=1 行剩余空格都填 1。
-
-### I = 2
-
-- `i=2 j=1`：此时等同于求字符串 **ac**和**a**的最长公共子序列长度，结果为 1。
-- `i=2 j=2`：此时等同于求字符串 **ac**和**ab**的最长公共子序列长度，结果为 1。
-- `i=2 j=3`：此时等同于求字符串 **ac**和**abc**的最长公共子序列长度。因为根据一开始的分析，求最长公共子序列时，子序列是可以不连续的，因此这两个序列的最长公共子序列应该是 **ac**，所以这里表格应该填 2
-- 我们从 `T[2][3]` 这一个展开分析规律：
-  - 很显然去除 **c** 这个公共字符后，两个字符串还剩下 **a**, **ab**。这个其实就是填写 ` T[1][2] ` 时的组合
-  - 也就是我们可以假设当 `str1[i] == str2[j]` 时 `T[i][j]=T[i-1][j-1]+1`。
-  - 当 `str1[i] != str2[j]` 时，`T[i][j]` 的值，取它上方或左边的较大值，即 `[i][j] = max(T[i-1][j],T[i][j-1])`。
-- 用一句通俗的话来描述这种 `T[i][j]` 规律，就是：
-  - **有新的公共字符，等于左上角加一**
-  - **没有新的公共字符，则取上或左最大值，如果上左一样大，优先取左。**
-
-**注意**
-
-- 从我们的分析结果也可以看出，新一格的结果可能由左上，左，上，中的某一个决定，在循环中初始化的困难太大，所以统一在前面加上一个空字符串，全部初始化为 0，可以大大减轻工作量
-
-### 输出结果
-
-- **我们子序列保存在名为 s 的数组中，从表格中反向搜索，找到目标字符后，每次都把目标字符插入到数组最前面。**
-- 根据前面提供的填表口诀，我们可以反向得出寻找子序列的口诀： **如果 `T[i][j]` 来自左上角加一，则是子序列，否则向左或上回退。如果上左一样大，优先取左。**
-
-### 实现
-
-- ```js
-  function longestSub(str1,str2){
-    let T = []
-    // 简化初始化行列的操作
-    str1 = ' '+str1
-    str2 = ' '+str2
-    for (let i = 0; i < str1.length; i++) {
-      T[i] = []
-      for (let j = 0; j < str2.length; j++) {
-        // 初始化操作
-        if(i===0 || j===0){
-          T[i][j]=0
-          continue
-        }
-        // 初始化已经完成，剩下的直接操作即可
-        if(str1[i]===str2[j]){
-          // 发现新的公共字符，等于左上角(刨除公共字符后的子串)+1
-          T[i][j] = T[i-1][j-1]+1
-        }else{
-          // 没有新的公共字符
-          T[i][j] = Math.max(T[i-1][j],T[i][j-1])
-        }
-      }
-    }
-    findValue(str1,str2,T)
-    return T
-  }
-  
-  console.log(longestSub('acbad','abcadf'))
-  ```
-- ```js
-  function findValue(str1,str2,T){
-    let ret = ''
-    let i = str1.length-1
-    let j = str2.length-1
-    while(i>=0&&j>=0){
-      if(str1[i]===str2[j]){
-        // 公共字符
-        ret = str1[i] + ret
-        // 回退到左上角
-        i--
-        j--
-      }else{
-        // 非公共字符，判断源,向源回退
-        T[i-1][j]>T[i][j-1]?i--:j--
-      }
-    }
-    console.log(ret)
-  }
-  ```
-
-  ![1555314073094](/img/user/programming/basic/algorithm/dynamic-programming/!dynamic-programming/1555314073094.png)
-
-### 优化实现
-
-+ 负号索引初始化
-
-  ```js
-  function longestSub(str1,str2){
-    const len1 = str1.length 
-    const len2 = str2.length 
-    // 初始化行列的操作
-    let dp = new Array(len1) // 列
-    dp[-1] = new Array(len2).fill(0) // 负1行
-    dp[-1][-1] = 0
-    for (let i = 0; i < len1; i++) { // 行
-      dp[i] = new Array(len2)
-      dp[i][-1] = 0
-    }
-    for (let i = 0; i < len1; i++) {
-      for (let j = 0; j < len2; j++) {
-        if(str1[i]===str2[j]){
-          // 发现新的公共字符，等于左上角(刨除公共字符后的子串)+1
-          dp[i][j] = dp[i-1][j-1]+1
-        }else{
-          // 没有新的公共字符
-          dp[i][j] = Math.max(dp[i-1][j],dp[i][j-1])
-        }
-      }
-    }
-    findValue(str1,str2,dp)
-    return dp
-  }
-  ```
-
-+ 滚动数组，此时无法返回子序列
-
-  ```js
-  function longestSub(str1,str2){
-    const len1 = str1.length 
-    const len2 = str2.length 
-    // 滚动数组
-    let lineA =  new Array(len2).fill(0)
-    lineA[-1] = 0
-    let lineB = new Array(len2)
-    lineB[-1] = 0
-    let referLine = lineA
-    let currentLine = lineB
-    for (let i = 0; i < len1; i++) {
-      for (let j = 0; j < len2; j++) {
-        if(str1[i]===str2[j]){
-          // 发现新的公共字符，等于左上角(刨除公共字符后的子串)+1
-          // dp[i][j] = dp[i-1][j-1]+1
-          currentLine[j] = referLine[j-1] + 1
-        }else{
-          // 没有新的公共字符
-          // dp[i][j] = Math.max(dp[i-1][j],dp[i][j-1])
-          currentLine[j] = Math.max(currentLine[j-1],referLine[j])
-        }
-      }
-      // 滚动数组
-      console.log(currentLine)
-      ;([referLine,currentLine] = [currentLine,referLine])
-    }
-    return referLine[len1-1]
-  }
-  ```
 
 ## [516. 最长回文子序列](https://leetcode-cn.com/problems/longest-palindromic-subsequence/)
 
 + 参考回文串，本质是最长公共子序列
-
-## [121. 买卖股票的最佳时机](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/)
-
-### 问题
-
-- 给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
-- 如果你最多只允许完成一笔交易（即买入和卖出一支股票），设计一个算法来计算你所能获取的最大利润。
-- 注意你不能在买入股票前卖出股票。
-- 卖出价格要高于买入价格，也就是需要盈利
-
-  ```
-  输入: [7,1,5,3,6,4]
-  输出: 5
-  解释: 在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。
-  注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格。
-  ```
-
-### 分析
-
-- **定义状态**：当天操作后的最佳收益
-- **初始化分析：**第一天价格最小值就是当天的值，无法卖出，收益只能是 0
-- **最优化分析：**
-  - 这天的价格如果低于之前的最低价格，则为 0，最佳方案是 `T[i-1]`
-  - 如果高于之前的价格，则收益为差价，与 `T[i-1]` 做对比，更大的则是最佳收益
-
-  > 不必判断价格差的相对大小，直接相减，由正负决定大小
-
-- **状态转移方程**：`T[i] = Math.max(prices[i]-min,T[i-1])`
-- **边界分析：**无法完成交易都是 0
-
-### 实现
-
-- ```js
-  var maxProfit = function(prices) {
-    if(prices.length===0) return 0
-    let T=[]
-    // 初始化
-    T[-1]= 0 
-    let min = Number.MAX_SAFE_INTEGER
-    // 状态转移
-    for (let i = 0; i < prices.length; i++) { 
-      min = Math.min(min,prices[i])
-      T[i] = Math.max(prices[i]-min,T[i-1])
-    }
-    console.log(T)
-    return Math.max(...T)
-  }
-  let prices = [7,1,5,3,6,4]
-  console.log(maxProfit(prices))
-  ```
-
-+ 本质：找到长度为 2，最大的上升子序列
 
 ## [300. 最长上升子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/)
 
