@@ -471,7 +471,7 @@ github pangu 盘古项目
 查看 node 的真实 path
 
 ```zsh
-which node 
+which node
 ```
 
 ## TS
@@ -581,21 +581,21 @@ Command + shift + L 可以快捷打印 console
 ## Jest
 
 ```json
-        {
-            "type": "node",
-            "request": "launch",
-            "protocol": "inspector",
-            "name": "Jest Debug",
-            "program": "${workspaceRoot}/node_modules/jest/bin/jest",
-            "stopOnEntry": false,
-            "args": ["--runInBand", "--env=jsdom", "${fileBasename}"],
-            "runtimeArgs": [
-                "--inspect-brk"
-            ],
-            "cwd": "${workspaceRoot}",
-            "sourceMaps": true,
-            "console": "integratedTerminal"
-        }
+{
+	"type": "node",
+	"request": "launch",
+	"protocol": "inspector",
+	"name": "Jest Debug",
+	"program": "${workspaceRoot}/node_modules/jest/bin/jest",
+	"stopOnEntry": false,
+	"args": ["--runInBand", "--env=jsdom", "${fileBasename}"],
+	"runtimeArgs": [
+		"--inspect-brk"
+	],
+	"cwd": "${workspaceRoot}",
+	"sourceMaps": true,
+	"console": "integratedTerminal"
+}
 ```
 
 ```json
