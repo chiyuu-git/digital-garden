@@ -3,6 +3,8 @@
 ---
 
 
+![](/img/user/programming/basic/algorithm/dynamic-programming/!dynamic-programming/image-20230718193303758.png)
+
 # 什么是动态规划
 
 动态规划，英文：Dynamic Programming，简称 DP，如果某一问题有很多重叠子问题，使用动态规划是最有效的。
@@ -180,6 +182,12 @@
 背包问题, 也可以使用记忆化搜索 + 递归解决
 
 因为递归 + 回溯, 其实是暴力法, 所以理论上来说是可以解决所有的问题的, 所有的动态规划问题都可以通过 回溯/递归 + 记忆化搜索解决, 问题是时间复杂度, 还是有可能不通过
+
+要做好记忆化搜索, 很多时候就是递归的思路了, 因为很多时候只能返回子问题的答案. 父问题的答案是基于子问题去实现的, 其实就是动态规划的状态转移方程
+
+为了更好的记忆化, 也是从子问题开始递归效率更好
+
+[115. 不同的子序列](../../leetcode/115.%20不同的子序列.md)
 
 | File                                                               | difficulty | etags                                                                                                                                                                                         | date-created                |
 | ------------------------------------------------------------------ | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
@@ -645,6 +653,8 @@
 
 # 序列型
 
+为什么不用考虑两个都不选的场景? 编辑记录的一个 b 站视频有讲解
+
 | File                                                                           | difficulty | etags                                                                                                                                                                                                  | date-created                |
 | ------------------------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- |
 | [[programming/basic/leetcode/122. 买卖股票的最佳时机 II\|122. 买卖股票的最佳时机 II]]         | medium     | <ul><li>#leetcode/brainteasers</li><li>#leetcode/math/monotone</li><li>#leetcode/dp/multi-status</li><li>#leetcode/unsolved</li><li>#leetcode/greedy-algoritm</li><li>#leetcode/sub/sequence</li></ul> | 2023-07-06-Thu, 7:50:10 pm  |
@@ -657,6 +667,10 @@
 | [[programming/basic/leetcode/718. 最长重复子数组\|718. 最长重复子数组]]                   | medium     | <ul><li>#leetcode/dp</li><li>#leetcode/sub/consecutive</li><li>#leetcode/unsolved</li></ul>                                                                                                            | 2023-07-16-Sun, 1:05:51 pm  |
 | [[programming/basic/leetcode/1143. 最长公共子序列\|1143. 最长公共子序列]]                 | easy       | <ul><li>#leetcode/dp</li><li>#leetcode/sub/sequence</li><li>#leetcode/unsolved</li></ul>                                                                                                               | 2023-07-16-Sun, 10:37:07 am |
 | [[programming/basic/leetcode/1035. 不相交的线\|1035. 不相交的线]]                     | medium     | <ul><li>#leetcode/dp</li><li>#leetcode/sub/sequence</li><li>#leetcode/unsolved</li></ul>                                                                                                               | 2023-07-16-Sun, 7:54:32 pm  |
+| [[programming/basic/leetcode/115. 不同的子序列\|115. 不同的子序列]]                     | hard       | <ul><li>#leetcode/dp</li><li>#leetcode/sub/sequence</li><li>#leetcode/backtracking/memo</li></ul>                                                                                                      | 2023-07-17-Mon, 3:23:50 pm  |
+| [[programming/basic/leetcode/583. 两个字符串的删除操作\|583. 两个字符串的删除操作]]             | medium     | <ul><li>#leetcode/dp</li><li>#leetcode/sub/sequence</li></ul>                                                                                                                                          | 2023-07-17-Mon, 4:01:05 pm  |
+| [[programming/basic/leetcode/647. 回文子串\|647. 回文子串]]                         | medium     | <ul><li>#leetcode/brainteasers</li><li>#leetcode/dp</li><li>#leetcode/sub/consecutive</li><li>#leetcode/palindrome</li></ul>                                                                           | 2023-07-18-Tue, 4:17:13 pm  |
+| [[programming/basic/leetcode/516. 最长回文子序列\|516. 最长回文子序列]]                   | medium     | <ul><li>#leetcode/brainteasers</li><li>#leetcode/dp</li><li>#leetcode/sub/sequence</li><li>#leetcode/palindrome</li><li>#leetcode/unsolved</li></ul>                                                   | 2023-07-18-Tue, 7:23:14 pm  |
 
 { .block-language-dataview}
 
@@ -1387,7 +1401,7 @@
 
 ### 实现
 
-- ```js
+```js
   /**
    * @param {number} n
    * @return {number}
@@ -1403,7 +1417,7 @@
     }
     return G[n]
   };
-  ```
+```
 
 ## leetCode95. 不同的二叉树 II
 
@@ -1429,6 +1443,8 @@
   定义函数 helper(nums): 作用为为给定的有序数组生成所有二叉搜索树
 
 # 再分类
+
+关于动规，还有 树形 DP（打家劫舍系列里有一道），数位 DP，区间 DP ，概率型 DP，博弈型 DP，状态压缩 dp 等等等，这些我就不去做讲解了，面试中出现的概率非常低。
 
 ## leetCode264.丑数 II
 
