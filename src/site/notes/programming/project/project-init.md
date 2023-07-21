@@ -1847,6 +1847,10 @@ module.exports = {
 
 ### Dev-server 配置跨域请求
 
+如果你有单独的后端开发服务器 API，并且希望在**同域名**下发送 API 请求 ，那么代理某些 URL 会很有用。
+
+dev-server 使用了非常强大的 [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware) 包。更多高级用法，请查阅其 [文档](https://github.com/chimurai/http-proxy-middleware#options)。
+
 ```ts
     proxy: {
       '/api': {
@@ -1856,6 +1860,67 @@ module.exports = {
       }
     }
 ```
+
+#### 基本使用
+
+在 `localhost:3000` 上有后端服务的话，你可以这样启用代理：
+
+webpack.config.js:
+
+```javascript
+  module.exports = {
+    //...
+    devServer: {
+      proxy: {
+        '/api': 'http://localhost:3000'
+      }
+    }
+  };
+```
+
+请求到 `/api/users` 现在会被代理到请求 `http://localhost:3000/api/users`。
+
+#### 重写路径
+
+如果你不想始终传递 `/api` ，则需要重写路径：
+
+```javascript
+  module.exports = {
+    //...
+    devServer: {
+      proxy: {
+        '/api': {
+          target: 'http://localhost:3000',
+          pathRewrite: {'^/api' : ''}
+        }
+      }
+    }
+  };
+```
+
+后端不需要再加上 ‘api’ ，但是前端请求还是要的，用作**转发的**标志
+
+#### 代理多个路径
+
+如果你想要代理多个路径特定到同一个 target 下，你可以使用由一个或多个「具有 `context` 属性的对象」构成的数组：
+
+```javascript
+  module.exports = {
+    //...
+    devServer: {
+      proxy: [{
+        context: ['/auth', '/api'],
+        target: 'http://localhost:3000',
+      }]
+    }
+  };
+```
+
+#### 配合 HTTPs
+
+https://webpack.docschina.org/configuration/dev-server/#devserver-proxy
+
+#### 代理根路径
 
 ## 生产环境完善
 
