@@ -488,10 +488,10 @@ console.log(b)
 
 | File                                                                     | difficulty | etags                                                                                                                                              | date-created               |
 | ------------------------------------------------------------------------ | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| [[programming/basic/leetcode/416. 分割等和子集\|416. 分割等和子集]]               | medium     | <ul><li>#leetcode/dp/knapsack/0-1</li><li>#leetcode/unsolved</li></ul>                                                                             | 2023-07-11-Tue, 6:47:18 pm |
 | [[programming/basic/leetcode/1049. 最后一块石头的重量 II\|1049. 最后一块石头的重量 II]] | medium     | <ul><li>#leetcode/dp/knapsack/0-1</li><li>#leetcode/unsolved</li></ul>                                                                             | 2023-07-11-Tue, 8:02:47 pm |
-| [[programming/basic/leetcode/494. 目标和\|494. 目标和]]                     | medium     | <ul><li>#leetcode/dp/knapsack/0-1</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li></ul> | 2023-07-12-Wed, 6:43:08 pm |
+| [[programming/basic/leetcode/416. 分割等和子集\|416. 分割等和子集]]               | medium     | <ul><li>#leetcode/dp/knapsack/0-1</li><li>#leetcode/unsolved</li></ul>                                                                             | 2023-07-11-Tue, 6:47:18 pm |
 | [[programming/basic/leetcode/474. 一和零\|474. 一和零]]                     | medium     | <ul><li>#leetcode/dp/knapsack/0-1</li><li>#leetcode/backtracking/memo</li></ul>                                                                    | 2023-07-12-Wed, 8:40:02 pm |
+| [[programming/basic/leetcode/494. 目标和\|494. 目标和]]                     | medium     | <ul><li>#leetcode/dp/knapsack/0-1</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li></ul> | 2023-07-12-Wed, 6:43:08 pm |
 
 { .block-language-dataview}
 
@@ -658,11 +658,11 @@ console.log(a) //40
 
 | File                                                         | difficulty | etags                                                                                                                                                                                | date-created                |
 | ------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- |
+| [[programming/basic/leetcode/279. 完全平方数\|279. 完全平方数]]     | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li><li>#leetcode/math/squre</li></ul> | 2023-07-13-Thu, 4:21:26 pm  |
+| [[programming/basic/leetcode/322. 零钱兑换\|322. 零钱兑换]]       | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li></ul>                              | 2023-07-13-Thu, 3:52:39 pm  |
+| [[programming/basic/leetcode/377. 组合总和 Ⅳ\|377. 组合总和 Ⅳ]]   | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/permutation</li><li>#leetcode/unsolved</li></ul>                              | 2023-07-13-Thu, 12:31:27 pm |
 | [[programming/basic/leetcode/494. 目标和\|494. 目标和]]         | medium     | <ul><li>#leetcode/dp/knapsack/0-1</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li></ul>                                   | 2023-07-12-Wed, 6:43:08 pm  |
 | [[programming/basic/leetcode/518. 零钱兑换 II\|518. 零钱兑换 II]] | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li></ul>                              | 2023-07-13-Thu, 10:30:11 am |
-| [[programming/basic/leetcode/377. 组合总和 Ⅳ\|377. 组合总和 Ⅳ]]   | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/permutation</li><li>#leetcode/unsolved</li></ul>                              | 2023-07-13-Thu, 12:31:27 pm |
-| [[programming/basic/leetcode/322. 零钱兑换\|322. 零钱兑换]]       | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li></ul>                              | 2023-07-13-Thu, 3:52:39 pm  |
-| [[programming/basic/leetcode/279. 完全平方数\|279. 完全平方数]]     | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li><li>#leetcode/math/squre</li></ul> | 2023-07-13-Thu, 4:21:26 pm  |
 
 { .block-language-dataview}
 
