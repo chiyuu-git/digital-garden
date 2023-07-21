@@ -245,6 +245,22 @@ class LinkedList {
     }
 ```
 
+```js
+var removeElements = function(head, val) {
+    const dummyHead = new ListNode(0);
+    dummyHead.next = head;
+    let temp = dummyHead;
+    while (temp.next !== null) {
+        if (temp.next.val == val) {
+            temp.next = temp.next.next;
+        } else {
+            temp = temp.next;
+        }
+    }
+    return dummyHead.next;
+};
+```
+
 移除最后一个元素：
 
 ![](/img/user/programming/basic/data-structure/linked-list/image-20230522103559436.png)
@@ -487,6 +503,8 @@ reverseListIteration() {
     }
   ```
 
+前序遍历递归, 实际上就和迭代的逻辑是一样的
+
 ```js
     reverseListForwardRecursion(prev = null, cur = this.head) {
 
@@ -503,6 +521,7 @@ reverseListIteration() {
         this.reverseListForwardRecursion(prev, cur)
     }
 ```
+
 ### swapPairs
 
 ![24. 两两交换链表中的节点](../leetcode/24.%20两两交换链表中的节点.md)
@@ -543,7 +562,7 @@ reverseListIteration() {
 + 如果是前序遍历，那么你可以想象前面的链表都处理好了，怎么处理的不用管
 + 如果是后续遍历，那么你可以想象后面的链表都处理好了，怎么处理的不用管
 
-前序遍历容易改写成不需要栈的递归,  不那么准确的说, 可以更容易改成 while 
+前序遍历容易改写成不需要栈的递归, 不那么准确的说, 可以更容易改成 while
 
 ### 通过 dummyHead 避免特判
 
@@ -743,13 +762,3 @@ reverseListIteration() {
 既然单链表可以有循环链表，那么双向链表当然也可以是循环链表。你可以停下来想想双向循环链表长什么样子。
 
 ![](/img/user/programming/basic/data-structure/linked-list/image-20230522104044553.png)
-
-# FAQ
-
-## 检测链表中的循环
-
-## 移除链表中的重复值
-
-## 合并链表
-
-![21. 合并两个有序链表](../leetcode/21.%20合并两个有序链表.md)
