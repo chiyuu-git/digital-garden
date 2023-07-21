@@ -29,6 +29,8 @@
 
 可以用来做反转, reverse
 
++ [977. 有序数组的平方](../leetcode/977.%20有序数组的平方.md)
+
 用于缩小搜索范围, 用于排序过的数组, 感觉和前缀和那个有点模糊不清, 需要一个专题处理一下
 
 + [167. 两数之和 II - 输入有序数组](../leetcode/167.%20两数之和%20II%20-%20输入有序数组.md)
@@ -78,6 +80,8 @@
 ### 处理回文链表
 
 判断链表的回文结构：使用快慢指针和反转链表的技巧，可以判断链表是否是回文结构。快指针每次移动两步，慢指针每次移动一步，当快指针到达链表尾部时，慢指针指向链表的中间节点。然后反转慢指针后面的链表，再使用两个指针从头和中间开始同时遍历比较，如果节点值不相等，则链表不是回文结构。
+
+[234. 回文链表](../leetcode/234.%20回文链表.md)
 
 ### 处理环
 
@@ -231,151 +235,15 @@ function breantCycle(head) {
 
 无序的只能去除指定值, 因为去除重复数相当于是要去除多个指定值了, 所以无序的做不到
 
-- [[programming/basic/leetcode/83. 删除排序链表中的重复元素\|83. 删除排序链表中的重复元素]]
-- [[programming/basic/leetcode/82. 删除排序链表中的重复元素 II\|82. 删除排序链表中的重复元素 II]]
-- [[programming/basic/leetcode/80. 删除有序数组中的重复项 II\|80. 删除有序数组中的重复项 II]]
-- [[programming/basic/leetcode/27. 移除元素\|27. 移除元素]]
 - [[programming/basic/leetcode/26. 删除有序数组中的重复项\|26. 删除有序数组中的重复项]]
+- [[programming/basic/leetcode/27. 移除元素\|27. 移除元素]]
+- [[programming/basic/leetcode/80. 删除有序数组中的重复项 II\|80. 删除有序数组中的重复项 II]]
+- [[programming/basic/leetcode/82. 删除排序链表中的重复元素 II\|82. 删除排序链表中的重复元素 II]]
+- [[programming/basic/leetcode/83. 删除排序链表中的重复元素\|83. 删除排序链表中的重复元素]]
 
 { .block-language-dataview}
 
 [283. 移动零](../leetcode/283.%20移动零.md) 与合并数组好像, 即是原地算法, 但是又和之前的原地标记不同, 这里借用的是双指针, 数组原地删除、 数组原地交换, 数组原地合并, 这几个很类似, 要好好总结一下才行
-
-## [234. 回文链表](https://leetcode-cn.com/problems/palindrome-linked-list/)
-
-### 直觉法
-
-```js
-  var isPalindrome = function (head) {
-    if (head === null) return true;
-	
-    let cur = head;
-    let nodes = [];
-    while (cur) {
-      nodes.push(cur.val);
-      cur = cur.next;
-    }
-    const half = nodes.length >>> 1;
-    nodes.reverse();
-    for (let i = 0, j = head; i < half; i++) {
-      if (j.val !== nodes[i]) return false;
-      j = j.next;
-    }
-    return true;
-  };
-```
-
-### 快慢指针
-
-#### 如何找到链表的中间位置
-
-通常设置一个快指针 `fast` 和满指针 `slow`，快指针一次走两步，慢指针一次，当快指针遍历到最后时，满指针指在链表中部。
-
-```java
-  ListNode fast = head;
-  ListNode slow = head;
-  while(fast != null && slow != null){
-      fast = fast.next.next;
-      slow = slow.next;
-  }
-```
-
-我们这里敲定一下细节：
-
-- 如果只有一个节点 1，fast = slow = 1
-- 如果有 1->2 两个节点，fast = null，slow = 2
-- 如果有 1->2->3 三个节点，fast = null，slow = 2
-- 如果有 1->2->3->4 四个节点，fast = null，slow = 3
-我们可以得出结论：
-- 当链表长度为 **偶数** 时，`slow` 指针指向链表中间位置靠后的那一个，右中位数
-- 当链表长度为 **奇数** 时，`slow` 指针指向链表中间位置
-
-## 反转链表
-
-这道题的难点是如何达到 `O(1)` 的空间复杂度，并且要求不改变原链表的结构
-
-思路如下：
-
-  1. 先找到链表的中间位置
-  2. 反转后半部分链表
-  3. 同时从头和尾部向中间遍历，如果有不同值，则不是回文
-  4. 再次反转后半部分链表，恢复链表原有结构
-
-### 示例
-
-1->2->1->null
-
-从前一部分我们可以发现，slow 指针指向 2
-
-我们反转后半部分链表 (包括中间位置的节点)，得到 1->(null-<)2<-1
-
-然后开始同时从头和尾开始对比，当尾部的遍历指针为 null 结束
-
-最后再一次反转链表，得到 1->2->1->null
-
-并且，奇数和偶数的过程是一样的，代码上不做区分
-
-### 实现
-
- ```java
-  var isPalindrome = function(head) {
-    if(head == null || head.next == null) return true
-    let slow = head, fast = head.next,
-        cur = null, prev = null
-	
- while(fast != null && fast.next != null) {
-      //先移动指针再来反转
-      cur = slow
-      slow = slow.next
-      fast = fast.next.next
-      //反转前半段链表
-      cur.next = prev
-      prev = cur
-    }
-    // 出循环，到一半
-    /**
-     * fast == null 奇数长 , slow 等于中位数
-     *   right = slow.next
-     *   slow.next = prev 反转链表
-     *   left = slow.next
-     * fast !== null 偶数长 , slow 等于左中位数
-     *   right = slow.next
-     *   slow.next = prev 反转链表
-     *   left = slow
-     */
-    let right = slow.next
-    let next = fast == null? slow : slow.next
-    slow.next = prev
-    let left = fast == null? slow.next : slow
-    slow = fast = prev = null
-    while(left != null) {
-      if(left.val != right.val) return false
-      // 先移动指针再反转，还原链表
-      cur = left
-      left = left.next
-      right = right.next
-      cur.next = next
-      next = cur
-    }
-    return true
-  }
-	
-  let head = {
-	  val:1,next:{
-		  val:2,next:{
-			  val:3,next:{
-				  val:4,next:{
-					  val:5,next:{
-						  val:6,next:null
-						  }
-					  }
-				  }
-			  }
-		  }
-	  }
-  // let head = {val:1,next:{val:2,next:{val:3,next:{val:4,next:{val:5,next:null}}}}}
-  console.log(isPalindrome(head))
-  ```
 
 # 滑动窗口
 
@@ -662,3 +530,5 @@ while (right < len) {
 
 - 因为 nums 中的每个数字都在 1 和 n 之间，所以它必须指向存在的索引。此外，由于 0 不能作为 nums 中的值出现，nums[0] 不能作为循环的一部分。
 - 由于存在重复数，所以形成了圈
+- [904.水果成篮(opens new window)](https://leetcode.cn/problems/fruit-into-baskets/)
+- [76.最小覆盖子串(opens new window)](https://leetcode.cn/problems/minimum-window-substring/)
