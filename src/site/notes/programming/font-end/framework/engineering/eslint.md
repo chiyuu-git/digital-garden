@@ -87,6 +87,10 @@
 
 必要性判断 0 null undefined 等边界值的处理，状态的判断，然后再执行函数
 
+[空值合并运算符（??） - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing)
+
+比 `||` 更好一点
+
 ## 回调函数的简写形式
 
 ```js
