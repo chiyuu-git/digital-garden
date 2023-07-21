@@ -3,11 +3,7 @@
 ---
 
 
-6/30
-
 <https://juejin.im/post/5a6c87c46fb9a01ca560b4d7#heading-33>
-
-8/8 pigGo
 
 # Web Storage
 
