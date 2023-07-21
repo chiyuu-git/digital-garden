@@ -222,6 +222,197 @@ userInfo = ctx.request.body
 
 ## 控制缓存
 
+# Koa-session
+
+## 基本使用
+
+```js
+const session = require('koa-session');
+const Koa = require('koa');
+const app = new Koa();
+app.keys = ['some secret hurr'];
+
+const CONFIG = {
+  key: 'koa:sess', /** (string) cookie key (default is koa:sess) */
+  
+  /** (number || 'session') maxAge in ms (default is 1 days) */
+  /** 'session' will result in a cookie that expires when session/browser is closed */
+  /** Warning: If a session cookie is stolen, this cookie will never expire */
+  maxAge: 86400000,
+  overwrite: true, /** (boolean) can overwrite by js or not (default true) */
+  httpOnly: true, /** (boolean) httpOnly or not (default true) */
+  signed: true, /** (boolean) signed or not (default true) */
+  rolling: false, /** (boolean) Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown. (default is false) */
+  renew: false, /** (boolean) renew session when session is nearly expired, so we can always keep user logged in. (default is false)*/
+};
+
+app.use(session(CONFIG, app));
+
+app.use(ctx => {
+  // ignore favicon
+  if (ctx.path === '/favicon.ico') return;
+
+  let n = ctx.session.views || 0;
+  ctx.session.views = ++n;
+  ctx.body = n + ' views';
+});
+
+app.listen(3000);
+```
+
+我们看到这个在这个会话状态中，session 中保存了页面访问次数，每次请求的时候，会增加计数再把结果返回给用户。
+
+对于 session 的存储方式，koa-session 同时支持 cookie 和外部存储。
+
+## 使用 Cookie 储存 Session
+
+默认配置下，会使用 cookie 来存储 session 信息，也就是实现了一个 "cookie session"。这种方式对服务端是比较轻松的，不需要额外记录任何 session 信息，但是也有不少限制，比如大小的限制以及安全性上的顾虑。用 cookie 保存时，实现上非常简单，就是对 session(包括过期时间) 序列化后做一个简单的 base64 编码。其结果类似 ：
+
+```js
+koa:sess=eyJwYXNzcG9ydCI6eyJ1c2VyIjozMDM0MDg1MTQ4OTcwfSwiX2V4cGlyZSI6MTUxNzI3NDE0MTI5MiwiX21heEFnZSI6ODY0MDAwMDB9;
+```
+
+**示例**
+
+```js
+  const session = require("koa-session")
+  app.use(session({
+      signed:false,
+      maxAge: 20 * 1000
+  },app))
+```
+
+## 外部存储
+
+在实际项目中，会话相关信息往往需要再服务端持久化，因此一般都会使用外部存储来记录 session 信息。
+
+外部存储可以是任何的存储系统：
+
+- 可以是内存数据结构，
+- 可以是本地的文件
+- 也可以是远程的数据库。
+
+**但是这不意味着我们不需要 cookie 了，由于 http 协议的无状态特性，我们依然需要通过 cookie 来获取 session 的标识 (这里叫 externalKey)。**
+
+koa-session 里的 external key 默认是一个时间戳加上一个随机串，因此 cookie 的内容类似：
+
+```js
+koa:sess=1517188075739-wnRru1LrIv0UFDODDKo8trbmFubnVmMU;
+```
+
+### 在内存中存储 Sessoin
+
+要实现一个外置的存储，用户需要自定义 get(), set() 和 destroy() 函数，分别用于获取、更新和删除 session。一个最简单的实现，我们就采用一个 object 来存储 session，那么可以这么来配置：
+
+```js
+let store = {
+  storage: {},
+  get (key, maxAge) {
+    return this.storage[key]
+  },
+  set (key, sess, maxAge) {
+    this.storage[key] = sess
+  },
+  destroy (key) {
+    delete this.storage[key]
+  }
+}
+app.use(session({store}, app))
+```
+
+### 在数据库中储存 Session
+
+使用 mongoDB 储存 session
+
+> https://juejin.im/post/5a6ad754f265da3e513352e5#heading-5
+
+```js
+const session = require("koa-session")
+const MongoStore = require("koa-session-mongo2")
+app.use(session({
+    store: new MongoStore({
+        url:  DB_URL  // your mongodb url  required
+        db:'user',
+        collection: optional, db session collection name,default "__session"
+        signed:false // if true, please set app.keys = ['...']
+    }),
+    signed:false,
+    maxAge: 20 * 1000
+},app))
+```
+
+使用 mysql 储存 session
+
+> https://chenshenhai.github.io/koa2-note/note/session/info.html
+
+```js
+const Koa = require('koa')
+const session = require('koa-session-minimal')
+const MysqlSession = require('koa-mysql-session')
+
+const app = new Koa()
+
+// 配置存储session信息的mysql
+let store = new MysqlSession({
+  user: 'root',
+  password: 'abc123',
+  database: 'koa_demo',
+  host: '127.0.0.1',
+})
+
+// 存放sessionId的cookie配置
+let cookie = {
+  maxAge: '', // cookie有效时长
+  expires: '',  // cookie失效时间
+  path: '', // 写cookie所在的路径
+  domain: '', // 写cookie所在的域名
+  httpOnly: '', // 是否只用于http请求中获取
+  overwrite: '',  // 是否允许重写
+  secure: '',
+  sameSite: '',
+  signed: '',
+
+}
+
+// 使用session中间件
+app.use(session({
+  key: 'SESSION_ID',
+  store: store,
+  cookie: cookie
+}))
+
+app.use( async ( ctx ) => {
+
+  // 设置session
+  if ( ctx.url === '/set' ) {
+    ctx.session = {
+      user_id: Math.random().toString(36).substr(2),
+      count: 0
+    }
+    ctx.body = ctx.session
+  } else if ( ctx.url === '/' ) {
+
+    // 读取session信息
+    ctx.session.count = ctx.session.count + 1
+    ctx.body = ctx.session
+  } 
+
+})
+
+app.listen(3000)
+console.log('[demo] session is starting at port 3000')
+```
+
+## 分布式 Session
+
+首先是为什么会有这样的概念出现？
+
+先考虑这样一个问题，现在我的应用需要部署在 3 台机器上。是不是出现这样一种情况，我第一次登陆，请求去了机器 1，然后再机器 1 上创建了一个 session；但是我第二次访问时，请求被路由到机器 2 了，但是机器 2 上并没有我的 session 信息，所以得重新登录。当然这种可以通过 nginx 的 IP HASH 负载策略来解决。对于同一个 IP 请求都会去同一个机器。
+
+但是业务发展的越来越大，拆分的越来越多，机器数不断增加；很显然那种方案就不行了。那么这个时候就需要考虑是不是应该将 session 信息放在一个独立的机器上，所以分布式 session 要解决的问题其实就是分布式环境下的 session 共享的问题。
+
+上图中的关于 session 独立部署的方式有很多种，可以是一个独立的数据库服务，也可以是一个缓存服务 (redis，目前比较常用的一种方式，即使用 Redis 来作为 session 缓存服务器)。
+
 # Koa-session 源码
 
 > https://segmentfault.com/a/1190000013039187#articleHeader6
