@@ -1355,7 +1355,7 @@ for (i = 0; i < 3; i++) {      //The first for statement is labeled "loop1"
 
 #faq/js
 
-## 类型判断
+## 类型转换精简版
 
 条件判断类型的，隐式转换为 Boolean，结果只有 true 和 false 两种
 
