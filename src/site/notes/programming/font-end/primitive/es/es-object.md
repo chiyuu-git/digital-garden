@@ -774,7 +774,6 @@ ES6 提出“Same-value equality”（同值相等）算法，用来解决这个
   };
   ```
 
-
 # 属性描述符相关方法
 
 ## 基本概念
@@ -1080,25 +1079,25 @@ ES2017 引入了 `Object.getOwnPropertyDescriptors()` 方法，返回指定对�
 这时，`Object.getOwnPropertyDescriptors()` 方法配合 `Object.defineProperties()` 方法，就可以实现正确拷贝。
 
 ```javascript
-  const source = {
+const source = {
     set foo(value) {
-      console.log(value);
+        console.log(value);
     }
-  };
-  
-  const target2 = {};
-  Object.defineProperties(target2, Object.getOwnPropertyDescriptors(source));
-  Object.getOwnPropertyDescriptor(target2, 'foo')
-  // { get: undefined,
-  //   set: [Function: set foo],
-  //   enumerable: true,
-  //   configurable: true }
-  
-  // 合并两个函数
-  const shallowMerge = (target, source) => Object.defineProperties(
+};
+
+const target2 = {};
+Object.defineProperties(target2, Object.getOwnPropertyDescriptors(source));
+Object.getOwnPropertyDescriptor(target2, 'foo')
+// { get: undefined,
+//   set: [Function: set foo],
+//   enumerable: true,
+//   configurable: true }
+
+// 合并两个函数
+const shallowMerge = (target, source) => Object.defineProperties(
     target,
     Object.getOwnPropertyDescriptors(source)
-  );
+);
 ```
 
 #### 继承
@@ -1749,44 +1748,9 @@ ES2017 引入了跟 `Object.keys` 配套的 `Object.values` 和 `Object.entries`
   // { foo: "bar", baz: "qux" }
 ```
 
-# FAQ
+# 克隆
 
-#faq/js
-
-## 创建一个空对象
-
-Object.create(null) 与 {} 的区别：`b={}` 相当于 `b=new Object`，因此，`b` 是 `Object` 构造函数的实例。
-
-而 `Object.create(null)` 会创建一个空对象，它没有原型。
-
-## Freeze
-
-如果真的想将对象冻结，应该使用 `Object.freeze` 方法。
-
-```javascript
-const foo = Object.freeze({});
-
-// 常规模式时，下面一行不起作用；
-// 严格模式时，该行会报错
-foo.prop = 123;
-```
-
-上面代码中，常量 `foo` 指向一个冻结的对象，所以添加新属性不起作用，严格模式时还会报错。
-
-除了将对象本身冻结，对象的属性也应该冻结。下面是一个将对象彻底冻结的函数。
-
-```javascript
-var constantize = (obj) => {
-  Object.freeze(obj);
-  Object.keys(obj).forEach( (key, i) => {
-    if ( typeof obj[key] === 'object' ) {
-      constantize( obj[key] );
-    }
-  });
-};
-```
-
-## 克隆
+## Api 实现的数组浅拷贝
 
 ### Slice() concat()
 
@@ -1826,7 +1790,11 @@ var constantize = (obj) => {
   // [ undefined, undefined, undefined ]
   ```
 
-### Json 实现深拷贝
+## Object.assign() 实现对象浅拷贝
+
+![Object.assign()](es-object.md#Object.assign())
+
+## Json 实现深拷贝
 
 ```js
 var arr = ['old', 1, true, ['old1', 'old2'], {old: 1}]
@@ -1836,7 +1804,7 @@ var new_arr = JSON.parse( JSON.stringify(arr) );
 console.log(new_arr);
 ```
 
-有一个问题，不能拷贝函数，我们做个试验：
+有一个问题，不能拷贝函数：
 
 ```js
 var arr = [function(){console.log(a)}, {b: function(){console.log(b)}}]
@@ -1846,7 +1814,7 @@ var new_arr = JSON.parse(JSON.stringify(arr));
 console.log(new_arr);
 ```
 
-### 浅拷贝的实现
+## 浅拷贝的实现
 
 ```js
 const shallowCopy = function(obj) {
@@ -1865,7 +1833,7 @@ const shallowCopy = function(obj) {
 }
 ```
 
-### 深拷贝的实现
+## 深拷贝的实现
 
 那如何实现一个深拷贝呢？说起来也好简单，我们在拷贝的时候判断一下属性值的类型，如果是对象，我们递归调用深拷贝函数不就好了~
 
@@ -1881,7 +1849,7 @@ const deepCopy = function(obj) {
 }
 ```
 
-注意 `null`，可以通过第一层判断，但是 Object.entries() 无法接受 `null` 作为参数
+注意 `null`，可以通过第一层判断，但是 Object.entries() 无法接受 `null` 作为参数, 所以需要再增加一层判断
 
 ```js
 console.log(deepCopy(null))
@@ -1890,11 +1858,13 @@ console.log(deepCopy(null))
 
 如果使用 ES5 API 则会赋值为一个空对象
 
-### 拷贝 Getter 和 Setter
+## 拷贝 Getter 和 Setter
 
 ![es-object](programming/font-end/primitive/es/es-object.md#拷贝%20Get%20和%20Set)
 
-### 结构化克隆算法
+## structuredClone()
+
+[structuredClone() - Web API 接口参考 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/structuredClone)
 
 结构化克隆算法是 [由HTML5规范定义](http://www.w3.org/html/wg/drafts/html/master/infrastructure.html#safe-passing-of-structured-data) 的用于复制复杂 JavaScript 对象的算法。通过来自 [Workers](https://developer.mozilla.org/en-US/docs/Web/API/Worker) 的 `postMessage() ` 或使用 [IndexedDB](https://developer.mozilla.org/en-US/docs/Glossary/IndexedDB) 存储对象时在内部使用。它通过递归输入对象来构建克隆，同时保持先前访问过的引用的映射，以避免无限遍历循环。
 
@@ -1923,7 +1893,7 @@ console.log(deepCopy(null))
 - Function
 - DOM
 
-#### 结构化克隆所不能做到的
+### 结构化克隆所不能做到的
 
 `Error` 以及 `Function` 对象是不能被结构化克隆算法复制的；如果你尝试这样子去做，这会导致抛出 `DATA_CLONE_ERR` 的异常。
 
@@ -1936,19 +1906,15 @@ console.log(deepCopy(null))
 - 原形链上的属性也不会被追踪以及复制。
 - symbol 上的属性也不会赋值
 
-#### 浏览器实现
+### 浏览器实现
 
 用浏览器自身的 API 来实现深度拷贝，有 MessageChannel、history api 、Notification api 等
 
 <http://caibaojian.com/deep-copy.html>
 
-### Lodash _.baseclone()
+## $.extend()
 
-结构化克隆的实现
-
-### Jquery.extend()
-
-#### 基本用法
+### 基本用法
 
 jQuery 的 extend 是 jQuery 中应用非常多的一个函数，今天我们一边看 jQuery 的 extend 的特性，一边实现一个 extend!
 
@@ -1989,7 +1955,7 @@ console.log($.extend(obj1, obj2, obj3));
 // }
 ```
 
-#### Extend 第一版
+### Extend 第一版
 
 ```js
 function extend(target, ...options) {
@@ -2008,11 +1974,11 @@ function extend(target, ...options) {
 }
 ```
 
-#### Extend 深拷贝
+### Extend 深拷贝
 
 那如何进行深层次的复制呢？jQuery v1.1.4 加入了一个新的用法：
 
-```
+```js
 jQuery.extend( [deep], target, object1 [, objectN ] )
 ```
 
@@ -2045,7 +2011,7 @@ console.log($.extend(true, obj1, obj2, obj3));
 
 因为采用了深拷贝，会遍历到更深的层次进行添加和覆盖。
 
-#### Extend 第二版
+### Extend 第二版
 
 我们来实现深拷贝的功能，值得注意的是：根据 copy 的类型递归 extend。
 
@@ -2075,46 +2041,15 @@ for (let i = 0; i < len; i++) {
 
 在实现上，核心的部分还是跟上篇实现的深浅拷贝函数一致，如果要复制的对象的属性值是一个对象，就递归调用 extend。
 
-#### Object.assign
+### 优化
 
-`Object.assign` 方法实行的是浅拷贝，而不是深拷贝。也就是说，如果源对象某个属性的值是对象，那么目标对象拷贝得到的是这个对象的引用。
-
-该方法的引入目的，主要是为了解决 `Object.assign()` 无法正确拷贝 `get` 属性和 `set` 属性的问题。
-
-- 上面代码中，`source` 对象的 `foo` 属性的值是一个赋值函数，`Object.assign` 方法将这个属性拷贝给 `target1` 对象，结果该属性的值变成了 `undefined`。这是因为 `Object.assign` 方法总是拷贝一个属性的值，而不会拷贝它背后的赋值方法或取值方法。
-- 这时，`Object.getOwnPropertyDescriptors()` 方法配合 `Object.defineProperties()` 方法，就可以实现正确拷贝。
-
-```js
-const source = {
-  set foo(value) {
-    console.log(value);
-  }
-};
-
-const target2 = {};
-Object.defineProperties(target2, Object.getOwnPropertyDescriptors(source));
-Object.getOwnPropertyDescriptor(target2, 'foo')
-// { get: undefined,
-//   set: [Function: set foo],
-//   enumerable: true,
-//   configurable: true }
-
-// 合并两个函数
-const shallowMerge = (target, source) => Object.defineProperties(
-  target,
-  Object.getOwnPropertyDescrptors(source)
-);
-```
-
-#### 优化
-
-##### Target 是函数
+#### Target 是函数
 
 - 在我们的实现中，`typeof target` 必须等于 `object`，我们才会在这个 `target` 基础上进行拓展，然而我们用 `typeof` 判断一个函数时，会返回 `function`，也就是说，我们无法在一个函数上进行拓展！
 - 当然啦，毕竟函数也是一种对象嘛。
 - 函数的静态属性也是非常重要的
 
-##### 类型不一致
+#### 类型不一致
 
 - 其实我们实现的方法有个小 bug ，不信我们写个 demo:
 
@@ -2185,7 +2120,7 @@ const shallowMerge = (target, source) => Object.defineProperties(
   }
   ```
 
-#### 循环引用
+### 循环引用
 
 实际上，我们还可能遇到一个循环引用的问题，举个例子：
 
@@ -2210,7 +2145,9 @@ if (target === value) {
 }
 ```
 
-#### 最终代码
+使用 WeakMap 来记录已经被拷贝过的对象，如果再次遇到同样的对象，直接返回它的克隆即可，解决了递归方法的循环引用问题。
+
+### 最终代码
 
 ```js
 function deepExtend(target,...options) {
@@ -2246,7 +2183,7 @@ function deepExtend(target,...options) {
 };
 ```
 
-#### 思考题
+### 思考题
 
 如果觉得看明白了上面的代码，想想下面两个 demo 的结果：
 
@@ -2271,9 +2208,9 @@ var b = extend(true, obj1, obj2) // ??? {value:[5,6,7]}
 var c = extend(true, obj2, obj1) // ??? {value:[5,6,7,1]}
 ```
 
-## 类型判断
+# 类型判断
 
-### Typeof:
+## Typeof
 
 在 ES6 前，JavaScript 共六种数据类型，分别是：
 
@@ -2287,7 +2224,7 @@ typeof 对这些数据类型的值进行操作的时候，返回的结果却不�
 
 可以判断: undefined/ 数值 / 字符串 / 布尔值 / **function**
 
-不能判断: null 与 object object 与 array , 不能区分出 object 的类
+不能区分: null 与 object object 与 array , 不能区分出 object 的类
 
 ```js
 typeof null //object
@@ -2297,13 +2234,13 @@ typeof NaN // number
 
 在 JavaScript 最初的实现中，JavaScript 中的值是由一个表示类型的标签和实际数据值表示的。对象的类型标签是 0。由于 `null` 代表的是空指针（大多数平台下值为 0x00），因此，null 的类型标签也成为了 0，`typeof null` 就错误的返回了 "`object"`。（[reference](http://www.2ality.com/2013/10/typeof-null.html)）
 
-ECMAScript 提出了一个修复（通过 opt-in），但 [被拒绝](http://wiki.ecmascript.org/doku.php?id=harmony:typeof_null)。这将导致 typeof null === 'object'。
+ECMAScript 提出了一个修复（通过 opt-in），但 [被拒绝](http://wiki.ecmascript.org/doku.php?id=harmony:typeof_null)。这使得 typeof null === 'object' 将成为长期的错误
 
-### Instanceof
+## Instanceof
 
 ![es-object](programming/font-end/primitive/es/es-object.md#Instanceof)
 
-### 全等运算符
+## 全等运算符
 
 可以判断: undefined, null
 
@@ -2311,9 +2248,9 @@ ECMAScript 提出了一个修复（通过 opt-in），但 [被拒绝](http://wik
 
 falsy
 
-### Object.prototype.tostring.call(target)
+## Object.prototype.tostring.call(target)
 
-返回固定字符串： [object Target 类型]
+返回固定字符串： `[object Target 类型]`
 
 `Object.prototype.toString.call(target).slice(8,-1)`，就可以返回准确的类型
 
@@ -2321,8 +2258,8 @@ ES5 开始，可以检查 Null 和 undefined。ES5 规范地址：<https://es5.g
 
 当 `Object.prototype.toString` 方法被调用的时候，下面的步骤会被执行：
 
-> 1. 如果 this 值是 undefined，就返回 [object Undefined]
-> 2. 如果 this 的值是 null，就返回 [object Null]
+> 1. 如果 this 值是 undefined，就返回 `[object Undefined]`
+> 2. 如果 this 的值是 null，就返回 `[object Null]`
 > 3. 让 O 成为 ToObject(this) 的结果
 > 4. 让 class 成为 O 的内部属性 ` [[Class]]` 的值
 > 5. 最后返回由 "[object " 和 class 和 "]" 三个部分组成的字符串
@@ -2374,7 +2311,7 @@ a();
 - Array.prototype 的类型 **也是数组**，类似的 Number.prototype 是 number 类型的对象
 - 实例本身是没有 `constructor` 属性的，`constructor` 属性在原型上，为了保持一致性，所以 `Array.prototype` 也是 `Array`
 
-### 封装 Type 函数
+## 封装 Type 函数
 
 写一个 type 函数能检测各种类型的值
 
@@ -2399,31 +2336,7 @@ function type(obj) {
 }
 ```
 
-**注意：**在 IE6 中，null 和 undefined 会被 Object.prototype.toString 识别成 [object Object]！
-
-兼容 IE6
-
-```js
-// 第二版
-var class2type = {};
-
-// 生成class2type映射
-"Boolean Number String Function Array Date RegExp Object Error".split(" ").map(function(item, index) {
-    class2type["[object " + item + "]"] = item.toLowerCase();
-})
-
-function type(obj) {
-    // 一箭双雕
-    if (obj == null) {
-        return obj + "";
-    }
-    return typeof obj === "object" || typeof obj === "function" ?
-        class2type[Object.prototype.toString.call(obj)] || "object" :
-        typeof obj;
-}
-```
-
-### Isfunction
+## Isfunction
 
 有了 type 函数后，我们可以对常用的判断直接封装，比如 isFunction:
 
@@ -2433,7 +2346,7 @@ function isFunction(obj) {
 }
 ```
 
-### IsArray
+## IsArray
 
 ```js
 var isArray = Array.isArray || function( obj ) {
@@ -2443,7 +2356,7 @@ var isArray = Array.isArray || function( obj ) {
 
 原型和构造函数都有被修改的可能性
 
-### Isarraylike
+## Isarraylike
 
 isArrayLike，看名字可能会让我们觉得这是判断类数组对象的，其实不仅仅是这样，jQuery 实现的 isArrayLike，数组和类数组都会返回 true
 
@@ -2543,7 +2456,7 @@ var isArrayLike = function(collection) {
 };
 ```
 
-### Isplainobject
+## Isplainobject
 
 plainObject 来自于 jQuery，可以翻译成纯粹的对象，所谓 " 纯粹的对象 "，就是该对象是通过 "{}" 或 "new Object" 创建的，该对象含有零个或者多个键值对。
 
@@ -2623,7 +2536,7 @@ console.log(Object.prototype.toString.call(Ctor)); // [object Function]
 
 **因此**：这里要判断的其实是两个函数是否一样
 
-### Isemptyobject
+## Isemptyobject
 
 用 `for...in` 遍历
 
@@ -2668,7 +2581,7 @@ if (Object.keys(object).length === 0) {
 return false // 如果不为空，则会执行到这一步，返回true
 ```
 
-### Iswondow
+## isWindow
 
 Window 对象作为客户端 JavaScript 的全局对象，它有一个 window 属性指向自身，这点在 [《JavaScript深入之变量对象》](https://github.com/mqyqingfeng/Blog/issues/5) 中讲到过。我们可以利用这个特性判断是否是 Window 对象。
 
@@ -2678,7 +2591,7 @@ function isWindow( obj ) {
 }
 ```
 
-### Iselement
+## isElement
 
 isElement 判断是不是 DOM 元素。
 
@@ -2688,7 +2601,9 @@ isElement = function(obj) {
 };
 ```
 
-## 等值判断：object.is()
+# 等值判断
+
+## object.is()
 
 ES5 比较两个值是否相等，只有两个运算符：相等运算符（\=\=）和严格相等运算符（\=\=\=）。它们都有缺点，前者会自动转换数据类型，后者的 `NaN` 不等于自身，以及 `+0` 等于 `-0`。JavaScript 缺乏一种运算，在所有环境中，只要两个值是一样的，它们就应该相等。
 
@@ -2704,7 +2619,7 @@ Object.is(+0, -0) // false
 Object.is(NaN, NaN) // true
 ```
 
-### +0 和 -0
+## +0 和 -0
 
 如果 a === b 的结果为 true， 那么 a 和 b 就是相等的吗？一般情况下，当然是这样的，但是有一个特殊的例子，就是 +0 和 -0。
 
@@ -2754,7 +2669,7 @@ console.log(eq(0, 0)) // true
 console.log(eq(0, -0)) // false
 ```
 
-### NaN
+## NaN
 
 在本篇，我们认为 NaN 和 NaN 是相等的，那又该如何判断出 NaN 呢？
 
@@ -2772,9 +2687,9 @@ function eq(a, b) {
 console.log(eq(NaN, NaN)); // true
 ```
 
-### DeepEqual
+## DeepEqual
 
-#### String 对象
+### String 对象
 
 现在我们开始写 deepEq 函数，一个要处理的重大难题就是 'Curly' 和 new String('Curly') 如何判断成相等？
 
@@ -2805,7 +2720,7 @@ console.log('Curly' + '' === new String('Curly') + ''); // true
 
 可是不止有 String 对象呐，Boolean、Number、RegExp、Date 呢？
 
-#### 更多对象
+### 更多对象
 
 跟 String 同样的思路，利用隐式类型转换。
 
@@ -2871,7 +2786,7 @@ function eq() {
 console.log(eq(a, b)); // true
 ```
 
-##### 基本实现
+#### 基本实现
 
 ```js
 var toString = Object.prototype.toString;
@@ -2896,7 +2811,7 @@ function deepEq(a, b) {
 }
 ```
 
-### isEqualObject
+## isEqualObject
 
 ```js
 /**
@@ -2933,3 +2848,52 @@ export const isEqualObject = (x = {}, y = {}) => {
     return true;
 };
 ```
+
+# FAQ
+
+#faq/js
+
+## 创建一个空对象
+
+Object.create(null) 与 {} 的区别：`b={}` 相当于 `b=new Object`，因此，`b` 是 `Object` 构造函数的实例。
+
+而 `Object.create(null)` 会创建一个空对象，它没有原型。
+
+## Freeze
+
+如果真的想将对象冻结，应该使用 `Object.freeze` 方法。
+
+```javascript
+const foo = Object.freeze({});
+
+// 常规模式时，下面一行不起作用；
+// 严格模式时，该行会报错
+foo.prop = 123;
+```
+
+上面代码中，常量 `foo` 指向一个冻结的对象，所以添加新属性不起作用，严格模式时还会报错。
+
+除了将对象本身冻结，对象的属性也应该冻结。下面是一个将对象彻底冻结的函数。
+
+```javascript
+var constantize = (obj) => {
+  Object.freeze(obj);
+  Object.keys(obj).forEach( (key, i) => {
+    if ( typeof obj[key] === 'object' ) {
+      constantize( obj[key] );
+    }
+  });
+};
+```
+
+## 克隆
+
+[克隆](es-object.md#克隆)
+
+## 类型判断
+
+[es-object](programming/font-end/primitive/es/es-object.md#类型判断)
+
+## 等值判断
+
+[es-object](programming/font-end/primitive/es/es-object.md#等值判断)
