@@ -940,8 +940,6 @@ myHeaders.get(name);
   myHeaders.get('Accept-Encoding'); // Returns 'deflate,gzip'
   ```
 
-  > {{domxref("Headers.getAll")}} used to have this functionality, with {{domxref("Headers.get")}} returning only the first value added to the `Headers` object. The latest spec has removed `getAll()`, and updated `get()` to return all values.`
-
 ### has()
 
 has() 方法返回一个布尔值来表示一个 `Headers` 对象 是否包含特定的头信息
