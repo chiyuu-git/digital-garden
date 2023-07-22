@@ -569,7 +569,7 @@ String.prototype.capitalizeFirstLetter = function() {
 
 ## 字符串大小写判断
 
-![520. Detect Capital](../../../basic/leetcode/520.%20Detect%20Capital.md)
+![520. 检测大写字母](../../../basic/leetcode/520.%20检测大写字母.md)
 
 ## 字符串压缩
 
