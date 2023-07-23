@@ -3,12 +3,6 @@
 ---
 
 
-# 实现双工的办法
-
-- 使用 JavaScript 来和服务端建立 WebSocket 连接
-- 使用 JavaScript 创建定时器，定时发送请求轮询
-- 使用 JavaScript 和服务端配合来实现长轮询
-
 # Websocket
 
 **参考** <http://www.ruanyifeng.com/blog/2017/05/websocket.html>
