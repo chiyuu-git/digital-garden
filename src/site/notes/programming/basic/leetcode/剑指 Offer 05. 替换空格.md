@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/leetcode/offer-05/","tags":["leetcode/string","leetcode/pointer/double","leetcode/space/in-place","leetcode/unsolved"]}
+{"dg-publish":true,"permalink":"/programming/basic/leetcode/offer-05/","tags":["leetcode/string","leetcode/pointer/double","leetcode/space/in-place","leetcode/unsolved","leetcode/array/distinct"]}
 ---
 
 
