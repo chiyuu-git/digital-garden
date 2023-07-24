@@ -237,12 +237,12 @@ function breantCycle(head) {
 
 - [[programming/basic/leetcode/剑指 Offer 58 - II. 左旋转字符串\|剑指 Offer 58 - II. 左旋转字符串]]
 - [[programming/basic/leetcode/剑指 Offer 05. 替换空格\|剑指 Offer 05. 替换空格]]
-- [[programming/basic/leetcode/83. 删除排序链表中的重复元素\|83. 删除排序链表中的重复元素]]
 - [[programming/basic/leetcode/82. 删除排序链表中的重复元素 II\|82. 删除排序链表中的重复元素 II]]
 - [[programming/basic/leetcode/80. 删除有序数组中的重复项 II\|80. 删除有序数组中的重复项 II]]
 - [[programming/basic/leetcode/26. 删除有序数组中的重复项\|26. 删除有序数组中的重复项]]
 - [[programming/basic/leetcode/27. 移除元素\|27. 移除元素]]
 - [[programming/basic/leetcode/151. 反转字符串中的单词\|151. 反转字符串中的单词]]
+- [[programming/basic/leetcode/83. 删除排序链表中的重复元素\|83. 删除排序链表中的重复元素]]
 
 { .block-language-dataview}
 
