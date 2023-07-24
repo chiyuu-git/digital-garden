@@ -1246,6 +1246,34 @@ http://goo.gl/kZBsGx 是一个很好的教程，讲解了如何使用类型数�
 
  #faq/js
 
+## 构建多维数组
+
+for 循环
+
+new Array fill 空串 再 map, 因为 new Array 实际上只更新了 length 属性, 没有真正的 index
+
+Array.from() 官方推荐的构建方式, 不光是有 length 属性, 还有真正的 index , 默认值为 undefined, 第二个参数位置还可以直接 map
+
+```js
+    const rowRestMatrix = Array.from(
+        { length: 9 },
+        () => Array.from({ length: 9 }).fill(true)
+    )
+    const colRestMatrix = Array.from(
+        { length: 9 },
+        () => Array.from({ length: 9 }).fill(true)
+    )
+    const nineRestMatrix = Array.from(
+        { length: 3 },
+        () => Array.from(
+            { length: 3 },
+            () => Array.from({ length: 9 }).fill(true)
+        )
+    [)]
+```
+
+![es-array](programming/font-end/primitive/es/es-array.md#Array%20from%20第二参数)
+
 ## 伪数组转换为真数组
 
 ```js
@@ -1863,6 +1891,16 @@ ES5 提供了 filter 方法，我们可以用来简化外层循环：
 
 快慢指针跳过重复
 
+| File                                                                       | solution tips overview                |
+| -------------------------------------------------------------------------- | ------------------------------------- |
+| [[programming/basic/leetcode/26. 删除有序数组中的重复项\|26. 删除有序数组中的重复项]]         | [[programming/basic/leetcode/26. 删除有序数组中的重复项#solution tips\|26. 删除有序数组中的重复项#solution tips]]     |
+| [[programming/basic/leetcode/80. 删除有序数组中的重复项 II\|80. 删除有序数组中的重复项 II]]   | [[programming/basic/leetcode/80. 删除有序数组中的重复项 II#solution tips\|80. 删除有序数组中的重复项 II#solution tips]]  |
+| [[programming/basic/leetcode/82. 删除排序链表中的重复元素 II\|82. 删除排序链表中的重复元素 II]] | [[programming/basic/leetcode/82. 删除排序链表中的重复元素 II#solution tips\|82. 删除排序链表中的重复元素 II#solution tips]] |
+| [[programming/basic/leetcode/83. 删除排序链表中的重复元素\|83. 删除排序链表中的重复元素]]       | [[programming/basic/leetcode/83. 删除排序链表中的重复元素#solution tips\|83. 删除排序链表中的重复元素#solution tips]]    |
+| [[programming/basic/leetcode/剑指 Offer 05. 替换空格\|剑指 Offer 05. 替换空格]]     | [[programming/basic/leetcode/剑指 Offer 05. 替换空格#solution tips\|剑指 Offer 05. 替换空格#solution tips]]   |
+
+{ .block-language-dataview}
+
 | File                                                       | solution tips overview        |
 | ---------------------------------------------------------- | ----------------------------- |
 | [[programming/basic/leetcode/90. 子集 II\|90. 子集 II]]     | [[programming/basic/leetcode/90. 子集 II#solution tips\|90. 子集 II#solution tips]]   |
@@ -1874,33 +1912,100 @@ ES5 提供了 filter 方法，我们可以用来简化外层循环：
 
 { .block-language-dataview}
 
-## 构建多维数组
+## 最值
 
-for 循环
+配合 Math 的静态方法找出最值，或者使用临时变量保存
 
-new Array fill 空串 再 map, 因为 new Array 实际上只更新了 length 属性, 没有真正的 index
+### Math.max
 
-Array.from() 官方推荐的构建方式, 不光是有 length 属性, 还有真正的 index , 默认值为 undefined, 第二个参数位置还可以直接 map
+1. 如果有任一参数不能被转换为数值，则结果为 NaN。
 
-```js
-    const rowRestMatrix = Array.from(
-        { length: 9 },
-        () => Array.from({ length: 9 }).fill(true)
-    )
-    const colRestMatrix = Array.from(
-        { length: 9 },
-        () => Array.from({ length: 9 }).fill(true)
-    )
-    const nineRestMatrix = Array.from(
-        { length: 3 },
-        () => Array.from(
-            { length: 3 },
-            () => Array.from({ length: 9 }).fill(true)
-        )
-    [)]
+   ```js
+   Math.max(true, 0) // 1
+   Math.max(true, '2', null) // 2
+   Math.max(1, undefined) // NaN
+   Math.max(1, {}) // NaN
+
+
 ```
 
-![es-array](programming/font-end/primitive/es/es-array.md#Array%20from%20第二参数)
+2. max 是 Math 的静态方法，所以应该像这样使用：Math.max()，而不是作为 Math 实例的方法 (简单的来说，就是不使用 new )
+3. 如果没有参数，则结果为 `-Infinity` (注意是负无穷大)，对应的，Math.min 函数，如果没有参数，则结果为 Infinity
+
+   ```js
+   var min = Math.min();
+   var max = Math.max();
+   console.log(min > max);
+   ```
+
+### 循环
+
+```js
+  var arr = [6, 4, 1, 8, 2, 11, 23];
+  
+  var result = arr[0];
+  for (var i = 1; i < arr.length; i++) {
+      result =  Math.max(result, arr[i]);
+  }
+  console.log(result);
+```
+
+### Reduce
+
+```js
+  var arr = [6, 4, 1, 8, 2, 11, 23];
+  
+  function max(prev, next) {
+      return Math.max(prev, next);
+  }
+  console.log(arr.reduce(max));
+```
+
+### 排序
+
+如果我们先对数组进行一次排序，那么最大值就是最后一个值：
+
+```js
+  var arr = [6, 4, 1, 8, 2, 11, 23];
+  
+  arr.sort(function(a,b){return a - b;});
+  console.log(arr[arr.length - 1])
+```
+
+### 找出第二小的元素
+
++ 排序之后，找到第二小的，O(nlog^n^)
++ 遍历最小的，遍历第二小的 O(2n）
++ 分治算法
+
+### 相关 Leetcode 题目
+
+| File                                                                                                           | solution tips overview                                  |
+| -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| [[programming/basic/leetcode/628. Maximum Product of Three Numbers\|628. Maximum Product of Three Numbers]] | [[programming/basic/leetcode/628. Maximum Product of Three Numbers#solution tips\|628. Maximum Product of Three Numbers#solution tips]] |
+| [[programming/basic/leetcode/414. Third Maximum Number\|414. Third Maximum Number]]                         | [[programming/basic/leetcode/414. Third Maximum Number#solution tips\|414. Third Maximum Number#solution tips]]             |
+| [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素\|230. 二叉搜索树中第K小的元素]]                                         | [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素#solution tips\|230. 二叉搜索树中第K小的元素#solution tips]]                     |
+| [[programming/basic/leetcode/4. 寻找两个正序数组的中位数\|4. 寻找两个正序数组的中位数]]                                             | [[programming/basic/leetcode/4. 寻找两个正序数组的中位数#solution tips\|4. 寻找两个正序数组的中位数#solution tips]]                       |
+| [[programming/basic/leetcode/347. 前 K 个高频元素\|347. 前 K 个高频元素]]                                               | [[programming/basic/leetcode/347. 前 K 个高频元素#solution tips\|347. 前 K 个高频元素#solution tips]]                        |
+
+{ .block-language-dataview}
+
+## 排序
+
+各种排序算法的变种和应用
+
+| File                                                                                   |
+| -------------------------------------------------------------------------------------- |
+| [[programming/basic/leetcode/406. 根据身高重建队列\|406. 根据身高重建队列]]                         |
+| [[programming/basic/leetcode/414. Third Maximum Number\|414. Third Maximum Number]] |
+| [[programming/basic/leetcode/274. H-Index\|274. H-Index]]                           |
+| [[programming/basic/leetcode/4. 寻找两个正序数组的中位数\|4. 寻找两个正序数组的中位数]]                     |
+| [[programming/basic/leetcode/220. 存在重复元素 III\|220. 存在重复元素 III]]                     |
+| [[programming/basic/leetcode/451. 根据字符出现频率排序\|451. 根据字符出现频率排序]]                     |
+| [[programming/basic/leetcode/347. 前 K 个高频元素\|347. 前 K 个高频元素]]                       |
+| [[programming/basic/leetcode/581. 最短无序连续子数组\|581. 最短无序连续子数组]]                       |
+
+{ .block-language-dataview}
 
 ## Traverse Array
 
