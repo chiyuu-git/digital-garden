@@ -3,527 +3,11 @@
 ---
 
 
-常用方法
-
-# 对象
-
-## Object.is()
-
-- ES5 比较两个值是否相等，只有两个运算符：相等运算符和严格相等运算符。它们都有缺点，前者会自动转换数据类型，后者的 `NaN` 不等于自身，以及 `+0` 等于 `-0`。JavaScript 缺乏一种运算，在所有环境中，只要两个值是一样的，它们就应该相等。
-- ES6 提出“Same-value equality”（同值相等）算法，用来解决这个问题。`Object.is` 就是部署这个算法的新方法。它用来比较两个值是否严格相等，与严格比较运算符的行为基本一致。
-- 不同之处只有两个：一是 `+0` 不等于 `-0`，二是 `NaN` 等于自身。
-  - ```javascript
-    +0 === -0 //true
-    NaN === NaN // false
-    
-    Object.is(+0, -0) // false
-    Object.is(NaN, NaN) // true
-    ```
-
-# 相等算法
-
-## 使用严格运算符
-
-- indexOf()
-- switch 使用严格运算符 === 进行 case 的判断
-
-## 使用同值算法
-
-- 向 Set 加入值的时候，**不会发生类型转换**，所以 `5` 和 `"5"` 是两个不同的值。Set 内部判断两个值是否不同，使用的算法叫做“Same-value-zero equality”，它类似于精确相等运算符（`\===`），主要的区别是 `NaN` 等于自身，而精确相等运算符认为 `NaN` 不等于自身。
-- ES6 提出“Same-value equality”（同值相等）算法，用来解决这个问题。`Object.is` 就是部署这个算法的新方法。它用来比较两个值是否严格相等，与严格比较运算符（===）的行为基本一致。
-- 不同之处只有两个：一是 `+0` 不等于 `-0`，二是 `NaN` 等于自身。
-
-  ```js
-  +0 === -0 //true
-  NaN === NaN // false
-  
-  Object.is(+0, -0) // false
-  Object.is(+0,0) // true
-  Object.is(NaN, NaN) // true
-  ```
-
-- Array.prototype.includes()
-
-# 常见问题
-
-## 浮点数精度
-
-## 原生方法的复杂度
-
-- indexOf() 复杂度和 for 循环一致
-- set 结构 使用 forEach 初始化数组
-- sort() 方法的时间复杂度，取决于浏览器的实现，大部分语言内置的 sort 方法都是快速排序算法。
-
-## Null NaN Undefined Object
-
-- 如果是使用全等运算符，无影响
-  - 如果元素是属性呢？只要引用不相同就是不同的对象，不会去重，如果引用相同就除去
-- 一个对象不能作为**属性名**，会自动转换成 `[object Object]`
-
-  ```js
-  let obj = {a:1}
-  
-  let obj2 = {
-    [obj]:1
-  }
-  
-  console.log(obj2[obj]) // 1 ,可以读取到属性，因为发生了自动转换
-  
-  const keyA = {a: 1};
-  const keyB = {b: 2};
-  
-  const myObject = {
-    [keyA]: 'valueA',
-    [keyB]: 'valueB'
-  };
-  
-  myObject // Object {[object Object]: "valueB"}
-  ```
-
-  ![1554257459001](/img/user/programming/basic/algorithm/practice/1554257459001.png)
-
-## 反转字符串
-
-+ 循环法
-+ str.split("").reverse().join("")，先转换为数组，再拼接
-
-# 伪数组转换为真数组
-
-- 题目：请填充代码，使 mySort() 能使传入的参数按照从小到大的顺序显示出来，返回已经排序的数组
-- 关键点在于把传入的参数**伪数组**转换为可以**使用 sort 方法的真数组**
-
-## 循环 Push
-
-- ```js
-  function mySort() {
-      let tags = new Array();//使用数组作为参数存储容器
-      for (let i = 0; i < arguments.length; i++) {
-          tags.push(arguments[i])
-      }
-      tags.sort((a,b) => a-b)
-      return tags;//返回已经排序的数组
-  }
-   
-  const result = mySort(50,11,16,'32',24,99,57,'100'); //传入参数个数不确定
-  console.info(result);//显示结果
-  ```
-
-## slice()
-
-+ ```js
-  function mySort() {
-      let tags = new Array();
-      tags = [].slice.apply(arguments) /// 使用call也可以
-      tags.sort((a,b) => a-b)
-      return tags;
-  }
-   
-  const result = mySort(50,11,16,'32',24,99,57,'100');
-  console.info(result);
-  ```
-+ slice 的源码也是循环 push
-
-## Rest 参数
-
-- ```js
-  function mySort(...rest) {
-      let tags = new Array();
-      tags = rest.sort((a,b) => a-b)
-      return tags;
-  }
-   
-  const result = mySort(50,11,16,32,24,99,57,100);
-  console.info(result);
-  ```
-
-+ **polyfill**即是 slice
-
-## Array.from()
-
-+ ```js
-  function mySort() {
-      let tags = new Array();
-      tags = Array.from(arguments).sort((a,b) => a-b)
-      return tags;
-  }
-   
-  const result = mySort(50,11,16,32,24,99,57,100);
-  console.info(result);
-  ```
-
 # 数组题目
-
-## 去重
-
-- 请给 Array 本地对象增加一个原型方法，它用于**删除数组条目中重复的条目**(可能有多个)，**返回值是一个包含被删除的重复条目的新数组。**
-- https://juejin.im/post/5949d85f61ff4b006c0de98b#heading-6
-- https://juejin.im/post/5b0284ac51882542ad774c45
-
-### 双层循环
-
-- 每一个元素和后面的元素比较，相等则删除并推入 ret
-
-  ```js
-  Array.prototype.distinct = function(){
-    let ret = []
-    for (let i = 0; i < this.length; i++) {
-      for (let j = i+1; j < this.length; j++) {
-        if(this[i]===this[j]){
-          ret.push(this.splice(j,1)[0]) 
-          // 截断之后导致后面的元素前移，结果是：跳过了下一个元素的判断，导致无法正确去重
-          // 如果修改了原数组，则当轮的索引不递增
-        }
-      }
-    }
-    return ret
-  }
-  
-  // test
-  
-  console.log([7,7,1,1,2,3,4,4,4,5,5,5].distinct())
-  console.log(null === null)
-  ```
-
-- 方案一完善
-
-  ```js
-  Array.prototype.distinct = function(){
-    let ret = []
-    for (let i = 0; i < this.length; i++) {
-      for (let j = i+1; j < this.length;j++) {
-        if(this[i]===this[j]){
-          ret.push(this.splice(j,1)[0]) 
-          // 这种情况下，索引不递增
-          j--
-        }
-      }
-      return this
-    }
-  }
-  // test
-  const obj = {}
-  console.log([1,1,1,'a','a','a',null,null,{},{},obj,obj].distinct())
-  ```
-
-- 方案一优化：使用 lastIndexOf() 降低平均时间复杂度
-
-  ```js
-  Array.prototype.distinct = function(){
-    let ret = []
-    for (let i = 0; i < this.length; i++) {
-      if(this.lastIndexOf(this[i]) !== i){
-        // 从最后开始找齐，如果索引不相同说明有重复的元素
-        ret.push(this.splice(i,1)[0])
-        // 删除了元素，索引不递增
-        i--
-      }
-    }
-    return ret
-  }
-  
-  // test
-  const obj = {}
-  console.log([1,1,1,'a','a','a',null,null,{},{},obj,obj].distinct())
-  ```
-
-- 若返回的重复数组也需要去重，则利用 indexOf 判断是否已经存在，再推入
-- 优点：兼容性好
-- 缺点：两次循环，复杂度为 $O(n^{2})$
-
-### 双层循环改
-
-+ 方案一优化：转换思路，以小比大，降低平均时间复杂度
-
-  ```js
-  const arr = [5,1,1,1,2,4,5,2,2,2,2]
-  function unique(array) {
-      // ret用来存储结果
-      var ret = [];
-      // 用于储存重复的结果
-      const repeat = []
-      for (var i = 0; i < array.length; i++) {
-          for (var j = 0,retLen=ret.length; j <retLen ; j++ ) {
-              // 如果目标数组有和去重数组相同的元素，跳出当前循环
-              if (array[i] === ret[j]) {
-                // 没必要动原数组了，因为已经有ret另作保存
-                repeat.push(array[i])
-                break;
-              }
-          }
-          // 里层循环结束，有两种可能
-          // 如果array[i]的元素已经出现再去重数组里了，发生了break，此时j<retLen
-          // 如果array[i]的元素不在去重数组里面，那么执行完循环，j 等于 retLen ，说明元素是首次出现或者是唯一的，推入去重数组
-          if (j === retLen) {
-              ret.push(array[i])
-          }
-      }
-      return {ret,repeat};
-  }
-  
-  console.log(unique(arr).ret); // [1, "1"]
-  ```
-
-+ 方案二优化：同样可以使用 indexOf() 进一步降低时间复杂度
-
-  ```js
-  const arr = [5,1,1,1,2,4,5,2,2,2,2]
-  function unique(array) {
-    // ret用来存储结果
-    var ret = [];
-    // 用于储存重复的结果
-    const repeat = []
-    for (var i = 0; i < array.length; i++) {
-      const current = array[i]
-      if (ret.indexOf(current) === -1) {
-        // 去重数组里没有该元素，说明是第一次出现或者是唯一的，推入去重数组
-        ret.push(current)
-      }else{
-        // 去重数组里已经有该元素了，说明是重复的元素
-        repeat.push(current)
-      }
-    }
-    return {ret,repeat};
-  }
-  
-  console.log(unique(arr).ret,unique(arr).repeat); // [1, "1"]
-  ```
-
-+ 优点：兼容性好
-+ 缺点：缺点：两次循环，复杂度为 $O(n^{2})$
-
-### 排序后去重
-
-+ 我们先将要去重的数组使用 sort 方法排序后，相同的值就会被排在一起，然后我们就可以只判断当前元素与上一个元素是否相同，相同就说明重复，不相同就添加进 ret
-
-  ```js
-  const arr = [5,1,1,1,2,4,5,2,2,2,2]
-  
-  function unique(array) {
-      var res = [];
-      var repeat = []
-      // 取出数组的副本进行排序
-      var sortedArray = array.concat().sort();
-      var prev;
-      for (var i = 0, len = sortedArray.length; i < len; i++) {
-          // 如果是第一个元素或者相邻的元素不相同
-          if (!i || prev !== sortedArray[i]) {
-            res.push(sortedArray[i])
-          }else{
-            repeat.push(sortedArray[i])
-          }
-          prev = sortedArray[i];
-      }
-      console.log(repeat)
-      return res;
-  }
-  
-  console.log(unique(arr));
-  
-  ```
-
-+ 使用 reduce 优化
-
-  ```js
-  // 数组去重
-  let arr = [1,2,1,2,3,5,4,5,3,4,4,4,4];
-  let result = arr.sort().reduce((init, current)=>{
-      if(init.length===0 || init[init.length-1]!==current){
-          init.push(current);
-      }
-      return init;
-  }, []);
-  console.log(result); //[1,2,3,4,5]
-  ```
-
-+ 优点：排序
-+ 缺点：复杂度高，取决于浏览器 sort 方法的实现
-
-### 利用对象属性的唯一性
-
-- 用一个对象保存出现过的元素，首次出现添加为对象的属性，再次出现则说明重复
-
-  ```js
-  Array.prototype.unique = function () {
-    let arr = this;
-    let ret = [];
-    let temp = {};
-    for (let i = 0; i < arr.length; ) {
-        // 如果没有这个属性，则添加
-        // 要重视语义，长一点又不会死人
-        if (!temp.hasOwnProperty([arr[i]]) {
-            temp[arr[i]] = 1;
-            i++
-        }else{
-          // 已经有这个属性了，说明是重复的
-          ret.push(this.splice(i,1)[0]) 
-        }
-    }
-    return this;
-  }
-  const obj = {}
-  console.log([1,1,1,'a','a','a',null,null,{},{},obj,obj].unique());
-  ```
-
-- 虽然复杂度降低了，但是
-  - 但是如果元素是对象，会被认为是同一个属性 `[object Object]` 而发生错误
-  - 数字 1 和 字符串 1 会被认为是同一个属性
-- 这是因为对象的键值只能是字符串，所以我们可以使用 `typeof item + item` 拼成字符串作为 key 值来避免这个问题
-
-**变种**
-
-+ ```js
-  // 计算数组中每个元素出现的次数
-  var names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
-  
-  var countedNames = names.reduce(function (allNames, name) { 
-    if (name in allNames) {
-      allNames[name]++;
-    }
-    else {
-      allNames[name] = 1;
-    }
-    return allNames;
-  }, {});
-  // countedNames is:
-  // { 'Alice': 2, 'Bob': 1, 'Tiff': 1, 'Bruce': 1 }
-  ```
-
-### Map 结构
-
-- 使用 map 结构优化
-
-  ```js
-  Array.prototype.unique = function () {
-    let arr = this;
-    let ret = [];
-    let map = new Map();
-    for (let i = 0; i < arr.length; ) {
-        // 如果没有这个属性，则添加
-        if (!map.get(arr[i])) {
-            map.set(arr[i],1)
-            i++
-        }else{
-          // 已经有这个属性了，说明是重复的
-          ret.push(this.splice(i,1)[0]) 
-        }
-    }
-    return this;
-  }
-  const obj = {}
-  console.log([1,1,1,'a','a','a',null,null,{},{},obj,obj].unique());
-  ```
-
-+ 最优方案
-
-### 使用 Filter
-
-+ ES5 提供了 filter 方法，我们可以用来简化外层循环：
-
-  ```js
-  var array = [1, 2, 1, 1, '1'];
-  
-  function unique(array) {
-      var res = array.filter(function(item, index, array){
-          return array.indexOf(item) === index;
-      })
-      return res;
-  }
-  
-  console.log(unique(array));
-  ```
-
-+ 优点：代码量少
-+ 缺点：复杂度并没有改善，无法返回重复的元素
-
-### Set 结构
-
-- 使用 set 结构，set 结构的去重结果和方案一基本一致
-- 如果返回的数组也需要再次去重，则使用 set 结构即可
-- 向 Set 加入值的时候，**不会发生类型转换**，所以 `5` 和 `"5"` 是两个不同的值。Set 内部判断两个值是否不同，使用的算法叫做“Same-value-zero equality”，它类似于精确相等运算符（`\===`），主要的区别是 `NaN` 等于自身，而精确相等运算符认为 `NaN` 不等于自身。
-- 缺点：怎么返回剔除的重复元素？
-
-  ```js
-  // 方法一
-  [...new Set(array)]
-  // 也可以用于除去重复的字符串
-  
-  // 方法二
-  const s = new Set();
-  [2, 3, 5, 4, 5, 2, 2].forEach(x => s.add(x));
-  
-  // 方法三
-  function dedupe(array) {
-  	return Array.from(new Set(array));
-  }
-  
-  dedupe([1, 1, 2, 3]) // [1, 2, 3]
-  ```
-
-### leetCode914.卡牌分组
-
-- ```js
-  var hasGroupsSizeX = function(deck) {
-    let map = new Map()
-    if(deck.length<=1) return false // [1,1,1] 也是OK的，x=3
-    for (let i = 0; i < deck.length; i++) {
-      if(map.get(deck[i])===undefined){
-        map.set(deck[i],1)
-      }else{
-        map.set(deck[i],map.get(deck[i])+1)
-      }
-    }
-    let result = [...map.values()].sort()
-    // 先判断头尾，如果相余为0，再判断剩余的
-    let len = result.length
-    let min = result[0]
-    
-    // 应该求的是最大公因数
-    for (let i = 0; i < len; i++) {
-      if(getGreatestCommonDivisor(result[i],min)<=1) return false
-    }
-    return true
-  
-    function getGreatestCommonDivisor(a,b){
-      if(b===0) return a
-      return getGreatestCommonDivisor(a,a%b)
-    }
-  
-  };
-  
-  console.log(hasGroupsSizeX([1,1,1,1,2,2,2,2,2,2]));
-  ```
-
-### [136. 只出现一次的数字](https://leetcode-cn.com/problems/single-number/)
-
-+ ```js
-  var singleNumber = function(nums) {
-    const map = {}
-    for (let i = 0; i < nums.length; i++) {
-      if(map.hasOwnProperty(nums[i])){
-        delete map[nums[i]] 
-      }else{
-        map[nums[i]] = 1
-      }
-    }
-    // map 只有一个属性
-    return Object.keys(map)[0]
-  }
-  let nums = [4,1,2,1,2]
-  console.log(singleNumber(nums))
-  ```
-+ 位操作，异或
-
-### 去重 找不同 比对哈希 Diff 比对 出现的频率
-
-+ 都是一样的啊
-+ [26. 删除排序数组中的重复项](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/)
-+ [217. 存在重复元素](https://leetcode-cn.com/problems/contains-duplicate/)
-+ [160. 相交链表](https://leetcode-cn.com/problems/intersection-of-two-linked-lists/)
-+ [169. 求众数](https://leetcode-cn.com/problems/majority-element/)
 
 ## 最值
 
-+ 配合 Math 的静态方法找出最值，或者使用临时变量保存
+配合 Math 的静态方法找出最值，或者使用临时变量保存
 
 ### Math.max
 
@@ -534,7 +18,8 @@
    Math.max(true, '2', null) // 2
    Math.max(1, undefined) // NaN
    Math.max(1, {}) // NaN
-   ```
+
+```
 
 2. max 是 Math 的静态方法，所以应该像这样使用：Math.max()，而不是作为 Math 实例的方法 (简单的来说，就是不使用 new )
 3. 如果没有参数，则结果为 `-Infinity` (注意是负无穷大)，对应的，Math.min 函数，如果没有参数，则结果为 Infinity
@@ -547,7 +32,7 @@
 
 #### 循环
 
-+ ```js
+```js
   var arr = [6, 4, 1, 8, 2, 11, 23];
   
   var result = arr[0];
@@ -555,33 +40,29 @@
       result =  Math.max(result, arr[i]);
   }
   console.log(result);
-  ```
+```
 
 #### Reduce
 
-+ ```js
+```js
   var arr = [6, 4, 1, 8, 2, 11, 23];
   
   function max(prev, next) {
       return Math.max(prev, next);
   }
   console.log(arr.reduce(max));
-  ```
+```
 
 #### 排序
 
-+ 如果我们先对数组进行一次排序，那么最大值就是最后一个值：
+如果我们先对数组进行一次排序，那么最大值就是最后一个值：
 
-  ```js
+```js
   var arr = [6, 4, 1, 8, 2, 11, 23];
   
   arr.sort(function(a,b){return a - b;});
   console.log(arr[arr.length - 1])
-  ```
-
-#### 使用 Apply 或者扩展运算符
-
-+ 比较一个数组
+```
 
 ### 找出第二小的元素
 
@@ -695,7 +176,7 @@
 
 **实现**
 
-+ ```java
+```java
   var findMedianSortedArrays = function(nums1, nums2) {
     const len1 = nums1.length,
           len2 = nums2.length
@@ -742,7 +223,7 @@
   let nums1 = [1,2],
       nums2 = [-1,3]
   console.log(findMedianSortedArrays(nums1,nums2))
-  ```
+```
 
 #### 二分法
 
