@@ -10,7 +10,6 @@
 | File                                                                           | overview              |
 | ------------------------------------------------------------------------------ | --------------------- |
 | [[programming/font-end/primitive/browser-api/dom-selection\|dom-selection]] | [[programming/font-end/primitive/browser-api/dom-selection#faq\|dom-selection#faq]] |
-| [[programming/font-end/primitive/es/es-array\|es-array]]                    | [[programming/font-end/primitive/es/es-array#faq\|es-array#faq]]      |
 | [[programming/font-end/primitive/browser-api/dom-interface\|dom-interface]] | [[programming/font-end/primitive/browser-api/dom-interface#faq\|dom-interface#faq]] |
 | [[programming/font-end/primitive/browser-api/bom\|bom]]                     | [[programming/font-end/primitive/browser-api/bom#faq\|bom#faq]]           |
 | [[programming/font-end/primitive/es/es-date\|es-date]]                      | [[programming/font-end/primitive/es/es-date#faq\|es-date#faq]]       |
@@ -21,6 +20,7 @@
 | [[programming/font-end/primitive/es/es-number\|es-number]]                  | [[programming/font-end/primitive/es/es-number#faq\|es-number#faq]]     |
 | [[programming/font-end/primitive/es/es-object\|es-object]]                  | [[programming/font-end/primitive/es/es-object#faq\|es-object#faq]]     |
 | [[programming/font-end/primitive/es/es-regexp\|es-regexp]]                  | [[programming/font-end/primitive/es/es-regexp#faq\|es-regexp#faq]]     |
+| [[programming/font-end/primitive/es/es-array\|es-array]]                    | [[programming/font-end/primitive/es/es-array#faq\|es-array#faq]]      |
 
 { .block-language-dataview}
 
