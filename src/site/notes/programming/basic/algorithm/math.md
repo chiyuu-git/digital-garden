@@ -83,6 +83,17 @@ function getGreatestCommonDivisor(a,b){
 
 再素数特别大的时候，Stein 算法优于辗转相模
 
+## 求多个数的 Gcd
+
+```js
+    let min = result[0]
+
+    // 应该求的是最大公因数
+    for (let i = 1; i < len; i++) {
+        min = getGreatestCommonDivisor(result[i], min);
+    }
+```
+
 # 最小公倍数
 
 least commom multiple
