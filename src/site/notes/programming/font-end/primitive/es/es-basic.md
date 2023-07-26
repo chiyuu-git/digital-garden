@@ -1368,7 +1368,7 @@ for (i = 0; i < 3; i++) {      //The first for statement is labeled "loop1"
   + 其他都是 NaN
 + 如果是对象，先调用 valueOf，然后转换，如果结果是 NaN，在调用 toString，再次转换
 
-## 0 字符串 0 Undefined 的经典场景
+## 0 空串  Undefined 的经典场景
 
 ```ts
 	const selectedItem = event?.target as HTMLImageElement;
@@ -1378,3 +1378,11 @@ for (i = 0; i < 3; i++) {      //The first for statement is labeled "loop1"
 ```
 
 先判断有没有, 再转换为 number
+
+## 如何获取安全的 Undefined 值
+
+因为 undefined 是一个标识符，所以可以被当作变量来使用和赋值，但是这样会影响 undefined 的正常判断。
+
+表达式 void ___ 没有返回值，因此返回结果是 undefined。void 并不改变表达式的结果，只是让表达式不返回值。
+
+按惯例我们用 void 0 来获得 undefined。
