@@ -3,32 +3,614 @@
 ---
 
 
-2023-02-06
-
 # Global FAQ Collection
 
 | File                                                                           | overview              |
 | ------------------------------------------------------------------------------ | --------------------- |
+| [[programming/font-end/primitive/es/es-string\|es-string]]                  | [[programming/font-end/primitive/es/es-string#faq\|es-string#faq]]     |
+| [[programming/font-end/primitive/es/es-date\|es-date]]                      | [[programming/font-end/primitive/es/es-date#faq\|es-date#faq]]       |
 | [[programming/font-end/primitive/browser-api/dom-selection\|dom-selection]] | [[programming/font-end/primitive/browser-api/dom-selection#faq\|dom-selection#faq]] |
+| [[programming/font-end/primitive/es/es-object\|es-object]]                  | [[programming/font-end/primitive/es/es-object#faq\|es-object#faq]]     |
+| [[programming/font-end/primitive/es/es-async-2\|es-async-2]]                | [[programming/font-end/primitive/es/es-async-2#faq\|es-async-2#faq]]    |
+| [[programming/font-end/primitive/es/es-array\|es-array]]                    | [[programming/font-end/primitive/es/es-array#faq\|es-array#faq]]      |
 | [[programming/font-end/primitive/browser-api/dom-interface\|dom-interface]] | [[programming/font-end/primitive/browser-api/dom-interface#faq\|dom-interface#faq]] |
 | [[programming/font-end/primitive/browser-api/bom\|bom]]                     | [[programming/font-end/primitive/browser-api/bom#faq\|bom#faq]]           |
-| [[programming/font-end/primitive/es/es-date\|es-date]]                      | [[programming/font-end/primitive/es/es-date#faq\|es-date#faq]]       |
-| [[programming/font-end/primitive/es/es-proto\|es-proto]]                    | [[programming/font-end/primitive/es/es-proto#faq\|es-proto#faq]]      |
-| [[programming/font-end/primitive/es/es-string\|es-string]]                  | [[programming/font-end/primitive/es/es-string#faq\|es-string#faq]]     |
-| [[programming/font-end/primitive/es/es-async-2\|es-async-2]]                | [[programming/font-end/primitive/es/es-async-2#faq\|es-async-2#faq]]    |
 | [[programming/font-end/primitive/es/es-basic\|es-basic]]                    | [[programming/font-end/primitive/es/es-basic#faq\|es-basic#faq]]      |
 | [[programming/font-end/primitive/es/es-number\|es-number]]                  | [[programming/font-end/primitive/es/es-number#faq\|es-number#faq]]     |
-| [[programming/font-end/primitive/es/es-object\|es-object]]                  | [[programming/font-end/primitive/es/es-object#faq\|es-object#faq]]     |
 | [[programming/font-end/primitive/es/es-regexp\|es-regexp]]                  | [[programming/font-end/primitive/es/es-regexp#faq\|es-regexp#faq]]     |
-| [[programming/font-end/primitive/es/es-array\|es-array]]                    | [[programming/font-end/primitive/es/es-array#faq\|es-array#faq]]      |
+| [[programming/font-end/primitive/es/es-proto\|es-proto]]                    | [[programming/font-end/primitive/es/es-proto#faq\|es-proto#faq]]      |
+| [[programming/font-end/primitive/browser-api/dom-event\|dom-event]]         | [[programming/font-end/primitive/browser-api/dom-event#faq\|dom-event#faq]]     |
 
 { .block-language-dataview}
 
-
 [README-zh-cn.md](https://github.com/denysdovhan/wtfjs/blob/master/README-zh-cn.md)
+
 https://github.com/lydiahallie/javascript-questions
+
 [GitHub - goldbergyoni/nodebestpractices: :white\_check\_mark: The Node.js best practices list (July 2023)](https://github.com/goldbergyoni/nodebestpractices)
+
 [GitHub - goldbergyoni/javascript-testing-best-practices: 📗🌐 🚢 Comprehensive and exhaustive JavaScript & Node.js testing best practices (June 2023)](https://github.com/goldbergyoni/javascript-testing-best-practices)
+
+# Polyfill
+
+## Call() apply() bind()
+
+### Call()
+
+- call() 方法在使用一个指定的 this 值和若干个指定的参数值的前提下调用某个函数或方法。
+- 让某个函数临时成为指定的 this 的方法，并且进行调用
+
+  ```js
+  var foo = {
+      value: 1
+  };
+  
+  function bar() {
+      console.log(this.value);
+  }
+  
+  bar.call(foo); // 1
+  ```
+
+- call 改变了 this 的指向，指向到 foo
+- 同时，bar 函数执行了
+
+#### 模拟实现第一步
+
+1. 将函数设为对象的属性
+2. 执行该函数
+3. 删除该函数
+
+- 改造上面的例子
+
+  ```js
+  // 第一步
+  foo.fn = bar
+  // 第二步
+  foo.fn()
+  // 第三步
+  delete foo.fn
+  ```
+
+- 完整版 myCall 函数
+
+  ```js
+  Function.prototype.myCall = function(context){
+    // context是传统意义上的this，一个obj
+    // 这里的this是要执行的函数
+    // foo.fn = bar
+    context.fn = this 
+    context.fn()
+    delete context.fn
+  }
+  
+  const foo = {
+    value:1,
+  }
+  
+  function bar(){
+    console.log(this.value)
+  }
+  
+  bar.myCall(foo) // 1
+  ```
+
+#### 模拟实现第二步
+
+- call 函数还能给定参数执行函数，但是，传入的参数并不确定，并且传入的参数要再传入到调用的函数中
+- 两种错误的做法
+
+  ```js
+  // 将数组里的元素作为多个参数放进函数的形参里
+  context.fn(args.join(','))
+  // 相当于是传入了一个 join 好的字符串
+  
+  // 相当于是传入了一个类数组对象，只有第一个形参被赋予该值
+  context.fn(arguments)
+  ```
+
+- 使用 ES6 的做法，使用扩展运算符即可解决
+
+  ```js
+  Function.prototype.myCall = function(context,...rest){
+    context.fn = this
+    // {value: 1, fn: },1,2,3
+    // context.fn(...arguments)
+    context.fn(..rest)
+    delete context.fn
+  }
+  
+  const foo = {
+    value:1,
+  }
+  
+  function bar(a,b){
+    console.log(this.value)
+    console.log(a,b) // this,1
+  }
+  
+  bar.myCall(foo,1,2,3) // 1
+  ```
+
+- 不过 call 是 ES3 的方法，模拟实现就别用 ES6 了
+
+**eval()**
+
+截取 arguments 的参数部分
+
+```js
+  // 以上个例子为例，此时的arguments为：
+  // arguments = {
+  //      0: foo,
+  //      1: 'kevin',
+  //      2: 18,
+  //      length: 3
+  // }
+  // 因为arguments是类数组对象，所以可以用for循环
+  var args = [];
+  for(var i = 1, len = arguments.length; i < len; i++) {
+      args.push('arguments[' + i + ']');
+  }
+  
+  // 执行后 args为 ["arguments[1]", "arguments[2]", "arguments[3]"]
+```
+
+通过 eval 还原参数
+
+```js
+  eval('context.fn(' + args +')')
+  // context.fn(arguments[1],arguments[2],arguments[3])
+``` 
+
+- 这里 args 会自动调用 Array.toString() 这个方法，相当于 `args.join(',')`
+
+  > 既然最终要执行的是字符串那为什么不使用字符串拼接呢？因为参数之间有个逗号，使用数组可以不用考虑去掉尾逗号
+
+- eval() 版完整代码
+
+  ```js
+  Function.prototype.myCall = function(context){
+    const args = []
+    context.fn = this
+    for (let i = 1; i < arguments.length; i++) {
+      args.push('arguments['+i+']')
+    }
+    eval('context.fn('+args+')')
+    delete context.fn
+  }
+  
+  const foo = {
+    value:1,
+  }
+  
+  function bar(a,b){
+    console.log(this.value)
+    console.log(a,b) // this,1
+  }
+  
+  bar.myCall(foo,1,{b:2}) // 1
+
+
+```
+
+#### 模拟实现第三步
+
+**两个注意点**
+
+- **this 参数可以传 null，当为 null 的时候，视为指向 window**
+- **函数是可以有返回值的！**
+- 最终版完整代码
+
+  ```js
+  // 第三版
+  Function.prototype.call2 = function (context) {
+      // null
+      var context = context || window;
+      context.fn = this;
+  
+      var args = [];
+      for(var i = 1, len = arguments.length; i < len; i++) {
+          args.push('arguments[' + i + ']');
+      }
+    
+      var result = eval('context.fn(' + args +')');
+  
+      delete context.fn
+      return result;
+  }
+  
+  // 测试一下
+  var value = 2;
+  
+  var obj = {
+      value: 1
+  }
+  
+  function bar(name, age) {
+      console.log(this.value);
+      return {
+          value: this.value,
+          name: name,
+          age: age
+      }
+  }
+  
+  bar.call2(null); // 2
+  
+  console.log(bar.call2(obj, 'kevin', 18));
+  // 1
+  // Object {
+  //    value: 1,
+  //    name: 'kevin',
+  //    age: 18
+  // }
+  ```
+
+### Apply()
+
+ ```js
+  Function.prototype.apply = function (context, arr) {
+      var context = Object(context) || window;
+      context.fn = this;
+  
+      var result;
+      if (!arr) {
+          result = context.fn();
+      }
+      else {
+          var args = [];
+          for (var i = 0, len = arr.length; i < len; i++) {
+              args.push('arr[' + i + ']');
+          }
+          result = eval('context.fn(' + args + ')')
+      }
+  
+      delete context.fn
+      return result;
+  }
+  ```
+
+### Bind()
+
+ bind() 方法会创建一个新函数。当这个新函数被调用时，bind() 的第一个参数将作为它运行时的 this，之后的一序列参数将会在传递的实参前传入作为它的参数。
+
+#### 返回函数的实现
+
+ 返回一个函数
+
+ 可以指定 this，关于 this 的指定，我们可以使用 call() 或者 apply() 方法实现
+
+  ```js
+  Function.prototype.bind2 = function (context) {
+  	// self = bar
+    var self = this;
+    return function () {
+      // bar.apply(foo)
+      return self.apply(context); // 调用函数可能会有返回值，所以需要再return一个
+    }
+  
+  }
+  const foo = {
+    value:1,
+  }
+  
+  function bar(){
+    console.log(this.value)
+  }
+  
+  bar.bind2(foo)
+  ```
+
+#### 分段传参的实现
+
+ ```js
+  var foo = {
+      value: 1
+  };
+  
+  function bar(name, age) {
+      console.log(this.value);
+      console.log(name);
+      console.log(age);
+  
+  }
+  
+  var bindFoo = bar.bind(foo, 'daisy');
+  bindFoo('18');
+  // 1
+  // daisy
+  // 18
+  ```
+
+- 函数需要传 name 和 age 两个参数，竟然还可以在 bind 的时候，只传一个 name，在执行返回的函数的时候，再传另一个参数 age!
+- 我们用 arguments 进行处理：
+
+  ```js
+  // 第二版
+  Function.prototype.bind2 = function (context) {
+    var self = this;
+    // 获取bind2函数从第二个参数到最后一个参数
+    var args = Array.prototype.slice.call(arguments, 1);
+    return function (...bindArgs) {
+      return self.apply(context, args.concat(bindArgs));
+    }
+  }
+  ```
+
++ 其实就是一个简单的函数柯里化
+
+#### 构造函数效果的实现
+
+- 因为 bind 还有一个特点，就是
+
+  > 一个绑定函数也能使用 new 操作符创建对象：这种行为就像把原函数当成构造器。提供的 this 值被忽略，同时调用时的参数被提供给模拟函数。
+
+- 先来看一个例子
+
+  ```js
+  var value = 2;
+  
+  var foo = {
+      value: 1
+  };
+  
+  function bar(name, age) {
+      this.habit = 'shopping';
+      console.log(this.value);
+      console.log(name);
+      console.log(age);
+  }
+  
+  bar.prototype.friend = 'kevin';
+  
+  var bindFoo = bar.bind(foo, 'daisy');
+  
+  var obj = new bindFoo('18');
+  // undefined
+  // daisy
+  // 18
+  console.log(obj.habit); // shopping
+  console.log(obj.friend); // kevin
+  
+  ```
+
+- **注意：**尽管在全局和 foo 中都声明了 value 值，最后依然返回了 undefind，说明绑定的 this 失效了，如果大家了解 new 的模拟实现，就会知道这个时候的 this 已经指向了 obj。
+- 我们可以通过修改返回的函数的原型来实现，让我们写一下：
+
+  ```js
+  // 第三版
+  Function.prototype.bind2 = function (context) {
+    var self = this;
+    var args = Array.prototype.slice.call(arguments, 1);
+    var fBound = function (...bindArgs) {
+      // 当作为构造函数时，this 指向实例，此时结果为 true，将绑定函数的 this 指向该实例，可以让实例获得来自绑定函数的值
+      // 以上面的是 demo 为例，如果改成 `this instanceof fBound ? null : context`，实例只是一个空对象，将 null 改成 this ，实例会具有 habit 属性
+      // 当作为普通函数时，this 指向 window，此时结果为 false，将绑定函数的 this 指向 context
+      return self.apply(this instanceof fBound ? this : context, args.concat(bindArgs));
+    }
+    // 修改返回函数的 prototype 为绑定函数的 prototype，实例就可以继承绑定函数的原型中的值
+    fBound.prototype = this.prototype;
+    return fBound;
+  }
+  ```
+
+#### 构造函数效果的优化实现
+
+- 但是在这个写法中，我们直接将 fBound.prototype = this.prototype，我们直接修改 fBound.prototype 的时候，也会直接修改绑定函数的 prototype。这个时候，我们可以通过一个空函数来进行中转：
+
+  ```js
+  Function.prototype.bind2 = function (context) {
+  
+      var self = this;
+      var args = Array.prototype.slice.call(arguments, 1);
+  
+      var fNOP = function () {};
+  
+      var fBound = function () {
+          var bindArgs = Array.prototype.slice.call(arguments);
+          return self.apply(this instanceof fBount ? this : context, args.concat(bindArgs));
+      }
+      fNOP.prototype = this.prototype;
+      // 即是fBound的实例，也是fNOP的实例
+      fBound.prototype = new fNOP();
+      return fBound;
+  }
+  ```
+
++ 寄生构造函数
+
+#### 三个小问题
+
+- 在 MDN 中文版讲 bind 的模拟实现时，apply 这里的代码是：
+
+  ```js
+  self.apply(this instanceof self ? this : context || this, args.concat(bindArgs))
+  ```
+
+  - 多了一个关于 context 是否存在的判断，然而这个是错误的！
+  - 举个例子：
+
+  ```js
+  var value = 2;
+  var foo = {
+      value: 1,
+      bar: bar.bind(null)
+  };
+  
+  function bar() {
+      console.log(this.value);
+  }
+  
+  foo.bar() // 2
+  ```
+
+  - 以上代码正常情况下会打印 2，如果换成了 context || this，这段代码就会打印 1！
+  - 所以这里不应该进行 context 的判断，大家查看 MDN 同样内容的英文版，就不存在这个判断！
+- **调用 bind 的不是函数咋办？**
+
+  ```js
+  if (typeof this !== "function") {
+    throw new Error("Function.prototype.bind - what is trying to be bound is not callable");
+  }
+  ```
+
+#### 最终代码
+
+```js
+  Function.prototype.bind2 = function (context) {
+  
+      if (typeof this !== "function") {
+        throw new Error("Function.prototype.bind - what is trying to be bound is not callable");
+      }
+  
+      var self = this;
+      var args = Array.prototype.slice.call(arguments, 1);
+  
+      var fNOP = function () {};
+  
+      var fBound = function (...bindArgs) {
+          return self.apply(this instanceof fNOP ? this : context, args.concat(bindArgs));
+      }
+  
+      fNOP.prototype = this.prototype;
+      fBound.prototype = new fNOP();
+      return fBound;
+  }
+```
+
+## New()
+
+- new 运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象类型之一
+- 先来看一个例子
+
+  ```js
+  // Otaku 御宅族，简称宅
+  function Otaku (name, age) {
+      this.name = name;
+      this.age = age;
+  
+      this.habit = 'Games';
+  }
+  
+  // 因为缺乏锻炼的缘故，身体强度让人担忧
+  Otaku.prototype.strength = 60;
+  
+  Otaku.prototype.sayYourName = function () {
+      console.log('I am ' + this.name);
+  }
+  
+  var person = new Otaku('Kevin', '18');
+  
+  console.log(person.name) // Kevin
+  console.log(person.habit) // Games
+  console.log(person.strength) // 60
+  
+  person.sayYourName(); // I am Kevin
+  ```
+
+- 从这个例子中，我们可以看到，实例 person 可以：
+  - 访问到 Otaku 构造函数里的属性
+  - 访问到 Otaku.prototype 中的属性
+- 因为 new 是关键字，所以无法像 bind 函数一样直接覆盖，所以我们写一个函数，命名为 objectFactory，来模拟 new 的效果。用的时候是这样的：
+
+  ```js
+  function Otaku () {
+      ……
+  }
+  
+  // 使用 new
+  var person = new Otaku(……);
+  // 使用 objectFactory
+  var person = objectFactory(Otaku, ……)
+  ```
+
+### 初步实现
+
+- 因为 new 的结果是一个新对象，所以在模拟实现的时候，我们也要建立一个新对象，假设这个对象叫 obj，因为 obj 会具有 Otaku **构造函数里的属性**，想想经典继承的例子，我们可以使用 Otaku.apply(obj, arguments) 来给 obj 添加新的属性。
+- 在 JavaScript 深入系列第一篇中，我们便讲了原型与原型链，我们知道实例的 `__proto__ ` 属性会指向构造函数的 prototype，也正是因为建立起这样的关系，实例可以访问原型上的属性。
+
+  ```js
+  // 第一版代码
+  function objectFactory(Constructor,...args) {
+      var obj = new Object(),
+      obj.__proto__ = Constructor.prototype;
+      Constructor.apply(obj, args)
+      return obj;
+  };
+  ```
+
+  1. 用 new Object() 的方式新建了一个对象 obj
+  2. 取出第一个参数，就是我们要传入的构造函数。此外因为 shift 会修改原数组，所以 arguments 会被去除第一个参数
+  3. 将 obj 的原型指向构造函数的原型，这样 obj 就可以访问到构造函数原型中的属性
+  4. 使用 apply，改变构造函数 this 的指向到新建的对象，这样 obj 就可以访问到构造函数中的属性，**其实是最传统的工厂模式**
+  5. 返回 obj
+
+### 返回值效果实现
+
+- 接下来我们再来看一种情况，假如构造函数有返回值，举个例子：
+
+  ```js
+  function Otaku (name, age) {
+      this.strength = 60;
+      this.age = age;
+  
+      return {
+          name: name,
+          habit: 'Games'
+      }
+  }
+  
+  var person = new Otaku('Kevin', '18');
+  
+  console.log(person.name) // Kevin
+  console.log(person.habit) // Games
+  console.log(person.strength) // undefined
+  console.log(person.age) // undefined
+  ```
+
+- 在这个例子中，构造函数返回了一个对象，在实例 person 中只能访问返回的对象中的属性。而且还要注意一点，在这里我们是返回了一个对象，假如我们只是返回一个基本类型的值呢？
+- ```js
+  function Otaku (name, age) {
+      this.strength = 60;
+      this.age = age;
+  
+      return 'handsome boy';
+  }
+  
+  var person = new Otaku('Kevin', '18');
+  
+  console.log(person.name) // undefined
+  console.log(person.habit) // undefined
+  console.log(person.strength) // 60
+  console.log(person.age) // 18
+  ```
+- 结果完全颠倒过来，这次尽管有返回值，但是相当于没有返回值进行处理。
+- 所以我们还需要判断返回的值是不是一个对象，如果是一个对象，我们就返回这个对象，如果没有，我们该返回什么就返回什么。
+- 再来看第二版的代码，也是最后一版的代码：
+
+  ```js
+  // 第二版的代码
+  function objectFactory(Constructor,...args) {
+      // var obj = new Object()
+      // obj.__proto__ = Constructor.prototype;
+      var obj = Object.create(Constructor.prototype)
+      var ret = Constructor.apply(obj, arguments);
+  		// obj 已经经过工厂模式的修改
+      return typeof ret === 'object' ? ret : obj;
+  };
+  ```
+
+### 面试题
+
++ new 操作符默认返回 this，而不是 undefined
+
+  ```js
+  function A(){}
+  A.prototype.a = 1
+  console.log(new A().a)
+  
+  ```
+
 # 工具函数
 
 ## 字符串和数组的转换
