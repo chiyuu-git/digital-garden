@@ -632,7 +632,7 @@ easy，`/.^/`
 
 因为此正则要求只有一个字符，但该字符后面是开头。
 
-### 数字的千位分隔符表示法 ###
+### 数字的千位分隔符表示法
 
 比如把 "12345678"，变成 "12,345,678"。
 
@@ -3277,6 +3277,10 @@ function kebabToCamel (str:string) {
 ## 匹配位置的案例
 
 ![es-regexp](programming/font-end/primitive/es/es-regexp.md#匹配位置的案例)
+
+## 常用正则
+
+[《前端表单验证常用的 15 个 JS 正则表达式》](http://caibaojian.com/form-regexp.html) [《JS 常用正则汇总》](https://www.jianshu.com/p/1cb5229325a7)
 
 # Experience
 
