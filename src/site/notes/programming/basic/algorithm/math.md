@@ -100,24 +100,14 @@ least commom multiple
 
 lcm
 
-# [263. 丑数](https://leetcode-cn.com/problems/ugly-number/)
-
-丑数就是只包含质因数 `2, 3, 5` 的**正整数**。
-
-任何整数都可以分解成质数的乘积，这个过程叫做分解质因素，常用的方法是短除法和塔形分解
-
-![1555560842570](/img/user/programming/basic/algorithm/math/1555560842570.png)
+基本思想是采用将两个数相乘，然后除以它们的最大公约数
 
 ```js
-var isUgly = function(num) {
-  // 边界条件分析
-  if(num<=0) return false // 负数一定不是丑数
-  while(num%2===0) num /= 2
-  while(num%5===0) num /= 5
-  while(num%3===0) num /= 3
-  return num===1
-};
+function getMinCommonMultiple(a, b){
+  return a * b / getMaxCommonDivisor(a, b);
+}
 ```
+
 
 # [264. 丑数 II](https://leetcode-cn.com/problems/ugly-number-ii/)
 
@@ -133,53 +123,10 @@ var isUgly = function(num) {
 
 ## 分析
 
-**最优化分析：**4 和从 6 开始的所有丑数，都是在其前面的某个丑数乘以 `2, 3, 5` 的结果
-
-就是从一个基准数 1 开始，算 1\*2、1\*3、1\*5 的最小值，得出结果 1*2 最小，再将对应 Index++ 即可，结果就是每个数都会各自与 2 3 5 相乘，乘过了就轮到下一个
-
-```js
-  var nthUglyNumber = function (n) {
-    let index2 = 0, index3 = 0, index5 = 0
-    let T = []
-    T[0] = 1
-    for (let i = 1; i < n; i++) {
-      T[i] = Math.min(T[index2] * 2, T[index3] * 3, T[index5] * 5)
-      if (T[i] === T[index2] * 2) index2++
-      if (T[i] === T[index3] * 3) index3++
-      if (T[i] === T[index5] * 5) index5++
-    }
-    return T[n - 1]
-  };
-  
-  console.log(nthUglyNumber(1));
-  ```
 
 # [313. 超级丑数](https://leetcode-cn.com/problems/super-ugly-number/)
 
-动态生成每次的比较列表
 
-```js
-/**
- * @param {number} n
- * @param {number[]} primes
- * @return {number}
- */
-var nthSuperUglyNumber = function(n, primes) {
-  let T = []
-  T[0]=1
-  const counts = new Array(primes.length).fill(0)
-  for (let i = 1; i < n; i++) {
-    const currents = counts.map(function(count,i,arr){
-      return T[count]*primes[i]
-    })
-    const min = T[i] = Math.min(...currents)
-    primes.forEach(function(prime,i){
-      if(min % prime === 0 ) counts[i]++
-    })
-  }
-  return T[n-1]
-}
-```
 
 # 安全整数
 
