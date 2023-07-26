@@ -1233,4 +1233,10 @@ btn.addEventListener('alert', function (event) {
 btn.dispatchEvent(ev);
 ```
 
+# FAQ
+
+#faq/js
+
+## 手写 EventBus
+
 ## 观察者模式
