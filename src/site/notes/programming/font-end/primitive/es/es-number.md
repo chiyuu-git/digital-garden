@@ -1469,12 +1469,34 @@ console.log(
 
 [js toFixed 四舍五入问题 - 掘金](https://juejin.cn/post/7050760083239600141o)
 
-## 转换成百分数
-
-先乘 100，在保留小数，再拼串
-
 ## 拆分整数和小数
 
 处理成整数，然后相减得到小数
 
 转换成字符串，使用 split
+
+## 转换成千分位数字
+
+### 字符串匹配
+
+![es-regexp](programming/font-end/primitive/es/es-regexp.md#数字的千位分隔符表示法)
+
+### 方法二
+
+```js
+function format1(number) {
+  return Intl.NumberFormat().format(number)
+}
+```
+
+### 方法三
+
+```js
+function format2(number) {
+  return number.toLocaleString('en')
+}
+```
+
+## 转换成百分数
+
+先乘 100，在保留小数，再拼串
