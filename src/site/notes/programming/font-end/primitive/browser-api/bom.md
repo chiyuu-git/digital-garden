@@ -3,12 +3,11 @@
 ---
 
 
-# BOM
+浏览器对象模型
 
-- 浏览器对象模型
-- BOM 可以使我们通过 JS 来操作浏览器, 在 BOM 中为我们提供了一组对象，用来完成对浏览器的操作
+BOM 可以使我们通过 JS 来操作浏览器, 在 BOM 中为我们提供了一组对象，用来完成对浏览器的操作
 
-## BOM 对象
+# BOM 对象
 
 - Window
   - 代表的是整个浏览器的窗口，同时 window 也是网页中的全局对象
@@ -26,7 +25,7 @@
   - 移动端用的多因为屏幕差别大
   - 这些 BOM 对象在浏览器中都是作为 window 对象的属性保存的，可以通过 window 对象来使用，也可以直接使用
 
-## Navigator
+# Navigator
 
 - 代表的当前浏览器的信息，通过该对象可以来识别不同的浏览器
 - 由于历史原因，Netscape 网景公司，Navigator 对象中的大部分属性都已经不能帮助我们识别浏览器了
@@ -34,7 +33,7 @@
   - userAgent 是一个字符串，这个字符串中包含有用来描述浏览器信息的内容
 - 不同的浏览器会有不同的 userAgent
 
-### 火狐的 userAgent
+## 火狐的 userAgent
 
 - Mozilla/5.0 (Windows NT 6.1; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0
   - Windows NT 6.1 就是 win7
@@ -42,23 +41,23 @@
   - rv:50.0 版本 50
   - Gecko 火狐专门的 css 渲染引擎
 
-### Chrome 的 userAgent
+## Chrome 的 userAgent
 
 - Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36
 
-### IE8
+## IE8
 
 - Mozilla/4.0 (compatible; **MSIE 8.0**; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)
 
-### IE9
+## IE9
 
 - Mozilla/5.0 (compatible; **MSIE 9.0**; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)
 
-### IE10
+## IE10
 
 - Mozilla/5.0 (compatible; **MSIE 10.0**; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)
 
-### IE11
+## IE11
 
 - Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; rv:11.0) like Gecko
   - 在 IE11 中已经将微软和 IE 相关的标识都已经去除了，所以我们基本已经不能通过 UserAgent 来识别一个浏览器是否是 IE 了
@@ -79,7 +78,7 @@ if(/firefox/i.test(ua)){
 }
 ```
 
-## History
+# History
 
 - 对象可以用来操作浏览器向前或向后翻页
 - length
@@ -98,7 +97,7 @@ if(/firefox/i.test(ua)){
   - -2: 表示向后跳转两个页面
   - `history.go(-2);`
 
-## Location
+# Location
 
 - 该对象中封装了浏览器的地址栏的信息
 - 如果直接打印 location，则可以获取到地址栏的信息（当前页面的完整路径）
@@ -114,9 +113,9 @@ if(/firefox/i.test(ua)){
   - 不会生成历史记录，不能使用回退按钮回退
 - location 对象是很特别的一个对象，因为它既是 window 对象的属性，也是 document 对象的属性；换句话说，window.location 和 document.location 引用的是同一个对象。
 
-## Console
+# Console
 
-### console.log()
+## console.log()
 
 - 另一种格式化的： `console.log(msg, values)`，这很像 C 或 PHP 中的 `sprintf`
 
@@ -141,12 +140,12 @@ if(/firefox/i.test(ua)){
 - `console.log` prints the element in an HTML-like tree
 - `console.dir` prints the element in a JSON-like tree
 
-### console.warn()
+## console.warn()
 
 - 可能是最明显的直接替换 `log()`，你可以以完全相同的方式使用 `console.warn()`。 唯一真正的区别是输出字的颜色是黄色的。 具体来说，输出处于警告级别而不是信息级别，因此浏览器将稍微区别对待它。 这具有使其在杂乱输出中更明显的效果。
 - <https://juejin.im/post/5ca6bf5151882543fc5e3bb0>
 
-### console.time() 和 console.timeEnd()
+## console.time() 和 console.timeEnd()
 
 ```js
 console.time('timer1');
@@ -154,17 +153,17 @@ console.time('timer1');
 console.timeEnd('timer1');
 ```
 
-### console.trace()
+## console.trace()
 
-## 定时器
+# 定时器
 
-字符串形式的也是合理的
+delay 参数字符串形式的也是合理的
 
 ![image-20210107145133926](/img/user/programming/font-end/primitive/browser-api/bom/image-20210107145133926.png)
 
-### setInterval()
+## setInterval()
 
-- 可以将一个函数，每隔一段时间执行一次
+可以将一个函数，每隔一段时间执行一次
 
 参数：
 
@@ -176,102 +175,206 @@ console.timeEnd('timer1');
 - 返回一个 Number 类型的数据
 - 这个数字用来作为定时器的唯一标识
 
-### clearInterval()
+## clearInterval()
 
-- 可以用来关闭一个 setInterval() 循环定时器
-- 方法中需要一个循环定时器的标识作为参数，这样将关闭标识对应的定时器
-- `clearInterval(timer)`
+可以用来关闭一个 setInterval() 循环定时器
 
-### 定时器的注意点
+方法中需要一个循环定时器的标识作为参数，这样将关闭标识对应的定时器
 
-- 目前，我们每点击一次按钮，就会开启一个定时器，点击多次就会开启多个定时器，这就导致图片的切换速度过快，并且我们只能关闭最后一次开启的定时器
-- 在开启定时器之前，需要将当前元素上的其他定时器关闭
-- 第二个参数是一个表示等待多长时间的毫秒数，但经过该时间后指定的代码不一定会执行。
-- JavaScript 是一个单线程序的解释器，因此一定时间内只能执行一段代码。为了控制要执行的代码，就有一个 JavaScript 任务队列。这些任务会按照将它们添加到队列的顺序执行。
-- setTimeout() 的第二个参数告诉 JavaScript 再过多长时间把当前任务添加到队列中 (添加的过程是异步的)。
-- 如果队列是空的，那么添加的代码会立即执行；如果队列不是空的，那么它就要等前面的代码执行完了以后再执行。
+`clearInterval(timer)`
 
-### setTimeout()
+## setTimeout()
 
-- ```js
+```js
   var timer = setTimeout(function(){console.log(num++);},3000);
-  ```
-- 延时调用一个函数不马上执行，而是隔一段时间以后在执行，而且只会执行一次
-- 延时调用和定时调用的区别，定时调用会执行多次，而延时调用只会执行一次
-- 延时调用和定时调用实际上是可以 **互相代替** 的，在开发中可以根据自己需要去选择
-- clearTimeout(timer)
+```
+
+延时调用一个函数不马上执行，而是隔一段时间以后在执行，而且只会执行一次
+
+延时调用和定时调用的区别，定时调用会执行多次，而延时调用只会执行一次
+
+延时调用和定时调用实际上是可以 **互相代替** 的，在开发中可以根据自己需要去选择
+
+clearTimeout(timer)
 
 **参数**
 
-- **function**
-- **delay**
+- function
+- delay
 - `param1, ..., paramN` ，附加参数，一旦定时器到期，它们会作为参数传递给 `function` @@@
 
-## Window 一些常用方法
+## 定时器的注意点
 
-- alert()
-- confirm()
-- prompt()
-  - 返回的是用户输入的内容的 字符串形式
+- 目前，我们每点击一次按钮，就会开启一个定时器，点击多次就会开启多个定时器，这就导致图片的切换速度过快，并且我们只能关闭最后一次开启的定时器
+- 在开启定时器之前，需要将当前元素上的其他定时器关闭
 
-### eval() 函数
+## 定时器和消息队列
 
-见函数 - 实践
+第二个参数是一个表示等待多长时间的毫秒数，但经过该时间后指定的代码不一定会执行
 
-- 可用于执行一段字符串形式的 JS 代码，并将执行结果返回。但是尽量不要用
+JavaScript 是一个单线程序的解释器，因此一定时间内只能执行一段代码。为了控制要执行的代码，就有一个 JavaScript 任务队列。这些任务会按照将它们添加到队列的顺序执行
 
-`eval(“alert(“hello”);”);`
+setTimeout() 的第二个参数告诉 JavaScript 再过多长时间把当前任务添加到队列中 (添加的过程是异步的)
 
-- 如果使用 eval() 函数传入的字符串含有大括号 {}，函数会把 {} 当成一个代码块
-- 如果不希望将其当成代码块解析，则需要在字符串前后通过 **拼串的形式** 各拼一个 ()
-- var obj = eval("("+str+")");
-- 需要兼容选择引用 JSON2.js 文件
+如果队列是空的，那么添加的代码会立即执行；如果队列不是空的，那么它就要等前面的代码执行完了以后再执行
 
-**作用域**
+### 为什么要用 Timeout 代替 Interval?
 
-无法获取外部的函数
+考虑极端情况，假如定时器里面的代码需要进行大量的计算，或者是 DOM 操作。
 
-**注意**
+这样一来，花的时间就比较长，有可能前一次代码还没有执行完，后一次代码就被添加到队列了。
 
-使用 window.function 代替
+假如时间间隔为 100 毫秒，要执行的代码需要 300 毫秒，如下图所示：
 
-### open()
+![](/img/user/programming/font-end/primitive/browser-api/bom/image-20230726193640030.png)
 
-- ```js
-  let windowObjectReference = window.open(strUrl, strWindowName, [strWindowFeatures]);
-  ```
-- `WindowObjectReference`
+一开始执行 `setInterval`, 100 毫秒后将要执行的代码添加到队列。
 
-  打开的新窗口对象的引用。如果调用失败，返回值会是 `null 。如果` 父子窗口满足“[同源策略](https://developer.mozilla.org/cn/JavaScript的同源策略)”，你可以通过这个引用访问新窗口的属性或方法。
+100 毫秒时，执行代码进入队列，队列空闲，定时器内的代码执行。
 
-- `strUrl`
+200 毫秒时，第一次的定时器代码还在执行当中。第二次的定时器代码被推入事件队列，等待队列空闲，然后执行。
 
-  新窗口需要载入的 url 地址。strUrl 可以是 web 上的 html 页面也可以是图片文件或者其他任何浏览器支持的文件格式。
+300 毫秒时，第一次的定时器代码还在执行中，第二次的定时器代码在事件队列末端等待执行。因为该定时器已经有第二次的代码在队列中等待了，所以这一次的代码不会被推入队列，被忽略了。
 
-- `strWindowName`
+400 毫秒时，第一次的定时器代码执行完毕，队列空闲，下一个等待的代码执行，第二次的定时器代码开始执行。
 
-  新窗口的名称。该字符串可以用来作为超链接 [``](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a) 或表单 [``](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form) 元素的目标属性值。字符串中不能含有空白字符。注意：strWindowName 并不是新窗口的标题。
+捋一捋，这里的第一次的代码和第二次代码的间隔并没有预期的 100 毫米，而是第一次的执行完，第二次的立马执行了。因为第一的代码还没执行完，第二次的代码就已经在队列中等待了。
 
-- `strWindowFeatures`
+关于被忽略的第三次定时器代码，因为 300 毫秒时，这个定时器已经有第二次的代码在等待了，而只有当没有该定时器的代码在队列中时，该定时器新的代码才能去排队，所以第三次不会被添加到队列中。
 
-  可选参数。是一个字符串值，这个值列出了将要打开的窗口的一些特性 (窗口功能和工具栏) 。 字符串中不能包含任何空白字符，特性之间用逗号分隔开。参考下文的 [位置和尺寸特征](<https://developer.mozilla.org/zh-CN/docs/Web/API/Window/open#Position> and size features)。
+由上可见，在这种极端情况下，`setIntreval` 实现不了需求
 
-## BOM 规范
+### 用 setTimeout 实现 setInterval
+
+而 setTimeout 可以实现 setInterval 的功能，并且不会出现上面的情况。
+
+```js
+const repeat = (func, ms) => {
+  setTimeout(() => {
+    func()
+    repeat(func, ms)
+  }, ms)
+}
+```
+
+上面的 repeat 接受两个参数，func 是要以间隔时间执行的函数，ms 代表间隔的毫秒数。
+
+repeat 内部用 setTimeout 在指定的毫秒数 ms 之后，将匿名函数推入事件队列，匿名函数中包含要执行的 func , 以及 repeat(func, ms)。匿名函数执行时，先执行 func, 然后递归调用 repeat 来模拟 setInterval,递归调用的 repeat 中，又将执行 setTimeout, 在 ms 毫秒后，将下一次的定时器代码推入队列末端。
+
+这里可以注意到，将下一次定时器代码推入队列时，上一次的代码无论如何都已经执行完了，所以不会重蹈 setInterval 的覆辙。
+
+但是这种实现方式，不能清除定时器，还需要改造一下。
+
+setTimeout 方式的改良
+
+```js
+function Timer() {
+  this.timeID = null
+  this.func = null
+}
+
+Timer.prototype.repeat = function(func, ms) {
+  if (this.func === null) {
+    this.func = func
+  }
+
+  // 确保一个 Timer 实例只能重复一个 func
+  if (this.func !== func) {
+    return
+  }
+
+  this.timeID = setTimeout(() => {
+    func()
+    this.repeat(func, ms)
+  }, ms)
+}
+
+Timer.prototype.clear = function() {
+  clearTimeout(this.timeID)
+}
+
+const a = () => console.log('a')
+
+const b = () => console.log('b')
+
+const timer = new Timer()
+
+timer.repeat(a, 1000)
+timer.repeat(b, 1000) // 不会定时执行 b
+```
+
+上面的代码定义了构造函数 Timer, 其产生的实例有两个属性，timeID 用来存储 setTimeout 返回的值，也就是定时器的 ID; func 则用来存储需要被定时执行的函数。
+
+Timer 的 prototype 上定义了 repeat 方法，和之前的 repeat 函数大致一样。只是在开头，将传入的 func 存到了 this.func. repeat 递归调用时，每执行一次 setTimeout , this.timeID 就会取得最新的定时器的 ID.
+
+Timer 的 prototype 上还定义了 clear 方法，用来清除定时器,。
+
+注意到 repeat 和 clear 两个方法，定义时用的是函数声明，而不是匿名函数。之所以这样做，是为了保证方法内 this 指向 Timer 实例。如果用的是箭头函数，这两个方法里面的 this 将指向全局对象 Window, 更多和 this 有关的，可参考这篇博客。
+
+接下来定义了两个简单的函数 a 和 b.
+
+再 new 一个 Timer 赋值给变量 timer, timer 执行 repeat 方法定时运行 a 和 b .
+
+可以发现，每隔大约一秒，就会执行一次 a, 控制台就会打印一次 a. 而 b 则不会定时重复执行。因为一个 Timer 实例只能重复执行一个函数。假如不作限制，a 和 b 重复，那么在 clear 的时候，只能清除掉最后添加进来的重复代码的定时器 ID.
+
+假如要重复执行 b, 只能再实例化一个 Timer.
+
+### 总结
+
+因为 setInterval 在一些情况下，会导致前后两次定时器代码的执行间隔产生不可预料的变化，甚至会跳过某次定时器代码的执行，所以可用 setTimeout 实现 setInterval 的功能。
+
+## 定时器和浏览器进程
+
+考虑网页失焦和浏览器被切后台
+
+如果做过秒杀倒计时的项目大概就不会起这个标题了吧。切后台或者多一级激活 webview 的时候 settimeout 会暂停执行，而 setinterval 不会。
+
+# Window 一些常用方法
+
+alert()
+
+confirm()
+
+prompt() 返回的是用户输入的内容的 字符串形式
+
+## eval() 函数
+
+![es-function](programming/font-end/primitive/es/es-function.md#eval)
+
+## open()
+
+```js
+let windowObjectReference = window.open(strUrl, strWindowName, [strWindowFeatures]);
+```
+
+`WindowObjectReference`: 打开的新窗口对象的引用。如果调用失败，返回值会是 `null 。如果` 父子窗口满足“[同源策略](https://developer.mozilla.org/cn/JavaScript的同源策略)”，你可以通过这个引用访问新窗口的属性或方法。
+
+`strUrl`: 新窗口需要载入的 url 地址。strUrl 可以是 web 上的 html 页面也可以是图片文件或者其他任何浏览器支持的文件格式。
+
+`strWindowName`: 新窗口的名称。该字符串可以用来作为 超链接 或表单元素的目标属性值。字符串中不能含有空白字符。注意：strWindowName 并不是新窗口的标题。
+
+`strWindowFeatures`: 可选参数。是一个字符串值，这个值列出了将要打开的窗口的一些特性 (窗口功能和工具栏) 。 字符串中不能包含任何空白字符，特性之间用逗号分隔开。参考下文的 [位置和尺寸特征](<https://developer.mozilla.org/zh-CN/docs/Web/API/Window/open#Position> and size features)。
+
+## escape,encodeURI,encodeURIComponent 有什么区别
+
+[《escape,encodeURI,encodeURIComponent 有什么区别?》](https://www.zhihu.com/question/21861899)
+
+# BOM 规范
 
 缺少事实上的规范导致 BOM 有很多问题，因为浏览器提供商会按照各自的想法随意去扩展它。W3C 为了把浏览器中，JavaScript 最基本的部分标准化，已经将 BOM 的主要方面纳入了 HTML5 的规范中。
 
-### Window 对象
+## Window 对象
 
 - BOM 的核心对象是 window，它表示浏览器的一个实例。在浏览器中，window 对象有双重角色，
 - 它既是通过 JavaScript 访问浏览器窗口的一个接口，又是 ECMAScript 规定的 **Global 对象**。
 - 这意味着在网页中定义的任何一个对象、变量和函数，都以 window 作为其 Global 对象，因此有权访问 isNaN()、isFinite()、parseInt()、parseFloat() 等方法。
 
-### 全局变量与 Windows 对象属性的差别
+## 全局变量与 Windows 对象属性的差别
 
 - 抛开全局变量会成为 window 对象的属性不谈，定义全局变量与在 window 对象上直接定义属性还是有一点差别：
 - 全局变量不能通过 delete 运算符删除，而直接在 window 对象上的定义的属性可以
 
-### window.open()/close 方法
+## window.open()/close 方法
 
 - open 方法的四个参数：可以接收 4 个参数：要加载的 URL、窗口目标、一个 特性 字符 串、 一个表示新页面是否取代浏览器历史记录中当前加载页面的布尔值，后两个参数有很大的兼容性问题
 - close() 方法仅适用于通过 window.open() 打开的弹出窗口。对于浏览器的主窗口，如果没有得到用户的允许是不能关闭它的。
@@ -337,7 +440,8 @@ JSON 中允许的值：
   - Cross-worker/document messaging (参见上面两个入口, 还有 [`Worker.postMessage()`](https://developer.mozilla.org/zh-CN/docs/Web/API/Worker/postMessage), [`Worker.onmessage`](https://developer.mozilla.org/zh-CN/docs/Web/API/Worker/onmessage), [`ServiceWorkerGlobalScope.onmessage`](https://developer.mozilla.org/zh-CN/docs/Web/API/ServiceWorkerGlobalScope/onmessage), 等等.)
   - [Broadcast channels](https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API) (参见 [`Broadcastchannel.postMessage()`](https://developer.mozilla.org/zh-CN/docs/Web/API/Broadcastchannel/postMessage)) 和 [`BroadcastChannel.onmessage`](https://developer.mozilla.org/zh-CN/docs/Web/API/BroadcastChannel/onmessage)).
   - WebRTC data channels (参见 [`RTCDataChannel.onmessage`](https://developer.mozilla.org/zh-CN/docs/Web/API/RTCDataChannel/onmessage)).
-- 该事件包含 5 个只读属性：
+
+该事件包含 5 个只读属性：
 
   |    data     | 包含任意字符串数据，由原始脚本发送                           |
   | :---------: | ------------------------------------------------------------ |
@@ -346,8 +450,9 @@ JSON 中允许的值：
   |   source    | 原始文件的窗口的引用。更确切地说，它是一个 [WindowProxy对象](http://www.whatwg.org/specs/web-apps/current-work/multipage/browsers.html#windowproxy)。 |
   |    ports    | [`MessagePort`](https://developer.mozilla.org/zh-CN/docs/Web/API/MessagePort) 对象数组，表示消息正通过特定通道（数据通道）发送的相关端口（适用于通道消息传输或者向一个共享线程（shared work ）发送消息时）。 |
 
-- 在跨文档通信和通道通信中，`lastEventId` 的值一般是个空字符串；`lastEventId` 应用在服务器端发送事件上。发送信息中如果没有 ports, 则 `ports` 属性值就是个长度为 0 的数组。
-- `MessageEvent` 继承 DOM[事件接口](http://dvcs.w3.org/hg/domcore/raw-file/tip/Overview.html#interface-event)，且属性共享。然而，通信事件并没有冒泡，不能取消，也没有默认行为。
+在跨文档通信和通道通信中，`lastEventId` 的值一般是个空字符串；`lastEventId` 应用在服务器端发送事件上。发送信息中如果没有 ports, 则 `ports` 属性值就是个长度为 0 的数组。
+
+`MessageEvent` 继承 DOM[事件接口](http://dvcs.w3.org/hg/domcore/raw-file/tip/Overview.html#interface-event)，且属性共享。然而，通信事件并没有冒泡，不能取消，也没有默认行为。
 
 ## 获取窗口引用
 
