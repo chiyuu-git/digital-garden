@@ -74,6 +74,111 @@ if (a + b == 0.3){          // 不要做这样的测试！
 
 注意：MIN_VALUE 表示最接近 0 的正数，而不是最小的数。最小的数是 －Number.MAX_VALUE
 
+### 运算时发生了什么？
+
+首先，计算机无法直接对十进制的数字进行运算，这是硬件物理特性已经决定的。这样运算就分成了两个部分：**先按照 IEEE 754 转成相应的二进制，然后对阶运算**
+
+按照这个思路分析一下 0.1 + 0.2 的运算过程
+
+#### 进制转换
+
+0.1 和 0.2 转换成二进制后会无限循环
+
+apache
+
+复制代码
+
+`0.1 -> 0.0001100110011001...(无限循环) 0.2 -> 0.0011001100110011...(无限循环)`
+
+但是由于 IEEE 754 尾数位数限制，需要将后面多余的位截掉（本文借助这个 [网站](https://link.juejin.cn?target=https%3A%2F%2Fbabbage.cs.qc.cuny.edu%2FIEEE-754.old%2FDecimal.html "https://babbage.cs.qc.cuny.edu/IEEE-754.old/Decimal.html") 直观展示浮点数在内存中的二进制表示）
+
+0.1
+
+![](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2018/9/16/165e176158caf0ba~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+
+0.2
+
+![](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2018/9/16/165e176237c96972~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+
+这样在进制之间的转换中精度已经损失
+
+这里还有一个小知识点
+
+**那为什么 x=0.1 能得到 0.1？**
+
+这是因为这个 0.1 并不是真正的 0.1。这不是废话吗？别急，听我解释
+
+标准中规定尾数 f 的固定长度是 52 位，再加上省略的一位，这 53 位是 JS 精度范围。它最大可以表示 2^53(9007199254740992), 长度是 16，所以可以使用 toPrecision(16) 来做精度运算，超过的精度会自动做凑整处理
+
+reasonml
+
+复制代码
+
+`0.10000000000000000555.toPrecision(16) // 返回 0.1000000000000000，去掉末尾的零后正好为 0.1 // 但来一个更高的精度： 0.1.toPrecision(21) = 0.100000000000000005551`
+
+这个就是为什么 0.1 可以等于 0.1 的原因。好的，继续
+
+#### 对阶运算
+
+由于指数位数不相同，运算时需要对阶运算 这部分也可能产生精度损失
+
+按照上面两步运算（包括两步的精度损失），最后的结果是
+
+apache
+
+复制代码
+
+`0.0100110011001100110011001100110011001100110011001100`
+
+结果转换成十进制之后就是 0.30000000000000004，这样就有了前面的“秀”操作：0.1 + 0.2 != 0.3
+
+所以：
+
+**精度损失可能出现在进制转化和对阶运算过程中**
+
+**精度损失可能出现在进制转化和对阶运算过程中**
+
+**精度损失可能出现在进制转化和对阶运算过程中**
+
+只要在这两步中产生了精度损失，计算结果就会出现偏差
+
+### 怎么解决精度问题？
+
+#### 将数字转成整数
+
+这是最容易想到的方法，也相对简单
+
+```js
+function add(num1, num2) {
+ const num1Digits = (num1.toString().split('.')[1] || '').length;
+ const num2Digits = (num2.toString().split('.')[1] || '').length;
+ const baseNum = Math.pow(10, Math.max(num1Digits, num2Digits));
+ return (num1 * baseNum + num2 * baseNum) / baseNum;
+}
+```
+
+但是这种方法对大数支持的依然不好
+
+#### 三方库
+
+这个是比较全面的做法，推荐 2 个我平时接触到的库
+
+Math.js
+
+专门为 JavaScript 和 Node.js 提供的一个广泛的数学库。支持数字，大数字 (超出安全数的数字)，复数，分数，单位和矩阵。 功能强大，易于使用。
+
+官网：[mathjs.org/](https://link.juejin.cn?target=http%3A%2F%2Fmathjs.org%2F "http://mathjs.org/")
+
+GitHub：[github.com/josdejong/m…](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fjosdejong%2Fmathjs "https://github.com/josdejong/mathjs")
+
+big.js
+
+官网：[mikemcl.github.io/big.js](https://link.juejin.cn?target=http%3A%2F%2Fmikemcl.github.io%2Fbig.js "http://mikemcl.github.io/big.js")
+
+GitHub：[github.com/MikeMcl/big…](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2FMikeMcl%2Fbig.js%2F "https://github.com/MikeMcl/big.js/")
+
+这几个类库都很牛逼，可以应对各种各样的需求，不过很多时候，一个函数能解决的问题不需要引用一个类库来解决。
+
 # Number 构造函数
 
 `Number` 对象主要用于创建一个数值，如果参数无法被转换为数字，则返回 [`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN)。
@@ -555,6 +660,169 @@ NaN 乘以 `POSITIVE_INFINITY` 为 NaN。
 
 含有 NaN 的算数表达式
 
+# Math 对象
+
+Math 属于一个工具类，它不需要我们创建对象，它里边封装了属性运算相关的常量和方法
+
+虽然是大写的，但是不是一个构造函数 @@@
+
+我们可以直接使用它来进行数学运算相关的操作
+
+## 属性
+
+### Math.LN10
+
+10 的自然对数, 约等于 2.303.
+
+### Math.PI
+
+常量，圆周率
+
+其他属性都是常量
+
+## 方法
+
+### 隐式转换
+
+调用 Number()
+
+如果有任一参数不能被转换为数值，则结果为 NaN，Math 全部方法均是如此
+
+### Math.abs()
+
+绝对值运算
+
+### Math.ceil()
+
+天花板
+
+向上取整
+
+无论正负非整数一定变大
+
+### Math.floor()
+
+向下取整
+
+无论正负非整数一定变小
+
+```js
+Math.floor(-2.5) // -3
+```
+
+### Math.round()
+
+四舍五入取整
+
+### Math.random()
+
+生成一个 0-1 之间的随机数
+
+生成一个 x-y 之间的随机数
+
+```js
+Math.round(Math.random()*(y-x)+x);
+```
+
+### Math.pow(x,y)
+
+求 x 的 y 次幂
+
+### Math.log()
+
+返回一个数的自然对数（log~e~， 即 ln）。
+
+### Math.sqrt()
+
+对一个数进行开方
+
+### Math.max()
+
+求多个数中最大值
+
+**参数**
+
+- **value1, value2, ...** 一组数值
+
+**返回值**
+
+- 返回给定的一组数字中的最大值。
+- 如果给定的参数中至少有一个参数无法被转换成数字，则会返回 [`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN)。
+- 如果没有参数，则结果为 - [`Infinity`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Infinity)。
+
+  ```js
+  Math.max(10, 20);   //  20
+  Math.max(-10, -20); // -10
+  Math.max(-10, 20);  //  20
+  ```
+
+### Math.min()
+
+求多个数中的最小值
+
+### Math.sin/cos/tan()
+
+需要注意的是三角函数（`sin()`, `cos()`, `tan()`,`asin()`, `acos()`, `atan()`, `atan2()` 是以弧度返回值的。可以通过除法（`Math.PI / 180`）把弧度转换为角度，也可以通过其他方法来转换。
+
+### ES6 新增
+
+### Math.cbrt()
+
+`Math.cbrt` 方法用于计算一个数的立方根。
+
+### Math.sign()
+
+`Math.sign` 方法用来判断一个数到底是正数、负数、还是零。对于非数值，会先将其转换为数值。
+
+### Math.trunc()
+
+`Math.trunc` 方法用于去除一个数的小数部分，返回整数部分。
+
+```js
+Math.trunc(4.1) // 4
+Math.trunc(4.9) // 4
+Math.trunc(-4.1) // -4
+Math.trunc(-4.9) // -4
+Math.trunc(-0.1234) // -0
+```
+
+对于非数值，`Math.trunc` 内部使用 `Number` 方法将其先转为数值。
+
+```js
+Math.trunc('123.456') // 123
+Math.trunc(true) //1
+Math.trunc(false) // 0
+Math.trunc(null) // 0
+```
+
+对于空值和无法截取整数的值，返回 `NaN`。
+
+```js
+Math.trunc(NaN);      // NaN
+Math.trunc('foo');    // NaN
+Math.trunc();         // NaN
+Math.trunc(undefined) // NaN
+```
+
+对于没有部署这个方法的环境，可以用下面的代码模拟。
+
+```js
+Math.trunc = Math.trunc || function(x) {
+  return x < 0 ? Math.ceil(x) : Math.floor(x);
+};
+```
+
+#### 与已有 API 的区别
+
+简单的说，`parseInt()` 主要用于将字符串转换成整数，所以哪怕目标本身就是一个数，也极有可能是先转换成字符串再来处理的，这也能解释科学计数法的结果
+
+`Math.trunc` 是直接对数值进行处理，理论上来说会快一些也更准确一些。可惜有些浏览器不支持。所以现在用 `Math.floor`、`Math.ceil` 的比较多，但是要注意处理负数。
+
+```js
+Math.floor(-5.1) // -6
+Math.ceil(-5.1) // -5
+```
+
 # 进制
 
 Number('0b111') // 7
@@ -719,169 +987,6 @@ let binary = parseInt(hexadecimal).toString(2)
 console.log(binary) // '1111'
 ```
 
-# Math 对象
-
-Math 属于一个工具类，它不需要我们创建对象，它里边封装了属性运算相关的常量和方法
-
-虽然是大写的，但是不是一个构造函数 @@@
-
-我们可以直接使用它来进行数学运算相关的操作
-
-## 属性
-
-### Math.LN10
-
-10 的自然对数, 约等于 2.303.
-
-### Math.PI
-
-常量，圆周率
-
-其他属性都是常量
-
-## 方法
-
-### 隐式转换
-
-调用 Number()
-
-如果有任一参数不能被转换为数值，则结果为 NaN，Math 全部方法均是如此
-
-### Math.abs()
-
-绝对值运算
-
-### Math.ceil()
-
-天花板
-
-向上取整
-
-无论正负非整数一定变大
-
-### Math.floor()
-
-向下取整
-
-无论正负非整数一定变小
-
-```js
-Math.floor(-2.5) // -3
-```
-
-### Math.round()
-
-四舍五入取整
-
-### Math.random()
-
-生成一个 0-1 之间的随机数
-
-生成一个 x-y 之间的随机数
-
-```js
-Math.round(Math.random()*(y-x)+x);
-```
-
-### Math.pow(x,y)
-
-求 x 的 y 次幂
-
-### Math.log()
-
-返回一个数的自然对数（log~e~， 即 ln）。
-
-### Math.sqrt()
-
-对一个数进行开方
-
-### Math.max()
-
-求多个数中最大值
-
-**参数**
-
-- **value1, value2, ...** 一组数值
-
-**返回值**
-
-- 返回给定的一组数字中的最大值。
-- 如果给定的参数中至少有一个参数无法被转换成数字，则会返回 [`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN)。
-- 如果没有参数，则结果为 - [`Infinity`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Infinity)。
-
-  ```js
-  Math.max(10, 20);   //  20
-  Math.max(-10, -20); // -10
-  Math.max(-10, 20);  //  20
-  ```
-
-### Math.min()
-
-求多个数中的最小值
-
-### Math.sin/cos/tan()
-
-需要注意的是三角函数（`sin()`, `cos()`, `tan()`,`asin()`, `acos()`, `atan()`, `atan2()` 是以弧度返回值的。可以通过除法（`Math.PI / 180`）把弧度转换为角度，也可以通过其他方法来转换。
-
-### ES6 新增
-
-### Math.cbrt()
-
-`Math.cbrt` 方法用于计算一个数的立方根。
-
-### Math.sign()
-
-`Math.sign` 方法用来判断一个数到底是正数、负数、还是零。对于非数值，会先将其转换为数值。
-
-### Math.trunc()
-
-`Math.trunc` 方法用于去除一个数的小数部分，返回整数部分。
-
-```js
-Math.trunc(4.1) // 4
-Math.trunc(4.9) // 4
-Math.trunc(-4.1) // -4
-Math.trunc(-4.9) // -4
-Math.trunc(-0.1234) // -0
-```
-
-对于非数值，`Math.trunc` 内部使用 `Number` 方法将其先转为数值。
-
-```js
-Math.trunc('123.456') // 123
-Math.trunc(true) //1
-Math.trunc(false) // 0
-Math.trunc(null) // 0
-```
-
-对于空值和无法截取整数的值，返回 `NaN`。
-
-```js
-Math.trunc(NaN);      // NaN
-Math.trunc('foo');    // NaN
-Math.trunc();         // NaN
-Math.trunc(undefined) // NaN
-```
-
-对于没有部署这个方法的环境，可以用下面的代码模拟。
-
-```js
-Math.trunc = Math.trunc || function(x) {
-  return x < 0 ? Math.ceil(x) : Math.floor(x);
-};
-```
-
-#### 与已有 API 的区别
-
-简单的说，`parseInt()` 主要用于将字符串转换成整数，所以哪怕目标本身就是一个数，也极有可能是先转换成字符串再来处理的，这也能解释科学计数法的结果
-
-`Math.trunc` 是直接对数值进行处理，理论上来说会快一些也更准确一些。可惜有些浏览器不支持。所以现在用 `Math.floor`、`Math.ceil` 的比较多，但是要注意处理负数。
-
-```js
-Math.floor(-5.1) // -6
-Math.ceil(-5.1) // -5
-```
-
 # 位运算符 (Bitwise operators)
 
 ## 基础
@@ -983,6 +1088,8 @@ toInt32(Math.pow(2, 32) - 1) // -1
 所有的按位操作符的操作数都会被转成 **补码**（two's complement）形式的有符号 32 位整数。
 
 正数的补码就是原码，负数的补码为符号位不变，其余位取反后加一，如 2 的补码为 `0000 0010`，-2 的补码为 `1111 1110`，补码保证了当一个数是正数时，其最左的比特位是 0，当一个数是负数时，其最左的比特位是 1。因此，最左边的比特位被称为符号位，关于补码的作用可以看看阮一峰老师 [这篇文章](http://www.ruanyifeng.com/blog/2009/08/twos_complement.html)，个人觉得通俗易懂。
+
+> [2.7 为什么 0.1 + 0.2 不等于 0.3 ？ | 小林coding](https://www.xiaolincoding.com/os/1_hardware/float.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B4%9F%E6%95%B0%E8%A6%81%E7%94%A8%E8%A1%A5%E7%A0%81%E8%A1%A8%E7%A4%BA)
 
 反转比特位即该数值进行’非‘位运算，也即该数值的反码。
 
@@ -1326,24 +1433,6 @@ https://zhuanlan.zhihu.com/p/97121092
 4. 有宽度，有高度，11
 
 可以把 4 个 if else 转换为 switch
-
-# Unicode 编码
-
-## charCodeAt()
-
-- 根据索引获取指定的 **字符编码**
-- A 65 Z 90
-- a 97 z 122
-
-## fromCharCode()
-
-- 根据字符编码获取字符
-
-## 字符的 Unicode 表示法
-
-## codePointAt()
-
-## String.fromCharCode()
 
 # FAQ
 
