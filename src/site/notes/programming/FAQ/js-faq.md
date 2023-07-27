@@ -7,19 +7,19 @@
 
 | File                                                                           | overview              |
 | ------------------------------------------------------------------------------ | --------------------- |
-| [[programming/font-end/primitive/es/es-string\|es-string]]                  | [[programming/font-end/primitive/es/es-string#faq\|es-string#faq]]     |
-| [[programming/font-end/primitive/es/es-date\|es-date]]                      | [[programming/font-end/primitive/es/es-date#faq\|es-date#faq]]       |
 | [[programming/font-end/primitive/browser-api/dom-selection\|dom-selection]] | [[programming/font-end/primitive/browser-api/dom-selection#faq\|dom-selection#faq]] |
-| [[programming/font-end/primitive/es/es-object\|es-object]]                  | [[programming/font-end/primitive/es/es-object#faq\|es-object#faq]]     |
-| [[programming/font-end/primitive/es/es-async-2\|es-async-2]]                | [[programming/font-end/primitive/es/es-async-2#faq\|es-async-2#faq]]    |
-| [[programming/font-end/primitive/es/es-array\|es-array]]                    | [[programming/font-end/primitive/es/es-array#faq\|es-array#faq]]      |
+| [[programming/font-end/primitive/es/es-date\|es-date]]                      | [[programming/font-end/primitive/es/es-date#faq\|es-date#faq]]       |
+| [[programming/font-end/primitive/es/es-proto\|es-proto]]                    | [[programming/font-end/primitive/es/es-proto#faq\|es-proto#faq]]      |
+| [[programming/font-end/primitive/es/es-string\|es-string]]                  | [[programming/font-end/primitive/es/es-string#faq\|es-string#faq]]     |
+| [[programming/font-end/primitive/browser-api/dom-event\|dom-event]]         | [[programming/font-end/primitive/browser-api/dom-event#faq\|dom-event#faq]]     |
 | [[programming/font-end/primitive/browser-api/dom-interface\|dom-interface]] | [[programming/font-end/primitive/browser-api/dom-interface#faq\|dom-interface#faq]] |
-| [[programming/font-end/primitive/browser-api/bom\|bom]]                     | [[programming/font-end/primitive/browser-api/bom#faq\|bom#faq]]           |
+| [[programming/font-end/primitive/es/es-array\|es-array]]                    | [[programming/font-end/primitive/es/es-array#faq\|es-array#faq]]      |
+| [[programming/font-end/primitive/es/es-async-2\|es-async-2]]                | [[programming/font-end/primitive/es/es-async-2#faq\|es-async-2#faq]]    |
 | [[programming/font-end/primitive/es/es-basic\|es-basic]]                    | [[programming/font-end/primitive/es/es-basic#faq\|es-basic#faq]]      |
 | [[programming/font-end/primitive/es/es-number\|es-number]]                  | [[programming/font-end/primitive/es/es-number#faq\|es-number#faq]]     |
 | [[programming/font-end/primitive/es/es-regexp\|es-regexp]]                  | [[programming/font-end/primitive/es/es-regexp#faq\|es-regexp#faq]]     |
-| [[programming/font-end/primitive/es/es-proto\|es-proto]]                    | [[programming/font-end/primitive/es/es-proto#faq\|es-proto#faq]]      |
-| [[programming/font-end/primitive/browser-api/dom-event\|dom-event]]         | [[programming/font-end/primitive/browser-api/dom-event#faq\|dom-event#faq]]     |
+| [[programming/font-end/primitive/es/es-object\|es-object]]                  | [[programming/font-end/primitive/es/es-object#faq\|es-object#faq]]     |
+| [[programming/font-end/primitive/browser-api/bom\|bom]]                     | [[programming/font-end/primitive/browser-api/bom#faq\|bom#faq]]           |
 
 { .block-language-dataview}
 
@@ -952,11 +952,11 @@ this 的指向问题，因为涉及到了定时器
 
 关键是意识到真正作为回调函数的是 debounce 函数的返回值，所以这个函数有着正确的 this 指向和传入的参数
 
-## 需求
+## * 需求
 
 ### 立即触发
 
-- 希望第一次可以立即触发函数，如果频繁触发，则需要在停止触发 n 秒后才可以继续触发
+希望第一次可以立即触发函数，如果频繁触发，则需要在停止触发 n 秒后才可以继续触发
 
   ```js
   function debounce(func, wait, immediate) {
@@ -989,7 +989,7 @@ this 的指向问题，因为涉及到了定时器
   }
   ```
 
-- 利用定时器的返回值的特性，减少变量
+利用定时器的返回值的特性，减少变量
 
   ```js
   function debounce(func, wait, immediate) {
@@ -1017,13 +1017,13 @@ this 的指向问题，因为涉及到了定时器
       }
     }
   }
-  ```
+```
 
 ### 取消防抖
 
-- 希望能取消 debounce 函数，比如说我 debounce 的时间间隔是 10 秒钟，immediate 为 true，这样的话，我只有等 10 秒后才能重新触发事件，现在我希望有一个按钮，点击后，取消防抖，这样我再去触发，就可以又立刻执行啦
+希望能取消 debounce 函数，比如说我 debounce 的时间间隔是 10 秒钟，immediate 为 true，这样的话，我只有等 10 秒后才能重新触发事件，现在我希望有一个按钮，点击后，取消防抖，这样我再去触发，就可以又立刻执行啦
 
-  ```js
+```js
   function debounce(func, wait, immediate) {
   
     var timeout, result;
@@ -1056,9 +1056,9 @@ this 的指向问题，因为涉及到了定时器
   
     return debounced;
   }
-  ```
+```
 
-- 使用
+使用
 
   ```js
   var count = 1;
@@ -1093,8 +1093,12 @@ this 的指向问题，因为涉及到了定时器
 
 1. 搜索框输入查询，如果用户一直在输入中，没有必要不停地调用去请求服务端接口，等用户停止输入的时候，再调用，设置一个合适的时间间隔，有效减轻服务端压力。
 2. 表单验证
-3. 按钮提交事件。
+3. 按钮提交事件
 4. 浏览器窗口缩放，resize 事件等。
+
+按钮的防抖都是一次性的结果, 不希望多次
+
+但是双十一的购买按钮, 不会是防抖, 只会是节流, 一直点击直到可以购买
 
 # 节流
 
