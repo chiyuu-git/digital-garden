@@ -10,16 +10,16 @@
 | [[programming/font-end/primitive/browser-api/dom-selection\|dom-selection]] | [[programming/font-end/primitive/browser-api/dom-selection#faq\|dom-selection#faq]] |
 | [[programming/font-end/primitive/es/es-date\|es-date]]                      | [[programming/font-end/primitive/es/es-date#faq\|es-date#faq]]       |
 | [[programming/font-end/primitive/es/es-proto\|es-proto]]                    | [[programming/font-end/primitive/es/es-proto#faq\|es-proto#faq]]      |
-| [[programming/font-end/primitive/es/es-string\|es-string]]                  | [[programming/font-end/primitive/es/es-string#faq\|es-string#faq]]     |
 | [[programming/font-end/primitive/browser-api/dom-event\|dom-event]]         | [[programming/font-end/primitive/browser-api/dom-event#faq\|dom-event#faq]]     |
 | [[programming/font-end/primitive/browser-api/dom-interface\|dom-interface]] | [[programming/font-end/primitive/browser-api/dom-interface#faq\|dom-interface#faq]] |
-| [[programming/font-end/primitive/es/es-array\|es-array]]                    | [[programming/font-end/primitive/es/es-array#faq\|es-array#faq]]      |
 | [[programming/font-end/primitive/es/es-async-2\|es-async-2]]                | [[programming/font-end/primitive/es/es-async-2#faq\|es-async-2#faq]]    |
 | [[programming/font-end/primitive/es/es-basic\|es-basic]]                    | [[programming/font-end/primitive/es/es-basic#faq\|es-basic#faq]]      |
-| [[programming/font-end/primitive/es/es-number\|es-number]]                  | [[programming/font-end/primitive/es/es-number#faq\|es-number#faq]]     |
 | [[programming/font-end/primitive/es/es-regexp\|es-regexp]]                  | [[programming/font-end/primitive/es/es-regexp#faq\|es-regexp#faq]]     |
 | [[programming/font-end/primitive/es/es-object\|es-object]]                  | [[programming/font-end/primitive/es/es-object#faq\|es-object#faq]]     |
 | [[programming/font-end/primitive/browser-api/bom\|bom]]                     | [[programming/font-end/primitive/browser-api/bom#faq\|bom#faq]]           |
+| [[programming/font-end/primitive/es/es-array\|es-array]]                    | [[programming/font-end/primitive/es/es-array#faq\|es-array#faq]]      |
+| [[programming/font-end/primitive/es/es-string\|es-string]]                  | [[programming/font-end/primitive/es/es-string#faq\|es-string#faq]]     |
+| [[programming/font-end/primitive/es/es-number\|es-number]]                  | [[programming/font-end/primitive/es/es-number#faq\|es-number#faq]]     |
 
 { .block-language-dataview}
 
@@ -33,14 +33,13 @@ https://github.com/lydiahallie/javascript-questions
 
 # Polyfill
 
-## Call() apply() bind()
+## Call()
 
-### Call()
+call() 方法在使用一个指定的 this 值和若干个指定的参数值的前提下调用某个函数或方法。
 
-- call() 方法在使用一个指定的 this 值和若干个指定的参数值的前提下调用某个函数或方法。
-- 让某个函数临时成为指定的 this 的方法，并且进行调用
+让某个函数临时成为指定的 this 的方法，并且进行调用
 
-  ```js
+```js
   var foo = {
       value: 1
   };
@@ -50,34 +49,35 @@ https://github.com/lydiahallie/javascript-questions
   }
   
   bar.call(foo); // 1
-  ```
+```
 
-- call 改变了 this 的指向，指向到 foo
-- 同时，bar 函数执行了
+call 改变了 this 的指向，指向到 foo
 
-#### 模拟实现第一步
+同时，bar 函数执行了
+
+### 模拟实现第一步
 
 1. 将函数设为对象的属性
 2. 执行该函数
 3. 删除该函数
 
-- 改造上面的例子
+改造上面的例子
 
-  ```js
+```js
   // 第一步
   foo.fn = bar
   // 第二步
   foo.fn()
   // 第三步
   delete foo.fn
-  ```
+```
 
-- 完整版 myCall 函数
+完整版 myCall 函数
 
-  ```js
+```js
   Function.prototype.myCall = function(context){
     // context是传统意义上的this，一个obj
-    // 这里的this是要执行的函数
+    // 这里的this是要执行的函数, 因为 mycall 是定义在原型上的
     // foo.fn = bar
     context.fn = this 
     context.fn()
@@ -93,12 +93,13 @@ https://github.com/lydiahallie/javascript-questions
   }
   
   bar.myCall(foo) // 1
-  ```
+```
 
-#### 模拟实现第二步
+### 模拟实现第二步
 
-- call 函数还能给定参数执行函数，但是，传入的参数并不确定，并且传入的参数要再传入到调用的函数中
-- 两种错误的做法
+call 函数还能给定参数执行函数，但是，传入的参数并不确定，并且传入的参数要再传入到调用的函数中
+
+两种错误的做法
 
   ```js
   // 将数组里的元素作为多个参数放进函数的形参里
@@ -109,7 +110,7 @@ https://github.com/lydiahallie/javascript-questions
   context.fn(arguments)
   ```
 
-- 使用 ES6 的做法，使用扩展运算符即可解决
+使用 ES6 的做法，使用扩展运算符即可解决
 
   ```js
   Function.prototype.myCall = function(context,...rest){
@@ -132,76 +133,18 @@ https://github.com/lydiahallie/javascript-questions
   bar.myCall(foo,1,2,3) // 1
   ```
 
-- 不过 call 是 ES3 的方法，模拟实现就别用 ES6 了
+不过 call 是 ES3 的方法，模拟实现就别用 ES6 了, 可以使用 eval, 不深究
 
-**eval()**
+### 模拟实现第三步
 
-截取 arguments 的参数部分
+两个注意点
 
-```js
-  // 以上个例子为例，此时的arguments为：
-  // arguments = {
-  //      0: foo,
-  //      1: 'kevin',
-  //      2: 18,
-  //      length: 3
-  // }
-  // 因为arguments是类数组对象，所以可以用for循环
-  var args = [];
-  for(var i = 1, len = arguments.length; i < len; i++) {
-      args.push('arguments[' + i + ']');
-  }
-  
-  // 执行后 args为 ["arguments[1]", "arguments[2]", "arguments[3]"]
-```
+- this 参数可以传 null，当为 null 的时候，视为指向 window
+- 函数是可以有返回值的！
 
-通过 eval 还原参数
+最终版完整代码
 
 ```js
-  eval('context.fn(' + args +')')
-  // context.fn(arguments[1],arguments[2],arguments[3])
-``` 
-
-- 这里 args 会自动调用 Array.toString() 这个方法，相当于 `args.join(',')`
-
-  > 既然最终要执行的是字符串那为什么不使用字符串拼接呢？因为参数之间有个逗号，使用数组可以不用考虑去掉尾逗号
-
-- eval() 版完整代码
-
-  ```js
-  Function.prototype.myCall = function(context){
-    const args = []
-    context.fn = this
-    for (let i = 1; i < arguments.length; i++) {
-      args.push('arguments['+i+']')
-    }
-    eval('context.fn('+args+')')
-    delete context.fn
-  }
-  
-  const foo = {
-    value:1,
-  }
-  
-  function bar(a,b){
-    console.log(this.value)
-    console.log(a,b) // this,1
-  }
-  
-  bar.myCall(foo,1,{b:2}) // 1
-
-
-```
-
-#### 模拟实现第三步
-
-**两个注意点**
-
-- **this 参数可以传 null，当为 null 的时候，视为指向 window**
-- **函数是可以有返回值的！**
-- 最终版完整代码
-
-  ```js
   // 第三版
   Function.prototype.call2 = function (context) {
       // null
@@ -244,9 +187,9 @@ https://github.com/lydiahallie/javascript-questions
   //    name: 'kevin',
   //    age: 18
   // }
-  ```
+```
 
-### Apply()
+## Apply()
 
  ```js
   Function.prototype.apply = function (context, arr) {
@@ -270,11 +213,11 @@ https://github.com/lydiahallie/javascript-questions
   }
   ```
 
-### Bind()
+## Bind()
 
  bind() 方法会创建一个新函数。当这个新函数被调用时，bind() 的第一个参数将作为它运行时的 this，之后的一序列参数将会在传递的实参前传入作为它的参数。
 
-#### 返回函数的实现
+### 返回函数的实现
 
  返回一个函数
 
@@ -301,7 +244,7 @@ https://github.com/lydiahallie/javascript-questions
   bar.bind2(foo)
   ```
 
-#### 分段传参的实现
+### 分段传参的实现
 
  ```js
   var foo = {
@@ -322,8 +265,9 @@ https://github.com/lydiahallie/javascript-questions
   // 18
   ```
 
-- 函数需要传 name 和 age 两个参数，竟然还可以在 bind 的时候，只传一个 name，在执行返回的函数的时候，再传另一个参数 age!
-- 我们用 arguments 进行处理：
+函数需要传 name 和 age 两个参数，竟然还可以在 bind 的时候，只传一个 name，在执行返回的函数的时候，再传另一个参数 age!
+
+我们用 arguments 进行处理：
 
   ```js
   // 第二版
@@ -337,17 +281,17 @@ https://github.com/lydiahallie/javascript-questions
   }
   ```
 
-+ 其实就是一个简单的函数柯里化
+其实就是一个简单的函数柯里化
 
-#### 构造函数效果的实现
+### 构造函数效果的实现
 
-- 因为 bind 还有一个特点，就是
+因为 bind 还有一个特点，就是
 
-  > 一个绑定函数也能使用 new 操作符创建对象：这种行为就像把原函数当成构造器。提供的 this 值被忽略，同时调用时的参数被提供给模拟函数。
+> 一个绑定函数也能使用 new 操作符创建对象：这种行为就像把原函数当成构造器。提供的 this 值被忽略，同时调用时的参数被提供给模拟函数。
 
-- 先来看一个例子
+先来看一个例子
 
-  ```js
+```js
   var value = 2;
   
   var foo = {
@@ -372,12 +316,13 @@ https://github.com/lydiahallie/javascript-questions
   console.log(obj.habit); // shopping
   console.log(obj.friend); // kevin
   
-  ```
+```
 
-- **注意：**尽管在全局和 foo 中都声明了 value 值，最后依然返回了 undefind，说明绑定的 this 失效了，如果大家了解 new 的模拟实现，就会知道这个时候的 this 已经指向了 obj。
-- 我们可以通过修改返回的函数的原型来实现，让我们写一下：
+**注意**: 尽管在全局和 foo 中都声明了 value 值，最后依然返回了 undefind，说明绑定的 this 失效了，如果大家了解 new 的模拟实现，就会知道这个时候的 this 已经指向了 obj。
 
-  ```js
+我们可以通过修改返回的函数的原型来实现，让我们写一下：
+
+```js
   // 第三版
   Function.prototype.bind2 = function (context) {
     var self = this;
@@ -392,13 +337,13 @@ https://github.com/lydiahallie/javascript-questions
     fBound.prototype = this.prototype;
     return fBound;
   }
-  ```
+```
 
-#### 构造函数效果的优化实现
+### 构造函数效果的优化实现
 
-- 但是在这个写法中，我们直接将 fBound.prototype = this.prototype，我们直接修改 fBound.prototype 的时候，也会直接修改绑定函数的 prototype。这个时候，我们可以通过一个空函数来进行中转：
+但是在这个写法中，我们直接将 fBound.prototype = this.prototype，我们直接修改 fBound.prototype 的时候，也会直接修改绑定函数的 prototype。这个时候，我们可以通过一个空函数来进行中转：
 
-  ```js
+```js
   Function.prototype.bind2 = function (context) {
   
       var self = this;
@@ -415,22 +360,23 @@ https://github.com/lydiahallie/javascript-questions
       fBound.prototype = new fNOP();
       return fBound;
   }
-  ```
+```
 
-+ 寄生构造函数
+寄生构造函数 [寄生组合式继承 (最理想)](../font-end/primitive/es/es-proto.md#寄生组合式继承%20(最理想))
 
-#### 三个小问题
+### 三个小问题
 
-- 在 MDN 中文版讲 bind 的模拟实现时，apply 这里的代码是：
+在 MDN 中文版讲 bind 的模拟实现时，apply 这里的代码是：
 
-  ```js
+```js
   self.apply(this instanceof self ? this : context || this, args.concat(bindArgs))
-  ```
+```
 
-  - 多了一个关于 context 是否存在的判断，然而这个是错误的！
-  - 举个例子：
+多了一个关于 context 是否存在的判断，然而这个是错误的！
 
-  ```js
+举个例子：
+
+```js
   var value = 2;
   var foo = {
       value: 1,
@@ -442,19 +388,21 @@ https://github.com/lydiahallie/javascript-questions
   }
   
   foo.bar() // 2
-  ```
+```
 
-  - 以上代码正常情况下会打印 2，如果换成了 context || this，这段代码就会打印 1！
-  - 所以这里不应该进行 context 的判断，大家查看 MDN 同样内容的英文版，就不存在这个判断！
-- **调用 bind 的不是函数咋办？**
+以上代码正常情况下会打印 2，如果换成了 context || this，这段代码就会打印 1！
 
-  ```js
+所以这里不应该进行 context 的判断，大家查看 MDN 同样内容的英文版，就不存在这个判断！
+
+调用 bind 的不是函数咋办？
+
+```js
   if (typeof this !== "function") {
     throw new Error("Function.prototype.bind - what is trying to be bound is not callable");
   }
-  ```
+```
 
-#### 最终代码
+### 最终代码
 
 ```js
   Function.prototype.bind2 = function (context) {
@@ -480,10 +428,11 @@ https://github.com/lydiahallie/javascript-questions
 
 ## New()
 
-- new 运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象类型之一
-- 先来看一个例子
+new 运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象类型之一
 
-  ```js
+先来看一个例子
+
+```js
   // Otaku 御宅族，简称宅
   function Otaku (name, age) {
       this.name = name;
@@ -508,12 +457,14 @@ https://github.com/lydiahallie/javascript-questions
   person.sayYourName(); // I am Kevin
   ```
 
-- 从这个例子中，我们可以看到，实例 person 可以：
-  - 访问到 Otaku 构造函数里的属性
-  - 访问到 Otaku.prototype 中的属性
-- 因为 new 是关键字，所以无法像 bind 函数一样直接覆盖，所以我们写一个函数，命名为 objectFactory，来模拟 new 的效果。用的时候是这样的：
+从这个例子中，我们可以看到，实例 person 可以：
 
-  ```js
+- 访问到 Otaku 构造函数里的属性
+- 访问到 Otaku.prototype 中的属性
+
+因为 new 是关键字，所以无法像 bind 函数一样直接覆盖，所以我们写一个函数，命名为 objectFactory，来模拟 new 的效果。用的时候是这样的：
+
+```js
   function Otaku () {
       ……
   }
@@ -522,14 +473,15 @@ https://github.com/lydiahallie/javascript-questions
   var person = new Otaku(……);
   // 使用 objectFactory
   var person = objectFactory(Otaku, ……)
-  ```
+```
 
 ### 初步实现
 
-- 因为 new 的结果是一个新对象，所以在模拟实现的时候，我们也要建立一个新对象，假设这个对象叫 obj，因为 obj 会具有 Otaku **构造函数里的属性**，想想经典继承的例子，我们可以使用 Otaku.apply(obj, arguments) 来给 obj 添加新的属性。
-- 在 JavaScript 深入系列第一篇中，我们便讲了原型与原型链，我们知道实例的 `__proto__ ` 属性会指向构造函数的 prototype，也正是因为建立起这样的关系，实例可以访问原型上的属性。
+因为 new 的结果是一个新对象，所以在模拟实现的时候，我们也要建立一个新对象，假设这个对象叫 obj，因为 obj 会具有 Otaku **构造函数里的属性**，想想经典继承的例子，我们可以使用 Otaku.apply(obj, arguments) 来给 obj 添加新的属性。
 
-  ```js
+在 JavaScript 深入系列第一篇中，我们便讲了原型与原型链，我们知道实例的 `__proto__ ` 属性会指向构造函数的 prototype，也正是因为建立起这样的关系，实例可以访问原型上的属性。
+
+```js
   // 第一版代码
   function objectFactory(Constructor,...args) {
       var obj = new Object(),
@@ -537,7 +489,7 @@ https://github.com/lydiahallie/javascript-questions
       Constructor.apply(obj, args)
       return obj;
   };
-  ```
+```
 
   1. 用 new Object() 的方式新建了一个对象 obj
   2. 取出第一个参数，就是我们要传入的构造函数。此外因为 shift 会修改原数组，所以 arguments 会被去除第一个参数
@@ -547,9 +499,9 @@ https://github.com/lydiahallie/javascript-questions
 
 ### 返回值效果实现
 
-- 接下来我们再来看一种情况，假如构造函数有返回值，举个例子：
+接下来我们再来看一种情况，假如构造函数有返回值，举个例子：
 
-  ```js
+```js
   function Otaku (name, age) {
       this.strength = 60;
       this.age = age;
@@ -566,10 +518,11 @@ https://github.com/lydiahallie/javascript-questions
   console.log(person.habit) // Games
   console.log(person.strength) // undefined
   console.log(person.age) // undefined
-  ```
+```
 
-- 在这个例子中，构造函数返回了一个对象，在实例 person 中只能访问返回的对象中的属性。而且还要注意一点，在这里我们是返回了一个对象，假如我们只是返回一个基本类型的值呢？
-- ```js
+在这个例子中，构造函数返回了一个对象，在实例 person 中只能访问返回的对象中的属性。而且还要注意一点，在这里我们是返回了一个对象，假如我们只是返回一个基本类型的值呢？
+
+```js
   function Otaku (name, age) {
       this.strength = 60;
       this.age = age;
@@ -583,12 +536,15 @@ https://github.com/lydiahallie/javascript-questions
   console.log(person.habit) // undefined
   console.log(person.strength) // 60
   console.log(person.age) // 18
-  ```
-- 结果完全颠倒过来，这次尽管有返回值，但是相当于没有返回值进行处理。
-- 所以我们还需要判断返回的值是不是一个对象，如果是一个对象，我们就返回这个对象，如果没有，我们该返回什么就返回什么。
-- 再来看第二版的代码，也是最后一版的代码：
+```
 
-  ```js
+结果完全颠倒过来，这次尽管有返回值，但是相当于没有返回值进行处理。
+
+所以我们还需要判断返回的值是不是一个对象，如果是一个对象，我们就返回这个对象，如果没有，我们该返回什么就返回什么。
+
+再来看第二版的代码，也是最后一版的代码：
+
+```js
   // 第二版的代码
   function objectFactory(Constructor,...args) {
       // var obj = new Object()
@@ -598,18 +554,17 @@ https://github.com/lydiahallie/javascript-questions
   		// obj 已经经过工厂模式的修改
       return typeof ret === 'object' ? ret : obj;
   };
-  ```
+```
 
 ### 面试题
 
-+ new 操作符默认返回 this，而不是 undefined
+new 操作符默认返回 this，而不是 undefined
 
-  ```js
+```js
   function A(){}
   A.prototype.a = 1
   console.log(new A().a)
-  
-  ```
+```
 
 # 工具函数
 
@@ -1555,59 +1510,6 @@ addOne(2)
 就会生成一个 window.exports 全局变量，你可以直接在浏览器命令行中打印该变量。
 
 此时在浏览器中，`typeof exports != 'undefined'` 的判断就会生效，然后 `exports._ = _`，然而在浏览器中，我们需要将 _ 挂载到全局变量上呐，所以在这里，我们还需要进行一个是否是 DOM 节点的判断。
-
-# NextTick
-
-因为 js 是单线程的，在 setData 之后，到底什么时候派发 nextTickReach 是可以有选择的
-
-1. data 真正更新之后马上 reach，此时框架控制的节点树都还没更新呢，别说是真实的 dom 树了
-2. 等框架控制的节点树更新完之后派发，对于 san 就是 changes 传导到了每个节点的 _update 方法之后，对于 vue 和 react 就是 vDom 更新完毕之后
-
-讨论的 issue：https://github.com/baidu/san/issues/141
-
-vue 最新的源码：https://github.com/vuejs/vue/blob/dev/dist/vue.js
-
-把 na 组件的插入操作放在 nextTick 中，可以延后执行 na 组件的插入操作，可以提升组件性能
-
-> san 的视图更新是异步的。组件数据变更后，将在下一个时钟周期更新视图。如果你修改了某些数据，想要在 DOM 更新后做某些事情，则需要使用 `nextTick` 方法。
->
-> san.dev.js 搜索 nextTick 即可
-
-只能是 attached 之后了，感觉是类似 FMP 的一个逻辑，可以 san 组件实例已经走到 attached 了，再插入 NA 组件本身
-
-用 cts 实例测试发现好几个 cover-view 都 attached 了 之后，此时很多 h5 的内容都已经上屏了，才进去第一个 nextTick
-
-> 假如我有 1w 个 na 组件，也会在全部 attached 之后才到 nextTick 的轮次吗？感觉有可能哦
->
-> 从上面的表现来看，我们这里的 nextTick 不就是宏任务的吗？不一定哦，因为 debugger 是可以挂起 js 线程的，alert 会占用 js 线程，并没有让给 gui，反而是 debugger 是让给了 gui 的
->
-> 可以测试一下 nextTick 的微任务和宏任务了，无论是微任务还是宏任务，反正端能力都会异步的，除非是宏任务，可以做到保证在 h5 的组件渲染完成
->
-> 我们现在 setImmediate 和 messageChannel 都是有的，所以是宏任务
-
-san 的数据更新操作是异步的，会被打包在一个 nextTick 中。因此我们再使用 nextTick 可以获取到数据更新的 nextTick 之后的 data，微任务队列
-
-还有一个点就是 dom 的更新和 UI 渲染是两个概念，因为 js 线程和渲染线程是互斥的，所以 UI 渲染之前，dom 就已经是更新完的了。
-
-> 这就涉及到我们 dom api 获取的究竟是？肯定是从 dom 树入手的呀，render 树究竟是怎么样的，确实有部分 dom api 是从 render 树 入手的，但是有部分的 dom api 会强制渲染，这个时候会发生什么？
-
-如果是 promise 这种微任务实现，当我们在 nextTick 中再次 setData，那么会在 UI 渲染前成功 setData
-
-如果选择宏任务实现会在 UI 渲染之后，导致重新渲染，因此微任务应该是更好的选择，但是为什么 san 中优先选择了宏任务呢？vue 目前也是 promise 优先
-
-> 我们 slave 触发的是哪个 nextTick 呢？我们组件代码运行在 slave 上，是 webview 环境，有 js 解释器 bom api dom api
-
-我自己也是可以测试的，无论是 san 还是 vue，我需要有一个方法知道 dom 到底更新了没有，还需要明确一点 dom 更新和 UI 渲染的关系
-
-网上的文章并没有错，nextTick 的初衷是为了获取更新后的 dom？ 那问题就只剩下上一个了，dom 的更新和 ui 的渲染，肯定是分开的吧，不可能说 UI 渲染完了 dom 才更新了，肯定是更新后的 dom 被用于 UI 渲染了
-
-我只要整一个函数更新 dom，然后看看实际的 dom 结构更新和渲染的先后关系
-
-> 采用 alert 语句进行提示，alert 语句会 block 住 js 线程，将执行权让给 gui 渲染线程，执行 alert 之后浏览器会把这个语句之前的所有对 dom 的操作都进行体现。
->
-> 感觉打断点的话也会被 js 线程也会被吊起，ui 渲染会直接进行，因此没办法捕捉到 dom 更新了，但是 UI 没渲染的那个瞬间
->
-> 体验 dom 更新了，但是 UI 没有渲染的过程：https://blog.csdn.net/qdmoment/article/details/83657410
 
 # Dom 相关问题 2023-02-06 Here
 
