@@ -3,25 +3,22 @@
 ---
 
 
-10/16
 
 函数式指南：[https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/ch2.html#%E4%B8%BA%E4%BD%95%E9%92%9F%E7%88%B1%E4%B8%80%E7%AD%89%E5%85%AC%E6%B0%91](https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/ch2.html#为何钟爱一等公民)
 
-# 函数式编程 @@@
+# 基本概念
 
-## 基本概念
-
-### 命令式
+## 命令式
 
 命令式编程的主要思想是关注计算机执行的步骤，即一步一步告诉计算机先做什么再做什么。
 
-### 声明式
+## 声明式
 
 声明式编程是以数据结构的形式来表达程序执行的逻辑。它的主要思想是告诉计算机应该做什么，但不指定具体要怎么做。
 
 SQL 语句就是最明显的一种声明式编程的例子。
 
-### 纯函数
+## 纯函数
 
 一类特别的函数: 只要是同样的输入，必定得到同样的输出
 
@@ -32,11 +29,11 @@ SQL 语句就是最明显的一种声明式编程的例子。
 3. 能调用 Date.now() 或者 Math.random() 等不纯的方法
 4. reducer 函数必须是一个纯函数
 
-### 副作用
+## 副作用
 
 这个副作用的概念也是。它的要求很高，概括的讲，只要是跟函数外部环境发生的交互就都是副作用。从“副作用”这个词语来看，它更多的情况在于“改变系统状态”。
 
-### 高阶函数
+## 高阶函数
 
 理解: 一类特别的函数
 
@@ -44,7 +41,7 @@ SQL 语句就是最明显的一种声明式编程的例子。
 
 情况 2: 返回是函数
 
-### 常见的高阶函数
+## 常见的高阶函数
 
 定时器设置函数
 
@@ -54,7 +51,7 @@ react-redux 中的 connect 函数
 
 作用：能实现更加动态, 更加可扩展的功能
 
-## 函数柯里化
+# 函数柯里化
 
 **参考：**<https://github.com/mqyqingfeng/Blog/issues/42>
 
@@ -64,21 +61,18 @@ react-redux 中的 connect 函数
 
 **本质**：用闭包把参数保存起来，当参数的数量足够执行函数了，就开始执行函数
 
-### 基础定义
+## 基础定义
 
 ```js
-function currying(fn){
-  var slice = Array.prototype.slice;
-  // 截取fn后第一个参数，并保存在闭包内
-  _args = slice.call(arguments,1);
-  return function(...rest){
-    return fn.apply(null,_args.concat(rest))
-  }
+function currying(fn, ...args) {
+    return function (...rest) {
+        return fn.apply(null, args.concat(rest))
+    }
 }
-const curryFunc = currying(fn,args)
+const curryFunc = currying(fn, args)
 ```
 
-**示例**
+### 应用示例
 
 ```js
 function square(i){
@@ -133,9 +127,9 @@ mapDB([10, 20, 30, 40, 50]);
 
 我们缩小了函数的适用范围，但同时提高函数的适性。
 
-由此，可知柯里化不仅仅是提高了代码的合理性，更重的它突出一种思想 ---**降低适用范围，提高适用性**。
+由此，可知柯里化不仅仅是提高了代码的合理性，更重的它突出一种思想 ---**降低适用范围，提高适用性**
 
-### 通用定义
+## 通用定义
 
 正确的做法如下
 
@@ -190,7 +184,7 @@ const curry = function(fn,args=[]) {
 }
 ```
 
-**示例**
+### 示例
 
 ```js
 var curry = function(fn) {
@@ -218,7 +212,7 @@ const curryAdd = curry(add)
 console.log(curryAdd(1)(2)(3)(4)())
 ```
 
-### 延迟执行
+## 延迟执行
 
 柯里化的另一个应用场景是延迟执行。不断的柯里化，通过闭包累积传入的参数，最后执行
 
@@ -237,7 +231,7 @@ var curry = function(fn) {
 }
 ```
 
-**示例**
+### 示例
 
 ```js
 function add(){
@@ -251,7 +245,7 @@ const curryAdd = curry(add)
 console.log(curryAdd(1)(2)(3)(4)())
 ```
 
-### 固定易变因素
+## 固定易变因素
 
 柯里化特性决定了它这应用场景。提前把易变因素，传参固定下来，生成一个更明确的应用函数。最典型的代表应用，是 bind 函数用以固定 this 这个易变对象。
 
@@ -265,7 +259,7 @@ Function.prototype.bind = function(context,...rest) {
 }
 ```
 
-### 更加强大的功能
+## 更加强大的功能
 
 curry 函数写到这里其实已经很完善了，但是注意这个函数的传参顺序必须是从左到右，根据形参的顺序依次传入，如果我不想根据这个顺序传呢？
 
@@ -295,9 +289,9 @@ var fn = curry(function(a, b, c) {
 fn("a", _, "c")("b") // ["a", "b", "c"]
 ```
 
-## 偏函数
+# 偏函数
 
-### 定义
+## 定义
 
 维基百科中对偏函数 (Partial application) 的定义为：
 
@@ -321,7 +315,7 @@ var addOne = partial(add, 1);
 addOne(2) // 3
 ```
 
-### 柯里化与局部应用
+## 柯里化与局部应用
 
 实际上你会发现这个例子和柯里化太像了，所以两者到底是有什么区别呢？
 
@@ -333,7 +327,7 @@ addOne(2) // 3
 
 > Curried functions are automatically partially applied.
 
-### Partial 函数实现
+## Partial 函数实现
 
 我们可以直接使用 bind 呐，举个例子：
 
@@ -349,7 +343,7 @@ addOne(2) // 3
 
 然而使用 bind 我们还是改变了 this 指向，我们要写一个不改变 this 指向的方法。
 
-#### 第一版
+### 第一版
 
 ```js
 // 第一版
@@ -391,7 +385,7 @@ obj.addOne(2); // ???
 // 使用 partial 时，结果为 5
 ```
 
-### 第二版
+## 第二版
 
 然而正如 curry 函数可以使用占位符一样，我们希望 partial 函数也可以实现这个功能，我们再来写第二版：
 
@@ -410,13 +404,13 @@ function partial(fn,...rest) {
 };
 ```
 
-## 惰性函数
+# 惰性函数
 
-### 需求
+## 需求
 
 我们现在需要写一个 foo 函数，这个函数返回首次调用时的 Date 对象，注意是首次。
 
-### 普通方法
+## 普通方法
 
 ```js
 var t;
@@ -429,7 +423,7 @@ function foo() {
 
 问题有两个，一是污染了全局变量，二是每次调用 foo 的时候都需要进行一次判断。
 
-#### 使用闭包改进
+### 使用闭包改进
 
 ```js
 var foo = (function() {
@@ -444,7 +438,7 @@ var foo = (function() {
 
 然而还是没有解决调用时都必须进行一次判断的问题。
 
-### 函数对象
+## 函数对象
 
 ```js
 function foo() {
@@ -456,7 +450,7 @@ function foo() {
 
 函数也是一种对象，利用这个特性，我们也可以解决这个问题。
 
-### 惰性函数
+## 惰性函数
 
 不错，惰性函数就是解决每次都要进行判断的这个问题，解决原理很简单，重写函数。
 
@@ -470,13 +464,13 @@ var foo = function() {
 }
 ```
 
-### 解决了什么问题？
+## 解决了什么问题？
 
 对于同样的输入，每次调用函数都在判断
 
-### 实际应用
+## 实际应用
 
-#### 兼容性优化
+### 兼容性优化
 
 DOM 事件添加中，为了兼容现代浏览器和 IE 浏览器，我们需要对浏览器环境进行一次判断：
 
@@ -528,7 +522,7 @@ var addEvent = (function(){
 })();
 ```
 
-### 面试题
+## 面试题
 
 ```js
 function increment(){
@@ -565,13 +559,13 @@ console.log(increment())
 
 还是存在内存泄漏的问题？只要把 increment 赋值为 null，闭包的引用就不会再保存了
 
-## 函数组合
+# 函数组合
 
-### 需求
+## 需求
 
 我们需要写一个函数，输入 'kevin'，返回 'HELLO, KEVIN'。
 
-### 尝试
+## 尝试
 
 ```js
 var toUpperCase = function(x) { return x.toUpperCase(); };
@@ -586,7 +580,7 @@ greet('kevin');
 
 还好我们只有两个步骤，首先小写转大写，然后拼接字符串。如果有更多的操作，greet 函数里就需要更多的嵌套，类似于 `fn3(fn2(fn1(fn0(x))))`。
 
-### 优化
+## 优化
 
 试想我们写个 compose 函数：
 
@@ -621,7 +615,7 @@ compose(d, compose(c, compose(b, a)))
 compose(d, c, b, a)
 ```
 
-### Compose 实现
+## Compose 实现
 
 我们直接抄袭 underscore 的 compose 函数的实现：
 
@@ -653,7 +647,7 @@ function compose(...funcs) {
 
 在此之前，我们先了解一个概念叫做 pointfree。
 
-### Pointfree
+## Pointfree
 
 pointfree 指的是函数无须提及将要操作的数据是什么样的。依然是以最初的需求为例：
 
@@ -710,7 +704,7 @@ var initials = R.compose(R.join('.'), R.map(R.compose(R.toUpper, R.head)), R.spl
 
 那么使用 pointfree 模式究竟有什么好处呢？pointfree 模式能够帮助我们减少不必要的命名，让代码保持简洁和通用，更符合语义，更容易复用，测试也变得轻而易举。
 
-### 实例
+## 实例
 
 这个例子来自于 [Favoring Curry](http://fr.umio.us/favoring-curry/)：
 
@@ -922,9 +916,9 @@ var getIncompleteTaskSummaries = function(membername) {
 };
 ```
 
-### Typed-compose
+## Typed-compose
 
-#### 从简单到复杂
+### 从简单到复杂
 
 如果我们要给 compose 函数加上 ts 类型, 根据从简单到复杂的思想, 可以写出下面这种实现:
 
@@ -969,7 +963,7 @@ export function compose(...funcs: UnknownFunction[]): UnknownFunction {
 
 利用重载给不同数量的 funcs 都写上对应的类型, 但是这样不够通用
 
-#### 利用可变元组
+### 利用可变元组
 
 [ts-basic](../framework/typescript/ts-basic.md#可变元祖类型)
 
@@ -999,7 +993,7 @@ const compose = <T extends SingleParamFunc[]>(...funcs: T) => (p: FirstFnParamet
 
 待补充: 函数的参数和上一个函数的返回值类型需要是相同的
 
-## 管道函数
+# 管道函数
 
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
 
@@ -1027,13 +1021,13 @@ mult2(plus1(5))
 // 12
 ```
 
-### 按序执行 Promise
+## 按序执行 Promise
 
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
 
-## 函数记忆
+# 函数记忆
 
-### 定义
+## 定义
 
 函数记忆是指将上次的计算结果缓存起来，当下次调用时，如果遇到相同的参数，就直接返回缓存中的数据。
 
@@ -1051,11 +1045,11 @@ memoizedAdd(1, 2) // 3
 memoizedAdd(1, 2) // 相同的参数，第二次调用时，从缓存中取出数据，而非重新计算一次
 ```
 
-### 原理
+## 原理
 
 实现这样一个 memoize 函数很简单，原理上只用把参数和对应的结果数据存到一个对象中，调用时，判断参数对应的数据是否存在，存在就返回对应的结果数据。
 
-### 第一版
+## 第一版
 
 ```js
 // 第一版 (来自《JavaScript权威指南》)
@@ -1097,7 +1091,7 @@ console.timeEnd('not use memoize')
 
 在 Chrome 中，使用 memoize 大约耗时 60ms，如果我们不使用函数记忆，大约耗时 1.3 ms 左右。
 
-### 注意
+## 注意
 
 什么，我们使用了看似高大上的函数记忆，结果却更加耗时，这个例子近乎有 60 倍呢！
 
@@ -1105,7 +1099,7 @@ console.timeEnd('not use memoize')
 
 需要注意的是，函数记忆只是一种编程技巧，本质上是牺牲算法的空间复杂度以换取更优的时间复杂度，在客户端 JavaScript 中代码的执行时间复杂度往往成为瓶颈，因此在大多数场景下，这种牺牲空间换取时间的做法以提升程序执行效率的做法是非常可取的。
 
-### 第二版
+## 第二版
 
 因为第一版使用了 join 方法，我们很容易想到当参数是对象的时候，就会自动调用 toString 方法转换成 `[Object object]`，再拼接字符串作为 key 值。我们写个 demo 验证一下这个问题：
 
