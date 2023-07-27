@@ -2605,21 +2605,9 @@ isElement = function(obj) {
 
 # 等值判断
 
-## object.is()
+## Object.is()
 
-ES5 比较两个值是否相等，只有两个运算符：相等运算符（\=\=）和严格相等运算符（\=\=\=）。它们都有缺点，前者会自动转换数据类型，后者的 `NaN` 不等于自身，以及 `+0` 等于 `-0`。JavaScript 缺乏一种运算，在所有环境中，只要两个值是一样的，它们就应该相等。
-
-ES6 提出“Same-value equality”（同值相等）算法，用来解决这个问题。`Object.is` 就是部署这个算法的新方法。它用来比较两个值是否严格相等，与严格比较运算符（===）的行为基本一致。
-
-不同之处只有两个：一是 `+0` 不等于 `-0`，二是 `NaN` 等于自身。
-
-```javascript
-+0 === -0 //true
-NaN === NaN // false
-
-Object.is(+0, -0) // false
-Object.is(NaN, NaN) // true
-```
+![Object.is()](es-object.md#Object.is())
 
 ## +0 和 -0
 
