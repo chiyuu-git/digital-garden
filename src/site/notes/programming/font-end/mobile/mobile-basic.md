@@ -59,7 +59,7 @@ ios 端的 qq 浏览器和 uc 浏览器使用的都是 ios 的 webview
 
 ![1549002625737](/img/user/programming/font-end/mobile/mobile-basic/1549002625737.png)
 
-### 结论：
+### 结论
 
 使用内置浏览器调试
 
@@ -839,43 +839,191 @@ px 没有问题，用 rem 来实现自适应才有问题（因为它是 vx，vxx
 
 或者是给一个框架组件，在框架塞组件即可
 
-# Faq
+# 移动端点击事件
+
+https://juejin.cn/post/6844903846418841608
+
+https://juejin.cn/post/6844903633528553485
+
+## 移动端 300ms 点击延迟
+
+移动端浏览器会有一些默认的行为，比如双击缩放、双击滚动。这些行为，尤其是双击缩放，主要是为桌面网站在移动端的浏览体验设计的。而在用户对页面进行操作的时候，移动端浏览器会优先判断用户是否要触发默认的行为。
+
+**重点**：由于移动端会有双击缩放的这个操作，因此浏览器在 click 之后要等待 300ms，看用户有没有下一次点击，也就是这次操作是不是双击
+
+### 浏览器开发商的解决方案
+
+#### 方案一：禁用缩放
+
+当 HTML 文档头部包含如下 `meta` 标签时：
+
+```html
+<meta name="viewport" content="user-scalable=no"> <meta name="viewport" content="initial-scale=1,maximum-scale=1">
+```
+
+表明这个页面是不可缩放的，那双击缩放的功能就没有意义了，此时浏览器可以禁用默认的双击缩放行为并且去掉 300ms 的点击延迟。
+
+**缺点**：就是必须通过完全禁用缩放来达到去掉点击延迟的目的，然而完全禁用缩放并不是我们的初衷，我们只是想禁掉默认的双击缩放行为，这样就不用等待 300ms 来判断当前操作是否是双击。但是通常情况下，我们还是希望页面能通过双指缩放来进行缩放操作，比如放大一张图片，放大一段很小的文字。
+
+#### 方案二：更改默认的视口宽度
+
+一开始，为了让桌面站点能在移动端浏览器正常显示，移动端浏览器默认的视口宽度并不等于设备浏览器视窗宽度，而是要比设备浏览器视窗宽度大，通常是 980px。我们可以通过以下标签来设置视口宽度为设备宽度。
+
+```html
+<meta name="viewport" content="width=device-width">
+```
+
+因为双击缩放主要是用来改善桌面站点在移动端浏览体验的，而随着响应式设计的普及，很多站点都已经对移动端坐过适配和优化了，这个时候就不需要双击缩放了，如果能够识别出一个网站是响应式的网站，那么移动端浏览器就可以自动禁掉默认的双击缩放行为并且去掉 300ms 的点击延迟。如果设置了上述 `meta` 标签，那浏览器就可以认为该网站已经对移动端做过了适配和优化，就无需双击缩放操作了。
+
+这个方案相比方案一的好处在于，它没有完全禁用缩放，而只是禁用了浏览器默认的双击缩放行为，但用户仍然可以通过双指缩放操作来缩放页面。
+
+#### 方案三：CSS Touch-action
+
+`touch-action` 这个 CSS 属性。这个属性指定了相应元素上能够触发的用户代理（也就是浏览器）的默认行为。如果将该属性值设置为 `touch-action: none`，那么表示在该元素上的操作不会触发用户代理的任何默认行为，就无需进行 300ms 的延迟判断
+
+### 社区的解决方案
+
+#### 方案一：指针事件的 Polyfill
+
+现在除了 IE，其他大部分浏览器都还不支持指针事件。有一些 JS 库，可以让我们提前使用指针事件，比如
+
+- Google 的 [Polymer](https://link.juejin.cn?target=https%3A%2F%2Flink.jianshu.com%3Ft%3Dhttps%3A%2F%2Fgithub.com%2FPolymer%2FPointerEvents "https://link.jianshu.com?t=https://github.com/Polymer/PointerEvents")
+- 微软的 [HandJS](https://link.juejin.cn?target=https%3A%2F%2Flink.jianshu.com%3Ft%3Dhttp%3A%2F%2Fhandjs.codeplex.com%2F "https://link.jianshu.com?t=http://handjs.codeplex.com/")
+- [@Rich-Harris](https://link.juejin.cn?target=https%3A%2F%2Flink.jianshu.com%3Ft%3Dhttps%3A%2F%2Fgithub.com%2FRich-Harris "https://link.jianshu.com?t=https://github.com/Rich-Harris") 的 [Points](https://link.juejin.cn?target=https%3A%2F%2Flink.jianshu.com%3Ft%3Dhttps%3A%2F%2Fgithub.com%2FRich-Harris%2FPoints "https://link.jianshu.com?t=https://github.com/Rich-Harris/Points")
+
+然而，我们现在关心的不是指针事件，而是与 300ms 延迟相关的 CSS 属性 `touch-action`。由于除了 IE 之外的大部分浏览器都不支持这个新的 CSS 属性，所以这些指针事件的 polyfill 必须通过某种方式去模拟支持这个属性。一种方案是 JS 去请求解析所有的样式表，另一种方案是将 `touch-action` 作为 html 标签的属性。
+
+#### 方案二：FastClick
+
+[FastClick](https://link.juejin.cn?target=https%3A%2F%2Flink.jianshu.com%3Ft%3Dhttps%3A%2F%2Fgithub.com%2Fftlabs%2Ffastclick "https://link.jianshu.com?t=https://github.com/ftlabs/fastclick") 是 [FT Labs](https://link.juejin.cn?target=https%3A%2F%2Flink.jianshu.com%3Ft%3Dhttp%3A%2F%2Flabs.ft.com%2F "https://link.jianshu.com?t=http://labs.ft.com/") 专门为解决移动端浏览器 300 毫秒点击延迟问题所开发的一个轻量级的库。FastClick 的实现原理是在检测到 touchend 事件的时候，会通过 DOM 自定义事件立即出发模拟一个 click 事件，并把浏览器在 300ms 之后的 click 事件阻止掉
+
+## 点击穿透
+
+说完移动端点击 300ms 延迟的问题，还不得不提一下移动端点击穿透的问题。可能有人会想，既然 click 点击有 300ms 的延迟，那对于触摸屏，我们直接监听 touchstart 事件不就好了吗？
+
+使用 touchstart 去代替 click 事件有两个不好的地方。
+
+1. touchstart 是手指触摸屏幕就触发，有时候用户只是想滑动屏幕，却触发了 touchstart 事件，这不是我们想要的结果；
+2. 使用 touchstart 事件在某些场景下可能会出现点击穿透的现象。
+
+### 什么是点击穿透
+
+假如页面上有两个元素 A 和 B。B 元素在 A 元素之上。我们在 B 元素的 touchstart 事件上注册了一个回调函数，该回调函数的作用是隐藏 B 元素。我们发现，当我们点击 B 元素，B 元素被隐藏了，随后，A 元素触发了 click 事件。
+
+这是因为在移动端浏览器，事件执行的顺序是 touchstart > touchend > click。而 click 事件有 300ms 的延迟，当 touchstart 事件把 B 元素隐藏之后，隔了 300ms，浏览器触发了 click 事件，但是此时 B 元素不见了，所以该事件被派发到了 A 元素身上。如果 A 元素是一个链接，那此时页面就会意外地跳转。
+
+### 移动端浏览器事件触发的顺序
+
+touchstart --> mouseover(有的浏览器没有实现) --> mousemove(一次) -->mousedown --> mouseup --> click -->touchend
+
+## 解决方案
+
+### 只用 Touch
+
+最简单的解决方案，完美解决点击穿透问题
+
+把页面内所有 click 全部换成 touch 事件
+
+需要特别注意:
+
++ a 标签，a 标签的 href 也是 click，需要去掉换成 js 控制的跳转，或者直接改成 span + tap 控制跳转。如果要求不高，不在乎滑走或者滑进来触发事件的话，span + touchend 就可以了，毕竟 tap 需要引入第三方库
++ 不用 a 标签其实没什么，移动 app 开发不用考虑 SEO，即便用了 a 标签，一般也会去掉所有默认样式，不如直接用 span
+
+#### 小程序的方案
+
+即没有 a 标签, 也没有 click 事件, 还有个 tap 事件
+
+#### 为什么需要 Tap 事件?
+
+因为仅仅只是滑动, 也会触发 touchstart 事件, 所以需要一个 tap 来保证点击行为
+
+### 只用 Click
+
+下下策
+
+因为会带来 300ms 延迟，页面内任何一个自定义交互都将增加 300 毫秒延迟，想想都慢
+
+不用 touch 就不会存在 touch 之后 300ms 触发 click 的问题，如果交互性要求不高可以这么做，
+
+强烈不推荐 ，快一点总是好的
+
+### Tap 后延迟 350ms 再隐藏 Mask
+
+改动最小，缺点是隐藏 mask 变慢了，350ms 还是能感觉到慢的
+
+只需要针对 mask 做处理就行，改动非常小，如果要求不高的话，用这个比较省力
+
+### Pointer-events
+
+比较麻烦且有缺陷，
+
+不建议使用
+
+mask 隐藏后，给按钮下面元素添上 `pointer-events: none;` 样式，让 click 穿过去，350ms 后去掉这个样式，恢复响应
+
+缺陷是 mask 消失后的的 350ms 内，用户可以看到按钮下面的元素点着没反应，如果用户手速很快的话一定会发现
+
+### 在下面元素的事件处理器里做检测（配合全局 flag）
+
+比较麻烦，
+
+不建议使用:
+
+全局 flag 记录按钮点击的位置（坐标点），在下面元素的事件处理器里判断 event 的坐标点，如果相同则是那个可恶的 click，拒绝响应
+
+上面说的只是想法，没测试过，实在不行就用记录时间戳判断，等待 350ms，这样就和 `pointer-events` 差不多
+
+### Fastclick
+
+好用的解决方案，不介意多加载几 KB 的话，
+
+不建议使用: 因为有人遇到了 bug，首先引入 fastclick 库，再把页面内所有 touch 事件都换成 click，其实稍微有点麻烦，建议引入这几 KB 就为了解决点透问题不值得，不如用第一种方法呢
+
+# FAQ
 
 #faq/ui
 
-- 遇到问题先区分是真机的问题还是模拟器的问题
-- 触屏事件
-  - touchstart mousedown
-  - touchmove（不可能单独触发） mousemove（可以单独触发）
-  - touchend mouseup
-- 指针事件
-- event.cancelable
+遇到问题先区分是真机的问题还是模拟器的问题
+
+触屏事件
+
+- touchstart mousedown
+- touchmove（不可能单独触发） mousemove（可以单独触发）
+- touchend mouseup
+
+指针事件
+
+event.cancelable
 
 ## 全面禁止事件的默认行为
 
-- 遇到问题先区分是真机的问题还是模拟器的问题
-- 通过 event.cancelable 查看默认行为是否可以被取消
-- 由于浏览器必须要在执行事件处理函数之后，才能知道有没有掉用过 preventDefault() ，这就导致了浏览器不能及时响应滚动，略有延迟。
-- 所以为了让页面滚动的效果如丝般顺滑，从 chrome56 开始，在 window、document 和 body 上注册的 touchstart 和 touchmove 事件处理函数，会 **默认为是 passive: true**。浏览器忽略 preventDefault() 就可以第一时间滚动了。
-- ```js
+通过 event.cancelable 查看默认行为是否可以被取消
+
+由于浏览器必须要在执行事件处理函数之后，才能知道有没有掉用过 preventDefault() ，这就导致了浏览器不能及时响应滚动，略有延迟。
+
+所以为了让页面滚动的效果如丝般顺滑，从 chrome56 开始，在 window、document 和 body 上注册的 touchstart 和 touchmove 事件处理函数，会 **默认为是 passive: true**。浏览器忽略 preventDefault() 就可以第一时间滚动了。
+
+```js
   window.onload=function(){
     document.addEventListener("touchstart",function(ev){
       ev=ev||event;
       ev.preventDefault();
     },{passive:false})
   }
-  ```
-- > 应用 CSS 属性 `touch-action: none;` 这样任何触摸事件都不会产生默认行为，但是 touch 事件照样触发。
-  > touch-action 还有很多选项，详细请参考 [touch-action](https://w3c.github.io/pointerevents/#the-touch-action-css-property)
+```
 
-- 隐患：
-  - 连系统的滚动条也会被禁止掉，挺好的，正好使用更人性化的自定义滚动条代替之
-  - a 标签的跳会被禁止，一直冒泡除非所有的父级都没有禁止默认行为，只要有一个禁止默认行为，就不会跳转
+应用 CSS 属性 `touch-action: none;` 这样任何触摸事件都不会产生默认行为，但是 touch 事件照样触发。
 
-## 禁止默认行为与冒泡的联系
+touch-action 还有很多选项，详细请参考 [touch-action](https://w3c.github.io/pointerevents/#the-touch-action-css-property)
 
-- 禁止右键菜单
-- ```html
+隐患：
+
+- 连系统的滚动条也会被禁止掉，挺好的，正好使用更人性化的自定义滚动条代替之
+- a 标签的跳会被禁止，一直冒泡除非所有的父级都没有禁止默认行为，只要有一个禁止默认行为，就不会跳转
+
+## 禁止右键菜单
+
+```html
   <body>
     <div id="wrap">
       <div id="inner">
@@ -901,23 +1049,30 @@ px 没有问题，用 rem 来实现自适应才有问题（因为它是 vx，vxx
   			}*/
     }
   </script>
-  ```
+```
 
 ## 事件点透
 
-- 移动端也可以使用 click 事件，但是肯定还是 touchstart 才是合理的，但是 touchstart 事件存在点透的问题
-- PC 事件也可以在移动端触发，但是 **PC 端事件** 会有 300 毫秒延迟，引入 js 库解决
-  - click 事件在触发的条件：点击和抬起在同一个像素点
-    - 点一下然后长按再松开，移动端不会有 click 事件，pc 端如果一直在同一个像素点会触发 click 事件
-  - 为什么会有 300 毫秒的延迟？为了判断是触发单击事件还是双击事件，判断用户是否想要整体缩放移动端页面
-- 移动端事件不会有延迟
-- 事件点透：可以触发重叠的兄弟的事件
-  - touchstart --> mouseover(有的浏览器没有实现) --> mousemove(一次) -->mousedown（长按） --> mouseup --> click -->touchend
-  - > https://juejin.im/post/5b3cc9836fb9a04f9a5cb0e0
+移动端也可以使用 click 事件，但是肯定还是 touchstart 才是合理的，但是 touchstart 事件存在点透的问题
 
-  >https://juejin.im/post/5cdf84e3f265da1bb564c79a
+为什么会有 300 毫秒的延迟？为了判断是触发单击事件还是双击事件，判断用户是否想要整体缩放移动端页面
 
-- 解决方案:
+PC 事件也可以在移动端触发，但是 **PC 端事件** 会有 300 毫秒延迟，引入 js 库解决
+
+- click 事件在触发的条件：点击和抬起在同一个像素点
+- 点一下然后长按再松开，移动端不会有 click 事件，pc 端如果一直在同一个像素点会触发 click 事件
+
+移动端事件不会有延迟
+
+事件点透：可以触发重叠的兄弟的事件
+
+touchstart --> mouseover(有的浏览器没有实现) --> mousemove(一次) -->mousedown（长按） --> mouseup --> click -->touchend
+
+https://juejin.im/post/5b3cc9836fb9a04f9a5cb0e0
+
+https://juejin.im/post/5cdf84e3f265da1bb564c79a
+
+解决方案:
 
   1. 移动端禁止全局默认事件，全部使用 touch 事件，再使用自定的行为完成跳转等
   2. 引入 fastclick 库，FastClick 的实现原理是在检测到 touchend 事件的时候，会通过 DOM 自定义事件立即出发模拟一个 click 事件，并把浏览器在 300ms 之后真正的 click 事件阻止掉。
