@@ -7,6 +7,36 @@
 
 通过临时转换成包装类来调用
 
+# Unicode 编码
+
+## UTF-8 万国码
+
+字符串中使用转移字符\u 输出，16 进制位
+
+```javascript
+console.log(“\u0031”) //1
+```
+
+在 HTML 页面中：&#编码；
+
+10 进制位
+
+## charCodeAt()
+
+- 根据索引获取指定的 **字符编码**
+- A 65 Z 90
+- a 97 z 122
+
+## fromCharCode()
+
+- 根据字符编码获取字符
+
+## 字符的 Unicode 表示法
+
+## codePointAt()
+
+## String.fromCharCode()
+
 # String 构造函数
 
 **String** 全局对象是一个用于字符串或一个字符序列的构造函数。
@@ -41,18 +71,6 @@ new String(thing)
 | `\uXXXX`                 | unicode 码          |
 | `\u{X}` ... `\u{XXXXXX}` | unicode codepoint   |
 | `\xXX`                   | Latin-1 字符 (x 小写) |
-
-## UTF-8 万国码
-
-字符串中使用转移字符\u 输出，16 进制位
-
-```javascript
-console.log(“\u0031”) //1
-```
-
-在 HTML 页面中：&#编码；
-
-10 进制位
 
 ## 长字符串
 
@@ -181,6 +199,7 @@ String.fromCodePoint(0x78, 0x1f680, 0x79) === 'x\uD83D\uDE80y'
 ## slice() @@@
 
 可以从一个**字符串中**截取指定的内容，并将截取到内容返回，不会影响原变量
+
 数组中也有类似的同名方法
 
 **参数**
