@@ -221,7 +221,7 @@ Array.prototype.copyWithin(target, start = 0, end = this.length)
 - 大于 0，交换位置
 - 小于等于 0，位置不变
 
-**示例**
+### 示例
 
 ```js
 数组.sort(function(a,b){
@@ -264,18 +264,20 @@ Array.prototype.copyWithin(target, start = 0, end = this.length)
 	friends.sort(comparePerson); 
 ```
 
-**描述**
+### 字典序排序
 
-- 如果没有指明 `compareFunction` ，那么元素会 **按照转换为的字符串** 的诸个字符的 Unicode 位点进行排序。例如 "Banana" 会被排列到 "cherry" 之前。当数字按由小到大排序时，9 出现在 80 之前，但因为（没有指明 `compareFunction`），比较的数字会先被转换为字符串，所以在 Unicode 顺序上 "80" 要比 "9" 要靠前。
-- 如果指明了 `compareFUnction`，要如何还原默认情况下字符串的 Unicode 位点排序呢？
-- 在 JS 中字符串是可以直接比较的，也是按照 Unicode 的位点进行排序
+如果没有指明 `compareFunction` ，那么元素会 **按照转换为的字符串** 的诸个字符的 Unicode 位点进行排序。例如 "Banana" 会被排列到 "cherry" 之前。当数字按由小到大排序时，9 出现在 80 之前，但因为（没有指明 `compareFunction`），比较的数字会先被转换为字符串，所以在 Unicode 顺序上 "80" 要比 "9" 要靠前。
+
+如果指明了 `compareFUnction`，要如何还原默认情况下字符串的 Unicode 位点排序呢？
+
+在 JS 中字符串是可以直接比较的，也是按照 Unicode 的位点进行排序
 
   ```js
   'a'>'b' // flase→0
   'b'>'a' // true→1
   ```
 
-- 然后因为布尔类型→数值类型的隐式转换，polyfill 如下
+然后因为布尔类型→数值类型的隐式转换，polyfill 如下
 
   ```js
   const arr = ['March', 'Jan', 'Feb', 'Dec']
@@ -284,9 +286,9 @@ Array.prototype.copyWithin(target, start = 0, end = this.length)
   })
   ```
 
-**注意**
+### 注意
 
-- sort 方法没有归类到遍历方法，一个是因为排序的本质与遍历还是有区别的
+sort 方法没有归类到遍历方法，一个是因为排序的本质与遍历还是有区别的
 
 ## fill()
 
