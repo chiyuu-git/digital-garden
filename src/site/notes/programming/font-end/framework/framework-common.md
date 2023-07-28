@@ -75,3 +75,198 @@ san 的数据更新操作是异步的，会被打包在一个 nextTick 中。因
 > 感觉打断点的话也会被 js 线程也会被吊起，ui 渲染会直接进行，因此没办法捕捉到 dom 更新了，但是 UI 没渲染的那个瞬间
 >
 > 体验 dom 更新了，但是 UI 没有渲染的过程：https://blog.csdn.net/qdmoment/article/details/83657410
+
+# 数据绑定
+
+## 单向数据绑定
+
+单向数据绑定，带来单向数据流
+
+指的是我们先把模板写好，然后把模板和数据（数据可能来自后台）整合到一起形成 HTML 代码，然后把这段 HTML 代码插入到文档流里面。适用于整体项目，并于追溯。
+
+![img](/img/user/programming/font-end/framework/framework-common/4859545-cca9cea07b1e43ed.jpg)
+
+### 优点
+
+1. 所有状态的改变可记录、可跟踪，源头易追溯;
+2. 所有数据只有一份，组件数据只有唯一的入口和出口，使得程序更直观更容易理解，有利于应用的可维护性;
+3. 一旦数据变化，就去更新页面 (data- 页面)，但是没有 (页面 -data);
+4. 如果用户在页面上做了变动，那么就手动收集起来 (双向是自动)，合并到原有的数据中。
+
+### 缺点
+
+1. HTML 代码渲染完成，无法改变，有新数据，就须把旧 HTML 代码去掉，整合新数据和模板重新渲染;
+2. 代码量上升，数据流转过程变长，出现很多类似的样板代码;
+3. 同时由于对应用状态独立管理的严格要求 (单一的全局 store)，在处理局部状态较多的场景时 (如用户输入交互较多的“富表单型”应用)，会显得啰嗦及繁琐。
+
+## 双向数据绑定
+
+双向数据绑定，带来双向数据流。**AngularJS2 添加了单向数据绑定**
+
+数据模型（Module）和视图（View）之间的双向绑定。无论数据改变，或是用户操作，都能带来互相的变动，自动更新。适用于项目细节，如：UI 控件中 (通常是类表单操作)。
+
+![img](/img/user/programming/font-end/framework/framework-common/4859545-3b49b67b1bfdc7c0.jpg)
+
+### 优点
+
+1. 用户在视图上的修改会自动同步到数据模型中去，数据模型中值的变化也会立刻同步到视图中去；
+2. 无需进行和单向数据绑定的那些 CRUD（Create，Retrieve，Update，Delete）操作；
+3. 在表单交互较多的场景下，会简化大量业务无关的代码。
+
+### 缺点
+
+1. 无法追踪局部状态的变化；
+2. “暗箱操作”，增加了出错时 debug 的难度；
+3. 由于组件数据变化来源入口变得可能不止一个，数据流转方向易紊乱，若再缺乏“管制”手段，血崩。
+
+> 在 angular 中，他没有办法判断你的数据是否做了更改， 所以它设置了一些条件，当你触发了这些条件之后，它就执行一个检测来遍历所有的数据，对比你更改了地方，然后执行变化。这个检查很不科学。而且效率不高，有很多多余的地方，所以官方称为脏检查
+
+### 本质
+
+双向绑定 = 单向绑定 + UI 事件监听。
+
+请看下面的代码示例
+
+```vue
+<body>
+  <div id="app">
+    <input type="text" v-model="meg">
+    <p>{{data}}</p>
+  </div>
+ 
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data :{
+        meg:''
+      }
+     
+    })
+  </script>
+</body>
+```
+
+当你在页面的 input 框中输入值时，下面一行同步显示内容，如果我们不要 v-model 指令能实现这个效果吗? 只需要改为:
+
+```js
+ //首先设置value属性为meg，然后监听输入事件
+<input type="text" :value="meg" @input="meg=$event.target.value"> 
+```
+
+## 具体实例
+
+目前几种主流的 mvc(vm) 框架都实现了单向数据绑定，而我所理解的双向数据绑定无非就是在单向绑定的基础上给可输入元素（input、textare 等）添加了 change(input) 事件，来动态修改 model 和 view，并没有多高深。所以无需太过介怀是实现的单向或双向绑定。
+
+### 发布者 - 订阅者模式
+
+一般通过 sub, pub 的方式实现数据和视图的绑定监听，更新数据方式通常做法是 `vm.set('property', value)`，这里有篇文章讲的比较详细，有兴趣可点 [这里](http://www.html-js.com/article/Study-of-twoway-data-binding-JavaScript-talk-about-JavaScript-every-day)
+
+这种方式现在毕竟太 low 了，我们更希望通过 `vm.property = value ` 这种方式更新数据，同时自动更新视图，于是有了下面两种方式
+
+### 脏值检查
+
+angular.js 是通过脏值检测的方式比对数据是否有变更，来决定是否更新视图，最简单的方式就是通过 `setInterval()` 定时轮询检测数据变动，当然 Google 不会这么 low，angular 只有在指定的事件触发时进入脏值检测，大致如下：
+
+- DOM 事件，譬如用户输入文本，点击按钮等。( ng-click )
+- XHR 响应事件 ( $http )
+- 浏览器 Location 变更事件 ( $location )
+- Timer 事件 ( \$timeout , ​\$interval )
+- 执行 \$digest() 或 ​\$apply()
+
+### 数据劫持
+
+vue.js 则是采用数据劫持结合发布者 - 订阅者模式的方式，通过 `Object.defineProperty()` 来劫持各个属性的 `setter`，`getter`，在数据变动时发布消息给订阅者，触发相应的监听回调。
+
+vue3 通过 proxy 实现劫持
+
+# 对比
+
+## 与 React 对比
+
+react 手动 setState 更新了 vm 之后，vm 的变动到 v 的更新 (vDOM) 实现了单向绑定
+
+vue 中手动更新了 data 之后，vm 的变动到 v 的更新 (vDom) 实现了单向绑定
+
+在 React 应用中，当某个组件的状态发生变化时，它会以该组件为根，重新渲染整个组件子树。当然，这可以通过 `shouldComponentUpdate` 这个生命周期方法来进行控制 purerender，但 Vue 将此视为默认的优化。
+
+vue 中实现数据绑定靠的是数据劫持（Object.defineProperty()）+ 观察者模式。在 Vue 应用中，组件的依赖是在渲染过程中自动追踪的，所以系统能精确知晓哪个组件需要被重渲染。你可以理解为每一个组件都已经自动获得了 shouldComponentUpdate，并且没有上述的子树问题限制。[Vue对比其他框架](https://link.jianshu.com?t=https%3A%2F%2Fcn.vuejs.org%2Fv2%2Fguide%2Fcomparison.html)
+
+![img](/img/user/programming/font-end/framework/framework-common/8066565-beeb0aca615e83f6-0458871.png)
+
+![img](/img/user/programming/font-end/framework/framework-common/8066565-9cac619972512f0d-0458871.png)
+
+## 实现双向绑定 Proxy 与 Object.defineProperty 相比优劣如何?
+
+1. Object.definedProperty 的作用是劫持一个对象的属性，劫持属性的 getter 和 setter 方法，在对象的属性发生变化时进行特定的操作。而 Proxy 劫持的是整个对象。
+
+   ```js
+   let obj = {name: 'Yvette', hobbits: ['travel', 'reading'], info: {
+       age: 20,
+       job: 'engineer'
+   }};
+   let p = new Proxy(obj, {
+       get(target, key) { //第三个参数是 proxy， 一般不使用
+           console.log('读取成功');
+           return Reflect.get(target, key);
+       },
+       set(target, key, value) {
+           if(key === 'length') return true; //如果是数组长度的变化，返回。
+           console.log('设置成功');
+           return Reflect.set([target, key, value]);
+       }
+   });
+   p.name = 20; //设置成功
+   p.age = 20; //设置成功; 不需要事先定义此属性
+   p.hobbits.push('photography'); //读取成功;注意不会触发设置成功
+   p.info.age = 18; //读取成功;不会触发设置成功
+   ```
+
+2. Proxy 会返回一个代理对象，我们只需要操作新对象即可，而 `Object.defineProperty` 只能遍历对象属性直接修改。
+3. Object.definedProperty 不支持数组，更准确的说是不支持数组的各种 API，因为如果仅仅考虑 arry[i] = value 这种情况，是可以劫持的，但是这种劫持意义不大。而 Proxy 可以支持数组的各种 API。
+
+   > Object.definedProperty 可以将数组的索引作为属性进行劫持，但是仅支持直接对 arry[i] 进行操作，不支持数组的 API，非常鸡肋。
+   >
+   > Proxy 可以监听到数组的变化，支持各种 API。注意数组的变化触发 get 和 set 可能不止一次，如有需要，自行根据 key 值决定是否要进行处理。
+
+   ```js
+   let hobbits = ['travel', 'reading'];
+   let p = new Proxy(hobbits, {
+       get(target, key) {
+           // if(key === 'length') return true; //如果是数组长度的变化，返回。
+           console.log('读取成功');
+           return Reflect.get(target, key);
+       },
+       set(target, key, value) {
+           // if(key === 'length') return true; //如果是数组长度的变化，返回。
+           console.log('设置成功');
+           return Reflect.set([target, key, value]);
+       }
+   });
+   p.splice(0,1) //触发get和set，可以被劫持
+   p.push('photography');//触发get和set
+   p.slice(1); //触发get；因为 slice 是不会修改原数组的
+   ```
+
+4. 尽管 Object.defineProperty 有诸多缺陷，但是其兼容性要好于 Proxy.
+
+# Virtual DOM
+
+我对 Virtual DOM 的理解是，
+
+首先对我们将要插入到文档中的 DOM 树结构进行分析，使用 js 对象将其表示出来，比如一个元素对象，包含 TagName、props 和 Children 这些属性。然后我们将这个 js 对象树给保存下来，最后再将 DOM 片段插入到文档中。
+
+当页面的状态发生改变，我们需要对页面的 DOM 的结构进行调整的时候，我们首先根据变更的状态，重新构建起一棵对象树，然后将这棵新的对象树和旧的对象树进行比较，记录下两棵树的的差异。
+
+最后将记录的有差异的地方应用到真正的 DOM 树中去，这样视图就更新了。
+
+我认为 Virtual DOM 这种方法对于我们需要有大量的 DOM 操作的时候，能够很好的提高我们的操作效率，通过在操作前确定需要做的最小修改，尽可能的减少 DOM 操作带来的重流和重绘的影响。其实 Virtual DOM 并不一定比我们真实的操作 DOM 要快，这种方法的目的是为了提高我们开发时的可维护性，在任意的情况下，都能保证一个尽量小的性能消耗去进行操作。
+
+详细资料可以参考： [《Virtual DOM》](https://juejin.im/book/5bdc715fe51d454e755f75ef/section/5bdc72e6e51d45054f664dbf) [《理解 Virtual DOM》](https://github.com/y8n/blog/issues/5) [《深度剖析：如何实现一个 Virtual DOM 算法》](https://github.com/livoras/blog/issues/13) [《网上都说操作真实 DOM 慢，但测试结果却比 React 更快，为什么？》](https://www.zhihu.com/question/31809713/answer/53544875)
+
+## 如何比较两个 DOM 树的差异
+
+两个树的完全 diff 算法的时间复杂度为 O(n^3) ，但是在前端中，我们很少会跨层级的移动元素，所以我们只需要比较同一层级的元素进行比较，这样就可以将算法的时间复杂度降低为 O(n)。
+
+算法首先会对新旧两棵树进行一个深度优先的遍历，这样每个节点都会有一个序号。在深度遍历的时候，每遍历到一个节点，我们就将这个节点和新的树中的节点进行比较，如果有差异，则将这个差异记录到一个对象中。
+
+在对列表元素进行对比的时候，由于 TagName 是重复的，所以我们不能使用这个来对比。我们需要给每一个子节点加上一个 key，列表对比的时候使用 key 来进行比较，这样我们才能够复用老的 DOM 树上的节点。
