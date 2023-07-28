@@ -16,10 +16,11 @@
 | [[programming/font-end/primitive/es/es-basic\|es-basic]]                    | [[programming/font-end/primitive/es/es-basic#faq\|es-basic#faq]]      |
 | [[programming/font-end/primitive/es/es-regexp\|es-regexp]]                  | [[programming/font-end/primitive/es/es-regexp#faq\|es-regexp#faq]]     |
 | [[programming/font-end/primitive/es/es-object\|es-object]]                  | [[programming/font-end/primitive/es/es-object#faq\|es-object#faq]]     |
-| [[programming/font-end/primitive/browser-api/bom\|bom]]                     | [[programming/font-end/primitive/browser-api/bom#faq\|bom#faq]]           |
 | [[programming/font-end/primitive/es/es-array\|es-array]]                    | [[programming/font-end/primitive/es/es-array#faq\|es-array#faq]]      |
-| [[programming/font-end/primitive/es/es-string\|es-string]]                  | [[programming/font-end/primitive/es/es-string#faq\|es-string#faq]]     |
 | [[programming/font-end/primitive/es/es-number\|es-number]]                  | [[programming/font-end/primitive/es/es-number#faq\|es-number#faq]]     |
+| [[programming/font-end/primitive/es/es-next-1\|es-next-1]]                  | [[programming/font-end/primitive/es/es-next-1#faq\|es-next-1#faq]]     |
+| [[programming/font-end/primitive/browser-api/bom\|bom]]                     | [[programming/font-end/primitive/browser-api/bom#faq\|bom#faq]]           |
+| [[programming/font-end/primitive/es/es-string\|es-string]]                  | [[programming/font-end/primitive/es/es-string#faq\|es-string#faq]]     |
 
 { .block-language-dataview}
 
@@ -30,6 +31,9 @@ https://github.com/lydiahallie/javascript-questions
 [GitHub - goldbergyoni/nodebestpractices: :white\_check\_mark: The Node.js best practices list (July 2023)](https://github.com/goldbergyoni/nodebestpractices)
 
 [GitHub - goldbergyoni/javascript-testing-best-practices: 📗🌐 🚢 Comprehensive and exhaustive JavaScript & Node.js testing best practices (June 2023)](https://github.com/goldbergyoni/javascript-testing-best-practices)
+
+
+详细资料可以参考： [《前端程序员经常忽视的一个 JavaScript 面试题》](https://github.com/Wscats/Good-text-Share/issues/85) [《一道考察运算符优先级的 JavaScript 面试题》](https://segmentfault.com/q/1010000008430170) [《一道常被人轻视的前端 JS 面试题》](https://www.cnblogs.com/xxcanghai/p/5189353.html)
 
 # Polyfill
 
@@ -565,6 +569,10 @@ new 操作符默认返回 this，而不是 undefined
   A.prototype.a = 1
   console.log(new A().a)
 ```
+
+## Promise/A+
+
+https://github.com/CavsZhouyou/Front-End-Interview-Notebook/blob/master/JavaScript/JavaScript.md#136-%E4%BB%80%E4%B9%88%E6%98%AF-promise-%E5%AF%B9%E8%B1%A1%E4%BB%80%E4%B9%88%E6%98%AF-promisesa-%E8%A7%84%E8%8C%83
 
 # 工具函数
 
@@ -1229,6 +1237,22 @@ https://github.com/mqyqingfeng/Blog/issues/26
 2. 拖拽事件
 3. onScoll
 4. 计算鼠标移动的距离 (mousemove)
+
+# 典中典问题汇总
+
+## 一个列表，假设有 100000 个数据，这个该怎么办
+
+我们需要思考的问题：该处理是否必须同步完成？数据是否必须按顺序完成？
+
+解决办法：
+
+（1）将数据分页，利用分页的原理，每次服务器端只返回一定数目的数据，浏览器每次只对一部分进行加载。
+
+（2）使用懒加载的方法，每次加载一部分数据，其余数据当需要使用时再去加载。
+
+（3）使用数组分块技术，基本思路是为要处理的项目创建一个队列，然后设置定时器每过一段时间取出一部分数据，然后再使用定时器取出下一个要处理的项目进行处理，接着再设置另一个定时器。
+
+
 
 # 函数库骨架
 
