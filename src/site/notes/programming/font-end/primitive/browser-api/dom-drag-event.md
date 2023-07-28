@@ -3,8 +3,6 @@
 ---
 
 
-2023-02-22
-
 # DragEvent
 
 The **`DragEvent`** interface is a [`DOM event`](https://developer.mozilla.org/en-US/docs/Web/API/Event "DOM event") that represents a drag and drop interaction.
