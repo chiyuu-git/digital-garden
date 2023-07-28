@@ -3082,3 +3082,30 @@ Map 结构原生提供三个 **遍历器生成函数** 和一个 **遍历方法*
   ```
 
 + 上面代码中，`Countdown` 类的两个内部属性 `_counter` 和 `_action`，是实例的弱引用，所以如果删除实例，它们也就随之消失，不会造成内存泄漏。
+
+# FAQ
+
+#faq/js
+
+## 使用闭包实现每隔一秒打印 1,2,3,4
+
+link 一下
+
+```js
+// 使用闭包实现
+for (var i = 0; i < 5; i++) {
+  (function(i) {
+    setTimeout(function() {
+      console.log(i);
+    }, i * 1000);
+  })(i);
+}
+
+// 使用 let 块级作用域
+
+for (let i = 0; i < 5; i++) {
+  setTimeout(function() {
+    console.log(i);
+  }, i * 1000);
+}
+```
