@@ -1998,7 +1998,7 @@ npx depcruise --output-type dot --max-depth 1 logger | dot -T svg > app.sv
 
 需要设置 ts config、webpack config 这样才能识别路径别名
 
-[代码分析工具](../../../basic/common/代码分析工具.md)
+[code-analysis](../../../basic/common/code-analysis.md)
 
 # 如何阅读源码
 
