@@ -9,12 +9,12 @@
 | ---------------------------------------------------------------------------------------- | ------------------------------ |
 | [[programming/FAQ/ui-component/input\|input]]                                         | [[programming/FAQ/ui-component/input#faq\|input#faq]]                  |
 | [[programming/font-end/primitive/css/flex\|flex]]                                     | [[programming/font-end/primitive/css/flex#faq\|flex#faq]]                   |
-| [[programming/font-end/primitive/css/layout\|layout]]                                 | [[programming/font-end/primitive/css/layout#faq\|layout#faq]]                 |
-| [[programming/font-end/primitive/css/tailwind/tailwind-basic\|tailwind-basic]]        | [[programming/font-end/primitive/css/tailwind/tailwind-basic#faq\|tailwind-basic#faq]]         |
 | [[programming/font-end/primitive/html/html-form\|html-form]]                          | [[programming/font-end/primitive/html/html-form#faq\|html-form#faq]]              |
 | [[programming/font-end/primitive/css/transition & animation\|transition & animation]] | [[programming/font-end/primitive/css/transition & animation#faq\|transition & animation#faq]] |
-| [[programming/font-end/mobile/mobile-basic\|mobile-basic]]                            | [[programming/font-end/mobile/mobile-basic#faq\|mobile-basic#faq]]           |
 | [[programming/font-end/primitive/browser-api/dom-drag-event\|dom-drag-event]]         | [[programming/font-end/primitive/browser-api/dom-drag-event#faq\|dom-drag-event#faq]]         |
+| [[programming/font-end/primitive/css/tailwind/tailwind-basic\|tailwind-basic]]        | [[programming/font-end/primitive/css/tailwind/tailwind-basic#faq\|tailwind-basic#faq]]         |
+| [[programming/font-end/primitive/css/page-layout\|page-layout]]                       | [[programming/font-end/primitive/css/page-layout#faq\|page-layout#faq]]            |
+| [[programming/font-end/mobile/mobile-basic\|mobile-basic]]                            | [[programming/font-end/mobile/mobile-basic#faq\|mobile-basic#faq]]           |
 
 { .block-language-dataview}
 
@@ -48,7 +48,7 @@ https://github.com/EmilyYoung71415/iCSS/tree/master/4-%E5%BD%A2%E7%8A%B6
 
 ### Canvas
 
-![Canvas 宽高](../font-end/primitive/html/html-5.md#Canvas%20宽高)
+![Canvas 宽高](../font-end/primitive/html/canvas.md#Canvas%20宽高)
 
 ## 宽高由内容决定
 
@@ -260,7 +260,7 @@ linear-gradient
 
 # 文本样式
 
-## **Chrome 支持小于 12px 的文字 **
+## Chrome 支持小于 12px 的文字
 
 ```text
 p {
@@ -393,821 +393,15 @@ dbg_naview
 
 ## 绝对定位模拟固定定位
 
-+ 固定定位参考的是 **视窗**
+固定定位参考的是 **视窗**
 
-- 绝对定位和固定定位，在没有出现滚动条的时候是一模一样的
-- 拖动系统滚动条的时候，初始包含块是不会跟着动的（绝对定位的元素一直跟着初始包含块，就会消失在视窗），如果让初始包含块一直跟着视窗，不受滚动条的影响，绝对定位就是固定定位了
-- 因为滚动条都是 body 或者 html 的滚动条传递过去的，先禁用了 html 的滚动条，那么 html 和初始包含块就都不会出现滚动条，body 在给自己一个滚动条，那么拖动滚动条只会拖动 body 内部的元素，初始包含块的位置始终跟着视窗没有变化
+绝对定位和固定定位，在没有出现滚动条的时候是一模一样的
 
-# 结构布局
+拖动系统滚动条的时候，初始包含块是不会跟着动的（绝对定位的元素一直跟着初始包含块，就会消失在视窗），如果让初始包含块一直跟着视窗，不受滚动条的影响，绝对定位就是固定定位了
 
-## 常见布局
+因为滚动条都是 body 或者 html 的滚动条传递过去的，先禁用了 html 的滚动条，那么 html 和初始包含块就都不会出现滚动条，body 在给自己一个滚动条，那么拖动滚动条只会拖动 body 内部的元素，初始包含块的位置始终跟着视窗没有变化
 
-- [全背景等宽内容居中](https://link.juejin.cn/?target=https%3A%2F%2Flhammer.cn%2FYou-need-to-know-css%2F%23%2Ffluid-fixed)
-- [绝对底部](https://link.juejin.cn/?target=https%3A%2F%2Flhammer.cn%2FYou-need-to-know-css%2F%23%2Fsticky-footer)
-- [水平垂直居中](https://link.juejin.cn/?target=https%3A%2F%2Flhammer.cn%2FYou-need-to-know-css%2F%23%2Fcentering-known)
-- [类订单布局](https://link.juejin.cn/?target=https%3A%2F%2Flhammer.cn%2FYou-need-to-know-css%2F%23%2Fclass-order-layout)
-- [Flex布局](https://link.juejin.cn/?target=https%3A%2F%2Flhammer.cn%2FYou-need-to-know-css%2F%23%2Fflexbox-layout)
 
-## 换行
-
-换行，要换行肯定是 **内联元素**
-
-html 层面：br 标签，行距收到 css 属性 line-height 的影响，如果用行高实现垂直居中，两个内敛元素之间的行间距也无法改变，还是使用绝对定位好了
-
-css 层面：溢出换行，或者 display 为 block
-
-- container>inner>inner>span*2
-    - 第一个 inner 在 container 实现垂直水平居中
-    - 第二个 inner 在第一个 inner 实现
-- 或者一个垂直水平居中，另一个 display：block，然后相对定位
-
-去到一行
-
-- 浮动，父级的宽度
-- flex 不压缩 要溢出
-- inline-block 父级 white-sapce no wrap，font-size：0
-- 浮动和 inline-block 的差别
-    - 块级元素默认那父元素的宽度，希望他被内容撑开，而有不影响布局，浮动起来或者 inline-block 都可以
-
-## 对齐
-
-### 文本框和按钮的基线对的不是很齐
-
-一个 float left
-
-一个 float right
-
-改变盒模型即可解决
-
-本质还是 baseline 的问题
-
-### 图片下方带有 3px 间隙解决方法
-
-空隙的本质：img 是一种类似 text 的元素，在结束的时候，会在末尾加上一个空白符，回车在 HTML 中会被识别为空白符。所以就会多出 3px
-
-https://segmentfault.com/a/1190000006808606
-
-https://segmentfault.com/a/1190000006808606
-
-https://segmentfault.com/a/1190000004400766
-
-https://satanwoo.github.io/2016/04/26/blank-space-in-html/
-
-空白符具备宽度（和 font-size 有关），不具备高度。也就是说这个空白符出现在了 3px 空隙的下方
-
-产生原因：主要是因为图片的垂直对齐方式 vertical-align 引发的，默认值是 baseline，默认为此值时图片下方就会多出 3px。
-
-**解决：**
-
-- 设置 img 的 display:block;
-- 设置 img 父元素的 font-size: 0px;
-- 设置 img 浮动,如果你的父元素是有 img 撑起来的,这个时候会导致,父元素没高度, 可以给父元素添加 绝对定位;
-- 设置 img{ vertical-align:top;}
-- 设置父元素 div 的 line-height: 0； （需设置父元素宽度让图片垂直排列,父元素不定宽 img 水平排列时无效）
-- 设置 img 浮动 float: left; 或 float: right (影响布局)
-    - **float 要么依赖前一个（或者后一个）float 元素的边界，要么就依赖于父元素的边界。而一个空白符，既不是包含块（父容器）的边界，也不是另一个 float 元素，因此不受影响，也不会对其余 float 元素有影响。**
-
-video 标签与其他元素之间的空隙，可能是由于空行导致的，设置全局的 font-size 为 0，这种状况普遍存在，由于 html 结构的空格，设置为 0，即可
-
-### display:inline-block 元素显示间隙
-
-移除标签之间的空格；
-
-使用 margin-left 或 margin-right 取负值；
-
-对父元素设置 font-size 为 0，然后对元素的 font-size 初始化；
-
-对父元素设置 letter-spacing（字符间距）为负值，然后设置元素的 letter-spacing 为 0；
-
-对父元素设置 word-spacing（单词间距）为负值，然后设置元素的 word-spacing 为 0。
-
-行内元素之间的由于 html 排版出现的空格，相当于是文字大小，文字大小为零，就可以消除空格，或者让他们浮动，变成块元素，也没有空格
-
-## 水平垂直居中
-
-### Block-level Box
-
-**margin: 0 auto;**
-
-- 自身非浮动没有开启定位的元素：margin 0 auto 水平居中
-    - margin auto，也只是水平居中，非浮动非定位盒子上下边距为默认渲染为 0
-- 适用于：仅需要水平居中且没有开启浮动、定位的情况，**而且需要宽度不是父级的 100%，才可以看到效果**
-- 父级：宽度大于子级即可看到效果，文档流中、浮动、定位均可
-- 缺点：只能实现水平居中，不能开启浮动、定位
-
-**position:absolute;**
-
-- **主动** 分配富裕空间
-
-    ```html
-    <div id="wrap">
-     <div id="inner">
-       test
-     </div>
-    </div>
-    
-    <style>
-      #wrap{
-        position: relative;
-        width: 400px;
-        height: 600px;
-        background: pink;
-        margin: 0 auto;
-      }
-    
-      #inner{
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        margin-left: -50px; //回退半个自身的像素，必须要知道inner的高宽
-        margin-top: -50px;
-        width: 100px;
-        height: 100px;
-        background: deeppink;
-    </style>
-    ```
-
-- 适用于：已知自身宽高的 Box
-- 缺点：必须要知道自身的宽高，非响应式
-
-**position:absolute;**
-
-- **自动** 分配富裕空间
-
-    ```css
-    #inner{
-     position: absolute;
-     /* 因为四者默认值是auto，所以需要全部设为0 */
-     left: 0;
-     right: 0;
-     top: 0;
-     bottom: 0; 
-     margin: auto;
-     width: 100px;
-     height: 100px;
-     background: deeppink;
-    }
-    ```
-
-- 绝对定位盒子的特性
-    - 高宽有内容撑开
-    - 水平方向上： left + right + width + padding + margin = 包含块 padding 区域内部的尺寸
-    - 垂直方向上： top + bottom + height + padding + margin = 包含块 padding 区域内部的尺寸
-- 适用于：宽高固定的 Box
-- 缺点：当 Box 的宽高不固定的时候，width 和 height、margin 都是 auto，width 和 height 优先级更高，最终 inner 会填满包含块的 padding；无法仅仅实现水平居中或垂直居中
-- 用于图片也是 ok 的，但是图片有更加优雅的方案
-
-**transform:translate**
-
-- 主动分配富裕空间
-
-    ```css
-    #inner{
-     position: absolute;
-     left: 50%;
-     top: 50%;
-     transform: translate3d(-50%,-50%,0); //针对于自身
-     background: deeppink;
-    }
-    ```
-
-- 适用于：宽高未知的 Box
-- 缺点：transform 兼容性比较差
-
-### Inline-level Box
-
-**text-align:center;line-height**
-
-- 控制 **内联元素** 水平居中
-- 适用元素：**块级元素**，内敛元素如果浮动则失效
-- 加一个行高与父容器的 height 一样，实现垂直居中
-- 转换子元素为 inline-level，实现水平或者垂直居中都是简单易行的方案
-
-**vertical-align**
-
-- 适用元素：inline-level and table-cell elements.
-- 初始值：baseline
-- 不继承
-- 可以指定数值
-
-**未知宽高**
-
-- 使用 flex
-
-### 背景图片
-
-**background-position**
-
-### 占位元素（替换元素）
-
-- 图片 input 等
-- 在容器内加入了一个行内框比图片高的元素，然后让图片以该元素为基准，进行垂直居中
-- 最后这种方式，如果是行内块，也可以实现垂直水平居中，但是一般只用于图片 input 等
-
-    ```html
-    <style>
-    #wrap{
-     height: 400px;
-     width: 400px;
-     border: 1px solid ;
-     margin: 0 auto;
-     text-align: center;
-    }
-    #wrap:after{
-     content: "";
-     display: inline-block;
-     height: 100%;
-     width: 0;
-     background: pink;
-     vertical-align: middle;
-    }
-    #wrap img{
-     vertical-align: middle;
-    }
-    </style>
-    
-    <div id="wrap">
-     <img src="img/img2.jpg" width="150"/>
-    </div>
-    
-    ```
-
-### 图片文字垂直居中
-
-+ 在 css 中给 img 添加上“vertical-align:middle”属性。
-
-### Canvas 元素
-
-- 调整原点
-- 调整偏移
-- Canvas 文本
-
-### Flex 布局
-
-容器为 flex，改变了项目，不论原先的 display
-
-```css
-.wrap{
-  width: 500px;
-  height: 500px;
-  background:orange;
-  margin:0 auto;
-  display:flex;
-}
-.inner{
-  width: 200px;
-  height: 200px;
-  background: green;
-  margin:auto; /*不论是否有宽高，都会自动居中*/
-}
-```
-
-当然也可以使用 justify-content align-items
-
-```css
-  #container{
-    height: 100px;
-    background-color: pink;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    align-items:center;
-  }
-  .item{
-    background-color: cornflowerblue;
-    width: 100px;
-    height: 50px;
-  }
-```
-
-### Grid 布局
-
-类似于 flex
-
-```css
-justify-content: center;
-align-content:center;
-```
-
-控制栅格系统相对于栅格容器垂直水平居中
-
-开启 grid 布局之后，可以利用项目的 justify-self 属性 单个控制对齐
-
-### Iconfont
-
-iconfont 本质上是图片，所以用于对其的是图片的下边缘，想要字体和 iconfont 水平对齐，应该让 iconfont 的 vertical-align 为 middle
-
-### 最强法宝
-
-display 为某个，然后即可使用相应的布局方案
-
-inline-block text-align
-
-## 盒子不规则对齐
-
-有的左对齐，有的右对齐。最简单就是用 flex 来做，因为开启了 flex，float 会失效，所以右对齐的只能在 flex-grow 之后，内部的元素去浮动，这样不好
-
-更好的做法是倒数第二个元素 flex-grow1 占用用于空间，把最后一个元素挤到右边，自然实现了右对齐
-
-用浮动也能实现同样的功能，只是浮动永远是左右的，而 flex 可以做到上下，而且浮动的话没有办法简单的控制居中
-
-但是有一个问题，flex 延长之后，整个元素都可以触发事件，导致要多包一层结构才方便
-
-看来无论如何都要多包一层空 div，统一命名为 `grow_wrap`
-
-或者在中间加一个占位元素，仅仅是用来占位
-
-又或者是浮动之后分别用 flex 来实现居中，但是有的时候一边只有一个元素，这种方案就很亏
-
-### 左中右对齐
-
-在一行内同时实现左对齐、居中对齐、右对齐
-
-最合适的方案还是左右两边宽度相同，然后居中
-
-如果左右宽度不同，居中的对齐会有偏差
-
-### 使用 Flex
-
-justify-content:sapce-between;
-
-然后左中右三个结构
-
-### Flex & Margin
-
-<iframe height="300" style="width: 100%;" scrolling="no" title=" 不规则对齐 -1" src="https://codepen.io/chiyu-git/embed/wvMdRNg?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
-
-<iframe height="300" style="width: 100%;" scrolling="no" title=" 不规则对齐 -3" src="https://codepen.io/chiyu-git/embed/RwrVEOW?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
-
-## 文本对齐
-
-### 纯文本对齐
-
-不想创建太多的 DOM 结构，如果操控纯文本实现各种对齐呢？
-
-http://www.daqianduan.com/6806.html
-
-## 两列自适应布局
-
-### 要求
-
-**一列由内容撑开**
-
-**另一列撑满剩余宽度的布局方式**
-
-### 定位
-
-一列由内容撑开，开启定位之后，元素宽高由内容撑开
-
-另一列怎么做到自动充满剩余高度呢？？
-
-- 使用 JS 动态计算
-
-### 浮动 +overflow:hidden
-
-<iframe height="300" style="width: 100%;" scrolling="no" title="CSS 实现 - 两列自适应 - 浮动&amp;BFC" src="https://codepen.io/chiyu-git/embed/MNXoNa?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
-
-`overflow: hidden;` 主要是为了防止出现文字环绕的效果，开启了 BFC 之后，不会与浮动元素重叠
-
-### Flex
-
-<iframe height="265" style="width: 100%;" scrolling="no" title=" 两列自适应 -flex" src="https://codepen.io/chiyu-git/embed/xvzrEw/?height=265&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true"></iframe>
-
-因为 align-items: normal;，所以实现了等高
-
-### Grid
-
-<iframe height="265" style="width: 100%;" scrolling="no" title=" 两列自适应 -grid" src="https://codepen.io/chiyu-git/embed/BXVYEw/?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true"></iframe>
-
-## 三列布局
-
-两边固定，中间自适应
-
-中间列要完整显示
-
-当中列要优先加载
-
-### 定位
-
-实现 **局部三列** 的最简单方案，但是不适合用来做整体的布局，用定位的话因为相对于初始包含块而且脱离了文档流，很不好控制，**不要用定位做布局框架，用浮动来做**
-
-<iframe height="265" style="width: 100%;" scrolling="no" title=" 三列布局 - 绝对定位 " src="https://codepen.io/chiyu-git/embed/zgaWbB/?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true"></iframe>
-
-### 浮动
-
-浮动左右脱离文档流，中间自然上升
-
-文字被左浮动的块卡住，自然的就显示在中间列了
-
-缺点：浮动不能过界，所以中间块只能放在最后，中间块不能优先加载
-
-<iframe height="265" style="width: 100%;" scrolling="no" title=" 三列布局 - 浮动 " src="https://codepen.io/chiyu-git/embed/zgajxN/?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true"></iframe>
-
-### 圣杯布局
-
-**margin** 只会改变边界，不会改变位置，通过负值改变元素边界，从而影响布局（也会影响到 padding 的开始位置）
-
-**实现步骤：**
-
-1. middle 至于 html 结构第一位，left,middle,right 三个全部浮动
-2. margin 为负值&相对定位: 调整旁边两列的位置 (使三列布局到一行上)
-    - 这个时候 left 需要 margin-left：- (100% +**自身宽**)，想到 tramsfrom，但是又兼容性问题
-    - 使用相对定位：再负 **自身宽**
-3. 给父元素添加 padding，控制使中间块内容展现
-    - 只有在 width 是 auto 的时候，加 padding 才会从 width 中扣除，如果是浮动了，宽高都是由内容撑开，为了实现内容的充满屏幕，只能设置 width100%，这个时候加 paddig 就是在屏幕外增加内容了， 所以只能给父元素加 padding，把子元素的内容顶到中间显示
-4. 给侧边开启相对定位
-
-    + 因为父级增加了 padding，而浮动元素只能在父级的内容区浮动，**所以** 需要控制侧边去填补多出来的空白
-
-5. 为 body 添加 min-width
-    - min-width 不可以设置给中间块？设置给中间块，会导致中间块溢出父元素，破坏布局，demo player
-    - 给父元素添加 min-width，因为左右有了 padding，实际的宽度只有中间的 middle 部分，min-width 相当于针对 middle
-    - 给 body 添加 min-width，设置为 2*left+right，两个 left 一个 right
-- chrome 新增了最小窗口限制，但是火狐的最小窗口要小得多
-
-**缺点：**
-
-- 中间 middle 由内容控制高度，两变块无法跟进
-- 当父级的最小宽度小于左右的固定宽度时布局会错乱，因为：左边的 -margin 100%，参考于父级宽度，此时的宽度不足，无法上 left 偏移到上一去，导致布局错乱
-
-<iframe height="265" style="width: 100%;" scrolling="no" title=" 三列布局 - 圣杯布局 " src="https://codepen.io/chiyu-git/embed/xvzjgX/?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true"></iframe>
-
-### 圣杯 + 伪等高布局
-
-padding 撑开内容
-
-margin 为负值，收缩边框，在设置 overflow hiddren
-
-因为元素的排列跟着边界，边界由 margin 控制，所以 padding 的值再高也不会影响其他元素，左右可以跟着中间的内容高度
-
-本质：父级被 middle 撑开，露出了原本 hidden 的 padding
-
-缺点：还是没有解决圣杯布局最小错乱问题
-
-```css
-#wrap .left{
-  float: left;
-  width: 200px;
-  background: pink;
-  padding-bottom: 1000px;
-  margin-bottom: -1000px;
-}
-#wrap .right{
-  float: left;
-  width: 500px;
-  background: deeppink;
-  padding-bottom: 1000px;
-  margin-bottom: -1000px;
-}
-```
-
-### 双飞翼布局
-
-希望布局的框架一直在文档流里，不要有层级的提升，完全不使用定位
-
-给 middle 在套一个 div，在增加 padding，然后 right 和 left 通过负 margin 调整位置就可以了，这种方案比较万金油的，可以在不改变外部的所有布局，在内部改变自 - 己，但是如果滥用，结构会变得很复杂
-
-为了让中间的内容完整显示，给 body 增加一个 min-width=2*left+right
-
-所有的内容都在文档里，并且层级没有提升
-
-<iframe height="265" style="width: 100%;" scrolling="no" title=" 三列布局 - 双飞翼布局 " src="https://codepen.io/chiyu-git/embed/WVKQaL/?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true"></iframe>
-
-### 两组实现的对比:
-
-1. 俩种布局方式都是把主列放在文档流最前面，使主列优先加载。
-2. 两种布局方式在实现上也有相同之处，都是让三列浮动，然后通过 **负外边距** 形成三列布局。
-3. 两种布局方式的不同之处在于如何处理中间主列的位置：
-    - 圣杯布局是利用父容器的左、右内边距 + 两个从列相对定位；
-    - 双飞翼布局是把主列嵌套在一个新的父级块中利用主列的左、右外边距进行布局调整
-4. 圣杯布局：center 部分的最小宽度不能小于 left 部分的宽度，否则会 left 部分掉到下一行
-5. 双飞翼布局：
-
-    + **在圣杯布局基础上进一步优化，padding 加在新增的 DOM 结构上，不会影响到同级的浮动侧边，解决了圣杯布局错乱问题**
-    + **实现了内容与布局的分离。而且任何一栏都可以是最高栏，不会出问题**。
-
-### Flex 实现
-
-左右给固定值，中间给 flex-grow:1，自动吸收剩余空间
-
-left 给 order:-1，排列到队首
-
-<iframe height="265" style="width: 100%;" scrolling="no" title=" 三列布局 -flex" src="https://codepen.io/chiyu-git/embed/JgBGXJ/?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true"></iframe>
-
-### Grid 实现
-
-与 flex 类似
-
-<iframe height="265" style="width: 100%;" scrolling="no" title=" 三列布局 -grid" src="https://codepen.io/chiyu-git/embed/gVjPGq/?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true"></iframe>
-
-## 等高布局
-
-容器的高度由内容撑开
-
-容器的背景实时变化
-
-内容的背景始终与容器等高
-
-### 负 Margin
-
-实现一变种
-
-背景色从 padding 开始裁剪，足够大的 padding，足够大的背景，同等的负 margin，控制布局边界，当容器被撑开时，显露处 padding
-
-```css
-#page .container {
-  overflow:hidden; /*清除浮动*/
-}
-.aside {
-  width: 220px;
-  float: left;
-  margin-right: 20px;
-  padding: 5px 15px;
-  padding-bottom:10000px;
-  margin-bottom:-10000px;
-  min-height: 200px;
-  background:red;
-}
-
-.content {
-  width: 720px;
-  float: left;
-  padding: 5px 15px;
-  padding-bottom:10000px;
-  margin-bottom:-10000px;
-  background:blue;
-}
-
-<div id="page">
-<div class="container">
-<div class="aside">Sidebar ...</div>
-<div class="content">Main content ...</div>
-</div>
-</div>
-```
-
-### 渐变方式
-
-实现一
-
-等高列布局，有一种简单的方法就是根据列宽和其背景色制作一张背景图，然后在 Y 轴方向重铺。但这种方式在 **改变宽度** 和 **背景颜色** 的时候就非常的麻烦。那么根据背景图的思路，我们可以考虑使用 CSS3 的渐变属性来制作类似于这样的一张背景图。
-
-假设我们的两列布局，左侧是 220px,主内容是 720px，两者间距是 20px(容器宽度是 960px)。我们需要一个类似于下面的背景图：
-
-![](/img/user/programming/FAQ/ui-faq/image-20221021165735017.png)
-
-那么使用 Gradient 实现类似一张这样的背景，我们需要采用多色渐变，如示例中所示，总共使用了三个颜色：
-
-- 左侧色为 `#f36`，从０点起到 220px 止
-- 间隔色为 `#fff`，从 221px 起到 240px 止
-- 主内容色为 `#f63`，从 241px 起到 100% 止
-
-```css
-  #page .container {
-    background-image: -webkit-linear-gradient(to right, #f36 0, #f36 220px, #fff 221px, #fff 240px, #f63 241px, #f63 100%);
-    background-image: linear-gradient(to right, #f36 0, #f36 220px, #fff 221px, #fff 240px, #f63 241px, #f63 100%);
-    margin-bottom: 10px;
-    overflow: hidden;
-  }
-```
-
-### 伪类
-
-`.wrap` 容器中包含三个子元素和其他们对应的伪类。通过伪类设置背景色。使用这种方法有几个关键点：
-
-- 容器 `.wrap` 需要设置 `position:relative`；
-- 伪类 `:before` 或 `:after` 需要绝对定位，不同元素的位置调整对应的 `left` 或者 `right` 值；
-- 背景颜色设置在伪类生成的内容上，并且通过 `top` 和 `bottom` 拉伸，致使他们等高。
-- 给伪类设置 `z-index` 的值为 `-1`，让其在内容底部。
-
-```js
-  #page .container {
-    position: relative;
-    overflow:hidden; /*清除浮动*/
-  }
-
-  .aside{
-    width: 220px;
-    margin-right:20px;
-    float:left;
-  }
-  .content{
-    
-    width: 720px;
-    float:left;
-  }
-
-  .aside:before,
-  .content:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: -1;
-  }
-
-  .aside:before {
-    left: 0;
-    width: 220px;
-    background: #f63;
-  }
-
-  .content:before {
-    width: 720px;
-    background: #c6f;
-    right: 0;
-  }
-```
-
-### Flex
-
-实现二
-
-flex 布局，align-items 的默认值为 normal，因此，一旦项目不设置高度，就会自动铺满容器的高度，实现等高布局
-
-```css
-* {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.container {width: 960px;margin: 0 auto;color: #fff;}
-
-#page .container {background-color: #cef;min-height: 300px;margin-bottom: 10px;display:flex;}
-
-.aside {width: 220px;background-color: #36e;padding: 5px 15px;margin-right:20px;}
-
-.content {background-color: #66f;padding: 5px 15px;}
-```
-
-### Grid
-
-### 对比
-
-负 margin：浮动，清除浮动，容器由内容撑开即可，需要逐个添加 padding 和负 margin
-
-渐变方式：浮动，清除浮动，容器由内容撑开即可，使用了 css3 API
-
-伪元素：容器相对定位，伪元素绝对定位，需要逐个添加伪元素
-
-flex：flex 的默认表现，使用了 flex API
-
-## 粘连布局
-
-### 要求
-
-关闭按钮，没有内容的时候在 footer，内容过多的话就跟着内容向下移动
-
-### 绝对定位
-
-```html
-<div id="wrap" >
-  <div class="main">
-    main <br />main <br />main <br />main <br />
-  </div>
-  <div id="footer">footer</div>
-</div>
-```
-
-```css
-html,body {height: 100%;}
-#wrap {
-  position: relative;
-  min-height: 100%;
-  background: pink;
-  text-align: center;
-  overflow: hidden;
-}
-#wrap .main {padding-bottom: 50px;}
-#footer {
-  position:absolute;
-  bottom:0;
-  width: 100%;
-  line-height: 50px;
-  background: deeppink;
-  text-align: center;
-}
-```
-
-### Calc
-
-上面的代码中，因为要实现最小高度 100% 的效果，给 html、body 都设置为高度 100%，不利于代码扩展。下面使用 100vh 来代替 100%，代码会简洁很多。
-
-```css
-.main{
-  min-height:calc(100vh - 50px);
-  background: pink;
-}
-#footer{
-  width: 100%;
-  line-height:50px;
-  background-color:deeppink;
-  text-align:center;
-}
-```
-
-内容部分 main 设置最小高度为 `calc(100vh - $footer高度)` 即可
-
-### Flex
-
-上面的代码中，如果 sticky 的底部高度发生了变化，则内容部分的代码也需要进行相应地调整。如果使用 flex，则可以更加灵活。为父级 (.box) 设置 flex、上下排列及最小高度为 100vh，为内容部分 (.content) 设置 flex:1 即可
-
-```css
-#wrap{
-  display: flex;
-  flex-flow:column;
-  min-height:100vh;
-  background: pink;
-}
-.main{
-  flex:1;
-}
-#footer{
-  line-height:50px;
-  background-color:deeppink;
-  text-align:center;
-}
-```
-
-### Grid
-
-类似额
-
-```css
-#wrap{
-  display: grid;
-  grid-template-rows:1fr 50px;
-  min-height:100vh;
-  background: pink;
-}
-#footer{
-  line-height:50px;
-  background-color:deeppink;
-  text-align:center;
-}
-```
-
-### 负 Margin 法
-
-改变了 DOM 的结构，利用了块级盒子的特性
-
-html body `#wrap` 高度继承，footer 被顶出底部
-
-footer 添加 margin-top 负 $ 自己的高度，出现在底部
-
-此时，wrap 由父元素的高度决定，不是由 main 撑开，只要 main 的内容没有撑开 wrap 的高度，footer 永远都会在最底部
-
-当 main 的内容超过 wrap 的高度时，wrap 不会被撑开，所以取消 wrap 的高度继承，把 min-heigh 设置为 100% 即可
-
-处理 main 内容与 footer 的重叠，给 main 加一个 padding-bottom 为 $footer 的高度
-
-```html
-<div id="wrap" >
-  <div class="main">
-    main <br />main <br />main <br />main <br />
-    main <br />main <br />main <br />main <br />
-    main <br />main <br />main <br />main <br />
-  </div>
-</div>
-<div id="footer">footer</div>
-```
-
-```css
-html,
-body {
-  height: 100%;//高度一层层继承下来
-}
-#wrap {
-  min-height: 100%;
-  background: pink;
-  text-align: center;
-  overflow: hidden;
-}
-#wrap .main {
-  padding-bottom: 50px;
-}
-#footer {
-  margin-top: -50px;
-  line-height: 50px;
-  background: deeppink;
-  text-align: center;
-}
-```
-
-### position:sticky
-
-两种粘连布局：
-
-+ 内容不够长，粘在底部，内容太长跟着被挤下去，自己实现的 sticky
-+ 内容不够长，粘在内容下面，内容太长，固定在底部，position:sticky;
-+ 第二种实例：<https://segmentfault.com/a/1190000007938006>
-
-## 图片展示布局
-
-不同数量的图片，不同的布局
 
 # 动画
 
@@ -1829,70 +1023,71 @@ value：因为是 ranger，通过 min 和 max 设置了范围之后，value 值
     const offsetLeft = COLUMN_WIDTH+GAP
 
 
-    
+​    
 
-    
+​    
 
-    
+​    
 
-    
+​    
 
-    
+​    
 
-    
+​    
 
-    
+​    
 
-    
+​    
 
-    
+​    
 
-    
+​    
 
-    
+​    
 
-    
+​    
 
-    
+​    
 
-    
+​    
 
-    
+​    
 
-    
+​    
 
 
     // 随机生成一个不定高的矩形
-
+    
     let randomH = 0
-
+    
     const createRect = function(top,left){
-
+    
       const newRect = document.createElement('div')
-
+    
       randomH = Math.floor(Math.random()*100+100) // [100,200]
-
+    
       newRect.style=`
-
+    
         position:absolute;
-
+    
         left:${left}px;
-
+    
         top:${top}px;
-
+    
         width:${COLUMN_WIDTH}px;
-
+    
         height:${randomH}px;
-
+    
         background-color:pink;
-
+    
       `
-
+    
       return newRect
-
+    
     }
 
-    
+
+​    
     // 插入cascade
     const imageNum = 20
     
@@ -2323,123 +1518,123 @@ value：因为是 ranger，通过 min 和 max 设置了范围之后，value 值
     ```
 
     ```js
-
+    
     var Calculator = {
-
+    
       init: function () {
-
+    
           var that = this;
-
+    
           if (!that.isInited) {
-
+    
               that.isInited = true;
-
+    
               // 保存操作信息
-
+    
               // total: Number, 总的结果
-
+    
               // next: String, 下一个和 total 进行运算的数据
-
+    
               // action: String, 操作符号
-
+    
               that.data = {total: 0, next: '', action: ''};
-
+    
               that.bindEvent();
-
+    
           }
-
+    
       },
-
+    
       bindEvent: function () {
-
+    
           var that = this;
-
+    
           // 请补充代码：获取 .cal-keyboard 元素
-
+    
           var keyboardEl = document.querySelector('.cal-keyboard');
-
+    
           keyboardEl && keyboardEl.addEventListener('click', function (event) {
-
+    
               // 请补充代码：获取当前点击的dom元素
-
+    
               var target = event.target;
-
+    
               // 请补充代码：获取target的 data-action 值
-
+    
               var action = target.dataset.action;
-
+    
               // 请补充代码：获取target的内容
-
+    
               var value = target.innerText;
-
+    
               console.log(target,action,value)
-
+    
               if (action === 'num' || action === 'operator') {
-
+    
                   that.result(value, action === 'num');
-
+    
               }
-
+    
           });
-
+    
       },
-
+    
       result: function (action, isNum) {
-
+    
           var that = this;
-
+    
           var data = that.data;
-
+    
           if (isNum) {
-
+    
               data.next = data.next === '0' ? action : (data.next + action);
-
+    
               !data.action && (data.total = 0);
-
+    
           } else if (action === '清空') {
-
+    
               // 请补充代码：设置清空时的对应状态
-
+    
               data.total = 0;
-
+    
               data.next = '';
-
+    
               data.action = '';
-
+    
           } else if (action === '=') {
-
+    
               if (data.next || data.action) {
-
+    
                   data.total = that.calculate(data.total, data.next, data.action);
-
+    
                   data.next = '';
-
+    
                   data.action = '';
-
+    
               }
-
+    
           } else if (!data.next) {
-
+    
               data.action = action;
-
+    
           } else if (data.action) {
-
+    
               data.total = that.calculate(data.total, data.next, data.action);
-
+    
               data.next = '';
-
+    
               data.action = action;
-
+    
           } else {
-
+    
               data.total = +data.next || 0;
-
+    
               data.next = '';
-
+    
               data.action = action;
-
+    
           }
-
+    
       
           // ���补充代码：获取 .origin-value 元素
           var valEl = document.querySelector('.origin-value');
