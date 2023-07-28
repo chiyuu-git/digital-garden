@@ -478,6 +478,81 @@ S = result.join('');
 
 重新拼接
 
+## 删除最后一个字符
+
+```js
+  var string = "2017-06-26";
+  var reg = /\w$/
+  
+  console.log(string.replace(reg,""))
+```
+
+或者使用 slice 方法
+
+## 交换字符串的两个单词
+
+下面的例子演示了如何交换一个字符串中两个单词的位置，这个脚本使用 $1 和 $2 代替替换文本。
+
+```js
+  var re = /(\w+)\s(\w+)/;
+  var str = "John Smith";
+  var newstr = str.replace(re, "$2, $1");
+  // Smith, John
+  console.log(newstr);
+```
+
+## 大写字母位移
+
+把一个字符串的大写字母放到字符串的后面，各个字符的相对位置不变，且不能申请额外的空间。
+
+按照 Unicode 编码，找出所有大写字母，然后移到最后即可。
+
+注意：不能申请额外的空间，常数级的空间就 OK
+
+  ```js
+  function moveChar (str){
+    // [A-Z] 65-90
+  
+    let len =  str.length
+    let upper = ''
+    for (let i = 0; i < len;) {
+      if(str.charCodeAt(i)>=65 && str.charCodeAt(i)<=90){
+        // 是大写字母，移动到最后
+        upper += str[i]
+        // 如何删除一个字符？
+        let tempA = str.slice(0,i)
+        let tempB = str.slice(i+1)
+        str = tempA + tempB
+      }else{
+        i++
+      }
+    }
+    return str+upper
+  }
+  
+  console.log(moveChar('AkleBiCeilD'))
+  ```
+
+```js
+  function moveChar (str){
+    // [A-Z] 65-90
+    let upper = ''
+    let lower = str.replace(/([A-Z])/g,function(match,p,offset,string){
+      // 操作str，在最后拼上即可
+      // string += p
+      // 解决死循环的问题，不能直接加在原本的str，新建一个保存即可
+      upper += p
+      // 返回值作为匹配的字符的替换值，相当于是删除了匹配字符
+      return ""
+    })
+  
+    // replace 全局替换完毕
+    return lower + upper
+  }
+  
+  console.log(moveChar('AkleBiCeilD'))
+```
+
 ## 生成一段填充字符串
 
 先调用数组的 fill 方法，再转换成字符串
