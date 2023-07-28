@@ -5,87 +5,11 @@
 
 # 字符串题目
 
-## 正则
-
-### 删除最后一个字符
-
-+ ```js
-  var string = "2017-06-26";
-  var reg = /\w$/
-  
-  console.log(string.replace(reg,""))
-  ```
-+ 或者使用两次 slice 方法
-
-### 交换字符串的两个单词
-
-- 下面的例子演示了如何交换一个字符串中两个单词的位置，这个脚本使用 $1 和 $2 代替替换文本。
-
-  ```js
-  var re = /(\w+)\s(\w+)/;
-  var str = "John Smith";
-  var newstr = str.replace(re, "$2, $1");
-  // Smith, John
-  console.log(newstr);
-  ```
-
-+ 格式化 123，456，789.00 的数值
-
-### 大写字母位移
-
-- 把一个字符串的大写字母放到字符串的后面，各个字符的相对位置不变，且不能申请额外的空间。
-- 按照 Unicode 编码，找出所有大写字母，然后移到最后即可。
-- 注意：不能申请额外的空间，常数级的空间就 OK
-
-  ```js
-  function moveChar (str){
-    // [A-Z] 65-90
-  
-    let len =  str.length
-    let upper = ''
-    for (let i = 0; i < len;) {
-      if(str.charCodeAt(i)>=65 && str.charCodeAt(i)<=90){
-        // 是大写字母，移动到最后
-        upper += str[i]
-        // 如何删除一个字符？
-        let tempA = str.slice(0,i)
-        let tempB = str.slice(i+1)
-        str = tempA + tempB
-      }else{
-        i++
-      }
-    }
-    return str+upper
-  }
-  
-  console.log(moveChar('AkleBiCeilD'))
-  ```
-
-- ```js
-  function moveChar (str){
-    // [A-Z] 65-90
-    let upper = ''
-    let lower = str.replace(/([A-Z])/g,function(match,p,offset,string){
-      // 操作str，在最后拼上即可
-      // string += p
-      // 解决死循环的问题，不能直接加在原本的str，新建一个保存即可
-      upper += p
-      // 返回值作为匹配的字符的替换值，相当于是删除了匹配字符
-      return ""
-    })
-  
-    // replace 全局替换完毕
-    return lower + upper
-  }
-  
-  console.log(moveChar('AkleBiCeilD'))
-  ```
-
 ## 二进制
 
 ### 二进制求和
 
-+ ```js
+```js
   var addBinary = function(a, b) {
     // 先转化为数字，用Math方法搞定，转转换为二进制字符串
     let decimalA = parseInt(a,2)
@@ -96,7 +20,8 @@
   };
   console.log(addBinary('11','1')); // 100
   // 很容易溢出
-  ```
+```
+
 + 对齐之后二进制加法，直接操作字符串即可，由于 JS 的字符串索引属性是只读的，要计算出结果只能拼串，所以先把二进制倒序，再进行相加，最后还要再倒序 // 太耗空间了
 + 既然倒序可以相加，那么不到序也是可以做到的，因为 i--， // 其实不行
 + 因为无法清除 result 的首位是进位导致的还是相加导致，所以最后还是要给一个标志来做
@@ -156,106 +81,6 @@
   ```
 
 ## 结构性
-
-### leetCode6.Z 字形变换
-
-#### 题目
-
-+ 将一个给定字符串根据给定的行数，以从上往下、从左到右进行 Z 字形排列。
-
-  比如输入字符串为 "LEETCODEISHIRING" 行数为 3 时，排列如下：
-
-  ```
-  L   C   I   R
-  E T O E S I I G
-  E   D   H   N
-  ```
-
-+ 之后，你的输出需要从左往右逐行读取，产生出一个新的字符串，比如："LCIRETOESIIGEDHN"。
-+ 请你实现这个将字符串进行指定行数变换的函数
-
-#### 实现
-
-+ ```js
-  /**
-   * @param {string} s
-   * @param {number} numRows
-   * @return {string}
-   */
-  var convert = function(s, numRows) {
-    if(numRows===1) return s
-    let i = 0 , 
-        j = 0
-    let flag = 'down'
-    let M = []
-    for (let i = 0; i < numRows; i++) {
-      M[i] = []
-    }
-    for (let count = 0; count < s.length; count++) {
-      M[i][j] = s[count]
-      switch(flag){
-        case 'down':
-          i++
-          if(i===numRows){
-            i=numRows-2
-            j++
-            flag='up' 
-          }
-          break
-        case 'up':
-          i--
-          j++
-          if(i===-1){
-            i=1
-            j--
-            flag='down'
-          }
-          break
-      }
-    }
-    return M.reduce(function(acc,val,i,arr){
-      return acc + M[i].join('')
-    },'')
-  };
-  // console.log(convert("LEETCODEISHIRING",3));
-  console.log(convert('AB',1));
-  ```
-+ 优化，根本没必要使用数组的形式，直接一行行的字符串拼接即可
-
-  ```js
-  var convert = function(s, numRows) {
-    if(numRows===1) return s
-    let i = 0 , 
-        j = 0
-    let flag = 'down'
-    let M = new Array(numRows).fill('')
-  
-    for (let count = 0; count < s.length; count++) {
-      M[i] += s[count]
-      switch(flag){
-        case 'down':
-          i++
-          if(i===numRows){
-            i=numRows-2
-            flag='up' 
-          }
-          break
-        case 'up':
-          i--
-          if(i===-1){
-            i=1
-            flag='down'
-          }
-          break
-      }
-    }
-    return M.reduce(function(acc,val,i,arr){
-      return acc + M[i]
-    },'')
-  };
-  ```
-
-+ 方法二：找规律 https://leetcode-cn.com/problems/zigzag-conversion/solution/
 
 ### [205. 同构字符串](https://leetcode-cn.com/problems/isomorphic-strings/)
 
