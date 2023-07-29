@@ -23,150 +23,109 @@
 
 ![704. 二分查找](../leetcode/704.%20二分查找.md)
 
-# [35. 搜索插入位置](https://leetcode-cn.com/problems/search-insert-position/)
+# 35. 搜索插入位置
 
 ## 题目
 
-+ 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
-+ 你可以假设数组中无重复元素。
+给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
 
-  ```
-  输入: [1,3,5,6], 5
-  输出: 2
-  ```
+你可以假设数组中无重复元素。
 
-## 实现
+```
+输入: [1,3,5,6], 5
+输出: 2
 
-- ```js
-  var searchInsert = function(nums, target) {
-    let left = 0
-    let right = nums.length-1 //3
-    let mid = 0
-    let out = 0
-    while(left<=right){ // 注意是等于
-        mid = Math.floor((left+right)/2) // 1 2 3
-        if(nums[mid]==target) return mid
-        if(nums[mid]<target){
-            left = mid+1
-        }else{
-            right = mid-1
-        }
-    }
-    return left
-  };
-  ```
-- 因为没有负数索引，而索引可是大于长度，所以返回 left，代表应该插入的位置，其实返回 right 也可以，只是最小的需要插入到 -1
+输入: nums = [1,3,5,6], target = 2
+输出: 1
+
+输入: nums = [1,3,5,6], target = 7
+输出: 4
+```
 
 ## 分析
 
-+ 分析：根据题意并结合题目给出的 4 个示例，不难分析出这个问题的等价表述如下：
+分析：根据题意并结合题目给出的 4 个示例，不难分析出这个问题的等价表述如下：
 
   1. 如果目标值（严格）大于排序数组的最后一个数，返回这个排序数组的长度，否则进入第 2 点。
   2. 返回排序数组从左到右，大于或者等于目标值的第 1 个数的索引。
 
-+ 事实上，当给出数组中有很多数和目标值相等的时候，我们返回任意一个与之相等的数的索引值都可以，不过为了简单起见，也为了方便后面的说明，我们返回第 1 个符合题意的数的索引。
-+ 题目告诉你“排序数组”，其实就是在疯狂暗示你用二分查找法。 二分查找法的思想并不难，但写好一个二分法并不简单，下面就借着这道题为大家做一个总结。
-+ 注意：一定得返回左边界 left，
-+ 如果返回右边界 right 提交代码不会通过
+事实上，当给出数组中有很多数和目标值相等的时候，我们返回任意一个与之相等的数的索引值都可以，不过为了简单起见，也为了方便后面的说明，我们返回第 1 个符合题意的数的索引。
 
-  ```
-  理由是对于 [1,3,5,6]，target = 2，返回大于等于 target 的第 1 个数的索引，此时应该返回 1
-  在上面的 while (left <= right) 退出循环以后，right < left，right = 0 ，left = 1
-  根据题意应该返回 left，
-  如果题目要求你返回小于等于 target 的所有数里最大的那个索引值，应该返回 right
-  ```
+题目告诉你“排序数组”，其实就是在疯狂暗示你用二分查找法。 二分查找法的思想并不难，但写好一个二分法并不简单，下面就借着这道题为大家做一个总结。
 
-+ 选择一个最简单的例子，决定返回 left 还是 right 即可
+### 注意
+
+一定得返回左边界 left，
+
+如果返回右边界 right 提交代码不会通过
+
+理由是对于 `[1,3,5,6]`，target = 2，返回大于等于 target 的第 1 个数的索引，此时应该返回 1
+
+在上面的 while (left <= right) 退出循环以后，right < left，right = 0 ，left = 1
+
+根据题意应该返回 left，
+
+如果题目要求你返回小于等于 target 的所有数里最大的那个索引值，应该返回 right
+
+选择一个最简单的例子，决定返回 left 还是 right 即可
 
 ## 传统二分查找法模板
 
-+ 刚接触二分查找法的时候，使用上面的模板，我们可能会像下面这样写代码，我把这种写法容易出错的地方写在了注释里：
+刚接触二分查找法的时候，使用上面的模板，我们可能会像下面这样写代码，我把这种写法容易出错的地方写在了注释里：
 
-  ```java
-  public int searchInsert(int[] nums, int target) {
-      int len = nums.length;
-      if (nums[len - 1] < target) {
-          return len;
-      }
-      int left = 0;
-      int right = len - 1;
-  
-      while (left <= right) {
-          int mid = (left + right) / 2;
-          // 等于的情况最简单，我们应该放在第 1 个分支进行判断
-          if (nums[mid] == target) {
-              return mid;
-          } else if (nums[mid] < target) {
-              // 题目要我们返回大于或者等于目标值的第 1 个数的索引
-              // 此时 mid 一定不是所求的左边界，
-              // 此时左边界更新为 mid + 1
-              left = mid + 1;
-          } else {
-              // 既然不会等于，此时 nums[mid] > target
-              // mid 也一定不是所求的右边界
-              // 此时右边界更新为 mid - 1
-              right = mid - 1;
-          }
-      }
-      // 注意：一定得返回左边界 left，
-      // 如果返回右边界 right 提交代码不会通过
-      // 【注意】下面我尝试说明一下理由，如果你不太理解下面我说的，那是我表达的问题
-      // 但我建议你不要纠结这个问题，因为我将要介绍的二分查找法模板，可以避免对返回 left 和 right 的讨论
-  
-      // 理由是对于 [1,3,5,6]，target = 2，返回大于等于 target 的第 1 个数的索引，此时应该返回 1
-      // 在上面的 while (left <= right) 退出循环以后，right < left，right = 0 ，left = 1
-      // 根据题意应该返回 left，
-      // 如果题目要求你返回小于等于 target 的所有数里最大的那个索引值，应该返回 right
-  
-      return left;
-  }
-  ```
+![35. 搜索插入位置](../leetcode/35.%20搜索插入位置.md)
 
 ## 说明
 
-+ 当你把二分查找法的循环可以进行的条件写成 while (left <= right) 的话，在写最后一句 return 的时候，如果你不假思索，把左边界 left 返回回去，你写对了，但为什么不返回右边界 right 呢？
-+ 但是事实上，返回 left 是有一定道理的，如果题目换一种问法，你可能就要返回右边界 right，这句话不太理解没有关系，我也不打算讲得很清楚（在上面代码的注释中我已经解释了原因），因为实在太绕了，这不是我要说的重点。
-+ **可见**：传统二分查找法模板，当退出 while 循环的时候，在返回左边界还是右边界这个问题上，比较容易出错。
-+ 那么，是不是可以回避这个问题呢？答案是肯定的，答案就在下面我要介绍的“神奇的”二分查找法模板里。
+当你把二分查找法的循环可以进行的条件写成 while (left <= right) 的话，在写最后一句 return 的时候，如果你不假思索，把左边界 left 返回回去，你写对了，但为什么不返回右边界 right 呢？
 
-## “神奇的”二分查找法模板
+但是事实上，返回 left 是有一定道理的，如果题目换一种问法，你可能就要返回右边界 right，这句话不太理解没有关系，我也不打算讲得很清楚（在上面代码的注释中我已经解释了原因），因为实在太绕了，这不是我要说的重点。
 
-+ 二分查找法的思想：二分查找法的思想是“夹逼”，或者说“排除”，而“二分”只是手段，即“通过二分排除了候选区间的一大半的非目标元素”。具体说来，如下：
-+ 在每一轮循环中，都可以排除候选区间里将近一半的元素，进而使得候选区间越来越小，直至有限个数（通常为 1 个），而这个数就有可能是我们要找的数（在一些情况下，还需要单独做判断）。
-+ 在一些资料中，你可能看过别人写二分查找法，把循环可以进行的条件写成 `while (left < right) `，当时你是不是跟我一样有疑问：“咦？当左右边界一样的时候，那个数岂不是会被漏掉”。但是我要告诉你，这样写在绝大多数情况下是最好的，这也是“神奇的”二分查找法模板好用的一部分。
-+ 理由很简单：写 `while (left < right)` 的时候，退出循环时，左边界等于右边界，因此你不必纠结要返回 left 还是 right ，此时返回 left 或者 right 都是可以的。
-+ 回到这一节最开始的疑问：“区间左右边界相等（即收缩成 1 个数）时，这个数是否会漏掉”，解释如下：
+**可见**：传统二分查找法模板，当退出 while 循环的时候，在返回左边界还是右边界这个问题上，比较容易出错。
+
+那么，是不是可以回避这个问题呢？答案是肯定的，答案就在下面我要介绍的“神奇的”二分查找法模板里。
+
+# “神奇的”二分查找法模板
+
+二分查找法的思想：二分查找法的思想是“夹逼”，或者说“排除”，而“二分”只是手段，即“通过二分排除了候选区间的一大半的非目标元素”
+
+具体说来，如下： 在每一轮循环中，都可以排除候选区间里将近一半的元素，进而使得候选区间越来越小，直至有限个数（通常为 1 个），而这个数就有可能是我们要找的数（在一些情况下，还需要单独做判断）。
+
+在一些资料中，你可能看过别人写二分查找法，把循环可以进行的条件写成 `while (left < right) `，当时你是不是跟我一样有疑问：“咦？当左右边界一样的时候，那个数岂不是会被漏掉”。但是我要告诉你，这样写在绝大多数情况下是最好的，这也是“神奇的”二分查找法模板好用的一部分。
+
+理由很简单：写 `while (left < right)` 的时候，退出循环时，左边界等于右边界，因此你不必纠结要返回 left 还是 right ，此时返回 left 或者 right 都是可以的。
+
+回到这一节最开始的疑问：“区间左右边界相等（即收缩成 1 个数）时，这个数是否会漏掉”，解释如下：
 
   1. 如果你的业务逻辑保证了你要找的数一定在左边界和右边界所表示的区间里出现，那么可以放心地返回 l 或者 r，而无需再做判断；即使这个数 `nums[left]&&nums[right]` 没有经过 while 循环内的判断，很多时候这个数就是正确的答案
-  2. 如果你的业务逻辑不能保证你要找的数一定在左边界和右边界所表示的区间里出现，那么只要在退出循环以后，再针对 nums[left] 或者 nums[right] （此时 nums[left] == nums[right]）单独作一次判断，看它是不是你要找的数即可，这一步操作常常叫做“后处理”。
+  2. 如果你的业务逻辑不能保证你要找的数一定在左边界和右边界所表示的区间里出现，那么只要在退出循环以后，再针对 `nums[left]` 或者 `nums[right]` （此时 `nums[left] == nums[right]`）单独作一次判断，看它是不是你要找的数即可，这一步操作常常叫做“后处理”。
 
-+ ```java
-  public class Solution {
-    public int searchInsert(int[] nums, int target) {
-      int len = nums.length;
-  
-      if (len == 0) {
+```js
+var searchInsert = function (nums, target) {
+    let len = nums.length;
+
+    if (len == 0) {
         return 0;
-      }
-      if (target > nums[-1]) return size
-  
-      int left = 0
-      int right = len-1
-  
-      while (left < right) {
-        int mid = (left + right) >>> 1
-        if (nums[mid] < target) {
-          left = mid + 1
-        } else {
-          right = mid 
-        }
-      }
-      return left
     }
-  }
-  ```
+    if (target > nums[-1]) return size
 
-# 模板总结
+    let left = 0
+    let right = len - 1
+
+    while (left < right) {
+        let mid = (left + right) >>> 1
+        if (nums[mid] < target) {
+            left = mid + 1
+        } else {
+            right = mid
+        }
+    }
+	// 后处理
+    return nums[left] < target ? left + 1 : left;
+}
+```
+
+## 模板总结
 
 1. 确定范围区间，一般就是 `[0,len-1]`，思考边界特例
 2. 循环条件 `left<right`
@@ -184,100 +143,27 @@
 
 5. 确认中位数的选择
 
-   > 排除中位数的逻辑是 `left`，选择左中位数，可以被排除，不会进入死循环
-   >
-   > 排除中位数的逻辑是 `right`，选择右中位数，可以被排除，不会进入死循环
+> 排除中位数的逻辑是 `left`，选择左中位数，可以被排除，不会进入死循环
+> 排除中位数的逻辑是 `right`，选择右中位数，可以被排除，不会进入死循环
 
 6. 退出循环，视情况判断 `left&&right` 是否符合题意
 7. 返回 `left&&right`
 
-# [69. x 的平方根](https://leetcode-cn.com/problems/sqrtx/)
+# 69. X 的平方根
 
-## 题目
+![69. x 的平方根](../leetcode/69.%20x%20的平方根.md)
 
-+ 实现 int sqrt(int x) 函数。
+# 153. 寻找旋转排序数组中的最小值
 
-  计算并返回 x 的平方根，其中 x 是非负整数。
-
-  由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。
-
-  ```
-  输入: 8
-  输出: 2
-  说明: 8 的平方根是 2.82842..., 
-       由于返回类型是整数，小数部分将被舍去。
-  ```
-
-## 实现
-
-+ ```js
-  /**
-   * @param {number} x
-   * @return {number}
-   */
-  var mySqrt = function(x) {
-    if(x<=1) return x
-      let ans = 0
-    let left=1,right=x
-    let mid = 0
-    while(left<=right){
-      mid = (left+right) >>> 1
-      if(mid**2 <= x){
-        // 要增大
-        left = mid + 1
-        ans = mid
-      }else{
-        // 要变小
-        right = mid -1
-      }
-    }
-    return ans
-  }
-  ```
-+ 根据经验 `right=x>>>1`
-
-## 模板实现
-
-+ ```js
-  var mySqrt = function(x) {
-    if(x==0) return 0
-    // 区间是1开始，要考虑特例0
-    let left=1,right=x>>>1
-    let mid = 0
-    while(left<right){
-      mid = (left+right+1) >>> 1
-      if(mid**2 > x){
-        // 要变小，右，选择右中位数
-        right = mid -1
-      }else{
-        // 要增大
-        left = mid
-      }
-    }
-    return left || right
-  }
-  ```
-
-# [153. 寻找旋转排序数组中的最小值](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/)
-
-## 问题
-
-+ 假设按照升序排序的数组在预先未知的某个点上进行了旋转。
-+ ( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。
-+ 请找出其中最小的元素。
-+ 你可以假设数组中不存在重复元素。
-
-  ```
-  let nums = [3,4,5,1,2]
-  输出: 1
-  ```
+ [153. 寻找旋转排序数组中的最小值](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/)
 
 ## 简单实现
 
-+ 一遍遍历，直接使用内置的 `Math.min()` 函数
-+ 利用旋转序列的特性，一直升序，在改变的一刻，即是最小值
+一遍遍历，直接使用内置的 `Math.min()` 函数
 
-  ```java
+利用旋转序列的特性，一直升序，在改变的一刻，即是最小值
+
+```java
   class Solution {
   public:
       int findMin(vector<int>& nums) {
@@ -291,16 +177,18 @@
           return nums[0];
       }
   };
-  ```
+```
 
-+ 时间复杂度都是 O(n)
+时间复杂度都是 O(n)
 
 ## 分析
 
-+ 旋转过后的数组存在一个旋转点：
-  + 所有旋转点左侧元素 > 数组第一个元素
-  + 所有旋转点右侧元素 < 数组第一个元素
-  + 如果旋转点在数组的两端，数组依然是有序的
+旋转过后的数组存在一个最小值 x：
+
++ 所有在 x 左侧元素 > 数组第一个元素
++ 所有在 x 右侧元素 < 数组第一个元素
+
+如果旋转点在数组的两端，数组依然是有序的
 
 1. 找到数组的中间元素 mid：
 2. 如果中间元素 > 数组第一个元素，我们需要在 mid 右边搜索变化点。
@@ -308,7 +196,7 @@
 
    ![153-4.png](https://pic.leetcode-cn.com/22494c6003c1718d8ea1e655b9bdb98e5256f884129bca2430d9611b325faee5-153-4.png)
 
-   > 上面的例子中，中间元素 `6` 比第一个元素 `4` 大，因此在中间点右侧继续搜索。
+> 上面的例子中，中间元素 `6` 比第一个元素 `4` 大，因此在中间点右侧继续搜索。
 
 4. 当我们找到变化点时停止搜索，当以下条件满足任意一个即可：
 
@@ -317,7 +205,7 @@
 
 ## 实现
 
-+ ```java
+```java
   /**
    * @param {number[]} nums
    * @return {number}
@@ -341,11 +229,11 @@
   
   let nums = [3, 4, 5, 1, 2]
   console.log(findMin(nums))
-  ```
+```
 
 ## 模板实现
 
-+ ```js
+```js
   var findMin = function (nums) {
     const len = nums.length
     if (len <= 1) return nums[0]
@@ -364,70 +252,54 @@
     }
     return nums[left]
   };
-  ```
-+ 这题的难点在于找准排除中位数的逻辑，和 `nums[0],nums[len-1],nums[left],nums[right]` 哪一个作比较才可以保证排除中位数
+```
 
-# [154. 寻找旋转排序数组中的最小值 II](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/)
+这题的难点在于找准排除中位数的逻辑，和 `nums[0],nums[len-1],nums[left],nums[right]` 哪一个作比较才可以保证排除中位数
+
+# 154. 寻找旋转排序数组中的最小值 II
+
+[154. 寻找旋转排序数组中的最小值 II](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/)
 
 ## 区别
 
-+ 注意数组中可能存在重复的元素。
+注意数组中可能存在重复的元素。
 
-  ```
+```
   let nums = [2,2,2,0,1]
   输出: 0
-  ```
+```
 
 ## 模板实现
 
-+ ```js
-  var findMin = function(nums) {
+```js
+var findMin = function (nums) {
     const len = nums.length
-    if(len===1) return nums[0]
-    let left = 0 , right = len -1 
-    while(left<right){
-      const mid = (left+right)>>>1
-      if(nums[mid]>nums[right]){
-        left = mid + 1
-      }else if(nums[mid]<nums[right]){
-        right = mid
-      }else{
-        // [3,3,3,1,3,3]
-        right = right - 1
-      }
+    if (len === 1) return nums[0]
+    let left = 0, right = len - 1
+    while (left < right) {
+        const mid = (left + right) >>> 1
+        if (nums[mid] > nums[right]) {
+            left = mid + 1
+        } else if (nums[mid] < nums[right]) {
+            right = mid
+        } else {
+            // [3,3,3,1,3,3]
+            right = right - 1
+        }
     }
     return nums[left]
-  };
-  ```
+};
+```
 
-# [33. 搜索旋转排序数组](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)
+# 33. 搜索旋转排序数组
 
-## 题目
+![33. 搜索旋转排序数组](../leetcode/33.%20搜索旋转排序数组.md)
 
-- 假设按照升序排序的数组在预先未知的某个点上进行了旋转。
+## 模板实现
 
-  ( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。
+实现不了, 边界条件太多了
 
-- 搜索一个给定的目标值，如果数组中存在这个目标值，则返回它的索引，否则返回 -1 。
-- 你可以假设数组中不存在重复的元素。
-- 你的算法时间复杂度必须是 O(log n) 级别。
-
-  ```
-  输入: nums = [4,5,6,7,0,1,2], target = 0
-  输出: 4
-  
-  输入: nums = [4,5,6,7,0,1,2], target = 3
-  输出: -1
-  ```
-
-## 分析
-
-- 有点像二分搜索
-- 先进行一次二分搜索找到旋转点，然后判断应该在左半边还是右半边，再进行一次二分查找
-
-  ```js
-  
-  ```
+常规的二分法也很难思考到细节, 还是降维的方法更好
 
 # [287. 寻找重复数](https://leetcode-cn.com/problems/find-the-duplicate-number/)
 
