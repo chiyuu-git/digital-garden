@@ -341,25 +341,7 @@ function getMinCommonMultiple(a, b){
 
 ### 牛顿法
 
-#### [69. x 的平方根](https://leetcode-cn.com/problems/sqrtx/)
-
-```js
-  var mySqrt = function(x) {
-    if(x==0) return 0
-    let left=1,right=x>>>1
-    let mid = 0
-    while(left<right){
-      mid = (left+right+1) >>> 1
-      // 要变小
-      if(mid**2 > x)right = mid -1
-      // 要增大
-      else left = mid
-    }
-    return left
-  }
-  
-  console.log(mySqrt(169))
-  ```
+![69. x 的平方根](../leetcode/69.%20x%20的平方根.md)
 
 ## 除法
 
