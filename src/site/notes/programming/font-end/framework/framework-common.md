@@ -179,6 +179,12 @@ vue.js 则是采用数据劫持结合发布者 - 订阅者模式的方式，通�
 
 vue3 通过 proxy 实现劫持
 
+# 响应式机制
+
+[Observer](vue/mini-vue2.md#Observer)
+
+[[programming/font-end/framework/vue/mini-vue3\|vue/mini-vue3]]
+
 # 对比
 
 ## 与 React 对比
