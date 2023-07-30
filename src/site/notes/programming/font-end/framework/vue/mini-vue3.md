@@ -15,6 +15,13 @@ dom 响应式 api 做的更好的是 solid
 
 react 就是 hooks 的理念
 
+https://gitee.com/zmym/mini-vue-ts/tree/master/packages/reactivity#https://gitee.com/link?target=https%3A%2F%2Flink.juejin.cn%2F%3Ftarget%3Dhttps%253A%252F%252Fv3.cn.vuejs.org%252Fapi%252Fbasic-reactivity.html%2523reactive
+
+[index.js](https://github.com/liuweiGL/mini-vue/blob/main/index.js)
+
+[GitHub - cuixiaorui/mini-vue: 实现最简 vue3 模型( Help you learn more efficiently vue3 source code )](https://github.com/cuixiaorui/mini-vue)
+
+
 # 总结
 
 vue3 源码好像也没有多么优美, 好多 api , 都是在擦屁股?
