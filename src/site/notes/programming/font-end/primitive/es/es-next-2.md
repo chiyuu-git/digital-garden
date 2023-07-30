@@ -168,6 +168,8 @@ obj.time // 35
 
 > 前两个必填？并不是，不填也是 ok 的，只是一般都会用到而已
 
+#### 拦截读取操作
+
 `get` 方法的用法，上文已经有一个例子，下面是另一个拦截读取操作的例子。
 
 ```javascript
@@ -189,9 +191,41 @@ proxy.name // "张三"
 proxy.age // 抛出一个错误
 ```
 
-上面代码表示，如果访问目标对象不存在的属性，会抛出一个错误。如果没有这个拦截函数，访问不存在的属性，只会返回 `undefined`。
+上面代码表示，如果访问目标对象不存在的属性，会抛出一个错误。如果没有这个拦截函数，访问不存在的属性，只会返回 `undefined`
 
-`get` 方法可以**继承**。
+#### 通过 Handler 给 Proxy 对象添加属性
+
+访问不存在的属性, 也会被拦截
+
+可以通过这个实现给所有的 proxy 对象都添加统一的属性: 如果访问的是 ReactiveFlags 属性, 可以直接返回对应的值.
+
+> 这种做法和继承相比有啥优势和劣势呢?
+```ts
+  return function get(target, key, receiver) {
+    const isExistInReactiveMap = () =>
+      key === ReactiveFlags.RAW && receiver === reactiveMap.get(target);
+
+    const isExistInReadonlyMap = () =>
+      key === ReactiveFlags.RAW && receiver === readonlyMap.get(target);
+
+    const isExistInShallowReadonlyMap = () =>
+      key === ReactiveFlags.RAW && receiver === shallowReadonlyMap.get(target);
+
+    if (key === ReactiveFlags.IS_REACTIVE) {
+      return !isReadonly;
+    } else if (key === ReactiveFlags.IS_READONLY) {
+      return isReadonly;
+    } else if (
+      isExistInReactiveMap() ||
+      isExistInReadonlyMap() ||
+      isExistInShallowReadonlyMap()
+    ) {
+      return target;
+    }
+}
+```
+
+#### Get 方法可以继承
 
 ```javascript
 let proto = new Proxy({}, {
@@ -206,6 +240,8 @@ obj.foo // "GET foo"
 ```
 
 上面代码中，拦截操作定义在 `Prototype` 对象上面，所以如果读取 `obj` 对象继承的属性时，拦截会生效。
+
+#### Receiver
 
 下面是一个 `get` 方法的第三个参数的例子，它总是指向**原始的读操作**所在的那个对象，一般情况下就是 Proxy 实例。
 
@@ -232,6 +268,8 @@ d.a === d // true
 ```
 
 上面代码中，`d` 对象本身没有 `a` 属性，所以读取 `d.a` 的时候，会去 `d` 的原型 `proxy` 对象找。这时，`receiver` 就**指向 `d`**，代表原始的读操作所在的那个对象。
+
+#### Cinfigurable
 
 如果一个属性不可配置（configurable）且不可写（writable），则 Proxy 不能修改该属性，否则通过 Proxy 对象访问该属性会**报错**。
 
