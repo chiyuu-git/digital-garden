@@ -301,72 +301,9 @@ var findMin = function (nums) {
 
 常规的二分法也很难思考到细节, 还是降维的方法更好
 
-# [287. 寻找重复数](https://leetcode-cn.com/problems/find-the-duplicate-number/)
+# 287. 寻找重复数
 
-## 题目
-
-+ 给定一个包含 n + 1 个整数的数组 nums，其数字都在 1 到 n 之间（包括 1 和 n），可知至少存在一个重复的整数。假设只有一个重复的整数，找出这个重复的数。
-
-  ```
-  let nums = [1,3,4,2,2]
-  输出: 2
-  ```
-
-## 简单实现
-
-+ 使用数组去重的思路
-
-  ```js
-  var findDuplicate = function(nums) {
-    const len = nums.length
-    const obj = {}
-  	for(let i=0;i<len;i++){
-      if(obj[val]===undefined){
-        obj[val] = 1
-      }else{
-        return val
-      }
-    }
-  }
-  ```
-
-+ 排序后比对后一个数
-
-## 分析
-
-+ 关键：这道题的关键是对要定位的“数”做二分，而不是对数组的索引做二分。要定位的“数”根据题意在 1 和 n 之间，每一次二分都可以将搜索区间缩小一半。
-+ 以 [1, 2, 2, 3, 4, 5, 6, 7] 为例，一共有 8 个数，每个数都在 1 和 7 之间。1 和 7 的中位数是 4，遍历整个数组，统计小于 4 的整数的个数，至多应该为 3 个，
-  + 如果超过 3 个就说明重复的数存在于区间 [1,4) （注意：左闭右开）中；
-  + 否则，重复的数存在于区间 [4,7]（注意：左右都是闭）中。
-+ 这里小于 4 的整数有 4 个（它们是 1, 2, 2, 3），因此砍掉右半区间，连中位数也砍掉。
-+ 以此类推，最后区间越来越小，直到变成 1 个整数，这个整数就是我们要找的重复的数。
-
-## 实现
-
-+ ```js
-  var findDuplicate = function(nums) {
-    const len = nums.length
-    let min=1,max=len-1
-    while(min<max){
-      const mid =(min+max)>>>1
-      let counter = 0
-      for (let i = 0; i < len; i++) {
-        if(nums[i]<=mid){
-          counter++
-        }
-      }
-      if(counter>mid){
-        max = mid
-      }else{
-        min = mid + 1
-      }
-    }
-    return min
-  }
-  
-  let nums = [1, 2,  3, 4, 5, 6,6, 7]
-  console.log(findDuplicate(nums))
-  ```
+![287. 寻找重复数](programming/basic/leetcode/287.%20寻找重复数.md#方案二%20二分查找)
 
 # [1095. 山脉数组中查找目标值](https://leetcode-cn.com/problems/find-in-mountain-array/)
 
