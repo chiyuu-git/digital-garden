@@ -1614,8 +1614,8 @@ https://www.cnblogs.com/coco1s/p/7358830.html
 文档中的层叠上下文由满足以下任意一个条件的元素形成：
 
 - 根元素 (HTML),
-- z-index 值不为 "auto" 的 绝对/相对定位，
-- 一个 z-index 值不为 "auto" 的 flex 项目 (flex item)，即：父元素 display: flex|inline-flex，
+- z-index 值不为 "auto" 的 绝对/相对定位
+- 一个 z-index 值不为 "auto" 的 **flex 项目** (flex item)，即：父元素 display: flex|inline-flex, **很常见的情况**
 - [`opacity`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/opacity) 属性值小于 1 的元素（参考 [the specification for opacity](http://www.w3.org/TR/css3-color/#transparency)），
 - [`transform`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform) 属性值不为 "none" 的元素，
 - [`perspective`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/perspective) 值不为“none”的元素，
