@@ -119,7 +119,7 @@ pdf 阅读器、纯文本、markdown 所有的电子书形式都要可以索引�
 
 电子书资源：https://www.zhihu.com/question/460822842/answer/2395045519
 
-[Site Unreachable](https://search.zhelper.net/?[{%22name%22:%22zhelperV5%22,%22url%22:%22https://api.v5.zhelper.net%22,%22type%22:%22full%22,%22sensitive%22:false,%22detail%22:true},{%22name%22:%22Mibooks(V4)%22,%22url%22:%22https://api.mibooks.tk%22,%22type%22:%22full%22,%22sensitive%22:false,%22detail%22:false},{%22name%22:%22Ylibrary%22,%22url%22:%22https://api.ylibrary.org%22,%22type%22:%22full%22,%22sensitive%22:false,%22detail%22:true},{%22name%22:%22bookpan%22,%22url%22:%22https://api.bookpan.net%22,%22type%22:%22light%22,%22sensitive%22:false,%22detail%22:true}])
+https://search.zhelper.net/
 
 https://docs.zhelper.net/search/
 
