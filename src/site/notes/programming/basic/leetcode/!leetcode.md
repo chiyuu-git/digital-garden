@@ -132,10 +132,10 @@ dummyHead
 
 | File                                                                                                                           | solution tips overview                                          |
 | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- |
-| [[programming/basic/leetcode/645. Set Mismatch\|645. Set Mismatch]]                                                         | [[programming/basic/leetcode/645. Set Mismatch#solution tips\|645. Set Mismatch#solution tips]]                             |
 | [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array\|448. Find All Numbers Disappeared in an Array]] | [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array#solution tips\|448. Find All Numbers Disappeared in an Array#solution tips]] |
 | [[programming/basic/leetcode/442. Find All Duplicates in an Array\|442. Find All Duplicates in an Array]]                   | [[programming/basic/leetcode/442. Find All Duplicates in an Array#solution tips\|442. Find All Duplicates in an Array#solution tips]]          |
 | [[programming/basic/leetcode/41. First Missing Positive\|41. First Missing Positive]]                                       | [[programming/basic/leetcode/41. First Missing Positive#solution tips\|41. First Missing Positive#solution tips]]                    |
+| [[programming/basic/leetcode/645. Set Mismatch\|645. Set Mismatch]]                                                         | [[programming/basic/leetcode/645. Set Mismatch#solution tips\|645. Set Mismatch#solution tips]]                             |
 
 { .block-language-dataview}
 
@@ -143,11 +143,11 @@ dummyHead
 
 | File                                                                                                           | solution tips overview                                  |
 | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| [[programming/basic/leetcode/628. Maximum Product of Three Numbers\|628. Maximum Product of Three Numbers]] | [[programming/basic/leetcode/628. Maximum Product of Three Numbers#solution tips\|628. Maximum Product of Three Numbers#solution tips]] |
 | [[programming/basic/leetcode/414. Third Maximum Number\|414. Third Maximum Number]]                         | [[programming/basic/leetcode/414. Third Maximum Number#solution tips\|414. Third Maximum Number#solution tips]]             |
 | [[programming/basic/leetcode/4. 寻找两个正序数组的中位数\|4. 寻找两个正序数组的中位数]]                                             | [[programming/basic/leetcode/4. 寻找两个正序数组的中位数#solution tips\|4. 寻找两个正序数组的中位数#solution tips]]                       |
 | [[programming/basic/leetcode/347. 前 K 个高频元素\|347. 前 K 个高频元素]]                                               | [[programming/basic/leetcode/347. 前 K 个高频元素#solution tips\|347. 前 K 个高频元素#solution tips]]                        |
 | [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素\|230. 二叉搜索树中第K小的元素]]                                         | [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素#solution tips\|230. 二叉搜索树中第K小的元素#solution tips]]                     |
+| [[programming/basic/leetcode/628. Maximum Product of Three Numbers\|628. Maximum Product of Three Numbers]] | [[programming/basic/leetcode/628. Maximum Product of Three Numbers#solution tips\|628. Maximum Product of Three Numbers#solution tips]] |
 
 { .block-language-dataview}
 
@@ -162,8 +162,8 @@ dummyHead
 
 | File                                                         | overview                       |
 | ------------------------------------------------------------ | ------------------------------ |
-| [[programming/basic/leetcode/636. 函数的独占时间\|636. 函数的独占时间]] | [[programming/basic/leetcode/636. 函数的独占时间#solution tips\|636. 函数的独占时间#solution tips]] |
 | [[programming/basic/leetcode/495. 提莫攻击\|495. 提莫攻击]]       | [[programming/basic/leetcode/495. 提莫攻击#solution tips\|495. 提莫攻击#solution tips]]    |
+| [[programming/basic/leetcode/636. 函数的独占时间\|636. 函数的独占时间]] | [[programming/basic/leetcode/636. 函数的独占时间#solution tips\|636. 函数的独占时间#solution tips]] |
 
 { .block-language-dataview}
 
@@ -255,12 +255,12 @@ dummyHead
 
 | File                                                       | solution tips overview        |
 | ---------------------------------------------------------- | ----------------------------- |
-| [[programming/basic/leetcode/90. 子集 II\|90. 子集 II]]     | [[programming/basic/leetcode/90. 子集 II#solution tips\|90. 子集 II#solution tips]]   |
 | [[programming/basic/leetcode/491. 递增子序列\|491. 递增子序列]]   | [[programming/basic/leetcode/491. 递增子序列#solution tips\|491. 递增子序列#solution tips]]  |
 | [[programming/basic/leetcode/47. 全排列 II\|47. 全排列 II]]   | [[programming/basic/leetcode/47. 全排列 II#solution tips\|47. 全排列 II#solution tips]]  |
 | [[programming/basic/leetcode/40. 组合总和 II\|40. 组合总和 II]] | [[programming/basic/leetcode/40. 组合总和 II#solution tips\|40. 组合总和 II#solution tips]] |
 | [[programming/basic/leetcode/18. 四数之和\|18. 四数之和]]       | [[programming/basic/leetcode/18. 四数之和#solution tips\|18. 四数之和#solution tips]]    |
 | [[programming/basic/leetcode/15. 三数之和\|15. 三数之和]]       | [[programming/basic/leetcode/15. 三数之和#solution tips\|15. 三数之和#solution tips]]    |
+| [[programming/basic/leetcode/90. 子集 II\|90. 子集 II]]     | [[programming/basic/leetcode/90. 子集 II#solution tips\|90. 子集 II#solution tips]]   |
 
 { .block-language-dataview}
 
@@ -268,10 +268,10 @@ dummyHead
 
 | File                                                                                 |
 | ------------------------------------------------------------------------------------ |
-| [[programming/basic/leetcode/剑指 Offer 58 - II. 左旋转字符串\|剑指 Offer 58 - II. 左旋转字符串]] |
 | [[programming/basic/leetcode/61. 旋转链表\|61. 旋转链表]]                                 |
 | [[programming/basic/leetcode/396. 旋转函数\|396. 旋转函数]]                               |
 | [[programming/basic/leetcode/189. Rotate Array\|189. Rotate Array]]               |
+| [[programming/basic/leetcode/剑指 Offer 58 - II. 左旋转字符串\|剑指 Offer 58 - II. 左旋转字符串]] |
 
 { .block-language-dataview}
 
@@ -285,6 +285,7 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 
 | File                                                                                                                           | difficulty | etags                                                                                                                                                                                                               | unsolved | date-created                |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------- |
+| [[programming/basic/leetcode/822. 翻转卡片游戏\|822. 翻转卡片游戏]]                                                                     | medium     | <ul><li>#leetcode/brainteasers</li><li>#leetcode/greedy-algorithm</li><li>#leetcode/unsolved</li></ul>                                                                                                              | true     | 2023-08-02-Wed, 9:43:31 am  |
 | [[programming/basic/leetcode/2681. 英雄的力量\|2681. 英雄的力量]]                                                                     | hard       | <ul><li>#leetcode/backtraking/combination</li><li>#leetcode/dp</li><li>#leetcode/prefix-sum</li></ul>                                                                                                               | false    | 2023-08-01-Tue, 9:42:41 am  |
 | [[programming/basic/leetcode/44. 通配符匹配\|44. 通配符匹配]]                                                                         | hard       | <ul><li>#leetcode/dp/edit-distance</li><li>#leetcode/greedy-algorithm</li><li>#leetcode/unsolved</li></ul>                                                                                                          | true     | 2023-07-31-Mon, 2:25:15 pm  |
 | [[programming/basic/leetcode/142. 环形链表 II\|142. 环形链表 II]]                                                                   | medium     | <ul><li>#leetcode/linked-list</li><li>#leetcode/pointer/fast-slow/circle</li></ul>                                                                                                                                  | false    | 2023-07-30-Sun, 9:28:58 am  |
