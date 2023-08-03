@@ -875,8 +875,8 @@ tree.insert(11);
 
 | File                                                                         | difficulty | etags                                                                                                               | date-created                |
 | ---------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------- | --------------------------- |
-| [[programming/basic/leetcode/105. 从前序与中序遍历序列构造二叉树\|105. 从前序与中序遍历序列构造二叉树]] | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/divide-and-conquer</li><li>#leetcode/unsolved</li></ul> | 2023-06-12-Mon, 2:25:56 pm  |
 | [[programming/basic/leetcode/106. 从中序与后序遍历序列构造二叉树\|106. 从中序与后序遍历序列构造二叉树]] | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/divide-and-conquer</li><li>#leetcode/unsolved</li></ul> | 2023-06-13-Tue, 10:14:12 am |
+| [[programming/basic/leetcode/105. 从前序与中序遍历序列构造二叉树\|105. 从前序与中序遍历序列构造二叉树]] | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/divide-and-conquer</li><li>#leetcode/unsolved</li></ul> | 2023-06-12-Mon, 2:25:56 pm  |
 
 { .block-language-dataview}
 
