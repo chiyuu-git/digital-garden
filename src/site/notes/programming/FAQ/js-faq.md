@@ -32,7 +32,6 @@ https://github.com/lydiahallie/javascript-questions
 
 [GitHub - goldbergyoni/javascript-testing-best-practices: 📗🌐 🚢 Comprehensive and exhaustive JavaScript & Node.js testing best practices (June 2023)](https://github.com/goldbergyoni/javascript-testing-best-practices)
 
-
 详细资料可以参考： [《前端程序员经常忽视的一个 JavaScript 面试题》](https://github.com/Wscats/Good-text-Share/issues/85) [《一道考察运算符优先级的 JavaScript 面试题》](https://segmentfault.com/q/1010000008430170) [《一道常被人轻视的前端 JS 面试题》](https://www.cnblogs.com/xxcanghai/p/5189353.html)
 
 # Polyfill
@@ -58,6 +57,8 @@ call() 方法在使用一个指定的 this 值和若干个指定的参数值的�
 call 改变了 this 的指向，指向到 foo
 
 同时，bar 函数执行了
+
+该方法的语法和作用与 [`apply()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply) 方法类似，只有一个区别，就是 `call()` 方法接受的是**一个参数列表**，而 `apply()` 方法接受的是**一个包含多个参数的数组**
 
 ### 模拟实现第一步
 
@@ -1251,8 +1252,6 @@ https://github.com/mqyqingfeng/Blog/issues/26
 （2）使用懒加载的方法，每次加载一部分数据，其余数据当需要使用时再去加载。
 
 （3）使用数组分块技术，基本思路是为要处理的项目创建一个队列，然后设置定时器每过一段时间取出一部分数据，然后再使用定时器取出下一个要处理的项目进行处理，接着再设置另一个定时器。
-
-
 
 # 函数库骨架
 
