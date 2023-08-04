@@ -2006,6 +2006,8 @@ ES5 提供了 filter 方法，我们可以用来简化外层循环：
 | [[programming/basic/leetcode/347. 前 K 个高频元素\|347. 前 K 个高频元素]]                       |
 | [[programming/basic/leetcode/274. H-Index\|274. H-Index]]                           |
 | [[programming/basic/leetcode/220. 存在重复元素 III\|220. 存在重复元素 III]]                     |
+| [[programming/basic/leetcode/21. 合并两个有序链表\|21. 合并两个有序链表]]                           |
+| [[programming/basic/leetcode/23. 合并 K 个升序链表\|23. 合并 K 个升序链表]]                       |
 
 { .block-language-dataview}
 
