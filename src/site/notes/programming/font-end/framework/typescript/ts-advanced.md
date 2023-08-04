@@ -1160,6 +1160,13 @@ type P<T> = T extends 'x' ? string : number;
 type A3 = P<'x' | 'y'> // string | number
 ```
 
+## ThisType
+
+ThisType 和 this 参数都是指定函数的运行时 this 指向的类型，它们的使用不同
+
++ this 参数是作为函数的参数定义的，它可以定义在任何函数上
++ ThisType 定义一个对象中的所有函数的 this 指向类型，它只能在对象的类型声明时使用
+
 # 类型收窄 Narrowing
 
 [类型收窄 Narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html)
