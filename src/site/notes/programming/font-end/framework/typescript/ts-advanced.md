@@ -961,7 +961,7 @@ showType(undefined);
 
 我们将类型 `NonNullableType` 作为参数传递给 `NonNullable`，`NonNullable` 通过排除 `null` 和 `undefined` 来构造新类型。 也就是说，如果你传递可为空的值，TypeScript 将引发错误。
 
-当你开启 [--strictNullChecks](../engineering/eslint.md#--strictNullChecks) 设置后，TS 就会严格检查，只有被声明 null 后才能被赋值
+当你开启 [--strictNullChecks](../engineering/eslint/eslint-basic.md#--strictNullChecks) 设置后，TS 就会严格检查，只有被声明 null 后才能被赋值
 
 **源码**
 
