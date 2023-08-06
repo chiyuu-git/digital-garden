@@ -42,7 +42,7 @@
 | File                                                                             | difficulty | etags                                                                                                                                          |
 | -------------------------------------------------------------------------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | [[programming/basic/leetcode/9. 回文数\|9. 回文数]]                                 | easy       | <ul><li>#leetcode/palindrome</li><li>#leetcode/math</li><li>#leetcode/pointer/collision-pointer</li></ul>                                      |
-| [[programming/basic/leetcode/633. 平方数之和\|633. 平方数之和]]                         | medium     | <ul><li>#leetcode/math/squre</li><li>#leetcode/pointer/collision-pointer</li></ul>                                                             |
+| [[programming/basic/leetcode/633. 平方数之和\|633. 平方数之和]]                         | medium     | <ul><li>#leetcode/math/square</li><li>#leetcode/pointer/collision-pointer</li></ul>                                                            |
 | [[programming/basic/leetcode/167. 两数之和 II - 输入有序数组\|167. 两数之和 II - 输入有序数组]]   | medium     | <ul><li>#leetcode/pointer/collision-pointer</li><li>#leetcode/binary-search</li><li>#leetcode/unsolved</li></ul>                               |
 | [[programming/basic/leetcode/18. 四数之和\|18. 四数之和]]                             | medium     | <ul><li>#leetcode/hash-table/count</li><li>#leetcode/pointer/collision-pointer</li><li>#leetcode/skip-dup</li></ul>                            |
 | [[programming/basic/leetcode/345. 反转字符串中的元音字母\|345. 反转字符串中的元音字母]]             | easy       | <ul><li>#leetcode/pointer/collision-pointer</li></ul>                                                                                          |
@@ -264,29 +264,49 @@ function breantCycle(head) {
 
 答案要求在某一个范围之内
 
-滑动窗口是数组/字符串问题中常用的抽象概念。 窗口通常是在数组/字符串中由开始和结束索引定义的一系列元素的集合，即 ` [i, j)`（左闭，右开）。而滑动窗口是可以将两个边界向某一方向“滑动”的窗口。
+滑动窗口是数组/字符串问题中常用的抽象概念。 窗口通常是在数组/字符串中由开始和结束索引定义的一系列元素的集合，即 ` [i, j]`（左闭，右闭合）。而滑动窗口是可以将两个边界向某一方向“滑动”的窗口。
 
-例如，我们将 ` [i, j)` 向右滑动 1 个元素，则它将变为 `[i+1, j+1)`（左闭，右开）
+例如，我们将 ` [i, j]` 向右滑动 1 个元素，则它将变为 `[i+1, j+1]`（左闭，右闭合）
+
+这就是滑动窗口最重点的地方, 就是窗口是左闭右闭的:
+
+1. 这样 end 永远是移出区间的操作, 并且 end 大于等于 nums.length 就是退出循环的条件
+2. start 永远是加入区间的操作
+3. `left <= right && right < nums.length`
+
+区间的操作可以直接 while 循环, 直到区间达到要操作的阈值, 而不是 for 循环一个个处理, 增加模拟的负担
+
+76 左右都是闭合的也可以, 最重要的是定好不要变了
 
 ## Solution Tips
 
-```js
-while (right < len) {
-	// expand window
-	// ... do something
+1. 我们先不断地增加 right 指针扩大窗口 `[left, right]`，直到窗口中的字符串符合要求（包含了 T 中的所有字符）。
+2. 此时，我们停止增加 right，转而不断增加 left 指针缩小窗口 `[left, right]`，直到窗口中的字符串不再符合要求（不包含 T 中的所有字符了）。同时，每次增加 left，我们都要更新一轮结果。
+3. 重复第 2 和第 3 步，直到 right 到达字符串 S 的尽头。
 
-	while (left...) {
+```js
+while (left <= right && right < len) {
+	while(right... && right < len) {
+		// expand window
+		// ... do something
+		right++;
+	}
+
+	while (left... && left <= right) {
 		// narrow window
 		// do something
+		left++;
 	}
 }
 ```
 
-### 关键词
+## 关键词
 
-子串, 子数组
+子串, 子数组, 连续的 sub
 
-### 窗口长度
+有某种约束条件, 限制了 sub 的最长长度, 到达临界条件就必须改变 sub 的区间了
+
+## 窗口长度
 
 窗口长度是固定的
 
@@ -302,7 +322,11 @@ while (right < len) {
 
 [424. 替换后的最长重复字符](../leetcode/424.%20替换后的最长重复字符.md)
 
-### 维护窗口的数据结构
+如果要求的是最小窗口, 那么可以使用固定窗口法, 从最小的窗口大小开始寻找是否存在符合题意的解, 找到了即可返回, 复杂度 O(n^2)
+
+[76. 最小覆盖子串](../leetcode/76.%20最小覆盖子串.md)
+
+## 维护窗口的数据结构
 
 找到维护窗口的合理数据结构, 是解题的关键
 
@@ -326,224 +350,20 @@ while (right < len) {
 
 [219. 存在重复元素 II](../leetcode/219.%20存在重复元素%20II.md)
 
-## [76. 最小覆盖子串](https://leetcode-cn.com/problems/minimum-window-substring/)
+### 哈希 Map
 
-### 固定窗口法
+即需要存储每种元素的个数, 也需要统计整个 map 的大小
 
-```js
-  var minWindow = function (s, t) {
-    const len = s.length;
-    // p的哈希表
-    const tMap = getMap(t);
-    // 要最小的，从k开始增加长度
-    for (let k = t.length; k < s.length + 1; k++) {
-      const subMap = getMap(s.slice(0, k));
-      for (let i = 0, j = i + k; j < len + 1; i++, j++) {
-        let match = true;
-        for (const [key, val] of Object.entries(tMap)) {
-          // 有这个字母，且数量大于等于val
-          if (subMap.hasOwnProperty(key)) {
-            if (subMap[key] < val) {
-              match = false;
-              break;
-            }
-          } else {
-            match = false;
-            break;
-          }
-        }
-        if (match) return s.slice(i, j);
-        subMap[s[i]]--;
-        if (subMap[s[j]] === 0 || subMap[s[j]] === undefined) subMap[s[j]] = 1;
-        else subMap[s[j]]++;
-      }
-    }
-    return "";
-    function getMap(str) {
-      const map = {};
-      for (let i = 0; i < str.length; i++) {
-        const key = str[i];
-        if (map.hasOwnProperty(key)) map[key]++;
-        else map[key] = 1;
-      }
-      return map;
-    }
-  };
-  let s = "ADOBECODEBANC",
-    t = "ABC";
-  console.log(minWindow(s, t));
-  ```
+如果使用数组的话, 可以方便的统计元素, 但是统计集合大小的时候不方便删除, 得 indexOf + splice 执行删除
 
-### 滑动窗口法
+如果使用 object map, 也是可以很方便的统计元素, 也可以方便的删除, 但是无法方便的统计集合的大小
 
-滑动窗口法可以减少很多多余的判断
+所以使用 map 是最优解.
 
-滑动窗口算法的思路是这样：
+[904. 水果成篮](../leetcode/904.%20水果成篮.md): 需要统计每种水果的个数, 最多只能装 2 种水果
 
-1. 我们在字符串 S 中使用双指针中的左右指针技巧，初始化 left = right = 0，把索引闭区间 `[left, right)` 称为一个「窗口」。
-2. 我们先不断地增加 right 指针扩大窗口 `[left, right)`，直到窗口中的字符串符合要求（包含了 T 中的所有字符）。
-3. 此时，我们停止增加 right，转而不断增加 left 指针缩小窗口 `[left, right)`，直到窗口中的字符串不再符合要求（不包含 T 中的所有字符了）。同时，每次增加 left，我们都要更新一轮结果。
-  4. 重复第 2 和第 3 步，直到 right 到达字符串 S 的尽头。
+### 哈希 Object + MatchSize
 
-这个思路其实也不难，第 2 步相当于在寻找一个「可行解」，然后第 3 步在优化这个「可行解」，最终找到最优解。左右指针轮流前进，窗口大小增增减减，窗口不断向右滑动。
+哈希 obj 可以很方便的添加和删除, 但是无法方便的统计集合的大小, 所以额外增加一个变量用来统计集合的大小即可.
 
-上述过程可以简单地写出如下伪码框架：
-
-```js
-  let s, t
-  // 在 s 中寻找 t 的「最小覆盖子串」
-  let left = 0, right = 0
-  let res = ''
-	
-  while(right < s.size()) {
-    window.add(s[right])
-    // 如果符合要求，移动 left 缩小窗口
-    while (window 符合要求) {
-      // 如果这个窗口的子串更短，则更新 res
-      res = minLen(res, window)
-      window.remove(s[left])
-      left++
-    }
-    right++
-  }
-  return res
-```
-
-**实现**
-
-```js
-  var minWindow = function (s, t) {
-    const len = s.length;
-    // p的哈希表
-    const tMap = getMap(t);
-    const subMap = {};
-    let left = 0,
-      right = 0;
-    let res = "",
-      minLen = s.length;
-    while (right < len) {
-      if (subMap[s[right]] === 0 || subMap[s[right]] === undefined)
-        subMap[s[right]] = 1;
-      else subMap[s[right]]++;
-      let match = isMatch(subMap);
-      while (match && left < len) {
-        // 如果长度更小，则更新
-        if (right - left < minLen) {
-          res = s.slice(left, right + 1);
-          minLen = right - left + 1;
-        }
-        subMap[s[left]]--;
-        left++;
-        // 再次判断是否符合
-        match = isMatch(subMap);
-      }
-      right++;
-    }
-    return res;
-	
-    function getMap(str) {
-      const map = {};
-      for (let i = 0; i < str.length; i++) {
-        const key = str[i];
-        if (map.hasOwnProperty(key)) map[key]++;
-        else map[key] = 1;
-      }
-      return map;
-    }
-    function isMatch(subMap) {
-      for (const [key, val] of Object.entries(tMap)) {
-        // 有这个字母，且数量大于等于val
-        if (subMap.hasOwnProperty(key)) {
-          if (subMap[key] < val) return false;
-        } else return false;
-      }
-      return true;
-    }
-  };
-  ```
-
-依然超时，每一次 match 都遍历太耗时了
-
-### Match 继续优化
-
-```js
-  var minWindow = function (s, t) {
-    const len = s.length;
-    // p的哈希表
-    const needs = getMap(t);
-    const subMap = {};
-    let left = 0,
-      right = 0;
-    let res = "",
-      minLen = s.length;
-    let match = 0; // 记录已经匹配needs的长度
-    while (right < len) {
-      const char = s[right];
-      if (needs.hasOwnProperty(char)) {
-        subMap[char] === undefined ? (subMap[char] = 1) : subMap[char]++;
-        // 等于，在等于的那一刻match++，之后再添加也不能增加match的长度 'bb' 'b' ，match最多也就是1
-        if (subMap[char] === needs[char]) match++;
-      }
-      // 不可以等于
-      while (match === needs.length && left < len) {
-        // 如果长度更小，则更新
-        if (right - left < minLen) {
-          res = s.slice(left, right + 1);
-          minLen = right - left + 1;
-        }
-        // 再次判断是否符合
-        const char = s[left];
-        if (needs.hasOwnProperty(char)) {
-          subMap[char]--;
-          // 在小于的那一刻--
-          if (subMap[char] < needs[char]) match--;
-        }
-        left++;
-      }
-      right++;
-    }
-    return res;
-	
-    function getMap(str) {
-      const map = {};
-      map.length = 0;
-      for (let i = 0; i < str.length; i++) {
-        const key = str[i];
-        if (map.hasOwnProperty(key)) map[key]++;
-        else {
-          map[key] = 1;
-          map.length++;
-        }
-      }
-      return map;
-    }
-  };
-  let s = "bbaa",
-    t = "aba";
-  console.log(minWindow(s, t));
-  ```
-
-#### 复杂度分析
-
-这个算法的时间复杂度是 O(M+N)，M 和 N 分别是字符串 S 和 T 的长度。因为我们先用 for 循环遍历了字符串 T 来初始化 needs，时间 O(N)，之后的两个 while 循环最多执行 2M 次，时间 O(M)。
-
-读者也许认为嵌套的 while 循环复杂度应该是平方级，但是你这样想，while 执行的次数就是双指针 left 和 right 走的总路程，最多是 2M 嘛。
-
-### 再进一步优化
-
-<https://leetcode-cn.com/problems/minimum-window-substring/solution/zui-xiao-fu-gai-zi-chuan-by-leetcode-2/>
-
-## [287. 寻找重复数](https://leetcode-cn.com/problems/find-the-duplicate-number/)
-
-### 哈希表
-
-- 见二分查找
-
-### 二分查找
-
-### 判圈算法
-
-- 因为 nums 中的每个数字都在 1 和 n 之间，所以它必须指向存在的索引。此外，由于 0 不能作为 nums 中的值出现，nums[0] 不能作为循环的一部分。
-- 由于存在重复数，所以形成了圈
-- [904.水果成篮(opens new window)](https://leetcode.cn/problems/fruit-into-baskets/)
-- [76.最小覆盖子串(opens new window)](https://leetcode.cn/problems/minimum-window-substring/)
+参考 [76. 最小覆盖子串](../leetcode/76.%20最小覆盖子串.md), 这里比使用哈希 map 更合适, 因为需要保证两个 map 完全 match, 单独使用 match 变量就可以直接知道了
