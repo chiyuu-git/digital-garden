@@ -901,7 +901,7 @@ console.log(.1e1) // 1
 - 所以 **指数格式只能在 十进制 里使用**。
 - .1e1 其实是指数表示法，$0.1 * 10$
 
-## 进制转换（字符串 To 数值）
+## 进制转换（进制形式字符串 To 数值）
 
 只要是 **合法数值的字符串形式**，都可以通过函数转换为相应的数值
 
@@ -935,9 +935,9 @@ console.log(.1e1) // 1
   Number('0xF') //15
   ```
 
-### 进制转换 (数值 to 字符串)
+## 进制转换 (数值 to 字符串)
 
-#### Number.prototype.toString()
+### Number.prototype.toString()
 
 **toString()** 方法返回指定 [`Number`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number) 对象的字符串表示形式。
 
@@ -968,7 +968,7 @@ console.log(.1e1) // 1
   console.log((-0xff).toString(2)); // 输出 '-11111111'
 ```
 
-### 进制转换（数值 To 进制形式字符串）
+## 进制转换（进制形式字符串 To 进制形式字符串）
 
 ES 无法直接进行数值到数值的进制转换，原因如下：
 
@@ -985,6 +985,77 @@ var hexadecimal = '0xF'
 // 先变成十进制字符串
 let binary = parseInt(hexadecimal).toString(2)
 console.log(binary) // '1111'
+```
+
+## 进制转换算法
+
+利用栈的逆序性质
+
+第一次模除的结果是进制的最后一位，余下的
+
+倒数第二位，就是除以 2 之后再次模除，乘以二就是左移一位，除以二就是右移一位，之后再次判断余下的是什么
+
+每次都除以 radix，就是模拟 a~n~ * radix^n-1^
+
+最后再倒过来就是结果
+
+### 从十进制到二进制
+
+```js
+  function divideBy2(decNumber) {
+  
+    const remainderStack = new Stack()
+    let remainder,
+        binaryString = ''
+  
+    while (decNumber > 0) { 
+      // 取余数, 向下取整忽略非整数的部分
+      remainder = Math.floor(decNumber % 2)
+      // 保存余数
+      remainderStack.push(remainder)
+      // 除以2向下取整
+      decNumber = decNumber>>>1
+    }
+  
+    while (!remainderStack.isEmpty()) { 
+      binaryString += remainderStack.pop().toString();
+    }
+  
+    return binaryString;
+  }
+  
+  console.log(divideBy2(12.2)) // .2 会在第一轮循环之后被忽略
+```
+
+### 通用转换算法
+
+ ```js
+  function divideByRadix(decNumber,radix) {
+  
+    var remainderStack = new Stack(),
+      remainder,
+      radixString = '',
+      digits = {
+        [2]:'01',
+        [4]:'0123',
+        [8]:'01234567',
+        [16]:'0123456789ABCDEF',
+      }
+  
+    while (decNumber > 0) { //{1} 
+      remainder = Math.floor(decNumber % radix); //{2} 取余数,加上向下取整忽略非整数的部分
+      remainderStack.push(remainder); //{3} 保存余数
+      decNumber = Math.floor(decNumber / radix); //{4} 除以base向下取整
+    }
+  
+    while (!remainderStack.isEmpty()) { //{5} 
+      radixString += digits[radix][remainderStack.pop()]; // 根据余数取对应的字符
+    }
+  
+    return radixString;
+  }
+  
+  console.log(divideByRadix(15,16)) // F
 ```
 
 # 位运算符 (Bitwise operators)
