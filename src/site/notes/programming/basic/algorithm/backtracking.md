@@ -336,7 +336,7 @@ var combine = function(n, k) {
 | [[programming/basic/leetcode/494. 目标和\|494. 目标和]]           | medium     | <ul><li>#leetcode/dp/knapsack/0-1</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li></ul>                                                |
 | [[programming/basic/leetcode/518. 零钱兑换 II\|518. 零钱兑换 II]]   | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li></ul>                                           |
 | [[programming/basic/leetcode/322. 零钱兑换\|322. 零钱兑换]]         | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li></ul>                                           |
-| [[programming/basic/leetcode/279. 完全平方数\|279. 完全平方数]]       | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li><li>#leetcode/math/squre</li></ul>              |
+| [[programming/basic/leetcode/279. 完全平方数\|279. 完全平方数]]       | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li><li>#leetcode/math/square</li></ul>             |
 
 { .block-language-dataview}
 
