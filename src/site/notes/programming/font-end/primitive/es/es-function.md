@@ -333,9 +333,7 @@ console.log(people.find());
 console.log(people.find("Zhang"));
 ```
 
-## 函数重载
-
-### 根据 Arguments 的长度执行不同的逻辑
+## 根据 Arguments 的长度执行不同的逻辑
 
 ```js
 function overLoading() {
@@ -355,7 +353,7 @@ function overLoading() {
 }
 ```
 
-### 利用闭包
+## 利用闭包
 
 ```js
 function addMethod(object, name, fn) {
