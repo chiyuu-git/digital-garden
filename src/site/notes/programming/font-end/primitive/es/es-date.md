@@ -3,8 +3,6 @@
 ---
 
 
-# Date 类型
-
 <https://segmentfault.com/a/1190000007581722>
 
 日期的对象，在 JS 中通过 Date 对象来表示一个时间
@@ -31,25 +29,25 @@ print(Number(d));
 
 这将输出 "819199440000"。
 
-## 常用术语
+# 常用术语
 
-### 时间戳
+## 时间戳
 
 Unix 时间戳表示当前时间到 1970 年 1 月 1 日 00:00:00 UTC 对应的秒数。注意，JavaScript 内的时间戳指的是当前时间到 1970 年 1 月 1 日 00:00:00 UTC 对应的毫秒数，和 unix 时间戳不是一个概念，后者表示秒数，差了 1000 倍。
 
-### 当地时间
+## 当地时间
 
-### 世界协调时
+## 世界协调时
 
 协调世界时，又称世界统一时间、世界标准时间、国际协调时间。由于英文（CUT）和法文（TUC）的缩写不同，作为妥协，简称 UTC
 
 中国大陆、中国香港、中国澳门、中国台湾、蒙古国、新加坡、马来西亚、菲律宾、西澳大利亚州的时间与 UTC 的 [时差](https://baike.baidu.com/item/时差/1305648) 均为 +8，也就是 UTC+8。
 
-### TimeZone&UTC Offsets: 时区与偏移
+## TimeZone&UTC Offsets: 时区与偏移
 
 人们经常会把时区与 UTC 偏移量搞混，UTC 偏移量代表了某个具体的时间值与 UTC 时间之间的差异，通常用 HH:mm 形式表述。而 TimeZone 则表示某个地理区域，某个 TimeZone 中往往会包含多个偏移量，而多个时区可能在一年的某些时间有相同的偏移量。譬如 America/Chicago, America/Denver, 以及 America/Belize 在一年中不同的时间都会包含 -06:00 这个偏移。
 
-### 日期字符串
+## 日期字符串
 
 [IETF-compliant RFC 2822 timestamps](http://tools.ietf.org/html/rfc2822#page-14)
 
@@ -75,9 +73,9 @@ ISO 8601 标准日期字符串：日期和时间中间的 `T` 不可以被省略
  // 表示东一区的1997年7月16日19时20秒30分，转换成UTC标准时间的话是1997-07-16T18:20:30Z
 ```
 
-## Date 构造函数
+# Date 构造函数
 
-### 不传参数
+## 不传参数
 
 如果没有输入任何参数，则 Date 的构造器会依据 **系统设置** 的当前时间来创建一个 Date 对象。
 
@@ -85,7 +83,7 @@ ISO 8601 标准日期字符串：日期和时间中间的 `T` 不可以被省略
 new Date(); // Fri Apr 12 2019 19:53:20 GMT+0800 (GMT+08:00) {}
 ```
 
-### 单个参数
+## 单个参数
 
 **timestamp**：代表自 1970 年 1 月 1 日 00:00:00 (世界标准时间) 起经过的 **毫秒数**。
 
@@ -93,7 +91,7 @@ new Date(); // Fri Apr 12 2019 19:53:20 GMT+0800 (GMT+08:00) {}
 new Date(timestamp)
 ```
 
-#### dateString
+### dateString
 
 **dateString**：表示日期的 **字符串值**。该字符串应该能被 [`Date.parse()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/parse) 方法识别（符合 [IETF-compliant RFC 2822 timestamps](http://tools.ietf.org/html/rfc2822#page-14) 或 [version of ISO8601](http://www.ecma-international.org/ecma-262/5.1/#sec-15.9.1.15)）。
 
@@ -103,7 +101,7 @@ new Date(dateString)
 
 > **注意:** 由于浏览器之间的差异与不一致性，强烈不推荐使用 `Date` 构造函数来解析日期字符串 (或使用与其等价的 `Date.parse`)。对 RFC 2822 格式的日期仅有约定俗称的支持。 对 ISO 8601 格式的支持中，仅有日期的串 (例如 "1970-01-01") 会被处理为 UTC 而不是本地时间，与其他格式的串的处理不同。
 
-### 多个参数
+## 多个参数
 
 1. **year**：代表年份的整数值。为了避免 2000 年问题最好指定 4 位数的年份; 使用 `1998`, 而不要用 `98`.
 2. **month**：代表月份的整数值从**(0-11)**
@@ -133,7 +131,7 @@ new Date(dateString)
 
 > 当 Date 作为构造函数调用并传入多个参数时，所定义参数代表的是 **当地时间**。如果需要世界协调时, 再想怎么处理
 
-### **注意**
+## **注意**
 
 需要注意的是只能通过调用 Date 构造函数来实例化日期对象：以常规函数调用它（即不加 [new](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) 操作符）将会返回一个字符串，而不是一个日期对象。另外，不像其他 JavaScript 类型，**Date 对象没有字面量格式**
 
@@ -159,13 +157,13 @@ console.log(new Date(2019,9,62)) // 11-01
 
 `Date.length` 的值是 7。这是该构造函数可接受的参数个数。
 
-## Date 静态方法
+# Date 静态方法
 
-### Date.now()
+## Date.now()
 
 **Date.now()** 方法返回自 1970 年 1 月 1 日 00:00:00 UTC 到当前时间的毫秒数。
 
-### Date.parse()
+## Date.parse()
 
 `Date.parse()` 方法解析一个表示某个日期的字符串，并返回从 1970-1-1 00:00:00 UTC 到该日期对象（该日期对象的 UTC 时间）的毫秒数
 
@@ -197,7 +195,7 @@ new Date(dateString)
 
 由于在解析日期字符串时存在偏差会导致结果不一致，因此推荐始终手动解析日期字符串，特别是不同的 ECMAScript 实现会把诸如“2015-10-12 12:00:00”的字符串解析为 NaN，UTC 或者本地时间。
 
-### Date.UTC()
+## Date.UTC()
 
 `Date.UTC()` 方法接受的参数同日期构造函数接受最多参数时一样，返回从 1970-1-1 00:00:00 UTC 到指定日期的的毫秒数。
 
@@ -209,43 +207,43 @@ new Date(dateString)
 
 同样的，如果有一个指定的参数超出其合理范围，则 UTC 方法会通过更新其他参数直到该参数在合理范围内。例如，为月份指定 15，则年份将会加 1，然后月份将会使用 3。
 
-## Date 实例的 Getter
+# Date 实例的 Getter
 
-### getFullYear()
+## getFullYear()
 
 从 Date 对象以四位数字返回年份。
 
-### getMonth()
+## getMonth()
 
 返回当前日期对象的月份（0-11）
 
-### getDate() @@@
+## getDate() @@@
 
 当前日期对象是几日（1-31）
 
-### getDay()
+## getDay()
 
 返回当前日期对象时周几（0-6）
 
 0 周日，那又相当于是 1base 了，总共只有两个是 1base 的 @@@
 
-### getHours()
+## getHours()
 
 返回 Date 对象的小时 (0 ~ 23)。
 
-### getMinutes()
+## getMinutes()
 
 返回 Date 对象的分钟 (0 ~ 59)。
 
-### getSeconds()
+## getSeconds()
 
 返回 Date 对象的秒数 (0 ~ 59)。
 
-### getMilliseconds()
+## getMilliseconds()
 
 返回 Date 对象的毫秒 (0 ~ 999)。
 
-### getTime()
+## getTime()
 
 返回当前日期对象的时间戳
 
@@ -260,23 +258,23 @@ var date = new Date(“1/1/1970 0:0:0”);
 console.log(date);//-28800000
 ```
 
-### getTimezoneOffset()
+## getTimezoneOffset()
 
-### getUTCFullYears/Date...()
+## getUTCFullYears/Date...()
 
-## Date 实例的 Setter
+# Date 实例的 Setter
 
-### 注意
+## 注意
 
 没有 setDay
 
-### 通性
+## 通性
 
 会影响原来的 date 对象，date 对象会自动调整
 
 返回值是 number 类型的时间戳
 
-### setDate() @@@
+## setDate() @@@
 
 根据 **本地时间** 来指定一个日期对象的天数。
 
@@ -292,7 +290,7 @@ theBigDay.setDate(32);  // 1962-08-01
 
 如果输入一个负数，会自动减少相应的天数，如果需要则退回上一个月，返回值是毫秒数
 
-### setHours()
+## setHours()
 
 设置 date 的时间
 
@@ -303,7 +301,7 @@ deadline.setHours(6)
 console.log(deadline) // 0600
 ```
 
-### setUTCHours()
+## setUTCHours()
 
 以 UTC 时间为基准，加上参数，如
 
@@ -314,7 +312,7 @@ deadline.setUTCHours(6)
 console.log(deadline) // 1400
 ```
 
-### setFullYeas()
+## setFullYeas()
 
 `setFullYear()` 方法根据本地时间为一个日期对象设置年份。
 
@@ -339,11 +337,11 @@ Sat Oct 05 2019 19:28:49 GMT+0800 (GMT+08:00) {}
 */
 ```
 
-### *setYears
+## *setYears
 
 因为 2000 年问题，已经被舍弃
 
-## Date 字符化
+# Date 字符化
 
 Date 对象提供了一系列的 `to*` 方法来支持从 Date 对象转化为字符串
 
@@ -369,7 +367,7 @@ d.toTimeString() // "00:00:00 GMT+0800 (CST)"
 
 ```
 
-### Local 系列
+## Local 系列
 
 ```js
 d.toLocaleDateString()
@@ -380,13 +378,13 @@ d.toLocaleTimeString()
 // 英文版浏览器为"12:00:00 AM"
 ```
 
-### toLocaleDateString()
+## toLocaleDateString()
 
 https://juejin.im/entry/572b04b72e958a0069542a76
 
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat
 
-### Date 类型转换常见日期格式
+## Date 类型转换常见日期格式
 
 快速将 Date 类型转换成 YYYY-MM-DD 的格式
 
@@ -396,11 +394,11 @@ https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects
 from.toJSON().split('T')[0]
 ```
 
-### YYYY-M-D
+## YYYY-M-D
 
 先转换成 Date，再转换成 YYYY-MM-DD
 
-### Date String
+## Date String
 
 + <https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date>
 + <https://juejin.im/entry/572b04b72e958a0069542a76>
