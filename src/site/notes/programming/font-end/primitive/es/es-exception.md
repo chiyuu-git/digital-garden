@@ -153,7 +153,7 @@ try {
 
 要做到类似的效果，只能是细粒度的 try catch
 
-## try-catch 仅对运行时的 Error 有效
+## Try-catch 仅对运行时的 Error 有效
 
 要使得 `try-catch` 能工作，代码必须是可执行的。换句话说，它必须是有效的 JavaScript 代码。
 
@@ -161,12 +161,11 @@ try {
 
 ![](/img/user/programming/font-end/primitive/es/es-exception/image-20230525102711466.png)
 
-
 JavaScript 引擎首先会读取代码，然后运行它。在读取阶段发生的错误被称为“解析时间（parse-time）”错误，并且无法恢复（从该代码内部）。这是因为引擎无法理解该代码。
 
 所以，`try...catch` 只能处理有效代码中出现的错误。这类错误被称为“运行时的错误（runtime errors）”，有时被称为“异常（exceptions）”。
 
-## try-catch 同步执行
+## Try-catch 同步执行
 
 如果在“计划的（scheduled）”代码中发生异常，例如在 `setTimeout` 中，则 `try...catch` 不会捕获到异常：
 
@@ -399,7 +398,9 @@ f(); // cleanup!
 
 正是这里的 `finally` 保证了 cleanup。如果我们只是将代码放在函数 `f` 的末尾，则在这些情况下它不会运行。
 
-# [全局 catch](https://zh.javascript.info/try-catch#quan-ju-catch)
+# 全局 Catch
+
+[全局 catch](https://zh.javascript.info/try-catch#quan-ju-catch)
 
 **环境特定**
 
