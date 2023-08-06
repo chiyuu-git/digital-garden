@@ -453,8 +453,6 @@ landscape 横屏 （英文的意思是：风景画，一般是横着的）
 
 根据宽高比来区分横竖屏
 
-![1548841452863](layout/1548841452863.png)
-
 手机的横屏和竖屏
 
 平板的横屏和竖屏
@@ -552,18 +550,7 @@ window.matchMedia() 方法用来检查 CSS 的 mediaQuery 语句
     + media：返回所查询的 mediaQuery 语句字符串
     + matches：返回一个布尔值，表示当前环境是否匹配查询语句
 
-  ```js
-  
-
-  
-
-  
-
-  
-
-  
-
-  
+```js
 
 var result = window.matchMedia('(min-width: 600px)');
 
@@ -571,8 +558,7 @@ console.log(result.media); //'(min-width: 600px)'
 
 console.log(result.matches); // true
 
-  ```
-
+```
 
 + 注意：如果 window.matchMedia 无法解析 mediaQuery 参数，matches 属性返回的总是 false，而不是报错
 
@@ -580,31 +566,23 @@ console.log(result.matches); // true
 
 + window.matchMedia 方法返回的 MediaQueryList 对象有两个方法，用来监听事件：addListener 方法和 removeListener 方法
 
-
   ```js
+
 // 指定回调函数
+
 mql.addListener(mqCallback);
+
 // 撤销回调函数
+
 mql.removeListener(mqCallback);
+
   ```
 
 + 注意，只有 mediaQuery 查询结果发生变化时，才调用指定的回调函数
 + 所以，如果想要 mediaQuery 查询未变化时，就显示相应效果，需要提前调用一次函数
 + 下面这个例子是当页面宽度小于 1000px 时，页面背景颜色为品红色；否则为淡蓝色
 
-  ```js
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
+```js
 var mql = window.matchMedia("(min-width: 1000px)");
 
 mqCallback(mql);
@@ -625,8 +603,7 @@ function mqCallback(mql) {
 
 }
 
-  ```
-
+```
 
 ## 实际应用
 
