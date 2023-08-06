@@ -3,31 +3,13 @@
 ---
 
 
-# 编辑器
+# 编辑器之间的内容同步
 
-[小编平台需求完整版](https://ku.baidu-int.com/knowledge/HFVrC7hq1Q/pKzJfZczuc/2H29v5bIg1/uoV_0m_Fm5rfzS?source=111#anchor-5489fe60-3fdf-11ed-8e21-156416bffd08)
+所有的富文本编辑器都是基于 HTML, 所以同步的基础就是 html. 只要能产出 html, 就可以同步
 
-[小编平台字段内嵌O端 mvp 版本 P0](https://ku.baidu-int.com/knowledge/HFVrC7hq1Q/iaBNihC3Vx/-3pNqzLBa7/7BQtgr5NfZNHFv)
+只要能控制产出的 html 就可以做到样式完全一致
 
-[商品图文编辑器升级](https://ku.baidu-int.com/knowledge/HFVrC7hq1Q/iaBNihC3Vx/-3pNqzLBa7/x5x6N74JYlAjoG)
-
-## Think Editor
-
-CollaborationEditor -> renderEditor -> EditorInstance -> useEditor
-
-core
-
-editor: 放着不同形态的编辑器
-
-+ collaboration 支持协作功能的
-+ comment 看着是评论用的
-+ reader 用途暂时不不明
-+ tocs 用途不明
-+ index 统一暴露
-
-prose-utils
-
-+ proseMirror 工具函数
+百家号和微信公众号都是基于 Ueditor
 
 # Image Extension
 
@@ -83,15 +65,15 @@ sanNodeView selectNode add selected props, the best way
 ## 强制块级
 
 ```ts
-            // 匹配嵌入到 p 标签中的 img
-            {
-                tag: 'p',
-                priority: 1001,
-                getAttrs(element) {
-                    const imgEl = (element as HTMLElement).querySelector('img');
-                    return imgEl !== null && null;
-                },
-            },
+	// 匹配嵌入到 p 标签中的 img
+	{
+		tag: 'p',
+		priority: 1001,
+		getAttrs(element) {
+			const imgEl = (element as HTMLElement).querySelector('img');
+			return imgEl !== null && null;
+		},
+	},
 ```
 
 # 菜单栏
@@ -128,6 +110,8 @@ editor.can().undo()
 光用 is-active 也可能不够用? 还得要获取到准确的状态才行, 但是如果能获取到准确的状态的话, 为什么还要使用 isActive 的形式呢? 毕竟有 6 个标题就要监听 6 个, 如果有 1000 个字体, 那就得监听 1000 次了, 还不如获取 state 然后赋值?
 
 + this.state, 一样是在检查所有, 感觉不好搞呀
+
+最终还是用了监听的方案
 
 ## 点击菜单栏按钮编辑器不失焦
 
@@ -210,7 +194,7 @@ widget 与模板之间没有绑定关系, 模板功能就是保存了一些 plai
 
 ## Node-view-card
 
-其实就是把左右光标的逻辑抽离到 card 上, 不要和 image 耦合, 可以做成类似于 node-view-wrapper 的 san 组件
+其实就是把左右光标的逻辑抽离到 card 上, 不和 image 耦合, 可以做成类似于 node-view-wrapper 的 san 组件
 
 其实概念上和 node-view-wrap 类似
 
@@ -467,7 +451,7 @@ add 逻辑通过 promise 在 gallery 内部维护吧? 但是这样就会出现 u
 
 因为只有 add 是可以选择 promise 路线的, 其他都是 insertContent 需要封装成 command 从而避免把逻辑耦合到 menubar
 
-还是统一入参, 走 pos 路线吧
+最终方案: 还是统一入参, 走 pos 路线吧, 插入图片也还是通过 pos 获取 node-view, 更新 sourceList 的形式来做
 
 ## addImageToGallery
 
@@ -678,12 +662,6 @@ imageSourceList 和 drag 逻辑可以封装到 image-gallery 内部, 外部的 i
 container 其实是可以自己更新 index 的, 不依赖外部的逻辑, 优先度不高之后再实现吧. 参考 table column, 改成传一个数组, container 去帮忙更新? sort 时高度不变, 可以给一个高度撑着.
 
 sys-template indent
-
-# Node-view 复制问题
-
-已经知道了复制 node-view 和复制 多个东西的区别, splice 11[]
-
-现在看一下复制 node-view 和复制 heading 的却比
 
 # 图片复制
 
