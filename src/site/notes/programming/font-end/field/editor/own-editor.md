@@ -11,71 +11,6 @@
 
 百家号和微信公众号都是基于 Ueditor
 
-# Image Extension
-
-## 实现图片 Upload 功能
-
-原生的 image extension, 仅仅是插入 img 元素, 不会上传到 server
-
-我可以使用普通的方法上传图片, 点击一个按钮而已, 然后再把图片通过 editor 的 setImage 插入到文档中
-
-使用 think 的 image 之前需要实现 wrapper, 才能渲染 san 组件
-
-两种方案:
-
-1. 一种是把逻辑放在 menu, 通过 input 伪装成按钮, 让用户插入图片, 之后调用 editor.command.setImage 插入图片即可
-2. 另一种方案是把 input 放在 nodeView, 这样可以封装在 extension 里面作为 editor 的 extension 是更合理的方式, 因为 tiptap 理论上来说脱离了菜单也可以运作, 所以不应该把插入逻辑实现在菜单栏
-
-因为我们的编辑器里 插入图片是在一级目录的, 如果不小心取消了, 直接点击工具栏再次插入就行, 没有必要在原地留下一个 dom, 提供给用户插入图片
-
-## 插入多个 Img 而不是一个 imgList
-
-每个 img 都需要是可编辑的, 所以得是单个 img node 才行, 尝试多次调用 setImage command
-
-因为 handleChange 的触发时机问题, 所以需要避免多次插入才行.
-
-还需要控制多个图片的顺序,
-
-### 图片的插入顺序由谁决定?
-
-目前在 mac 上无论怎么点选, 最终都是文件名的顺序
-
-### 插入的图片后 光标的位置是在图片的下面
-
-## 给图片加上一个浮动菜单
-
-imgToolbar 层级应该在 menubar 上面, 不是层级问题, 而是被遮挡时应该出现在图片的其他位置
-
-还是把 image 的 tool 放在 menu-bar 的下面
-
-## Img 点击态的实现
-
-ProseMirror-selectednode 是最合适的方案
-
-如果 sotrage 是每个 extension 单独一份的话, 也是一个不错的选择
-
-### Method Callee
-
-handleSingleClick -> clickedLeaf -> updateSelection
-
-今晚研究不出来就试试 storage 方案
-
-sanNodeView selectNode add selected props, the best way
-
-## 强制块级
-
-```ts
-	// 匹配嵌入到 p 标签中的 img
-	{
-		tag: 'p',
-		priority: 1001,
-		getAttrs(element) {
-			const imgEl = (element as HTMLElement).querySelector('img');
-			return imgEl !== null && null;
-		},
-	},
-```
-
 # 菜单栏
 
 ## Icon / Dropdown / Select
@@ -181,6 +116,72 @@ insert template widget
 + 这个问题直接抛给大家看看就行, 后面到底要不要做到这么复杂其实还没有确定下来.
 
 widget 与模板之间没有绑定关系, 模板功能就是保存了一些 plainHTML 而已
+
+# Image Extension
+
+## 实现图片 Upload 功能
+
+原生的 image extension, 仅仅是插入 img 元素, 不会上传到 server
+
+我可以使用普通的方法上传图片, 点击一个按钮而已, 然后再把图片通过 editor 的 setImage 插入到文档中
+
+使用 think 的 image 之前需要实现 wrapper, 才能渲染 san 组件
+
+两种方案:
+
+1. 一种是把逻辑放在 menu, 通过 input 伪装成按钮, 让用户插入图片, 之后调用 editor.command.setImage 插入图片即可
+2. 另一种方案是把 input 放在 nodeView, 这样可以封装在 extension 里面作为 editor 的 extension 是更合理的方式, 因为 tiptap 理论上来说脱离了菜单也可以运作, 所以不应该把插入逻辑实现在菜单栏
+
+因为我们的编辑器里 插入图片是在一级目录的, 如果不小心取消了, 直接点击工具栏再次插入就行, 没有必要在原地留下一个 dom, 提供给用户插入图片
+
+## 插入多个 Img 而不是一个 imgList
+
+每个 img 都需要是可编辑的, 所以得是单个 img node 才行, 尝试多次调用 setImage command
+
+因为 handleChange 的触发时机问题, 所以需要避免多次插入才行.
+
+还需要控制多个图片的顺序,
+
+### 图片的插入顺序由谁决定?
+
+目前在 mac 上无论怎么点选, 最终都是文件名的顺序
+
+### 插入的图片后 光标的位置是在图片的下面
+
+## 给图片加上一个浮动菜单
+
+imgToolbar 层级应该在 menubar 上面, 不是层级问题, 而是被遮挡时应该出现在图片的其他位置
+
+还是把 image 的 tool 放在 menu-bar 的下面
+
+## Img 点击态的实现
+
+ProseMirror-selectednode 是最合适的方案
+
+如果 sotrage 是每个 extension 单独一份的话, 也是一个不错的选择
+
+### Method Callee
+
+handleSingleClick -> clickedLeaf -> updateSelection
+
+今晚研究不出来就试试 storage 方案
+
+sanNodeView selectNode add selected props, the best way
+
+## 强制块级
+
+```ts
+	// 匹配嵌入到 p 标签中的 img
+	{
+		tag: 'p',
+		priority: 1001,
+		getAttrs(element) {
+			const imgEl = (element as HTMLElement).querySelector('img');
+			return imgEl !== null && null;
+		},
+	},
+```
+
 
 # 一行多图 / 图片横排
 
