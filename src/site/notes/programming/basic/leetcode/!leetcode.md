@@ -310,6 +310,11 @@ console.log(hammingDistance(1, 4))
 
 { .block-language-dataview}
 
+## sub 总结
+
+
+长度固定为 k 的子数组 或者是 子数组有固定的限制条件的 f(sub) = constant; 可以考虑滑动窗口
+
 ## ACM 考点
 
 https://oi-wiki.org/string/minimal-string/
@@ -320,8 +325,9 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 
 | File                                                                                                                           | difficulty | etags                                                                                                                                                                                                               | unsolved | date-created                |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------- |
+| [[programming/basic/leetcode/2516. 每种字符至少取 K 个\|2516. 每种字符至少取 K 个]]                                                         | medium     | <ul><li>#leetcode/pointer/sliding-window</li><li>#reverse-thinking</li></ul>                                                                                                                                        | false    | 2023-08-06-Sun, 5:34:00 pm  |
 | [[programming/basic/leetcode/76. 最小覆盖子串\|76. 最小覆盖子串]]                                                                       | hard       | <ul><li>#leetcode/pointer/sliding-window</li></ul>                                                                                                                                                                  | false    | 2023-08-06-Sun, 11:54:02 am |
-| [[programming/basic/leetcode/1658. 将 x 减到 0 的最小操作数\|1658. 将 x 减到 0 的最小操作数]]                                                 | medium     | <ul><li>#leetcode/recursive/memo</li><li>#leetcode/pointer/sliding-window</li></ul>                                                                                                                                 | false    | 2023-08-06-Sun, 10:36:17 am |
+| [[programming/basic/leetcode/1658. 将 x 减到 0 的最小操作数\|1658. 将 x 减到 0 的最小操作数]]                                                 | medium     | <ul><li>#leetcode/recursive/memo</li><li>#leetcode/pointer/sliding-window</li><li>#reverse-thinking</li></ul>                                                                                                       | false    | 2023-08-06-Sun, 10:36:17 am |
 | [[programming/basic/leetcode/904. 水果成篮\|904. 水果成篮]]                                                                         | medium     | <ul><li>#leetcode/pointer/sliding-window</li></ul>                                                                                                                                                                  | false    | 2023-08-06-Sun, 1:29:39 pm  |
 | [[programming/basic/leetcode/365. 水壶问题\|365. 水壶问题]]                                                                         | medium     | <ul><li>#leetcode/traversal/dfs</li><li>#leetcode/traversal/bfs</li><li>#leetcode/math</li></ul>                                                                                                                    | false    | 2023-08-05-Sat, 10:38:11 am |
 | [[programming/basic/leetcode/面试题 08.06. 汉诺塔问题\|面试题 08.06. 汉诺塔问题]]                                                           | easy       | <ul><li>#leetcode/recursive/partition</li><li>#leetcode/unsolved</li></ul>                                                                                                                                          | true     | 2023-08-04-Fri, 2:51:22 pm  |
