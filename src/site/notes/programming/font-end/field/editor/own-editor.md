@@ -51,7 +51,6 @@ editor.can().undo()
 ## 点击菜单栏按钮编辑器不失焦
 
  在 onMouseDown 阻止默认行为即可
-
 ## Icon 也单独抽离一下
 
 # 模板
@@ -181,7 +180,6 @@ sanNodeView selectNode add selected props, the best way
 		},
 	},
 ```
-
 
 # 一行多图 / 图片横排
 
