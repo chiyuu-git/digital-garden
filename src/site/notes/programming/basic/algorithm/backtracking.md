@@ -337,6 +337,7 @@ var combine = function(n, k) {
 | [[programming/basic/leetcode/518. 零钱兑换 II\|518. 零钱兑换 II]]   | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li></ul>                                           |
 | [[programming/basic/leetcode/322. 零钱兑换\|322. 零钱兑换]]         | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li></ul>                                           |
 | [[programming/basic/leetcode/279. 完全平方数\|279. 完全平方数]]       | medium     | <ul><li>#leetcode/dp/knapsack/complete</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li><li>#leetcode/math/square</li></ul>             |
+| [[programming/basic/leetcode/2681. 英雄的力量\|2681. 英雄的力量]]     | hard       | <ul><li>#leetcode/backtracking/combination</li><li>#leetcode/dp</li><li>#leetcode/prefix-sum</li></ul>                                                                                            |
 
 { .block-language-dataview}
 
