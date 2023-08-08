@@ -919,3 +919,94 @@ ES 标准的制定还在不断进行中，各种环境对语言特性的支持�
 当前运行环境下没有 `Promise` 时，可以引入 `shim` 的扩展。如果自己实现，需要实现在 `global` 下，并且与标准 API 保持一致。
 
 这样，未来运行环境支持时，可以随时把 `Promise` 扩展直接扔掉，而应用代码无需任何修改。
+
+# Experience
+
+## 车联网
+
+slaveId 可以通过 getPageInfo 的端能力获取
+
+dispatchEvent 因为是在 extesnsion 里面的，需要寻找对应的方案
+
+extension 扩展组件派发自定义事件的方法
+
+slaveId 改成 this.pageInfo.slaveId 试试
+
+dispatchEvent 看了一下是能拿到的，传入的参数也是符合预期的，现在没走通的话可能是其他逻辑有问题，可以 debugger 看下
+
+proto = Object.assign()
+
+### Extension Component Not Found
+
+组件还是普通的 element，san 的 fire 都没有
+
+### Processor
+
+同样是 processor ，api 的 processor 就是正确的，不断的返回引用，这样就不用时刻注意引用问题了
+
+component-factory 的问题就是 processor 没有返回引用，每一个 processor 都必须直接更改 proto
+
+拉长到 baseMergeProto 内的逻辑后，就需要时刻注意浅拷贝以及循环引用问题
+
+真正有问题的其实是 baseMergeProto，因为他引用了 proto 的函数，所以返回的 mergedProto 不可以再和 proto 进行 merge
+
+否则就会造成 proto 函数的调用死循环。正确的做法应该是 baseMergeProto 对所有传入的 proto 进行浅拷贝，这样无论是直接用 mergedProto 还是让 mergedProto 和 proto 再次进行 merge 都能保证正确运行
+
+直接用就是 return 类型的 processor
+
+再次 merge 就是无 return，纯操作同一个引用的 processor
+
+如果 return 类型的不每次都进行浅拷贝的话，本质上还是和 processor 一样的，只是适用性会更广，不 return 的话就没法更换引用，这样反而能保证所有 processor 处理的都是同一个对象。如果 return 了，有可能在 baseMergedProto 这种地方，就被替换成一个全新的对象了
+
+让所有 processor 都只能处理同一个对象才是符合预期的，这样表现就和 class builder 里加工 this 一致了
+
+```js
+export default function mergeComponentProtos(baseProto: Object, proto: Object): Object {
+    /* istanbul ignore if */
+    if (proto.hasOwnProperty('constructor')) {
+        // 部分动态库会在组件内使用constructor，这里兼容一下
+        // 目前只有文库动态库会这么使用
+        const originConstructor = proto.constructor;
+        delete proto.constructor;
+        // @ts-ignore
+        let originInited = proto.inited;
+        // 如果定义了inited， 这里不能覆盖
+        // @ts-ignore
+        proto.inited = typeof originInited === 'function' ? function (options) {
+            // @ts-ignore
+            originInited.call(this, options);
+            // @ts-ignore
+            originConstructor.call(this, options);
+        } : originConstructor;
+    }
+
+    let mergedProto = Object.assign({}, baseProto);
+    const propNames = Object.keys(proto);
+    for (const propName of propNames) {
+        switch (propName) {
+            // 生命周期需要保证执行顺序
+            case 'inited':
+            case 'detached':
+            case 'created':
+            case 'attached':
+                mergedProto[propName] = function (options) {
+                    baseProto[propName] && baseProto[propName].call(this, options);
+                    proto[propName] && proto[propName].call(this, options);
+                };
+                break;
+
+            // merge computed
+            case 'computed':
+                mergedProto.computed = Object.assign(
+                    {},
+                    mergedProto[propName],
+                    proto[propName]
+                );
+                break;
+            default:
+                mergedProto[propName] = proto[propName];
+        }
+    }
+    return mergedProto;
+}
+```
