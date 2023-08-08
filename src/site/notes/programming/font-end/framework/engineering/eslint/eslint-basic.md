@@ -12,10 +12,10 @@
 
 | File                                                              | overview                   |
 | ----------------------------------------------------------------- | -------------------------- |
-| [[programming/font-end/primitive/es/es-array\|es-array]]       | [[programming/font-end/primitive/es/es-array#experience\|es-array#experience]]    |
-| [[programming/font-end/primitive/es/es-regexp\|es-regexp]]     | [[programming/font-end/primitive/es/es-regexp#experience\|es-regexp#experience]]   |
 | [[programming/font-end/primitive/es/es-number\|es-number]]     | [[programming/font-end/primitive/es/es-number#experience\|es-number#experience]]   |
 | [[programming/font-end/primitive/es/es-function\|es-function]] | [[programming/font-end/primitive/es/es-function#experience\|es-function#experience]] |
+| [[programming/font-end/primitive/es/es-regexp\|es-regexp]]     | [[programming/font-end/primitive/es/es-regexp#experience\|es-regexp#experience]]   |
+| [[programming/font-end/primitive/es/es-array\|es-array]]       | [[programming/font-end/primitive/es/es-array#experience\|es-array#experience]]    |
 
 { .block-language-dataview}
 
@@ -30,6 +30,10 @@
 但是上线的代码，还是要做好设计和抽离，不然维护起来成本太大了
 
 了解一个概念的方法：是什么，有哪些作用，实际中怎么使用，为什么会这么设计
+
+## Debug 方法论
+
+good case 和 bad case, 断点调试轮着看
 
 ## 哲学
 
@@ -181,8 +185,6 @@ for i len
 简单来说，如果你所用工具的约定和你的期待相符，就可以省去配置；不符合的话，你就要通过相关的配置来达到你所期待的结果。
 
 约定优于配置意味着通用化，标准化，意味着开发者都需要遵循同一套约定。这样，当一个开发者要看另一个开发者写的程序的时候，就会很容易上手，因为他了解同一套约定，减少了重新学习的成本。
-
-
 
 # HTML
 
