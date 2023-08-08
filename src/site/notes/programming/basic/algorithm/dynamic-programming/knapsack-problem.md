@@ -716,7 +716,6 @@ console.log(a) //40
 
 ![](/img/user/programming/basic/algorithm/dynamic-programming/knapsack-problem/image-20230713205353322.png)
 
-
 # 多重背包问题
 
 ## 问题描述：
