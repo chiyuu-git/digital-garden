@@ -7,20 +7,20 @@
 
 | File                                                                           | overview              |
 | ------------------------------------------------------------------------------ | --------------------- |
-| [[programming/font-end/primitive/browser-api/dom-selection\|dom-selection]] | [[programming/font-end/primitive/browser-api/dom-selection#faq\|dom-selection#faq]] |
-| [[programming/font-end/primitive/browser-api/bom\|bom]]                     | [[programming/font-end/primitive/browser-api/bom#faq\|bom#faq]]           |
-| [[programming/font-end/primitive/browser-api/dom-event\|dom-event]]         | [[programming/font-end/primitive/browser-api/dom-event#faq\|dom-event#faq]]     |
-| [[programming/font-end/primitive/browser-api/dom-interface\|dom-interface]] | [[programming/font-end/primitive/browser-api/dom-interface#faq\|dom-interface#faq]] |
-| [[programming/font-end/primitive/es/es-string\|es-string]]                  | [[programming/font-end/primitive/es/es-string#faq\|es-string#faq]]     |
 | [[programming/font-end/primitive/es/es-proto\|es-proto]]                    | [[programming/font-end/primitive/es/es-proto#faq\|es-proto#faq]]      |
-| [[programming/font-end/primitive/es/es-async-2\|es-async-2]]                | [[programming/font-end/primitive/es/es-async-2#faq\|es-async-2#faq]]    |
-| [[programming/font-end/primitive/es/es-array\|es-array]]                    | [[programming/font-end/primitive/es/es-array#faq\|es-array#faq]]      |
-| [[programming/font-end/primitive/es/es-basic\|es-basic]]                    | [[programming/font-end/primitive/es/es-basic#faq\|es-basic#faq]]      |
-| [[programming/font-end/primitive/es/es-regexp\|es-regexp]]                  | [[programming/font-end/primitive/es/es-regexp#faq\|es-regexp#faq]]     |
+| [[programming/font-end/primitive/es/es-string\|es-string]]                  | [[programming/font-end/primitive/es/es-string#faq\|es-string#faq]]     |
 | [[programming/font-end/primitive/es/es-object\|es-object]]                  | [[programming/font-end/primitive/es/es-object#faq\|es-object#faq]]     |
-| [[programming/font-end/primitive/es/es-next-1\|es-next-1]]                  | [[programming/font-end/primitive/es/es-next-1#faq\|es-next-1#faq]]     |
 | [[programming/font-end/primitive/es/es-number\|es-number]]                  | [[programming/font-end/primitive/es/es-number#faq\|es-number#faq]]     |
 | [[programming/font-end/primitive/es/es-date\|es-date]]                      | [[programming/font-end/primitive/es/es-date#faq\|es-date#faq]]       |
+| [[programming/font-end/primitive/browser-api/dom-selection\|dom-selection]] | [[programming/font-end/primitive/browser-api/dom-selection#faq\|dom-selection#faq]] |
+| [[programming/font-end/primitive/es/es-regexp\|es-regexp]]                  | [[programming/font-end/primitive/es/es-regexp#faq\|es-regexp#faq]]     |
+| [[programming/font-end/primitive/es/es-next-1\|es-next-1]]                  | [[programming/font-end/primitive/es/es-next-1#faq\|es-next-1#faq]]     |
+| [[programming/font-end/primitive/es/es-basic\|es-basic]]                    | [[programming/font-end/primitive/es/es-basic#faq\|es-basic#faq]]      |
+| [[programming/font-end/primitive/es/es-async-2\|es-async-2]]                | [[programming/font-end/primitive/es/es-async-2#faq\|es-async-2#faq]]    |
+| [[programming/font-end/primitive/es/es-array\|es-array]]                    | [[programming/font-end/primitive/es/es-array#faq\|es-array#faq]]      |
+| [[programming/font-end/primitive/browser-api/dom-event\|dom-event]]         | [[programming/font-end/primitive/browser-api/dom-event#faq\|dom-event#faq]]     |
+| [[programming/font-end/primitive/browser-api/dom-interface\|dom-interface]] | [[programming/font-end/primitive/browser-api/dom-interface#faq\|dom-interface#faq]] |
+| [[programming/font-end/primitive/browser-api/bom\|bom]]                     | [[programming/font-end/primitive/browser-api/bom#faq\|bom#faq]]           |
 
 { .block-language-dataview}
 
