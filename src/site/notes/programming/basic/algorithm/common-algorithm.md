@@ -411,53 +411,6 @@ function find(n, x, arr) {
 
 ![1564044187838](/img/user/programming/basic/algorithm/common-algorithm/1564044187838.png)
 
-# 递归和回溯
-
-## 分支递归
-
-### [22. 括号生成](https://leetcode-cn.com/problems/generate-parentheses/)
-
-#### 题目
-
-+ 给出 n 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合。
-+ 例如，给出 n = 3，生成结果为：
-
-  ```
-  [
-    "((()))",
-    "(()())",
-    "(())()",
-    "()(())",
-    "()()()"
-  ]
-  ```
-
-#### 分析
-
-+ 括号的种类只有一种，只要左右括号的数量是一样的，则一直都是合法的
-+ 只要左括号的数量小于 n，就可以选择添加左括号
-+ 只要左括号的数量大于右括号，就可以选择添加右括号
-+ 当字符串的长度是 n 的两倍，即是一个符合题意的组合
-
-#### 实现
-
- ```java
-  var generateParenthesis = function(n) {
-    const ans = []
-    backtrack(ans,'',0,0,n)
-    return ans
-    function backtrack(ans,cur,open,close,max){
-      if(cur.length === max*2){
-        ans.push(cur)
-        return
-      }
-      if(open<max) backtrack(ans,cur+'(',open+1,close,max)
-      if(close<open) backtrack(ans,cur+')',open,close+1,max)
-    }
-  }
-  console.log(generateParenthesis(3))
-```
-
 # 算法名词
 
 ## 山脉数组
