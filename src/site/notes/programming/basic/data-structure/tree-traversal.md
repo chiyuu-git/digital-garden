@@ -687,13 +687,13 @@ depth 本身就是和行强绑定的
 
 一种是 sub-tree 类型的 path, 可以从最左节点一直到最有节点, 需要分开理解
 
-| File                                                                   | difficulty | etags                                                                                                                                           | date-created               |
-| ---------------------------------------------------------------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| [[programming/basic/leetcode/112. 路径总和\|112. 路径总和]]                 | easy       | <ul><li>#leetcode/tree/traversal/path</li><li>#leetcode/tree/traversal/linear</li></ul>                                                         | 2023-06-06-Tue, 3:39:50 pm |
-| [[programming/basic/leetcode/113. 路径总和 II\|113. 路径总和 II]]           | medium     | <ul><li>#leetcode/tree/traversal/path</li><li>#leetcode/tree/traversal/linear</li></ul>                                                         | 2023-06-06-Tue, 3:43:29 pm |
-| [[programming/basic/leetcode/129. 求根节点到叶节点数字之和\|129. 求根节点到叶节点数字之和]] | medium     | <ul><li>#leetcode/tree/traversal/path</li><li>#leetcode/tree/traversal/linear</li><li>#leetcode/unsolved</li></ul>                              | 2023-06-06-Tue, 3:59:26 pm |
-| [[programming/basic/leetcode/257. 二叉树的所有路径\|257. 二叉树的所有路径]]         | easy       | <ul><li>#leetcode/tree/traversal/path</li><li>#leetcode/tree/traversal/linear</li></ul>                                                         | 2023-06-06-Tue, 2:26:33 pm |
-| [[programming/basic/leetcode/437. 路径总和 III\|437. 路径总和 III]]         | medium     | <ul><li>#leetcode/tree/traversal/path</li><li>#leetcode/tree/traversal/linear</li><li>#leetcode/prefix-sum</li><li>#leetcode/unsolved</li></ul> | 2023-06-03-Sat, 5:12:15 pm |
+| File                                                                   | difficulty | etags                                                                                                                                                                          | date-created               |
+| ---------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------- |
+| [[programming/basic/leetcode/112. 路径总和\|112. 路径总和]]                 | easy       | <ul><li>#leetcode/tree/traversal/path</li><li>#leetcode/tree/traversal/linear</li></ul>                                                                                        | 2023-06-06-Tue, 3:39:50 pm |
+| [[programming/basic/leetcode/113. 路径总和 II\|113. 路径总和 II]]           | medium     | <ul><li>#leetcode/tree/traversal/path</li><li>#leetcode/tree/traversal/linear</li></ul>                                                                                        | 2023-06-06-Tue, 3:43:29 pm |
+| [[programming/basic/leetcode/129. 求根节点到叶节点数字之和\|129. 求根节点到叶节点数字之和]] | medium     | <ul><li>#leetcode/tree/traversal/path</li><li>#leetcode/tree/traversal/linear</li><li>#leetcode/unsolved</li></ul>                                                             | 2023-06-06-Tue, 3:59:26 pm |
+| [[programming/basic/leetcode/257. 二叉树的所有路径\|257. 二叉树的所有路径]]         | easy       | <ul><li>#leetcode/tree/traversal/path</li><li>#leetcode/tree/traversal/linear</li></ul>                                                                                        | 2023-06-06-Tue, 2:26:33 pm |
+| [[programming/basic/leetcode/437. 路径总和 III\|437. 路径总和 III]]         | medium     | <ul><li>#leetcode/tree/traversal/path</li><li>#leetcode/tree/traversal/linear</li><li>#leetcode/prefix-sum</li><li>#leetcode/unsolved</li><li>#leetcode/backtracking</li></ul> | 2023-06-03-Sat, 5:12:15 pm |
 
 { .block-language-dataview}
 
@@ -737,8 +737,8 @@ sub-tree 类型, 往往不好使用层次遍历?
 
 | File                                                                         | difficulty | etags                                                                                                                                  | date-created                |
 | ---------------------------------------------------------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
-| [[programming/basic/leetcode/106. 从中序与后序遍历序列构造二叉树\|106. 从中序与后序遍历序列构造二叉树]] | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/divide-and-conquer</li><li>#leetcode/unsolved</li></ul>                    | 2023-06-13-Tue, 10:14:12 am |
 | [[programming/basic/leetcode/105. 从前序与中序遍历序列构造二叉树\|105. 从前序与中序遍历序列构造二叉树]] | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/divide-and-conquer</li><li>#leetcode/unsolved</li></ul>                    | 2023-06-12-Mon, 2:25:56 pm  |
+| [[programming/basic/leetcode/106. 从中序与后序遍历序列构造二叉树\|106. 从中序与后序遍历序列构造二叉树]] | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/divide-and-conquer</li><li>#leetcode/unsolved</li></ul>                    | 2023-06-13-Tue, 10:14:12 am |
 | [[programming/basic/leetcode/226. 翻转二叉树\|226. 翻转二叉树]]                     | easy       | <ul><li>#leetcode/tree/traversal/sub-tree</li></ul>                                                                                    | 2023-06-03-Sat, 12:57:46 pm |
 | [[programming/basic/leetcode/222. 完全二叉树的节点个数\|222. 完全二叉树的节点个数]]           | easy       | <ul><li>#leetcode/tree/traversal/linear</li><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/tree/complete</li></ul>            | 2023-06-02-Fri, 5:08:35 pm  |
 | [[programming/basic/leetcode/236. 二叉树的最近公共祖先\|236. 二叉树的最近公共祖先]]           | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/tree/ansector</li><li>#leetcode/unsolved</li></ul>                         | 2023-06-15-Thu, 7:20:18 pm  |
