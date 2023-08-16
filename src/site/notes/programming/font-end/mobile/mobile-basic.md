@@ -1260,7 +1260,7 @@ https://segmentfault.com/q/1010000008839008
 
 ### Css Transform
 
-+ ```css
+```css
   /* 纯css模式，动态类名，常用方案，兼容性稍差*/
   *{
     margin: 0;
@@ -1310,7 +1310,7 @@ https://segmentfault.com/q/1010000008839008
       transform: scaleY(.33333333333);
     }
   }
-  ```
+```
 
 ### 边框
 
