@@ -51,6 +51,7 @@ editor.can().undo()
 ## 点击菜单栏按钮编辑器不失焦
 
  在 onMouseDown 阻止默认行为即可
+
 ## Icon 也单独抽离一下
 
 # 模板
@@ -1176,4 +1177,150 @@ push pm 配合检查编辑器的使用体验.
 
 font-family 和 font-size 视觉确定一下
 
+## Node View Copy Paste
+
+![](/img/user/programming/font-end/field/editor/own-editor/image-20230815143209819.png)
+
+### Error Case
+
+![](/img/user/programming/font-end/field/editor/own-editor/image-20230815143218541.png)
+
+只剩下 textNode 了
+
+dispatchTransaction const state = this.state.apply(transaction)
+
+leafNodes 也不一样
+
+为什么 openstart 一定是 1 呢?
+
+nodeview 明明也是 unplaced 的 slice , 为啥只有 content 的 parent 被添加进去了呢?
+
+error case parent 是自己, success case parent 是 null
+
+error case
+
+![](/img/user/programming/font-end/field/editor/own-editor/image-20230815143225306.png)
+
+原本大家的 openstart 都是 1, 但是 success case 经过一次 placeNodes 之后, unplaced 变成与 error case 相同, 同时 openstart 也变成了 0, 由于 openstart 和 startdepth 都是 0, 直接让 parent 变成了 null
+
+```ts
+        if (sliceDepth) {
+          parent = contentAt(this.unplaced.content, sliceDepth - 1).firstChild
+          fragment = parent!.content
+        } else {
+          fragment = this.unplaced.content
+        }
+```
+
+要么是让 sliceDepth 为 0, 这样 parent 为 null, 待插入的 fragment 是完整的 nodeview
+
+要么是从 contentAt 里面做文章, 比如让 parent 为 doc, 然后 parent.content 为完整的 nodeview
+
+或者看看多复制几个节点, nodeview 所在的 sliceDepth 不为 0 时, 又是怎么复制成功的
+
+第一个空 div 消耗完 openstart 1, 变成了 0, 后面的三个直接一起 复制成功了, fragment 直接就是三个 nodeview
+
+splice 11[]
+
+隐约记得 bugfix 的方案就是在复制完的 renderHTML 时候会有一个 默认的参数, 可以用于控制 sliceDepth, 把那个参数修改好就行了, 但是现在已经找不到当时的代码逻辑了, 因为换了新的电脑. 但是这个难题的攻克重点还是在方法论.
+
+**方法论**: good case 和 bad case 对比着来, 精细的 debugger, 断点调试, 找出分歧点, 自然就有办法修复了. 无论是多么难的 bug , 只要能断点调试, 就不会有问题. 就像是 boss 只要亮出血条, 那就一定可以磨死
+{ #ba17ds}
+
+
 # 自测回归点即是 featureList
+
+# Project Experience
+
+#project-experience
+
+![](/img/user/programming/font-end/field/editor/own-editor/image-20230815162414466.png)
+
+## STAR Review
+
+### 背景
+
+多利熊管理平台 - 商品管理 - 新建商品 - 图文详情编辑器，内容可同步至多利熊 C 端小程序
+
+目前商品管理由编辑负责图文物料处理，BD 负责其他商品信息录入，图文物料线下撰写、审核、美工人力消耗较大，影响商品上架效率与不必要的人力成本。
+
+新增图文管理模块实现商品与图文并行创建，通过增强编辑器图片编辑、一行多图等能力，节省设计成本，接入 AIGC 提升内容生产效率。
+
+### 主要工作描述
+
+1. 作为子模块负责人, 从 0 到 1 搭建富文本编辑器, 以 extension 形式实现编辑器功能的解耦, 支持了一行多图、图片拖拽排序等复杂功能, 沉淀了数篇文档帮助新同学了解和上手开发编辑器功能.
+2. 沉淀 tiptap-san 工具, 支持以 san 框架描述编辑器视图, 可以快速接入基于 san 的富文本编辑器, 完善 san 周边生态, , 并推广给其他团队使用.
+
+### 定性收益
+
+1. 通过富文本编辑器优化，提升用户文章排版体验；
+2. 引入智能写作功能，上线推广应用，提升内容生产效率。
+3. 完善 san 周边生态, , 并推广给其他团队使用.
+
+### 定量收益
+
+预计文案撰写效率可提升 80%，日均撰写文章数量可提升 400%；整体商品图文生产效率可提升 63%，日均生产图文数量可提升 225%。
+
+### 不足之处
+
+做的太久了, 我能力不足, 实现一个可用的编辑器, 用了差不多半年?
+
+### 总结
+
++ 从 0 到 1 搭建富文本编辑器, 以扩展形式实现编辑器功能的解耦, 支持了图片拖拽排序、一行多图、复制组件节点等复杂功能. 沉淀 tiptap-san 工具库, 支持以 san 框架描述编辑器视图, 并推广给其他团队使用.
++ 编辑器上线后文案撰写效率提升 80\%，日均生产图文数量提升 225\%
+
+## 项目介绍与难点回顾话术
+
+首先是近期的一个富文本编辑器项目, 百度内部业务线主要是使用 san 作为前端框架, 一款语法上类似于 vue2. 作为模块负责人从 0 到 1 搭建了基于 san 框架的编辑器. 在**顶层设计**上就明确了编辑器的功能都以 extension 的形式提供, 涉及视图相关的能力则维护在 san component 中, 称为 wrapper.
+
+> 职责拆分: wrapper, extension, 菜单栏和 extension, 模板 node-view vs attribute
+
+### 功能实现有很多权衡折衷
+
+在从 0 到 1 实现编辑器的过程中会遇到很多权衡和折衷的问题, 基本上是 2 条思路:
+
+1. 转化到熟悉的领域: 选择块级图片是因为可以将图片的行为与文本编辑解藕, 转换为熟悉的 san 组件操作.
+2. 充分比较编辑器 api 和 dom api, 通过适配器来保证行为一致性, 不同的实现对外有一致的表现.
+
+#### Detail
+
+1. 使用编辑器的 api 更好的: image 点击态、node-view 删除逻辑
+2. 使用 dom api 更好的: 左右光标, dom selection
+3. 适配器: 上一行插入和下一行插入, 一个编辑器, 一个 DOM, 适配器外露
+
+### Sortable
+
+以此为基础实现了**一行多图、图片拖拽**排序等复杂功能, 因为涉及编辑器和 san 组件的状态, 不使用社区已有的工具库, 结合 DOM Drag Event 重新实现是更好的选择:
+
+#### Detail
+
+1. 通过将编辑器状态维护在 image extension
+2. 拖拽过程中复杂的 DOM 状态变化都被封装叫做 sortable-container 的 san 组件中
+3. image component 本身只需要根据拖拽的结果调用编辑器的能力更新编辑器状态即可.
+
+> 拖拽过程中复杂的状态变化, 通过事件一一确定, 现在回过头来看,这里是不是可以用状态机来限定一下节点的行为?
+> 编一下状态机的思想, 感觉不好编, 更多的是 DOM drag api 的运用
+
+### Tiptap-San
+
+项目开发的过程中我还沉淀了 tiptap-san 工具库, 支持以 san 框架描述编辑器视图, 并推广给其他团队使用. 通过参考 tiptap-react、tiptap-vue 的逻辑, 实现了 tiptap-san:
+
+1. 绑定框架的生命周期和编辑器节点的生命周期
+2. 获取 renderHTML, append 到编辑器节点当中
+
+### 基于方法论处理难题
+
+解决这个问题的时候网上根本查不到资料, 只能深入到 proseMirror 的源码中
+
+![own-editor](programming/font-end/field/editor/own-editor.md#^ba17ds)
+
+## TODO: 复现核心功能的 Demo
+
+没有图片服务器, 只能是做成 github 和 readme.md 了
+
+不能开源 san 的版本, 所以只能开源 vue2 的版本, 或者 react 版本
+
+把工作的代码直接开源, 感觉还是有风险的, 所以不能开源. 只能再次整理话术了, 如果是用 react or vue 重写的, 感觉问题还是不大的.
+
+还是以整理话术为主吧
