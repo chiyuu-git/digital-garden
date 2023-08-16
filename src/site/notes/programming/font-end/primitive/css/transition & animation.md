@@ -211,6 +211,13 @@ scale(1),rotate(720deg);
 /*两种样式切换，不会有过渡动画，因为样式位置不一样*/
 ```
 
+## Transtion 动画生效的前提
+
+但是仔细思考之后, 发现只需要一个状态来控制就足够了. 因为可以把 transition 融合到 transform 的样式类中:
+
++ 样式 A 声明 transform
++ 样式 B 声明 transition + transform, 这样切换样式 B 有 transition 效果, 切换回样式 A 无 transition 效果
+
 # 2D 变换
 
 transform 属性允许你修改 CSS 视觉格式模型的坐标空间
