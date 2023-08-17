@@ -954,7 +954,7 @@ getSelection() [#](https://wangdoc.com/javascript/dom/document.html#documentgets
 
 **这两个属性并没有在 DOM 标准定义，但是大部分浏览器都支持这两个属性**
 
-对于自结束标签，比如<input/>，是没有办法获取到 **值** 的，这时 innerHTML 没有意义
+对于自结束标签，比如 `<input/>`，是没有办法获取到 **值** 的，这时 innerHTML 没有意义
 
 ### innerText
 
