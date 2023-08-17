@@ -3,35 +3,6 @@
 ---
 
 
-5/1
-
-6/29
-
-# 数据的载体
-
-Cookie
-
-+ HTTP 的头部扩展
-
-Session
-
-+ 依赖于 cookie
-
-JWT
-
-+ 本质是 token
-+ 依赖于 cookie 或者 header
-
-以上都是常见的鉴权方式
-
-WebStorage
-
-+ 与 cookie 地位相同
-
-IndexDB
-
-+ 与 cookie 地位相同
-
 # Cookie
 
 ## 概述
@@ -48,7 +19,7 @@ Cookie 主要用于以下三个方面：
 
 Cookie 曾一度用于客户端数据的存储，因当时并没有其它合适的存储办法而作为唯一的存储手段，但现在随着现代浏览器开始支持各种各样的存储方式，Cookie 的储存功能渐渐被代替。由于服务器指定 Cookie 后，浏览器的每次请求都会携带 Cookie 数据，会带来额外的性能开销（尤其是在移动环境下）。新的浏览器 API 已经允许开发者直接将数据存储到本地，如使用 [Web storage API](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Storage_API) （本地存储和会话存储）或 [IndexedDB](https://developer.mozilla.org/zh-CN/docs/Web/API/IndexedDB_API) 。
 
-### 工作原理 @@@ #
+### 工作原理 @@@
 
 首先，通过 HTTP 头设置和检索 Cookie。如果浏览器发送请求到 [http://example.com](http://example.com/)，那么响应可能会返回一个标题，说 Set-Cookie：foo = bar。
 
@@ -75,7 +46,9 @@ Cookie 曾一度用于客户端数据的存储，因当时并没有其它合适�
 
 如果你没有公开你网站上第三方 Cookie 的使用情况，当它们被发觉时用户对你的信任程度可能受到影响。一个较清晰的声明（比如在隐私策略里面提及）能够减少或消除这些负面影响。在某些国家已经开始对 Cookie 制订了相应的法规，可以查看维基百科上例子 [cookie statement](https://wikimediafoundation.org/wiki/Cookie_statement)。
 
-## Set-Cookie
+## 服务器处理 Cookie
+
+就是 set-cookie 字段
 
 ### Set-Cookie 响应头部
 
@@ -134,13 +107,13 @@ Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;
 
 ### Cookie 的作用域
 
-`Domain` 和 `Path` 标识定义了 Cookie 的 * 作用域：* 即 Cookie 应该发送给哪些 URL。
+`Domain` 和 `Path` 标识定义了 Cookie 的 * 作用域：浏览器会根据 `Domain` 和 `Path` 来判断是否携带 Cookie 给当前的服务器
 
-`Domain` 标识指定了哪些主机可以接受 Cookie。如果不指定，默认为**当前文档的主机**（**不包含子域名**）。如果指定了 `Domain`，则一般包含子域名。
+`Domain` 标识指定了哪些域名可以接受 Cookie。如果不指定，默认为**当前服务器的域名**（**不包含子域名**）。如果指定了 `Domain`，则一般包含子域名。
 
 - 例如，如果设置 `Domain=mozilla.org`，则 Cookie 也包含在子域名中（如 `developer.mozilla.org`）。
 
-`Path` 标识指定了主机下的哪些路径可以接受 Cookie（该 URL 路径必须存在于请求 URL 中）。以字符 `%x2F` ("/") 作为路径分隔符，子路径也会被匹配。
+`Path` 标识指定了服务器下的哪些路径可以接受 Cookie（该 URL 路径必须存在于请求 URL 中）。以字符 `%x2F` ("/") 作为路径分隔符，子路径也会被匹配。
 
 例如，设置 `Path=/docs`，则以下地址都会匹配：
 
@@ -152,58 +125,37 @@ Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;
 
 `SameSite` Cookie 允许服务器要求某个 cookie 在跨站请求时不会被发送，从而可以阻止跨站请求伪造攻击（[CSRF](https://developer.mozilla.org/en-US/docs/Glossary/CSRF)）。但目前 `SameSite` Cookie 还处于实验阶段，并不是所有浏览器都支持。
 
-## 处理 Cookie 的相关 API
-
-### Koa2
-
-koa 使用传递简单参数的 [cookies](https://github.com/jed/cookies) 模块。
-
-`ctx.cookies.get(name, [options])`
-
-+ 通过 `options` 获取 cookie `name`:
-
-  - `signed` 所请求的 cookie 应该被签名
-
-`ctx.cookies.set(name, value, [options])`
-
-```js
-router.post('/cookies', (ctx) => {
-  if(ctx.cookies.get('isVisit')){
-    ctx.response.body = '欢迎再次访问'
-  }else{
-    ctx.cookies.set('isVisit',1,{maxAge: 60 * 1000})
-    ctx.response.body = '第一次访问'
-  }
-})
-```
+## 浏览器处理 Cookie
 
 ### Document.cookies
 
-**读取 cookie**
+#### 读取 Cookie
 
-- Document.cookie，获取并设置与当前文档相关联的 [cookie](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)。
+Document.cookie，获取并设置与当前文档相关联的 [cookie](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)。
 
-  ```js
+```js
   allCookies = document.cookie;
-  ```
+```
 
-- 在上面的代码中，allCookies 被赋值为一个字符串，该字符串包含所有的 Cookie，每条 cookie 以分号分隔 (即, `key=value ` 键值对)。
+在上面的代码中，allCookies 被赋值为一个字符串，该字符串包含所有的 Cookie，每条 cookie 以分号分隔 (即, `key=value ` 键值对)。
 
-**写入 cookie**
+#### 写入 Cookie
 
 ```js
   document.cookie = newCookie;
 ```
 
-- newCookie 是一个**键值对形式的字符串**。需要注意的是，用这个方法一次只能对一个 cookie 进行设置或更新。
-- 以下可选的 cookie 属性值可以跟在键值对后，用来具体化对 cookie 的设定/更新，使用分号以作分隔：
-  - `;path=path` (例如 '/', '/mydir') 如果没有定义，默认为当前文档位置的路径。
-  - `;domain=domain` (例如 'example.com'， 'subdomain.example.com') 如果没有定义，默认为当前文档位置的路径的域名部分。与早期规范相反的是，在域名前面加 . 符将会被忽视，因为浏览器也许会拒绝设置这样的 cookie。如果指定了一个域，那么子域也包含在内。
-  - `;max-age=max-age-in-seconds` (例如一年为 60\*60\*24\*365)
-  - `;expires=date-in-GMTString-format` 如果没有定义，cookie 会在对话结束时过期
-    - 这个值的格式参见 [Date.toUTCString()](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Date/toUTCString)
-  - `;secure` (cookie 只通过 https 协议传输)
-- cookie 的值字符串可以用 [encodeURIComponent()](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/encodeURIComponent) 来保证它不包含任何逗号、分号或空格 (cookie 值中禁止使用这些值).
+newCookie 是一个**键值对形式的字符串**。需要注意的是，用这个方法一次只能对一个 cookie 进行设置或更新。
+
+以下可选的 cookie 属性值可以跟在键值对后，用来具体化对 cookie 的设定/更新，使用分号以作分隔：
+
+- `;path=path` (例如 '/', '/mydir') 如果没有定义，默认为当前文档位置的路径。
+- `;domain=domain` (例如 'example.com'， 'subdomain.example.com') 如果没有定义，默认为当前文档位置的路径的域名部分。与早期规范相反的是，在域名前面加 . 符将会被忽视，因为浏览器也许会拒绝设置这样的 cookie。如果指定了一个域，那么子域也包含在内。
+- `;max-age=max-age-in-seconds` (例如一年为 60\*60\*24\*365)
+- `;expires=date-in-GMTString-format` 如果没有定义，cookie 会在对话结束时过期, 这个值的格式参见 [Date.toUTCString()](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Date/toUTCString)
+- `;secure` (cookie 只通过 https 协议传输)
+
+cookie 的值字符串可以用 [encodeURIComponent()](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/encodeURIComponent) 来保证它不包含任何逗号、分号或空格 (cookie 值中禁止使用这些值).
 
   ```js
   document.cookie = "name=oeschger";
@@ -212,8 +164,13 @@ router.post('/cookies', (ctx) => {
   // 显示: name=oeschger;favorite_food=tripe
   ```
 
-+ 注意：客户端并没有提供读写 cookie 单个属性值的操作，需要引入一些简单的库
-+ <https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie/Simple_document.cookie_framework>
+客户端并没有提供读写 cookie 单个属性值的操作，需要引入一些简单的库
+
+https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie/Simple_document.cookie_framework
+
+## 注意
+
+实际上，如果设置了两个相同名称的 Cookie，浏览器会携带这两个 Cookie。它们不会被覆盖。每个 Cookie 在请求头中都会被单独发送，浏览器不会合并相同名称的 Cookie。这意味着服务器在处理请求时可能会看到多个相同名称的 Cookie，每个都对应不同的值。
 
 ## Cookie 的大小与数量限制
 
@@ -584,3 +541,7 @@ JWT 的最大缺点是，由于服务器不保存 session 状态，因此无法�
 JWT 本身包含了认证信息，一旦泄露，任何人都可以获得该令牌的所有权限。为了减少盗用，JWT 的有效期应该设置得比较短。对于一些比较重要的权限，使用时应该再次对用户进行认证。
 
 为了减少盗用，JWT 不应该使用 HTTP 协议明码传输，要使用 HTTPS 协议传输。
+
+# Storage
+
+storage. 同样可以实现状态, 只不过状态会被清除, 如果是纯前端实现或者要求不高都可以考虑使用 storage 实现状态. 最典型的就是网页引导, 用户第一次进入可以引导, 之后存储到 storage 里面. 如果清除了缓存就会再次出现
