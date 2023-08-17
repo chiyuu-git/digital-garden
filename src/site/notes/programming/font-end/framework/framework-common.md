@@ -11,7 +11,7 @@
 
 ## 什么时候使用前端路由
 
-在单页面应用，大部分页面结构不变，只改变部分内容的使用
+在单页面应用，大部分页面结构不变，只改变部分内容的时候使用
 
 ## 前端路由有什么优点和缺点
 
@@ -23,7 +23,73 @@
 
 详细资料可以参考： [《什么是“前端路由”》](https://segmentfault.com/q/1010000005336260) [《浅谈前端路由》](https://github.com/kaola-fed/blog/issues/137) [《前端路由是什么东西？》](https://www.zhihu.com/question/53064386)
 
+## Hash 模式
+
+在主地址后面加上#具体地址，这是通过改变 window.location.hash 来实现的, 通过 window 监听 hashChange 事件， 如果发生改变，可以修改 location.hash 来改变路由并执行相应处理.
+
+每次 hash 的改变都会放到历史栈里面
+
+### Hash Mode 选项卡 原生路由
+
+利用了 :target 伪类
+
+```html
+<style>
+    :target{
+      display: block;
+    }
+    div{
+      display:none;
+    }
+</style>
+
+<a href="#div1">div1</a>
+<a href="#div2">div2</a>
+<a href="#div3">div3</a>
+<div id="div1">
+ div1
+</div>
+<div id="div2">
+ div2
+</div>
+<div id="div3">
+ div3
+</div>
+```
+
+## History 模式
+
+14 年之后, H5 标准发布了 history 相关的 api. API 包括 pushState() popState() forward() back() go() 等.
+
+在创建 VueRouter 的时候，会监听地址栏的变化并作出相应的操作，比如下载文件或改变 dom
+
+## 共同点
+
+### 为什么能实现局部刷新?
+
+通过 pushState 或者赋值 location.hash 的方式不会重新发送请求给服务器, 这为页面视图局部刷新提供了基础. 同时, 会将 URL 存入历史记录栈中。
+
+### History 的优点
+
+1. url 美观好看；
+2. pushState 设置的新 URL 可以是与当前 URL 同源的任意 URL；而 hash 只可修改#后面的部分，故只可设置与当前同文档的 URL
+3. pushState 设置的新 URL 可以与当前 URL 一模一样，这样也会把记录添加到栈中；而 hash 设置的新值必须与原来不一样才会触发记录添加到栈中
+
+### History 的问题
+
+用户输入一个地址首次进入，如果地址不是 index.html 那么就会存在服务器找不到/404 的错误。 而在 hash 模式下则不会出现这种问题，因为#以及后面的地址不会发送给服务器，只会匹配前面的主地址。
+
+解决方法：在服务端的路由配置上，最后统一匹配到 index.html 路径上。
+
 # NextTick
+
+用宏任务和微任务来实现 nextTick，其实代码运行的时机是不一样的，用微任务是在渲染前，用宏任务会在渲染后
+
+nextTick其实只是在 dom更新完之后，就可以拿到更新完的数据和 dom了，页面没必要渲染，只需要 js部分是最新的就行了
+
+然后微任务和宏任务翻译的不好，还是用 task和 job来去即可，微任务的执行时间完全有可能比宏任务长
+
+## nextTIck
 
 因为 js 是单线程的，在 setData 之后，到底什么时候派发 nextTickReach 是可以有选择的
 
