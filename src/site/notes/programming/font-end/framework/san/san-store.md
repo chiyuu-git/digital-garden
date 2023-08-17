@@ -376,8 +376,9 @@ declare module 'san-store' {
 
 # 路由管理
 
-- 路由参与状态流转，使用 route 实现路由监听，典型的是查询类页面
-- 单向数据流：onChange（用户事件） -> this.$router.push（修改路由） -> this.route（监听路由变化） -> action（操作状态） -> view（更新视图）
+路由参与状态流转，使用 route 实现路由监听，典型的是查询类页面
+
+单向数据流：onChange（用户事件） -> this.$router.push（修改路由） -> this.route（监听路由变化） -> action（操作状态） -> view（更新视图）
 
 ```ts
 connect.san(
