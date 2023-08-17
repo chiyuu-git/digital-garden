@@ -19,7 +19,7 @@ XSS 的本质是：利用网页开发时留下的漏洞，或者恶意代码未�
 
 这些恶意网页程序通常是 [JavaScript](https://zh.wikipedia.org/wiki/JavaScript)，但实际上也可以包括 [Java](https://zh.wikipedia.org/wiki/Java)，[VBScript](https://zh.wikipedia.org/wiki/VBScript)，[ActiveX](https://zh.wikipedia.org/wiki/ActiveX)，[Flash](https://zh.wikipedia.org/wiki/Flash) 或者甚至是普通的 [HTML](https://zh.wikipedia.org/wiki/HTML)。攻击成功后，攻击者可能得到更高的权限（如执行一些操作）、私密网页内容、[会话](https://zh.wikipedia.org/wiki/会话) 和 [cookie](https://zh.wikipedia.org/wiki/Cookie) 等各种内容。
 
-根据攻击的来源，XSS 攻击可以分为存储型 (持久性)、反射型 (非持久型) 和 DOM 型三种。下面我们来详细了解一下这三种 XSS 攻击
+根据攻击的来源，XSS 攻击可以分为反射型 (非持久型) 、 DOM 型、存储型 (持久性) 三种。下面我们来详细了解一下这三种 XSS 攻击
 
 ## 反射型 XSS
 
@@ -28,13 +28,13 @@ XSS 的本质是：利用网页开发时留下的漏洞，或者恶意代码未�
 ### 攻击步骤
 
 1. 攻击者构造出特殊的 `URL`，其中包含恶意代码。
-2. 用户打开带有恶意代码的 `URL` 时，网站服务端将恶意代码从 `URL` 中取出，拼接在 HTML 中返回给浏览器。
+2. 用户打开带有恶意代码的 `URL` 时，网站服务端将恶意代码从 `URL` 中取出，**拼接在 HTML 中返回给浏览器**。
 3. 用户浏览器接收到响应后解析执行，混在其中的恶意代码也被执行。
 4. 恶意代码窃取用户数据并发送到攻击者的网站，或者冒充用户的行为，调用目标网站接口执行攻击者指定的操作。
 
 反射型 XSS 漏洞常见于通过 `URL` 传递参数的功能，如网站搜索、跳转等。由于需要用户主动打开恶意的 `URL` 才能生效，攻击者往往会结合多种手段诱导用户点击。
 
-攻击者发送一个脑残链接, 让别人点. 点了就读 cookie
+攻击者发送一个常用网站的链接 让别人点. 但是 url 上拼接了一个 type 参数, 这个参数的值会渲染到网页上. 实际上是 script 脚本.点了就读 cookie
 
 POST 的内容也可以触发反射型 XSS，只不过其触发条件比较苛刻（需要构造表单提交页面，并引导用户点击），所以非常少见。
 
@@ -65,11 +65,21 @@ $(document).ready(function() {
 
 使用错误的用户名/密码进行登录 (例如: 123 / 123)，会跳向：`http://localhost:3000/error?type=<script>alert('恶意内容')</script>`
 
+```js
+app.get('/error', function (req, res) {
+    res.send(`${req.query.type}`); //拿到 url 上的 type 参数，并返回给前端    
+});
+```
+
 使用正确的用户名: yvette / yvette 登录，会跳向: `http://localhost:3000/welcome?type=<script>alert('恶意内容')</script>` ; 虽然 url 仍然包含恶意脚本，但是我们已经进行了转义，不会再被攻击
 
 ```js
-//对查询参数进行编码，避免XSS攻击
-res.send(`${encodeURIComponent(req.query.type)}`);
+app.get('/welcome', function (req, res) {
+    //对查询参数进行编码，避免XSS攻击
+    res.send(`${encodeURIComponent(req.query.type)}`);
+    //对type查询参数进行编码，即可解决当前的XSS攻击(可重启服务查看)
+    // res.send(`${encodeURIComponent(req.query.type)}`);
+});
 ```
 
 注意 `Chrome` 和 `Safari` 能够检测到 `url` 上的 xss 攻击，将网页拦截掉，但是其它浏览器不行，如 `Firefox`
@@ -81,13 +91,6 @@ res.send(`${encodeURIComponent(req.query.type)}`);
 ### 防范手段
 
 对 url 的查询参数进行转义后再输出到页面。
-
-```js
-app.get('/welcome', function(req, res) {
-    //对查询参数进行编码，避免反射型 XSS攻击
-    res.send(`${encodeURIComponent(req.query.type)}`); 
-});
-```
 
 ## DOM 型 XSS
 
@@ -617,12 +620,28 @@ CDN 指的是网站的静态内容分发到多个服务器，用户就近访问�
 
 [https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E9%92%93%E9%B1%BC/1401858?fr=aladdin](https://baike.baidu.com/item/网络钓鱼/1401858?fr=aladdin)
 
+# 网络安全相关的 HTTP 字段
+
+与网络安全相关的 HTTP 头字段有很多，它们在保护网站、用户数据和隐私方面起着重要作用。以下是一些关键的 HTTP 头字段以及它们的作用：
+
+1. Content-Security-Policy (CSP): CSP 头用于定义允许加载哪些资源的策略。它可以减少跨站脚本攻击 (XSS) 和数据注入攻击的风险，限制了能够从哪些来源加载资源。
+2. X-Content-Type-Options: 这个头字段用于指示浏览器不要猜测响应的 MIME 类型，从而防止 MIME 类型混淆攻击。
+3. X-Frame-Options: 通过设置这个头字段，你可以控制是否允许在 `<frame>`, `<iframe>`, `<object>` 或 `<embed>` 元素中加载页面。它可以防止点击劫持攻击。
+4. Strict-Transport-Security (HSTS): HSTS 头指示浏览器仅通过 HTTPS 访问站点，防止中间人攻击和 SSLstrip 攻击。
+5. Public-Key-Pins (HPKP): HPKP 头可以强制浏览器只信任预定义的公钥证书，以减少中间人攻击风险。
+6. X-XSS-Protection: 这个头用于启用或禁用浏览器内置的跨站脚本 (XSS) 过滤器。
+7. Referrer-Policy: 这个头字段控制浏览器在请求中包含的 Referrer 信息，可以减少信息泄露风险。
+8. Content-Disposition: 这个头字段可以告知浏览器如何处理内容，可以防止一些文件下载的安全问题，如强制下载和执行。
+9. Feature-Policy: Feature-Policy 头可以限制或允许浏览器访问某些 API 或功能，减少恶意站点的滥用。
+
+这只是一些与网络安全相关的 HTTP 头字段，还有其他头字段也可以用于加强网站的安全性。合理配置这些头字段可以帮助减少各种网络攻击和安全问题。
+
 # FAQ
 
 #faq/basic
 
 ```
-7、发现小概率发生通过域名被劫持，以下对解决此问题无帮助的是（ A ）。
+发现小概率发生通过域名被劫持，以下对解决此问题无帮助的是（ A ）。
   A. 部署备用服务器
   B. https
   C. httpdns
