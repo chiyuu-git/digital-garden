@@ -1794,7 +1794,7 @@ ES2017 引入了跟 `Object.keys` 配套的 `Object.values` 和 `Object.entries`
 
 ## Object.assign() 实现对象浅拷贝
 
-![Object.assign()](es-object.md#Object.assign())
+[Object.assign()](es-object.md#Object.assign())
 
 ## Json 实现深拷贝
 
@@ -1816,22 +1816,24 @@ var new_arr = JSON.parse(JSON.stringify(arr));
 console.log(new_arr);
 ```
 
+> 按理说也不能拷贝 getter 和 setter
+
 ## 浅拷贝的实现
 
 ```js
 const shallowCopy = function(obj) {
-  // 只拷贝对象
-  if (typeof obj !== 'object') return;
-  // 根据obj的类型判断是新建一个数组还是对象
-  const newObj = obj instanceof Array ? [] : {};
-  // 遍历obj，并且判断是obj的属性才拷贝
-  // for (var key in obj) {
-  //   if (obj.hasOwnProperty(key)) newObj[key] = obj[key]
-  // }
-  for (const [key,value] of Object.entries(obj)) {
-    newObj[key] = value
-  }
-  return newObj;
+	// 只拷贝对象
+	if (typeof obj !== 'object') return;
+	// 根据obj的类型判断是新建一个数组还是对象
+	const newObj = obj instanceof Array ? [] : {};
+	// 遍历obj，并且判断是obj的属性才拷贝
+	// for (var key in obj) {
+	//   if (obj.hasOwnProperty(key)) newObj[key] = obj[key]
+	// }
+	for (const [key,value] of Object.entries(obj)) {
+		newObj[key] = value
+	}
+	return newObj;
 }
 ```
 
@@ -1841,13 +1843,14 @@ const shallowCopy = function(obj) {
 
 ```js
 const deepCopy = function(obj) {
-  if (typeof obj !== 'object') return
-  if (typeof obj === null) return null
-  const newObj = obj instanceof Array ? [] : {}
-  for (const [key,value] of Object.entries(obj)) {
-    newObj[key] = typeof value === 'object' ? deepCopy(value) : value
-  }
-  return newObj;
+	if (typeof obj !== 'object') return
+	if (typeof obj === null) return null
+	
+	const newObj = obj instanceof Array ? [] : {}
+	for (const [key,value] of Object.entries(obj)) {
+		newObj[key] = typeof value === 'object' ? deepCopy(value) : value
+	}
+	return newObj;
 }
 ```
 
@@ -1860,9 +1863,7 @@ console.log(deepCopy(null))
 
 如果使用 ES5 API 则会赋值为一个空对象
 
-## 拷贝 Getter 和 Setter
-
-![es-object](programming/font-end/primitive/es/es-object.md#拷贝%20Get%20和%20Set)
+> 面试一般只要求到这种程度就足够了
 
 ## structuredClone()
 
@@ -1903,7 +1904,7 @@ console.log(deepCopy(null))
 
 对象的某些特定参数也不会被保留
 
-- `RegExp ` 对象的 `lastIndex` 字段不会被保留
+- `RegExp` 对象的 `lastIndex` 字段不会被保留
 - 属性描述符，setters 以及 getters（以及其他类似元数据的功能）同样不会被复制。例如，如果一个对象用属性描述符标记为 read-only，它将会被复制为 read-write，因为这是默认的情况下。
 - 原形链上的属性也不会被追踪以及复制。
 - symbol 上的属性也不会赋值
@@ -1913,6 +1914,14 @@ console.log(deepCopy(null))
 用浏览器自身的 API 来实现深度拷贝，有 MessageChannel、history api 、Notification api 等
 
 <http://caibaojian.com/deep-copy.html>
+
+## 拷贝 Getter 和 Setter
+
+上面的 deepCopy 的实现同样无法拷贝 getter 和 setter
+
+structureClone 也同样无法拷贝 getter 和 setter
+
+![es-object](programming/font-end/primitive/es/es-object.md#拷贝%20Get%20和%20Set)
 
 ## $.extend()
 
@@ -2843,6 +2852,20 @@ export const isEqualObject = (x = {}, y = {}) => {
 
 #faq/js
 
+## 克隆
+
+review-time: 3
+
+[克隆](es-object.md#克隆)
+
+## 类型判断
+
+[es-object](programming/font-end/primitive/es/es-object.md#类型判断)
+
+## 等值判断
+
+[es-object](programming/font-end/primitive/es/es-object.md#等值判断)
+
 ## 创建一个空对象
 
 Object.create(null) 与 {} 的区别：`b={}` 相当于 `b=new Object`，因此，`b` 是 `Object` 构造函数的实例。
@@ -2875,15 +2898,3 @@ var constantize = (obj) => {
   });
 };
 ```
-
-## 克隆
-
-[克隆](es-object.md#克隆)
-
-## 类型判断
-
-[es-object](programming/font-end/primitive/es/es-object.md#类型判断)
-
-## 等值判断
-
-[es-object](programming/font-end/primitive/es/es-object.md#等值判断)
