@@ -401,8 +401,6 @@ dbg_naview
 
 因为滚动条都是 body 或者 html 的滚动条传递过去的，先禁用了 html 的滚动条，那么 html 和初始包含块就都不会出现滚动条，body 在给自己一个滚动条，那么拖动滚动条只会拖动 body 内部的元素，初始包含块的位置始终跟着视窗没有变化
 
-
-
 # 动画
 
 ## Css 动画 Vs Js 动画 性能
@@ -1000,8 +998,6 @@ value：因为是 ranger，通过 min 和 max 设置了范围之后，value 值
 - tranlate 的偏移量，offsetLeft 无法同步，不在一个图层
 - 要自己计算出 tranlate 的偏移量，代替 offsetLeft API
 
-## 懒加载
-
 ## 瀑布流
 
 参考：http://www.woshipm.com/pd/1379.html
@@ -1022,38 +1018,6 @@ value：因为是 ranger，通过 min 和 max 设置了范围之后，value 值
     const GAP = 10
     const offsetLeft = COLUMN_WIDTH+GAP
 
-
-​    
-
-​    
-
-​    
-
-​    
-
-​    
-
-​    
-
-​    
-
-​    
-
-​    
-
-​    
-
-​    
-
-​    
-
-​    
-
-​    
-
-​    
-
-​    
 
 
     // 随机生成一个不定高的矩形
@@ -1086,8 +1050,6 @@ value：因为是 ranger，通过 min 和 max 设置了范围之后，value 值
     
     }
 
-
-​    
     // 插入cascade
     const imageNum = 20
     
