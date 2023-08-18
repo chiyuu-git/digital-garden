@@ -500,7 +500,7 @@ promise.all 和 单独的 promise一样，只不过多个 primise的逻辑在 al
 
 > 小知识：[babel中对于微任务的polyfill](https://link.juejin.im?target=https%3A%2F%2Fgithub.com%2Fzloirock%2Fcore-js%2Fblob%2Fmaster%2Fpackages%2Fcore-js%2Finternals%2Ftask.js)，如果是拥有 `setImmediate` 函数平台，则使用之，若没有则自定义则利用各种比如 nodejs中的 `process.nextTick`，浏览器中支持 `postMessage` 的，或者是通过 create一个 script来实现微任务 (microtask)。最终的最终，是使用 setTimeout，不过这个就和微任务无关了，promise变成了宏任务的一员。
 
-[nextTick](programming/font-end/framework/framework-common.md#NextTick)
+[nextTick](../framework/framwork-common/!framework-common.md#NextTick)
 
 # FAQ
 
