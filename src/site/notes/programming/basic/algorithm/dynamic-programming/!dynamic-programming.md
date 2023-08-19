@@ -111,6 +111,12 @@ DP 舍弃了一大堆不可能成为最优解的答案。譬如：
 
 总而言之，“我从哪里来”和“我要到哪里去”只需要考虑清楚其中一个，就能设计出状态转移方程，从而写代码求解问题。前者又称 pull 型的转移，后者又称 push 型的转移。
 
+## 思路四
+
+从记忆化递归的去优化? 递归是自顶向下的, case 越来越少. dp 是自底向上的, case 基于前面的 子问题. 两种相反的思路, 要如何从递归的暴力法里面悟出 dp 的状态转移呢?
+
+关键是递归暴力会有很多重复的子问题, 这些重复的子问题正是 dp 优化的地方
+
 # 动态规划应该如何 Debug
 
 相信动规的题目，很大部分同学都是这样做的。
@@ -365,6 +371,7 @@ DP 舍弃了一大堆不可能成为最优解的答案。譬如：
 | [[programming/basic/leetcode/264. 丑数 II\|264. 丑数 II]]             | medium     | <ul><li>#leetcode/math</li><li>#leetcode/dp/iteration</li></ul>                                                     | 2023-07-25-Tue, 9:35:56 am  |
 | [[programming/basic/leetcode/313. 超级丑数\|313. 超级丑数]]               | medium     | <ul><li>#leetcode/math</li><li>#leetcode/dp/iteration</li></ul>                                                     | 2023-07-25-Tue, 9:38:47 am  |
 | [[programming/basic/leetcode/337. 打家劫舍 III\|337. 打家劫舍 III]]       | medium     | <ul><li>#leetcode/dp/iteration</li><li>#leetcode/recursive/memo</li><li>#leetcode/tree/traversal/sub-tree</li></ul> | 2023-07-14-Fri, 11:53:56 am |
+| [[programming/basic/leetcode/1388. 3n 块披萨\|1388. 3n 块披萨]]         | hard       | <ul><li>#leetcode/dp/iteration</li><li>#leetcode/unsolved</li></ul>                                                 | 2023-08-18-Fri, 7:21:19 pm  |
 
 { .block-language-dataview}
 
@@ -376,9 +383,9 @@ DP 舍弃了一大堆不可能成为最优解的答案。譬如：
 
 | File                                                                     | difficulty | etags                                                                                                                                                                                                   | date-created                |
 | ------------------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| [[programming/basic/leetcode/123. 买卖股票的最佳时机 III\|123. 买卖股票的最佳时机 III]] | hard       | <ul><li>#leetcode/dp/multi-status</li><li>#leetcode/recursive/memo</li><li>#leetcode/unsolved</li></ul>                                                                                                 | 2023-07-15-Sat, 11:28:51 am |
 | [[programming/basic/leetcode/121. 买卖股票的最佳时机\|121. 买卖股票的最佳时机]]         | easy       | <ul><li>#leetcode/array/traversal</li><li>#leetcode/greedy-algorithm</li><li>#leetcode/dp/multi-status</li><li>#leetcode/unsolved</li></ul>                                                             | 2023-07-14-Fri, 3:55:55 pm  |
 | [[programming/basic/leetcode/122. 买卖股票的最佳时机 II\|122. 买卖股票的最佳时机 II]]   | medium     | <ul><li>#leetcode/brainteasers</li><li>#leetcode/math/monotone</li><li>#leetcode/dp/multi-status</li><li>#leetcode/unsolved</li><li>#leetcode/greedy-algorithm</li><li>#leetcode/sub/sequence</li></ul> | 2023-07-06-Thu, 7:50:10 pm  |
-| [[programming/basic/leetcode/123. 买卖股票的最佳时机 III\|123. 买卖股票的最佳时机 III]] | hard       | <ul><li>#leetcode/dp/multi-status</li><li>#leetcode/recursive/memo</li><li>#leetcode/unsolved</li></ul>                                                                                                 | 2023-07-15-Sat, 11:28:51 am |
 | [[programming/basic/leetcode/188. 买卖股票的最佳时机 IV\|188. 买卖股票的最佳时机 IV]]   | hard       | <ul><li>#leetcode/dp/multi-status</li><li>#leetcode/recursive/memo</li></ul>                                                                                                                            | 2023-07-15-Sat, 7:52:03 pm  |
 | [[programming/basic/leetcode/309. 最佳买卖股票时机含冷冻期\|309. 最佳买卖股票时机含冷冻期]]   | medium     | <ul><li>#leetcode/dp/multi-status</li><li>#leetcode/recursive/memo</li></ul>                                                                                                                            | 2023-07-15-Sat, 7:25:06 pm  |
 
@@ -702,8 +709,8 @@ DP 舍弃了一大堆不可能成为最优解的答案。譬如：
 | [[programming/basic/leetcode/122. 买卖股票的最佳时机 II\|122. 买卖股票的最佳时机 II]]         | medium     | <ul><li>#leetcode/brainteasers</li><li>#leetcode/math/monotone</li><li>#leetcode/dp/multi-status</li><li>#leetcode/unsolved</li><li>#leetcode/greedy-algorithm</li><li>#leetcode/sub/sequence</li></ul> | 2023-07-06-Thu, 7:50:10 pm  |
 | [[programming/basic/leetcode/1749. 任意子数组和的绝对值的最大值\|1749. 任意子数组和的绝对值的最大值]]   | medium     | <ul><li>#brainteasers/divide-and-conquer</li><li>#leetcode/dp</li><li>#leetcode/greedy-algorithm</li><li>#leetcode/sub/consecutive</li><li>#leetcode/prefix-sum</li><li>#leetcode/unsolved</li></ul>    | 2023-08-08-Tue, 10:25:55 am |
 | [[programming/basic/leetcode/300. 最长递增子序列\|300. 最长递增子序列]]                   | medium     | <ul><li>#leetcode/dp</li><li>#leetcode/sub/sequence</li><li>#leetcode/greedy-algorithm</li><li>#leetcode/binary-search</li><li>#leetcode/unsolved</li></ul>                                             | 2023-07-16-Sun, 10:13:53 am |
-| [[programming/basic/leetcode/376. 摆动序列\|376. 摆动序列]]                         | medium     | <ul><li>#leetcode/brainteasers</li><li>#leetcode/math/monotone</li><li>#leetcode/dp</li><li>#leetcode/unsolved</li><li>#leetcode/greedy-algorithm</li><li>#leetcode/sub/sequence</li></ul>              | 2023-07-06-Thu, 10:37:33 am |
 | [[programming/basic/leetcode/392. 判断子序列\|392. 判断子序列]]                       | easy       | <ul><li>#leetcode/sub/sequence</li><li>#leetcode/dp/lcs</li><li>#leetcode/unsolved</li><li>#leetcode/pointer/double</li></ul>                                                                           | 2023-05-15-Mon, 8:38:50 pm  |
+| [[programming/basic/leetcode/376. 摆动序列\|376. 摆动序列]]                         | medium     | <ul><li>#leetcode/brainteasers</li><li>#leetcode/math/monotone</li><li>#leetcode/dp</li><li>#leetcode/unsolved</li><li>#leetcode/greedy-algorithm</li><li>#leetcode/sub/sequence</li></ul>              | 2023-07-06-Thu, 10:37:33 am |
 | [[programming/basic/leetcode/467. 环绕字符串中唯一的子字符串\|467. 环绕字符串中唯一的子字符串]]       | medium     | <ul><li>#leetcode/string/hash-table</li><li>#leetcode/dp</li><li>#leetcode/unsolved</li><li>#leetcode/sub/consecutive</li></ul>                                                                         | 2023-05-15-Mon, 1:29:08 am  |
 | [[programming/basic/leetcode/5. 最长回文子串\|5. 最长回文子串]]                         | medium     | <ul><li>#leetcode/palindrome</li><li>#leetcode/unsolved</li><li>#leetcode/dp</li><li>#leetcode/sub/consecutive</li></ul>                                                                                | 2023-05-19-Fri, 5:01:31 pm  |
 | [[programming/basic/leetcode/516. 最长回文子序列\|516. 最长回文子序列]]                   | medium     | <ul><li>#leetcode/brainteasers</li><li>#leetcode/dp</li><li>#leetcode/sub/sequence</li><li>#leetcode/palindrome</li><li>#leetcode/unsolved</li></ul>                                                    | 2023-07-18-Tue, 7:23:14 pm  |
