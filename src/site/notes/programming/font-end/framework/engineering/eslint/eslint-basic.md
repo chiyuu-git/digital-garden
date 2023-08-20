@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/font-end/framework/engineering/eslint/eslint-basic/"}
+{"dg-publish":true,"permalink":"/programming/font-end/framework/engineering/eslint/eslint-basic/","tags":["gardenEntry","gardenEntry"]}
 ---
 
 
