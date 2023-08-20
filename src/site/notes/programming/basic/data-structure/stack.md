@@ -136,12 +136,13 @@ class Stack {
 
 | File                                                                 | difficulty | etags                                                                                                                                     | date-created                |
 | -------------------------------------------------------------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| [[programming/basic/leetcode/1124. 表现良好的最长时间段\|1124. 表现良好的最长时间段]] | medium     | <ul><li>#leetcode/prefix-sum</li><li>#leetcode/monotone-stack</li><li>#leetcode/unsolved</li><li>#leetcode/hash-table/existence</li></ul> | 2023-08-19-Sat, 3:09:21 pm  |
 | [[programming/basic/leetcode/20. 有效的括号\|20. 有效的括号]]               | easy       | <ul><li>#leetcode/stack</li></ul>                                                                                                         | 2023-05-21-Sun, 6:16:14 pm  |
 | [[programming/basic/leetcode/224. 基本计算器\|224. 基本计算器]]             | hard       | <ul><li>#leetcode/stack</li><li>#leetcode/math</li><li>#leetcode/unsolved</li></ul>                                                       | 2023-05-21-Sun, 5:47:35 pm  |
 | [[programming/basic/leetcode/42. 接雨水\|42. 接雨水]]                   | hard       | <ul><li>#leetcode/monotone-stack</li><li>#leetcode/brainteasers</li><li>#leetcode/dp</li><li>#leetcode/unsolved</li></ul>                 | 2023-07-19-Wed, 7:22:20 pm  |
 | [[programming/basic/leetcode/445. 两数相加 II\|445. 两数相加 II]]         | medium     | <ul><li>#leetcode/linked-list</li><li>#leetcode/math/high-precision-computation</li><li>#leetcode/stack</li></ul>                         | 2023-05-23-Tue, 4:10:35 pm  |
-| [[programming/basic/leetcode/496. 下一个更大元素 I\|496. 下一个更大元素 I]]     | easy       | <ul><li>#leetcode/hash-table</li><li>#leetcode/monotone-stack</li><li>#leetcode/unsolved</li></ul>                                        | 2023-07-19-Wed, 3:37:09 pm  |
 | [[programming/basic/leetcode/503. 下一个更大元素 II\|503. 下一个更大元素 II]]   | medium     | <ul><li>#leetcode/monotone-stack</li><li>#leetcode/array/recycle</li></ul>                                                                | 2023-07-19-Wed, 4:00:07 pm  |
+| [[programming/basic/leetcode/496. 下一个更大元素 I\|496. 下一个更大元素 I]]     | easy       | <ul><li>#leetcode/hash-table</li><li>#leetcode/monotone-stack</li><li>#leetcode/unsolved</li></ul>                                        | 2023-07-19-Wed, 3:37:09 pm  |
 | [[programming/basic/leetcode/591. 标签验证器\|591. 标签验证器]]             | hard       | <ul><li>#leetcode/stack</li><li>#leetcode/unsolved</li></ul>                                                                              | 2023-05-21-Sun, 6:43:37 pm  |
 | [[programming/basic/leetcode/636. 函数的独占时间\|636. 函数的独占时间]]         | medium     | <ul><li>#leetcode/stack</li><li>#leetcode/time-sequence</li></ul>                                                                         | 2023-05-21-Sun, 6:24:26 pm  |
 | [[programming/basic/leetcode/654. 最大二叉树\|654. 最大二叉树]]             | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/stack/monotonic-stack</li><li>#leetcode/unsolved</li></ul>                    | 2023-06-03-Sat, 10:12:52 pm |
@@ -149,7 +150,6 @@ class Stack {
 | [[programming/basic/leetcode/71. 简化路径\|71. 简化路径]]                 | medium     | <ul><li>#leetcode/stack</li></ul>                                                                                                         | 2023-05-20-Sat, 9:42:39 pm  |
 | [[programming/basic/leetcode/739. 每日温度\|739. 每日温度]]               | medium     | <ul><li>#leetcode/monotone-stack</li></ul>                                                                                                | 2023-07-19-Wed, 3:09:35 pm  |
 | [[programming/basic/leetcode/84. 柱状图中最大的矩形\|84. 柱状图中最大的矩形]]       | hard       | <ul><li>#leetcode/monotone-stack</li><li>#leetcode/brainteasers</li><li>#leetcode/dp</li><li>#leetcode/unsolved</li></ul>                 | 2023-07-20-Thu, 10:17:30 am |
-| [[programming/basic/leetcode/1124. 表现良好的最长时间段\|1124. 表现良好的最长时间段]] | medium     | <ul><li>#leetcode/prefix-sum</li><li>#leetcode/monotone-stack</li><li>#leetcode/unsolved</li><li>#leetcode/hash-table/existence</li></ul> | 2023-08-19-Sat, 3:09:21 pm  |
 
 { .block-language-dataview}
 
