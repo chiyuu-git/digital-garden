@@ -128,6 +128,12 @@ dummyHead
 
 植树问题
 
+### 方案一: 把 Index 代表的含义写下来, 避免反复确认
+
+`preSum[i]` 就代表着 `nums[0..i-1]` 所有元素的累加和，如果我们想求区间 `nums[i..j]` 的累加和，只要计算 `preSum[j+1] - preSum[i]` 即可，而不需要遍历整个区间求和。
+
+`dp[i]` 代表着从 `0` 到 `i-1` 个字符的最长上升子序列
+
 ## Arithmetic-sequence
 
 | File                                                                                                                           | solution tips overview                                          |
@@ -294,6 +300,10 @@ console.log(hammingDistance(1, 4))
 
 长度固定为 k 的子数组 或者是 子数组有固定的限制条件的 f(sub) = constant; 可以考虑滑动窗口
 
+## 计数问题转换为求和问题
+
+[525. 连续数组](525.%20连续数组.md)
+
 ## ACM 考点
 
 https://oi-wiki.org/string/minimal-string/
@@ -304,7 +314,13 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 
 | File                                                                                                                           | difficulty | etags                                                                                                                                                                                                               | unsolved | date-created                |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------- |
-| [[programming/basic/leetcode/1248. 统计「优美子数组」\|1248. 统计「优美子数组」]]                                                             | medium     | <ul><li>#leetcode/pointer/sliding-window</li><li>#leetcode/prefix-sum/diff</li><li>#leetcode/unsolved</li><li>#leetcode/combination/count</li></ul>                                                                 | true     | 2023-08-18-Fri, 8:22:19 pm  |
+| [[programming/basic/leetcode/1109. 航班预订统计\|1109. 航班预订统计]]                                                                   | medium     | <ul><li>#leetcode</li></ul>                                                                                                                                                                                         | false    | 2023-08-19-Sat, 7:36:13 pm  |
+| [[programming/basic/leetcode/1590. 使数组和能被 P 整除\|1590. 使数组和能被 P 整除]]                                                         | medium     | <ul><li>#leetcode/hash-table</li><li>#leetcode/prefix-sum</li><li>#leetcode/unsolved</li><li>#leetcode/sub/consecutive</li></ul>                                                                                    | true     | 2023-08-19-Sat, 6:30:40 pm  |
+| [[programming/basic/leetcode/1524. 和为奇数的子数组数目\|1524. 和为奇数的子数组数目]]                                                           | medium     | <ul><li>#leetcode/hash-table</li><li>#leetcode/prefix-sum</li><li>#leetcode/unsolved</li><li>#leetcode/sub/consecutive</li></ul>                                                                                    | true     | 2023-08-19-Sat, 6:28:21 pm  |
+| [[programming/basic/leetcode/974. 和可被 K 整除的子数组\|974. 和可被 K 整除的子数组]]                                                         | medium     | <ul><li>#leetcode/prefix-sum</li><li>#leetcode/hash-table/count</li><li>#leetcode/unsolved</li></ul>                                                                                                                | true     | 2023-08-19-Sat, 6:24:12 pm  |
+| [[programming/basic/leetcode/面试题 17.05. 字母与数字\|面试题 17.05. 字母与数字]]                                                           | medium     | <ul><li>#leetcode/prefix-sum</li><li>#leetcode/hash-table/existence</li></ul>                                                                                                                                       | false    | 2023-08-19-Sat, 3:42:23 pm  |
+| [[programming/basic/leetcode/1124. 表现良好的最长时间段\|1124. 表现良好的最长时间段]]                                                           | medium     | <ul><li>#leetcode/prefix-sum</li><li>#leetcode/monotone-stack</li><li>#leetcode/unsolved</li><li>#leetcode/hash-table/existence</li></ul>                                                                           | true     | 2023-08-19-Sat, 3:09:21 pm  |
+| [[programming/basic/leetcode/1248. 统计「优美子数组」\|1248. 统计「优美子数组」]]                                                             | medium     | <ul><li>#leetcode/pointer/sliding-window</li><li>#leetcode/prefix-sum</li><li>#leetcode/unsolved</li><li>#leetcode/combination/count</li><li>#leetcode/hash-table/count</li></ul>                                   | true     | 2023-08-18-Fri, 8:22:19 pm  |
 | [[programming/basic/leetcode/1388. 3n 块披萨\|1388. 3n 块披萨]]                                                                   | hard       | <ul><li>#leetcode/dp/iteration</li><li>#leetcode/unsolved</li></ul>                                                                                                                                                 | true     | 2023-08-18-Fri, 7:21:19 pm  |
 | [[programming/basic/leetcode/1444. 切披萨的方案数\|1444. 切披萨的方案数]]                                                                 | hard       | <ul><li>#leetcode/dp/combination</li><li>#leetcode/prefix-sum</li><li>#leetcode/unsolved</li></ul>                                                                                                                  | true     | 2023-08-17-Thu, 9:41:49 am  |
 | [[programming/basic/leetcode/12. 整数转罗马数字\|12. 整数转罗马数字]]                                                                     | medium     | <ul><li>#leetcode/string/transform</li><li>#leetcode/unsolved</li></ul>                                                                                                                                             | true     | 2023-08-17-Thu, 4:15:25 pm  |
