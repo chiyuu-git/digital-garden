@@ -163,8 +163,8 @@ $$\sum_{j=\text{left}}^{\text{right}} \text{nums}[j] = \sum_{j=0}^{\text{right}}
 | [[programming/basic/leetcode/560. 和为 K 的子数组\|560. 和为 K 的子数组]]       | [[programming/basic/leetcode/560. 和为 K 的子数组#solution tips\|560. 和为 K 的子数组#solution tips]]    |
 | [[programming/basic/leetcode/525. 连续数组\|525. 连续数组]]                 | [[programming/basic/leetcode/525. 连续数组#solution tips\|525. 连续数组#solution tips]]         |
 | [[programming/basic/leetcode/523. 连续的子数组和\|523. 连续的子数组和]]           | [[programming/basic/leetcode/523. 连续的子数组和#solution tips\|523. 连续的子数组和#solution tips]]      |
-| [[programming/basic/leetcode/1524. 和为奇数的子数组数目\|1524. 和为奇数的子数组数目]]   | [[programming/basic/leetcode/1524. 和为奇数的子数组数目#solution tips\|1524. 和为奇数的子数组数目#solution tips]]  |
 | [[programming/basic/leetcode/1590. 使数组和能被 P 整除\|1590. 使数组和能被 P 整除]] | [[programming/basic/leetcode/1590. 使数组和能被 P 整除#solution tips\|1590. 使数组和能被 P 整除#solution tips]] |
+| [[programming/basic/leetcode/1524. 和为奇数的子数组数目\|1524. 和为奇数的子数组数目]]   | [[programming/basic/leetcode/1524. 和为奇数的子数组数目#solution tips\|1524. 和为奇数的子数组数目#solution tips]]  |
 | [[programming/basic/leetcode/1248. 统计「优美子数组」\|1248. 统计「优美子数组」]]     | [[programming/basic/leetcode/1248. 统计「优美子数组」#solution tips\|1248. 统计「优美子数组」#solution tips]]   |
 | [[programming/basic/leetcode/1124. 表现良好的最长时间段\|1124. 表现良好的最长时间段]]   | [[programming/basic/leetcode/1124. 表现良好的最长时间段#solution tips\|1124. 表现良好的最长时间段#solution tips]]  |
 
