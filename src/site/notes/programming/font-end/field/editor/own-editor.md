@@ -3,7 +3,7 @@
 ---
 
 
-# 编辑器之间的内容同步
+# 调研背景: 编辑器之间的内容同步
 
 所有的富文本编辑器都是基于 HTML, 所以同步的基础就是 html. 只要能产出 html, 就可以同步
 
@@ -457,8 +457,6 @@ add 逻辑通过 promise 在 gallery 内部维护吧? 但是这样就会出现 u
 
 最终方案: 还是统一入参, 走 pos 路线吧, 插入图片也还是通过 pos 获取 node-view, 更新 sourceList 的形式来做
 
-## addImageToGallery
-
 ### updateAttributes
 
 要如何 update 呢? 能 push 么? 想要 push 需要先获取 attrs
@@ -559,13 +557,7 @@ sortable item index 的更新逻辑改成不依赖重建之后, 需要确定 s-f
 
 sort 要做 dom 的位移效果, 让 san update silent
 
-```
-这次的需求会对商品的图文详情做升级, 支持图文模板和一行多图, 升级之后C端会可以直接使用B端下发的html富文本渲染. 但是对于存量的商品之前C端会对下发的html富文本做改动, 比如把图片的宽度调整成和屏幕宽度一致. 所以这次升级需要C端对新旧数据做不同的处理. 目前想到几个方案:
-1. B端和C端server都新增一个字段, 用于标识新的图文详情, C端前端根据该字段是否存在做不同的兼容处理 (长远来看这种方案比较合适, 可以考虑做成类似版本号的字段? 以后的需求升级都有可能造成兼容性问题)
-2. C端前端解析下发的html,获取所有的 img, 根据 img 是否指定了 width 做出不同的处理. (新数据 img width 均为百分数)
-
-主要是看下 server 支持方案1是否还来得及, 如果来不及本期可以先用方案2兼容, 后续再考虑方案 1 或者有更加合适的方案
-```
+> 参考框架的 s-for 逻辑, 不用 index 维护, 而是用 ID 去维护呢?
 
 ### 流程梳理
 
@@ -585,7 +577,7 @@ itemDragEnd: according to dragLevel & dropEffect, determine drag type is dropout
 
 + item sort: update sourceList
 + itemDropOut:
-	+ sing image sourceList on dropout, no matter drop in editor or other gallery, new Image is create in right pos, delete origin Node
+	+ single image sourceList on dropout, no matter drop in editor or other gallery, new Image is create in right pos, delete origin Node
 	+ multi image sourceList on dropout, update sourceList
 
 ### dropIndex 逻辑
@@ -1276,7 +1268,7 @@ splice 11[]
 
 ## 项目介绍与难点回顾话术
 
-首先是近期的一个富文本编辑器项目, 百度内部业务线主要是使用 san 作为前端框架, 一款语法上类似于 vue2. 作为模块负责人从 0 到 1 搭建了基于 san 框架的编辑器. 在**顶层设计**上就明确了编辑器的功能都以 extension 的形式提供, 涉及视图相关的能力则维护在 san component 中, 称为 wrapper.
+首先是近期的一个富文本编辑器项目, 百度内部业务线主要是使用 san 作为前端框架, 语法上类似于 vue2. 作为模块负责人从 0 到 1 搭建了基于 san 框架的编辑器. 在**顶层设计**上就明确了编辑器的功能都以 extension 的形式提供, 涉及视图相关的能力则维护在 san component 中, 称为 wrapper.
 
 > 职责拆分: wrapper, extension, 菜单栏和 extension, 模板 node-view vs attribute
 
@@ -1284,7 +1276,7 @@ splice 11[]
 
 在从 0 到 1 实现编辑器的过程中会遇到很多权衡和折衷的问题, 基本上是 2 条思路:
 
-1. 转化到熟悉的领域: 选择块级图片是因为可以将图片的行为与文本编辑解藕, 转换为熟悉的 san 组件操作.
+1. 转化到熟悉的领域: 选择块级图片是因为可以将图片的行为与文本编辑解藕, 转换为熟悉的 san 组件操作. 又比如 ImageGallery, 不是插入多个 nodeView 而是在 san 组件内部自己控制
 2. 充分比较编辑器 api 和 dom api, 通过适配器来保证行为一致性, 不同的实现对外有一致的表现.
 
 #### Detail
@@ -1295,7 +1287,7 @@ splice 11[]
 
 ### Sortable
 
-以此为基础实现了**一行多图、图片拖拽**排序等复杂功能, 因为涉及编辑器和 san 组件的状态, 不使用社区已有的工具库, 结合 DOM Drag Event 重新实现是更好的选择:
+以此为基础实现了**一行多图、图片拖拽、排序**等复杂功能, 因为涉及编辑器和 san 组件的状态, 不使用社区已有的工具库, 结合 DOM Drag Event 重新实现是更好的选择:
 
 #### Detail
 
@@ -1305,10 +1297,14 @@ splice 11[]
 
 > 拖拽过程中复杂的状态变化, 通过事件一一确定, 现在回过头来看,这里是不是可以用状态机来限定一下节点的行为?
 > 编一下状态机的思想, 感觉不好编, 更多的是 DOM drag api 的运用
+>
+> 做的比较巧妙的一点就是哨兵节点的逻辑, 极大简化了
 
 ### Tiptap-San
 
-项目开发的过程中我还沉淀了 tiptap-san 工具库, 支持以 san 框架描述编辑器视图, 并推广给其他团队使用. 通过参考 tiptap-react、tiptap-vue 的逻辑, 实现了 tiptap-san:
+项目开发的过程中我还沉淀了 tiptap-san 工具库, 支持以 san 框架描述编辑器视图, 并推广给其他团队使用. 通过参考 tiptap-react、tiptap-vue 的逻辑, 实现了 tiptap-san
+
+#### Detail
 
 1. 绑定框架的生命周期和编辑器节点的生命周期
 2. 获取 renderHTML, append 到编辑器节点当中
