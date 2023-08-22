@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/font-end/framework/engineering/eslint/eslint-basic/","tags":["gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry"]}
+{"dg-publish":true,"permalink":"/programming/font-end/framework/engineering/eslint/eslint-basic/","tags":["gardenEntry","gardenEntry"]}
 ---
 
 
@@ -8,7 +8,7 @@
 希望可以通过 dataview 查询所有的经验 section 自动汇总到这里
 
 + 首先想到的方案就是给 section 打上标签，然后 query 标签即可，再动态拼接 section 即可
-+ 但是 ob 的 tag 是 page 维度的, 需要再研究其他方法
++ 但是 ob 的 tag 是 page 维度的, 需要再研究更好的方法
 
 | File                                                              | overview                   |
 | ----------------------------------------------------------------- | -------------------------- |
@@ -107,7 +107,7 @@ deleteComment(msg,index){}
 
 ## If Else 简化
 
-把不同的 if else clause 封装成不同的状态，通过 [状态机](../../../../basic/cs-basic/design-pattern.md#状态机) 来解决
+把不同的 if else clause 封装成不同的状态，通过 [状态机](../../../../basic/cs-basic/design-pattern/!design-pattern.md#状态机) 来解决
 
 ### 复杂判断
 
@@ -185,6 +185,10 @@ for i len
 简单来说，如果你所用工具的约定和你的期待相符，就可以省去配置；不符合的话，你就要通过相关的配置来达到你所期待的结果。
 
 约定优于配置意味着通用化，标准化，意味着开发者都需要遵循同一套约定。这样，当一个开发者要看另一个开发者写的程序的时候，就会很容易上手，因为他了解同一套约定，减少了重新学习的成本。
+
+## 如何重构大型项目
+
+可以考虑建一个新的, 不能迁移的就兼容, 收拢到一处逻辑上.
 
 # HTML
 
