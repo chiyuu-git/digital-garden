@@ -1237,6 +1237,3 @@ btn.dispatchEvent(ev);
 
 #faq/js
 
-## 手写 EventBus
-
-## 观察者模式
