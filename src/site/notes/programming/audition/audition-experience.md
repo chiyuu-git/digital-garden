@@ -160,8 +160,6 @@ HAVING 只能选择在 SELECT 语句中出现的列
 3. 可以不需要预先定义属性：使用 Proxy 对象可以劫持整个对象的访问，而不需要事先定义所有属性的 get 和 set 方法。
 4. 性能更好：Proxy 的性能比 Object.defineProperty 更好，因为 Proxy 可以直接劫持整个对象，而 Object.defineProperty 需要逐个定义属性。
 
-### 实现 Event-bus 发布订阅模式
-
 ### nextTick
 
 Vue2 和 Vue3 都有一个名为 `nextTick` 的 API，用于在 DOM 更新后执行异步操作。虽然它们的目的相同，但在实现上有些区别。
