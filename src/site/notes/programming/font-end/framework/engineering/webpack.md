@@ -3,7 +3,6 @@
 ---
 
 
-8/12
 
 # 项目构建
 
@@ -1030,7 +1029,7 @@ All optional newlines and whitespace will be omitted when generating code in com
 
 ### **显式配置共享类库可以这么操作**
 
-- ```js
+```js
   module.exports = {
     entry: {
       vendor: ["react", "lodash", "angular", ...], // 指定公共使用的第三方类库
@@ -1081,7 +1080,8 @@ All optional newlines and whitespace will be omitted when generating code in com
       },
     },
   }...
-  ```
+```
+
 - 上述第一种做法是显示指定哪些类库作为公共部分，第二种做法实现的功能差不多，只是利用了 test 来做模块路径的匹配，第三种做法是把所有在 node_modules 下的模块，即作为依赖安装的，都作为公共部分。你可以针对项目情况，选择最合适的做法..
 
 ## 进一步控制 JS 大小
@@ -1116,7 +1116,7 @@ All optional newlines and whitespace will be omitted when generating code in com
 
 ### 完整代码
 
-- ```js
+```js
   const path = require('path')
   const webpack = require('webpack')
   const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -1218,7 +1218,7 @@ All optional newlines and whitespace will be omitted when generating code in com
       hot: true
     }
   }
-  ```
+```
 
 ## 公共（common）环境优化
 
@@ -1640,7 +1640,7 @@ const config = {
 
 把 `modules` 设置为 `false`，就是告诉 babel 不要编译模块代码。这会让 Babel 保留我们现有的 es2015 import/export 语句。
 
-**划重点：**所有可需要 tree-shaking 的代码必须以这种方式编译。因此，如果你有要导入的库，则必须将这些库编译为 es2015 模块以便进行 tree-shaking 。如果它们被编译为 commonjs，那么它们就不能做 tree-shaking ，并且将会被打包进你的应用程序中。许多库支持部分导入，lodash 就是一个很好的例子，它本身是 commonjs 模块，但是它有一个 lodash-es 版本，用的是 es2015 模块。
+**划重点**：所有可需要 tree-shaking 的代码必须以这种方式编译。因此，如果你有要导入的库，则必须将这些库编译为 es2015 模块以便进行 tree-shaking 。如果它们被编译为 commonjs，那么它们就不能做 tree-shaking ，并且将会被打包进你的应用程序中。许多库支持部分导入，lodash 就是一个很好的例子，它本身是 commonjs 模块，但是它有一个 lodash-es 版本，用的是 es2015 模块。
 
 此外，如果你在应用程序中使用内部库，也必须使用 es2015 模块编译。为了减少应用程序包的大小，必须将所有这些内部库修改为以这种方式编译。
 
