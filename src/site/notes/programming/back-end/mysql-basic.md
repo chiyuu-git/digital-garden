@@ -138,23 +138,28 @@ mysql> EXIT;
 
 ### 什么是 SQL
 
-- SQL（Structured Query Language）是“结构化查询语言”，它是对关系型数据库的操作语言。它可以应用到所有关系型数据库中，例如：MySQL、Oracle、SQL Server 等。SQL 标准有：
-  - 1986 年，ANSI X3.135-1986，ISO/IEC 9075:1986，SQL-86
-  - 1989 年，ANSI X3.135-1989，ISO/IEC 9075:1989，SQL-89
-  - 1992 年，ANSI X3.135-1992，ISO/IEC 9075:1992，SQL-92（SQL2）
-  - 1999 年，ISO/IEC 9075:1999，SQL:1999（SQL3）
-  - 2003 年，ISO/IEC 9075:2003，SQL:2003
-  - 2008 年，ISO/IEC 9075:2008，SQL:2008
-  - 2011 年，ISO/IEC 9075:2011，SQL:2011
-  - 2016 年，ISO/IEC 9075:2016，SQL:2016
-- 这些标准就与 JDK 的版本一样，在新的版本中总要有一些语法的变化。不同时期的数据库对不同标准做了实现。
-- 虽然 SQL 可以用在所有关系型数据库中，但很多数据库还都有标准之后的一些语法，我们可以称之为“方言”。例如 MySQL 中的 LIMIT 语句就是 MySQL 独有的方言，其它数据库都不支持！当然，Oracle 或 SQL Server 都有自己的方言。
+SQL（Structured Query Language）是“结构化查询语言”，它是对关系型数据库的操作语言。它可以应用到所有关系型数据库中，例如：MySQL、Oracle、SQL Server 等。SQL 标准有：
+
+- 1986 年，ANSI X3.135-1986，ISO/IEC 9075:1986，SQL-86
+- 1989 年，ANSI X3.135-1989，ISO/IEC 9075:1989，SQL-89
+- 1992 年，ANSI X3.135-1992，ISO/IEC 9075:1992，SQL-92（SQL2）
+- 1999 年，ISO/IEC 9075:1999，SQL:1999（SQL3）
+- 2003 年，ISO/IEC 9075:2003，SQL:2003
+- 2008 年，ISO/IEC 9075:2008，SQL:2008
+- 2011 年，ISO/IEC 9075:2011，SQL:2011
+- 2016 年，ISO/IEC 9075:2016，SQL:2016
+
+这些标准就与 JDK 的版本一样，在新的版本中总要有一些语法的变化。不同时期的数据库对不同标准做了实现。
+
+虽然 SQL 可以用在所有关系型数据库中，但很多数据库还都有标准之后的一些语法，我们可以称之为“方言”。例如 MySQL 中的 LIMIT 语句就是 MySQL 独有的方言，其它数据库都不支持！当然，Oracle 或 SQL Server 都有自己的方言。
 
 ### 语法要求
 
-- SQL 语句可以单行或多行书写，以分号结尾；
-- 可以用空格和缩进来来增强语句的可读性；
-- 关键字不区别大小写，建议使用大写；
+SQL 语句可以单行或多行书写，以分号结尾；
+
+可以用空格和缩进来来增强语句的可读性；
+
+关键字不区别大小写，建议使用大写；
 
 ### 分类
 
@@ -930,7 +935,7 @@ JOIN order_item_notes oin
  AND oi.product_id = oin.product_id
 ```
 
-## 自然连接
+## * 自然连接
 
 ```mysql
 SELECT *
@@ -940,7 +945,7 @@ NATURAL JOIN customers c
 
 数据库自己判断如何连接两张表，连接的结果不可预测，因此不推荐使用
 
-## 交叉连接
+## * 交叉连接
 
 ```mysql
 SELECT *
@@ -2059,23 +2064,15 @@ Read Uncommitted 是隔离级别最低的一种事务级别。在这种隔离级
 
 - 然后，分别开启两个 MySQL 客户端连接，按顺序依次执行事务 A 和事务 B：
 
-    | 时刻 | 事务 A | 事务 B |
-
-    | :--- | :------------------------------------------------ | :------------------------------------------------ |
-
-    | 1 | SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED; | SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED; |
-
-    | 2 | BEGIN; | BEGIN; |
-
-    | 3 | UPDATE students SET name = 'Bob' WHERE id = 1; |                                                   |
-
-    | 4 |                                                   | SELECT * FROM students WHERE id = 1; |
-
-    | 5 | ROLLBACK; |                                                   |
-
-    | 6 |                                                   | SELECT * FROM students WHERE id = 1; |
-
-    | 7 |                                                   | COMMIT; |
+| 时刻 | 事务 A | 事务 B |
+| :--- | :------------------------------------------------ | :------------------------------------------------ |
+| 1 | SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED; | SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED; |
+| 2 | BEGIN; | BEGIN; |
+| 3 | UPDATE students SET name = 'Bob' WHERE id = 1; | |
+| 4 | | SELECT * FROM students WHERE id = 1; |
+| 5 | ROLLBACK; | |
+| 6 | | SELECT * FROM students WHERE id = 1; |
+| 7 | | COMMIT; |
 
 - 当事务 A 执行完第 3 步时，它更新了 `id=1` 的记录，但并未提交，而事务 B 在第 4 步读取到的数据就是未提交的数据。
 - 随后，事务 A 在第 5 步进行了回滚，事务 B 再次读取 `id=1` 的记录，发现和上一次读取到的数据不一致，这就是脏读。
@@ -2090,34 +2087,28 @@ Read Uncommitted 是隔离级别最低的一种事务级别。在这种隔离级
 
 - 在 Read Committed 隔离级别下，一个事务可能会遇到不可重复读（Non Repeatable Read）的问题。
 - 不可重复读是指，在一个事务内，多次读同一数据，在这个事务还没有结束时，如果另一个事务恰好修改了这个数据，那么，在第一个事务中，两次读取的数据就可能不一致。
-- ```
-    mysql> select * from students;
-    +----+-------+
-    | id | name  |
-    +----+-------+
-    |  1 | Alice |
-    +----+-------+
-    1 row in set (0.00 sec)
-    ```
+
+```
+mysql> select * from students;
++----+-------+
+| id | name  |
++----+-------+
+|  1 | Alice |
++----+-------+
+1 row in set (0.00 sec)
+```
+
 - 然后，分别开启两个 MySQL 客户端连接，按顺序依次执行事务 A 和事务 B：
 
-    | 时刻 | 事务 A | 事务 B |
-
-    | :--- | :---------------------------------------------- | :---------------------------------------------- |
-
-    | 1 | SET TRANSACTION ISOLATION LEVEL READ COMMITTED; | SET TRANSACTION ISOLATION LEVEL READ COMMITTED; |
-
-    | 2 | BEGIN; | BEGIN; |
-
-    | 3 |                                                 | SELECT * FROM students WHERE id = 1; |
-
-    | 4 | UPDATE students SET name = 'Bob' WHERE id = 1; |                                                 |
-
-    | 5 | COMMIT; |                                                 |
-
-    | 6 |                                                 | SELECT * FROM students WHERE id = 1; |
-
-    | 7 |                                                 | COMMIT; |
+| 时刻 | 事务 A | 事务 B |
+| :--- | :---------------------------------------------- | :---------------------------------------------- |
+| 1 | SET TRANSACTION ISOLATION LEVEL READ COMMITTED; | SET TRANSACTION ISOLATION LEVEL READ COMMITTED; |
+| 2 | BEGIN; | BEGIN; |
+| 3 | | SELECT * FROM students WHERE id = 1; |
+| 4 | UPDATE students SET name = 'Bob' WHERE id = 1; | |
+| 5 | COMMIT; | |
+| 6 | | SELECT * FROM students WHERE id = 1; |
+| 7 | | COMMIT; |
 
 - 当事务 B 第一次执行第 3 步的查询时，得到的结果是 `Alice`，随后，由于事务 A 在第 4 步更新了这条记录并提交，所以，事务 B 在第 6 步再次执行同样的查询时，得到的结果就变成了 `Bob`，因此，在 Read Committed 隔离级别下，事务不可重复读同一条记录，因为很可能读到的结果不一致。
 
@@ -2132,7 +2123,7 @@ Read Uncommitted 是隔离级别最低的一种事务级别。在这种隔离级
 - 我们在查询的过程中遗漏了部分数据，因为有其他事务正在更新他们，而我们没有意识到改事务的修改。这些遗漏的数据就像是 Phantom 幽灵，鬼魂 ghost
 - 我们仍然先准备好 `students` 表的数据：
 
-    ```
+```
     mysql> select * from students;
     +----+-------+
     | id | name  |
@@ -2140,31 +2131,21 @@ Read Uncommitted 是隔离级别最低的一种事务级别。在这种隔离级
     |  1 | Alice |
     +----+-------+
     1 row in set (0.00 sec)
-    ```
+```
 
 - 然后，分别开启两个 MySQL 客户端连接，按顺序依次执行事务 A 和事务 B：
 
-    | 时刻 | 事务 A | 事务 B |
-
-    | :--- | :-------------------------------------------------- | :------------------------------------------------ |
-
-    | 1 | SET TRANSACTION ISOLATION LEVEL REPEATABLE READ; | SET TRANSACTION ISOLATION LEVEL REPEATABLE READ; |
-
-    | 2 | BEGIN; | BEGIN; |
-
-    | 3 |                                                     | SELECT * FROM students WHERE id = 99; |
-
-    | 4 | INSERT INTO students (id, name) VALUES (99, 'Bob'); | |
-
-    | 5 | COMMIT; |                                                   |
-
-    | 6 |                                                     | SELECT * FROM students WHERE id = 99; |
-
-    | 7 |                                                     | UPDATE students SET name = 'Alice' WHERE id = 99; |
-
-    | 8 |                                                     | SELECT * FROM students WHERE id = 99; |
-
-    | 9 |                                                     | COMMIT; |
+| 时刻 | 事务 A                                              | 事务 B                                            |
+|:---- |:--------------------------------------------------- |:------------------------------------------------- |
+| 1    | SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;    | SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;  |
+| 2    | BEGIN;                                              | BEGIN;                                            |
+| 3    |                                                     | SELECT * FROM students WHERE id = 99;             |
+| 4    | INSERT INTO students (id, name) VALUES (99, 'Bob'); |                                                   |
+| 5    | COMMIT;                                             |                                                   |
+| 6    |                                                     | SELECT * FROM students WHERE id = 99;             |
+| 7    |                                                     | UPDATE students SET name = 'Alice' WHERE id = 99; |
+| 8    |                                                     | SELECT * FROM students WHERE id = 99;             |
+| 9    |                                                     | COMMIT;                                           |
 
 - 事务 B 在第 3 步第一次读取 `id=99` 的记录时，读到的记录为空，说明不存在 `id=99` 的记录。随后，事务 A 在第 4 步插入了一条 `id=99` 的记录并提交。事务 B 在第 6 步再次读取 `id=99` 的记录时，读到的记录仍然为空，但是，事务 B 在第 7 步试图更新这条不存在的记录时，竟然成功了，并且，事务 B 在第 8 步再次读取 `id=99` 的记录时，记录出现了。
 
@@ -2200,11 +2181,11 @@ SET GLOBAL TRANSACTION
 
 ### 特点
 
-**加快索引的速度：**假如想要找到所有位于加州的顾客，如果没有索引，mysql 必须要进行一次遍历才能找出。为 state column 创建一个索引，就像是电话簿上按照名称排序一样。索引维护了 state column 到 customers 表的引用
+**加快索引的速度**：假如想要找到所有位于加州的顾客，如果没有索引，mysql 必须要进行一次遍历才能找出。为 state column 创建一个索引，就像是电话簿上按照名称排序一样。索引维护了 state column 到 customers 表的引用
 
 ![image-20211225194405650](/img/user/programming/back-end/mysql-basic/image-20211225194405650.png)
 
-**增加数据库的大小：**索引必须永久的存储在表的旁边
+**增加数据库的大小**：索引必须永久的存储在表的旁边
 
 对性能的负面影响：每次我们更新、添加、删除表的时候，mysql 都需要更新索引
 
@@ -2859,6 +2840,8 @@ On Update 添加外键级联， CASCADE，当主键发生改变的时候自动�
 > NO ACITION
 
 On Delete RESTICT，防止记录丢失
+
+> 实际上, 外键约束也会影响性能, 据说直接通过列名约束就行
 
 ### 一对多
 
