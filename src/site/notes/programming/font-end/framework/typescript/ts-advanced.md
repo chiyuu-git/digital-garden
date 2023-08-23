@@ -2397,10 +2397,6 @@ type 定死 pixivTag twitterFollower 不要用 default 了
 
 chara
 
-# 装饰器问题@link Es-next-2
-
-TS 的装饰器只能是 JS 的装饰器，所以没必要在 TS 的文档有相关记录
-
 # FAQ
 
 #faq/js
