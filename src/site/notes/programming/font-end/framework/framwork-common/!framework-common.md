@@ -455,6 +455,274 @@ Diff 算法的核心思想是通过对比新旧虚拟 DOM 树的节点，识别�
 
 至于需不需要使用 SSR，具体项目要具体对待，如果是对 SEO 要求特别高，且交互并不复杂的内容站，可以考虑使用 SEO。
 
+# A 架构组织 和 B 视图方案 的关系
+
+作者：beeplin
+
+链接：https://www.zhihu.com/question/468249924/answer/1968728853
+
+来源：知乎
+
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+题主觉得“从代码组织上看，最起码 HOC 可以降低对 React 组件的入侵程度，而 Hooks 要求写在组件或自定义 Hooks 内部”，所以觉得在架构层面 class 组件比 hooks 好。之所以很在意这个问题，很有可能是因为架构里面“业务逻辑”和“UI”分离得还不够，依然还有大量的具体业务逻辑需要写在 class 组件里或者 hook 函数里。
+
+比较好的做法是从 react 组件中彻底分离出业务逻辑。**业务逻辑的代码是 UI 无关的**, 它就是一组纯粹简单的 class 或者函数, 除了 lodash 之类的工具包（相当于扩展语言能力）之外，几乎不 import 任何其他东西。这就是所谓的数据模型，model。它仅描述核心的业务规则，和你用 react 还是 vue 还是 ng 都没有任何关系，可以对接各种框架，甚至还可以跑在后端 node 里
+
+这时候 react 或 vue 部分就剩下薄薄的一层，最多只需要负责三件事：
+
+1. **把 model 实例化并和 dom 联动**: 通过 new 或者工厂，构造出 model 数据，把这些数据响应式地映射到 dom；根据 dom 事件，调用 model 里的函数或方法，来更新 model 数据。
+2. **（可选）集中维护 model 数据的缓存**：以前大家用 redux 或 mobx，大部分代码量都是在处理这个问题。现在有了 react-query 或 swr 这样的东西，这个工作已经大大简化了。
+3. **处理纯页面状态**: dom 上有些状态不是从 model 数据里来的，是纯粹的页面状态，比如主题颜色啊、数据正在加载的标志啊，抽屉或手风琴的展开折叠啊，等等。这些和 model 无关，可能从桌面浏览器变到 [手机浏览器](https://www.zhihu.com/search?q=%E6%89%8B%E6%9C%BA%E6%B5%8F%E8%A7%88%E5%99%A8&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A1968728853%7D)，或者变到 electron 本地程序
+
+**一个常见的误区是在 react、vue 组件或 redux、mobx 里直接调用 fetch、axios 来存取数据，然后再把数据喂给 model。这不是一个理想的架构。UI 和数据持久化是两个独立的东西**，最好是在 UI 里调用 model 提供的存取函数，然后在 model 的存取函数里调用 fetch、axios：
+
+`[ui 事件处理函数] -- 调用 --> [user.save 方法] -- 调用 --> [fetch 函数]`
+
+这样，我们在前端的部分就做到了 model、UI 和持久化这三个东西的分离。这就是所谓六边形架构、洋葱架构、整洁架构的核心套路，无论是前端还是后端开发中，思想都是一样的。（详见 clean architecture 一书，强烈推荐）
+
+回到 A 和 B 关系的问题。在这个架构下，你用 vue 的 optional api, composition api，或者 react class 组件，react hooks 函数，有啥特别大的区别呢？其实没有。都是一层薄薄的壳子而已，主要就根据第三方组件库的丰富适用程度、团队的能力经验偏好等因素来选择了。理论上来说，vue composable 和 react hooks 的可组合能力是有一定优势的。
+
+# B 视图方案 和 C 响应原理 的关系
+
+题主提到“不觉得 Hooks 像 Mobx，而 Mobx 没有 Hooks 这些使用限制”，这是关公战秦琼了。
+
+hooks 是视图方案层面的东西，是改进 class 组件的，它们背后用的都是 react 原生的响应方案，也就是监测变量引用（reference）的变化，然后整个子树去协调更新。
+
+而 mobx 呢，大家喜欢把它和 redux、vuex 做对比，看作是一个集中管理状态的工具。但其实这个看法不准确，矮化了 mobx。mobx 也可以用于管理组件的局部状态，它本质是一个替代性的响应方案，类似 vue 基于 proxy 的响应系统，并且提供了一些更丰富的微调选项。
+
+视图和响应，是两个相互独立的维度。mobx 作为一个响应方案，既可以和 class 组件一起用，也可以和 hooks 函数组件一起用，甚至还可以跟 ng 或 vue 一起用。**事实上 mobx 本身就提供了一个用来代替 useState 的 hook：[MobX API Reference · MobX](https://link.zhihu.com/?target=https%3A//mobx.js.org/api.html%23uselocalobservable)
+
+react、vue、ng 这些框架的功能其实可以分为两个部分，一个是 UI 视图的部分，负责对接 dom，另一个是响应系统的部分，负责实现数据联动。这两部分理论上不是耦合的，是可以相互组合的。
+
+如果非要比较的话，视图的部分，其实各框架也没啥本质区别，模板和 jsx 的区别也很小，都好用，jsx 的类型支持可能目前更好些。至于数据响应联动的部分，个人认为还是 vue、mobx 这种基于 proxy 的用起来简单，比起 react 原生方案来，具有本质性的优势。
+
+为什么这么说呢？当然一方面是因为 react 原生的方案乍看简单直接，稍微用起来就会发现各种无效协调、无效更新爆表，要控制好性能的话，无论 class 组件还是 hooks 方案都需要注意很多事情，心智负担比较重。但更重要的原因是，vue、mobx 的响应方案，对接主流 model 风格比较方便。下面详细解释
+
+# C 响应原理 和 D 模型风格 的关系 （这是重点！！！）
+
+上文谈到，健康的架构，最好把业务逻辑写在完全独立于 UI 视图的 model 模型里，然后由前端框架来响应式地连接 UI 和 model。这就需要一个响应方案，把原来 vanilla js/ts 写成的 model 变成响应化的 model。**响应原理的不同，就造成两大模型风格 OOP 和 FP 的分野**
+
+vue 和 mobx 这类基于 proxy 的响应方案，核心依赖的就是“容器对象引用不变，内部属性状态发生改变”，而面向对象的 class 实例的本质，就是一个引用不变的对象，里面有一些可变的状态，还有一些用来改变这些状态的动作。完美配合
+
+但如果配合 react 原生响应系统，用 class 来写 model 就比较麻烦。react 原生响应方案最怕的就是“容器引用不变、内部变”这种东西，它反而要求“内部不要变，容器整体引用要变”，也就是你每一个动作都必须生成一个新的实例，这样它才能检测到状态的变化。刚好和对象的特性是反的。这就天然切合声明式编程、FP 的特质
+
+## 甲风格：class + 可变数据
+
+举个例子。假如我们要写一个 user 模型，支持 hash 密码。先看第一种风格，最常见的 class 写法：
+
+```js
+// 甲风格：class + 可变数据：
+
+class User {
+  public hashedPassword // 属性可变
+
+  public constructor(
+    public name: string,
+    password: string,
+    private readonly crypt: Crypt, // 通过Crypt接口注入一个加密用的工具，这就是上文提到的依赖反转
+  ) {
+    this.changePassword(password)
+  }
+
+  public changePassword(password) {
+    // 方法里直接修改属性
+    this.hashedPassword = this.crypt.hash(password)
+  }
+}
+```
+
+如果你用 vue 来对接这个 user model，那就很简单，你 new 出一个 user 实例来，然后用 `reactive` 套一下，就直接可以在组件里用了：
+
+```js
+import { reactive } from 'vue'
+
+setup() {
+  // 用reactive包装user实例
+  const user = reactive(new User('name', 'password', new Crypt()) as User
+  return () => (
+   // click时user本身的引用没变，只是内部状态发生了变化，vue可以检测到变化并更新界面
+   <button onClick={() => user.changePassword('new password')}>
+      {user.hashedPassword}
+    </button>
+  )
+}
+```
+
+mobx 配合 react 呢，也很简单，和上面 vue 类似，大部分时候用 `makeAutoObservable` 替换 vue 的 `reactive` 就可以了。有些情况下 `makeObservable` 不能用，比如 model 是个有基类的子类等等，那就用 `makeObservable` 手动逐字段处理一下，这时候还可以对不同的字段做不同的响应式细节的区分：
+
+```js
+const user = new User('name', 'password', new Crypt())
+
+makeObservable(user, {
+  name: observable,
+  hashedPassword: observable, 
+  changePassword: action,
+  another_attr: observable.shallow, // 指定更细致的响应层次 
+  yet_another_attr: computed,
+})
+```
+
+## 乙风格：函数 + 不可变数据
+
+但是非要用 react 原生方案的话，写 model 的时候，可以不写成 class，而写成一组独立的无行为的数据类型，加上用来操作这些数据类型的一组独立函数。所有函数都需要是纯的，类似于 [redux reducer](https://www.zhihu.com/search?q=redux%20reducer&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A1968728853%7D) 的概念，接受一个旧 state 对象，返回一个全新的 state 对象：
+
+```js
+// 乙风格：函数 + 不可变数据：
+
+// 不可变的数据类型
+type User = Readonly<{ name: string; hashedPassword: string }>
+
+function createUser(name: string, password: string, crypt: Ctrypt): User {
+  return { name: name, hashedPassword: crypt.hash(password) }
+}
+
+// 返回一个新的User对象
+function changeUserPassword(user: User, pasword: string, crypt: Crypt): User {
+  return { ...user, hashedPassword: crypt.hash(password) }
+}
+
+const crypt = new Crypt()
+let user = createUser('name', 'password', crypt)
+// 重新给user赋值，react才能检测到变化
+user = changeUserPassword(user, 'new password', crypt) 
+```
+
+对大部分业务来说，这种写法的确不太自然，很多参数需要传来传去，最好有类型系统配合，否则写起来很痛苦，而且要实现私有属性访问控制和继承的时候比较麻烦。
+
+## 丙风格：class + 不可变数据
+
+当然你也可以在形式上写成 class，但是要注意 class 的所有属性都应该是 deep readonly 的，所有方法都不能修改属性，而是返回一个 new 出来的新实例：
+
+```js
+// 丙风格：class + 不可变数据：
+
+class User {
+  readonly public hashedPassword // 和甲风格对比：注意属性都是readonly的
+
+  public constructor(
+    readonly public name: string, // 和甲风格对比：注意属性都是readonly的
+    password: string,
+    private readonly crypt: Crypt,
+  ) {
+    this.hashedPassword = crypt.hash(password)
+  }
+
+  // 和甲风格对比：返回一个新 User 实例，而不是就地修改属性
+  public changePassword(password): User {
+    return new User(this.name, password, this.crypt)
+  }
+}
+
+let user = new User('name', 'password', new Crypt())
+
+// 重新给user赋值，react才能检测到变化
+user = user.changePassword('new password') 
+```
+
+这样比上面那个函数的写法好像强点儿，但是那个 changePassword 方法的写法还是很不自然，使用起来也很不方便。如果你写的时候在哪里忘记了规矩，那 react 就失去响应了。
+
+这还不算最严重的，最大的问题是，你费这么大劲构造了一组另类的不可变 model，结果它只适合配合 react、react-native 的响应系统使用，也就是说它的风格侵入性比较强，万一以后要切换到 mobx 上、vue 上，很多地方必须修改。
+
+## 丁风格：函数 + 可变数据：
+
+而反过来呢，如果你写了一组可变风格的 model，如果想要用于 react 响应系统，那么可以用 immer 给它所有的方法包装一下，把可变方法变成不可变方法。immer 官方提供了这个 hook 可以做到这一点：[immerjs/use-immer: Use immer to drive state with a React hooks (github.com)](https://link.zhihu.com/?target=https%3A//github.com/immerjs/use-immer)
+
+（巧的是，mobx 和 immer 这两个 proxy 库，是同一个人写的。。此人叫做 Michel Weststrate）
+
+所以，为了支持 immer，折衷一下，你还可以把你的 model 写成独立函数 + 可变数据对象的形式：
+
+```js
+// 丁风格：函数 + 可变数据：
+
+type User = { name: string; hashedPassword: string } // 和乙风格对比：可变的User类型
+
+function createUser(name: string, password: string, crypt: Ctrypt): User {
+  return { name: name, hashedPassword: crypt.hash(password) }
+}
+
+// 和乙风格对比：非纯函数，直接修改了user参数的状态
+function changeUserPassword(user: User, pasword: string, crypt: Crypt): void {
+   user.hashedPassword = crypt.hash(password)
+}
+
+const user = createUser('name', 'password', crypt)
+
+// 直接调用的话，会修改user内部属性
+changeUserPassword(user, 'new password', crypt) 
+
+// 通过immer调用的话，会创建一个新user实例，然后把修改逻辑应用到新user上
+import produce from 'immer'
+const user1 = produce(user, (draft) => changeUserPassword(draft, 'new password', crypt) )
+```
+
+这个模型风格，和最上面的甲风格对比，都是可变数据，只是把 class 语法变成了函数语法。class 是用方法操作内部数据，而这里是用独立函数操作外部数据。在这个例子上，其实两种做法是差不多的。很大程度上，`user.changePassord(pw)`，就是 `saveUserPassword(user, pw)` 的语法糖，就是把第一个参数写到最前面了而已。
+
+当然，class 语法不仅仅是语法糖。class 还可以提供方便的公私访问控制，而函数可以用闭包实现初步的访问控制，但语法没那么直观。class 还可以通过继承提供方便的方法多态功能，这一点函数做起来也比较麻烦。
+
+## 四种风格的对比
+
+那么我们现在就有四种模型风格，列个表看一下：
+
+| |数据可变|数据不可变|
+|---|---|---|
+|class|甲风格 <br>典型 OOP，适合对接 vue、mobx；通过 immer 对接 react 不成熟|丙风格 <br>非典型 FP，class 外表下所有方法都是纯函数，适合对接 react，包括 class 和 hooks|
+|函数|丁风格 <br>非典型 OOP，相当于把 class 的方法外置了，适合对接 vue、mobx 也可以通过 immer 对接 react|乙风格 <br>典型 FP，适合对接 react，包括 class 和 hooks|
+
+仔细品味一下上面的表格，可以发现，如果你在考虑响应方案的对接问题，那么很大程度上，表格两行之间对比，语法上是 class 还是函数，不太重要（class 只是多了方便的访问控制和继承，和响应方案没有直接关系）。表格两列之间对比，数据可变与否才是最关键的区别
+
+所以这里题主讲的也有点偏差。他说团队有人“对访问限定，封装、隔离、多态这些东西不了解，习惯了函数是 JavaScript 中的一等公民”，因此倾向于选择 react hooks，反对 react class 组件。但实际上我们可以看到，react class 组件是“面向对象”的吗？根本不是！一个不允许你修改 `this.state` 属性、只能通过 `this.setState()` 间接修改属性的 class，本质上，类似上述的“丙风格”，是一种非典型的 FP
+
+react 原生的响应式方案是非常依赖数据不可变性的。自从 react 最开始采用这种响应式方案的那一天起，它根子上就是对 FP 模型友好的，哪怕把组件包装成 class，也不能使它更接近 OOP
+
+而题主之所以误认为 react class 组件是 OOP，很可能是因为他用了 mobx 代替 react 原生响应系统。这时候 react 就只剩下一个 UI dom 对接的功能了，FP 的核就被抽掉了，变成了表格中的甲方案，这就是典型的 OOP。可实际上这个 OOP 不是因为用了 class 组件，而是因为用了 mobx。如果题主不用 mobx，而是 redux，那么哪怕你完全不用 hooks，都用 class 组件，你的 redux 里面也全是 FP 纯函数
+
+还要澄清一点，我们讨论 react class 组件是 FP 还是 OOP，其实不是讨论 class 组件 API 本身的风格，而是讨论“它作为 UI 库，更容易和 FP/OOP 哪种风格的 model 模型相对接”。如果讨论组件 API 本身的风格，意义不是很大，参见这个回答：[为什么Vue和React都抛弃了面向对象写法 ？ - 知乎 (zhihu.com)](https://www.zhihu.com/question/451424245/answer/1900627348)
+
+# D 模型风格 和 E 类型系统 的关系
+
+很简单，没关系。
+
+题主认为“Typescript 是针对 JavaScript 不能胜任大型应用而开发的一门语言，它带来了两个新特性：一是类型系统，二是面向对象”。这里面也有误解。TS 的核心价值是类型系统，而不是什么“面向对象”。JS 本身就是面向对象的。题主提到的“访问限定，封装、隔离、多态这些东西”，哪怕在 JS 没有 class 的年代，也都能做。
+
+函数一等公民，也和面向对象不矛盾。在没有 class 的年代，js 的函数一等公民加上词法作用域，带来的闭包特性，也是一种经典的面向对象的手段，所谓“闭包是穷人的对象”嘛。访问限定、封装、隔离，都可以用闭包搞定。而多态这种特性。。。JS 这种 [鸭子类型](https://www.zhihu.com/search?q=%E9%B8%AD%E5%AD%90%E7%B1%BB%E5%9E%8B&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A1968728853%7D) 的 [动态语言](https://www.zhihu.com/search?q=%E5%8A%A8%E6%80%81%E8%AF%AD%E8%A8%80&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A1968728853%7D) 难道不是天然支持多态吗？多态搞起来比 TS 方便多了。
+
+更何况现在 JS 有了 class 语法糖，有了私域，面向对象就更用不着 TS 了。即使我们不使用私域，就用类似 python 的下划线约定私有属性，也可以啊，也没有人说 python 不是面向对象的吧？
+
+好的语言可以用于不同的模型风格，当业务模型适合 FP 时候就 FP，适合 OOP 的时候就 OOP。class 和函数都应该是一等公民。差的语言，虽然声称什么“一切皆对象”，其实 class 和 class 的方法都不是对象，都不是一等公民，写起来烦死。。。
+
+这里可能需要补充界定一下术语。根据 CTM（concepts, techniques and models）书中的讲法，常见的单线程模型风格，有三种递进关系：
+
+第一，**最基础的是声明式编程，或者说函数式编程。这个风格最大的特点就“数据不可变”**，变量和属性都只能赋值一次，不能重新赋值。如果一个 class 内部属性不可变、方法都是纯函数，那么它虽然看起来像是对象，但其实属于 FP。
+
+第二，**在声明式编程的基础上，加上可变状态，也就是允许变量和属性重新赋值，就变成了“基于对象的编程**”，Object-based Programing。所谓“对象”，就是可变的数据的组合。比如丁风格里的那个 User，里面只有可变数据，没有方法，也属于对象。对象可以内置方法，来修改内部数据，也可以不内置方法，通过把自己作为参数传递给外部函数，来修改内部数据。是否具有内部方法，这不是“对象”概念的本质。（顺便说一句，DDD 里面大家争论的贫血对象、充血对象，其实就是在争论方法内置还是外置的问题，其实，实质区别不大。参见我这个回答 [关于 贫血模型 与 函数式编程 的疑问？ - 知乎 (zhihu.com)](https://www.zhihu.com/question/269397334/answer/1915872391)）
+
+第三，**在此基础上，再加上对象之间的继承关系，就从 OBP 变成了 OOP，“面向对象的编程”。**通过 class 父类子类来继承，或者通过 prototype 原型链来继承，各种不同的继承方案，都可以。但是继承是很容易误用的，组合优于继承，所以至少在前端开发中，实际上真正的 OOP 比较少，大部分是 OBP。
+
+所以，根据以上面向对象的定义，TS 和 JS 都支持可变数据，都支持继承，所以都是面向对象，TS 并不比 JS 更“面向对象”。TS 的价值还是在于类型系统，这一个价值就足足足足够了。
+
+BTW，现在有些框架和库真是把 TS 的类型系统玩得了不得了，非常值得期待。参见 [下一代前端框架会去解决什么问题？ - 知乎 (zhihu.com)](https://www.zhihu.com/question/433673833/answer/1616521720)
+
+# 总结
+
+- A 架构组织：一锅粥 vs. 业务逻辑和 UI 分离
+- B 视图方案：react class 组件 vs. hooks 函数组件
+- C 响应原理：react 原生 vs. mobx 代理
+- D 模型风格：面向对象 OOP vs. 函数式 FP
+- E 类型系统：javascript vs. typescript
+
+A 和 B 没关系。架构上需要把 model 独立出去，剩下一个薄薄的 UI 层，UI 层本身区别不大。如果你感觉 class 组件和 hook 组件的业务逻辑侵入性不同，那很可能是 model 没有足够地抽离出去，ui 和逻辑没分开。
+
+B 和 C 也没关系。这是两个独立正交的维度，不存在耦合，mobx 和 hooks 不是替代关系。
+
+C 和 D 关系很大，vue/mobx 的响应原理天然适合对接 OOP 模型，react 响应原理天然适合对接 FP 模型。
+
+D 和 E 也没关系。类型的动静强弱是独立问题，ts 和 js 一样都可以开发 oop 风格模型，当然也一样都可以开发偏向 fp 风格的模型。
+
+总之，**这五个东西里面，只有 C 和 D 之间有强相关性，其他两两之间其实都没啥关系。对于前端开发，真正需要讨论的重大的技术方案决策，其实就是选择 proxy 响应式 +OOP 模型，还是选择 react 响应式 +FP 模型。**其他问题都不太需要讨论，要不就是已经有普遍优势的选项，要不就是根本无所谓。
+
+最后再附赠一个讲测试的回答吧~~当你把 model 从 ui 框架里分离出去以后，测试 model 就简单了，这时候就可能用的上 tdd 了：[Test Driven Development 一定要用单元测试来实现吗？单元测试是否会影响工作效率？ - 知乎 (zhihu.com)](https://www.zhihu.com/question/27081528/answer/1872155062)
+
 # FAQ
 
 #faq/framework
@@ -498,7 +766,13 @@ loading、succ、fail 三种状态, 取决于 action 的执行结果, 要把 ui 
 
 ## 如何把业务逻辑和 UI 分离?
 
-17年的问题: [如何优雅地结合类 Redux 处理异步通信的中间状态？ - 知乎](https://www.zhihu.com/question/66869266)
+学习一下 angluar 是怎么用 service 做业务逻辑抽离的
+
+好像把 fetch 和 业务数据的处理都放在 action 就已经是分离了. 更进一步就是把 action 的 处理抽到 model 层, action 也只是直接调用 model 层暴露的接口而已.
+
+### 子问题: 优雅的处理 Fetch Loading Succ Fail
+
+17 年的问题: [如何优雅地结合类 Redux 处理异步通信的中间状态？ - 知乎](https://www.zhihu.com/question/66869266)
 
 就比如上面那个问题, 业务逻辑是在 UI 组件里面发起请求的. 由 UI 组件触发历史加载的请求, 然后由无组件做加载, 这样就不用把 loading、succ、fail 上升到 store 了.
 
