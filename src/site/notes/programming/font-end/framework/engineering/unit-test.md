@@ -9,6 +9,8 @@ unit-test 是更细粒度的, 针对单组件和单功能
 
 e2e 站在用户角度的测试, 把程序当作一个黑盒子
 
+[Test Driven Development 一定要用单元测试来实现吗？单元测试是否会影响工作效率？ - 知乎](https://www.zhihu.com/question/27081528/answer/1872155062)
+
 # Jasmine 测试指南
 
 参考：
