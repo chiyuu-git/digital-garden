@@ -14,7 +14,6 @@
 | [[programming/font-end/primitive/browser-api/dom-selection\|dom-selection]] | [[programming/font-end/primitive/browser-api/dom-selection#faq\|dom-selection#faq]]  |
 | [[programming/font-end/primitive/es/es-regexp\|es-regexp]]                  | [[programming/font-end/primitive/es/es-regexp#faq\|es-regexp#faq]]      |
 | [[programming/font-end/primitive/es/es-object\|es-object]]                  | [[programming/font-end/primitive/es/es-object#faq\|es-object#faq]]      |
-| [[programming/font-end/primitive/es/es-next-1\|es-next-1]]                  | [[programming/font-end/primitive/es/es-next-1#faq\|es-next-1#faq]]      |
 | [[programming/font-end/primitive/es/es-basic\|es-basic]]                    | [[programming/font-end/primitive/es/es-basic#faq\|es-basic#faq]]       |
 | [[programming/font-end/primitive/es/es-async-2\|es-async-2]]                | [[programming/font-end/primitive/es/es-async-2#faq\|es-async-2#faq]]     |
 | [[programming/font-end/primitive/es/es-array\|es-array]]                    | [[programming/font-end/primitive/es/es-array#faq\|es-array#faq]]       |
@@ -23,6 +22,7 @@
 | [[programming/font-end/browser-core/browser-thread\|browser-thread]]        | [[programming/font-end/browser-core/browser-thread#faq\|browser-thread#faq]] |
 | [[programming/font-end/primitive/browser-api/dom-event\|dom-event]]         | [[programming/font-end/primitive/browser-api/dom-event#faq\|dom-event#faq]]      |
 | [[programming/font-end/framework/typescript/ts-advanced\|ts-advanced]]      | [[programming/font-end/framework/typescript/ts-advanced#faq\|ts-advanced#faq]]    |
+| [[programming/font-end/primitive/es/es-next-1\|es-next-1]]                  | [[programming/font-end/primitive/es/es-next-1#faq\|es-next-1#faq]]      |
 
 { .block-language-dataview}
 
@@ -577,6 +577,10 @@ new 操作符默认返回 this，而不是 undefined
 
 https://github.com/CavsZhouyou/Front-End-Interview-Notebook/blob/master/JavaScript/JavaScript.md#136-%E4%BB%80%E4%B9%88%E6%98%AF-promise-%E5%AF%B9%E8%B1%A1%E4%BB%80%E4%B9%88%E6%98%AF-promisesa-%E8%A7%84%E8%8C%83
 
+## LRU 缓存算法
+
+[java - 手写LRU缓存淘汰算法 - 个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000039311706)
+[Javascript 手写 LRU 算法 - 简道 - 博客园](https://www.cnblogs.com/kelsen/p/16743231.html)
 # 工具函数
 
 ## 字符串和数组的转换
