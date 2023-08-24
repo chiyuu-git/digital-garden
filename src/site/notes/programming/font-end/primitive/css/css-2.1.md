@@ -541,16 +541,27 @@ Anonymous Inline Boxes
 
 常规流中的盒子都属于某个格式化上下文，要么块格式化上下文，要么行内格式化上下文，总之不能二者得兼。块级盒参与块格式化上下文，行内级盒参与行内格式化上下文。
 
-### 块格式化上下文
+### 块级格式化上下文
 
-浮动、绝对定位元素、非块盒的块容器（如：行内块 ` inline-block `、表格单元格 ` table-cell ` 以及表格标题 ` table-caption `）以及 ` overflow ` 属性不为 ` visible ` 的块盒（除了该值被传播到视口的情况）将为其内容**创建一个新的块级格式化上下文。**
++ 浮动
++ 绝对定位元素
++ 非块盒的块容器（如：行内块 ` inline-block `、表格单元格 ` table-cell ` 以及表格标题 ` table-caption `）
++ ` overflow ` 属性不为 ` visible ` 的块盒（除了该值被传播到视口的情况）
+
+将为其内容**创建一个新的块级格式化上下文。**
 
 - 浮动、绝对定位元素脱离常规流及其格式化上下文，需要新建一个块级格式化上下文
 - 如果只是块级元素的嵌套，不会创建新的块级格式化上上下文，因为他们都仍然处于文档流的块格式化上下文中
 
-在块格式化上下文中，盒从包含块顶部一个接一个地垂直摆放。两个同胞盒间的垂直距离取决于 ` margin ` 属性。**同一个块格式化上下文中的相邻块级盒的垂直外边距将折叠。**
+当开启元素的 BFC 以后，元素将会具有如下的特性：
 
-在块格式化上下文中，每个盒的左外边缘紧贴包含块的左边缘（从右到左的格式里，则为盒右外边缘紧贴包含块右边缘），甚至有浮动也是如此（尽管盒里的行盒可能由于浮动而收缩），除非盒创建了一个新的块格式化上下文（在这种情况下盒子本身可能由于浮动而变窄）。
+1. 在块格式化上下文中，盒从包含块顶部一个接一个地垂直摆放。两个同胞盒间的垂直距离取决于 ` margin ` 属性。**同一个块格式化上下文中的相邻块级盒的垂直外边距将折叠。**
+2. 在块格式化上下文中，每个盒的左外边缘紧贴包含块的左边缘（从右到左的格式里，则为盒右外边缘紧贴包含块右边缘），甚至有浮动也是如此（尽管盒里的行盒可能由于浮动而收缩），除非盒创建了一个新的块格式化上下文（在这种情况下盒子本身可能由于浮动而变窄）
+3. BFC 区域不会与 float box 重叠
+4. 计算 BFC 的高度时，浮动元素也参与计算。
+5. BFC 就是页面上一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之亦然
+
+产生 BFC 的元素，在它产生的 BFC 内无法管理自己，只能管理内部的 block-level box
 
 ### 行内格式化上下文
 
@@ -1392,7 +1403,9 @@ span{
 
 # 垂直外边距的重叠
 
-8.3.1 合并外边距
+review-date: 2023-08-23
+
+外边距重合问题
 
 在网页中相邻的**垂直方向**的外边距会发生**外边距的重叠**，水平方向的相邻外边距不会重叠，而是求和
 
@@ -1402,39 +1415,26 @@ span{
 
 如果**父子元素**的**垂直外边距相邻**了，则**子元素的外边距会设置给父元素，0+margin-top**
 
-**避免：**
+## 开启 BFC
+
+![css-2.1](programming/font-end/primitive/css/css-2.1.md#块级格式化上下文)
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="垂直外边距重叠问题" src="https://codepen.io/chiyu-git/embed/RwEPprY?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+
+## 插入元素间隔开来
 
 1. 在子元素上**插入（非空或者有高度的空元素）一个元素（且该元素不可以浮动）**
 2. 插入一个空的 table 也 OK，用 css display:table
+
+## 父子 Case
+
 3. 为子元素设置一个上**边框**或者为父元素设置一个上**边框**；
 4. 设子置上 padding，再刨去 1px，保持平衡
 5. 为父元素设置垂直上内边距，内容区被撑大，再刨去内边距大小的高度
 
-```stylus
-.time_picker
-  width 200px
-  float left
-  margin-left 10px
-  margin-top 10px
-  margin-bottom 10px
-.title_container
-  float left
-  margin-left 10px
-  margin-top 10px
-  margin-bottom 10px
-  .event_title
-    width 270px
-    height 36px
-    border 1px #dbdbdb solid
-    border-radius 5px
-    padding-left 10px
-.msg_container
-  margin-left 10px
-  margin-top 10px //会传递给上方开启了浮动的兄弟，如果自己也开浮动就没问题了
+# 高度塌陷
 
-```
-
-# 高度塌陷 @@@
+review-date: 2023-08-23
 
 在文档流中，父元素的高度默认是被子元素撑开的，也就是子元素多高，父元素就多高。
 
@@ -1456,59 +1456,11 @@ span{
 
 缺点：一旦**高度写死**，父元素的高度将不能自动适应子元素的高度，所以这种方案是不推荐使用的。
 
-## 方案二：开启 Block Formatting Context @@@
+## 方案二：开启 Block Formatting Context
 
-根据 W3C 的标准，在页面中元素都一个隐含的属性叫做 Block Formatting Context，简称 BFC，该属性可以设置打开或者关闭，默认是关闭的。
+## 浮动时代的过时方案
 
-元素的类型和 display 的属性决定了 Box 的类型。不同类型的 Box 会参与不同的 Formatting Context（一个决定如果渲染文档的容器），所以不同的 Box 会以不同的方式渲染
-
-block-level box:
-
-- display 属性为 block，list-item，table 的元素，会生成 block-level box，并参与 block formatting context（BFC）
-- display 属性为 inline，inline-block，inline-table 的元素，会生成 inline-level box，并参与 inline formatting context（IFC）
-
-**Formatting context**
-
-- Formatting context 是 w3c css2.1 规范中的一个概念
-- 它是页面中的一块渲染区域，并且有一套渲染规则，它决定了子元素将如何定位，以及和其他元素的关系和相互作用。
-
-**BFC**
-
-- 直译为“块级格式化上下文”。它是一个独立的渲染区域，只有 block-level box 参与，它规定了内部的 block-level box 如何布局，并且与这个区域外不毫不相干
-- 当开启元素的 BFC 以后，元素将会具有如下的特性：
-  1. 内部的 Box 会在垂直方向，一个接一个地放置（块级元素独占一行）
-  2. BFC 区域不会与 float box 重叠
-  3. 内部的 Box 垂直方向的距离由 margin 决定。属于**同一个 BFC 的两个相邻**的 block-level Box 的 margin 会发生重叠
-     - 插入一个空的 div 是不行的
-     - 水平的 margin 不会发生重叠
-  4. 计算 BFC 的高度时，浮动元素也参与计算。
-  5. BFC 就是页面上一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之亦然
-- 产生 BFC 的元素，在它产生的 BFC 内无法管理自己，只能管理内部的 block-level box
-
-**如何开启元素的 BFC**
-
-1. 设置元素**浮动**
-   - 使父元素也浮动，虽然可以撑开父元素，但是会导致父元素的宽度丢失。而且使用这种方式也会导致下边的元素上移，不能解决问题
-2. 设置元素绝对**定位**或固定**定位**
-   - 与 1 类似
-3. 设置元素为 inline-block，table-cell，table-caption，flex，inline-flex
-   - 可以解决问题，但是会导致宽度丢失，不推荐使用这种方式，行内元素宽高由内容撑开
-   - inline-block 虽然可以开启 BFC，但是无法管理 display 属性为 inline-block 的元素
-4. 将元素的 overflow 设置为一个**非**visible 的值
-   - 推荐方式：将 overflow 设置为 hidden 是副作用最小的开启 BFC 的方式。
-   - 有相对定位的元素，如果移到了父元素之外，则不可以用这种方法，因为会被 hidden
-   - 没啥特殊要求的话直接用这个是最好的 @@@
-5. 根元素
-
-- 但是在 IE6 及以下的浏览器中并不支持 BFC，所以使用这种方式不能兼容 IE6。
-- 在 IE6 中虽然没有 BFC，但是具有另一个隐含的属性叫做 hasLayout，该属性的作用和 BFC 类似，所在 IE6 浏览器可以通过开 hasLayout 来解决该问题
-- 开启方式很多，我们直接使用一种副作用最小的：直接将元素的 zoom 设置为 1 即可
-  - zoom 表示放大的意思，后边跟着一个数值，写几就将元素放大几倍
-  - zoom:1 表示不放大元素，但是通过该样式可以开启 hasLayout
-  - zoom 这个样式，只在 IE 中支持，其他浏览器都不支持
-  - 在 IE6 中，如果为元素指定了一个宽度，则会默认开启 hasLayout
-
-## 方案三：空 div+clear
+### 方案三：空 div+clear
 
 clear，只能作用于兄弟元素，所以不能直接解决高度坍塌的问题
 
@@ -1518,7 +1470,7 @@ clear，只能作用于兄弟元素，所以不能直接解决高度坍塌的问
 
 使用这种方式虽然可以解决问题，但是会在页面中添加多余的结构。
 
-## 方案三完善：伪类
+### 方案三完善：伪类
 
 通过 after 伪类，选中 box1 的后边，可以通过 after 伪类向元素的最后添加一个空白的块元素，然后对其清除浮动，
 
@@ -1542,7 +1494,7 @@ clear，只能作用于兄弟元素，所以不能直接解决高度坍塌的问
 }
 ```
 
-## 方案四：display:table; 兼容垂直外边距
+### 方案四：display:table; 兼容垂直外边距
 
 子元素和父元素相邻的垂直外边距会发生重叠，子元素的外边距会传递给父元素
 
@@ -1566,7 +1518,7 @@ clear，只能作用于兄弟元素，所以不能直接解决高度坍塌的问
 
 **在移动端，因为没有 ie 浏览器，所以一般都是直接用 overflow:hidden 解决**
 
-## 总结 @@@
+### 总结 @@@
 
 clearfix，使用空 table 而不使用空 div 的原因是：必须是块级元素，因为清除浮动是外边距，而内联元素不支持垂直外边距，使用 table 的原因是：插入非空元素或者元素具有高度，才可以防止垂直外边距重叠，而插入空的 table 就可以
 
