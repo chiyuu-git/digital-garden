@@ -2898,3 +2898,9 @@ var constantize = (obj) => {
   });
 };
 ```
+
+## Keys 顺序
+
+[JS 中对象的 key 是有顺序的 - 知乎](https://zhuanlan.zhihu.com/p/351296840)
+
+map.keys 是有序的, 按照插入顺序
