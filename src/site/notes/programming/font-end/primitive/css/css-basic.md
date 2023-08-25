@@ -1552,25 +1552,33 @@ box-sizing 属性用于更改用于计算元素宽度和高度的默认的 CSS �
 
 默认值：content-box 不可继承
 
-**属性值**
+<iframe height="300" style="width: 100%;" scrolling="no" title="box-sizing" src="https://codepen.io/chiyu-git/embed/XWobyar?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
 
-- content-box
-  - 默认值，标准盒子模型。 width 与 height 只包括内容的宽和高， 不包括边框（border），内边距（padding），外边距（margin）。
-  - 注意: 内边距, 边框 & 外边距 都在这个盒子的外部。 比如. 如果 .box {width: 350px}; 而且 {border: 10px solid black;} 那么在浏览器中的渲染的实际宽度将是 370px;
-  - 尺寸计算公式：
-    - width = 内容的宽度，
-    - height = 内容的高度。
-    - 宽度和高度都不包含内容的边框（border）和内边距（padding）
+> 内容区的概念不受影响, 依然是从内容区开始布局, 对于可替换元素也是一样, 图片从内容区开始布局. 也就是 html width 和 css width 发生了区别
 
-  > 区分好盒子的宽高，日常生活中用来衡量事物大小的标准，而在 css 中可见区域是包括内边距和边框的，与日常生活的差异，留意到这一点，非常重要@，所以 border-box 更加符合日常生活的思维
+#### Content-box
 
-- border-box
-  - width 和 height 属性包括 **内容，内边距和边框**，但不包括外边距。这是当文档处于 Quirks 模式 时 Internet Explorer 使用的盒模型。
-  - 这里的维度计算为：
-    - width = border + padding + 内容的 width
-    - width 1170px ; padding 0 15px ， 这 30px 其实是从 width 里面扣的，这个时候已经无法直接设定内容的 width（普通盒模型的 width）
-    - height = border + padding + 内容的 height
-- 根据 UI 的切图习惯，选择合适的 box-sizing，才能符合 UI 的设计
+默认值，标准盒子模型。 width 与 height 只包括内容的宽和高， 不包括边框（border），内边距（padding），外边距（margin）。
+
+注意: 内边距, 边框 & 外边距 都在这个盒子的外部。 比如. 如果 .box {width: 350px}; 而且 {border: 10px solid black;} 那么在浏览器中的渲染的实际宽度将是 370px;
+
+尺寸计算公式：
+
+- width = 内容的宽度，
+- height = 内容的高度。
+- 宽度和高度都不包含内容的边框（border）和内边距（padding）
+
+> 区分好盒子的宽高，日常生活中用来衡量事物大小的标准，而在 css 中可见区域是包括内边距和边框的，与日常生活的差异，留意到这一点，非常重要@，所以 border-box 更加符合日常生活的思维
+
+#### Border-box
+
+width 和 height 属性包括 **内容，内边距和边框**，但不包括外边距。这是当文档处于 Quirks 模式 时 Internet Explorer 使用的盒模型。 这里的维度计算为：
+
+- width = border + padding + 内容的 width
+- width 1170px ; padding 0 15px ， 这 30px 其实是从 width 里面扣的，这个时候已经无法直接设定内容的 width（普通盒模型的 width）
+- height = border + padding + 内容的 height
+
+根据 UI 的切图习惯，选择合适的 box-sizing，才能符合 UI 的设计
 
 ### Border-radius
 
@@ -1834,140 +1842,6 @@ filter: blur(10px);
 
 内联元素脱离文档流以后会变成浮动的块元素
 
-## 浮动
-
-块元素在文档流中默认垂直排列，所以这个三个 div 自上至下依次排开，如果希望块元素在页面中水平排列，可以使块元素脱离文档流
-
-使用 float 来使元素浮动，从而脱离文档流
-
-开启浮动，元素类似 block-inline，表现为 block，但是可以并排，不支持 vertical-align，对齐，而 line-block 时可以对齐的
-
-**可选值：**
-
-- none，默认值，元素默认在文档流中排列
-- left，元素会立即脱离文档流，向页面的左侧浮动
-- right，元素会立即脱离文档流，向页面的右侧浮动
-
-**描述**
-
-- 当为一个元素设置浮动以后（float 属性是一个非 none 的值），元素会 **立即** 脱离文档流，元素脱离文档流以后，它下边的元素会 **立即** 向上移动
-
-  > 脱离文档流后，元素的宽高由内容撑开
-
-- 元素浮动以后，会尽量向页面的左上或者是右上漂浮，直到遇到 **父元素的边框** 或者 **其他的浮动元素**
-- 如果浮动元素上边是一个 **没有浮动的块元素**，则浮动元素不会超过该元素。
-- 浮动的元素不会超过他上边 (html 代码的位置) 的 **兄弟元素**，**最多一边齐**
-- 可以理解成浮动流，右上方还有空位，但是是塞不下 2 了，所以才会导致换行，3 没有办法流到 2 的前面，所以无法填最右上的空位
-
- ![1548669602738](/img/user/programming/font-end/primitive/css/css-basic/1548669602738.png)
-
-### 浮动与文字
-
-浮动的元素不会盖住 **文字**，文字会自动环绕在浮动元素的周围，所以我们可以通过浮动来设置文字环绕图片的效果
-
-**本质**: 就是为了文字环绕图片而设置的浮动属性
-
-**表现**: 浮动只提升了半层，除了文字，把另外半层提了上去
-
-### 浮动提升半层级
-
-一个元素，分为盒子层和元素内容层，浮动会使得元素提升到 **文档流的** 元素内容层，表现为提升半层
-
-```html
-<style type="text/css">
-  *{
-    margin: 0;
-    padding: 0;
-  }
-  #d1{
-    width: 100px;
-    height: 100px;
-    float: left;
-    background-color: pink;
-  }
-  #d2{
-    width: 100px;
-    height: 100px;
-    /*position: relative; 开启了定位后，提升一层，会盖着div1，以及div3*/
-    background-color: deeppink;
-  }
-  #d3{
-    width: 100px;
-    height: 100px;
-    background-color: yellow;
-    color: red;
-  }
-</style>
-
-<div id="d1">div1</div>
-<div id="d2">div2</div>
-<div id="d3">div10</div>
-```
-
-![1548736910181](/img/user/programming/font-end/primitive/css/css-basic/1548736910181.png)
-
-div1 开启了浮动，整体提升到了文档流的元素内容层，所以把文字“div2”挤出了 div2 的盒子范围
-
-同时 div1 原本的位置产生了空缺（div1 的盒子层，div1 的元素内容层），所以 div3 补充了 div1 的空缺，和被挤出 div2 的文字重叠在了一起，且由于在 html 结构上 div3 在后，所以遮盖了 div2 的文字
-
-给 div2 开启定位
-
-![1548737232029](/img/user/programming/font-end/primitive/css/css-basic/1548737232029.png)
-
-整体上升一个层级，盒子盖住了 div1，文字盖住了 div3 的元素内容
-
-### 清除浮动 @@@
-
-由于受到 box1 浮动的影响，box2 整体向上移动了 100px
-
-我们有时希望清除掉其他元素浮动对当前元素产生的影响，这时可以使用 clear 来完成功能（只能 **作用于兄弟元素**）
-
-clear 可以用来清除其他浮动元素对 **当前元素** 的影响（高度坍塌，随着文档流的移动等）
-
-清除浮动：清除影响最大的那个兄弟元素浮动造成的影响，清除浮动通过增加外边距来达到相同的效果
-
-**可选值：**
-
-- none，默认值，不清除浮动
-- left，清除左侧浮动元素对当前元素影响 **最大的那个** 元素的浮动
-- right，清除右侧浮动元素对当前元素影响 **最大的那个** 元素的浮动
-- both，清除对他影响 **最大的那个** 元素的浮动
-
-  ![1548676801210](/img/user/programming/font-end/primitive/css/css-basic/1548676801210.png)
-
-- left 和 right 都只考虑一边的对自己影响最大的那个，所以蓝色不会跟着黄色，而是像是被绿色顶着一样，因为：绿色没有浮动的时候，蓝色会被绿色顶着，现在清除了绿色的浮动最蓝色的影响，回到了绿色没有浮动时的状态
-
-**br 标签清除浮动**
-
-- 运用了 br 的 html 属性，而不是 css 样式
-- 不兼容 ie6
-
-  ```html
-  <div id="wrap">
-   <div id="inner">
-    
-   </div>
-   <br clear="all" />
-  </div>
-  ```
-
-**空标签清浮动**
-
-- ie6 最小高度为 19px 相关问题
-
-  ```html
-  <div id="wrap">
-   <div id="inner">
-    
-   </div>
-   <div style="clear: both;"></div>
-  </div>
-  ```
-
-**更多**
-
-- 参考高度坍塌
-
 ## 定位 @@@
 
 定位指的就是将指定的元素摆放到页面的任意位置，通过定位可以任意的摆放元素通过 position 属性来设置元素的定位。
@@ -2125,6 +1999,140 @@ https://www.imooc.com/article/67784
 z-index 为 1，层级比定位元素高，z-index 为 -1，比浮动的 开启定位的都低
 
 堆叠上下文 详见 CSS2.1
+
+## * 浮动
+
+块元素在文档流中默认垂直排列，所以这个三个 div 自上至下依次排开，如果希望块元素在页面中水平排列，可以使块元素脱离文档流
+
+使用 float 来使元素浮动，从而脱离文档流
+
+开启浮动，元素类似 block-inline，表现为 block，但是可以并排，不支持 vertical-align，对齐，而 line-block 时可以对齐的
+
+**可选值：**
+
+- none，默认值，元素默认在文档流中排列
+- left，元素会立即脱离文档流，向页面的左侧浮动
+- right，元素会立即脱离文档流，向页面的右侧浮动
+
+**描述**
+
+- 当为一个元素设置浮动以后（float 属性是一个非 none 的值），元素会 **立即** 脱离文档流，元素脱离文档流以后，它下边的元素会 **立即** 向上移动
+
+  > 脱离文档流后，元素的宽高由内容撑开
+
+- 元素浮动以后，会尽量向页面的左上或者是右上漂浮，直到遇到 **父元素的边框** 或者 **其他的浮动元素**
+- 如果浮动元素上边是一个 **没有浮动的块元素**，则浮动元素不会超过该元素。
+- 浮动的元素不会超过他上边 (html 代码的位置) 的 **兄弟元素**，**最多一边齐**
+- 可以理解成浮动流，右上方还有空位，但是是塞不下 2 了，所以才会导致换行，3 没有办法流到 2 的前面，所以无法填最右上的空位
+
+ ![1548669602738](/img/user/programming/font-end/primitive/css/css-basic/1548669602738.png)
+
+### 浮动与文字
+
+浮动的元素不会盖住 **文字**，文字会自动环绕在浮动元素的周围，所以我们可以通过浮动来设置文字环绕图片的效果
+
+**本质**: 就是为了文字环绕图片而设置的浮动属性
+
+**表现**: 浮动只提升了半层，除了文字，把另外半层提了上去
+
+### 浮动提升半层级
+
+一个元素，分为盒子层和元素内容层，浮动会使得元素提升到 **文档流的** 元素内容层，表现为提升半层
+
+```html
+<style type="text/css">
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  #d1{
+    width: 100px;
+    height: 100px;
+    float: left;
+    background-color: pink;
+  }
+  #d2{
+    width: 100px;
+    height: 100px;
+    /*position: relative; 开启了定位后，提升一层，会盖着div1，以及div3*/
+    background-color: deeppink;
+  }
+  #d3{
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    color: red;
+  }
+</style>
+
+<div id="d1">div1</div>
+<div id="d2">div2</div>
+<div id="d3">div10</div>
+```
+
+![1548736910181](/img/user/programming/font-end/primitive/css/css-basic/1548736910181.png)
+
+div1 开启了浮动，整体提升到了文档流的元素内容层，所以把文字“div2”挤出了 div2 的盒子范围
+
+同时 div1 原本的位置产生了空缺（div1 的盒子层，div1 的元素内容层），所以 div3 补充了 div1 的空缺，和被挤出 div2 的文字重叠在了一起，且由于在 html 结构上 div3 在后，所以遮盖了 div2 的文字
+
+给 div2 开启定位
+
+![1548737232029](/img/user/programming/font-end/primitive/css/css-basic/1548737232029.png)
+
+整体上升一个层级，盒子盖住了 div1，文字盖住了 div3 的元素内容
+
+### 清除浮动 @@@
+
+由于受到 box1 浮动的影响，box2 整体向上移动了 100px
+
+我们有时希望清除掉其他元素浮动对当前元素产生的影响，这时可以使用 clear 来完成功能（只能 **作用于兄弟元素**）
+
+clear 可以用来清除其他浮动元素对 **当前元素** 的影响（高度坍塌，随着文档流的移动等）
+
+清除浮动：清除影响最大的那个兄弟元素浮动造成的影响，清除浮动通过增加外边距来达到相同的效果
+
+**可选值：**
+
+- none，默认值，不清除浮动
+- left，清除左侧浮动元素对当前元素影响 **最大的那个** 元素的浮动
+- right，清除右侧浮动元素对当前元素影响 **最大的那个** 元素的浮动
+- both，清除对他影响 **最大的那个** 元素的浮动
+
+  ![1548676801210](/img/user/programming/font-end/primitive/css/css-basic/1548676801210.png)
+
+- left 和 right 都只考虑一边的对自己影响最大的那个，所以蓝色不会跟着黄色，而是像是被绿色顶着一样，因为：绿色没有浮动的时候，蓝色会被绿色顶着，现在清除了绿色的浮动最蓝色的影响，回到了绿色没有浮动时的状态
+
+**br 标签清除浮动**
+
+- 运用了 br 的 html 属性，而不是 css 样式
+- 不兼容 ie6
+
+  ```html
+  <div id="wrap">
+   <div id="inner">
+    
+   </div>
+   <br clear="all" />
+  </div>
+  ```
+
+**空标签清浮动**
+
+- ie6 最小高度为 19px 相关问题
+
+  ```html
+  <div id="wrap">
+   <div id="inner">
+    
+   </div>
+   <div style="clear: both;"></div>
+  </div>
+  ```
+
+**更多**
+
+- 参考高度坍塌
 
 # 背景
 
