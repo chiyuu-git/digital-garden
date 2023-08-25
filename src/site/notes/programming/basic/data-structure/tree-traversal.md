@@ -751,6 +751,7 @@ sub-tree 类型, 往往不好使用层次遍历?
 | [[programming/basic/leetcode/687. 最长同值路径\|687. 最长同值路径]]                   | medium     | <ul><li>#leetcode/tree/traversal/path</li><li>#leetcode/tree/traversal/sub-tree</li></ul>                                              | 2023-06-04-Sun, 3:01:09 pm  |
 | [[programming/basic/leetcode/700. 二叉搜索树中的搜索\|700. 二叉搜索树中的搜索]]             | easy       | <ul><li>#leetcode/tree/bst</li><li>#leetcode/tree/traversal/sub-tree</li></ul>                                                         | 2023-06-09-Fri, 5:36:56 pm  |
 | [[programming/basic/leetcode/968. 监控二叉树\|968. 监控二叉树]]                     | hard       | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/dp</li><li>#leetcode/unsolved</li><li>#leetcode/tree/traversal/sub-tree</li></ul> | 2023-07-09-Sun, 8:14:47 pm  |
+| [[programming/basic/leetcode/1448. 统计二叉树中好节点的数目\|1448. 统计二叉树中好节点的数目]]     | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li></ul>                                                                                    | 2023-08-25-Fri, 8:51:22 am  |
 
 { .block-language-dataview}
 
