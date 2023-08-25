@@ -13,7 +13,6 @@
 | [[programming/font-end/primitive/es/es-date\|es-date]]                      | [[programming/font-end/primitive/es/es-date#faq\|es-date#faq]]        |
 | [[programming/font-end/primitive/browser-api/dom-selection\|dom-selection]] | [[programming/font-end/primitive/browser-api/dom-selection#faq\|dom-selection#faq]]  |
 | [[programming/font-end/primitive/es/es-regexp\|es-regexp]]                  | [[programming/font-end/primitive/es/es-regexp#faq\|es-regexp#faq]]      |
-| [[programming/font-end/primitive/es/es-object\|es-object]]                  | [[programming/font-end/primitive/es/es-object#faq\|es-object#faq]]      |
 | [[programming/font-end/primitive/es/es-basic\|es-basic]]                    | [[programming/font-end/primitive/es/es-basic#faq\|es-basic#faq]]       |
 | [[programming/font-end/primitive/es/es-async-2\|es-async-2]]                | [[programming/font-end/primitive/es/es-async-2#faq\|es-async-2#faq]]     |
 | [[programming/font-end/primitive/es/es-array\|es-array]]                    | [[programming/font-end/primitive/es/es-array#faq\|es-array#faq]]       |
@@ -23,6 +22,7 @@
 | [[programming/font-end/primitive/browser-api/dom-event\|dom-event]]         | [[programming/font-end/primitive/browser-api/dom-event#faq\|dom-event#faq]]      |
 | [[programming/font-end/framework/typescript/ts-advanced\|ts-advanced]]      | [[programming/font-end/framework/typescript/ts-advanced#faq\|ts-advanced#faq]]    |
 | [[programming/font-end/primitive/es/es-next-1\|es-next-1]]                  | [[programming/font-end/primitive/es/es-next-1#faq\|es-next-1#faq]]      |
+| [[programming/font-end/primitive/es/es-object\|es-object]]                  | [[programming/font-end/primitive/es/es-object#faq\|es-object#faq]]      |
 
 { .block-language-dataview}
 
