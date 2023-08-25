@@ -127,6 +127,8 @@ Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;
 
 ## 浏览器处理 Cookie
 
+![http-cross-origin](programming/basic/cs-basic/network-protocol/http-cross-origin.md#附带身份凭证的请求)
+
 ### Document.cookies
 
 #### 读取 Cookie
