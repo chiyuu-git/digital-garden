@@ -276,7 +276,7 @@ HTML 规范也说了 `<input>` 元素可替换，因为 `"image"` 类型的 `<in
 
 需要注意的是，一部分（并非全部）可替换元素，其本身具有的尺寸和基线（baseline）会被一些 CSS 属性用到，加入计算之中，例如 [vertical-align](https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align)，会只有可替换元素才能具有这种自带值。
 
-### 可替换元素的特性
+#### 可替换元素的特性
 
 具有自己的替换宽高，以 canvas 为例，默认的画布宽高通过 html 的 width 和 height 指定
 
@@ -296,12 +296,12 @@ webview 的 animation-video 组件：
 
 所有的替换元素都是内联水平元素，也就是替换元素和替换元素、替换元素和文字都是可以在一行显示的。但是，替换元素默认 的 display 值却是不一样的，有的是 inline，有的是 inline-block。
 
-### 替换元素的尺寸
+#### 替换元素的尺寸
 
 替换元素的尺寸从内而外分为 3 类：固有尺寸、HTML 尺寸和 CSS 尺寸。
 
 1. 固有尺寸指的是替换内容原本的尺寸。例如，图片、视频作为一个独立文件存在的时候，都是有着自己的宽度和高度的。
-2. HTML 尺寸只能通过 HTML 原生属性改变，这些 HTML 原生属性包括<img>的 width 和 height 属性、`<input>` 的 size 属性、`<textarea>` 的 cols 和 rows 属性等。
+2. HTML 尺寸只能通过 HTML 原生属性改变，这些 HTML 原生属性包括 `<img>` 的 width 和 height 属性、`<input>` 的 size 属性、`<textarea>` 的 cols 和 rows 属性等。
 3. CSS 尺寸特指可以通过 CSS 的 width 和 height 或者 max-width/min-width 和 max-height/min-height 设置的 尺寸，对应盒尺寸中的 content box。
 
 这 3 层结构的计算规则具体如下
@@ -313,7 +313,7 @@ webview 的 animation-video 组件：
 4. 如果上面的条件都不符合，则最终宽度表现为 300 像素，高度为 150 像素。
 5. 内联替换元素和块级替换元素使用上面同一套尺寸计算规则。
 
-### 替换元素的特有样式 Object-fit
+#### 替换元素的特有样式 Object-fit
 
 https://www.runoob.com/cssref/pr-object-fit.html
 
@@ -1623,17 +1623,17 @@ z-index 为 0 是会创建新的层叠上下文。
 z-index: 0 与 z-index 不设置，也就是 z-index: auto 在同一层级内没有高低之分，文档流中后出现的会覆盖先出现的。
 
 前提是得有层级，如果是默认的文档流里面的，那还是会被 绝对定位的节点覆盖，必须得是 relative 或者是 absolute 定位的才行
+[前端项目中有简洁的z-index的约束规则（管理方案）吗？ - 知乎](https://www.zhihu.com/question/24216418)
+[⚖️ Element 黑魔法，统一多组件库的层叠顺序 - 掘金](https://juejin.cn/post/7131754451873824775/)
+[Sass管理复杂的z-index\_Preprocessor, Sass, SCSS, z-index 教程\_W3cplus](http://www.w3cplus.com/preprocessor/sassy-z-index-management-for-complex-layouts.html)
+[WEB三层设计结构------管理z-index的神方案 · Issue #2 · lijinghust/lijinghust.github.com · GitHub](https://github.com/lijinghust/lijinghust.github.com/issues/2)
+# FAQ
 
-# CSS Hack
+#faq/ui
 
-## 检测低版本 Ie 函数
+## 对 CSS 盒模型的理解
 
-js 中的作用域都是函数作用域
-
-```js
-function *isIE*(version){
-  var b = *document*.createElement("b");
-  b.innerHTML="<!--[if IE "+version+"]><i></i><![endif]-->";
-  return   b.getElementsByTagName("i").length == 1 ;
- }
-```
+1. 盒模型分为：内容（content）、填充（padding）、边界（margin）、边框（border）四个部分
+2. 盒模型有两种：IE 盒模型和标准盒模型。两者的区别是标准和模型的宽高不包含 border 和 padding，而 IE 盒模型的宽高包含 border 和 padding
+3. 使用 box-sizing 属性可以切换和模型，默认值为 content-box，即标准盒模型，border-box 则是 IE 盒模型. 无论是可替换元素还是不可替换元素, 内容区的概念是不受 box-sizing 影响的, 都会从内容区开始布局.
+4. 在 CSS 视觉格式化模型中分为块级的各种盒子和行内级的各种盒子, 通过 BFC 和 IFC 详细定义了各种布局的细节.
