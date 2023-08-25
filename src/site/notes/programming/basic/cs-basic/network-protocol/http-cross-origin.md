@@ -11,7 +11,7 @@
 
 1995 年，同源政策由 Netscape 公司引入浏览器。目前，所有浏览器都实行这个政策。
 
-最初，它的含义是指，A 网页设置的 Cookie，B 网页不能打开，除非这两个网页 " 同源 "。所谓 " 同源 " 指的是 " 三个相同 "。
+最初，它的含义是指，A 网页设置的 Cookie，B 网页不能打开，除非这两个网页 " 同源 "。所谓 " 同源 " 指的是 " 三个相同
 
 - 协议相同
 - 域名相同，顶级域名相同，但是次级域名不相同，仍然属于跨域, 所以 domain 是 cookie 跨域的一种解决办法
@@ -346,13 +346,13 @@ myJSONPAcross({
 
 <https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS>
 
+出于安全原因，浏览器对于从脚本内发起的跨源 HTTP 请求，会拒绝其 HTTP 响应。 XMLHttpRequest 和 Fetch API 遵循同源策略。 这意味着使用这些 API 的 Web 应用程序只能从加载应用程序的同一个域请求 HTTP 资源
+
 CORS 是跨源资源分享（Cross-Origin Resource Sharing）的缩写。它是 W3C 标准，是跨源 AJAX 请求的根本解决方法。相比 JSONP 只能发 `GET` 请求，CORS 允许任何类型的请求。
 
 跨域资源共享（CORS）是一种机制，它使用额外的 HTTP 头来告诉浏览器 让运行在一个 origin (domain) 上的 Web 应用被准许访问来自不同源服务器上的指定的资源。当一个资源从与该资源本身所在的服务器**不同的域、协议或端口**请求一个资源时，资源会发起一个**跨域 HTTP 请求**。
 
 跨域资源共享（CORS）机制允许 Web 应用服务器进行跨域访问控制，从而使跨域数据传输得以安全进行。现代浏览器支持在 API 容器中（例如 [`XMLHttpRequest`](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest) 或 [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) ）使用 CORS，以降低跨域 HTTP 请求所带来的风险。
-
-出于安全原因，浏览器对于从脚本内发起的跨源 HTTP 请求，会拒绝其 HTTP 响应。 XMLHttpRequest 和 Fetch API 遵循同源策略。 这意味着使用这些 API 的 Web 应用程序只能从加载应用程序的同一个域请求 HTTP 资源
 
 ## 限制了接受响应，如果是 POST 请求，可以成功修改数据库吗？
 
@@ -487,23 +487,6 @@ Access-Control-Allow-Origin: http://foo.example
 ```
 
 现在，除了 http://foo.example，其它外域均不能访问该资源（该策略由请求首部中的 ORIGIN 字段定义，见第 10 行）。`Access-Control-Allow-Origin` 应当为 * 或者包含由 Origin 首部字段所指明的域名。
-
-### 在 Koa2 中配置 CORS 跨域
-
-引入 koa2-cors ，安装依赖后，在 app.js 中加入下面代码：
-
-```js
-const cors = require('koa2-cors');
-// 通过简化的属性直接定义相应的字段
-app.use(cors({
-  origin: '*',
-  exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
-  maxAge: 5,
-  credentials: true,
-  allowMethods: ['GET', 'POST', 'DELETE'],
-  allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
-}));
-```
 
 ### 预检请求
 
