@@ -15,6 +15,7 @@
 | [[programming/font-end/primitive/browser-api/dom-drag-event\|dom-drag-event]]         | [[programming/font-end/primitive/browser-api/dom-drag-event#faq\|dom-drag-event#faq]]         |
 | [[programming/font-end/primitive/css/transition & animation\|transition & animation]] | [[programming/font-end/primitive/css/transition & animation#faq\|transition & animation#faq]] |
 | [[programming/font-end/mobile/mobile-basic\|mobile-basic]]                            | [[programming/font-end/mobile/mobile-basic#faq\|mobile-basic#faq]]           |
+| [[programming/font-end/primitive/css/css-2.1\|css-2.1]]                               | [[programming/font-end/primitive/css/css-2.1#faq\|css-2.1#faq]]                |
 
 { .block-language-dataview}
 
@@ -605,7 +606,7 @@ testNode.style.top = startY + Math.cos( deg*Math.PI/180 )*step*2+"px";
 
 https://www.cnblogs.com/v-weiwang/p/5057588.html>
 
-![1548677281175](/img/user/programming/FAQ/ui-faq/1548677281175.png)
+![1548677281175|500](/img/user/programming/FAQ/ui-faq/1548677281175.png)
 
 ```css
 #box1{
