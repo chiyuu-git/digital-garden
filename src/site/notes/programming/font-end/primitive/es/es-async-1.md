@@ -1356,10 +1356,10 @@ Promise.resolve() 方法传入的参数，会传入到 then 方法的第一个�
   ```javascript
   function* fibonacci() {
     let [prev, curr] = [0, 1];
-    for (;;) {
+	while (true) {
       yield curr;
       [prev, curr] = [curr, prev + curr];
-    }
+	}
   }
   
   for (let n of fibonacci()) {
