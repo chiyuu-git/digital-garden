@@ -489,9 +489,9 @@ console.log(b)
 | File                                                                     | difficulty | etags                                                                                                                                              | date-created               |
 | ------------------------------------------------------------------------ | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
 | [[programming/basic/leetcode/1049. 最后一块石头的重量 II\|1049. 最后一块石头的重量 II]] | medium     | <ul><li>#leetcode/dp/knapsack/0-1</li><li>#leetcode/unsolved</li></ul>                                                                             | 2023-07-11-Tue, 8:02:47 pm |
+| [[programming/basic/leetcode/416. 分割等和子集\|416. 分割等和子集]]               | medium     | <ul><li>#leetcode/dp/knapsack/0-1</li><li>#leetcode/unsolved</li></ul>                                                                             | 2023-07-11-Tue, 6:47:18 pm |
 | [[programming/basic/leetcode/474. 一和零\|474. 一和零]]                     | medium     | <ul><li>#leetcode/dp/knapsack/0-1</li><li>#leetcode/recursive/memo</li></ul>                                                                       | 2023-07-12-Wed, 8:40:02 pm |
 | [[programming/basic/leetcode/494. 目标和\|494. 目标和]]                     | medium     | <ul><li>#leetcode/dp/knapsack/0-1</li><li>#leetcode/dp/combination</li><li>#leetcode/backtracking/combination</li><li>#leetcode/unsolved</li></ul> | 2023-07-12-Wed, 6:43:08 pm |
-| [[programming/basic/leetcode/416. 分割等和子集\|416. 分割等和子集]]               | medium     | <ul><li>#leetcode/dp/knapsack/0-1</li><li>#leetcode/unsolved</li></ul>                                                                             | 2023-07-11-Tue, 6:47:18 pm |
 
 { .block-language-dataview}
 
