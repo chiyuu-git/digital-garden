@@ -1268,7 +1268,7 @@ splice 11[]
 
 ## 项目介绍与难点回顾话术
 
-首先是近期的一个富文本编辑器项目, 百度内部业务线主要是使用 san 作为前端框架, 语法上类似于 vue2. 作为模块负责人从 0 到 1 搭建了基于 san 框架的编辑器. 在**顶层设计**上就明确了编辑器的功能都以 extension 的形式提供, 涉及视图相关的能力则维护在 san component 中, 称为 wrapper.
+首先是近期的一个富文本编辑器项目, . 作为模块负责人从 0 到 1 搭建了基于 san 框架的编辑器. 在**顶层设计**上就明确了编辑器的功能都以 extension 的形式提供, 涉及视图相关的能力则维护在 san component 中, 称为 wrapper.
 
 > 职责拆分: wrapper, extension, 菜单栏和 extension, 模板 node-view vs attribute
 
