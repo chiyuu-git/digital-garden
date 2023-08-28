@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/network-protocol/http-cache/"}
+{"dg-publish":true,"permalink":"/programming/basic/cs-basic/network-protocol/http-cache/","tags":["review"]}
 ---
 
 
@@ -513,7 +513,7 @@ $(window).load(function() {
 });
 ```
 
-## HTML5 的缓存
+## *HTML5 的缓存
 
 这部分准备的说应该叫离线存储。现在比较普遍用的是 `Appcache`，但 `Appcache` 已经从 web 标准移除了，在可预见的未来里，`ServiceWorker` 可能会是一个比较适合的解决方案。
 
@@ -753,60 +753,6 @@ http.createServer( function (request, response) {
 
 如上代码。如果你没使用过 node，拷贝下代码存为 file.js，安装 node，命令行输入 `node file.js`，可以在同目录下建立 index.html 文件，在 html 文件中引用一些图片，CSS 等文件，浏览器输入 `localhost:8081/index.html` 进行模拟。🤓
 
-## 关于缓存的一些问答
-
-### 请求被缓存，导致新代码未生效
-
-- 服务端响应添加 `Cache-Control:no-cache,must-revalidate` 指令；
-- 修改请求头 `If-modified-since:0` 或 `If-none-match`；
-- 修改请求 URL，请求 URL 后加随机数，随机数可以是时间戳，哈希值，比如：http://damonare.cn?a=1234
-
-### 服务端缓存导致本地代码未更新
-
-- 合理设置 Cache-Control:s-maxage 指令；
-- 设置 Cache-Control:private 指令，防止代理服务器缓存资源；
-- CDN 缓存可以使用管理员设置的缓存刷新接口进行刷新；
-
-### Cache-Control: max-age=0 和 No-cache 有什么不同
-
-`max-age=0` 和 `no-cache` 应该是从语气上不同。`max-age=0` 是告诉客户端资源的缓存到期**应该**向服务器验证缓存的有效性。而 `no-cache` 则告诉客户端使用缓存前**必须**向服务器验证缓存的有效性。
-
-### 其一
-
-针对我们当前的项目，由于 css 和 js 在打包时加了 md5 值，建议直接使用强缓存，并且 expires 和 cache-control 同时使用，建议设置时长为 7 天较为妥当。图片文件由于没有加 md5 值，建议采用对比缓存，html 文件也建议采用对比缓存。
-
-ps: 当我们不设置 cache-control，只设置对比缓存，在不同浏览器下会有不同的表现。chrome 会直接从本地缓存获取，其他会请求服务器返回 304.这时候有两种方式让他们的响应一致。1、设置 cache-control: public, max-age=0; 记住，这里的 public 是关键。因为默认值是 private，表示其他代理都不要缓存，只有服务器缓存，而 max-age 又为 0，所以每次都会发起 200 的请求。设置 public 的意思就是允许其他各级代理缓存资源，因此如果资源没改变会返回 304。 2、直接设置 max-age=1000。即是一秒之后内容过期，目的是触发浏览器缓存。也能达到想要 304 的效果。
-
-<https://juejin.im/post/5c136bd16fb9a049d37efc47>
-
-### 更新了文件，前端看不到效果，有哪些可能？怎么解决
-
-1、ctrl+F5
-
-2、浏览器隐私模式开发（**Ctrl+Shift+N**）
-
-3、chrome 开发者工具里将 Disable cache 选项打勾，阻止缓存
-
-4、在开发阶段，给资源加上一个**动态的参数**，由于每次资源的修改都要更新引用的位置，同时修改参数的值，所以操作起来不是很方便，除非是在动态页面比如 jsp 里开发就可以用服务器变量来解决，或者用前端构建工具来处理这个参数修改的问题。
-
-5、如果资源引用的页面被嵌入到了一个 iframe 里面，可以在 iframe 的区域右键重新加载该页面 (给大家演示下)
-
-6、如果缓存问题出现在 ajax 请求中，最有效的解决办法就是 ajax 的请求地址追加随机数
-
-7、动态设置 iframe 的 src 时，有可能因为缓存问题导致看不到最新效果，在 src 后面添加随机数即可
-
-8、通过前端开发工具 grunt gulp 等的插件来启动一个静态服务器，则在这个服务器下所有资源返回的 response header 中，Cache-Control 始终被设置为不缓存
-
-### Ajax 解决浏览器缓存问题
-
-- 在 ajax 发送请求前加上 anyAjaxObj.setRequestHeader("If-Modified-Since","0")。
-- 在 ajax 发送请求前加上 anyAjaxObj.setRequestHeader("Cache-Control","no-cache")。
-- 在 URL 后面加上一个随机数： "fresh=" + Math.random();。
-- 在 URL 后面加上时间戳："nowtime=" + new Date().getTime();。
-- 如果是使用 jQuery，直接这样就可以了 $.ajaxSetup({cache:false})。这样页面的所有 ajax 都会执行这条语句就是不需要保存缓存记录。
-
-详细资料可以参考： [《Ajax 中浏览器的缓存问题解决方法》](https://www.cnblogs.com/cwzqianduan/p/8632009.html) [《浅谈浏览器缓存》](https://segmentfault.com/a/1190000012573337)
-
 # CDN 缓存
 
 CDN(Content Delivery Network) 内容分发网络。
@@ -846,3 +792,61 @@ CDN(Content Delivery Network) 内容分发网络。
 浏览器参考上面
 
 CDN 节点缓存机制在不同服务商中是不同的，但一般都遵循 HTTP 协议，通过 http 响应头中的 Cache-Control:max-age 的字段来设置 CDN 节点文件缓存时间。当客户端向 CDN 节点请求数据时，CDN 会判断缓存数据是否过期，若没有过期，则直接将缓存数据返回给客户端，否则就向源站点发出请求，从源站点拉取最新数据，更新本地缓存，并将最新数据返回给客户端。CDN 服务商一般会提供基于文件后缀、目录多个维度来指定 CDN 缓存时间，为用户提供更精细化的缓存管理。CDN 缓存时间会对“回源率”产生直接的影响，若 CDN 缓存时间短，则数据经常失效，导致频繁回源，增加了源站的负载，同时也增大了访问延时；若缓存时间长，数据更新时间慢，因此需要针对不同的业务需求来选择特定的数据缓存管理。
+
+# FAQ
+
+#faq/basic
+
+## 请求被缓存，导致新代码未生效
+
+服务端响应添加 `Cache-Control:no-cache,must-revalidate` 指令；
+
+修改请求头 `If-modified-since:0` 或 `If-none-match`；
+
+修改请求 URL，请求 URL 后加随机数，随机数可以是时间戳，哈希值，比如：http://damonare.cn?a=1234
+
+## 服务端缓存导致本地代码未更新
+
+合理设置 Cache-Control:s-maxage 指令；
+
+设置 Cache-Control:private 指令，防止代理服务器缓存资源；
+
+CDN 缓存可以使用管理员设置的缓存刷新接口进行刷新；
+
+## Css 和 Js 文件缓存实践
+
+针对我们当前的项目，由于 css 和 js 在打包时加了 md5 值，建议直接使用强缓存，并且 expires 和 cache-control 同时使用，建议设置时长为 7 天较为妥当。图片文件由于没有加 md5 值，建议采用对比缓存，html 文件也建议采用对比缓存。
+
+## Cache-Control: max-age=0 和 No-cache 有什么不同
+
+`max-age=0` 和 `no-cache` 应该是从语气上不同。`max-age=0` 是告诉客户端资源的缓存到期**应该**向服务器验证缓存的有效性。而 `no-cache` 则告诉客户端使用缓存前**必须**向服务器验证缓存的有效性。
+
+## 使协商缓存的行为一致
+
+当我们不设置 cache-control，只设置对比缓存，在不同浏览器下会有不同的表现。chrome 会直接从本地缓存获取，其他会请求服务器返回 304.
+
+这时候有两种方式让他们的响应一致:
+
+1. 设置 cache-control: public, max-age=0; 记住，这里的 public 是关键。因为默认值是 private，表示其他代理都不要缓存，只有服务器缓存，而 max-age 又为 0，所以每次都会发起 200 的请求。设置 public 的意思就是允许其他各级代理缓存资源，因此如果资源没改变会返回 304
+2. 直接设置 max-age=1000。即是一秒之后内容过期，目的是触发浏览器缓存。也能达到想要 304 的效果。
+
+<https://juejin.im/post/5c136bd16fb9a049d37efc47>
+
+## 更新了文件，前端看不到效果，有哪些可能？怎么解决
+
+1. ctrl+F5
+2. 浏览器隐私模式开发（**Ctrl+Shift+N**）
+3. chrome 开发者工具里将 Disable cache 选项打勾，阻止缓存
+4. 在开发阶段，给资源加上一个**动态的参数**，由于每次资源的修改都要更新引用的位置，同时修改参数的值，所以操作起来不是很方便，除非是在动态页面比如 jsp 里开发就可以用服务器变量来解决，或者用前端构建工具来处理这个参数修改的问题。
+5. 如果资源引用的页面被嵌入到了一个 iframe 里面，可以在 iframe 的区域右键重新加载该页面 (给大家演示下)
+6. 动态设置 iframe 的 src 时，有可能因为缓存问题导致看不到最新效果，在 src 后面添加随机数即可
+7. 通过前端开发工具 grunt gulp 等的插件来启动一个静态服务器，则在这个服务器下所有资源返回的 response header 中，Cache-Control 始终被设置为不缓存
+
+### Ajax 解决浏览器缓存问题
+
+- 在 ajax 发送请求前加上 anyAjaxObj.setRequestHeader("If-Modified-Since","0")。
+- 在 ajax 发送请求前加上 anyAjaxObj.setRequestHeader("Cache-Control","no-cache")。
+- 在 URL 后面加上一个随机数： "fresh=" + Math.random();。
+- 在 URL 后面加上时间戳："nowtime=" + new Date().getTime();。
+
+详细资料可以参考： [《Ajax 中浏览器的缓存问题解决方法》](https://www.cnblogs.com/cwzqianduan/p/8632009.html) [《浅谈浏览器缓存》](https://segmentfault.com/a/1190000012573337)
