@@ -15,7 +15,7 @@
 
 > 注意：Hooks 的思想是一个通用的思想，并不与 fiber 或者函数组件绑定，有很多框架都实现了 hooks，比如 Vue、比如 preact。或者说是因为函数式组件使用 Hooks 可以很轻松的解决**维持状态**的问题，所以对 Hooks 青睐有加。
 
-# Hooks 在 Fiber 上是什么样子的
+# Hooks 实现原理
 
 ```jsx
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -77,7 +77,7 @@ fiber 节点上有个 memorizedState 属性，他就是 Hooks 存放数据的地
 
 ![img](/img/user/programming/font-end/framework/react/react-hook-advanced/imageDownloadAddress-20230817120750668.png)
 
-这就是 hooks 存取数据的地方，执行的时候各自在自己的那个 memorizedState 上存取数据，完成各种逻辑，这就是 hooks 的原理。
+这就是 hooks 存取数据的地方，执行的时候各自在自己的那个 memorizedState 上存取数据, 每个 hook 都可以获取到前面的依赖
 
 # Hooks 分类
 
@@ -214,15 +214,9 @@ hooks 负责把这些 effect 串联成一个 updateQueue 的链表，然后让 R
 
 ![img](/img/user/programming/font-end/framework/react/react-hook-advanced/imageDownloadAddress-20230817125227106.png)
 
-# Hooks 限制
+# 必须按照相同的顺序调用 Hooks
 
-## 自定义 Hooks 只能复用逻辑，不能创造 Hooks
-
-实际上，我们只能使用对 React 提供的 Hooks 或者其他自定义 hook 进行一层逻辑的封装，并不能自己创造 Hooks。也就是说，实际上我们可以把那些自定义 Hooks 都拍平，拍平之后还是那几个 React 提供的 Hooks。
-
-这是因为这些 Hooks 是依赖 React 执行流程和内部数据结构的，想要增加 Hooks 要动 React 本身的代码。
-
-## 必须按照相同的顺序调用 Hooks ，不能乱序，不能动态增加或者减少
+不能乱序，不能动态增加或者减少
 
 Hooks 不能放在判断逻辑，异步逻辑里，必须保证：函数组件执行过程中能够同步的执行到所有的 Hooks，否则就会出错。
 
