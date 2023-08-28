@@ -36,16 +36,6 @@ Cookie 曾一度用于客户端数据的存储，因当时并没有其它合适�
 >
 > 这也是造成 CSRF 攻击的真正原因
 
-### 第三方 Cookie
-
-每个 Cookie 都会有与之关联的域（Domain），如果 Cookie 的域和页面的域相同，那么我们称这个 Cookie 为*第一方 Cookie*（*first-party cookie*），如果 Cookie 的域和页面的域不同，则称之为*第三方 Cookie*（*third-party cookie*.）。
-
-一个页面包含图片或存放在其他域上的资源（如图片广告）时，第一方的 Cookie 也只会发送给设置它们的服务器。
-
-通过第三方组件发送的第三方 Cookie 主要用于广告和网络追踪。这方面可以看谷歌使用的 Cookie 类型（[types of cookies used by Google](https://www.google.com/policies/technologies/types/)）。大多数浏览器默认都允许第三方 Cookie，但是可以通过附加组件来阻止第三方 Cookie（如 [EFF](https://www.eff.org/) 的 [Privacy Badger](https://addons.mozilla.org/en-US/firefox/addon/privacy-badger-firefox/)）。
-
-如果你没有公开你网站上第三方 Cookie 的使用情况，当它们被发觉时用户对你的信任程度可能受到影响。一个较清晰的声明（比如在隐私策略里面提及）能够减少或消除这些负面影响。在某些国家已经开始对 Cookie 制订了相应的法规，可以查看维基百科上例子 [cookie statement](https://wikimediafoundation.org/wiki/Cookie_statement)。
-
 ## 服务器处理 Cookie
 
 就是 set-cookie 字段
@@ -121,11 +111,9 @@ Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;
 - `/docs/Web/`
 - `/docs/Web/HTTP`
 
-### SameSite Cookies
-
-`SameSite` Cookie 允许服务器要求某个 cookie 在跨站请求时不会被发送，从而可以阻止跨站请求伪造攻击（[CSRF](https://developer.mozilla.org/en-US/docs/Glossary/CSRF)）。但目前 `SameSite` Cookie 还处于实验阶段，并不是所有浏览器都支持。
-
 ## 浏览器处理 Cookie
+
+### 请求 withCredentials
 
 ![http-cross-origin](programming/basic/cs-basic/network-protocol/http-cross-origin.md#附带身份凭证的请求)
 
@@ -195,8 +183,6 @@ Firefox 决定随机删除 Cookie 集中的一个 Cookie，并没有什么章法
 
 ## Cookie 与安全
 
-### 第三方 Cookie 引起的 CSRF
-
 ### 禁止追踪 Do-Not-Track
 
 虽然并没有法律或者技术手段强制要求使用 [`DNT`](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/DNT)，但是通过 [`DNT`](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/DNT) 可以告诉 Web 程序不要对用户行为进行追踪或者跨站追踪。查看 [`DNT`](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/DNT) 以获取更多信息。
@@ -214,6 +200,38 @@ Firefox 决定随机删除 Cookie 集中的一个 Cookie，并没有什么章法
 Cookie 的一个极端使用例子是僵尸 Cookie（或称之为“删不掉的 Cookie”），这类 Cookie 较难以删除，甚至删除之后会自动重建。它们一般是使用 [Web storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API)、Flash 本地共享对象或者其他技术手段来达到的。相关内容可以看：
 
 https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies#%E4%BC%9A%E8%AF%9D%E6%9C%9FCookie
+
+## SameSite Cookies
+
+为了从源头上 CSRF 攻击，Google 起草了一份草案来改进 HTTP 协议，为 Set-Cookie 响应头新增 Samesite 属性
+
+每个 Cookie 都会有与之关联的域（Domain），如果 Cookie 的域和页面的域相同，那么我们称这个 Cookie 为*第一方 Cookie*（*first-party cookie*），如果 Cookie 的域和页面的域不同，则称之为*第三方 Cookie*（*third-party cookie*.）
+
+部署简单，并能有效防御 CSRF 攻击，但是存在兼容性问题。
+
+### Samesite=Strict
+
+`Samesite=Strict` 被称为是严格模式,表明这个 Cookie 在任何情况都不可能作为第三方的 Cookie，有能力阻止所有 CSRF 攻击。
+
+此时，我们在 B 站点下发起对 A 站点的任何请求，A 站点的 Cookie 都不会包含在 cookie 请求头中。
+
+### Samesite=Lax
+
+`Samesite=Lax` 被称为是宽松模式，与 Strict 相比，放宽了限制，允许发送安全 HTTP 方法带上 Cookie，如 `Get` / `OPTIONS` 、`HEAD` 请求. 但是不安全 HTTP 方法，如： `POST`, `PUT`, `DELETE` 请求时，不能作为第三方链接的 Cookie
+
+### 是否允许携带第三方 Cookie
+
+一个页面包含图片或存放在其他域上的资源（如图片广告）时，第一方的 Cookie 也只会发送给设置它们的服务器。
+
+通过第三方组件发送的第三方 Cookie 主要用于广告和网络追踪。这方面可以看谷歌使用的 Cookie 类型（[types of cookies used by Google](https://www.google.com/policies/technologies/types/)）。大多数浏览器默认都允许第三方 Cookie，但是可以通过附加组件来阻止第三方 Cookie（如 [EFF](https://www.eff.org/) 的 [Privacy Badger](https://addons.mozilla.org/en-US/firefox/addon/privacy-badger-firefox/)）。
+
+如果你没有公开你网站上第三方 Cookie 的使用情况，当它们被发觉时用户对你的信任程度可能受到影响。一个较清晰的声明（比如在隐私策略里面提及）能够减少或消除这些负面影响。在某些国家已经开始对 Cookie 制订了相应的法规，可以查看维基百科上例子 [cookie statement](https://wikimediafoundation.org/wiki/Cookie_statement)。
+
+### 是否允许设置第三方 Cookie
+
+这种是浏览器的设置
+
+![http-cross-origin](programming/basic/cs-basic/network-protocol/http-cross-origin.md#附带身份凭证的请求)
 
 # Session
 
