@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/network-security/"}
+{"dg-publish":true,"permalink":"/programming/basic/cs-basic/network-security/","tags":["review"]}
 ---
 
 
@@ -28,7 +28,7 @@ XSS 的本质是：利用网页开发时留下的漏洞，或者恶意代码未�
 ### 攻击步骤
 
 1. 攻击者构造出特殊的 `URL`，其中包含恶意代码。
-2. 用户打开带有恶意代码的 `URL` 时，网站服务端将恶意代码从 `URL` 中取出，**拼接在 HTML 中返回给浏览器**。
+2. 用户打开带有恶意代码的 `URL` 时，网站服务端将恶意代码从 `URL` 中取出，**拼接在 HTML 中返回给浏览器, 浏览器渲染了恶意代码**
 3. 用户浏览器接收到响应后解析执行，混在其中的恶意代码也被执行。
 4. 恶意代码窃取用户数据并发送到攻击者的网站，或者冒充用户的行为，调用目标网站接口执行攻击者指定的操作。
 
@@ -223,6 +223,8 @@ comments2.push({ username, content: encodeHtml(req.body.comment) });
 
 ## 漏洞的防御和利用
 
+用户输入的所有渲染到页面中的片段都要进行过滤
+
 ### 输入内容长度控制
 
 对于不受信任的输入，都应该限定一个合理的长度。虽然无法完全防止 XSS 发生，但可以增加 XSS 攻击的难度。
@@ -413,19 +415,7 @@ HTTP 头中有一个 Referer 字段，这个字段用以标明请求来源于哪
 
 ### Samesite Cookie 属性
 
-为了从源头上解决这个问题，Google 起草了一份草案来改进 HTTP 协议，为 Set-Cookie 响应头新增 Samesite 属性，它用来标明这个 Cookie 是个“同站 Cookie”，同站 Cookie 只能作为第一方 Cookie，不能作为第三方 Cookie，Samesite 有两个属性值，分别是 Strict 和 Lax。
-
-部署简单，并能有效防御 CSRF 攻击，但是存在兼容性问题。
-
-**Samesite=Strict**
-
-`Samesite=Strict` 被称为是严格模式,表明这个 Cookie 在任何情况都不可能作为第三方的 Cookie，有能力阻止所有 CSRF 攻击。
-
-此时，我们在 B 站点下发起对 A 站点的任何请求，A 站点的 Cookie 都不会包含在 cookie 请求头中。
-
-**Samesite=Lax**
-
-`Samesite=Lax` 被称为是宽松模式，与 Strict 相比，放宽了限制，允许发送安全 HTTP 方法带上 Cookie，如 `Get` / `OPTIONS` 、`HEAD` 请求. 但是不安全 HTTP 方法，如： `POST`, `PUT`, `DELETE` 请求时，不能作为第三方链接的 Cookie
+![http-session](programming/basic/cs-basic/network-protocol/http-session.md#SameSite%20Cookies)
 
 ## 对比
 
@@ -640,10 +630,19 @@ CDN 指的是网站的静态内容分发到多个服务器，用户就近访问�
 
 #faq/basic
 
+## 发现小概率发生通过域名被劫持
+
+以下对解决此问题无帮助的是（ A ）。
+
 ```
-发现小概率发生通过域名被劫持，以下对解决此问题无帮助的是（ A ）。
   A. 部署备用服务器
   B. https
   C. httpdns
-  D. ip直连
+  D. ip 直连
 ```
+
+## 富文本编辑器中是如何解决 XSS 攻击的
+
+就 tiptap 而言, 输入是通过 schema 描述的, 不符合定义的 html 片段都会被过滤掉. XSS 攻击所包含的 script 标签自然就被过滤了
+
+输入的内容也是由 schema 描述的, 不会输出有风险的 html 片段
