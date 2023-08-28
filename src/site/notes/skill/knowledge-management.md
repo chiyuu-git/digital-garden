@@ -302,4 +302,6 @@ aggregation website , such as bilibili and zhihu, I will using it to take entert
 
 如果是一些总结的很完善的文章, 直接吸纳, 如果是一些意见性质, todo 性质的就添加到 todo
 
-# Spaced-reprtition
+# Spaced Repetition
+
+面试、考试, 临时抱佛脚的时候使用, 所以 review-dates 还是要坚持维护. 用于 N 年后判断知识的重要性
