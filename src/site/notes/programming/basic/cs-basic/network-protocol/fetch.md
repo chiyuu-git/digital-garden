@@ -1387,3 +1387,94 @@ export async function enhanceFetch(
     return isJson ? response.json() : response.text();
 }
 ```
+
+# 服务端推送
+
+## 短轮询
+
+轮询是一种“拉”取信息的工作模式。设置一个定时器，定时询问服务器是否有信息，每次建立连接传输数据之后，链接会关闭。
+
+```js
+var polling = function(url, type, data){
+    var xhr = new XMLHttpRequest(), 
+        type = type || "GET",
+        data = data || null;
+
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4) {
+            receive(xhr.responseText);
+            xhr.onreadystatechange = null;
+        }
+    };
+
+    xhr.open(type, url, true);
+    //IE的ActiveXObject("Microsoft.XMLHTTP")支持GET方法发送数据，
+    //其它浏览器不支持，已测试验证
+    xhr.send(type == "GET" ? null : data);
+};
+
+var timer = setInterval(function(){
+    polling();
+}, 1000);
+```
+
+在轮询的过程中，如果因为网络原因，导致上一个 xhr 对象还没传输完毕，定时器已经开始了下一个询问，上一次的传输是否还会在队列中，这个问题我没去研究。如果感兴趣可以自己写一个 ajax 的请求管理队列。
+
+## 长轮询
+
+长轮询其实也没啥特殊的地方，就是在 xhr 对象关闭连接的时候马上又给他接上~ 看码：
+
+```js
+var longPoll = function(type, url){
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function(){
+        // 状态为 4，数据传输完毕，重新连接
+        if(xhr.readyState == 4) {
+            receive(xhr.responseText);
+            xhr.onreadystatechange = null;
+
+            longPoll(type, url);
+        }
+    };
+
+    xhr.open(type, url, true);
+    xhr.send();
+}
+```
+
+只要服务器断开连接，客户端马上连接，不让他有一刻的休息时间，这就是长轮询。
+
+## WebSocket
+
+[websocket](websocket.md)
+
+## EventSource
+
+HTML5 中提供的 EventSource 这玩意儿，这是无比简洁的服务器推送信息的接受函数。
+
+```js
+new EventSource("test.php").onmessage=function(evt){
+    console.log(evt.data);
+};
+```
+
+简洁程度和 websocket 是一样的啦，只是这里有一个需要注意的地方，test.php 输出的数据流应该是特殊的 MIME 类型，要求是 "text/event-stream"，如果不设置的话，你试试~ （直接抛出异常）
+
+## 其他通信方法
+
+- 图片连接
+
+## 即时通讯的实现，短轮询、长轮询、SSE 和 WebSocket 间的区别
+
+短轮询和长轮询的目的都是用于实现客户端和服务器端的一个即时通讯。
+
+短轮询的基本思路就是浏览器每隔一段时间向浏览器发送 http 请求，服务器端在收到请求后，不论是否有数据更新，都直接进行响应。这种方式实现的即时通信，本质上还是浏览器发送请求，服务器接受请求的一个过程，通过让客户端不断的进行请求，使得客户端能够模拟实时地收到服务器端的数据的变化。这种方式的优点是比较简单，易于理解。缺点是这种方式由于需要不断的建立 http 连接，严重浪费了服务器端和客户端的资源。当用户增加时，服务器端的压力就会变大，这是很不合理的。
+
+长轮询的基本思路是，首先由客户端向服务器发起请求，当服务器收到客户端发来的请求后，服务器端不会直接进行响应，而是先将这个请求挂起，然后判断服务器端数据是否有更新。如果有更新，则进行响应，如果一直没有数据，则到达一定的时间限制才返回。
+
+客户端 JavaScript 响应处理函数会在处理完服务器返回的信息后，再次发出请求，重新建立连接。长轮询和短轮询比起来，它的优点是明显减少了很多不必要的 http 请求次数，相比之下节约了资源。长轮询的缺点在于，连接挂起也会导致资源的浪费。
+
+SSE 的基本思想是，服务器使用流信息向服务器推送信息。严格地说，http 协议无法做到服务器主动推送信息。但是，有一种变通方法，就是服务器向客户端声明，接下来要发送的是流信息。也就是说，发送的不是一次性的数据包，而是一个数据流，会连续不断地发送过来。这时，客户端不会关闭连接，会一直等着服务器发过来的新的数据流，视频播放就是这样的例子。SSE 就是利用这种机制，使用流信息向浏览器推送信息。它基于 http 协议，目前除了 IE/Edge，其他浏览器都支持。它相对于前面两种方式来说，不需要建立过多的 http 请求，相比之下节约了资源。
+
+上面三种方式本质上都是基于 http 协议的，我们还可以使用 WebSocket 协议来实现。WebSocket 是 Html5 定义的一个新协议，与传统的 http 协议不同，该协议允许由服务器主动的向客户端推送信息。使用 WebSocket 协议的缺点是在服务器端的配置比较复杂。WebSocket 是一个全双工的协议，也就是通信双方是平等的，可以相互发送消息，而 SSE 的方式是单向通信的，只能由服务器端向客户端推送信息，如果客户端需要发送信息就是属于下一个 http 请求了。
