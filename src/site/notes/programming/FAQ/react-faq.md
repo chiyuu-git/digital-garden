@@ -26,19 +26,19 @@ this.setState({ counter: this.state.counter + 1 }, () => {
 
 ## Class 写法和 Hook 写法的区别
 
-Class 写法和 Hook 写法的区别;;null
+Class 写法和 Hook 写法的区别;;[react-faq](programming/FAQ/react-faq.md#Class%20写法和%20Hook%20写法的区别) <!--SR:!2023-08-30,3,250-->
 
 ### 差异点
 
-1. 首先，声明周期的用法不同，Class 的生命周期钩子直接在类中定义即可，可以直接使用， 但是在函数式组件我们只能通过 Hooks 的副作用函数来模拟声明周期，useE 什 ect 可以实现多个生命周 期钩子
-2. 在性能优化方面：在类组件我们使用纯组件 PureComponent 和 shouldComponentUpdata 来控制组件的更新， 在函数组件红我们可以使用 memo 实现纯组件的浅比较，同时可以使用 useMemo 和 useCallback 两 个 hook 来对属性和函数进行优化，需要子组件配 memo 或者 pureComponent
+1. 首先，生命周期的用法不同，Class 的生命周期钩子直接在类中定义即可，可以直接使用， 但是在函数式组件我们只能通过 Hooks 的副作用函数来模拟声明周期，useEffect 可以实现多个生命周期钩子
+2. 在性能优化方面：在类组件我们使用纯组件 PureComponent 和 shouldComponentUpdate 来控制组件的更新， 在函数组件中我们可以使用 memo 实现纯组件的浅比较，同时可以使用 useMemo 和 useCallback 两 个 hook 来对属性和函数进行优化，需要子组件搭配 memo 或者 pureComponent
 3. 但是实际的性能上应该是差不多的, 都是基于相同的 fiber 算法
 
 ### Class 组件存在的问题
 
-1. 复杂组件变得难以理解：最初编写 class 组件时，往往逻辑比较简单，但是业务增多，class 组件就会越来越复杂； 比如 componentDidMount 中，可能就会有大量逻辑代码，包括网络请求，一些事件的监听（还需要在 componentWiIIUnmount 中移除） 而对于这样的 class 实际上很难拆分，因为这些逻辑往往混在一起，强行拆分反而会造成过度设计，增加代码的复杂度。
+1. 复杂组件变得难以理解, 比如: componentDidMount 中，可能就会有大量逻辑代码，包括网络请求，一些事件的监听（还需要在 componentWiIIUnmount 中移除） 而对于这样的 class 实际上很难拆分，因为这些逻辑往往混在一起，强行拆分反而会造成过度设计，增加代码的复杂度。
 2. 难以理解的 class：ES6 中 class 相当于 React 的一个障碍； 在 class 中，我们必须搞清楚 this 的指向到底是谁，所以需要花很多的精力去学习 this；虽然掌握 this 是必要，但是处理起来依然很麻烦
-3. 组件复用状态很难：在之前为了一些状态的复用，我们需要通过高阶组件或 renderprops； 像 redux 中 connectäE 者 react-route 中的 withRouter, 这些高阶组件设计的目的就是为了状态的复 用。 或者类似于 Provider,Consumer 来共享一些状态，但是多次使用 Consumer 时，就会有很多嵌 套
+3. 组件复用状态很难：在之前为了一些状态的复用，我们需要通过高阶组件或 renderprops； 像 redux 中 connect 者 react-route 中的 withRouter, 这些高阶组件设计的目的就是为了状态的复 用。 或者类似于 Provider,Consumer 来共享一些状态，但是多次使用 Consumer 时，就会有很多嵌 套
 
 ### Hook 的优点
 
@@ -54,17 +54,23 @@ Class 相比函数式组件的优势, 但是实际中这些都是被忽略不计
 2. class 组件有自己的生命周期，可以在对应的生命周期中完成自己的逻辑；比如在 componentDidMount 中发送网络请求，并且该生命周期函数只会执行一次；函数式组件在学习 hooks 之前，如果在函数中发送网络请求，意味着每次重新渲染都会重新发送一次网络请求。
 3. class 组件可以在状态改变时只重新执行 render 函数以及我们希望重新调用的生命周期函数 componentDidUpdate 等；函数式组件在重新渲染时，整个函数都会被执行，似乎没有什么地方可以只让它们调用一次；
 
-## 自定义 Hook 的实际使用经历
+## 自定义 Hook
 
-实际上就是通过一个函数对 builtin hook 进行抽离
+实际上，我们只能使用对 React 提供的 Hooks 或者其他自定义 hook 进行一层逻辑的封装，并不能自己创造 Hooks。也就是说，实际上我们可以把那些自定义 Hooks 都拍平，拍平之后还是那几个 React 提供的 Hooks。
+
+这是因为这些 Hooks 是依赖 React 执行流程和内部数据结构的，想要增加 Hooks 要动 React 本身的代码。
 
 自定义 Hook 共享的只是状态逻辑而不是状态本身。对 Hook 的每个调用完全独立于对同一个 Hook 的其他调用
 
+> 看到的自定义 hook 都是一些很脑残的封装, 如果不是实际中有多处要使用, 根本不会这样特地处理
+
 ## 使用 Hooks 有踩过哪些坑？
 
-1. useEffect 中没有正确设置依赖数组导致死循环。
-2. useEffect 中没有清除副作用导致内存泄漏。
-3. 在条件语句和循环中使用 Hooks 导致报错。
+使用 Hooks 有踩过哪些坑？;;null <!--SR:!2023-08-31,3,250-->
+
+1. useEffect 中没有正确设置依赖数组导致死循环
+2. useEffect 中没有清除副作用导致内存泄漏
+3. 在条件语句和循环中使用 Hooks 导致报错 [react-hook-advanced](programming/font-end/framework/react/react-hook-advanced.md#必须按照相同的顺序调用%20Hooks)
 4. 闭包陷阱。
 
 ```JS
@@ -95,11 +101,7 @@ export default Counter;
 
 ## Hooks 实现原理？
 
-篇幅有限，这里只做简要总结，实现细节后续会出文讲解。
-
-**1. memorizedState**：Fiber 节点上有个属性叫 memorizedState，所有的 Hooks 都是围绕这个 memorizedState 来实现的，把要存的状态和函数队列存到这个属性上，然后按需求做增删改查就行了。
-
-**2. 链表存储状态**：为了保证 Hooks 状态的序列，React 采用链表来保存函数式组件的 state，使用 next 属性来连接前后两个状态序列。
+Hooks 实现原理？;;[react-hook-advanced](programming/font-end/framework/react/react-hook-advanced.md#Hooks%20实现原理) <!--SR:!2023-08-31,3,250-->
 
 ## JSX 和模板引擎有什么区别？
 
