@@ -298,7 +298,7 @@ console.log(hammingDistance(1, 4))
 
 ## Sub 总结
 
-长度固定为 k 的子数组 或者是 子数组有固定的限制条件的 f(sub) = constant; 可以考虑滑动窗口
+![sliding-window](programming/basic/algorithm/pointer/sliding-window.md#关键词)
 
 ## 计数问题转换为求和问题
 
@@ -515,7 +515,7 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 | [[programming/basic/leetcode/3. 无重复字符的最长子串\|3. 无重复字符的最长子串]]                                                                 | medium     | <ul><li>#leetcode/pointer/sliding-window</li><li>#leetcode/hash-table</li><li>#leetcode/sub/consecutive</li></ul>                                                                                                   | false    | 2023-05-28-Sun, 4:53:45 pm  |
 | [[programming/basic/leetcode/209. 长度最小的子数组\|209. 长度最小的子数组]]                                                                 | medium     | <ul><li>#leetcode/pointer/sliding-window</li><li>#leetcode/prefix-sum</li><li>#leetcode/binary-search</li><li>#leetcode/sub/consecutive</li><li>#leetcode/unsolved</li></ul>                                        | true     | 2023-05-28-Sun, 3:58:34 pm  |
 | [[programming/basic/leetcode/674. 最长连续递增序列\|674. 最长连续递增序列]]                                                                 | easy       | <ul><li>#leetcode/pointer/sliding-window</li><li>#leetcode/greedy-algorithm</li><li>#leetcode/sub/consecutive</li></ul>                                                                                             | false    | 2023-05-28-Sun, 2:52:17 pm  |
-| [[programming/basic/leetcode/187. 重复的DNA序列\|187. 重复的DNA序列]]                                                                 | medium     | <ul><li>#leetcode/pointer/sliding-window</li><li>#leetcode/sub/consecutive</li></ul>                                                                                                                                | false    | 2023-05-28-Sun, 12:55:38 pm |
+| [[programming/basic/leetcode/187. 重复的DNA序列\|187. 重复的DNA序列]]                                                                 | medium     | <ul><li>#leetcode/pointer/sliding-window</li><li>#leetcode/sub/consecutive</li><li>#leetcode/hash-table/existence</li></ul>                                                                                         | false    | 2023-05-28-Sun, 12:55:38 pm |
 | [[programming/basic/leetcode/611. 有效三角形的个数\|611. 有效三角形的个数]]                                                                 | medium     | <ul><li>#leetcode/pointer/double</li><li>#leetcode/unsolved</li><li>#leetcode/binary-search</li></ul>                                                                                                               | true     | 2023-05-28-Sun, 12:12:22 pm |
 | [[programming/basic/leetcode/82. 删除排序链表中的重复元素 II\|82. 删除排序链表中的重复元素 II]]                                                     | medium     | <ul><li>#leetcode/pointer/fast-slow</li><li>#leetcode/space/in-place</li><li>#leetcode/array/distinct</li></ul>                                                                                                     | false    | 2023-05-28-Sun, 10:26:16 am |
 | [[programming/basic/leetcode/643. 子数组最大平均数 I\|643. 子数组最大平均数 I]]                                                             | easy       | <ul><li>#leetcode/pointer/sliding-window</li><li>#leetcode/sub/consecutive</li><li>#leetcode/prefix-sum/extreme-value</li></ul>                                                                                     | false    | 2023-05-28-Sun, 1:13:59 pm  |
