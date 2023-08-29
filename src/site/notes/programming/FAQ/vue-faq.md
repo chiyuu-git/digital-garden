@@ -7,7 +7,7 @@
 
 # V-if 和 V-show 的区别
 
-V-if 和 V-show 的区别;;null<!--SR:!2023-08-29,3,250-->
+V-if 和 V-show 的区别;;[](https://digital-garden.chiyuu.top/programming/faq/vue-faq/#v-if-v-show)<!--SR:!2023-08-29,3,250-->
 
 [v-if和v-show的区别 - 掘金](https://juejin.cn/post/6844903767553359885)
 
