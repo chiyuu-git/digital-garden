@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/font-end/browser-core/browser-optimize/browser-optimize/"}
+{"dg-publish":true,"permalink":"/programming/font-end/browser-core/browser-optimize/browser-optimize/","tags":["review"]}
 ---
 
 
@@ -695,3 +695,5 @@ preload 加载页面必需的资源如 CDN 上的字体文件，与 prefetch 预
 ```
 
 预渲染虽然可以提高页面的加载速度，但是要确保该页面在之后会被用户打开，否则就白白浪费资源去渲染
+
+# SSR
