@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/algorithm/prefix-sum/"}
+{"dg-publish":true,"permalink":"/programming/basic/algorithm/prefix-sum/","tags":["review"]}
 ---
 
 
@@ -9,7 +9,7 @@
 
 ## 什么是前缀和数组
 
-前缀和数组是指对原数组进去前缀和运算得到的新数组。即 p`resum[i]=nums[0]+..+nusm[i-1]`
+前缀和数组是指对原数组进去前缀和运算得到的新数组。即 `presum[i]=nums[0]+..+nusm[i-1]`
 
 ## 什么是差分数组
 
