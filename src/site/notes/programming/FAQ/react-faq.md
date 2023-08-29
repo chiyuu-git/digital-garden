@@ -5,7 +5,7 @@
 
 # API 层面
 
-## setState 是同步还是异步？
+## *setState 是同步还是异步？
 
 ### V18 之前
 
@@ -21,8 +21,46 @@ this.setState({ counter: this.state.counter + 1 }, () => {
 
 ### V18 之后
 
-1. React18 之后，默认所有的操作都放到批处理中，因此 setState 不管在那儿调用都是异步的了。
-2. 如果希望同步更新，可以使用 flushSync 这个 API。
+1. 从 `react 18` 开始, 使用了 `createRoot` 创建应用后, 所有的更新都会自动进行批处理 (也就是异步合并).使用 `render` 的应用会保持之前的行为.
+2. 如果你想保持同步更新行为, 可以使用 `ReactDOM.flushSync()`.
+我们知道, `react` 的 `setState` 最终会走到 `scheduleUpdateOnFiber` 来进行更新, 之前最关键的一段代码就在这里
+
+```js
+// react 17.x
+if (executionContext === NoContext) {
+  // Flush the synchronous work now, unless we're already working or inside
+  // a batch. This is intentionally inside scheduleUpdateOnFiber instead of
+  // scheduleCallbackForFiber to preserve the ability to schedule a callback
+  // without immediately flushing it. We only do this for user-initiated
+  // updates, to preserve historical behavior of legacy mode.
+  resetRenderTimer();
+  flushSyncCallbackQueue();
+}
+```
+
+`executionContext` 代表了 `react` 当前的调度状态, 如果退出了 `react` 的调度这个值就会重新变成 `NoContext`. 也就是说, 如果你调用 `setState` 的时候并不处于 `react` 的调度状态中, 那么就会同步的去执行你的 `setState`.这也是为什么一旦我们使用一些异步操作就会导致 `setState` 变成同步的原因, 而在 `react 18` 中这段代码变成了这样
+
+```js
+// react 18.x
+if (
+  lane === SyncLane && 
+  executionContext === NoContext && 
+  (fiber.mode & ConcurrentMode) === NoMode && 
+  // Treat `act` as if it's inside `batchedUpdates`, even in legacy mode.
+  !( ReactCurrentActQueue$1.isBatchingLegacy)) {
+  // Flush the synchronous work now, unless we're already working or inside
+  // a batch. This is intentionally inside scheduleUpdateOnFiber instead of
+  // scheduleCallbackForFiber to preserve the ability to schedule a callback
+  // without immediately flushing it. We only do this for user-initiated
+  // updates, to preserve historical behavior of legacy mode.
+  resetRenderTimer();
+  flushSyncCallbacksOnlyInLegacyMode();
+}
+```
+
+可以看到我们多出了好几个判断条件, 除了之前的 `executionContext === NoContext` 之外, 还多了三个判断条件, 我们一个一个来看看.
+
+[React18 setState: 消失的面试题 - 知乎](https://zhuanlan.zhihu.com/p/460668459)
 
 ## Class 写法和 Hook 写法的区别
 
