@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/network-protocol/https-basic/","tags":["review"]}
+{"dg-publish":true,"permalink":"/programming/basic/cs-basic/network-protocol/https-basic/"}
 ---
 
 
@@ -147,6 +147,8 @@ HTTPS 采用混合的加密机制，使用公开密钥加密用于传输，对�
 ![img](https-basic/bg2014092003-1588646813692.png)
 
 ### TLS 握手过程
+
+TLS 握手过程;;[link](https://digital-garden.chiyuu.top/programming/basic/cs-basic/network-protocol/https-basic/#tls) <!--SR:!2023-09-01,3,250-->
 
 并不是在 tcp 的三次握手的基础上增加一次握手, 而是完全不同的四次握手
 
