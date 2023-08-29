@@ -17,9 +17,13 @@
 
 [Site Unreachable](http://learn.baidu.com/pages/index.html#/video/?courseId=38339&elementId=321f0694-3875-4c60-aee4-1e61e6e20910&userId=6805479&groupId=507209)
 
-# 典中典问题
+# 综合题 (典中典问题)
 
 八股和场景设计题可以看下极客时间，总结的比较全面和深入，能覆盖绝大多数面试八股。算法基本都是高频 leetcode 原题，刷高频 100 基本够用了，简单的 dfs 考的比较多。项目自圆其说吧，可能会问一些项目现存的问题和你对这些问题的思考。
+
+## 如何优化 FMP
+
+[!browser-optimize](../font-end/browser-core/browser-optimize/!browser-optimize.md)
 
 ## 一个列表，假设有 100000 个数据，这个该怎么办
 
@@ -32,10 +36,6 @@
 （2）使用懒加载的方法，每次加载一部分数据，其余数据当需要使用时再去加载。
 
 （3）使用数组分块技术，基本思路是为要处理的项目创建一个队列，然后设置定时器每过一段时间取出一部分数据，然后再使用定时器取出下一个要处理的项目进行处理，接着再设置另一个定时器。
-
-## 作用域或者闭包
-
-[es-advanced](../font-end/primitive/es/es-advanced.md)
 
 ## 当你在浏览器中输入 Google.com 并且按下回车之后发生了什么
 
