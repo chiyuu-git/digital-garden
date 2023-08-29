@@ -554,7 +554,7 @@ testNode.style.top = startY + Math.cos( deg*Math.PI/180 )*step*2+"px";
 - [插入换行](https://link.juejin.cn/?target=https%3A%2F%2Flhammer.cn%2FYou-need-to-know-css%2F%23%2Fline-breaks)
 - [图片对比控件](https://link.juejin.cn/?target=https%3A%2F%2Flhammer.cn%2FYou-need-to-know-css%2F%23%2Fimage-slider)
 
-## **全屏滚动的原理是什么 ？用到了 CSS 的哪些属性 ？**
+## 全屏滚动的原理是什么 ？用到了 CSS 的哪些属性 ？
 
 原理
 
@@ -1669,3 +1669,38 @@ html 开启 hidden 就可以禁止默认滚动条，因为默认滚动条都是 
 一般会给一个全局的 wrap，让滚动条出现在 wrap 身上，无论怎么滑动都不会影响初始包含块，可以用来模拟固定定位（相对于有滚动条的 wrap 绝对定位，就是固定定位的效果了）
 
 移动端的固定定位一般都是用绝对定位来模拟的
+
+# 如何实现暗黑模式?
+
+如何实现暗黑模式;;null <!--SR:!2023-08-30,1,230-->
+
+实现暗黑模式（Dark Mode）可以让您的网站或应用在夜间或低光环境下提供更舒适的用户体验。下面是一些常见的方法来实现暗黑模式：
+
+1. **CSS 变量和媒体查询**： 使用 CSS 变量（Custom Properties）结合媒体查询可以实现简单的暗黑模式。您可以定义暗色和亮色主题的颜色变量，然后在媒体查询中根据用户的偏好（如系统的暗色模式设置）切换主题。`prefers-color-scheme` 是一个 CSS 媒体查询，用于检测用户操作系统或设备的主题偏好设置，以便在网页中应用相应的颜色方案。主题偏好设置通常包括明亮（light）和暗黑（dark）两种选项。 当用户在操作系统或设备中更改主题偏好设置时，浏览器会自动应用相应的样式。示例代码如下：
+
+   ```css
+   :root {
+     --background-color: white;
+     --text-color: black;
+   }
+
+   @media (prefers-color-scheme: dark) {
+     :root {
+       --background-color: black;
+       --text-color: white;
+     }
+   }
+
+   body {
+     background-color: var(--background-color);
+     color: var(--text-color);
+   }
+   ```
+
+2. **JavaScript 和状态管理**： 使用 JavaScript 和状态管理库（如 React 的 Context 或 Redux）可以更灵活地切换暗黑模式。您可以在用户点击切换按钮或根据系统设置时触发状态更新。这种方法可以让您在应用中灵活地控制不同主题的样式和状态。
+3. **CSS 框架和库**： 许多 CSS 框架和库（如 Tailwind CSS 和 Bootstrap）已经提供了内置的暗黑模式支持。您可以根据文档中的指导来设置和切换不同的主题。
+4. **LocalStorage 或 Cookie**：您可以使用浏览器的 `localStorage` 或 `cookie` 来存储用户的主题偏好设置。在页面加载时，根据存储的偏好加载相应的主题样式。
+5. **第三方工具和插件**： 一些第三方工具和插件可以帮助您更轻松地实现暗黑模式。例如，许多前端框架和 UI 库都提供了暗黑模式的支持，您可以根据它们的文档进行设置。
+6. **CSS-in-JS 库**： 如果您使用 CSS-in-JS 库（如 Emotion、Styled Components 等），您可以根据不同的主题切换样式的定义。
+
+不管您选择哪种方法，实现暗黑模式的关键在于根据用户的偏好或设置切换不同的样式，以提供更好的用户体验。请确保您的实现方式在不同的浏览器和设备上都能正常工作，并充分测试各种情况。
