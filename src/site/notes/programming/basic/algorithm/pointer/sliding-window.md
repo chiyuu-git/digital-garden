@@ -1,11 +1,9 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/algorithm/pointer/sliding-window/"}
+{"dg-publish":true,"permalink":"/programming/basic/algorithm/pointer/sliding-window/","tags":["review"]}
 ---
 
 
 # 概述
-
-答案要求在某一个范围之内
 
 滑动窗口是数组/字符串问题中常用的抽象概念。 窗口通常是在数组/字符串中由开始和结束索引定义的一系列元素的集合，即 ` [i, j]`（左闭，右闭合）。而滑动窗口是可以将两个边界向某一方向“滑动”的窗口。
 
@@ -13,8 +11,8 @@
 
 这就是滑动窗口最重点的地方, 就是窗口是左闭右闭的:
 
-1. 这样 end 永远是移出区间的操作, 并且 end 大于等于 nums.length 就是退出循环的条件
-2. start 永远是加入区间的操作
+1. 这样 left 永远是移出区间的操作, 并且 end 大于等于 nums.length 就是退出循环的条件
+2. right 永远是加入区间的操作
 3. `left <= right && right < nums.length`
 
 区间的操作可以直接 while 循环, 直到区间达到要操作的阈值, 而不是 for 循环一个个处理, 增加模拟的负担
@@ -23,9 +21,9 @@
 
 # Solution Tips
 
-1. 我们先不断地增加 right 指针扩大窗口 `[left, right]`，直到窗口中的字符串符合要求（包含了 T 中的所有字符）。
-2. 此时，我们停止增加 right，转而不断增加 left 指针缩小窗口 `[left, right]`，直到窗口中的字符串不再符合要求（不包含 T 中的所有字符了）。同时，每次增加 left，我们都要更新一轮结果。
-3. 重复第 2 和第 3 步，直到 right 到达字符串 S 的尽头。
+1. 我们先不断地增加 right 指针扩大窗口 `[left, right]`，直到窗口中的字符串符合要求（包含了 T 中的所有字符）
+2. 此时，我们停止增加 right，转而不断增加 left 指针缩小窗口 `[left, right]`，直到窗口中的字符串不再符合要求（不包含 T 中的所有字符了）。同时，每次增加 left，我们都要更新一轮结果
+3. 重复第 2 和第 3 步，直到 right 到达字符串 S 的尽头
 
 ```js
 while (left <= right && right < len) {
@@ -49,7 +47,7 @@ while (left <= right && right < len) {
 
 子串, 子数组, 连续的 sub
 
-有某种约束条件, 限制了 sub 的最长长度, 到达临界条件就必须改变 sub 的区间了
+长度固定为 k 的子数组 或者是 子数组有固定的限制条件的 f(sub) = constant; 可以考虑滑动窗口
 
 # 窗口长度
 
@@ -77,9 +75,7 @@ while (left <= right && right < len) {
 
 ## 去头去尾留中间
 
-+ [1658. 将 x 减到 0 的最小操作数](../../leetcode/1658.%20将%20x%20减到%200%20的最小操作数.md)
-
-### 反向思维
+### 方案一: 反向思维
 
 每次去除头部、尾部, 反过来就是不断的缩小中间, 这就是正统滑动窗口的题目了
 
@@ -89,9 +85,10 @@ while (left <= right && right < len) {
 | [[programming/basic/leetcode/1658. 将 x 减到 0 的最小操作数\|1658. 将 x 减到 0 的最小操作数]] | [[programming/basic/leetcode/1658. 将 x 减到 0 的最小操作数#solution tips\|1658. 将 x 减到 0 的最小操作数#solution tips]] |
 
 { .block-language-dataview}
+
 [1423. 可获得的最大点数 - 力扣（LeetCode）](https://leetcode.cn/problems/maximum-points-you-can-obtain-from-cards/)
 
-### 两个窗口
+### 方案二: 两个窗口
 
 如果反向思维不好操作, 也可以选择前缀和后缀, 维护 2 个窗口
 
@@ -160,8 +157,8 @@ while (left <= right && right < len) {
 | [[programming/basic/leetcode/220. 存在重复元素 III\|220. 存在重复元素 III]]                                       | [[programming/basic/leetcode/220. 存在重复元素 III#solution tips\|220. 存在重复元素 III#solution tips]]                    |
 | [[programming/basic/leetcode/219. 存在重复元素 II\|219. 存在重复元素 II]]                                         | [[programming/basic/leetcode/219. 存在重复元素 II#solution tips\|219. 存在重复元素 II#solution tips]]                     |
 | [[programming/basic/leetcode/209. 长度最小的子数组\|209. 长度最小的子数组]]                                           | [[programming/basic/leetcode/209. 长度最小的子数组#solution tips\|209. 长度最小的子数组#solution tips]]                      |
-| [[programming/basic/leetcode/187. 重复的DNA序列\|187. 重复的DNA序列]]                                           | [[programming/basic/leetcode/187. 重复的DNA序列#solution tips\|187. 重复的DNA序列#solution tips]]                      |
 | [[programming/basic/leetcode/1658. 将 x 减到 0 的最小操作数\|1658. 将 x 减到 0 的最小操作数]]                           | [[programming/basic/leetcode/1658. 将 x 减到 0 的最小操作数#solution tips\|1658. 将 x 减到 0 的最小操作数#solution tips]]              |
 | [[programming/basic/leetcode/1248. 统计「优美子数组」\|1248. 统计「优美子数组」]]                                       | [[programming/basic/leetcode/1248. 统计「优美子数组」#solution tips\|1248. 统计「优美子数组」#solution tips]]                    |
+| [[programming/basic/leetcode/187. 重复的DNA序列\|187. 重复的DNA序列]]                                           | [[programming/basic/leetcode/187. 重复的DNA序列#solution tips\|187. 重复的DNA序列#solution tips]]                      |
 
 { .block-language-dataview}
