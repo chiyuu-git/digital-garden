@@ -5,6 +5,8 @@
 
 # 前端路由
 
+前端路由;;[](https://digital-garden.chiyuu.top/programming/font-end/framework/framwork-common/framework-common/#%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1)
+
 ## 什么是前端路由
 
 前端路由就是把不同路由对应不同的内容或页面的任务交给前端来做，之前是通过服务端根据 url 的不同返回不同的页面实现的。
