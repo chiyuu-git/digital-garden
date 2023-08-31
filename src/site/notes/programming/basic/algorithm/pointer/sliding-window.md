@@ -157,8 +157,8 @@ while (left <= right && right < len) {
 | [[programming/basic/leetcode/220. 存在重复元素 III\|220. 存在重复元素 III]]                                       | [[programming/basic/leetcode/220. 存在重复元素 III#solution tips\|220. 存在重复元素 III#solution tips]]                    |
 | [[programming/basic/leetcode/219. 存在重复元素 II\|219. 存在重复元素 II]]                                         | [[programming/basic/leetcode/219. 存在重复元素 II#solution tips\|219. 存在重复元素 II#solution tips]]                     |
 | [[programming/basic/leetcode/209. 长度最小的子数组\|209. 长度最小的子数组]]                                           | [[programming/basic/leetcode/209. 长度最小的子数组#solution tips\|209. 长度最小的子数组#solution tips]]                      |
+| [[programming/basic/leetcode/187. 重复的DNA序列\|187. 重复的DNA序列]]                                           | [[programming/basic/leetcode/187. 重复的DNA序列#solution tips\|187. 重复的DNA序列#solution tips]]                      |
 | [[programming/basic/leetcode/1658. 将 x 减到 0 的最小操作数\|1658. 将 x 减到 0 的最小操作数]]                           | [[programming/basic/leetcode/1658. 将 x 减到 0 的最小操作数#solution tips\|1658. 将 x 减到 0 的最小操作数#solution tips]]              |
 | [[programming/basic/leetcode/1248. 统计「优美子数组」\|1248. 统计「优美子数组」]]                                       | [[programming/basic/leetcode/1248. 统计「优美子数组」#solution tips\|1248. 统计「优美子数组」#solution tips]]                    |
-| [[programming/basic/leetcode/187. 重复的DNA序列\|187. 重复的DNA序列]]                                           | [[programming/basic/leetcode/187. 重复的DNA序列#solution tips\|187. 重复的DNA序列#solution tips]]                      |
 
 { .block-language-dataview}
