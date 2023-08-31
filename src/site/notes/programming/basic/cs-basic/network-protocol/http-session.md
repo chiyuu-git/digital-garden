@@ -207,7 +207,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies#%E4%BC%9A%E8%AF%9D%E6%
 
 每个 Cookie 都会有与之关联的域（Domain），如果 Cookie 的域和页面的域相同，那么我们称这个 Cookie 为*第一方 Cookie*（*first-party cookie*），如果 Cookie 的域和页面的域不同，则称之为*第三方 Cookie*（*third-party cookie*.）
 
-部署简单，并能有效防御 CSRF 攻击，但是存在兼容性问题。
+部署简单，并能有效防御 CSRF 攻击，但是**存在兼容性问题**。
 
 ### Samesite=Strict
 
