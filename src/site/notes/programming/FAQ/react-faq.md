@@ -64,7 +64,7 @@ if (
 
 ## Class 写法和 Hook 写法的区别
 
-Class 写法和 Hook 写法的区别;;[react-faq](programming/FAQ/react-faq.md#Class%20写法和%20Hook%20写法的区别) <!--SR:!2023-08-30,3,250-->
+Class 写法和 Hook 写法的区别;;[react-faq](https://digital-garden.chiyuu.top/programming/faq/react-faq/#class-hook) <!--SR:!2023-08-30,3,250-->
 
 ### 差异点
 
