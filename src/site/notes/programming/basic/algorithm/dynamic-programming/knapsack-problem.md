@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/algorithm/dynamic-programming/knapsack-problem/"}
+{"dg-publish":true,"permalink":"/programming/basic/algorithm/dynamic-programming/knapsack-problem/","tags":["review"]}
 ---
 
 
