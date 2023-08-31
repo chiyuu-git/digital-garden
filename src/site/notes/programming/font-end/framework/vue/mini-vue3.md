@@ -109,7 +109,7 @@ Scheduler 没有什么特别的, 就是用户通过 options 传入的一个函�
 
 ## 源码中 Dep 的概念
 
-源码中的 dep 其实都是 effect. 因为 reactive 实例是负责触发副作用的, 在源码中把这些成为依赖. 但是实际上并不是 reactive 实例依赖他们, 而是他们依赖 reactive 实例.
+源码中的 dep 其实都是 effect. 因为 reactive 实例是负责触发副作用的, 在源码中把这些称为依赖. 但是实际上并不是 reactive 实例依赖他们, 而是他们依赖 reactive 实例.
 
 这个过程虽然叫做: 依赖搜集, 但其实搜集的都是副作用函数
 
