@@ -7,7 +7,7 @@
 
 # V-if 和 V-show 的区别
 
-V-if 和 V-show 的区别;;[](https://digital-garden.chiyuu.top/programming/faq/vue-faq/#v-if-v-show)<!--SR:!2023-08-29,3,250-->
+V-if 和 V-show 的区别;;[](https://digital-garden.chiyuu.top/programming/faq/vue-faq/#v-if-v-show)<!--SR:!2023-09-06,8,250-->
 
 [v-if和v-show的区别 - 掘金](https://juejin.cn/post/6844903767553359885)
 
@@ -28,7 +28,7 @@ v-show 不管条件是真还是假，第一次渲染的时候都会编译出来�
 
 # Keep-alive 适用场景是什么，实现原理是什么
 
-Keep-alive 适用场景是什么，实现原理是什么;;null <!--SR:!2023-08-29,3,250-->
+Keep-alive 适用场景是什么，实现原理是什么;;[](https://digital-garden.chiyuu.top/programming/faq/vue-faq/#keep-alive)<!--SR:!2023-08-29,3,250-->
 
 ## 适用场景
 
