@@ -484,6 +484,12 @@ SQL 注入攻击指的是攻击者在 HTTP 请求中注入恶意的 SQL 代码�
 
 详细资料可以参考： [《Web 安全漏洞之 SQL 注入》](https://juejin.im/post/5bd5b820e51d456f72531fa8) [《如何防范常见的 Web 攻击》](http://blog.720ui.com/2016/security_web/#SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB)
 
+# 防止 QPS 过高
+
+通过 token, 保证 api 只有登陆过的指定用户可以调用, 如果调用的次数过多, 可以考虑封禁用户. 或者做一些针对性的措施.
+
+token 为 uid + 时间戳的哈希
+
 # DDOS 攻击
 
 ## 概念
