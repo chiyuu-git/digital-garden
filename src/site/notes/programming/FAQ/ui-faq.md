@@ -8,8 +8,8 @@
 | File                                                                                     | overview                       |
 | ---------------------------------------------------------------------------------------- | ------------------------------ |
 | [[programming/font-end/primitive/html/html-form\|html-form]]                          | [[programming/font-end/primitive/html/html-form#faq\|html-form#faq]]              |
-| [[programming/font-end/primitive/css/tailwind/tailwind-basic\|tailwind-basic]]        | [[programming/font-end/primitive/css/tailwind/tailwind-basic#faq\|tailwind-basic#faq]]         |
 | [[programming/font-end/primitive/css/page-layout\|page-layout]]                       | [[programming/font-end/primitive/css/page-layout#faq\|page-layout#faq]]            |
+| [[programming/font-end/primitive/css/tailwind/tailwind-basic\|tailwind-basic]]        | [[programming/font-end/primitive/css/tailwind/tailwind-basic#faq\|tailwind-basic#faq]]         |
 | [[programming/font-end/primitive/css/flex\|flex]]                                     | [[programming/font-end/primitive/css/flex#faq\|flex#faq]]                   |
 | [[programming/font-end/primitive/browser-api/dom-drag-event\|dom-drag-event]]         | [[programming/font-end/primitive/browser-api/dom-drag-event#faq\|dom-drag-event#faq]]         |
 | [[programming/FAQ/ui-component/input\|input]]                                         | [[programming/FAQ/ui-component/input#faq\|input#faq]]                  |
@@ -1672,7 +1672,7 @@ html 开启 hidden 就可以禁止默认滚动条，因为默认滚动条都是 
 
 # 如何实现暗黑模式?
 
-如何实现暗黑模式;;null <!--SR:!2023-08-30,1,230-->
+如何实现暗黑模式;;[](https://digital-garden.chiyuu.top/programming/faq/ui-faq/#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%9A%97%E9%BB%91%E6%A8%A1%E5%BC%8F?)<!--SR:!2023-08-30,1,230-->
 
 实现暗黑模式（Dark Mode）可以让您的网站或应用在夜间或低光环境下提供更舒适的用户体验。下面是一些常见的方法来实现暗黑模式：
 
