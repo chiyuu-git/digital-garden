@@ -321,9 +321,9 @@ Content-Security-Policy: child-src 'none'
 
 ### 其他安全措施
 
-HTTP-only Cookie: 禁止 JavaScript 读取某些敏感 Cookie，攻击者完成 XSS 注入后也无法窃取此 Cookie。
+![HttpOnly](network-protocol/http-session.md#HttpOnly)
 
-验证码：防止脚本冒充用户提交危险操作。
+验证码：防止脚本冒充用户提交危险操作
 
 ## XSS 检测
 
