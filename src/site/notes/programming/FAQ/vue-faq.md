@@ -28,7 +28,7 @@ v-show 不管条件是真还是假，第一次渲染的时候都会编译出来�
 
 # Keep-alive 适用场景是什么，实现原理是什么
 
-Keep-alive 适用场景是什么，实现原理是什么;;[](https://digital-garden.chiyuu.top/programming/faq/vue-faq/#keep-alive)<!--SR:!2023-08-29,3,250-->
+Keep-alive 适用场景是什么，实现原理是什么;;[](https://digital-garden.chiyuu.top/programming/faq/vue-faq/#keep-alive)<!--SR:!2023-09-15,13,250-->
 
 ## 适用场景
 
