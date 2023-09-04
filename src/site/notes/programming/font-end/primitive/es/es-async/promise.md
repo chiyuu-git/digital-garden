@@ -263,11 +263,13 @@ Promise 实例具有 `then` 方法，也就是说，`then` 方法是定义在原
 `then` 方法返回的是一个新的 `Promise` 实例（注意，不是原来那个 `Promise` 实例）。因此可以采用链式写法，即 `then` 方法后面再调用另一个 `then` 方法。
 
 ```javascript
-  getJSON("/posts.json").then(function(json) {
-    return json.post;
-  }).then(function(post) {
-    // ...
-  });
+getJSON("/posts.json")
+.then(function(json) {
+		return json.post;
+	})
+	.then(function(post) {
+	// ...
+	});
 ```
 
 上面的代码使用 `then` 方法，依次指定了两个 `then` 方法。第一个 `then` 方法完成以后，会将回调函数的返回结果作为参数，传入第二个 `then` 方法。@@@
@@ -734,6 +736,8 @@ Promise 对象的错误具有“冒泡”性质，会一直向后传递，直到
 
 ## 实现 Promise.all
 
+关键就是用 count 记录并发的 promise 的完成数, 每个 then 中都判断一次
+
 ```js
 
 function promiseAll(promises) {
@@ -745,15 +749,15 @@ function promiseAll(promises) {
         var promiseNum = promises.length;
         var resolvedValues = new Array(promiseNum);
         for (let i = 0; i < promiseNum; i++) {
-            Promise.resolve(promises[i]).then(function (value) {
-                resolvedValues[i] = value
-                resolvedCounter++
-                if (resolvedCounter == promiseNum) {
-                    return resolve(resolvedValues)
-                }
-            }, function (reason) {
-                return reject(reason)
-            })
+            Promise.resolve(promises[i])
+	            .then(function (value) {
+	                resolvedValues[i] = value
+	                resolvedCounter++
+	                if (resolvedCounter == promiseNum) {
+	                    return resolve(resolvedValues)
+	                }
+	            })
+				.catch(err => return reject(err))
         }
     })
 }
