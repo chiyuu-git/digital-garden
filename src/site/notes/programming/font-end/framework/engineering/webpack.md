@@ -322,7 +322,7 @@ rules: [
 
 ### 概述
 
-模块代码转换的工作由 `loader` 来处理，除此之外的其他任何工作都可以交由 `plugin` 来完成。
+模块代码转换的工作由 `loader` 来处理，除此之外的其他任何工作都可以交由 `plugin` 来完成
 
 通过添加我们需要的 `plugin`，可以满足更多构建中特殊的需求。例如，要使用压缩 `JS` 代码的 `uglifyjs-webpack-plugin` 插件，只需在配置中通过 `plugins` 字段添加新的 `plugin` 即可
 
@@ -383,7 +383,7 @@ if(!BROWSER_SUPPORTS_HTML5) require("html5shiv");
 
 建议使用 `process.env.NODE_ENV`: … 的方式来定义 `process.env.NODE_ENV`，而不是使用 `process: { env: { NODE_ENV: ... } }` 的方式，因为这样会覆盖掉 `process` 这个对象，可能会对其他代码造成影响…
 
-### Copy-webpack-plugin
+### Copy-Webpack-Plugin
 
 我们一般会把开发的所有源码和资源文件放在 `src/` 目录下，构建的时候产出一个 `build/` 目录，通常会直接拿 `build` 中的所有文件来发布。有些文件没经过 `webpack` 处理，但是我们希望它们也能出现在 `build` 目录下，这时就可以使用 `CopyWebpackPlugin` 来处理了…
 
@@ -459,10 +459,10 @@ module.exports = {
 
 解析路径后，解析器将路径指向文件或者文件夹（目录）
 
-  - 如果是文件，直接加载，根据 resolve.extensions 配置补充后缀名
-  - 如果是文件夹，查找里面是否有 package.json 文件
-    - 如果有，默认按照里面的 main 字段的文件名查找文件 （可以通过 `resolve.mainFields` 配置更改）
-    - 如果没有，默认查找 index.js 文件（可以通过 `resolve.mainFiles` 配置更改）
+- 如果是文件，直接加载，根据 resolve.extensions 配置补充后缀名
+- 如果是文件夹，查找里面是否有 package.json 文件
+	- 如果有，默认按照里面的 main 字段的文件名查找文件 （可以通过 `resolve.mainFields` 配置更改）
+	- 如果没有，默认查找 index.js 文件（可以通过 `resolve.mainFiles` 配置更改）
 
 ### resolve.alias
 
@@ -682,10 +682,13 @@ https://juejin.im/post/5ae9ae5e518825672f19b094#comment
 
 ## prod.conf.js
 
-- webpack.prod.conf.js 直接继承 webpack.base.conf.js，执行 `npm run build` 如图所示：
-- *生成的 app.js 文件有 110K，对比我们的代码量来说（main.js 只有 233B，占空间 4K），这实在太大了！*
-  **这时候我们需要的就是 webpack 的代码分离了：把代码分离到不同的 bundle 中，然后可以按需加载或并行加载这些文件。**
-  配置 webpack.prod.conf.js 如下：
+webpack.prod.conf.js 直接继承 webpack.base.conf.js，执行 `npm run build` 如图所示：
+
+生成的 app.js 文件有 110K，对比我们的代码量来说（main.js 只有 233B，占空间 4K），这实在太大了！
+
+这时候我们需要的就是 webpack 的代码分离了：把代码分离到不同的 bundle 中，然后可以按需加载或并行加载这些文件
+
+配置 webpack.prod.conf.js 如下：
 
   ```js
   'use strict'
@@ -739,87 +742,90 @@ https://juejin.im/post/5ae9ae5e518825672f19b094#comment
   });
   ```
 
-- 再次编译，可以看到由原来一个 js 文件（app.js）变成了三个 js 文件（manifest.js、vendor.js 和 app.js），app.js 的大小也变成了一个合适的大小 1.31k
-
-## 生产环境完善
+再次编译，可以看到由原来一个 js 文件（app.js）变成了三个 js 文件（manifest.js、vendor.js 和 app.js），app.js 的大小也变成了一个合适的大小 1.31k
 
 ## 图片加载优化
 
 ### 图片
 
-- 打包图片出现的问题：
-  - 大图无法打包到 entry.js 文件中，index.html 不在生成资源目录下。
-  - 页面加载图片会在所在目录位置查找，导致页面加载图片时候大图路径无法找到
-  - 解决办法：
-  - 使用 publicPath : 'dist/js/' //设置为 index.html 提供资源的路径,设置完后找所有的资源都会去当前目录下找。
-  - 将 index.html 放在 dist/js/也可以解决。
-- 自动编译打包（指南→开发）
-  - 利用 webpack 开发服务器工具: webpack-dev-server
-  - 下载
-    - npm install --save-dev webpack-dev-server
-    - 下载完之后多出一个 webpack-dev-server 命令，也是内置一个微型服务器，自动读取 webpack 配置文件
-    - 访问 localhost:8080，可以看到当前的项目
-    - webpack-dev-server 默认服务于 **根目录** 下的 **index.html**
-    - 根目录以配置文件为基准，所以 index.html 直接放在配置文件旁边，可以不设置 contenBase 属性，且文件名固定的
-    - 热加载会自动寻找打包后的大图片，热加载生成的文件都在微型服务器的内存里，与本地文件无关
-    - webpack-dev-server—open
-  - webpack.config.js 配置
+打包图片出现的问题：
 
-    ```js
-    devServer: {
-      contentBase: './dist'
-    },
-    ```
+- 大图无法打包到 entry.js 文件中，index.html 不在生成资源目录下。
+- 页面加载图片会在所在目录位置查找，导致页面加载图片时候大图路径无法找到
+- 解决办法：
+- 使用 publicPath : 'dist/js/' //设置为 index.html 提供资源的路径,设置完后找所有的资源都会去当前目录下找。
+- 将 index.html 放在 dist/js/也可以解决。
 
-  - package.json 配置
+自动编译打包（指南→开发）
 
-    ```json
-    "start": "webpack-dev-server --open"
-    ```
+- 利用 webpack 开发服务器工具: webpack-dev-server
+- 下载
+	- npm install --save-dev webpack-dev-server
+	- 下载完之后多出一个 webpack-dev-server 命令，也是内置一个微型服务器，自动读取 webpack 配置文件
+	- 访问 localhost:8080，可以看到当前的项目
+	- webpack-dev-server 默认服务于 **根目录** 下的 **index.html**
+	- 根目录以配置文件为基准，所以 index.html 直接放在配置文件旁边，可以不设置 contenBase 属性，且文件名固定的
+	- 热加载会自动寻找打包后的大图片，热加载生成的文件都在微型服务器的内存里，与本地文件无关
+	- webpack-dev-server—open
 
-- 使用 webpack 插件
-  - 常用的插件
+webpack.config.js 配置
+
+```js
+devServer: {
+  contentBase: './dist'
+},
+```
+
+package.json 配置
+
+```json
+"start": "webpack-dev-server --open"
+```
+
+使用 webpack 插件
+
   - 使用 html-webpack-plugin 根据模板 html 生成引入 script 的页面
   - 使用 clean-webpack-plugin 清除 dist 文件夹
   - 下载
 
-    ```npm
-    npm install --save-dev  html-webpack-plugin clean-webpack-plugin
-    ```
+```npm
+npm install --save-dev  html-webpack-plugin clean-webpack-plugin
+```
 
-  - webpack 配置
+webpack 配置
 
-    ```js
-    const HtmlWebpackPlugin = require('html-webpack-plugin'); //自动生成html文件的插件
-     const CleanWebpackPlugin = require('clean-webpack-plugin'); //清除之前打包的文件   
-    plugins: [
-      new HtmlWebpackPlugin({template: './index.html'}),
-      new CleanWebpackPlugin(['dist']),
-    ]
-    ```
+```js
+const HtmlWebpackPlugin = require('html-webpack-plugin'); //自动生成html文件的插件
+const CleanWebpackPlugin = require('clean-webpack-plugin'); //清除之前打包的文件   
+plugins: [
+	new HtmlWebpackPlugin({template: './index.html'}),
+	new CleanWebpackPlugin(['dist']),
+]
+```
 
-  - 创建页面: index.html
+创建页面: index.html
 
-    ```html
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <title>webpack test</title>
-    </head>
-    <body>
-    <div id="app"></div>
-    <!--打包文件将自动通过script标签注入到此处-->
-    </body>
-    </html>
-    ```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>webpack test</title>
+</head>
+<body>
+<div id="app"></div>
+<!--打包文件将自动通过script标签注入到此处-->
+</body>
+</html>
+```
 
 ### CSS Sprites
 
-- 如果你使用的 `webpack 3.x` 版本，需要 `CSS Sprites` 的话，可以使用 `webpack-spritesmith` 或者 `sprite-webpack-plugin`。
-- 我们以 `webpack-spritesmith` 为例，先安装依赖…
+如果你使用的 `webpack 3.x` 版本，需要 `CSS Sprites` 的话，可以使用 `webpack-spritesmith` 或者 `sprite-webpack-plugin`。
 
-  ```js
+我们以 `webpack-spritesmith` 为例，先安装依赖…
+
+```js
   module: {
     loaders: [
       // ... 这里需要有处理图片的 loader，如 file-loader
@@ -848,25 +854,26 @@ https://juejin.im/post/5ae9ae5e518825672f19b094#comment
       },
     }),
   ],...
-  ```
+```
 
-- 在你需要的样式代码中引入 `sprite.styl` 后调用需要的 `mixins` 即可
+在你需要的样式代码中引入 `sprite.styl` 后调用需要的 `mixins` 即可
 
-  ```js
+```js
   @import '~sprite.styl'
   
   .close-button
       sprite($close)
   .open-button
       sprite($open)
-  ```
+```
 
-- 如果你使用的是 `webpack 4.x`，你需要配合使用 `postcss` 和 `postcss-sprites`，才能实现 `CSS Sprites` 的相关构建
+如果你使用的是 `webpack 4.x`，你需要配合使用 `postcss` 和 `postcss-sprites`，才能实现 `CSS Sprites` 的相关构建
 
 ### 图片压缩
 
-- 在一般的项目中，图片资源会占前端资源的很大一部分，既然代码都进行压缩了，占大头的图片就更不用说了
-- 我们之前提及使用 `file-loader` 来处理图片文件，在此基础上，我们再添加一个 `image-webpack-loader` 来压缩图片文件。简单的配置如下…
+在一般的项目中，图片资源会占前端资源的很大一部分，既然代码都进行压缩了，占大头的图片就更不用说了
+
+我们之前提及使用 `file-loader` 来处理图片文件，在此基础上，我们再添加一个 `image-webpack-loader` 来压缩图片文件。简单的配置如下…
 
   ```js
   module.exports = {
@@ -910,16 +917,19 @@ https://juejin.im/post/5ae9ae5e518825672f19b094#comment
 
 ### 使用 DataURL
 
-- 有的时候我们的项目中会有一些很小的图片，因为某些缘故并不想使用 `CSS Sprites` 的方式来处理（譬如小图片不多，因此引入 CSS Sprites 感觉麻烦），那么我们可以在 webpack 中使用 `url-loader` 来处理这些很小的图片…
-- `url-loader` 和 `file-loader` 的功能类似，但是在处理文件的时候，可以通过配置指定一个大小，当文件小于这个配置值时，`url-loader` 会将其转换为一个 `base64` 编码的 `DataURL`
+有的时候我们的项目中会有一些很小的图片，因为某些缘故并不想使用 `CSS Sprites` 的方式来处理（譬如小图片不多，因此引入 CSS Sprites 感觉麻烦），那么我们可以在 webpack 中使用 `url-loader` 来处理这些很小的图片…
+
+`url-loader` 和 `file-loader` 的功能类似，但是在处理文件的时候，可以通过配置指定一个大小，当文件小于这个配置值时，`url-loader` 会将其转换为一个 `base64` 编码的 `DataURL`
 
 ## 代码压缩
 
-- `webpack 4.x` 版本运行时，`mode` 为 `production` 即会启动压缩 `JS` 代码的插件，而对于 `webpack` `3.x`，使用压缩 `JS` 代码插件的方式也已经介绍过了。在生产环境中，压缩 `JS` 代码基本是一个必不可少的步骤，这样可以大大减小 `JavaScript` 的体积，相关内容这里不再赘述。
-- 除了 JS 代码之外，我们一般还需要 HTML 和 CSS 文件，这两种文件也都是可以压缩的，虽然不像 JS 的压缩那么彻底（替换掉长变量等），只能移除空格换行等无用字符，但也能在一定程度上减小文件大小。在 webpack 中的配置使用也不是特别麻烦，所以我们通常也会使用。
-- 对于 HTML 文件，之前介绍的 `html-webpack-plugin` 插件可以帮助我们生成需要的 HTML 并对其进行压缩…
+`webpack 4.x` 版本运行时，`mode` 为 `production` 即会启动压缩 `JS` 代码的插件，而对于 `webpack` `3.x`，使用压缩 `JS` 代码插件的方式也已经介绍过了。在生产环境中，压缩 `JS` 代码基本是一个必不可少的步骤，这样可以大大减小 `JavaScript` 的体积，相关内容这里不再赘述。
 
-  ```js
+除了 JS 代码之外，我们一般还需要 HTML 和 CSS 文件，这两种文件也都是可以压缩的，虽然不像 JS 的压缩那么彻底（替换掉长变量等），只能移除空格换行等无用字符，但也能在一定程度上减小文件大小。在 webpack 中的配置使用也不是特别麻烦，所以我们通常也会使用。
+
+对于 HTML 文件，之前介绍的 `html-webpack-plugin` 插件可以帮助我们生成需要的 HTML 并对其进行压缩…
+
+```js
   module.exports = {
     // ...
     plugins: [
@@ -933,10 +943,11 @@ https://juejin.im/post/5ae9ae5e518825672f19b094#comment
       }),
     ],
   }...
-  ```
+```
 
-- 如上，使用 `minify` 字段配置就可以使用 `HTML` 压缩，这个插件是使用 `html-minifier` 来实现 `HTML` 代码压缩的，`minify` 下的配置项直接透传给 `html-minifier`，配置项参考 `html-minifier` 文档即可。
-- 对于 CSS 文件，我们之前介绍过用来处理 CSS 文件的 `css-loader`，也提供了压缩 CSS 代码的功能：…
+如上，使用 `minify` 字段配置就可以使用 `HTML` 压缩，这个插件是使用 `html-minifier` 来实现 `HTML` 代码压缩的，`minify` 下的配置项直接透传给 `html-minifier`，配置项参考 `html-minifier` 文档即可。
+
+对于 CSS 文件，我们之前介绍过用来处理 CSS 文件的 `css-loader`，也提供了压缩 CSS 代码的功能：…
 
   ```js
   module.exports = {
@@ -963,7 +974,7 @@ https://juejin.im/post/5ae9ae5e518825672f19b094#comment
   }...
   ```
 
-- 在 `css-loader` 的选项中配置 `minimize` 字段为 `true` 来使用 `CSS` 压缩代码的功能。`css-loader` 是使用 `cssnano` 来压缩代码的，`minimize` 字段也可以配置为一个对象，来将相关配置传递给 `cssnano`…
+在 `css-loader` 的选项中配置 `minimize` 字段为 `true` 来使用 `CSS` 压缩代码的功能。`css-loader` 是使用 `cssnano` 来压缩代码的，`minimize` 字段也可以配置为一个对象，来将相关配置传递给 `cssnano`…
 
 ### Babel-loader 的 Styling
 
@@ -999,11 +1010,15 @@ All optional newlines and whitespace will be omitted when generating code in com
 
 ## 分离代码文件
 
-- 关于分离 CSS 文件这个主题，之前在介绍如何搭建基本的前端开发环境时有提及，在 `webpack` 中使用 `extract-text-webpack-plugin` 插件即可。
-- 先简单解释一下为何要把 CSS 文件分离出来，而不是直接一起打包在 JS 中。最主要的原因是我们希望更好地利用缓存。
-- 假设我们原本页面的静态资源都打包成一个 JS 文件，加载页面时虽然只需要加载一个 JS 文件，但是我们的代码一旦改变了，用户访问新的页面时就需要重新加载一个新的 JS 文件。有些情况下，我们只是单独修改了样式，这样也要重新加载整个应用的 JS 文件，相当不划算。
-- 还有一种情况是我们有多个页面，它们都可以共用一部分样式（这是很常见的，CSS Reset、基础组件样式等基本都是跨页面通用），如果每个页面都单独打包一个 JS 文件，那么每次访问页面都会重复加载原本可以共享的那些 CSS 代码。如果分离开来，第二个页面就有了 CSS 文件的缓存，访问速度自然会加快。虽然对第一个页面来说多了一个请求，但是对随后的页面来说，缓存带来的速度提升相对更加可观…
-- `3.x` 以前的版本是使用 `CommonsChunkPlugin` 来做代码分离的，而 `webpack 4.x` 则是把相关的功能包到了 `optimize.splitChunks` 中，直接使用该配置就可以实现代码分离。
+关于分离 CSS 文件这个主题，之前在介绍如何搭建基本的前端开发环境时有提及，在 `webpack` 中使用 `extract-text-webpack-plugin` 插件即可。
+
+先简单解释一下为何要把 CSS 文件分离出来，而不是直接一起打包在 JS 中。最主要的原因是我们希望更好地利用缓存。
+
+假设我们原本页面的静态资源都打包成一个 JS 文件，加载页面时虽然只需要加载一个 JS 文件，但是我们的代码一旦改变了，用户访问新的页面时就需要重新加载一个新的 JS 文件。有些情况下，我们只是单独修改了样式，这样也要重新加载整个应用的 JS 文件，相当不划算。
+
+还有一种情况是我们有多个页面，它们都可以共用一部分样式（这是很常见的，CSS Reset、基础组件样式等基本都是跨页面通用），如果每个页面都单独打包一个 JS 文件，那么每次访问页面都会重复加载原本可以共享的那些 CSS 代码。如果分离开来，第二个页面就有了 CSS 文件的缓存，访问速度自然会加快。虽然对第一个页面来说多了一个请求，但是对随后的页面来说，缓存带来的速度提升相对更加可观…
+
+`3.x` 以前的版本是使用 `CommonsChunkPlugin` 来做代码分离的，而 `webpack 4.x` 则是把相关的功能包到了 `optimize.splitChunks` 中，直接使用该配置就可以实现代码分离。
 
   ```js
   module.exports = {
@@ -1017,16 +1032,16 @@ All optional newlines and whitespace will be omitted when generating code in com
   }...
   ```
 
-- 我们需要在 HTML 中引用两个构建出来的 JS 文件，并且 `commons.js` 需要在入口代码之前。下面是个简单的例子
+我们需要在 HTML 中引用两个构建出来的 JS 文件，并且 `commons.js` 需要在入口代码之前。下面是个简单的例子
 
-  ```html
+```html
   <script src="commons.js" charset="utf-8"></script>
   <script src="entry.bundle.js" charset="utf-8"></script>
-  ```
+```
 
-- 如果你使用了 `html-webpack-plugin`，那么对应需要的 JS 文件都会在 HTML 文件中正确引用，不用担心。如果没有使用，那么你需要从 `stats` 的 `entrypoints` 属性来获取入口应该引用哪些 JS 文件，可以参考 Node API 了解如何从 stats 中获取信息…
+如果你使用了 `html-webpack-plugin`，那么对应需要的 JS 文件都会在 HTML 文件中正确引用，不用担心。如果没有使用，那么你需要从 `stats` 的 `entrypoints` 属性来获取入口应该引用哪些 JS 文件，可以参考 Node API 了解如何从 stats 中获取信息…
 
-### **显式配置共享类库可以这么操作**
+### 显式配置共享类库可以这么操作
 
 ```js
   module.exports = {
@@ -1087,31 +1102,35 @@ All optional newlines and whitespace will be omitted when generating code in com
 
 ### 按需加载模块
 
-- 在 webpack 的构建环境中，要按需加载代码模块很简单，遵循 ES 标准的动态加载语法 `dynamic-import` 来编写代码即可，`webpack` 会自动处理使用该语法编写的模块
+在 webpack 的构建环境中，要按需加载代码模块很简单，遵循 ES 标准的动态加载语法 `dynamic-import` 来编写代码即可，`webpack` 会自动处理使用该语法编写的模块
 
-  ```js
+```js
   // import 作为一个方法使用，传入模块名即可，返回一个 promise 来获取模块暴露的对象
   // 注释 webpackChunkName: "lodash" 可以用于指定 chunk 的名称，在输出文件时有用
   import(/* webpackChunkName: "lodash" */ 'lodash').then((_) => { 
     console.log(_.lash([1, 2, 3])) // 打印 3
   })...
-  ```
+```
 
-- 注意一下，如果你使用了 `Babel` 的话，还需要 `Syntax Dynamic Import` 这个 `Babel` 插件来处理 `import()` 这种语法。
-- 由于动态加载代码模块的语法依赖于 `promise`，对于低版本的浏览器，需要添加 `promise` 的 `polyfill` 后才能使用。
-- 如上的代码，webpack 构建时会自动把 `lodash` 模块分离出来，并且在代码内部实现动态加载 `lodash` 的功能。动态加载代码时依赖于网络，其模块内容会异步返回，所以 import 方法是返回一个 `promise` 来获取动态加载的模块内容。
-- `import` 后面的注释 `webpackChunkName: "lodash"` 用于告知 `webpack` 所要动态加载模块的名称。我们在 webpack 配置中添加一个 `output.chunkFilename` 的配置…
+注意一下，如果你使用了 `Babel` 的话，还需要 `Syntax Dynamic Import` 这个 `Babel` 插件来处理 `import()` 这种语法。
 
-  ```js
+由于动态加载代码模块的语法依赖于 `promise`，对于低版本的浏览器，需要添加 `promise` 的 `polyfill` 后才能使用。
+
+如上的代码，webpack 构建时会自动把 `lodash` 模块分离出来，并且在代码内部实现动态加载 `lodash` 的功能。动态加载代码时依赖于网络，其模块内容会异步返回，所以 import 方法是返回一个 `promise` 来获取动态加载的模块内容。
+
+`import` 后面的注释 `webpackChunkName: "lodash"` 用于告知 `webpack` 所要动态加载模块的名称。我们在 webpack 配置中添加一个 `output.chunkFilename` 的配置…
+
+```js
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[hash:8].js',
     chunkFilename: '[name].[hash:8].js' // 指定分离出来的代码文件的名称
   },...
-  ```
+```
 
-- 这样就可以把分离出来的文件名称用 lodash 标识了
-- 如果没有添加注释 `webpackChunkName: "lodash" 以及 output.chunkFilename` 配置，那么分离出来的文件名称会以简单数字的方式标识，不便于识别
+这样就可以把分离出来的文件名称用 lodash 标识了
+
+如果没有添加注释 `webpackChunkName: "lodash" 以及 output.chunkFilename` 配置，那么分离出来的文件名称会以简单数字的方式标识，不便于识别
 
 ### 完整代码
 
@@ -1782,3 +1801,7 @@ Webpack 通过静态分析您的代码，找到所有被引用的模块，然后
 要解决将 lodash 打包进构建产物中的问题，您需要通过配置 Webpack 的 "externals" 选项来将 lodash 声明为外部依赖，而不是改变包管理工具。这样，Webpack 在构建时就会将 lodash 视为外部资源，而不会将其打包进最终的输出文件中。
 
 总结而言，使用 pnpm 可以减少重复下载的依赖并节省磁盘空间，但要解决 Webpack 打包引入依赖的问题，仍需要在 Webpack 配置中使用 "externals" 选项来声明外部依赖。
+
+## 结合 Talos Loader 说一说使用经历
+
+webpack 提供钩子函数, 在特定时刻处理产物字符串, 把 css 处理后的结果拼接到 js 文件的末尾. 仅此而已
