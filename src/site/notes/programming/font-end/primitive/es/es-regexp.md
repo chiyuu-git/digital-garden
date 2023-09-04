@@ -3278,6 +3278,36 @@ function kebabToCamel (str:string) {
 
 ![es-regexp](programming/font-end/primitive/es/es-regexp.md#匹配位置的案例)
 
+## snake_case 2 caemelCase
+
+```js
+function snakeToCamel(str) {
+  // 移除首尾的下划线
+  str = str.replace(/^_+|_+$/g, '');
+
+  // 将多个连续的下划线替换为单个下划线
+  str = str.replace(/_+/g, '_');
+
+  // 拆分字符串，并将每个单词的首字母大写
+  return str.split('_').map((word, index) => {
+    if (index === 0) {
+      // 首个单词，保持小写
+      return word.toLowerCase();
+    } else {
+      // 后续单词，首字母大写
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    }
+  }).join('');
+}
+
+// 测试各种情况
+console.log(snakeToCamel('_my_snake_case_string')); // 输出: mySnakeCaseString
+console.log(snakeToCamel('My_Snake_Case_String')); // 输出: mySnakeCaseString
+console.log(snakeToCamel('my__snake__case__string')); // 输出: mySnakeCaseString
+console.log(snakeToCamel('my_snake_case_string_')); // 输出: mySnakeCaseString
+
+```
+
 ## 常用正则
 
 [《前端表单验证常用的 15 个 JS 正则表达式》](http://caibaojian.com/form-regexp.html) [《JS 常用正则汇总》](https://www.jianshu.com/p/1cb5229325a7)
