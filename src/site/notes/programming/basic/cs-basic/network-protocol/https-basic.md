@@ -148,7 +148,7 @@ HTTPS 采用混合的加密机制，使用公开密钥加密用于传输，对�
 
 ### TLS 握手过程
 
-TLS 握手过程;;[link](https://digital-garden.chiyuu.top/programming/basic/cs-basic/network-protocol/https-basic/#tls) <!--SR:!2023-09-01,3,250-->
+TLS 握手过程;;[link](https://digital-garden.chiyuu.top/programming/basic/cs-basic/network-protocol/https-basic/#tls) <!--SR:!2023-09-10,8,250-->
 
 并不是在 tcp 的三次握手的基础上增加一次握手, 而是完全不同的四次握手
 
