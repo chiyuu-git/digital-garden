@@ -64,7 +64,7 @@ if (
 
 ## Class 写法和 Hook 写法的区别
 
-Class 写法和 Hook 写法的区别;;[react-faq](https://digital-garden.chiyuu.top/programming/faq/react-faq/#class-hook) <!--SR:!2023-08-30,3,250-->
+Class 写法和 Hook 写法的区别;;[react-faq](https://digital-garden.chiyuu.top/programming/faq/react-faq/#class-hook) <!--SR:!2023-09-13,11,250-->
 
 ### 差异点
 
@@ -104,7 +104,7 @@ Class 相比函数式组件的优势, 但是实际中这些都是被忽略不计
 
 ## 使用 Hooks 有踩过哪些坑？
 
-使用 Hooks 有踩过哪些坑？;;null <!--SR:!2023-08-31,3,250-->
+使用 Hooks 有踩过哪些坑？;;[](https://digital-garden.chiyuu.top/programming/faq/react-faq/#hooks)<!--SR:!2023-09-12,10,250-->
 
 1. useEffect 中没有正确设置依赖数组导致死循环
 2. useEffect 中没有清除副作用导致内存泄漏
@@ -139,7 +139,7 @@ export default Counter;
 
 ## Hooks 实现原理？
 
-Hooks 实现原理？;;[react-hook-advanced](programming/font-end/framework/react/react-hook-advanced.md#Hooks%20实现原理) <!--SR:!2023-08-31,3,250-->
+Hooks 实现原理？;;[react-hook-advanced](https://digital-garden.chiyuu.top/programming/font-end/framework/react/react-hook-advanced/#hooks) <!--SR:!2023-09-11,9,250-->
 
 ## JSX 和模板引擎有什么区别？
 
