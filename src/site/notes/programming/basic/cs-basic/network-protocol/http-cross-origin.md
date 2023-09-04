@@ -423,7 +423,7 @@ Vary: Origin
 
 ### Origin
 
-`Origin` 首部字段表明预检请求或实际请求的源站。
+`Origin` 首部字段表明预检请求或实际请求的源站
 
   ```html
   Origin: <origin>
