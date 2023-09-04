@@ -69,7 +69,6 @@ V8 实现了准确式 GC，GC 算法采用了分代式垃圾回收机制。因�
 
 清除对象后会造成堆内存出现碎片的情况，当碎片超过一定限制后会启动压缩算法。在压缩过程中，将活的对象像一端移动，直到所有对象都移动完成然后清理掉不需要的内存。
 
-
 # 内存泄漏
 
 - 意外的全局变量
@@ -80,3 +79,42 @@ V8 实现了准确式 GC，GC 算法采用了分代式垃圾回收机制。因�
 还有常见的 event listener 忘记取消监听了
 
 详细资料可以参考： [《JavaScript 内存泄漏教程》](http://www.ruanyifeng.com/blog/2017/04/memory-leak.html) [《4 类 JavaScript 内存泄漏及如何避免》](https://jinlong.github.io/2016/05/01/4-Types-of-Memory-Leaks-in-JavaScript-and-How-to-Get-Rid-Of-Them/) [《杜绝 js 中四种内存泄漏类型的发生》](https://juejin.im/entry/5a64366c6fb9a01c9332c706) [《javascript 典型内存泄漏及 chrome 的排查方法》](https://segmentfault.com/a/1190000008901861)
+
+## 定位内存泄漏的方法
+
+### 浏览器
+
+Chrome 浏览器查看内存占用，按照以下步骤操作:
+
+1. 1. 打开开发者工具，选择 Timeline 面板
+2. 在顶部的 `Capture` 字段里面勾选 Memory
+3. 点击左上角的录制按钮。
+4. 在页面上进行各种操作，模拟用户的使用情况。
+5. 一段时间后，点击对话框的 stop 按钮，面板上就会显示这段时间的内存占用情况。
+
+### 命令行
+
+命令行可以使用 Node 提供的 [`process.memoryUsage`](https://nodejs.org/api/process.html#process_process_memoryusage) 方法。
+
+```js
+console.log(process.memoryUsage());
+// { rss: 27709440,
+//  heapTotal: 5685248,
+//  heapUsed: 3449392,
+//  external: 8772 }
+```
+
+`process.memoryUsage` 返回一个对象，包含了 Node 进程的内存占用信息。该对象包含四个字段，单位是字节，[含义](http://stackoverflow.com/questions/12023359/what-do-the-return-values-of-node-js-process-memoryusage-stand-for) 如下。
+
+![](/img/user/programming/font-end/browser-core/garbage-collecion/image-20230903195933635.png)
+
+- rss（resident set size）：所有内存占用，包括指令区和堆栈。
+- heapTotal：" 堆 " 占用的内存，包括用到的和没用到的。
+- heapUsed：用到的堆的部分。
+- external： V8 引擎内部的 C++ 对象占用的内存。
+
+## 堆外的内存泄漏
+
+[V8 堆外内存 ArrayBuffer 垃圾回收的实现-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/2004253)
+
+## WeekSet 和 WeekMap 处理内存泄漏
