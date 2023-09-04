@@ -1672,30 +1672,38 @@ html 开启 hidden 就可以禁止默认滚动条，因为默认滚动条都是 
 
 # 如何实现暗黑模式?
 
-如何实现暗黑模式;;[](https://digital-garden.chiyuu.top/programming/faq/ui-faq/#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%9A%97%E9%BB%91%E6%A8%A1%E5%BC%8F?)<!--SR:!2023-08-30,1,230-->
+如何实现暗黑模式;;[](https://digital-garden.chiyuu.top/programming/faq/ui-faq/#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%9A%97%E9%BB%91%E6%A8%A1%E5%BC%8F?)<!--SR:!2023-09-08,6,230-->
 
 实现暗黑模式（Dark Mode）可以让您的网站或应用在夜间或低光环境下提供更舒适的用户体验。下面是一些常见的方法来实现暗黑模式：
 
 1. **CSS 变量和媒体查询**： 使用 CSS 变量（Custom Properties）结合媒体查询可以实现简单的暗黑模式。您可以定义暗色和亮色主题的颜色变量，然后在媒体查询中根据用户的偏好（如系统的暗色模式设置）切换主题。`prefers-color-scheme` 是一个 CSS 媒体查询，用于检测用户操作系统或设备的主题偏好设置，以便在网页中应用相应的颜色方案。主题偏好设置通常包括明亮（light）和暗黑（dark）两种选项。 当用户在操作系统或设备中更改主题偏好设置时，浏览器会自动应用相应的样式。示例代码如下：
 
    ```css
-   :root {
-     --background-color: white;
-     --text-color: black;
-   }
+:root {
+ --background-color: white;
+ --text-color: black;
+}
 
-   @media (prefers-color-scheme: dark) {
-     :root {
-       --background-color: black;
-       --text-color: white;
-     }
-   }
+@media (prefers-color-scheme: dark) {
+ :root {
+   --background-color: black;
+   --text-color: white;
+ }
+}
 
-   body {
-     background-color: var(--background-color);
-     color: var(--text-color);
-   }
+body {
+ background-color: var(--background-color);
+ color: var(--text-color);
+}
    ```
+
+```js
+// 获取包含CSS变量的元素，例如一个具有变量的元素的根元素
+const root = document.documentElement;
+
+// 修改CSS变量的值
+root.style.setProperty('--main-color', '#ff5733');
+```
 
 2. **JavaScript 和状态管理**： 使用 JavaScript 和状态管理库（如 React 的 Context 或 Redux）可以更灵活地切换暗黑模式。您可以在用户点击切换按钮或根据系统设置时触发状态更新。这种方法可以让您在应用中灵活地控制不同主题的样式和状态。
 3. **CSS 框架和库**： 许多 CSS 框架和库（如 Tailwind CSS 和 Bootstrap）已经提供了内置的暗黑模式支持。您可以根据文档中的指导来设置和切换不同的主题。
