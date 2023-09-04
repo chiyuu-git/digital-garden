@@ -5,7 +5,7 @@
 
 # 前端路由
 
-前端路由;;[](https://digital-garden.chiyuu.top/programming/font-end/framework/framwork-common/framework-common/#%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1)
+前端路由;;[](https://digital-garden.chiyuu.top/programming/font-end/framework/framwork-common/framework-common/#%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1) <!--SR:!2023-09-05,3,250-->
 
 ## 什么是前端路由
 
