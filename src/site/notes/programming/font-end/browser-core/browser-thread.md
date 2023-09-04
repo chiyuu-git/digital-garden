@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/font-end/browser-core/browser-thread/"}
+{"dg-publish":true,"permalink":"/programming/font-end/browser-core/browser-thread/","tags":["review"]}
 ---
 
 
@@ -77,7 +77,7 @@ setTimeout() 的回调函数是在主线程执行的
 
 定时器回调函数只有在运行栈中的代码全部执行完后才有可能执行
 
-alert() 之后，暂停了主线程，也暂停了计时，不点确定，定时器的回调函数一直不会执行
+alert() 之后，暂停了主线程，不点确定，定时器的回调函数一直不会执行
 
 ## 为什么 Js 要用单线程模式, 而不用多线程模式?
 
@@ -931,7 +931,7 @@ async/await仅仅影响的是函数内的执行，而不会影响到函数体外
   // 1
   ```
 
-# 为什么 JS 要是异步的，能解决什么问题
+## 为什么 JS 要是异步的，能解决什么问题
 
 因为 JS 是单线程的, 说说 UI 单线程
 
