@@ -23,7 +23,9 @@
 
 ## 如何优化 FMP
 
-[!browser-optimize](../font-end/browser-core/browser-optimize/!browser-optimize.md)
+变体: 页面卡顿问题如何分析解决
+
+[!performance-optimization](performance-optimization/!performance-optimization.md)
 
 ## 一个列表，假设有 100000 个数据，这个该怎么办
 
@@ -39,7 +41,7 @@
 
 ## 当你在浏览器中输入 Google.com 并且按下回车之后发生了什么
 
-当你在浏览器中输入 Google.com 并且按下回车之后发生了什么;;null <!--SR:!2023-08-31,3,250-->
+当你在浏览器中输入 Google.com 并且按下回车之后发生了什么;;[](https://digital-garden.chiyuu.top/programming/faq/audition-faq/#a-href-http-google-com-target-blank-class-external-link-google-com-a)<!--SR:!2023-09-14,12,250-->
 
 ### *1. 浏览器查找域名的 IP 地址
 
@@ -68,33 +70,35 @@
 1. 通过将 IP 地址与我们本机的子网掩码相与，我们可以判断我们是否与请求主机在同一个子网里，如果 在同一个子网里，我们可以使用 APR 协议获取到目的主机的 MAC 地址
 2. 如果我们不在一个子网里，那么我们的请求应该转发给我们的网关，由它代为转发，此时同样可以通过 ARP 协议来获取网关的 MAC 地址，此时目的主机的 MAC 地址应该为网关的地址。
 
-### 3. 建立 TCP 连接
-
-[三次握手建立 TCP 连接](../basic/cs-basic/network/tcp.md#三次握手建立%20TCP%20连接)
-
-### 4. HTTPS 的 TLS 握手
-
-[TLS 握手过程](programming/basic/cs-basic/network-protocol/https-basic.md#TLS%20握手过程)
-
-### 5. 浏览器发送 HTTP 请求
-
-- 请求方法 URI 协议/版本
-- 请求头 (Request Header)
-- 请求正文
-
-### 6. 服务器响应
+### 3. Nginx 代理
 
 一些大一点的网站会将你的请求到反向代理服务器中，因为当网站访问量非常大，网站越来越慢，一台服务器已经不够用了。于是将同一个应用部署在多台服务器上，将大量用户的请求分配给多台机器处理。
 
 此时，客户端不是直接通过 HTTP 协议访问某网站应用服务器，而是先请求到 Nginx，Nginx 再请求应用服务器，然后将结果返回给客户端，这里 Nginx 的作用是反向代理服务器。同时也带来了一个好处，其中一台服务器万一挂了，只要还有其他服务器正常运行，就不会影响用户使用。
 
-当通过 Nginx 的反向代理，我们到达了 web 服务器，服务器端会返回一个 html 文件作为响应，浏览器接收到响应后，开始对 html 文件进行解析，开始页面的渲染过程。
-
 > 服务器给浏览器响应一个 301 永久重定向响应，这样浏览器就会访问 `http://www.google.com/` 而非 `http://google.com/`
 >
 > 为什么服务器一定要重定向而不是直接发送用户想看的网页内容呢？其中一个原因跟搜索引擎排名有关。如果一个页面有两个地址，就像 `http://www.yy.com/` 和 `http://yy.com/`，搜索引擎会认为它们是两个网站，结果造成每个搜索链接都减少从而降低排名。而搜索引擎知道 301 永久重定向是什么意思，这样就会把访问带 www 的和不带 www 的地址归到同一个网站排名下。还有就是用不同的地址会造成缓存友好性变差，当一个页面有好几个名字时，它可能会在缓存里出现好几次。
 
-### 7. 浏览器解析 HTML
+### 4. 建立 TCP 连接
+
+[三次握手建立 TCP 连接](../basic/cs-basic/network/tcp.md#三次握手建立%20TCP%20连接)
+
+### 5. HTTPS 的 TLS 握手
+
+[TLS 握手过程](programming/basic/cs-basic/network-protocol/https-basic.md#TLS%20握手过程)
+
+### 6. 浏览器发送 HTTP 请求
+
+- 请求方法 URI 协议/版本
+- 请求头 (Request Header)
+- 请求正文
+
+### 7. 服务器响应
+
+当通过 Nginx 的反向代理，我们到达了 web 服务器，服务器端会返回一个 html 文件作为响应，浏览器接收到响应后，开始对 html 文件进行解析，开始页面的渲染过程。
+
+### 8. 浏览器解析 HTML
 
 浏览器首先会根据 html 文件构建 DOM 树，根据解析到的 css 文件构建 CSSOM 树，如果遇到 script 标签，则判端是否含有 defer 或者 async 属性，要不然 script 的加载和执行会造成页面的渲染的阻塞。当 DOM 树和 CSSOM 树建立好后，根据它们来构建渲染树。渲染树构建好后，会根据渲染树来进行布局。布局完成后，最后使用浏览器的 UI 接口对页面进行绘制。这个时候整个页面就显示出来了。
 
@@ -106,7 +110,7 @@
 
 ### 融入 SSR 的过程
 
-### 8. TCP 四次挥手 断开连接
+### 9. TCP 四次挥手 断开连接
 
 最后一步是 TCP 断开连接的四次挥手过程。
 
