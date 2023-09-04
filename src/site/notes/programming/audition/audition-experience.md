@@ -236,11 +236,7 @@ WHERE 关键字和 HAVING 关键字的区别
 
 ## React 状态管理
 
-可以简单说一下 redux 的思想
-
 ## React-router
-
-history 和 hash 的区别
 
 ### 实现 Keep-alive
 
@@ -251,3 +247,86 @@ history 和 hash 的区别
 ## Table 10w
 
 ## Webpack 配置
+
+# 得物一面 2023-0829
+
+商家和国际产品团队, 中后台为主. 国际业务分为进出口, 包含 B 端 和 C 端, 得物在进口做了挺久了. 出口是新的.
+
+技术栈是以 react.
+
+## 协同编辑器算法
+
+## 选择 Tiptap 的原因
+
+1. slate
+2. quill
+3. tailwind、ts
+4. tiptap-san
+
+## Tiptap-san 具体功能
+
+## 小程序 Js 与 Native 通信的方式
+
+[!hybrid](../hybrid/!hybrid.md)
+
+## 请求并发任务队列
+
+# 小红书一面 2023-08-30
+
+## 聊项目
+
+三个都聊了一下
+
+## 实现 Event-bus
+
+on emit off emit 支持传参数
+
+## Leetcode 14
+
+# 富途一面 2023-08-31
+
+## 同构字符串
+
+## This 关键字
+
+## Bind Call Apply
+
+## 垃圾回收和内存泄漏
+
+## 堆外的内存泄漏?
+
+## 数据库查询优化
+
+涉及十几个 sql 语句. 在不改变表结构的前提下去优化.
+
+用视图.
+
+## 下划线转换成驼峰
+
+要考虑各种边界 case
+
+不信任, 健壮, 避免 error
+
+## 从输入网址的到...
+
+# 滴滴一面 2023-09-01
+
+## 二分 + 防抖 + 截流
+
+## 事件机制
+
+## Promise Then Catch
+
+## 富文本的序列化于反序列化
+
+## Webpack 运行机制
+
+也讲了一下 tsup 打包工具
+
+## Tiptap-san Api 如何设计
+
+## 小程序 Native 主要是为了解决什么问题
+
+## 跨域
+
+## 缓存
