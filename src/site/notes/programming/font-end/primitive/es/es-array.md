@@ -2011,6 +2011,7 @@ ES5 提供了 filter 方法，我们可以用来简化外层循环：
 | [[programming/basic/leetcode/220. 存在重复元素 III\|220. 存在重复元素 III]]                     |
 | [[programming/basic/leetcode/21. 合并两个有序链表\|21. 合并两个有序链表]]                           |
 | [[programming/basic/leetcode/14. 最长公共前缀\|14. 最长公共前缀]]                               |
+| [[programming/basic/leetcode/179. 最大数\|179. 最大数]]                                   |
 
 { .block-language-dataview}
 
