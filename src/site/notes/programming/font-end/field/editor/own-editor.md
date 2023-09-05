@@ -1304,10 +1304,13 @@ splice 11[]
 
 项目开发的过程中我还沉淀了 tiptap-san 工具库, 支持以 san 框架描述编辑器视图, 并推广给其他团队使用. 通过参考 tiptap-react、tiptap-vue 的逻辑, 实现了 tiptap-san
 
+本身就支持原生 JS 开发编辑器节点. 通过 tiptap-san 简化工作.
+
 #### Detail
 
 1. 绑定框架的生命周期和编辑器节点的生命周期
-2. 获取 renderHTML, append 到编辑器节点当中
+2. 注入编辑器数据
+3. 获取 renderHTML, append 到编辑器节点当中
 
 ### 基于方法论处理难题
 
