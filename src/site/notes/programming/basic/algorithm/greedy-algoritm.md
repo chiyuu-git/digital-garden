@@ -175,8 +175,8 @@ Kruskal 算法
 | -------------------------------------------------------------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
 | [[programming/basic/leetcode/435. 无重叠区间\|435. 无重叠区间]]             | medium     | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/math/interval</li><li>#leetcode/dp</li><li>#leetcode/unsolved</li></ul> | 2023-07-08-Sat, 9:18:12 pm  |
 | [[programming/basic/leetcode/452. 用最少数量的箭引爆气球\|452. 用最少数量的箭引爆气球]] | medium     | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/unsolved</li><li>#leetcode/math/interval</li></ul>                      | 2023-07-08-Sat, 8:20:17 pm  |
-| [[programming/basic/leetcode/56. 合并区间\|56. 合并区间]]                 | medium     | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/math/interval</li></ul>                                                 | 2023-07-09-Sun, 11:25:41 am |
 | [[programming/basic/leetcode/57. 插入区间\|57. 插入区间]]                 | medium     | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/math/interval</li></ul>                                                 | 2023-08-28-Mon, 9:10:13 am  |
+| [[programming/basic/leetcode/56. 合并区间\|56. 合并区间]]                 | medium     | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/math/interval</li></ul>                                                 | 2023-07-09-Sun, 11:25:41 am |
 | [[programming/basic/leetcode/763. 划分字母区间\|763. 划分字母区间]]           | medium     | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/math/interval</li><li>#leetcode/unsolved</li></ul>                      | 2023-07-09-Sun, 10:52:30 am |
 
 { .block-language-dataview}
