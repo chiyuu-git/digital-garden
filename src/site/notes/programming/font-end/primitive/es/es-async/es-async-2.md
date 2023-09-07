@@ -519,7 +519,7 @@
   ```
 
 - 手动执行其实就是用 `then` 方法，层层添加回调函数。理解了这一点，就可以写出一个自动执行器。
-- ```javascript
+ ```javascript
   function run(gen){
     var g = gen();
   
