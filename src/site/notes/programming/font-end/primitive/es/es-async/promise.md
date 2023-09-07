@@ -765,6 +765,8 @@ function promiseAll(promises) {
 
 ## 实现并发任务队列
 
+执行的任务一定是 unshift 出来的, 而不是加一个标记, 不然清空队列太难搞了
+
 ```js
 // 实现一个异步任务处理函数handleAsyncTasks,函数第一个参数asyncTasks代表需要处理的任务列表,
 // 第二个参数n代表可以同时发起的任务数。所有任务完成后把处理结果按顺序放在数组里返回
