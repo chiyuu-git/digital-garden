@@ -155,7 +155,9 @@ var postOrderTraverseNode = function (node, callback) {
 2. 确定单层递归的逻辑
 3. 需要用到什么参数就补充什么参数, 再确定返回值即可
 
-## 前中后序遍历的迭代形式 @@@
+## 前中后序遍历的迭代形式
+
+前中后序遍历的迭代形式;;null
 
 本质上来说, 递归形式是利用了系统的栈, 改成迭代形式的话, 只要我们自己实现了和系统一样的栈就可以了. 其他逻辑都是相同的
 
@@ -737,12 +739,12 @@ sub-tree 类型, 往往不好使用层次遍历?
 
 | File                                                                         | difficulty | etags                                                                                                                                  | date-created                |
 | ---------------------------------------------------------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
-| [[programming/basic/leetcode/105. 从前序与中序遍历序列构造二叉树\|105. 从前序与中序遍历序列构造二叉树]] | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/divide-and-conquer</li><li>#leetcode/unsolved</li></ul>                    | 2023-06-12-Mon, 2:25:56 pm  |
 | [[programming/basic/leetcode/106. 从中序与后序遍历序列构造二叉树\|106. 从中序与后序遍历序列构造二叉树]] | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/divide-and-conquer</li><li>#leetcode/unsolved</li></ul>                    | 2023-06-13-Tue, 10:14:12 am |
+| [[programming/basic/leetcode/105. 从前序与中序遍历序列构造二叉树\|105. 从前序与中序遍历序列构造二叉树]] | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/divide-and-conquer</li><li>#leetcode/unsolved</li></ul>                    | 2023-06-12-Mon, 2:25:56 pm  |
 | [[programming/basic/leetcode/1448. 统计二叉树中好节点的数目\|1448. 统计二叉树中好节点的数目]]     | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li></ul>                                                                                    | 2023-08-25-Fri, 8:51:22 am  |
 | [[programming/basic/leetcode/226. 翻转二叉树\|226. 翻转二叉树]]                     | easy       | <ul><li>#leetcode/tree/traversal/sub-tree</li></ul>                                                                                    | 2023-06-03-Sat, 12:57:46 pm |
-| [[programming/basic/leetcode/222. 完全二叉树的节点个数\|222. 完全二叉树的节点个数]]           | easy       | <ul><li>#leetcode/tree/traversal/linear</li><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/tree/complete</li></ul>            | 2023-06-02-Fri, 5:08:35 pm  |
 | [[programming/basic/leetcode/236. 二叉树的最近公共祖先\|236. 二叉树的最近公共祖先]]           | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/tree/ansector</li><li>#leetcode/unsolved</li></ul>                         | 2023-06-15-Thu, 7:20:18 pm  |
+| [[programming/basic/leetcode/222. 完全二叉树的节点个数\|222. 完全二叉树的节点个数]]           | easy       | <ul><li>#leetcode/tree/traversal/linear</li><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/tree/complete</li></ul>            | 2023-06-02-Fri, 5:08:35 pm  |
 | [[programming/basic/leetcode/337. 打家劫舍 III\|337. 打家劫舍 III]]               | medium     | <ul><li>#leetcode/dp/iteration</li><li>#leetcode/recursive/memo</li><li>#leetcode/tree/traversal/sub-tree</li></ul>                    | 2023-07-14-Fri, 11:53:56 am |
 | [[programming/basic/leetcode/508. 出现次数最多的子树元素和\|508. 出现次数最多的子树元素和]]       | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/hash-table/count</li></ul>                                                 | 2023-06-03-Sat, 8:04:36 pm  |
 | [[programming/basic/leetcode/543. 二叉树的直径\|543. 二叉树的直径]]                   | easy       | <ul><li>#leetcode/tree/traversal/sub-tree</li></ul>                                                                                    | 2023-06-08-Thu, 2:58:58 pm  |
@@ -766,6 +768,8 @@ sub-tree 类型, 往往不好使用层次遍历?
 # 综合遍历
 
 同时具有线性遍历和子树遍历的特征
+
+可以把线性便利和子树遍历都结合到 dfs 中, 当从一个路径不断深入就是捕获的感觉, 当从子树开始不断汇总信息, 就是子树遍历
 
 [222. 完全二叉树的节点个数](../leetcode/222.%20完全二叉树的节点个数.md)
 
