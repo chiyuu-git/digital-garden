@@ -494,11 +494,11 @@ reverseListIteration() {
             return cur;
         };
 
+		// 这里的 prev 其实一直都是同一个, 也就是 head
         let prev = this.reverseListRecursion(cur.next);
         cur.next.next = cur;
         cur.next = null;
 
-        this.head = prev;
         return prev;
     }
   ```
