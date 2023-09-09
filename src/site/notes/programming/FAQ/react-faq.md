@@ -148,6 +148,20 @@ Hooks 实现原理？;;[react-hook-advanced](https://digital-garden.chiyuu.top/p
 3. JSX 太灵活就导致没法给编译器提供太多的优化线索，不好做静态优化，模板引擎可以在编译时做静态标记，性能更好。
 4. JSX 只是个编译工具，Vue 经过一定的配置也可以使用。
 
+## 如何优雅的实现弹窗
+
+jsx props children
+
+https://zh-hans.react.dev/learn/passing-props-to-a-component#passing-jsx-as-children
+
+createPortal
+
+https://zh-hans.react.dev/reference/react-dom/createPortal
+
+利用 createRoot
+
+https://zh-hans.react.dev/reference/react-dom/client/createRoot
+
 # 开发实践
 
 ## React 逻辑复用方式有哪些？
