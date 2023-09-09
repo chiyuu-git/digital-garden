@@ -706,3 +706,19 @@ preload 加载页面必需的资源如 CDN 上的字体文件，与 prefetch 预
 1. 提前将 HTML JS CSS 下载到 App 内部
 2. 在 App webview 中使用 file://协议加载页面文件
 3. 再用 Ajax 获取内容并展示（也结合 App 预取）
+
+# FAQ
+
+#faq/js
+
+## 场景题: 如何监测页面的掉帧情况?
+
+页面上有一个按钮, 点击之后会有一个弹窗, 弹窗之内会加载很多的图片, 如何监控从点击按钮到图片全部加载完成的这一段时间里的性能表现?
+
+### Performance Record
+
+通过浏览器开发者工具做记录, 在性能报告中查看 Frame Drops 事件
+
+### requestIdleCallback
+
+参考 [react-fiber](../../font-end/framework/react/react-fiber.md) 的思路, 在闲时做监控
