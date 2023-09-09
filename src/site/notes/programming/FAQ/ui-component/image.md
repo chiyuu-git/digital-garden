@@ -284,3 +284,19 @@ by chatgpt
 预加载指的是将所需的资源提前请求加载到本地，这样后面在需要用到时就直接从缓存取资源。通过预加载能够减少用户的等待时间，提高用户的体验。我了解的预加载的最常用的方式是使用 js 中的 image 对象，通过为 image 对象来设置 scr 属性，来实现图片的预加载。
 
 详细资料可以参考： [《懒加载和预加载》](https://juejin.im/post/5b0c3b53f265da09253cbed0) [《网页图片加载优化方案》](https://juejin.im/entry/5a73f38cf265da4e99575be3) [《基于用户行为的图片等资源预加载》](https://www.zhangxinxu.com/wordpress/2016/06/image-preload-based-on-user-behavior/)
+
+# FAQ
+
+#faq/component
+
+## 如何实现图片加载单次重试
+
+对于 react 关键就是要更新 source 来触发重渲染:
+
+1. 使用 loading src 更新 source
+2. 使用 img source 拼接时间戳, 触发 fetch
+3. 使用 key 值, 改变 key 值来触发组件的更新 https://zh-hans.react.dev/reference/react/useState#resetting-state-with-a-key
+
+### 本质: 优雅的 forceUpdate
+
+现在 forceUpdate 已经被废弃.
