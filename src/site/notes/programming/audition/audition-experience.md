@@ -330,3 +330,29 @@ on emit off emit 支持传参数
 ## 跨域
 
 ## 缓存
+
+# 拼多多一面 2023-09-07
+
+## 场景题: 监控掉帧情况
+
+[!performance-optimization](programming/FAQ/performance-optimization/!performance-optimization.md#场景题%20如何监测页面的掉帧情况)
+
+## 前端动画技术方案
+
+## 前端性能优化
+
+## 线上问题的排查思路
+
+## React createProtal
+
+## React Image reTry
+
+## Promise. race()
+
+# 支付宝 - 广告团队 2023-09-08
+
+## Npm 依赖分析, 是否有循环依赖
+
+dfs 回溯、递归
+
+## 然后就是项目为主
