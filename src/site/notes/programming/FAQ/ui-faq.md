@@ -514,6 +514,14 @@ testNode.style.top = startY + Math.cos( deg*Math.PI/180 )*step*2+"px";
 
 ### Demo 阳光下的泡沫
 
+## Afx 视频 / Lottie 动画
+
+## SVG 动画
+
+## Canvas 帧动画
+
+图片串成视频
+
 # 功能效果
 
 ## 拖拽
@@ -1679,22 +1687,35 @@ html 开启 hidden 就可以禁止默认滚动条，因为默认滚动条都是 
 1. **CSS 变量和媒体查询**： 使用 CSS 变量（Custom Properties）结合媒体查询可以实现简单的暗黑模式。您可以定义暗色和亮色主题的颜色变量，然后在媒体查询中根据用户的偏好（如系统的暗色模式设置）切换主题。`prefers-color-scheme` 是一个 CSS 媒体查询，用于检测用户操作系统或设备的主题偏好设置，以便在网页中应用相应的颜色方案。主题偏好设置通常包括明亮（light）和暗黑（dark）两种选项。 当用户在操作系统或设备中更改主题偏好设置时，浏览器会自动应用相应的样式。示例代码如下：
 
    ```css
+
 :root {
+
  --background-color: white;
+
  --text-color: black;
+
 }
 
 @media (prefers-color-scheme: dark) {
+
  :root {
+
    --background-color: black;
+
    --text-color: white;
+
  }
+
 }
 
 body {
+
  background-color: var(--background-color);
+
  color: var(--text-color);
+
 }
+
    ```
 
 ```js
