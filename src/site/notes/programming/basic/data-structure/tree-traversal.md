@@ -754,6 +754,7 @@ sub-tree 类型, 往往不好使用层次遍历?
 | [[programming/basic/leetcode/687. 最长同值路径\|687. 最长同值路径]]                   | medium     | <ul><li>#leetcode/tree/traversal/path</li><li>#leetcode/tree/traversal/sub-tree</li></ul>                                              | 2023-06-04-Sun, 3:01:09 pm  |
 | [[programming/basic/leetcode/700. 二叉搜索树中的搜索\|700. 二叉搜索树中的搜索]]             | easy       | <ul><li>#leetcode/tree/bst</li><li>#leetcode/tree/traversal/sub-tree</li></ul>                                                         | 2023-06-09-Fri, 5:36:56 pm  |
 | [[programming/basic/leetcode/968. 监控二叉树\|968. 监控二叉树]]                     | hard       | <ul><li>#leetcode/greedy-algorithm</li><li>#leetcode/dp</li><li>#leetcode/unsolved</li><li>#leetcode/tree/traversal/sub-tree</li></ul> | 2023-07-09-Sun, 8:14:47 pm  |
+| [[programming/basic/leetcode/1123. 最深叶节点的最近公共祖先\|1123. 最深叶节点的最近公共祖先]]     | medium     | <ul><li>#leetcode/tree/traversal/sub-tree</li><li>#leetcode/unsolved</li></ul>                                                         | 2023-09-09-Sat, 8:07:51 pm  |
 
 { .block-language-dataview}
 
@@ -789,7 +790,7 @@ sub-tree 类型, 往往不好使用层次遍历?
 | File                                                                     | difficulty | etags                                                                                                                                | date-created                |
 | ------------------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- |
 | [[programming/basic/leetcode/297. 二叉树的序列化与反序列化\|297. 二叉树的序列化与反序列化]]   | hard       | <ul><li>#leetcode/tree/serialize</li><li>#leetcode/unsolved</li></ul>                                                                | 2023-06-08-Thu, 7:16:40 pm  |
-| [[programming/basic/leetcode/331. 验证二叉树的前序序列化\|331. 验证二叉树的前序序列化]]     | medium     | <ul><li>#leetcode/tree/serialize</li><li>#leetcode/graph/degree</li><li>#leetcode/unsolved</li></ul>                                 | 2023-06-08-Thu, 8:39:33 pm  |
+| [[programming/basic/leetcode/331. 验证二叉树的前序序列化\|331. 验证二叉树的前序序列化]]     | medium     | <ul><li>#leetcode/tree/serialize</li><li>#leetcode/unsolved</li><li>#leetcode/graph/dag/degree</li></ul>                             | 2023-06-08-Thu, 8:39:33 pm  |
 | [[programming/basic/leetcode/449. 序列化和反序列化二叉搜索树\|449. 序列化和反序列化二叉搜索树]] | medium     | <ul><li>#leetcode/tree/serialize</li><li>#leetcode/unsolved</li><li>#leetcode/tree/bst</li></ul>                                     | 2023-06-09-Fri, 3:12:46 pm  |
 | [[programming/basic/leetcode/606. 根据二叉树创建字符串\|606. 根据二叉树创建字符串]]       | easy       | <ul><li>#leetcode/tree/serialize</li></ul>                                                                                           | 2023-06-08-Thu, 7:27:39 pm  |
 | [[programming/basic/leetcode/652. 寻找重复的子树\|652. 寻找重复的子树]]             | medium     | <ul><li>#leetcode/tree/serialize</li><li>#leetcode/hash-table</li><li>#leetcode/sub/consecutive</li><li>#leetcode/unsolved</li></ul> | 2023-06-09-Fri, 10:16:18 am |
