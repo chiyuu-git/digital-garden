@@ -1000,3 +1000,7 @@ n 个节点的堆，树高度是 h=floor(log n)。对深度为于 h-1 层的节�
 [230. 二叉搜索树中第K小的元素](../leetcode/230.%20二叉搜索树中第K小的元素.md) 二叉树变体
 
 [4. 寻找两个正序数组的中位数](../leetcode/4.%20寻找两个正序数组的中位数.md) 双数组变体
+
+# 拓扑排序
+
+[graph-dag](../data-structure/graph/graph-dag.md)
