@@ -1272,6 +1272,14 @@ splice 11[]
 
 > 职责拆分: wrapper, extension, 菜单栏和 extension, 模板 node-view vs attribute
 
+### 架构介绍
+
+基于 schema 通过 schema 来决定哪些节点可以出现在文档中, 以及这些节点的 attributes 和 嵌套方式. 相应的规则定义在一个个 extension 当中. 比如行内级图片, 经过 schema 处理, 转换成块级图片.
+
+可以使用原生 js 编写编辑器的视图节点, tiptap-san 做的是完善这一步骤.
+
+> 其实没有必要涉及 proseMirror, 直接当成是 tiptap 的来介绍就行
+
 ### 功能实现有很多权衡折衷
 
 在从 0 到 1 实现编辑器的过程中会遇到很多权衡和折衷的问题, 基本上是 2 条思路:
