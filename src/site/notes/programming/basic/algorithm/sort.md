@@ -420,6 +420,7 @@ Array.prototype.insertionSort = function () {
 优化: http://www.blogjava.net/killme2008/archive/2010/09/08/331404.html
 
 # 最大堆排序
+最大堆排序;;[https://digital-garden.chiyuu.top/programming/basic/algorithm/sort/#%E6%9C%80%E5%A4%A7%E5%A0%86%E6%8E%92%E5%BA%8F]
 
 堆排序也是一种很高效的算法，因其**把数组当作二叉树来排序**而得名。这个算法会根据以下信息，把数组当作二叉树来管理
 
@@ -437,7 +438,8 @@ Array.prototype.insertionSort = function () {
 ```js
 this.heapSort = function () {
     var heapSize = array.length;
-    buildHeap(array); //{1} 
+    //构造一个满足 array[parent(i)] ≥ array[i] 的堆结构
+    buildHeap(array);
 
     while (heapSize > 1) {
         // 减小堆的长度，相当于是把最大的元素排除了，即是：已排序
@@ -449,8 +451,6 @@ this.heapSort = function () {
     }
 }; 
 ```
-
-第一步，构造一个满足 `array[parent(i)] ≥ array[i]` 的堆结构（行{1}）。
 
 第二步，交换堆里第一个元素（数组中较大的值）和最后一个元素的位置（行{2}）。这样，最大的值就会出现在它已排序的位置。
 
@@ -470,7 +470,8 @@ this.heapSort = function () {
 ## Heapify 函数
 
 ```js
-  // array是为了尾递归优化，真正的参数只有heapSize和i，这个函数就是要检查i的两个子节点是否都比小，否则就令他们之中最大的与i交换, 以此来满足堆排序的最基本的特性
+  // array是为了尾递归优化，真正的参数只有heapSize和i，这个函数就是要检查i的两个子节点是否都比i小
+  // 否则就令他们之中最大的与i交换, 以此来满足堆排序的最基本的特性
   function heapify(array, heapSize, i){ 
     const left = i * 2 + 1, 
     right = i * 2 + 2, 
@@ -504,7 +505,8 @@ this.heapSort = function () {
 ```js
 this.heapSort = function () {
     let heapSize = array.length
-    buildHeap(array); //{1} 
+	//构造一个满足 array[parent(i)] ≥ array[i] 的堆结构
+    buildHeap(array);
 
     while (heapSize > 1) {
         // 减小堆的长度，相当于是把最大的元素排除了，即是：已排序
@@ -520,7 +522,8 @@ this.heapSort = function () {
             heapify(array, heapSize, i);
         }
     }
-    // array是为了尾递归优化，真正的参数只有heapSize和i，这个函数就是要检查i的两个子节点是否都比小，否则就令他们之中最大的与i交换
+    // array是为了尾递归优化，真正的参数只有heapSize和i，这个函数就是要检查 i 的两个子节点是否都比 i 小
+    // 否则就令他们之中最大的与i交换
     function heapify(array, heapSize, i) {
         let left = i * 2 + 1,
             right = i * 2 + 2,
