@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/algorithm/binary-search/"}
+{"dg-publish":true,"permalink":"/programming/basic/algorithm/binary-search/","tags":["review"]}
 ---
 
 
@@ -135,7 +135,7 @@ var searchInsert = function (nums, target) {
 
    ```js
    if (nums[mid] < target) {
-     // 排除中位数
+     // 中位数肯定不对, 需要排除中位数, 通过 left 排除
      left = mid + 1
    } else {
      right = mid 
