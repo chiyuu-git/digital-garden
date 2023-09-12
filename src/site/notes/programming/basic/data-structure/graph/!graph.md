@@ -87,7 +87,7 @@
 
 我们也可以使用一种叫作邻接表（adjacency List）的**动态数据结构**来表示图。邻接表由图中每个顶点的相邻顶点列表所组成。存在好几种方式来表示这种数据结构。我们可以用列表（数组）、链表，甚至是散列表或是字典来表示相邻顶点列表。下面的示意图展示了邻接表数据结构。
 
-  ![1554682276338](/img/user/programming/basic/data-structure/graph/!graph/1554682276338.png)
+![1554682276338](/img/user/programming/basic/data-structure/graph/!graph/1554682276338.png)
 
 在邻接表中，顶点用键名来表示，边通过键名对应的字典中的元素来表示
 
