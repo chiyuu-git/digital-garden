@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/font-end/primitive/es/es-async/promise/"}
+{"dg-publish":true,"permalink":"/programming/font-end/primitive/es/es-async/promise/","tags":["review"]}
 ---
 
 
@@ -7,12 +7,14 @@
 
 Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了 `Promise` 对象。
 
-所谓 `Promise`，简单说就是一个 **容器**，里面保存着某个未来才会结束的 **事件**（通常是一个异步操作）的 **结果**。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。Promise 提供统一的 API，各种异步操作都可以用同样的方法进行处理。
+所谓 `Promise`，简单说就是一个 **容器**，里面保存着某个未来才会结束的 **事件**（通常是一个异步操作）的 **结果**。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。Promise 提供统一的 API，各种异步操作都可以用同样的方法进行处理
 
 ## Promise 对象有的两个特点
 
 1. 对象的状态不受外界影响。`Promise` 对象代表一个异步操作，有三种状态：`pending`（进行中）、`fulfilled`（已成功）和 `rejected`（已失败）。只有 **异步操作的结果**，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态。这也是 `Promise` 这个名字的由来，**它的英语意思就是“承诺”，表示其他手段无法改变**。
 2. 一旦状态改变，就不会再变，任何时候都可以得到这个结果。`Promise` 对象的状态改变，只有两种可能：从 `pending` 变为 `fulfilled` 和从 `pending` 变为 `rejected`。只要这两种情况发生，**状态就凝固了**，不会再变了，会一直保持这个结果，这时就称为 **resolved（已定型）**。如果改变已经发生了，你再对 `Promise` 对象添加回调函数，也会立即得到这个结果。这与事件（Event）完全不同，事件的特点是，如果你错过了它，再去监听，是得不到结果的。
+
+![某种现象 @@@](promise.md#某种现象%20@@@)
 
 **注意**
 
@@ -54,11 +56,11 @@ ES6 规定，`Promise` 对象是一个 **构造函数**，用来生成 `Promise`
 
 `Promise` 构造函数 **接受一个函数作为参数**，该函数的两个参数分别是 `resolve` 和 `reject`。它们是两个函数，由 JavaScript 引擎提供，不用自己部署
 
-**`resolve` 函数的作用是**，将 `Promise` 对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved），在异步操作成功时调用，可将 **异步操作的结果，作为参数传递出去**；
+`resolve` 函数的作用是，将 `Promise` 对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved），在异步操作成功时调用，可将 异步操作的结果，作为参数传递出去
 
-**`reject` 函数的作用是**，将 `Promise` 对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。通常是 `Error` 对象的实例，表示抛出的错误
+`reject` 函数的作用是，将 `Promise` 对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。通常是 `Error` 对象的实例，表示抛出的错误
 
-> **一般来说**，不要在 `then` 方法里面定义 Reject 状态的回调函数（即 `then` 的第二个参数），总是使用 `catch` 方法。 @@@
+> 一般来说，不要在 `then` 方法里面定义 Reject 状态的回调函数（即 `then` 的第二个参数），总是使用 `catch` 方法。 @@@
 
 从结果而言：调用 `resolve` 函数和 `reject` 函数如果带有参数，那么它们的参数会被传递给 **then 方法相应的回调函数**。如果不带参数 then 方法什么也接受不到
 
@@ -193,44 +195,6 @@ Promise 构造函数接受一个函数作为参数，这个函数会被立即执
 
 上面代码中，使用 `Promise` 包装了一个图片加载的异步操作。如果加载成功，就调用 `resolve` 方法，否则就调用 `reject` 方法。
 
-下面是一个用 `Promise` 对象实现的 Ajax 操作的例子。
-
-```javascript
-  const getJSON = function(url) {
-    const promise = new Promise(function(resolve, reject){
-      const handler = function() {
-        if (this.readyState !== 4) {
-          return;
-        }
-        if (this.status === 200) {
-          resolve(this.response);
-        } else {
-          reject(new Error(this.statusText));
-        }
-      };
-      const client = new XMLHttpRequest();
-      client.open("GET", url);
-      client.onreadystatechange = handler;
-      client.responseType = "json";
-      client.setRequestHeader("Accept", "application/json");
-      client.send();
-  
-    });
-  
-    return promise;
-  };
-  
-  getJSON("/posts.json").then(function(json) {
-    console.log('Contents: ' + json);
-  }, function(error) {
-    console.error('出错了', error);
-  });
-  ```
-
-上面代码中，`getJSON` 是对 XMLHttpRequest 对象的封装，用于发出一个针对 JSON 数据的 HTTP 请求，并且返回一个 `Promise` 对象。
-
-需要注意的是，在 `getJSON` 内部，`resolve` 函数和 `reject` 函数调用时，都 **带有参数**。
-
 # Promise.prototype.then()
 
 ## 基本用法
@@ -342,7 +306,7 @@ then 方法的回调函数的返回值有两种情况：
 
 # Promise.prototype.catch()
 
-`Promise.prototype.catch` 方法是 `.then(null, rejection)` 或 `.then(undefined, rejection)` 的 **别名**，用于指定发生错误时的回调函数。#
+`Promise.prototype.catch` 方法是 `.then(null, rejection)` 或 `.then(undefined, rejection)` 的 **别名**，用于指定发生错误时的回调函数。
 
 > 也就是说，最后一个 then 方法的 rejection 同样可以捕捉前面所有的错误
 
@@ -621,9 +585,9 @@ Promise 对象的错误具有“冒泡”性质，会一直向后传递，直到
     .finally(server.stop);
 ```
 
-`finally` 方法的回调函数不接受任何参数，这意味着没有办法知道，前面的 Promise 状态到底是 `fulfilled` 还是 `rejected`。这表明，`finally` 方法里面的操作，应该是与状态无关的，不依赖于 Promise 的执行结果。#
+`finally` 方法的回调函数不接受任何参数，这意味着没有办法知道，前面的 Promise 状态到底是 `fulfilled` 还是 `rejected`。这表明，`finally` 方法里面的操作，应该是**与状态无关的**，不依赖于 Promise 的执行结果
 
-**`finally` 本质上是 `then` 方法的特例**。
+**`finally` 本质上是 `then` 方法的特例**
 
   ```javascript
   promise
@@ -1123,3 +1087,11 @@ Promise.resolve() 方法传入的参数，会传入到 then 方法的第一个�
 ## 实现并发任务队列
 
 [实现并发任务队列](promise.md#实现并发任务队列)
+
+## 同时执行两个任务的并发任务队列
+
+最好的版本: [面试题：JS怎么实现并发控制任务执行呢？ - 掘金](https://juejin.cn/post/7210285753351831612)
+
+[面试官：如何设计一个控制并发数的任务队列？ - 掘金](https://juejin.cn/post/7064765538127314957)
+
+简单总结一下就是 run 方法里, 取出 task, task 的 then 方法里继续调用 then 方法.
