@@ -2302,7 +2302,7 @@ WHERE MATCH(title, body) AGAINST('react -redux +form' IN BOOLEAN MODE);
 
 在关键词前添加一个负号，表示不包含
 
-添加正好，表示在每一列中，都必须包含关键词 form
+添加正号，表示在每一列中，都必须包含关键词 form
 
 ```mysql
 WHERE MATCH(title, body) AGAINST('"muset include exactly text"' IN BOOLEAN MODE);
@@ -2353,7 +2353,7 @@ WHERE state = 'CA' AND points > 1000;
 
 越常用的列越靠前
 
-索引集数稿得靠前
+索引集数高得靠前
 
 ## 索引查询技巧
 
