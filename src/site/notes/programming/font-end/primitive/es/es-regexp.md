@@ -3257,8 +3257,6 @@ section *{
 
 ```ts
 /**
- * 将字符串处理成驼峰格式
- *
  * @example
  * '  left-center' => leftCenter
  *
