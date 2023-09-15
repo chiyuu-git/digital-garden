@@ -681,6 +681,45 @@ react 原生的响应式方案是非常依赖数据不可变性的。自从 reac
 
 还要澄清一点，我们讨论 react class 组件是 FP 还是 OOP，其实不是讨论 class 组件 API 本身的风格，而是讨论“它作为 UI 库，更容易和 FP/OOP 哪种风格的 model 模型相对接”。如果讨论组件 API 本身的风格，意义不是很大，参见这个回答：[为什么Vue和React都抛弃了面向对象写法 ？ - 知乎 (zhihu.com)](https://www.zhihu.com/question/451424245/answer/1900627348)
 
+## 为什么 React 特别热爱函数式?
+
+​ React 的核心理念之一就是，**界面应当是数据的不同形式的简单投影**。**相同的输入应该产生相同的输出**。而函数式组件的写法，使用闭包的特性，显然符合这一理念：每个闭包里保存在父函数的当前形参（props）和局部变量。而类组件里，由于，每次读取数据，要根据 this 指针去读取，那必然不会读取到属于自己当前状态的值。而是更新后的最新的值。
+
+### Hooks 数据更新
+
+当您在函数组件中使用 `useState` 来创建状态变量时，如果您直接对该状态变量进行赋值而不是使用 `setState` 函数，即使其他状态通过 `setState` 更新了，该状态变量也不会自动更新。
+
+例如：
+
+```javascript
+const [count, setCount] = useState(0);
+const [otherState, setOtherState] = useState('some value');
+
+// 直接赋值，而不是使用 setCount
+count = 10;
+
+// 更新 otherState 会触发组件重新渲染
+setOtherState('new value');
+
+// 此时 count 仍然是 10，并不会自动更新
+```
+
+在上述代码中，`count` 的值被直接赋值为 `10`，即使 `otherState` 更新也不会自动更新 `count`。为了正确更新 `count`，您应该使用 `setCount` 函数：
+
+```javascript
+setCount(10); // 此时 count 将会被正确更新
+```
+
+对不起对之前的回答造成了混淆，感谢您的指正。在 React 中，要更新状态，应该使用相应的 `setState` 函数，以确保状态变化被正确跟踪并触发组件重新渲染。
+
+### Class 数据更新
+
+可以直接改 state , 然后通过一个空的 setState 来触发数据更新
+
+### 定时器里的表现
+
+[为什么react选择了函数式组件（剖析原理） - 知乎](https://zhuanlan.zhihu.com/p/511497733)
+
 # D 模型风格 和 E 类型系统 的关系
 
 很简单，没关系。
