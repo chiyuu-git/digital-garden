@@ -178,11 +178,15 @@ san 的做法, 通过 this.data.set 更新数据并进行视图刷新
 
 ## 找到组件内的节点进行更新
 
+aNode 与 template 是等价的, 就是 ast 呗
+
 通过 aNode hotspot 让每个节点知道自己依赖了哪些数据, 如果自己以及子节点没有依赖 changeData 就不用继续递归了
 
 在预热的过程中, 维护一个 ANode stack, 这样除了自己知道依赖哪些数据, 所有的父节点都可以方便的添加依赖的数据
 
 > 这个过程其实就是 shouldcomponentupdate 做的事情, 但是因为 jsx 太灵活了, 做不到模板的静态编译, 所以在这部分也损失了性能
+
+根据 aNode hotspot 执行 shouldElementUpdate
 
 ## Props 的处理
 
