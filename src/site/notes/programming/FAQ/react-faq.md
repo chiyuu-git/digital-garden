@@ -164,6 +164,24 @@ https://zh-hans.react.dev/reference/react-dom/client/createRoot
 
 ## Props, State, Ref 区别
 
+## useLayoutEffect
+
+useLayoutEffect 如何做到阻塞浏览器渲染是一个有趣的问题，涉及到 React 中的调度机制。
+
+在 React 中，组件的渲染是一个多阶段过程，其中包括：
+
+Render（渲染）阶段：React 构建虚拟 DOM 树并计算要进行的更新，但尚未进行实际的 DOM 操作。
+
+Layout（布局）阶段：React 计算布局，这涉及计算元素的大小和位置等信息。这是 React 中 useLayoutEffect 执行的阶段。
+
+Paint（绘制）阶段：React 将最终的虚拟 DOM 变化应用于实际的 DOM，并触发浏览器的绘制操作。
+
+useLayoutEffect 是在 Render 阶段和 Paint 阶段之间执行的，因此它可以访问到虚拟 DOM 树在 Render 阶段计算的布局信息。这使得 useLayoutEffect 能够执行同步的、直接影响布局的操作，而且在操作期间不会触发多次绘制。这就是为什么 useLayoutEffect 被称为“同步版本的 useEffect”。
+
+要注意的是，由于 useLayoutEffect 是同步执行的，如果在其中执行的操作非常耗时，可能会导致页面卡顿，因为它会阻塞 Paint 阶段。因此，在使用 useLayoutEffect 时，应该确保操作足够快速，以避免对用户体验产生负面影响。
+
+总之，useLayoutEffect 之所以能够阻塞浏览器渲染，是因为它在 React 的渲染过程中具有特殊的执行时机，允许它在布局阶段执行同步操作，而不会触发额外的绘制。这为一些需要精确布局信息的操作提供了便利。
+
 # 开发实践
 
 ## React 逻辑复用方式有哪些？
