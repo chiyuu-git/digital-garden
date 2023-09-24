@@ -3306,6 +3306,14 @@ console.log(snakeToCamel('my_snake_case_string_')); // 输出: mySnakeCaseString
 
 ```
 
+```js
+function toHump(str) {
+	return str.repalce(/\_(w)/g, funciton(all, match) {
+		return match.toUpperCase();
+	})
+}
+```
+
 ## 常用正则
 
 [《前端表单验证常用的 15 个 JS 正则表达式》](http://caibaojian.com/form-regexp.html) [《JS 常用正则汇总》](https://www.jianshu.com/p/1cb5229325a7)
