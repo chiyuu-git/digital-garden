@@ -1476,7 +1476,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP
 
 # IndexedDB
 
-\*\*Web 服务器
+# Web 服务器
 
 这里不关心服务器是 Apache 还是 Nginx，而是在于服务器的作用。一台服务器可以作为源服务器，也可以作为中转服务器，甚至可以在一台服务器上搭建多个不同域名的网站。
 
