@@ -226,3 +226,7 @@ Redux 中间件的实现原理和 Koa 中间件、Axios 拦截器类似，数组
 ## 为什么要设计并发模式？
 
 在 React 的旧版本中，当组件状态发生变化时，React 会将整个组件树进行递归遍历，生成新的虚拟 DOM 树，并与旧的虚拟 DOM 树进行比较，找出需要更新的部分，然后将这些部分更新到 DOM 中。这种遍历方式虽然简单，但是在组件树变得非常大、复杂的情况下，会导致渲染和更新性能下降，造成页面卡顿甚至无法响应用户操作的情况。为了解决这个问题，React 引入了并发模式。
+
+## 源码八股
+
+[同志们，来点时下最流行的react八股文呀- 脉脉](https://maimai.cn/web/gossip_detail/32602821?egid=d2446e771bd843c29090d356837d2ecc&gid=32602821&operation_id=iSNQh5eObJ8B5JZa96hyY&share_channel=5&share_euid=mMbSOT69TGwmoP5IWbOvwJ8EwnobXE_oF2rjmFgjaFI6CgXyB1-RSQoOVi9Qgb8ZV4vB4riWyb-fYJ6UGRm9jg)
