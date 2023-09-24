@@ -22,9 +22,9 @@
 | [[programming/font-end/primitive/es/es-async/es-async-2\|es-async-2]]                             | [[programming/font-end/primitive/es/es-async/es-async-2#faq\|es-async-2#faq]]                |
 | [[programming/font-end/primitive/es/es-array\|es-array]]                                          | [[programming/font-end/primitive/es/es-array#faq\|es-array#faq]]                  |
 | [[programming/font-end/primitive/browser-api/dom-event\|dom-event]]                               | [[programming/font-end/primitive/browser-api/dom-event#faq\|dom-event#faq]]                 |
-| [[programming/font-end/primitive/es/es-regexp\|es-regexp]]                                        | [[programming/font-end/primitive/es/es-regexp#faq\|es-regexp#faq]]                 |
 | [[programming/font-end/primitive/es/es-basic\|es-basic]]                                          | [[programming/font-end/primitive/es/es-basic#faq\|es-basic#faq]]                  |
 | [[programming/font-end/primitive/es/es-next-1\|es-next-1]]                                        | [[programming/font-end/primitive/es/es-next-1#faq\|es-next-1#faq]]                 |
+| [[programming/font-end/primitive/es/es-regexp\|es-regexp]]                                        | [[programming/font-end/primitive/es/es-regexp#faq\|es-regexp#faq]]                 |
 
 { .block-language-dataview}
 
@@ -583,6 +583,7 @@ https://github.com/CavsZhouyou/Front-End-Interview-Notebook/blob/master/JavaScri
 
 [java - 手写LRU缓存淘汰算法 - 个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000039311706)
 [Javascript 手写 LRU 算法 - 简道 - 博客园](https://www.cnblogs.com/kelsen/p/16743231.html)
+[力扣（LeetCode）官网 - 全球极客挚爱的技术成长平台](https://leetcode.cn/problems/lru-cache/solutions/259678/lruhuan-cun-ji-zhi-by-leetcode-solution/?envType=daily-question&envId=2023-09-24)
 # 工具函数
 
 ## 字符串和数组的转换
