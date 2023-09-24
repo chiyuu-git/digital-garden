@@ -744,6 +744,9 @@ setCount(10); // 此时 count 将会被正确更新
 
 BTW，现在有些框架和库真是把 TS 的类型系统玩得了不得了，非常值得期待。参见 [下一代前端框架会去解决什么问题？ - 知乎 (zhihu.com)](https://www.zhihu.com/question/433673833/answer/1616521720)
 
+## minireact和minivue
+[新的一年，从手写mini react开始 - 知乎](https://zhuanlan.zhihu.com/p/598925922)
+[Vue.js设计与实现-霍春阳　著-微信读书](https://weread.qq.com/web/bookDetail/c5c32170813ab7177g0181ae)
 # 总结
 
 - A 架构组织：一锅粥 vs. 业务逻辑和 UI 分离
