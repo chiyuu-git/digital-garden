@@ -290,7 +290,7 @@ rgin 合并的问题。
 **是否可继承：**no
 
 + 在每个动画定义中，顺序很重要：
-  + 可以被解析为 <time>的第一个值被分配给 animation-duration,
+  + 可以被解析为 `<time>`的第一个值被分配给 animation-duration,
   + 第二个分配给 animation-delay。
 
 ### Flex-flow
@@ -322,7 +322,7 @@ rgin 合并的问题。
 
 + 禁止全局的默认事件会禁止 react-router 的跳转行为，使用 history 模拟跳转
 + 组件名必须大写，否则无法渲染
-  + The tag <example> is unrecognized in this browser. If you meant to render a React component, **start its name with an uppercase letter.**
+  + The tag `<example>` is unrecognized in this browser. If you meant to render a React component, **start its name with an uppercase letter.**
 + 值得注意的是每次 `dispath` 一个 `action`，`store` 都会遍历所有已经注册的 `reducer`（reducer 往往由多个子 reducer 组成），也就是说所有 `reducer` 都会被调用 (从项目中的表现和文档来看是这样的)
 + key={\`response-${i}`}
 + state 更新过后，必须重新获取 this.state 才可以拿到新值，再函数初始时获得的时不会变的
