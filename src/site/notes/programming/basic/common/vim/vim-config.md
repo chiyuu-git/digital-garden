@@ -356,6 +356,8 @@ win powertoy 然后搜索 键盘管理器即可设置
 
 当切换插入模式时，自动切换中英文<https://www.zhihu.com/question/303850876>
 
+> macos 双拼不影响, 直接删除原有的输入法即可
+
 macOS 实现默认中文输入法 shift 切换中英文<https://hackers-delight.com/2019/11/11/macos-shift-to-capslock/>
 
 Change caps_lock to control if pressed with other keys, to escape if pressed alone.
