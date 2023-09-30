@@ -88,4 +88,6 @@ homebrew
 
 vim config
 
+双拼设置, input source add 
+
 obsidian config soft link
