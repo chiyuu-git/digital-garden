@@ -180,21 +180,6 @@ Vue3 中的 `nextTick` 与 Vue2 相比有所变化，它不再是一个全局方
 
 综上所述，Vue2 和 Vue3 中的 `nextTick` 在实现上有所不同，但它们的目的都是为了在 DOM 更新后执行异步操作，并提供了一种方便的方式来处理异步任务。
 
-## React Vs Vue
-
-https://www.zhihu.com/question/468249924/answer/1965942197
-
-https://zhuanlan.zhihu.com/p/133819602
-
-https://zhuanlan.zhihu.com/p/139548169
-
-https://zhuanlan.zhihu.com/p/158734246
-
-https://www.zhihu.com/question/301860721/answer/545031906
-
-为什么 vue 需要组合 api 呢？composite api solve what kind of problem . hook solve what kind of problem it is that i need to care?
-
-TODO: 完善, react vs vue, 逐步引导
 
 ### 优点
 
