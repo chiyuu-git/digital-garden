@@ -3,8 +3,6 @@
 ---
 
 
-2023-04-23
-
 [TypeScript 官方手册-英文](http://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
 
 typescript 入门教程：<https://ts.xcatliu.com/> 与我目前整理的结构一致 done
@@ -94,7 +92,7 @@ TypeScript 只会在编译时对类型进行静态检查, 如果发现有错误,
 
 如果我们需要保证运行时的参数类型，还是得手动对类型进行判断
 
-## 类型总览 @@@
+## 类型总览
 
 | 类型    | 例子            | 描述                           |
 | ------- | --------------- | ------------------------------ |
@@ -340,7 +338,9 @@ let str: string;bar = 10;
 
 ```js
 let foo: unknown;
-foo = 10foo = truefoo = 'str';
+foo = 10
+foo = true
+foo = 'str'
 let str: string;
 // foo 的类型是 unknow，不可以赋值给其他类型str = foo;
 // 通过类型断言解决 unknow str = foo as string;str = <string>foo;
@@ -349,6 +349,12 @@ let str: string;
 ```js
 // Type 'unknown' is not assignable to type 'string'
 ```
+
+当你将一个变量声明为 `unknown` 类型时，你不能直接对其执行任何操作，因为 TypeScript 会强制进行类型检查。
+
+在使用 `unknown` 类型的值之前，你必须先进行类型检查或类型断言，以明确告诉编译器该值的实际类型。
+
+总之，`any` 允许你绕过类型检查，但会降低类型安全性，而 `unknown` 要求你在使用之前进行类型检查或类型断言，以确保类型安全。在编写类型安全的代码时，推荐使用 `unknown` 而不是 `any`。
 
 ## 类型推论 Type Inference
 
@@ -521,6 +527,8 @@ a = function(){};
 
 TypeScript 中的接口是一个非常灵活的概念，除了可用于 **对类的一部分行为进行抽象** 以外，也常用于对「对象的形状（Shape）」进行描述。
 
+[eslint-typescript](../engineering/eslint/eslint-basic.md#接口名是否应该以%20I%20开头)
+
 ### 简单的例子
 
 ```js
@@ -545,8 +553,6 @@ const tom: Person = {
 ```
 
 上面的例子中，我们定义了一个接口 `Person`，接着定义了一个变量 `tom`，它的类型是 `Person`。这样，我们就约束了 `tom` 的 **形状** 必须和接口 `Person` 一致。
-
-[eslint-typescript](../engineering/eslint/eslint-basic.md#接口名是否应该以%20I%20开头)
 
 定义的变量比接口少了一些属性是不允许的：
 
@@ -635,7 +641,17 @@ interface Person {    readonly id: number;    name: string;    age?: number;    
 **注意：只读的约束存在于给只读属性赋值的时候，而不是第一次给对象赋值的时候**：
 
 ```ts
-interface Person {    readonly id: number;    name: string;    age?: number;    [propName: string]: any;}let tom: Person = {    name: 'Tom',    gender: 'male'};tom.id = 89757;// index.ts(8,5): error TS2322: Type '{ name: string; gender: string; }' is not assignable to type 'Person'.//   Property 'id' is missing in type '{ name: string; gender: string; }'.// index.ts(13,5): error TS2540: Cannot assign to 'id' because it is a constant or a read-only property.
+interface Person {
+    readonly id: number;
+    name: string;
+    age?: number;
+    [propName: string]: any;
+}
+let tom: Person = { name: "Tom", gender: "male" };
+tom.id = 89757;
+// index.ts(8,5): error TS2322: Type '{ name: string; gender: string; }' is not assignable to type 'Person'.
+// Property 'id' is missing in type '{ name: string; gender: string; }'.
+// index.ts(13,5): error TS2540: Cannot assign to 'id' because it is a constant or a read-only property.
 ```
 
 上例中，报错信息有两处，第一处是在对 `tom` 进行赋值的时候，没有给 `id` 赋值。
@@ -772,12 +788,14 @@ function sum(x: number, y: number): number {return x + y;}
 注意：**输入多余的（或者少于要求的）参数，是不被允许的**：
 
 ```ts
-function sum(x: number, y: number): number {return x + y;}sum(1, 2, 3);
+function sum(x: number, y: number): number {return x + y;}
+sum(1, 2, 3);
 // index.ts(4,1): error TS2346: Supplied parameters do not match any signature of call target.
 ```
 
 ```ts
-function sum(x: number, y: number): number {return x + y;}sum(1);
+function sum(x: number, y: number): number {return x + y;}
+sum(1);
 // index.ts(4,1): error TS2346: Supplied parameters do not match any signature of call target.
 ```
 
@@ -868,7 +886,7 @@ const tom = buildName(undefined, 'Tom');
 // index.ts(1,40): error TS1016: A required parameter cannot follow an optional parameter.
 ```
 
-### **参数默认值**
+### 参数默认值
 
 在 ES6 中，我们允许给函数的参数添加默认值，**TypeScript 会将添加了默认值的参数识别为可选参数**：
 
@@ -892,7 +910,7 @@ const cat = buildName(undefined, 'Cat');
 
 > 关于默认参数，可以参考 [ES6 中函数参数的默认值](http://es6.ruanyifeng.com/#docs/function#函数参数的默认值)。
 
-### **剩余参数**
+### 剩余参数
 
 ES6 中，可以使用 `...rest` 的方式获取函数中的剩余参数（rest 参数）：
 
@@ -1505,7 +1523,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
 
 在上面我们声明了两个相同名称的 `Window` 接口，这时并不会造成冲突。TypeScript 会自动进行接口合并，即把双方的成员放到一个同名的接口中。
 
-# 进阶（超集）
+# 超集
 
 ## Type 关键字
 
@@ -2342,6 +2360,22 @@ var NoYes;
 
 增强了 typescript 的 enum
 
+## 使用普通对象代替枚举类型
+
+一种说法认为 enum 破坏了 ts 的纯粹性, 明明是类型系统, 但是却引入了 js 值. 使得编译器没办法直接擦除所有的 ts 类型, 因为必须给枚举类型做特殊处理, 生成 js obj.
+
+基于上面的观点, 更推荐使用普通对象代替枚举类型.
+
+```ts
+const map = {
+	a: 'a',
+	b: 'b'
+}
+
+type mapKey = keyof typeof map;
+type mapValue = (typeof map)[mapKey];
+```
+
 ## Const 断言
 
 ```ts
@@ -2480,7 +2514,6 @@ const resetCount = (): ResetCount => {
 }
 
 type CountActions = SetCount | ResetCount
-复制代码
 ```
 
 我们创建了两个接口 `RESET_COUNT` 和 `SET_COUNT` 来对两个 `resetCount` 和 `setCount` 的返回类型进行归类。
