@@ -664,9 +664,12 @@ setCount(10); // 此时 count 将会被正确更新
 
 BTW，现在有些框架和库真是把 TS 的类型系统玩得了不得了，非常值得期待。参见 [下一代前端框架会去解决什么问题？ - 知乎 (zhihu.com)](https://www.zhihu.com/question/433673833/answer/1616521720)
 
-## minireact和minivue
+## Minireact 和 Minivue
+
 [新的一年，从手写mini react开始 - 知乎](https://zhuanlan.zhihu.com/p/598925922)
+
 [Vue.js设计与实现-霍春阳　著-微信读书](https://weread.qq.com/web/bookDetail/c5c32170813ab7177g0181ae)
+
 # 总结
 
 - A 架构组织：一锅粥 vs. 业务逻辑和 UI 分离
@@ -817,3 +820,67 @@ switch (action.type) {
 [8.5. 定义数据存储 · MobX 中文文档](https://cn.mobx.js.org/best/store.html)
 
 可以参考 mobx 里面提到的概念
+
+# React Vs Vue
+
+这是个开放题，不建议背答案，可以从**生态、语法、性能、原理、开发体验**等方面去试着比较一下。
+
+1. vue 和 react：<https://www.zhihu.com/question/301860721/answer/535585130>
+2. 如何理解 React Fiber 架构<https://www.zhihu.com/question/49496872/answer/2400650069>
+3. 为什么 react 和 vue 都抛弃了 oop：https://www.zhihu.com/question/451424245
+4. react 和 vue 的本质不同：数据是否可变
+
+    + vue 希望数据是可变的，做了 proxy 代理
+    + react 希望数据是不可变的，所以永远是纯函数返回一个新的实例，只能通过 setState 去更新数据
+
+todo: vue2-mvvm
+
+比较适合测试驱动实现, 每一步都写好对应的单元测试, 来逐步实现 feature, 弄一个云 vscode 来编写简易的代码仓库
+
+有没有能代替 git 的版本管理工具呢? 能逐步体现代码的添加功能的, 管理起来要方便的点 , 方便对比每个版本的差异, 修改低版本不能整天 rebase
+
+[如流知识库](https://ku.baidu-int.com/knowledge/HFVrC7hq1Q/pKzJfZczuc/7hcVZOKfCL/NYZvkWunJSP2Uf)
+
+React 从诞生之日的设计哲学就是，**当状态发生变化时，重新创建所有视图。**
+
+即使你只是修改了组件树最深处的一个小小的状态，React 仍然需要自顶重新创建整个 vdom 树并且 Diff
+
+如今的前端应用越来越复杂，屏幕刷新率也都越来越高。对于一个复杂的前端项目来说，组件的数量和组件树的层级都非常深。重新创建整个树的开销也会变大，如果超过了 16.7ms（刷新率 120hz 的话就是 8.4ms）就会导致掉帧、用户交互响应延迟。引入 fiber 机制后使得 React 的渲染过程可以中断，让出主线程响应用户事件，或者允许插入更高优先级的更新。
+
+而 Vue 有一套细粒度的响应式机制，框架的更新粒度是组件级别，除此之外还有 Block Tree 等分离静态/动态模板的优化手段，更新的效率是足够高的，也就没有必要引入 [fiber](https://www.zhihu.com/search?q=fiber&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2903903827%7D) 这样的机制
+
+其实设计哲学的优劣并不重要, 重要的是我们去理解他的设计思想, 更好的使用他, 以及相应的生态. react 和 vue 究竟哪个更优秀, 时间自然会给出他的答案. 也许胜者会出现在他们两个之外也说不定呢? 就算是 jQuery 也要把他用好才行
+
+https://www.zhihu.com/question/468249924/answer/1965942197
+
+https://zhuanlan.zhihu.com/p/133819602
+
+https://zhuanlan.zhihu.com/p/139548169
+
+https://zhuanlan.zhihu.com/p/158734246
+
+https://www.zhihu.com/question/301860721/answer/545031906
+
+为什么 vue 需要组合 api 呢？composite api solve what kind of problem . hook solve what kind of problem it is that i need to care?
+
+TODO: 完善, react vs vue, 逐步引导
+
+## React Api. 和 Vue Api
+
+[JavaScript.md](https://github.com/CavsZhouyou/Front-End-Interview-Notebook/blob/master/JavaScript/JavaScript.md#148-vue-%E7%BB%84%E4%BB%B6%E9%97%B4%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E6%96%B9%E5%BC%8F)
+
+[2023前端之VUE面试题汇总 - 知乎](https://zhuanlan.zhihu.com/p/610576255)
+
+# 有了解过哪些类 React 框架，谈谈你对它们的看法
+
+Preact：可以理解为简易版 React，但是和 React 有一样的 API，性能比 React 还好，甚至也实现了并发模式，对于想要阅读 React 源码又觉得难的同学，可以看一看 Preact 的源码。
+
+Svelte：无虚拟 Dom，依靠编译器和纯响应式的轻量级框架，然而性能却非常好。
+
+SolidJS：和 Svelte 类似，但是 SolidJS 的语法更接近于 React，Svelte 的语法接近 Vue。
+
+总结一下：
+
+1. 这些类 React 或者类 Vue 框架，可能在某一方面或者某些方面表现很出色。
+2. 在开发成熟项目时，还是尽量选择 Vue 和 React，因为毕竟生态和解决方案更多。
+3. 时间允许的话推荐阅读这些框架的源码，它们的代码量相对少，容易阅读，能让你有一个更广的视野来看待前端框架的原理和设计思路。
