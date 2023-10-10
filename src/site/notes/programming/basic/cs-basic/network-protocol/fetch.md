@@ -714,6 +714,7 @@ export const reqUserList = (type) => ajax('/userlist', {type})
 
 了解 Fetch API <https://aotu.io/notes/2017/04/10/fetch-API/index.html>
 
+fetch 规范: https://fetch.spec.whatwg.org/
 ## 概述
 
 在 Ajax 中涉及到的 JavaScript 方面的技术，即 XMLHttpRequest（以下简称 XHR）。很长一段时间我们都是通过 XHR 来与服务器建立异步通信。然而在使用的过程中，我们发现 XHR 是基于事件的异步模型，在设计上将输入、输出和事件监听混杂在一个对象里，且必须通过实例化方式来发请求。配置和调用方式混乱，不符合关注分点离原则。
