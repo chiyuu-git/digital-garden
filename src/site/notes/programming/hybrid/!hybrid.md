@@ -188,3 +188,55 @@ class   {
 
  1. JsBridge： 拦截 URL Schema 方式
 2. DSBridge： 注入 JS API 方式
+
+# Flutter
+
+[如何看待阿里北海Kraken项目即将弃坑？ - 知乎](https://www.zhihu.com/question/534811524/answer/2595510449)
+
+# YOGA
+
+[`Realm` requires CocoaPods version `>= 1.10`, which is not satisfied by your current version, `1.8.3` [closed\]](https://stackoverflow.com/questions/65199227/realm-requires-cocoapods-version-1-10-which-is-not-satisfied-by-your-cur)
+
+https://stackoverflow.com/questions/65199227/realm-requires-cocoapods-version-1-10-which-is-not-satisfied-by-your-cur/65594547
+
+webview：https://zhuanlan.zhihu.com/p/58691238
+
+https://tbfungeek.github.io/2019/11/05/%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8Yoga-%E5%B8%83%E5%B1%80%E5%BC%95%E6%93%8E/
+
+https://tech.meituan.com/2019/09/19/litho-practice-in-dynamic-program-mtflexbox.html
+
+https://mp.weixin.qq.com/s?__biz=MjM5NjQ5MTI5OA==&mid=2651750430&idx=2&sn=89c8c1212f4b6a24694028ec3188aa09&from=timeline
+
+https://juejin.cn/post/6844904041290432525#heading-9
+
+https://tech.meituan.com/2019/03/14/litho-use-and-principle-analysis.html
+
+https://jsonchao.github.io/2020/01/13/%E6%B7%B1%E5%85%A5%E6%8E%A2%E7%B4%A2Android%E5%B8%83%E5%B1%80%E4%BC%98%E5%8C%96%EF%BC%88%E4%B8%8B%EF%BC%89/
+
+## Native 渲染相关
+
+满帮 flutter 动态化：<https://www.sohu.com/a/442313727_463970>
+
+<https://tech.meituan.com/2019/12/19/meituan-mrn-practice.html>
+
+<https://developer.aliyun.com/article/763895>
+
+<http://wiki.baidu.com/pages/viewpage.action?pageId=1083882568>
+
+<https://github.com/leecade/react-native-swiper>
+
+<https://ask.dcloud.net.cn/article/36083>
+
+<http://wiki.baidu.com/pages/viewpage.action?pageId=1175434482>
+
+<https://cloud.tencent.com/developer/article/1680356>
+
+<https://www.zhihu.com/question/384934444>
+
+<https://vczero.github.io/react_native/H5-React-Native-Native.html>
+
+<https://juejin.cn/post/6844903557607456776>
+
+<https://zhuanlan.zhihu.com/p/79725603>
+
+- [x] <https://tech.meituan.com/2017/06/09/webviewperf.html>
