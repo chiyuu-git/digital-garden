@@ -1805,3 +1805,15 @@ Webpack 通过静态分析您的代码，找到所有被引用的模块，然后
 ## 结合 Talos Loader 说一说使用经历
 
 webpack 提供钩子函数, 在特定时刻处理产物字符串, 把 css 处理后的结果拼接到 js 文件的末尾. 仅此而已
+
+## TODO
+
+webpack 其实没有必要看太深，能懂基本的就够了
+
+神光的文章有很多 babel 和 webpack 的内容，如果用上了，有机会就看看吧
+
+动态 import（）<https://webpack.docschina.org/api/module-methods/>
+
+<https://segmentfault.com/a/1190000015648036>
+
+webpack tapbale：<https://juejin.im/post/6844903825774493710>
