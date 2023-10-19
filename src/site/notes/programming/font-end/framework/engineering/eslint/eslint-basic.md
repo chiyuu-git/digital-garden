@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/font-end/framework/engineering/eslint/eslint-basic/","tags":["gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry"]}
+{"dg-publish":true,"permalink":"/programming/font-end/framework/engineering/eslint/eslint-basic/","tags":["gardenEntry","gardenEntry"]}
 ---
 
 
@@ -343,7 +343,7 @@ alert(document.getElementById('foo').tagName);
 <html lang="zh-CN">
 ```
 
-### 编码
+### 指定 charset 编码
 
 **[强制] 页面必须使用精简形式，明确指定字符编码。指定字符编码的 `meta` 必须是 `head` 的第一个直接子元素。**
 
