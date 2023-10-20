@@ -138,10 +138,10 @@ dummyHead
 
 | File                                                                                                                           | solution tips overview                                          |
 | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- |
-| [[programming/basic/leetcode/41. First Missing Positive\|41. First Missing Positive]]                                       | [[programming/basic/leetcode/41. First Missing Positive#solution tips\|41. First Missing Positive#solution tips]]                    |
-| [[programming/basic/leetcode/442. Find All Duplicates in an Array\|442. Find All Duplicates in an Array]]                   | [[programming/basic/leetcode/442. Find All Duplicates in an Array#solution tips\|442. Find All Duplicates in an Array#solution tips]]          |
-| [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array\|448. Find All Numbers Disappeared in an Array]] | [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array#solution tips\|448. Find All Numbers Disappeared in an Array#solution tips]] |
 | [[programming/basic/leetcode/645. Set Mismatch\|645. Set Mismatch]]                                                         | [[programming/basic/leetcode/645. Set Mismatch#solution tips\|645. Set Mismatch#solution tips]]                             |
+| [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array\|448. Find All Numbers Disappeared in an Array]] | [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array#solution tips\|448. Find All Numbers Disappeared in an Array#solution tips]] |
+| [[programming/basic/leetcode/442. Find All Duplicates in an Array\|442. Find All Duplicates in an Array]]                   | [[programming/basic/leetcode/442. Find All Duplicates in an Array#solution tips\|442. Find All Duplicates in an Array#solution tips]]          |
+| [[programming/basic/leetcode/41. First Missing Positive\|41. First Missing Positive]]                                       | [[programming/basic/leetcode/41. First Missing Positive#solution tips\|41. First Missing Positive#solution tips]]                    |
 
 { .block-language-dataview}
 
@@ -156,8 +156,8 @@ dummyHead
 
 | File                                                         | overview                       |
 | ------------------------------------------------------------ | ------------------------------ |
-| [[programming/basic/leetcode/495. 提莫攻击\|495. 提莫攻击]]       | [[programming/basic/leetcode/495. 提莫攻击#solution tips\|495. 提莫攻击#solution tips]]    |
 | [[programming/basic/leetcode/636. 函数的独占时间\|636. 函数的独占时间]] | [[programming/basic/leetcode/636. 函数的独占时间#solution tips\|636. 函数的独占时间#solution tips]] |
+| [[programming/basic/leetcode/495. 提莫攻击\|495. 提莫攻击]]       | [[programming/basic/leetcode/495. 提莫攻击#solution tips\|495. 提莫攻击#solution tips]]    |
 
 { .block-language-dataview}
 
@@ -179,11 +179,11 @@ dummyHead
 
 | File                                                                                                                           | overview                                                        |
 | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- |
-| [[programming/basic/leetcode/287. 寻找重复数\|287. 寻找重复数]]                                                                       | [[programming/basic/leetcode/287. 寻找重复数#solution tips\|287. 寻找重复数#solution tips]]                                    |
-| [[programming/basic/leetcode/41. First Missing Positive\|41. First Missing Positive]]                                       | [[programming/basic/leetcode/41. First Missing Positive#solution tips\|41. First Missing Positive#solution tips]]                    |
-| [[programming/basic/leetcode/442. Find All Duplicates in an Array\|442. Find All Duplicates in an Array]]                   | [[programming/basic/leetcode/442. Find All Duplicates in an Array#solution tips\|442. Find All Duplicates in an Array#solution tips]]          |
-| [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array\|448. Find All Numbers Disappeared in an Array]] | [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array#solution tips\|448. Find All Numbers Disappeared in an Array#solution tips]] |
 | [[programming/basic/leetcode/565. 数组嵌套\|565. 数组嵌套]]                                                                         | [[programming/basic/leetcode/565. 数组嵌套#solution tips\|565. 数组嵌套#solution tips]]                                     |
+| [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array\|448. Find All Numbers Disappeared in an Array]] | [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array#solution tips\|448. Find All Numbers Disappeared in an Array#solution tips]] |
+| [[programming/basic/leetcode/442. Find All Duplicates in an Array\|442. Find All Duplicates in an Array]]                   | [[programming/basic/leetcode/442. Find All Duplicates in an Array#solution tips\|442. Find All Duplicates in an Array#solution tips]]          |
+| [[programming/basic/leetcode/41. First Missing Positive\|41. First Missing Positive]]                                       | [[programming/basic/leetcode/41. First Missing Positive#solution tips\|41. First Missing Positive#solution tips]]                    |
+| [[programming/basic/leetcode/287. 寻找重复数\|287. 寻找重复数]]                                                                       | [[programming/basic/leetcode/287. 寻找重复数#solution tips\|287. 寻找重复数#solution tips]]                                    |
 
 { .block-language-dataview}
 
@@ -246,11 +246,11 @@ console.log(hammingDistance(1, 4))
 
 | File                                                                                                                           | solution tips overview                                          |
 | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- |
-| [[programming/basic/leetcode/287. 寻找重复数\|287. 寻找重复数]]                                                                       | [[programming/basic/leetcode/287. 寻找重复数#solution tips\|287. 寻找重复数#solution tips]]                                    |
-| [[programming/basic/leetcode/41. First Missing Positive\|41. First Missing Positive]]                                       | [[programming/basic/leetcode/41. First Missing Positive#solution tips\|41. First Missing Positive#solution tips]]                    |
-| [[programming/basic/leetcode/442. Find All Duplicates in an Array\|442. Find All Duplicates in an Array]]                   | [[programming/basic/leetcode/442. Find All Duplicates in an Array#solution tips\|442. Find All Duplicates in an Array#solution tips]]          |
-| [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array\|448. Find All Numbers Disappeared in an Array]] | [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array#solution tips\|448. Find All Numbers Disappeared in an Array#solution tips]] |
 | [[programming/basic/leetcode/565. 数组嵌套\|565. 数组嵌套]]                                                                         | [[programming/basic/leetcode/565. 数组嵌套#solution tips\|565. 数组嵌套#solution tips]]                                     |
+| [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array\|448. Find All Numbers Disappeared in an Array]] | [[programming/basic/leetcode/448. Find All Numbers Disappeared in an Array#solution tips\|448. Find All Numbers Disappeared in an Array#solution tips]] |
+| [[programming/basic/leetcode/442. Find All Duplicates in an Array\|442. Find All Duplicates in an Array]]                   | [[programming/basic/leetcode/442. Find All Duplicates in an Array#solution tips\|442. Find All Duplicates in an Array#solution tips]]          |
+| [[programming/basic/leetcode/41. First Missing Positive\|41. First Missing Positive]]                                       | [[programming/basic/leetcode/41. First Missing Positive#solution tips\|41. First Missing Positive#solution tips]]                    |
+| [[programming/basic/leetcode/287. 寻找重复数\|287. 寻找重复数]]                                                                       | [[programming/basic/leetcode/287. 寻找重复数#solution tips\|287. 寻找重复数#solution tips]]                                    |
 
 { .block-language-dataview}
 
@@ -264,12 +264,12 @@ console.log(hammingDistance(1, 4))
 
 | File                                                       | solution tips overview        |
 | ---------------------------------------------------------- | ----------------------------- |
-| [[programming/basic/leetcode/15. 三数之和\|15. 三数之和]]       | [[programming/basic/leetcode/15. 三数之和#solution tips\|15. 三数之和#solution tips]]    |
-| [[programming/basic/leetcode/18. 四数之和\|18. 四数之和]]       | [[programming/basic/leetcode/18. 四数之和#solution tips\|18. 四数之和#solution tips]]    |
-| [[programming/basic/leetcode/40. 组合总和 II\|40. 组合总和 II]] | [[programming/basic/leetcode/40. 组合总和 II#solution tips\|40. 组合总和 II#solution tips]] |
-| [[programming/basic/leetcode/47. 全排列 II\|47. 全排列 II]]   | [[programming/basic/leetcode/47. 全排列 II#solution tips\|47. 全排列 II#solution tips]]  |
-| [[programming/basic/leetcode/491. 递增子序列\|491. 递增子序列]]   | [[programming/basic/leetcode/491. 递增子序列#solution tips\|491. 递增子序列#solution tips]]  |
 | [[programming/basic/leetcode/90. 子集 II\|90. 子集 II]]     | [[programming/basic/leetcode/90. 子集 II#solution tips\|90. 子集 II#solution tips]]   |
+| [[programming/basic/leetcode/491. 递增子序列\|491. 递增子序列]]   | [[programming/basic/leetcode/491. 递增子序列#solution tips\|491. 递增子序列#solution tips]]  |
+| [[programming/basic/leetcode/47. 全排列 II\|47. 全排列 II]]   | [[programming/basic/leetcode/47. 全排列 II#solution tips\|47. 全排列 II#solution tips]]  |
+| [[programming/basic/leetcode/40. 组合总和 II\|40. 组合总和 II]] | [[programming/basic/leetcode/40. 组合总和 II#solution tips\|40. 组合总和 II#solution tips]] |
+| [[programming/basic/leetcode/18. 四数之和\|18. 四数之和]]       | [[programming/basic/leetcode/18. 四数之和#solution tips\|18. 四数之和#solution tips]]    |
+| [[programming/basic/leetcode/15. 三数之和\|15. 三数之和]]       | [[programming/basic/leetcode/15. 三数之和#solution tips\|15. 三数之和#solution tips]]    |
 
 { .block-language-dataview}
 
@@ -279,9 +279,9 @@ console.log(hammingDistance(1, 4))
 
 | File                                                                 | solution tips overview             |
 | -------------------------------------------------------------------- | ---------------------------------- |
-| [[programming/basic/leetcode/131. 分割回文串\|131. 分割回文串]]             | [[programming/basic/leetcode/131. 分割回文串#solution tips\|131. 分割回文串#solution tips]]       |
-| [[programming/basic/leetcode/93. 复原 IP 地址\|93. 复原 IP 地址]]         | [[programming/basic/leetcode/93. 复原 IP 地址#solution tips\|93. 复原 IP 地址#solution tips]]     |
 | [[programming/basic/leetcode/面试题 08.06. 汉诺塔问题\|面试题 08.06. 汉诺塔问题]] | [[programming/basic/leetcode/面试题 08.06. 汉诺塔问题#solution tips\|面试题 08.06. 汉诺塔问题#solution tips]] |
+| [[programming/basic/leetcode/93. 复原 IP 地址\|93. 复原 IP 地址]]         | [[programming/basic/leetcode/93. 复原 IP 地址#solution tips\|93. 复原 IP 地址#solution tips]]     |
+| [[programming/basic/leetcode/131. 分割回文串\|131. 分割回文串]]             | [[programming/basic/leetcode/131. 分割回文串#solution tips\|131. 分割回文串#solution tips]]       |
 
 { .block-language-dataview}
 
@@ -289,10 +289,10 @@ console.log(hammingDistance(1, 4))
 
 | File                                                                                 |
 | ------------------------------------------------------------------------------------ |
-| [[programming/basic/leetcode/189. Rotate Array\|189. Rotate Array]]               |
-| [[programming/basic/leetcode/396. 旋转函数\|396. 旋转函数]]                               |
-| [[programming/basic/leetcode/61. 旋转链表\|61. 旋转链表]]                                 |
 | [[programming/basic/leetcode/剑指 Offer 58 - II. 左旋转字符串\|剑指 Offer 58 - II. 左旋转字符串]] |
+| [[programming/basic/leetcode/61. 旋转链表\|61. 旋转链表]]                                 |
+| [[programming/basic/leetcode/396. 旋转函数\|396. 旋转函数]]                               |
+| [[programming/basic/leetcode/189. Rotate Array\|189. Rotate Array]]               |
 
 { .block-language-dataview}
 
@@ -608,8 +608,8 @@ https://www.bilibili.com/video/BV1rT411u7b9?spm_id_from=333.1007.tianma.1-2-2.cl
 | [[programming/basic/leetcode/423. 从英文中重建数字\|423. 从英文中重建数字]]                                                                 | medium     | <ul><li>#leetcode/string/hash-table</li></ul>                                                                                                                                                                       | false    | 2023-05-14-Sun, 1:29:08 am  |
 | [[programming/basic/leetcode/451. 根据字符出现频率排序\|451. 根据字符出现频率排序]]                                                             | medium     | <ul><li>#leetcode/string/hash-table</li><li>#leetcode/sort/bucket</li></ul>                                                                                                                                         | false    | 2023-05-14-Sun, 1:29:08 am  |
 | [[programming/basic/leetcode/49. 字母异位词分组\|49. 字母异位词分组]]                                                                     | medium     | <ul><li>#leetcode/string/ascii</li><li>#leetcode/string/sort</li><li>#leetcode/string/hash-table</li></ul>                                                                                                          | false    | 2023-05-14-Sun, 1:29:08 am  |
-| [[programming/basic/leetcode/125. Valid Palindrome\|125. Valid Palindrome]]                                                 | easy       | <ul><li>#leetcode/palindrome</li></ul>                                                                                                                                                                              | false    | 2023-05-13-Sat, 1:29:08 am  |
 | [[programming/basic/leetcode/14. 最长公共前缀\|14. 最长公共前缀]]                                                                       | easy       | <ul><li>#leetcode/longest-common-prefix</li><li>#leetcode/lexicographical-order</li><li>#leetcode/sort/merge</li></ul>                                                                                              | false    | 2023-05-13-Sat, 1:29:08 am  |
+| [[programming/basic/leetcode/125. Valid Palindrome\|125. Valid Palindrome]]                                                 | easy       | <ul><li>#leetcode/palindrome</li></ul>                                                                                                                                                                              | false    | 2023-05-13-Sat, 1:29:08 am  |
 | [[programming/basic/leetcode/520. 检测大写字母\|520. 检测大写字母]]                                                                     | easy       | <ul><li>#leetcode/string</li></ul>                                                                                                                                                                                  | false    | 2023-05-13-Sat, 1:29:08 am  |
 | [[programming/basic/leetcode/541. 反转字符串 II\|541. 反转字符串 II]]                                                                 | easy       | <ul><li>#leetcode/string/reverse</li></ul>                                                                                                                                                                          | false    | 2023-05-13-Sat, 1:29:08 am  |
 | [[programming/basic/leetcode/238. 除自身以外数组的乘积\|238. 除自身以外数组的乘积]]                                                             | medium     | <ul><li>#leetcode/prefix-sum</li><li>#leetcode/math</li><li>#brainteasers/reverse-thinking</li><li>#brainteasers/divide-and-conquer</li><li>#leetcode/unsolved</li></ul>                                            | true     | 2023-05-10-Wed, 1:29:08 am  |
