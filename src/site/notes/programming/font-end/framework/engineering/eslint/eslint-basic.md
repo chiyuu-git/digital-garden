@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/font-end/framework/engineering/eslint/eslint-basic/","tags":["gardenEntry","gardenEntry","gardenEntry","gardenEntry"]}
+{"dg-publish":true,"permalink":"/programming/font-end/framework/engineering/eslint/eslint-basic/","tags":["gardenEntry","gardenEntry"]}
 ---
 
 
@@ -12,11 +12,11 @@
 
 | File                                                              | overview                   |
 | ----------------------------------------------------------------- | -------------------------- |
-| [[programming/FAQ/performance-optimization/重绘和回流\|重绘和回流]]      | [[programming/FAQ/performance-optimization/重绘和回流#experience\|重绘和回流#experience]]       |
-| [[programming/font-end/primitive/es/es-array\|es-array]]       | [[programming/font-end/primitive/es/es-array#experience\|es-array#experience]]    |
-| [[programming/font-end/primitive/es/es-function\|es-function]] | [[programming/font-end/primitive/es/es-function#experience\|es-function#experience]] |
 | [[programming/font-end/primitive/es/es-number\|es-number]]     | [[programming/font-end/primitive/es/es-number#experience\|es-number#experience]]   |
+| [[programming/font-end/primitive/es/es-function\|es-function]] | [[programming/font-end/primitive/es/es-function#experience\|es-function#experience]] |
+| [[programming/FAQ/performance-optimization/重绘和回流\|重绘和回流]]      | [[programming/FAQ/performance-optimization/重绘和回流#experience\|重绘和回流#experience]]       |
 | [[programming/font-end/primitive/es/es-regexp\|es-regexp]]     | [[programming/font-end/primitive/es/es-regexp#experience\|es-regexp#experience]]   |
+| [[programming/font-end/primitive/es/es-array\|es-array]]       | [[programming/font-end/primitive/es/es-array#experience\|es-array#experience]]    |
 
 { .block-language-dataview}
 
