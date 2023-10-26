@@ -44,8 +44,6 @@ pnpm config set auto-install-peers true
 
 # 特点
 
-
-
 ## 空间占用小
 
 pnpm 使用内容可寻址文件系统，避免了重复存储相同的包和依赖项。即使是同一个包的不同版本，pnpm 也足够智能，可以最大程度下重用代码。
