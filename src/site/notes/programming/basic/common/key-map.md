@@ -40,39 +40,65 @@ nmap ]l :forward
 + 在 ob 中, 通过 `<s+arrow` 切换焦点, `<c+1>` 用于 heading
 + 在浏览器中, 不需要分屏操作, `<c+1>` 被用于快速跳转 tab
 
-# Vim
-
-![vim-config](programming/basic/common/vim/vim-config.md#Key%20Map)
-
 # Init New Computer
 
 设置软件开机自动启动
 
 快速在新电脑使用需要的环境
 
-iterm2
+双拼设置, input source add
 
-zsh highlight config
+## 实现 Caps 单击为 esc，长按为 Ctrl
 
-+ download oh-my-zsh
-+ [解决Mac下修改/etc/sudoers文件的问题\_mac sudoers\_CharlesLeeps的博客-CSDN博客](https://blog.csdn.net/sinat_36652514/article/details/91358520)
-+ https://zhuanlan.zhihu.com/p/524453008
+### Mac Karabiner
+
+![](/img/user/programming/basic/common/key-map/image-20231023150912965.png)
+
+不用设置 ctrl 和 command 反转了, 之前的做法是设置了反转然后又 map caps_lock to ctrl， 现在感觉这样做太绕了
+
+绕一下的好处就是可以使用大拇指按着 command 实为 ctrl 控制屏幕的位置, 这样 mac 和 win 都是按着**系统键**控制. 感觉还是可以设置一下的.
+
+![](/img/user/programming/basic/common/key-map/image-20231024105017215.png)
+
+![|500](/img/user/programming/basic/common/key-map/image-20231024105051815.png)
+
+### Win
+
+ [将CapsLock键在单击和长按时分别映射为Esc和Ctrl | OURONGXING (orxing.top)](https://orxing.top/post/d3c3145e.html#windows)
+
+## 方向键映射
+
+win powertoy 然后搜索 键盘管理器即可设置
+
+[重映射方向键 (Windows 篇) - 知乎](https://zhuanlan.zhihu.com/p/412082309)
+
+## Else
 
 scroll-reverse
-
-karabiner
-
-+ 改变 mac 到 commad 为 ctrl
-
-rescureTime
-
-sizeUp
-
-catchMouse
 
 obsidian
 
 微云
+
+rescureTime
+
+sizeUp: 平替: [README.md](https://github.com/S1ngS1ng/HammerSpoon/blob/master/README.md)
+
+![](/img/user/programming/basic/common/key-map/image-20231024111403130.png)
+
+catchMouse
+
+iterm2
+
+homebrew
+
+zsh highlight config
+
++ download oh-my-zsh[Oh My Zsh, 『 安装 & 配置 』 - 知乎](https://zhuanlan.zhihu.com/p/35283688)
++ [解决Mac下修改/etc/sudoers文件的问题\_mac sudoers\_CharlesLeeps的博客-CSDN博客](https://blog.csdn.net/sinat_36652514/article/details/91358520)
++ 安装 plugin: https://zhuanlan.zhihu.com/p/524453008
+
+git ssh. 公钥 配置
 
 vscode
 
@@ -80,14 +106,10 @@ vscode
 + [Mac下将Open With VSCode添加到"服务" - 简书](https://www.jianshu.com/p/97d802c9ce8b)
 + solved press and hold [visual studio code - How do I press and hold a key and have it repeat in VSCode? - Stack Overflow](https://stackoverflow.com/questions/39972335/how-do-i-press-and-hold-a-key-and-have-it-repeat-in-vscode)
 
-node nvm nrm
+node nvm nrm [安装 nvm](programming/back-end/node.md#切换%20Node%20版本)
 
-git ssh. 公钥 配置
+obsidian config soft link [tools](programming/basic/common/tools.md#软链接和硬链接)
 
-homebrew
+# Vim
 
-vim config
-
-双拼设置, input source add 
-
-obsidian config soft link
+![vim-config](programming/basic/common/vim/vim-config.md#Key%20Map)
