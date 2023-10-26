@@ -698,6 +698,8 @@ preload 加载页面必需的资源如 CDN 上的字体文件，与 prefetch 预
 
 # SSR
 
+[SSR](../../font-end/framework/framwork-common/!framework-common.md#SSR)
+
 # Hybrid App 预取
 
 1. 如果 H5 在 APP WebView 中展示，可使用 App 预取
