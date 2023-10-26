@@ -314,3 +314,25 @@ aggregation website , such as bilibili and zhihu, I will using it to take entert
 # Spaced Repetition
 
 面试、考试, 临时抱佛脚的时候使用, 所以 review-dates 还是要坚持维护. 用于 N 年后判断知识的重要性
+
+# 剧情梳理、叙事逻辑如何管理
+
+每一次玩剧本杀, 其实在玩的就是剧情梳理和叙事逻辑.
+
+要把每个人在各自视角所看到的内容整理、分析、辨别, 还原出事件的真相. 这其中涉及的 世界观、时间线、人物关系图, 也正是一切剧情和叙事的基础.
+
+无论是游戏还是小说.
+
+## 欧美游戏是如何制作游戏剧情的
+
+基于世界观文件, 为剧情、美术、音乐服务
+
+[如何创造一个架空奇幻世界（下）【世界观设定】\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1je4y1S7tN/?spm_id_from=pageDriver&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+龙与地下城 图鉴
+
+![|300](/img/user/skill/knowledge-management/image-20231025181147719.png)
+
+## 日本游戏是如何制作游戏剧情的
+
+基于脚本和剧本, 参考 [《十三机兵防卫圈》，世界上最顶级的电子小说。【电子羊尾15】\_单机游戏热门视频](https://www.bilibili.com/video/BV1684y1m78c/?spm_id_from=333.1007.tianma.2-3-6.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
