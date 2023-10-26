@@ -295,7 +295,7 @@ Kana Natsuno 的 textobj-entire 插件
 
 有了 vim 之后，很多原生的 keymap 应该都是用不上的了
 
-## 配置同步策略
+## Vimrc 同步策略
 
 尽量只使用原生的 vim 配置，所以在不使用 vim 插件的前提下，基本上用不上插件管理器
 
@@ -309,9 +309,13 @@ Checkout 兼容目标系统上的存储库 Mac /_gvimrc 上的
 
 创建符号链接：
 
-~ $ ln -s my_repository/Vim/_vimrc $HOME/.vimrc
+```zsh
+ln -s my_repository/Vim/_vimrc $HOME/.vimrc
 
-~ $ ln -s my_repository/Vim/_gvimrc $HOME/.gvimrc
+ln -s ./remote-note/_vimrc $HOME/.vimrc
+
+ln -s my_repository/Vim/_gvimrc $HOME/.gvimrc
+```
 
 On Windows 将 Vim 文件夹签出，而不是 Program Files 目录中的文件夹。SVN 会抱怨已经存在的文件，但你可以将这些文件添加到忽略列表中。
 
@@ -337,40 +341,17 @@ $root\.vimrc
 
 中文状态下也统一使用英文符号, 方便 f 查找
 
-### 实现 Caps 单击为 esc，长按为 Ctrl
-
-mac karabiner :
-
-+ use eventViewer to check keymap
-+ modified key set provide the most of key binding
-
-win powertoy 然后搜索 键盘管理器即可设置
-
-[将CapsLock键在单击和长按时分别映射为Esc和Ctrl | OURONGXING (orxing.top)](https://orxing.top/post/d3c3145e.html#windows)
-
 ### Vim 中英文模式切换
 
-<https://yzlnew.com/2019/01/vim-imselect/>
+下载 [GitHub - daipeihust/im-select: 📟 Switch your input method through terminal](https://github.com/daipeihust/im-select#installation)
 
-<https://somenzz.cn/20210910/vim-auto-im-select/#macos>
++ im-select 程序会被下载到 `/usr/local/bin/` 路径
++ 如果复制失败了, 需要自己手动复制一下, brew list im-select 获取本地文件地址再复制过去就可以了
++ mac 下 vscode 和 obsidian 都已经默认指定了该路径, 新电脑理论上来说只需要下载好就可以自动切换了
 
 当切换插入模式时，自动切换中英文<https://www.zhihu.com/question/303850876>
 
 > macos 双拼不影响, 直接删除原有的输入法即可
-
-macOS 实现默认中文输入法 shift 切换中英文<https://hackers-delight.com/2019/11/11/macos-shift-to-capslock/>
-
-Change caps_lock to control if pressed with other keys, to escape if pressed alone.
-
-### 模拟方向键
-
-通过 键盘方向键实现 / powertoy
-
-[重映射方向键 (Windows 篇) - 知乎](https://zhuanlan.zhihu.com/p/412082309)
-
-通过模式方向键, 在任何地方都可以使用 hjkl 概念的命令进行移动, 比如 `<tab-j>`
-
-![](/img/user/programming/basic/common/vim/vim-config/image-20221120174824352.png)
 
 ### 设置搜索模式
 
