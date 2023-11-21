@@ -3,6 +3,7 @@
 ---
 
 
+[ES6+TS如何书写更优雅的设计模式 - 策略模式 - 掘金](https://juejin.cn/post/6844904198551633934)
 # 引入
 
 ![](/img/user/programming/basic/cs-basic/design-pattern/strategy-pattern/image-20230926132052578.png)
