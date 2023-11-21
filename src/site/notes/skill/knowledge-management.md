@@ -120,6 +120,8 @@ pdf 阅读器、纯文本、markdown 所有的电子书形式都要可以索引�
 
 2023-09-27 ob 还是没有太好用的 pdf 标注
 
+logseq 和 obsidian 都可以，还支持笔记定位 PDF 原始位置。更倾向阅读的 bookxnote 也可以很完美实现
+
 ## 读书笔记
 
 其实可以直接用 logseq 那种原生支持作读书笔记的, 只要产出的都是 markdown , 应该问题不大
@@ -336,3 +338,22 @@ aggregation website , such as bilibili and zhihu, I will using it to take entert
 ## 日本游戏是如何制作游戏剧情的
 
 基于脚本和剧本, 参考 [《十三机兵防卫圈》，世界上最顶级的电子小说。【电子羊尾15】\_单机游戏热门视频](https://www.bilibili.com/video/BV1684y1m78c/?spm_id_from=333.1007.tianma.2-3-6.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+# 尝试用编程思维对需要管理的内容建模
+
+如更要整理音乐, 那就想象自己要实现一款音乐软件, 那样应该如何建模来管理数据?
+
+整理世界观也是类似的思路, 说不定可以突破 obsidan 的缺陷
+
+![tools](programming/basic/common/tools.md#竞品)
+
+使用 ob 也有一段时间了, 其实双向连接的功能并不是很常用, 最主要的其实是一个单向的引用能力.
+
+整理笔记的过程虽然是自下而上的, 但是复习笔记的时候还是自上而下的复习, 比如我都是从 !XXX 的文档开始复习的. 从单个文档去到各个 !XXX 的场景还是比较少.
+
+现在最大的问题是 pdf 读书笔记和素材管理
+
+读书笔记最重要的还是先读起来, pdf OCR + ob 做笔记也够用了
+
+[打造第二大脑，构建个人知识体系\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1GN4y117sw/?spm_id_from=333.1007.tianma.1-1-1.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
