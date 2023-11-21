@@ -65,6 +65,7 @@ nmap ]l :forward
 ### Win
 
  [将CapsLock键在单击和长按时分别映射为Esc和Ctrl | OURONGXING (orxing.top)](https://orxing.top/post/d3c3145e.html#windows)
+[Release v1.0.1 · oblitum/Interception · GitHub](https://github.com/oblitum/interception/releases/tag/v1.0.1)
 
 ## 方向键映射
 
@@ -113,3 +114,7 @@ obsidian config soft link [tools](programming/basic/common/tools.md#软链接和
 # Vim
 
 ![vim-config](programming/basic/common/vim/vim-config.md#Key%20Map)
+
+# Windows 激活
+
+[win10（win11、win8.1)老提示需要激活？真正永久激活的方法在这儿 - 知乎](https://zhuanlan.zhihu.com/p/401418243?utm_id=0)
