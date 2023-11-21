@@ -1252,6 +1252,10 @@ git rebase -i HEAD~6
 
 edit 可以修改指定的提交，之后可以使用 git commit --amend 进行修改
 
+## Git Pull --rebase
+
+本地分支落后于远程的同时, 又有新的提交, 可以直接基于远程的分支做 rebase
+
 # 保持同步
 
 ## Git Remote
