@@ -7,24 +7,24 @@
 
 | File                                                                                                 | overview                          |
 | ---------------------------------------------------------------------------------------------------- | --------------------------------- |
-| [[programming/font-end/primitive/es/es-string\|es-string]]                                        | [[programming/font-end/primitive/es/es-string#faq\|es-string#faq]]                 |
-| [[programming/font-end/primitive/es/es-number\|es-number]]                                        | [[programming/font-end/primitive/es/es-number#faq\|es-number#faq]]                 |
-| [[programming/font-end/primitive/es/es-proto\|es-proto]]                                          | [[programming/font-end/primitive/es/es-proto#faq\|es-proto#faq]]                  |
-| [[programming/font-end/primitive/es/es-date\|es-date]]                                            | [[programming/font-end/primitive/es/es-date#faq\|es-date#faq]]                   |
-| [[programming/font-end/primitive/es/es-async/promise\|promise]]                                   | [[programming/font-end/primitive/es/es-async/promise#faq\|promise#faq]]                   |
+| [[programming/FAQ/performance-optimization/!performance-optimization\|!performance-optimization]] | [[programming/FAQ/performance-optimization/!performance-optimization#faq\|!performance-optimization#faq]] |
 | [[programming/font-end/framework/typescript/ts-advanced\|ts-advanced]]                            | [[programming/font-end/framework/typescript/ts-advanced#faq\|ts-advanced#faq]]               |
+| [[programming/font-end/primitive/browser-api/dom-selection\|dom-selection]]                       | [[programming/font-end/primitive/browser-api/dom-selection#faq\|dom-selection#faq]]             |
+| [[programming/font-end/primitive/es/es-async/promise\|promise]]                                   | [[programming/font-end/primitive/es/es-async/promise#faq\|promise#faq]]                   |
+| [[programming/font-end/primitive/es/es-date\|es-date]]                                            | [[programming/font-end/primitive/es/es-date#faq\|es-date#faq]]                   |
+| [[programming/font-end/primitive/es/es-number\|es-number]]                                        | [[programming/font-end/primitive/es/es-number#faq\|es-number#faq]]                 |
 | [[programming/font-end/primitive/es/es-object\|es-object]]                                        | [[programming/font-end/primitive/es/es-object#faq\|es-object#faq]]                 |
-| [[programming/font-end/primitive/es/es-regexp\|es-regexp]]                                        | [[programming/font-end/primitive/es/es-regexp#faq\|es-regexp#faq]]                 |
-| [[programming/font-end/primitive/es/es-next-1\|es-next-1]]                                        | [[programming/font-end/primitive/es/es-next-1#faq\|es-next-1#faq]]                 |
+| [[programming/font-end/primitive/es/es-proto\|es-proto]]                                          | [[programming/font-end/primitive/es/es-proto#faq\|es-proto#faq]]                  |
+| [[programming/font-end/primitive/es/es-string\|es-string]]                                        | [[programming/font-end/primitive/es/es-string#faq\|es-string#faq]]                 |
+| [[programming/font-end/browser-core/browser-thread\|browser-thread]]                              | [[programming/font-end/browser-core/browser-thread#faq\|browser-thread#faq]]            |
+| [[programming/font-end/primitive/browser-api/bom\|bom]]                                           | [[programming/font-end/primitive/browser-api/bom#faq\|bom#faq]]                       |
+| [[programming/font-end/primitive/browser-api/dom-event\|dom-event]]                               | [[programming/font-end/primitive/browser-api/dom-event#faq\|dom-event#faq]]                 |
+| [[programming/font-end/primitive/browser-api/dom-interface\|dom-interface]]                       | [[programming/font-end/primitive/browser-api/dom-interface#faq\|dom-interface#faq]]             |
+| [[programming/font-end/primitive/es/es-array\|es-array]]                                          | [[programming/font-end/primitive/es/es-array#faq\|es-array#faq]]                  |
 | [[programming/font-end/primitive/es/es-basic\|es-basic]]                                          | [[programming/font-end/primitive/es/es-basic#faq\|es-basic#faq]]                  |
 | [[programming/font-end/primitive/es/es-async/es-async-2\|es-async-2]]                             | [[programming/font-end/primitive/es/es-async/es-async-2#faq\|es-async-2#faq]]                |
-| [[programming/font-end/primitive/es/es-array\|es-array]]                                          | [[programming/font-end/primitive/es/es-array#faq\|es-array#faq]]                  |
-| [[programming/font-end/primitive/browser-api/dom-selection\|dom-selection]]                       | [[programming/font-end/primitive/browser-api/dom-selection#faq\|dom-selection#faq]]             |
-| [[programming/font-end/primitive/browser-api/dom-interface\|dom-interface]]                       | [[programming/font-end/primitive/browser-api/dom-interface#faq\|dom-interface#faq]]             |
-| [[programming/font-end/primitive/browser-api/dom-event\|dom-event]]                               | [[programming/font-end/primitive/browser-api/dom-event#faq\|dom-event#faq]]                 |
-| [[programming/font-end/primitive/browser-api/bom\|bom]]                                           | [[programming/font-end/primitive/browser-api/bom#faq\|bom#faq]]                       |
-| [[programming/font-end/browser-core/browser-thread\|browser-thread]]                              | [[programming/font-end/browser-core/browser-thread#faq\|browser-thread#faq]]            |
-| [[programming/FAQ/performance-optimization/!performance-optimization\|!performance-optimization]] | [[programming/FAQ/performance-optimization/!performance-optimization#faq\|!performance-optimization#faq]] |
+| [[programming/font-end/primitive/es/es-regexp\|es-regexp]]                                        | [[programming/font-end/primitive/es/es-regexp#faq\|es-regexp#faq]]                 |
+| [[programming/font-end/primitive/es/es-next-1\|es-next-1]]                                        | [[programming/font-end/primitive/es/es-next-1#faq\|es-next-1#faq]]                 |
 
 { .block-language-dataview}
 
@@ -961,94 +961,6 @@ upNodes[i].style.width="";
 ### 单位
 
 .style.property 需要加 px，如果是 attribute 浏览器会自动加 px
-
-## 隐藏页面中的某个元素
-
-### 隐藏类型
-
-屏幕并不是唯一的输出机制，比如说屏幕上看不见的元素（隐藏的元素），其中一些依然能够被读屏软件阅读出来（因为读屏软件依赖于可访问性树来阐述）。为了消除它们之间的歧义，我们将其归为三大类：
-
-- 完全隐藏：元素从渲染树中消失，不占据空间。
-- 视觉上的隐藏：屏幕中不可见，占据空间。
-- 语义上的隐藏：读屏软件不可读，但正常占据空。
-
-### 完全隐藏
-
-`display` 属性 (不占据空间)
-
-```css
-display: none;
-```
-
-hidden 属性 (不占据空间)
-
-```html
-<div hidden></div>
-```
-
-### 视觉上的隐藏
-
-利用 `position` 和 盒模型 将元素移出可视区范围
-
-+ 设置 `posoition` 为 `absolute` 或 `fixed`，通过设置 `top`、`left` 等值，将其移出可视区域。(可视区域不占位)
-+ 设置 `position` 为 `relative`，通过设置 `top`、`left` 等值，将其移出可视区域。（可视区域占位）
-+ 设置 margin 值，将其移出可视区域范围（可视区域占位）。
-+ 如果希望其在可视区域不占位，需同时设置 `height: 0`;
-
-利用 transfrom
-
-+ 缩放 (占据空间)
-
-    ```css
-    transform: scale(0);
-    ```
-
-+ 移动 `translateX`, `translateY`(占据空间)
-+ 旋转 `rotate` (占据空间)
-
-    ```css
-    transform: rotateY(90deg);
-    ```
-
-设置其大小为 0
-
-+ 宽高为 0，字体大小为 0：
-+ 宽高为 0，超出隐藏:
-
-    ```css
-    height: 0;
-    width: 0;
-    overflow: hidden;
-    ```
-
-设置透明度 opacity 为 0 (占据空间)
-
-visibility 属性 (占据空间)
-
-层级覆盖，`z-index` 属性 (占据空间)
-
-+ ```css
-    position: relative;
-    z-index: -999;
-    ```
-+ 再设置一个层级较高的元素覆盖在此元素上。
-
-clip-path 裁剪 (占据空间)
-
-+ ```css
-    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
-    ```
-
-### 语义上的隐藏
-
-aria-hidden 属性 (占据空间)
-
-读屏软件不可读，占据空间，可见。
-
-```
-<div aria-hidden="true">
-</div>
-```
 
 ## 事件
 
