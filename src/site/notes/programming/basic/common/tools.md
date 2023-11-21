@@ -366,12 +366,13 @@ source .bash_profile
 
 ```
 sudo vi /etc/hosts
-
+
 sudo killall -HUP mDNSResponder
 ```
 
 ### Win
 
+[Win11如何修改hosts文件？Win11修改hosts文件的方法 - 系统之家](https://www.xitongzhijia.net/xtjc/20220526/245151.html)
 ```
 ipconfig /flushdns
 ```
@@ -677,6 +678,16 @@ ctrl+tab 切换标签页
 
 免费版安装包地址：<https://limbopro.com/archives/416.html>
 
+**Windows 离线安装包** [typora-update-x32-1117.exe.zip](https://limbopro.com/usr/uploads/2021/12/1423353763.zip) / [typora-update-x64-1117.exe.zip](https://limbopro.com/usr/uploads/2021/12/1075124544.zip)；
+
+**Mac 离线安装包** [Typora-0.11.18.(5941).dmg](https://limbopro.com/usr/uploads/2021/12/2009290104.dmg)；
+
+**Linux 离线安装包** [typora_0.11.18_amd64.deb.zip](https://limbopro.com/usr/uploads/2021/12/2022339376.zip)；
+
+去官网下载免费版本：[https://typora.io/windows/dev_release.html](https://typora.io/windows/dev_release.html) （Windows/Linux）；
+
+去官网下载免费版本：[https://typora.io/dev_release.html](https://typora.io/dev_release.html) （Mac）；
+
 ## LaTeX
 
 ### 下标和上标
@@ -701,6 +712,14 @@ $A^{1}→A^{2}$
 
 开发计划：<https://trello.com/b/Psqfqp7I/obsidian-roadmap>
 
+## 竞品
+
+affine
+
+感觉在 pdf 读书笔记上, 还是有缺陷
+
+在素材管理上也不如数据库 notion 方便
+
 ## 双向链接
 
 可以使用标准的 markdown 链接
@@ -718,18 +737,6 @@ $A^{1}→A^{2}$
 `<c+r>` reload obsidian
 
 `<c+t>` toggle tabs plugin
-
-## 搜索功能
-
-OR 或
-
-\- 非
-
-task:""
-
-```query
-task-todo:""
-```
 
 ## 标签功能
 
@@ -875,3 +882,7 @@ picGo 太垃圾了, 每次用都要调试很久, 心累了, 再也不碰
 [Mac端Charles+手机端配置\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1xV4y1M7Vb/?spm_id_from=333.337.search-card.all.click&vd_source=db8a4b4129af2e1d7a3e3f6357bb4d45)
 
 注意关闭电脑的其他代理: proxy omega 关闭, 度管家也要退出
+
+# Quicker
+
+[Mac 有没有类似 Quicker 的软件？ - 知乎](https://www.zhihu.com/question/362216392)
