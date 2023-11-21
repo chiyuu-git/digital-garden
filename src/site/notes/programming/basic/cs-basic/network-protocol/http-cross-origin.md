@@ -417,6 +417,23 @@ Vary: Origin
 
 ### Access-Control-Allow-Headers
 
+### Cross-Origin-Resource-Policy
+
+### Cross-Origin-Embedder-Policy
+
+Because your site has the Cross-Origin Embedder Policy (COEP) enabled, each embedded iframe must also specify this policy. This behavior protects private data from being exposed to untrusted third party sites.
+
+To solve this, add one of following to the embedded frame’s HTML response header:
+
+- `Cross-Origin-Embedder-Policy: require-corp`
+- `Cross-Origin-Embedder-Policy: credentialless` (Chrome > 96)
+
+引用 iframe 时需要配置. iframe 源网站需要配置, 引用 iframe 的也需要配置
+
+You can only access certain features like [`SharedArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer) objects or [`Performance.now()`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now) with unthrottled timers, if your document has a COEP header with a value of `require-corp` or `credentialless` set.
+
+![http-cross-origin](programming/basic/cs-basic/network-protocol/http-cross-origin.md#shareArrayBuffer)
+
 ## HTTP 请求首部字段
 
 本节列出了可用于发起跨域请求的首部字段。请注意，**这些首部字段无须手动设置。 当开发者使用 XMLHttpRequest 对象发起跨域请求时，它们已经被设置就绪。**
@@ -602,3 +619,7 @@ DNS 污染, 改 hosts, 或者反向代理
 而往往开发环境中端口号都是 3000 这种, 图片服务器则默认是 80 或者 443. 因为为了在本地开发环境使用 drawImage() 还得把本地开发环境的端口号设置为 80 或者 443. 然后这是行不通的, 因为这两个端口号往往已经被占用了. 因此需要通过 DNS 映射, 把本地域名的 3000 端口映射成本地开发机域名的 80 端口
 
 [解决canvas图片getImageData,toDataURL跨域问题 « 张鑫旭-鑫空间-鑫生活](https://www.zhangxinxu.com/wordpress/2018/02/crossorigin-canvas-getimagedata-cors/)
+
+### shareArrayBuffer
+
+平面编辑器中使用到了 shareArrayBuffer. 对 COEP 有要求, 于是让工作台的页面也配置上了 COEP
