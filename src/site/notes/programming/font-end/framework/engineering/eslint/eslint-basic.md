@@ -12,11 +12,11 @@
 
 | File                                                              | overview                   |
 | ----------------------------------------------------------------- | -------------------------- |
-| [[programming/font-end/primitive/es/es-number\|es-number]]     | [[programming/font-end/primitive/es/es-number#experience\|es-number#experience]]   |
-| [[programming/font-end/primitive/es/es-function\|es-function]] | [[programming/font-end/primitive/es/es-function#experience\|es-function#experience]] |
-| [[programming/font-end/primitive/es/es-regexp\|es-regexp]]     | [[programming/font-end/primitive/es/es-regexp#experience\|es-regexp#experience]]   |
-| [[programming/font-end/primitive/es/es-array\|es-array]]       | [[programming/font-end/primitive/es/es-array#experience\|es-array#experience]]    |
 | [[programming/FAQ/performance-optimization/重绘和回流\|重绘和回流]]      | [[programming/FAQ/performance-optimization/重绘和回流#experience\|重绘和回流#experience]]       |
+| [[programming/font-end/primitive/es/es-function\|es-function]] | [[programming/font-end/primitive/es/es-function#experience\|es-function#experience]] |
+| [[programming/font-end/primitive/es/es-number\|es-number]]     | [[programming/font-end/primitive/es/es-number#experience\|es-number#experience]]   |
+| [[programming/font-end/primitive/es/es-array\|es-array]]       | [[programming/font-end/primitive/es/es-array#experience\|es-array#experience]]    |
+| [[programming/font-end/primitive/es/es-regexp\|es-regexp]]     | [[programming/font-end/primitive/es/es-regexp#experience\|es-regexp#experience]]   |
 
 { .block-language-dataview}
 
@@ -114,9 +114,7 @@ deleteComment(msg,index){}
 
 [JavaScript 复杂判断的更优雅写法 - 知乎](https://zhuanlan.zhihu.com/p/52110677)
 
-### 用策略模式干掉 if-else
-
-
+### 用策略模式干掉 If-else
 
 ## 代码短路逻辑
 
@@ -343,7 +341,7 @@ alert(document.getElementById('foo').tagName);
 <html lang="zh-CN">
 ```
 
-### 指定 charset 编码
+### 指定 Charset 编码
 
 **[强制] 页面必须使用精简形式，明确指定字符编码。指定字符编码的 `meta` 必须是 `head` 的第一个直接子元素。**
 
@@ -900,3 +898,17 @@ npx depcruise --output-type dot --max-depth 1 logger | dot -T svg > app.sv
 # 如何阅读源码
 
 [如何阅读源码 —— 以 Vetur 为例 - 知乎](https://zhuanlan.zhihu.com/p/395405684)
+
+# Formatter
+
+local setting
+
+user setting
+
+defaultFormatter <
+
+```json
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+```
