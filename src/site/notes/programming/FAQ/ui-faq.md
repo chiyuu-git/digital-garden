@@ -7,15 +7,15 @@
 
 | File                                                                                     | overview                       |
 | ---------------------------------------------------------------------------------------- | ------------------------------ |
-| [[programming/font-end/primitive/html/html-form\|html-form]]                          | [[programming/font-end/primitive/html/html-form#faq\|html-form#faq]]              |
+| [[programming/FAQ/ui-component/input\|input]]                                         | [[programming/FAQ/ui-component/input#faq\|input#faq]]                  |
+| [[programming/font-end/primitive/browser-api/dom-drag-event\|dom-drag-event]]         | [[programming/font-end/primitive/browser-api/dom-drag-event#faq\|dom-drag-event#faq]]         |
+| [[programming/font-end/primitive/css/flex\|flex]]                                     | [[programming/font-end/primitive/css/flex#faq\|flex#faq]]                   |
 | [[programming/font-end/primitive/css/page-layout\|page-layout]]                       | [[programming/font-end/primitive/css/page-layout#faq\|page-layout#faq]]            |
 | [[programming/font-end/primitive/css/tailwind/tailwind-basic\|tailwind-basic]]        | [[programming/font-end/primitive/css/tailwind/tailwind-basic#faq\|tailwind-basic#faq]]         |
-| [[programming/font-end/primitive/css/flex\|flex]]                                     | [[programming/font-end/primitive/css/flex#faq\|flex#faq]]                   |
-| [[programming/font-end/primitive/browser-api/dom-drag-event\|dom-drag-event]]         | [[programming/font-end/primitive/browser-api/dom-drag-event#faq\|dom-drag-event#faq]]         |
+| [[programming/font-end/primitive/html/html-form\|html-form]]                          | [[programming/font-end/primitive/html/html-form#faq\|html-form#faq]]              |
+| [[programming/font-end/mobile/mobile-basic\|mobile-basic]]                            | [[programming/font-end/mobile/mobile-basic#faq\|mobile-basic#faq]]           |
 | [[programming/font-end/primitive/css/transition & animation\|transition & animation]] | [[programming/font-end/primitive/css/transition & animation#faq\|transition & animation#faq]] |
 | [[programming/font-end/primitive/css/css-2.1\|css-2.1]]                               | [[programming/font-end/primitive/css/css-2.1#faq\|css-2.1#faq]]                |
-| [[programming/font-end/mobile/mobile-basic\|mobile-basic]]                            | [[programming/font-end/mobile/mobile-basic#faq\|mobile-basic#faq]]           |
-| [[programming/FAQ/ui-component/input\|input]]                                         | [[programming/FAQ/ui-component/input#faq\|input#faq]]                  |
 
 { .block-language-dataview}
 
@@ -1733,3 +1733,105 @@ root.style.setProperty('--main-color', '#ff5733');
 6. **CSS-in-JS 库**： 如果您使用 CSS-in-JS 库（如 Emotion、Styled Components 等），您可以根据不同的主题切换样式的定义。
 
 不管您选择哪种方法，实现暗黑模式的关键在于根据用户的偏好或设置切换不同的样式，以提供更好的用户体验。请确保您的实现方式在不同的浏览器和设备上都能正常工作，并充分测试各种情况。
+
+# 隐藏页面中的某个元素
+
+## 隐藏类型
+
+屏幕并不是唯一的输出机制，比如说屏幕上看不见的元素（隐藏的元素），其中一些依然能够被读屏软件阅读出来（因为读屏软件依赖于可访问性树来阐述）。为了消除它们之间的歧义，我们将其归为三大类：
+
+- 完全隐藏：元素从渲染树中消失，不占据空间。
+- 视觉上的隐藏：屏幕中不可见，占据空间。
+- 语义上的隐藏：读屏软件不可读，但正常占据空。
+
+## 完全隐藏
+
+`display` 属性 (不占据空间)
+
+```css
+display: none;
+```
+
+hidden 属性 (不占据空间)
+
+```html
+<div hidden></div>
+```
+
+## 视觉上的隐藏
+
+### 利用 `position` 和 盒模型 将元素移出可视区范围
+
+设置 `posoition` 为 `absolute` 或 `fixed`，通过设置 `top`、`left` 等值，将其移出可视区域。(可视区域不占位)
+
+设置 `position` 为 `relative`，通过设置 `top`、`left` 等值，将其移出可视区域。（可视区域占位）
+
+设置 margin 值，将其移出可视区域范围（可视区域占位）。
+
+如果希望其在可视区域不占位，需同时设置 `height: 0`;
+
+### Z-index
+
+层级覆盖，`z-index` 属性 (占据空间)
+
+```css
+position: relative;
+z-index: -999;
+```
+
+再设置一个层级较高的元素覆盖在此元素上。
+
+### 利用 Transfrom
+
+缩放 (占据空间)
+
+```css
+transform: scale(0);
+```
+
+移动 `translateX`, `translateY`(占据空间)
+
+旋转 `rotate` (占据空间)
+
+```css
+transform: rotateY(90deg);
+```
+
+### 设置其大小为 0
+
++ 宽高为 0，字体大小为 0：
++ 宽高为 0，超出隐藏:
+
+    ```css
+
+height: 0;
+
+width: 0;
+
+overflow: hidden;
+
+```
+
+### 透明度
+
+设置透明度 opacity 为 0 (占据空间)
+
+visibility 属性 (占据空间)
+
+
+clip-path 裁剪 (占据空间)
+
+```css
+clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+```
+
+## 语义上的隐藏
+
+aria-hidden 属性 (占据空间)
+
+读屏软件不可读，占据空间，可见。
+
+```
+<div aria-hidden="true">
+</div>
+```
