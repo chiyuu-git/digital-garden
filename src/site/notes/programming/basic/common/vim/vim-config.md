@@ -331,6 +331,16 @@ macos
 $root\.vimrc
 ```
 
+## $HOME
+
+```
+echo $
+```
+
+## :source ~/.vimrc
+
+更新 vimrc
+
 ## 基本设置
 
 ### Vim 基本环境
