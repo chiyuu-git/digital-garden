@@ -907,6 +907,8 @@ ImageData 对象中存储着 canvas 对象真实的像素数据，它包含以�
 
 ## putImageData(myImageData, Dx, dy)
 
+[CanvasRenderingContext2D.putImageData() - Web API 接口参考 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/putImageData)
+
 putImageData() 方法去对场景进行 **像素数据的写入**。
 
 dx 和 dy 参数表示你希望在场景内左上角绘制的像素数据所得到的设备坐标
