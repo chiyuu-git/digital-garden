@@ -3,6 +3,10 @@
 ---
 
 
+# 图像数据转换
+
+[浏览器图像转换手册 - vivaxy's Blog](https://vivaxyblog.github.io/2019/11/08/comprehensive-image-processing-on-browsers-cn.html)
+
 # Img 标签
 
 https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img
@@ -213,6 +217,10 @@ WebP 图片是一种新的图像格式，由 Google 开发。与 png、jpg 相�
 
 [图片不压缩，前端要背锅 🍳 - 掘金](https://juejin.cn/post/7153086294409609229)
 
+# 图片瓦片绘制
+
+[JavaScript 图片压缩问题？ - 知乎](https://www.zhihu.com/question/30692677)
+
 # 图片的大小、分辨率、质量
 
 大小的概念, 太模糊了, 既可以指体积大小, 也可以指分辨率大小, 甚至可以指实际的尺寸大小, 所以尽量不要使用大小来描述图片的信息
@@ -284,6 +292,84 @@ by chatgpt
 预加载指的是将所需的资源提前请求加载到本地，这样后面在需要用到时就直接从缓存取资源。通过预加载能够减少用户的等待时间，提高用户的体验。我了解的预加载的最常用的方式是使用 js 中的 image 对象，通过为 image 对象来设置 scr 属性，来实现图片的预加载。
 
 详细资料可以参考： [《懒加载和预加载》](https://juejin.im/post/5b0c3b53f265da09253cbed0) [《网页图片加载优化方案》](https://juejin.im/entry/5a73f38cf265da4e99575be3) [《基于用户行为的图片等资源预加载》](https://www.zhangxinxu.com/wordpress/2016/06/image-preload-based-on-user-behavior/)
+
+# 获取上传的本地文件的宽高
+
+[如题](https://www.cnblogs.com/nangezi/p/12374094.html)
+
+dataUrl 是 base64, 那 objUrl 是什么呢?
+
+load 事件和 loadend 事件的区别
+
+```js
+/**
+ * 上传图片
+ * @param e 选择的文件对象
+ * @param progressCallback 进度回调
+ * @returns {Promise<any>}
+ */
+function uploadImageFile(e, progressCallback) {
+    return new Promise(function (resolve, reject) {
+        var fileObj = e.target.files[0];
+        if (fileObj.type != "image/png" && fileObj.type != "image/jpeg") {
+            console.log("请上传正确的文件类型");
+            reject("");
+        }
+        if (fileObj.size > 5*1024*1024) {
+            console.log("图片文件过大");
+            reject("");
+        }
+        // 获取上传的图片的宽高
+        var reader = new FileReader();
+        reader.readAsDataURL(fileObj);
+        reader.onload = function (evt) {
+            var replaceSrc = evt.target.result;
+            var imageObj = new Image();
+            imageObj.src = replaceSrc;
+            imageObj.onload = function () {
+                console.log(imageObj.width + imageObj.height);
+                // 执行上传的方法，获取外网路径，上传进度等
+                resolve();
+            };
+        };
+    });
+}
+```
+
+# 获取上传的视频的宽高
+
+```js
+/**
+ * 上传视频
+ * @param e 选择的文件对象
+ * @param progressCallback 进度回调
+ * @returns {Promise<any>}
+ */
+function uploadVideoFile(e, progressCallback) {
+    return new Promise(function (resolve, reject) {
+        var fileObj = e.target.files[0];
+        if (fileObj.type !== "video/mp4") {
+            console.log("请上传正确的文件类型");
+            reject("");
+        }
+        if (fileObj.size > 200*1024*1024) {
+            console.log("视频文件过大");
+            reject("");
+        }
+        // 获取上传的视频的宽高
+        var videoUrl = URL.createObjectURL(fileObj);
+        var videoObj = document.createElement("video");
+        videoObj.onloadedmetadata = function (evt) {
+            URL.revokeObjectURL(videoUrl);
+            console.log(videoObj.videoWidth + videoObj.videoHeight);
+            // 执行上传的方法，获取外网路径，上传进度等
+            resolve();
+        };
+        videoObj.src = videoUrl;
+        videoObj.load();
+    });
+}
+```
 
 # FAQ
 
