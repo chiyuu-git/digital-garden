@@ -373,6 +373,7 @@ sudo killall -HUP mDNSResponder
 ### Win
 
 [Win11如何修改hosts文件？Win11修改hosts文件的方法 - 系统之家](https://www.xitongzhijia.net/xtjc/20220526/245151.html)
+
 ```
 ipconfig /flushdns
 ```
@@ -647,6 +648,14 @@ Command + shift + L 可以快捷打印 console
 ```
 
 然后选择入口文件所在的进程即可
+
+# Chrome 调试
+
+![](/img/user/programming/basic/common/tools/image-20231127211604150.png)
+
+开启 Emulate a focused page，此时下拉就出来了。
+
+![](/img/user/programming/basic/common/tools/image-20231127211621206.png)
 
 # Safe Refactoring
 
