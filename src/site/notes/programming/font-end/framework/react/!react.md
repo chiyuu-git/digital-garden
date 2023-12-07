@@ -34,3 +34,11 @@
 **不要滥用 refs**。只有对于作为 props 无法表达的 **命令式** 行为才应该使用 ref：例如滚动到节点、将焦点放在节点上、触发动画，以及选择文本等等。
 
 **如果可以将某些东西使用 props 表达，那就不应该使用 ref**。例如，不要从一个 Modal 组件中暴露一个命令式的句柄，如 `{ open, close }`，更好的做法是像这样使用 `isOpen` 作为一个像 `<Modal isOpen={isOpen} />` 的 prop。[Effects](https://zh-hans.react.dev/learn/synchronizing-with-effects) 可以帮助你通过 props 暴露命令式行为。
+
+# Portal
+
+[你真的知道 React Portal 吗？ - 掘金](https://juejin.cn/post/6844904024378982413)
+[javascript - Deprecation notice: ReactDOM.render is no longer supported in React 18 - Stack Overflow](https://stackoverflow.com/questions/71668256/deprecation-notice-reactdom-render-is-no-longer-supported-in-react-18)
+只能是原本就在组件树的组件去使用, 让一个在树中的 react 组件, 渲染到指定位置去
+
+无法动态的插入一个 react 组件到 dom 树中.
