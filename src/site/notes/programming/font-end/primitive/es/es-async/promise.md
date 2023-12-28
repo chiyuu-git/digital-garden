@@ -727,6 +727,73 @@ function promiseAll(promises) {
 }
 ```
 
+## 继发请求和并发请求
+
+### 继发请求
+
+for 循环即可
+
+实际开发中，经常遇到一组异步操作，需要按照顺序完成。比如，依次远程读取一组 URL，然后按照读取的顺序输出结果。
+
+**Promise 写法**
+
+```javascript
+function logInOrder(urls) {
+  // 远程读取所有URL
+  const textPromises = urls.map(url => {
+    return fetch(url).then(response => response.text());
+  });
+
+  // 按次序输出
+  textPromises.reduce((chain, textPromise) => {
+    return chain.then(() => textPromise)
+      .then(text => console.log(text))
+  }, Promise.resolve())
+}
+```
+
+上面代码使用 `fetch` 方法，同时远程读取一组 URL。每个 `fetch` 操作都返回一个 Promise 对象，放入 `textPromises` 数组。然后，`reduce` 方法依次处理每个 Promise 对象，然后使用 `then`，将所有 Promise 对象连起来，因此就可以依次输出结果。
+
+**async 函数实现**
+
+这种写法不太直观，可读性比较差。下面是 async 函数实现。
+
+```javascript
+async function logInOrder(urls) {
+  for (const url of urls) {
+    const response = await fetch(url);
+    console.log(await response.text());
+  }
+}
+```
+
+上面代码确实大大简化，问题是所有远程操作都是继发。只有前一个 URL 返回结果，才会去读取下一个 URL
+
+### 并发请求
+
+继发请求效率很差，非常浪费时间。我们需要的是 **并发** 发出远程请求。
+
+```javascript
+async function logInOrder(urls) {
+  // 并发读取远程URL
+  const textPromises = urls.map(async url => {
+    const response = await fetch(url);
+    return response.text();
+  });
+
+  // 按次序输出
+  for (const textPromise of textPromises) {
+    console.log(await textPromise);
+  }
+}
+```
+
+上面代码中，虽然 `map` 方法的参数是 `async` 函数，但它是并发执行的，因为只有 `async` 函数内部是继发执行，外部不受影响。后面的 `for..of` 循环内部使用了 `await`，因此实现了按顺序输出。
+
+### Promise.all
+
+稍微有点反直觉，promise.all 方法，其实保存的是所有 promise 的返回值，在 all 方法之前，其实所有的 promise 就已经在等待执行了，因为微任务的缘故，所以代码看起来是先发送请求，其实是先放在 all 里面了
+
 ## 实现并发任务队列
 
 执行的任务一定是 unshift 出来的, 而不是加一个标记, 不然清空队列太难搞了
