@@ -43,6 +43,8 @@ Cookie 是不可跨域的；在没有经过任何处理的情况下，二级域�
 
 ### Domain
 
+[chrome 禁用 domain](https://mp.weixin.qq.com/s?__biz=Mzk0MDMwMzQyOA==&mid=2247492113&idx=1&sn=cacc274e8c8756582e77582388be6665&chksm=c2e1173af5969e2c3513d2e1649f0f09ac79fd011155ae0f92883e4bbb9f9bb3cdb533fee100&token=2132458547&lang=zh_CN#rd)
+
 两个网页一级**域名**相同，只是二级**域名**不同，浏览器允许通过设置 `document.domain` 共享 Cookie。
 
 另外，服务器也可以在设置 Cookie 的时候，指定 Cookie 的所属域名为一级域名，比如 `.example.com`。
@@ -597,6 +599,20 @@ myJSONPAcross({
 ## *Webpack 开发环境下跨域
 
 [project-init](programming/project/project-init.md#Dev-server%20配置跨域请求)
+
+# COOP 和 COEP
+
+[新的跨域策略：使用COOP、COEP为浏览器创建更安全的环境 - 掘金](https://juejin.cn/post/6855129007906963464?searchId=2023111619452928716436F6F0BA6BAAEE)
+
+[由一个报错引发的浏览器跨域隔离探索 - 掘金](https://juejin.cn/post/7159391029135671333?searchId=2023111619452928716436F6F0BA6BAAEE)
+
+[HTML页面安全策略汇总(1)：同源策略、CORS、COOP、COEP - 掘金](https://juejin.cn/post/7172493262115045383?searchId=2023111619452928716436F6F0BA6BAAEE)
+
+[跨源相关机制综述（三）：crossorigin属性 - 知乎](https://zhuanlan.zhihu.com/p/345564689)a
+
+[匿名 iframe：COEP 的福音！-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/2207623?areaSource=102001.6&traceId=3br1YC1WyO5SLc1z8tkR4)
+
+[更简单的开启 COOP](https://mp.weixin.qq.com/s?__biz=Mzk0MDMwMzQyOA==&mid=2247498661&idx=1&sn=28eb77193affb91021bcdea5c1ef3840&chksm=c2e10e8ef59687981e12b2cbeb42e087aca2a5091a85f223c965f637a16d9a80cc4db3cc99bc&=1638573446&=zh_CN#rd)
 
 # Nginx 反向代理
 
