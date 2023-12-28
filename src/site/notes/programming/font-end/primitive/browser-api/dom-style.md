@@ -278,6 +278,35 @@ getBoundingClientRect() 方法。它返回一个对象，其中包含了 left、
   }
 ```
 
+## 元素距离左上角的距离
+
+下面的代码可以算出元素左上角相对于整张网页的坐标。
+
+```js
+function getElementPosition(e) {
+  var x = 0;
+  var y = 0;
+  while (e !== null)  {
+    x += e.offsetLeft;
+    y += e.offsetTop;
+    e = e.offsetParent;
+  }
+  return {x: x, y: y};
+}
+```
+
+## 判断滚动条是否滚动到底
+
+垂直滚动条：`scrollHeight - scrollTop = clientHeight`
+
+水平滚动：`scrollWidth - scrollLeft = clientWidth`
+
+## 容器内拖拽的最长距离
+
+拖拽的最长距离：容器的 clientWidth - 子元素的 offsetWidth
+
+在容器的内容区移动，子元素的边框不会被覆盖
+
 # 其他样式相关的 API
 
 ## Element.matches()
@@ -316,7 +345,20 @@ e.style.color = 'black';
 
 通过 style 修改的样式都是内联样式，由于内联样式的优先级比较高，所以我们通过 JS 来修改的样式，往往会立即生效，但是如果样式中设置了!important，则内联样式将不会生效。
 
-## 总结
+## 重置样式 样式表 的冲突
+
+```js
+// 如果把宽度设置为0，那么内联样式的特殊性只能在样式表通过!important解决
+// upNodes[i].style.width="0";
+// 把值设为空，在内联样式不会有属性值，样式表的属性就可以正常作用了
+upNodes[i].style.width="";
+```
+
+## 单位
+
+.style.property 需要加 px，如果是 attribute 浏览器会自动加 px
+
+# 总结
 
 **读**：style 属性
 
@@ -804,3 +846,15 @@ MediaQueryList 实例有两个方法 `MediaQueryList.addListener()` 和 `MediaQu
     }
   }
 ```
+
+# FAQ
+
+#faq/js
+
+## 获取元素到视口相对位置
+
+[获取元素的相对位置（到视口）](programming/font-end/primitive/browser-api/dom-style.md#获取元素的相对位置（到视口）)
+
+## 判断滚动条是否滚动到底
+
+[判断滚动条是否滚动到底](programming/font-end/primitive/browser-api/dom-style.md#判断滚动条是否滚动到底)
