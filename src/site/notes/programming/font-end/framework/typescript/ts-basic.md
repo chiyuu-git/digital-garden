@@ -181,14 +181,16 @@ var decLiteral = 6;var hexLiteral = 0xf00d;
 使用 `string` 定义字符串类型：
 
 ```ts
-let myName: string = 'Tom';let myAge: number = 25;
+let myName: string = 'Tom';
+let myAge: number = 25;
 // 模板字符串let sentence: string = `Hello, my name is ${myName}.I'll be ${myAge + 1} years old next month.`;
 ```
 
 编译结果：
 
 ```ts
-var myName = 'Tom';var myAge = 25;
+var myName = 'Tom';
+var myAge = 25;
 // 模板字符串var sentence = "Hello, my name is " + myName + ".\nI'll be " + (myAge + 1) + " years old next month.";
 ```
 
@@ -1695,6 +1697,28 @@ type Greeting = Capitalize<LowercaseGreeting>;
 type UppercaseGreeting = 'HELLO WORLD';
 type UncomfortableGreeting = Uncapitalize<UppercaseGreeting>;
 //   "hELLO WORLD"
+```
+
+### 延伸应用
+
+```ts
+type NoLeadingSlash<T extends string[]> = {
+  [K in keyof T]: T[K] extends `/${infer U}` ? U : T[K];
+};
+
+# type NoLeadingSlash<T extends string> = T extends `/${infer U}` ? U : T;
+
+// 示例用法
+type TupleWithPath = ["/path1", "/path2", "/path3"];
+type TupleWithoutLeadingSlash = NoLeadingSlash<TupleWithPath>;
+
+// 测试
+const tupleWithPath: TupleWithPath = ["/path1", "/path2", "/path3"];
+const tupleWithoutLeadingSlash: TupleWithoutLeadingSlash = ["path1", "path2", "path3"]; // 编译通过
+
+// 包含 / 的元组
+const tupleWithLeadingSlash: TupleWithoutLeadingSlash = ["/invalidPath"]; // 编译错误
+
 ```
 
 ## 元组
