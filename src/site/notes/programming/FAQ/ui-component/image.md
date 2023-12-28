@@ -7,6 +7,31 @@
 
 [浏览器图像转换手册 - vivaxy's Blog](https://vivaxyblog.github.io/2019/11/08/comprehensive-image-processing-on-browsers-cn.html)
 
+[base64转file文件的两种方式 - 掘金](https://juejin.cn/post/7147950908339388453)
+
+btoa 和 atob 是 window 对象的两个函数，其中 btoa 是 binary to ASCII，用于将 binary 的数据用 ASCII 码表示，即 Base64 的编码过程，而 atob 则是 ASCII to binary，用于将 ASCII 码解析成 binary 数据，即 Base64 的解码过程 [1]
+
+ASCII 码大家基本都知道，这里讲下 binary 是什么。
+
+binary 是 JS 字符集的另外一个子集，它类似于 ASCII 字符集，但是字符的码点 (charCode) 不再限制到 127， 它包含了 255 以内的字符。binary string 设计的目的不是用于代表字符， 而是代表二进制数据。由 binary string 代表的二进制数据大小是原始数据的两倍，然而这对于最终用户是不可见的， 因为 JavaScript strings 的长度是以 2 字节为单位进行计算的。比如， “Hello world” 这个字符串属于 ASCII 子集, 而 ÀÈÌÒÙ 不属于 ASCII 码 [2]，但属于 binary。
+
+所以 btoa 和 atob 其实还涉及了编码问题，我们只需要找出相同编码进行替换即可。在 node.js 环境中，提供了一个 Buffer 类，用于操作二进制及 Base64 转码。而在 Python 环境中，有一个 Latin1 编码 [3] 与 JS 的 binary 相同，因此可以构造代码了。
+
+[JS逆向 | 原来，大家对于atob和btoa都有误解？不止base64这么简单！ - 知乎](https://zhuanlan.zhihu.com/p/148364711)
+
+file 如何转换 二进制数据 给后端
+
++ 传 fromData 像文件上传那样给
++ 好像没有办法走 json 传 二进制...
+
+校验大小还是 file.size 最方便, blob.size
+
+[使用FileReader对象的readAsDataURL方法来读取图像文件-CSDN博客](https://blog.csdn.net/sinat_31057219/article/details/70242265)
+
+[使用FileReader对象的readAsDataURL方法来读取图像文件-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/2165999)
+
+[FileReader.readAsDataURL() - Web API 接口参考 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader/readAsDataURL)
+
 # Img 标签
 
 https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img
