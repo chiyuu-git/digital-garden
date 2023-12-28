@@ -77,7 +77,13 @@ UML
 
 # UML
 
-比较全面的一个介绍：https://www.cnblogs.com/wolf-sun/p/UML-Sequence-diagram.html
+原来 UML 活动图、类图、时序图, 都是 UML
+
+比较全面的一个介绍：
+
+https://www.cnblogs.com/wolf-sun/p/UML-Sequence-diagram.html
+
+[30分钟学会UML类图 - 知乎](https://zhuanlan.zhihu.com/p/109655171)
 
 简单来说就是用来描述 class 之间的关系的
 
