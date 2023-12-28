@@ -892,6 +892,10 @@ picGo 太垃圾了, 每次用都要调试很久, 心累了, 再也不碰
 
 注意关闭电脑的其他代理: proxy omega 关闭, 度管家也要退出
 
+# Whistle
+
+[Whistle 开发调试最佳实践 - 知乎](https://zhuanlan.zhihu.com/p/483975945)
+
 # Quicker
 
 [Mac 有没有类似 Quicker 的软件？ - 知乎](https://www.zhihu.com/question/362216392)
