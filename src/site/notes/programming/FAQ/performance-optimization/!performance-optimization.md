@@ -696,6 +696,8 @@ preload 加载页面必需的资源如 CDN 上的字体文件，与 prefetch 预
 
 预渲染虽然可以提高页面的加载速度，但是要确保该页面在之后会被用户打开，否则就白白浪费资源去渲染
 
+[新一代预渲染技术](https://mp.weixin.qq.com/s?__biz=Mzk0MDMwMzQyOA==&mid=2247498897&idx=1&sn=faaa02fd616d1488ce81a2d8efe7d613&chksm=c2e109baf59680ac165885b3fc0fc7856250abdadc19aee72063a0cc5e776a38133177379d8c&=1638573446&=zh_CN#rd)
+
 # SSR
 
 [SSR](../../font-end/framework/framwork-common/!framework-common.md#SSR)
