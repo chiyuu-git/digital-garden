@@ -221,11 +221,11 @@ new Date(dateString)
 
 当前日期对象是几日（1-31）
 
-## getDay()
+## getDay() @@@
 
 返回当前日期对象时周几（0-6）
 
-0 周日，那又相当于是 1base 了，总共只有两个是 1base 的 @@@
+0 周日，那又相当于是 1base 了，总共只有两个是 1base 的
 
 ## getHours()
 
