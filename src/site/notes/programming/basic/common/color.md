@@ -380,3 +380,13 @@ https://tailwindcss.com/docs/customizing-colors
 Photoshop 技巧：精修中使用 HSL 调色：https://www.szmairun.com/a/20200511/241.html
 
 https://thomaskksj.tuchong.com/t/14196443/
+
+# FAQ
+
+#faq/js
+
+## 颜色相关操作
+
+### 使得 Rgb 色值变明亮或者变灰暗
+
+https://www.php.cn/css-tutorial-480162.html
