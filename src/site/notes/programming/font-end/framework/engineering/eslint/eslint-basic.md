@@ -12,11 +12,11 @@
 
 | File                                                              | overview                   |
 | ----------------------------------------------------------------- | -------------------------- |
-| [[programming/FAQ/performance-optimization/重绘和回流\|重绘和回流]]      | [[programming/FAQ/performance-optimization/重绘和回流#experience\|重绘和回流#experience]]       |
-| [[programming/font-end/primitive/es/es-array\|es-array]]       | [[programming/font-end/primitive/es/es-array#experience\|es-array#experience]]    |
-| [[programming/font-end/primitive/es/es-regexp\|es-regexp]]     | [[programming/font-end/primitive/es/es-regexp#experience\|es-regexp#experience]]   |
-| [[programming/font-end/primitive/es/es-function\|es-function]] | [[programming/font-end/primitive/es/es-function#experience\|es-function#experience]] |
 | [[programming/font-end/primitive/es/es-number\|es-number]]     | [[programming/font-end/primitive/es/es-number#experience\|es-number#experience]]   |
+| [[programming/font-end/primitive/es/es-function\|es-function]] | [[programming/font-end/primitive/es/es-function#experience\|es-function#experience]] |
+| [[programming/FAQ/performance-optimization/重绘和回流\|重绘和回流]]      | [[programming/FAQ/performance-optimization/重绘和回流#experience\|重绘和回流#experience]]       |
+| [[programming/font-end/primitive/es/es-regexp\|es-regexp]]     | [[programming/font-end/primitive/es/es-regexp#experience\|es-regexp#experience]]   |
+| [[programming/font-end/primitive/es/es-array\|es-array]]       | [[programming/font-end/primitive/es/es-array#experience\|es-array#experience]]    |
 
 { .block-language-dataview}
 
@@ -192,6 +192,29 @@ for i len
 ## 如何重构大型项目
 
 可以考虑建一个新的, 不能迁移的就兼容, 收拢到一处逻辑上.
+
+## 接口设计
+
+如果是不支持 boolean 的数据结构, 比如 localStorage, 是不是用 '1' | '0' 会比较好? 问题是 '1' | '0' 在后续的数据传递中, 需要改为 boolean 嘛?
+
++ 我对外提供一个 get 和 set 的方法, 内部我自己怎么舒服怎么来
+
+组件接口设计, 什么时候设计为对象? needReflowToTikTokCreator ? 是否需要考虑复杂化? 兼容心?
+
+1. navigateConfig, 传一个跳转地址, 就不需要是对象了. 直接传一个地址就行
+2. 简单处理, 后面要改的时候再重构, 现在无法预料未来会有什么场景
+
+### 精简接口
+
+不要传 fileInfo 这种接口, 因为什么都会有, 需要哪些才传哪些.
+
+封面编辑的 bug. 很容易以后其他地方以为也会有, 但是其实是没有的. 不同的功能需要的字段集其实是不一样的.
+
+接口的 interface 每一个入参都需要明确, 不要传大对象. 常见的传 store 呢? store 好像可以除外, 因为 store 就是有严格定义的数据接口
+
+问题就是 fileInfo 这种接口, 假如完整的 fileInfo 有 100 个字段, 好像只有 fileName + 随意 2 个属性, 就可以叫 fileInfo 了. 很容易出问题
+
+不过这次 bug 真不是代码问题... 完全就是整个路径都漏掉了
 
 # HTML
 
