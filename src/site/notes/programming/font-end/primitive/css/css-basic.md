@@ -406,6 +406,8 @@ span:nth-of-type(6n+2)
 
 ### Nth-child 和 Nth-of-type 的一个重要的区别
 
+仅作用于标签元素选择器. 类选择器无法生效. 但是 frist-child nth-child 加在类后面也可以
+
 ```html
 <div id="wrap">
  <div class="inner">div</div>
