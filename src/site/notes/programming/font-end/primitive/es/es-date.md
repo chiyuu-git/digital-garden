@@ -394,7 +394,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects
 from.toJSON().split('T')[0]
 ```
 
-## YYYY-M-D
+## YYYY-M-DD
 
 先转换成 Date，再转换成 YYYY-MM-DD
 
