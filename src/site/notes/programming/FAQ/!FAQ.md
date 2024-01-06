@@ -91,6 +91,8 @@ rgin 合并的问题。
 
 ![flex](../font-end/primitive/css/flex.md#^4tk93x)
 
+![grid](programming/font-end/primitive/css/grid.md#^mpbv3x)
+
 ## 嵌套规则
 
 + **a 元素可以包含任意元素**，除了他本身 //浏览器会解析成两个超链接
@@ -290,7 +292,7 @@ rgin 合并的问题。
 **是否可继承：**no
 
 + 在每个动画定义中，顺序很重要：
-  + 可以被解析为 `<time>`的第一个值被分配给 animation-duration,
+  + 可以被解析为 `<time>` 的第一个值被分配给 animation-duration,
   + 第二个分配给 animation-delay。
 
 ### Flex-flow
