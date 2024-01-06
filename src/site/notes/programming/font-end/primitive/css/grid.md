@@ -3,8 +3,6 @@
 ---
 
 
-# Grid 布局
-
 https://juejin.im/post/59c722b35188257a125d7960#heading-27
 
 https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout
@@ -15,7 +13,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/Box_Alignment_i
 
 https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logical_Values_and_Writing_Modes
 
-## 二维布局模型
+# 二维布局模型
 
 `Grid Layout` 叫栅格布局模型，因为几乎每一个成熟的 CSS 框架都会实现自己的栅格布局系统，所以 W3C 干脆弄了一套 CSS 原生的栅格布局系统，补足这方面的短板。
 
@@ -25,11 +23,11 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logic
 
 当我们的视角确立以后，所谓的一维就是只有行，而所谓的二维就是有行也有列。很好理解，既然是栅格嘛，那必须得行列相交才能确定一个格子的大小。
 
-## 概念
+# 概念
 
 因为 `Grid Layout` 是二维布局模型，它干脆就固定了行与列的方向。格子嘛，任何横着放的布局方式都可以用竖着放的布局方式实现，反之亦然。所以自定义主轴的方向意义不大，于是乎 `Grid Layout` 也就没有主轴和交叉轴的概念。
 
-### 容器与项目
+## 容器与项目
 
 `Grid Layout` 有栅格容器 (grid container)，它负责划分领地，容器之内的元素才会受控于栅格模型；`Grid Layout` 也有栅格项目 (grid item)，它们是需要被栅格模型约束的对象。
 
@@ -45,7 +43,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logic
 
 **注意**：项目只能是容器的 **顶层子元素**，不包含项目的子元素，比如上面代码的 `<p>` 元素就不是项目。Grid 布局只对项目生效。
 
-### 栅格线
+## 栅格线
 
 栅格线可以理解为栅格的边框，水平和垂直的栅格线交叉形成了栅格单元。栅格线有什么作用呢？有些栅格项目可能不止占用一个栅格单元，声明的时候就可以说：我从第几条栅格线开始，到第几条栅格线结束，这块区域是老子的
 
@@ -53,7 +51,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logic
 
 正常情况下，`n` 行有 `n + 1` 根水平网格线，`m` 列有 `m + 1` 根垂直网格线，比如三行就有四根水平网格线。
 
-### 栅格单元
+## 栅格单元
 
 四条栅格线合围成的最小区域就是栅格单元。它就是我们常说的格子。
 
@@ -67,13 +65,13 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logic
 
 容器的每个子元素会占据至少一个格子
 
-### 编外栅格单元
+## 编外栅格单元
 
 栅格单元的数量是需要显式声明的。如果栅格项目的数量超过了声明的栅格单元的数量，`Grid Layout` 就会自动创建若干栅格单元来包裹那些超出的栅格项目。我们称它为编外栅格单元。
 
 编外栅格单元有自己的特性，可以通过 `grid-auto-columns`、`grid-auto-rows` 和 `grid-auto-flow` 自定义。
 
-### 栅格系统
+## 栅格系统
 
 栅格系统就是栅格单元的总和。
 
@@ -81,13 +79,13 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logic
 >
 > 栅格系统有可能溢出栅格容器，也可能偏居栅格容器的一隅，也可能充满栅格容器。
 
-### 栅格轨道
+## 栅格轨道
 
 还是回到二维布局模型，虽然我们说它有行也有列，但区分行与列的收益并不大，所以就统一叫它们栅格轨道。
 
 正常情况下，`n` 行和 `m` 列会产生 `n x m` 个单元格。比如，3 行 3 列会产生 9 个单元格。
 
-### 栅格区域
+## 栅格区域
 
 任意四条栅格线合围成的区域都可以成为栅格区域。当一个元素需要多个 **格子** 约束它的时候，我们说这个元素需要一个 **栅格区域** 约束它。
 
@@ -95,11 +93,11 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logic
 
 栅格区域最终是要被栅格项目使用的。你可以给栅格区域命名，栅格项目用名字声明区域，或者栅格项目直接用四条栅格线确定一个区域。
 
-![grid-concept.jpg](grid/bVZHkB)
+![grid-concept.jpg](/img/user/programming/font-end/primitive/css/grid/bVZHkB.jpg)
 
-## 容器属性
+# 容器属性
 
-### 基本结构
+## 基本结构
 
 ```html
 <div class="container">
@@ -109,7 +107,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logic
 </div>
 ```
 
-### Display
+## Display
 
 ```css
 .container {
@@ -120,8 +118,10 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logic
 前两个属性值的区别在于容器自身应该表现为块元素还是行内元素。第三个属性值属于 `CSS Grid Level 2` 规范，目前 (2019 年 3 月) 还在草案阶段
 
 **注意**：设为网格布局以后，容器子元素（项目）的 `float`、`display: inline-block`、`display: table-cell`、`vertical-align` 和 `column-*` 等设置都将失效。
+{ #mpbv3x}
 
-### grid-template-[columns|rows]
+
+## grid-template-[columns|rows]
 
 这两个属性声明的是栅格轨道的数量以及宽度。
 
@@ -129,7 +129,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logic
 
 你也可以在声明栅格轨道的同时声明栅格线的名称。顺序就是它们的物理顺序。
 
-#### **属性值**
+### **属性值**
 
 + none：**默认值**，这个关键字表示不明确的网格。所有的列和其大小都将由 [`grid-auto-columns`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid-auto-columns) 属性隐式的指定
 + \<length>：非负值的长度大小。
@@ -145,7 +145,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logic
 
     ![1561299152898](/img/user/programming/font-end/primitive/css/grid/1561299152898.png)
 
-#### Auto
+### Auto
 
 + 如果某条栅格轨道的值是 `auto`，默认情况下该栅格轨道会充满栅格容器的 **富余空间**。
 
@@ -162,7 +162,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logic
 + 但是如果声明了 `justify-content`(后面会讲到) 不为 `stretch`，那 `auto` 会表现为以栅格项目的长度为准。
 + 这是因为：网格轨道大小为 `auto` (且只有为 `auto` ) 时，才可以被属性 [`align-content`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-content) 和 [`justify-content`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content) 拉伸
 
-#### Fr
+### Fr
 
 + `fr` 是 `fraction` 的缩写，翻译成中文是 `分数`，多少分之一的分数。它是 `Grid Layout` 专用的长度单位。
 + 它的计算公式是这样的：
@@ -192,112 +192,124 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logic
 
     ![1561298084248](/img/user/programming/font-end/primitive/css/grid/1561298084248.png)
 
-    > 为什么 W3C 要增加一个这样的单位呢？不是有 `%` 么？
-    >
-    > 答案就在 **富余空间** 上。`fr` 也是一种百分比，但是它能保证总长度不会超过栅格容器的长度，因为它瓜分的是富余空间的长度；而 `%` 瓜分的是栅格容器的长度，不管别人瓦上霜。
-    >
-    > 比如说像上面的例子，用 `%` 可得好好算算，用 `fr` 就简单多了。
+> 为什么 W3C 要增加一个这样的单位呢？不是有 `%` 么？
+>
+> 答案就在 **富余空间** 上。`fr` 也是一种百分比，但是它能保证总长度不会超过栅格容器的长度，因为它瓜分的是富余空间的长度；而 `%` 瓜分的是栅格容器的长度，不管别人瓦上霜。
+>
+> 比如说像上面的例子，用 `%` 可得好好算算，用 `fr` 就简单多了。
 
-#### minmax()
+### minmax()
 
-+ `minmax()` 是 `Grid Layout` 专用的计算函数。
-+ 它有两个参数，分别是最小值和最大值。当栅格单元需要压缩时，最小值就是栅格项目被压缩的最小极限，当栅格单元有剩余空间时，最大值就是栅格项目扩张的最大极限。
-+ 它还有几个值需要特别提一下：
-    + max-content：它的值是栅格项目中的文字不换行的自然长度。
-    + min-content：它的值是栅格项目中的文字全部换行的自然长度。
-    + auto：它的值根据所处的场景介于 min-content 和 max-content 之间。
+`minmax()` 是 `Grid Layout` 专用的计算函数。
 
-#### fit-content()
+它有两个参数，分别是最小值和最大值。当栅格单元需要压缩时，最小值就是栅格项目被压缩的最小极限，当栅格单元有剩余空间时，最大值就是栅格项目扩张的最大极限。
 
-+ `fit-content()` 也是 `Grid Layout` 专用的计算函数。
-+ 它接受一个长度单位的参数。
-+ 我们已经了解过 `min-content` 和 `max-content`。
-+ `fit-content()` 计算公式形象的讲，最小值是内容的 `min-content`，最大值则取参数和 `max-content` 更小的那个。
+它还有几个值需要特别提一下：
 
-    ```css
-    .container {
-        display: grid;
-        grid-template-rows:100px 100px;
-        grid-template-columns:100px 100px fit-content(200px);
-    }
-    ```
++ max-content：它的值是栅格项目中的文字不换行的自然长度。
++ min-content：它的值是栅格项目中的文字全部换行的自然长度。
++ auto：它的值根据所处的场景介于 min-content 和 max-content 之间。
 
-+ 比如上面的例子，当内容小于 `200px` 时，以内容为长度，当内容大于 `200px` 时，以 `200px` 为长度。
+### fit-content()
 
-#### repeat()
+`fit-content()` 也是 `Grid Layout` 专用的计算函数。
 
-+ `repeat()` 是 `Grid Layout` 专用的重复函数。
-+ 它接受两个参数，第一个参数是重复的次数，第二个参数是栅格轨道的宽度。
+它接受一个长度单位的参数。
 
-    ```css
-    .container{
-      display: grid;
-      grid-template-rows:repeat(2,100px);
-      grid-template-columns:repeat(3,100px);
-    }
-    ```
+我们已经了解过 `min-content` 和 `max-content`。
 
-**第二个参数**
+`fit-content()` 计算公式形象的讲，最小值是内容的 `min-content`，最大值则取参数和 `max-content` 更小的那个。
 
-+ 第二个参数不仅仅可以是宽度，它可以是一种模式。比如说 `[col-start] 100px [col-end] auto`，它会重复这一整段若干遍，而中括号包围的是给栅格线命名。
-+ 如此这般，第一、三、五条栅格线叫 `col-start`，第二、四、六条栅格线叫 `col-end`。总之用 repeat 函数命名栅格线会有很多重复的名字。
+```css
+.container {
+	display: grid;
+	grid-template-rows:100px 100px;
+	grid-template-columns:100px 100px fit-content(200px);
+}
+```
 
-    > 栅格线和栅格线的名字是怎么对应的？六条栅格轨道，就会有 7 条栅格线
+比如上面的例子，当内容小于 `200px` 时，以内容为长度，当内容大于 `200px` 时，以 `200px` 为长度。
 
-    ```css
-    .container{
-      display: grid;
-      grid-template-rows:repeat(2,100px);
-      grid-template-columns:repeat(3,[col-start] 100px [col-end] auto);
-    }
-    ```
+### repeat()
 
-    ![1561337197142](/img/user/programming/font-end/primitive/css/grid/1561337197142.png)
+`repeat()` 是 `Grid Layout` 专用的重复函数。
 
-+ 除此之外，第二个参数还可以是 `minmax` 函数、`fit-content` 函数，或者 `min-content`、`max-content`、`auto` 关键字。
+它接受两个参数，第一个参数是重复的次数，第二个参数是栅格轨道的宽度。
 
-**第一个参数**
+```css
+.container{
+  display: grid;
+  grid-template-rows:repeat(2,100px);
+  grid-template-columns:repeat(3,100px);
+}
+```
 
-+ 第一个参数也有两个关键字 `auto-fill` 和 `auto-fit`。
-+ `auto-fill` 和 `auto-fit` 的共同点在于它们会保证栅格系统不溢出栅格容器。因为如果你写死了重复多少个，栅格容器空间不够的话只能溢出了。
-+ 而不同点在于，`auto-fill` 会生成尽可能多的栅格轨道，即便这些轨道看起来没什么用；
+#### **第二个参数**
 
-    ```css
-    .container{
-      display: grid;
-      grid-template-rows:repeat(2,100px);
-      grid-template-columns:repeat(auto-fill,100px);
-    }
-    ```
+第二个参数不仅仅可以是宽度，它可以是一种模式。比如说 `[col-start] 100px [col-end] auto`，它会重复这一整段若干遍，而中括号包围的是给栅格线命名。
 
-    ![1561338542636](/img/user/programming/font-end/primitive/css/grid/1561338542636.png)
+如此这般，第一、三、五条栅格线叫 `col-start`，第二、四、六条栅格线叫 `col-end`。总之用 repeat 函数命名栅格线会有很多重复的名字。
 
-+ `auto-fit` 则会生成尽可能少的栅格轨道，以便让那些自适应的栅格单元尽可能占用更多空间。
+> 栅格线和栅格线的名字是怎么对应的？六条栅格轨道，就会有 7 条栅格线
 
-    ```css
-    .container{
-      display: grid;
-      grid-template-rows:repeat(2,100px);
-      grid-template-columns:repeat(auto-fit,100px);
-    }
-    ```
+```css
+.container{
+  display: grid;
+  grid-template-rows:repeat(2,100px);
+  grid-template-columns:repeat(3,[col-start] 100px [col-end] auto);
+}
+```
 
-    ![1561338674043](/img/user/programming/font-end/primitive/css/grid/1561338674043.png)
+![1561337197142](/img/user/programming/font-end/primitive/css/grid/1561337197142.png)
 
-+ 所以区别在于，`auto-fill` 想让栅格轨道尽可能多，`auto-fit` 想让栅格单元尽可能大。@???
-+ 这两个属性是 `Grid Layout` 自适应布局的利器，连媒体查询都省了。
+除此之外，第二个参数还可以是 `minmax` 函数、`fit-content` 函数，或者 `min-content`、`max-content`、`auto` 关键字。
 
-    ```css
-    .container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-    ```
+#### 第一个参数
 
-+ 这里的意思是说，自适应布局，每个栅格项目长度等分，但最小不低于 `300px`。那最大怎么确定呢？`600px` 到 `900px` 之间，一行只能放两个项目，一旦超过 `900px`，一行就会放三个项目。
-+ @@@ 调整 minmax 可以体验一下 但是还是搞不懂
+第一个参数也有两个关键字 `auto-fill` 和 `auto-fit`。
 
-### Grid-template-areas
+`auto-fill` 和 `auto-fit` 的共同点在于它们会保证栅格系统不溢出栅格容器。因为如果你写死了重复多少个，栅格容器空间不够的话只能溢出了。
+
+而不同点在于，`auto-fill` 会生成尽可能多的栅格轨道，即便这些轨道看起来没什么用；
+
+```css
+.container{
+  display: grid;
+  grid-template-rows:repeat(2,100px);
+  grid-template-columns:repeat(auto-fill,100px);
+}
+```
+
+![1561338542636](/img/user/programming/font-end/primitive/css/grid/1561338542636.png)
+
+`auto-fit` 则会生成尽可能少的栅格轨道，以便让那些自适应的栅格单元尽可能占用更多空间。
+
+```css
+.container{
+  display: grid;
+  grid-template-rows:repeat(2,100px);
+  grid-template-columns:repeat(auto-fit,100px);
+}
+```
+
+![1561338674043](/img/user/programming/font-end/primitive/css/grid/1561338674043.png)
+
+所以区别在于，`auto-fill` 想让栅格轨道尽可能多，`auto-fit` 想让栅格单元尽可能大。@???
+
+这两个属性是 `Grid Layout` 自适应布局的利器，连媒体查询都省了。
+
+```css
+.container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+```
+
+这里的意思是说，自适应布局，每个栅格项目长度等分，但最小不低于 `300px`。那最大怎么确定呢？`600px` 到 `900px` 之间，一行只能放两个项目，一旦超过 `900px`，一行就会放三个项目。
+
+@@@ 调整 minmax 可以体验一下 但是还是搞不懂
+
+## Grid-template-areas
 
 这个属性给栅格单元命名，同名的栅格单元自动成为一个栅格区域。
 
@@ -327,69 +339,75 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logic
 
 ![1561344531419](/img/user/programming/font-end/primitive/css/grid/1561344531419.png)
 
-#### 命名格式
+### 命名格式
 
-+ 用 `grid-template-columns` 和 `grid-template-rows` 声明了多少个栅格单元，命名的时候需要名字与栅格单元一一对应起来。
-+ 并且前面说过栅格区域必须是长方体，连续命名的时候也要注意这点。
-+ 格式不对的话，结果都是一样的。所有声明了 `grid-area` 的项目都会在 **右下角的某个编外栅格单元内**，重叠在一起，尚不清楚它的算法或机制是怎样的。
+用 `grid-template-columns` 和 `grid-template-rows` 声明了多少个栅格单元，命名的时候需要名字与栅格单元一一对应起来。
 
-    ```css
-    .container{
-      display: grid;
-      grid-template-rows:repeat(2,100px);
-      grid-template-columns: repeat(3,minmax(100px,auto));
-      grid-template-areas:
-        'header header '
-        'sidebar main main'
-        'footer footer footer';
-    }
-    .item:nth-child(1){
-      grid-area: header;
-    }
-    ```
+并且前面说过栅格区域必须是长方体，连续命名的时候也要注意这点。
 
-    ![1561344764119](/img/user/programming/font-end/primitive/css/grid/1561344764119.png)
+格式不对的话，结果都是一样的。所有声明了 `grid-area` 的项目都会在 **右下角的某个编外栅格单元内**，重叠在一起，尚不清楚它的算法或机制是怎样的。
 
-#### 命名缺省
+```css
+.container{
+  display: grid;
+  grid-template-rows:repeat(2,100px);
+  grid-template-columns: repeat(3,minmax(100px,auto));
+  grid-template-areas:
+	'header header '
+	'sidebar main main'
+	'footer footer footer';
+}
+.item:nth-child(1){
+  grid-area: header;
+}
+```
 
-+ 既然语法这么严格，你要知道，取名字是一件脑壳疼的事情啊。我明明只需要给一小块区域取名字，你非得让我取满。有没有什么省事的办法呢？
-+ 当然有。不知道叫什么的时候就用 `.` 代替。
+![1561344764119](/img/user/programming/font-end/primitive/css/grid/1561344764119.png)
 
-    ```css
-    .contaienr{
-      display: grid;
-      grid-template-rows:repeat(2,100px);
-      grid-template-columns: repeat(3,minmax(100px,auto));
-      grid-template-areas:
-        'main main sidebar'
-        'main main .';
-    }
-    .item:nth-child(1){
-      grid-area: main;
-    }
-    ```
+### 命名缺省
 
-    ![1561344851770](/img/user/programming/font-end/primitive/css/grid/1561344851770.png)
+既然语法这么严格，你要知道，取名字是一件脑壳疼的事情啊。我明明只需要给一小块区域取名字，你非得让我取满。有没有什么省事的办法呢？
 
-+ 不仅如此，只要没有空格分开，n 个 `.` 都只占一个栅格单元。
-+ `grid-template-areas` 还有一个属性值 `none`
+当然有。不知道叫什么的时候就用 `.` 代替。
 
-    ```css
-    .contaienr{
-      grid-template-areas:
-        'main main sidebar'
-        'main main none';
-    }
-    .container {
-        grid-template-areas: none;
-    }
-    ```
+```css
+.contaienr{
+  display: grid;
+  grid-template-rows:repeat(2,100px);
+  grid-template-columns: repeat(3,minmax(100px,auto));
+  grid-template-areas:
+	'main main sidebar'
+	'main main .';
+}
+.item:nth-child(1){
+  grid-area: main;
+}
+```
 
-+ 前者声明了一个叫做 `none` 的栅格区域。`none` 是 `grid-template-areas` 的默认值
-+ 注意，区域的命名会影响到网格线。每个区域的起始网格线，会自动命名为 `区域名-start`，终止网格线自动命名为 `区域名-end`。
-+ 比如，区域名为 `header`，则起始位置的水平网格线和垂直网格线叫做 `header-start`，终止位置的水平网格线和垂直网格线叫做 `header-end`。
+![1561344851770](/img/user/programming/font-end/primitive/css/grid/1561344851770.png)
 
-### 通过栅格线划分栅格区域
+不仅如此，只要没有空格分开，n 个 `.` 都只占一个栅格单元。
+
+`grid-template-areas` 还有一个属性值 `none`
+
+```css
+.contaienr{
+  grid-template-areas:
+	'main main sidebar'
+	'main main none';
+}
+.container {
+	grid-template-areas: none;
+}
+```
+
+前者声明了一个叫做 `none` 的栅格区域。`none` 是 `grid-template-areas` 的默认值
+
+注意，区域的命名会影响到网格线。每个区域的起始网格线，会自动命名为 `区域名-start`，终止网格线自动命名为 `区域名-end`。
+
+比如，区域名为 `header`，则起始位置的水平网格线和垂直网格线叫做 `header-start`，终止位置的水平网格线和垂直网格线叫做 `header-end`。
+
+## 通过栅格线划分栅格区域
 
 每一个栅格区域都由四条栅格线包裹，这四条线同时会被隐式的赋予名称。横向上分别是 `xxx-start` 和 `xxx-end`，纵向上也是 `xxx-start` 和 `xxx-end`。反正栅格线名字不怕多，它只怕黑，因为它是黑怕歌手。
 
@@ -412,7 +430,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logic
 
 **注意**：网格布局允许同一根线有多个名字，比如 `[fifth-line row-5]`。
 
-### grid-[column|row]-gap
+## grid-[column|row]-gap
 
 这个属性声明的是 **栅格单元** 之间的空隙
 
@@ -445,7 +463,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logic
 
 怎么为每条栅格线分配不同的 gap 呢？@@
 
-### Grid-gap
+## Grid-gap
 
 这是一个集合属性，可以同时声明 `grid-column-gap` 和 `grid-row-gap`。
 
@@ -457,7 +475,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logic
 
 **注意**：根据最新标准，上面三个属性名的 `grid-` 前缀已经删除，`grid-column-gap` 和 `grid-row-gap` 写成 `column-gap` 和 `row-gap`，`grid-gap` 写成 `gap`。
 
-### Justify-items
+## Justify-items
 
 这个属性声明的是 **单元格的内容** 在 **栅格单元** 的水平位置：左中右
 
@@ -482,7 +500,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logic
 
 > Flexbox 的类似属性值有 `flex-start` 和 `flex-end`，W3C 终于在 grid 上把前缀去掉了。
 
-### Align-items
+## Align-items
 
 这个属性声明的是 **单元格的内容** 在 **栅格单元** 的垂直位置：上中下
 
@@ -500,7 +518,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logic
 
 ![1561359413320](/img/user/programming/font-end/primitive/css/grid/1561359413320.png)
 
-### Place-items
+## Place-items
 
 `place-items` 属性是 `align-items` 属性和 `justify-items` 属性的合并简写形式。
 
@@ -510,7 +528,7 @@ place-items: <align-items> <justify-items>;
 
 如果省略第二个值，则浏览器认为与第一个值相等。
 
-### Justify-content
+## Justify-content
 
 这个属性声明的是 **栅格系统** 相对于 **栅格容器** 的水平对齐方式。
 
@@ -533,23 +551,23 @@ place-items: <align-items> <justify-items>;
 
 所以我没明白 `justify-content: stretch` 的作用是什么。唯一的使用场景是样式覆盖的时候。
 
-### Align-content
+## Align-content
 
 这个属性声明的是栅格系统相对于栅格容器的垂直对齐方式。
 
 这里关于 `stretch` 的处理是一样的。
 
-### Place-content
+## Place-content
 
 `place-content` 属性是 `align-content` 属性和 `justify-content` 属性的合并简写形式。
 
-### grid-auto-[columns|rows]
+## grid-auto-[columns|rows]
 
 这两个属性声明的是编外栅格单元的高度和宽度。
 
 编外栅格单元的宽度默认值都是 auto。也就是说，以宽度举例，如果栅格容器的宽度大于栅格系统的宽度，那编外栅格单元会平分富余空间的宽度，否则编外栅格单元就以内容的宽度为宽度了。
 
-### Grid-auto-flow
+## Grid-auto-flow
 
 这个属性声明的是如果栅格项目没有明确指定在栅格容器中的位置时，栅格项目应该如何依次排列。
 
@@ -578,7 +596,7 @@ place-items: <align-items> <justify-items>;
 
 + `dense`，`dense` 翻译成中文是 **稠密** 的意思，它的作用是当排在前面的栅格项目由于某些原因 (主要是明确指定了位置，但是又没有占满) 空出了一些位置，后面的项目如果合身的话应不应该挤进去。
 
-## Grid
+# Grid
 
 这是一个集合属性，它可以声明两大类属性中任一类的所有属性值。
 
@@ -593,77 +611,83 @@ place-items: <align-items> <justify-items>;
 
 以当前 `Grid Layout` 的普及程度来看，尽量不要这么写，你写的费劲，别人看的费劲。
 
-## 项目属性
+# 项目属性
 
-### grid-[column|row]-[start|end]
+## grid-[column|row]-[start|end]
 
 这个属性声明的是指定栅格项目从哪里开始到哪里结束。
 
-**属性值**
+### 属性值
 
-+ `auto`，指的是只占用一个栅格单元。无论从哪开始，从哪结束，只要有一个 `auto` 值，它就只占一个栅格单元。
-+ \<number>，指的是栅格线的顺序，从 1 开始，可以接受负值，从反向开始
+`auto`，指的是只占用一个栅格单元。无论从哪开始，从哪结束，只要有一个 `auto` 值，它就只占一个栅格单元。
 
-    ```css
-    .container{
-      display: grid;
-      grid-template-rows: [biu-start] 100px [nothing] 100px [biu-end];
-      grid-template-columns: [biu-start] 150px [nothing] 150px [biu-end] 150px [nothing];
-      grid-column-gap: 15px;
-      grid-row-gap: 15px;
-      justify-items: center;
-    }
-    .item:nth-child(1){
-      grid-column-start: 1;
-      grid-column-end: 3;
-    }
-    ```
+`<number>`，指的是栅格线的顺序，从 1 开始，可以接受负值，从反向开始
 
-    ![1561374262409](/img/user/programming/font-end/primitive/css/grid/1561374262409.png)
+```css
+.container{
+  display: grid;
+  grid-template-rows: [biu-start] 100px [nothing] 100px [biu-end];
+  grid-template-columns: [biu-start] 150px [nothing] 150px [biu-end] 150px [nothing];
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  justify-items: center;
+}
+.item:nth-child(1){
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+```
 
-+ `start` 并不一定要比 `end` 靠前，靠后的话，开始到结束的方向就相反了。比如下面两段代码指定的区域是一样的。
+![1561374262409](/img/user/programming/font-end/primitive/css/grid/1561374262409.png)
 
-    ```css
-    .item {
-        grid-column-start: 3;
-        grid-column-end: 1;
-    }
-    .item {
-        grid-column-start: 1;
-        grid-column-end: 3;
-    }
-    ```
+`start` 并不一定要比 `end` 靠前，靠后的话，开始到结束的方向就相反了。比如下面两段代码指定的区域是一样的。
 
-+ `name`,指的是栅格线的名称。栅格线的名称可以从两个地方来：
-    + 第一是通过 `grid-template-[columns|rows]`**显式** 声明
-    + 第二是定义 `grid-template-areas` 的同时会为合围的栅格线 **隐式** 生成 `xxx-start` 和 `xxx-end` 的名称。
+```css
+.item {
+	grid-column-start: 3;
+	grid-column-end: 1;
+}
+.item {
+	grid-column-start: 1;
+	grid-column-end: 3;
+}
+```
 
-    ```css
-    .contaienr{
-      display: grid;
-      grid-template-rows: [biu-start] 100px [nothing] 100px [biu-end];
-      grid-template-columns: [biu-start] 150px [jiu-start] 150px [biu-end] 150px [jiu-end];
-      grid-column-gap: 15px;
-      grid-row-gap: 15px;
-      justify-items: center;
-    }
-    .item:nth-child(1){
-      grid-column-start: biu-start;
-      grid-column-end: jiu-end;
-    }
-    ```
+ `name`,指的是栅格线的名称。栅格线的名称可以从两个地方来：
 
-    ![1561376925337](/img/user/programming/font-end/primitive/css/grid/1561376925337.png)
++ 第一是通过 `grid-template-[columns|rows]`**显式** 声明
++ 第二是定义 `grid-template-areas` 的同时会为合围的栅格线 **隐式** 生成 `xxx-start` 和 `xxx-end` 的名称。
 
-+ `span <number>` 指的是跨度为几。这里的数字不再是第几条栅格线，而是跨越几条几条栅格线。
+```css
+.contaienr{
+  display: grid;
+  grid-template-rows: [biu-start] 100px [nothing] 100px [biu-end];
+  grid-template-columns: [biu-start] 150px [jiu-start] 150px [biu-end] 150px [jiu-end];
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  justify-items: center;
+}
+.item:nth-child(1){
+  grid-column-start: biu-start;
+  grid-column-end: jiu-end;
+}
+```
 
-    > 此时 start 和 end 的优先级？一条控制开始，一条控制范围
-    >
-    > 只接受正值
+![1561376925337](/img/user/programming/font-end/primitive/css/grid/1561376925337.png)
 
-+ `span <name>` 指的是跨越到该名称的栅格线为止。它和仅仅是 `name` 有什么区别呢？如果 `start` 比 `end` 靠后，仅仅是 `name` 的情况会像前面说的一样，开始到结束的方向就相反；而 `span <name>` 的情况则会一直往后找，毕竟找不到嘛，所以就跨越到最后一条栅格线。其中的区别在于愣头青的程度对不对？
+`span <number>` 指的是跨度为几。这里的数字不再是第几条栅格线，而是跨越几条几条栅格线。
 
-### grid-[column|row]
+Instead of defining a grid item based on the start and end positions of the grid lines, you can define it based on your desired column width using the `span` keyword. Keep in mind that `span` only works with positive values.
+
+For example, water these carrots with the rule `grid-column-end: span 2;`.
+
+> 此时 start 和 end 的优先级？一条控制开始，一条控制范围
+>
+> 只接受正值
+
+`span <name>` 指的是跨越到该名称的栅格线为止。它和仅仅是 `name` 有什么区别呢？如果 `start` 比 `end` 靠后，仅仅是 `name` 的情况会像前面说的一样，开始到结束的方向就相反；而 `span <name>` 的情况则会一直往后找，毕竟找不到嘛，所以就跨越到最后一条栅格线。其中的区别在于愣头青的程度对不对？
+
+## grid-[column|row]
 
 https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid-row
 
@@ -678,7 +702,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid-row
 
 使用这四个属性，如果产生了项目的重叠，则使用 `z-index` 属性指定项目的重叠顺序。
 
-### Grid-area
+## Grid-area
 
 ```css
 .item{
@@ -690,23 +714,23 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid-row
 
 当然你也可以使用栅格线的方式来合围一个栅格区域，所以它也相当于 `grid-[column|row]-[start|end]` 的 **终极集合属性**。要特别注意声明的顺序
 
-### Justify-self
+## Justify-self
 
 这个属性声明的是栅格项目的长度如果小于栅格单元的长度，栅格项目如何水平对齐。
 
 通过它可以声明该栅格项目自身的水平对齐方式，甚至可以覆盖栅格容器 `justify-items` 的值。
 
-### Align-self
+## Align-self
 
 这个属性声明的是栅格项目的高度如果小于栅格单元的高度，栅格项目如何垂直对齐。
 
 通过它可以声明该栅格项目自身的垂直对齐方式，甚至可以覆盖栅格容器 `align-items` 的值。
 
-### Place-self
+## Place-self
 
 `place-self` 属性是 `align-self` 属性和 `justify-self` 属性的合并简写形式。
 
-### Order
+## Order
 
 If grid items aren't explicitly placed with `grid-area`, `grid-column`, `grid-row`, etc., they are automatically placed according to their order in the source code. We can override this using the `order` property, which is one of the advantages of grid over table-based layout.
 
@@ -714,7 +738,7 @@ By default, all grid items have an `order` of 0, but this can be set to any posi
 
 越大越靠后
 
-## Garden
+# Garden
 
 <https://cssgridgarden.com/>
 
@@ -722,3 +746,26 @@ By default, all grid items have an `order` of 0, but this can be set to any posi
 
 + <http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html>
 + <https://matiji.cn/post/5c98b5e8996f307d572c0a8c>
+
+# FAQ
+
+## Grid 设置项目边框避免重叠
+
+直接给 item 设置 border. 然后通过 margin 负值来隐藏重叠的部分
+
+```css
+.calendarGridTemplate {
+  display: grid;
+  box-sizing: border-box;
+  width: 700px;
+  margin: 0 auto;
+  grid-template-rows: repeat(6, 100px);
+  grid-template-columns: repeat(7, 100px);
+
+  .gridItem {
+    border: 1px solid;
+    margin-left: -1px;
+    margin-top: -1px;
+  }
+}
+```
