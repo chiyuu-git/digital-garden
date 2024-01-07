@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/leetcode/leetcode/","tags":["gardenEntry","gardenEntry"]}
+{"dg-publish":true,"permalink":"/programming/basic/leetcode/leetcode/"}
 ---
 
 
