@@ -110,11 +110,11 @@ options 里面有个重要参数 timeout，如果给定 timeout，那到了时�
 
 有了上面所介绍的这样一套异步可中断分配机制，我们就可以实现 batchUpdates 批量更新等一系列操作
 
-![img](react-fiber/v2-3b86397b70d7ba02d24be9aed9bf4f24_1440w.webp)
+![img](/img/user/programming/font-end/framework/react/react-fiber/v2-3b86397b70d7ba02d24be9aed9bf4f24_1440w.webp)
 
 更新 fiber 前
 
-![img](react-fiber/v2-7990b44228167f74529526a0bec06c43_1440w.webp)
+![img](/img/user/programming/font-end/framework/react/react-fiber/v2-7990b44228167f74529526a0bec06c43_1440w.webp)
 
 更新 fiber 后
 
