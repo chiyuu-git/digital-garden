@@ -899,3 +899,5 @@ picGo 太垃圾了, 每次用都要调试很久, 心累了, 再也不碰
 # Quicker
 
 [Mac 有没有类似 Quicker 的软件？ - 知乎](https://www.zhihu.com/question/362216392)
+
+alfred workflow
