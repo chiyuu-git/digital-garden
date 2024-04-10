@@ -230,6 +230,10 @@ flex-direction 和 flex-wrap 的简写属性，同时定义主轴和侧轴以及
 flex-flow: column-reverse wrap;
 ```
 
+## [Grid-gap](grid.md#Grid-gap)
+
+也可以用于 flex 布局.
+
 # 项目
 
 ## Order
@@ -686,3 +690,7 @@ flex-wrap: wrap;
 如果项目设置了高/宽，则 stretch 失效，表现为 normal，而不是默认值是 stretch
 
 normal：每一行之间和最后一行与侧轴的终点之间分配相同的富裕空间
+
+## Flex 1 能有效的占据剩余空间 但是却没有办法指定 Max-width 匹配 Flex 1 分配到的宽度
+
+这个时候可以考虑使用 calc 动态计算出剩余的空间分配给 max-widht
