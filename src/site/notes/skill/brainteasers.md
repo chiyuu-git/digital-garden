@@ -48,3 +48,21 @@
 duumyHead、动态规划初始化、等等简化理解成本的操作
 
 sortable 哨兵
+
+# 三神问题
+
+# 三门问题
+
+# 选必三思维与逻辑
+
+[选必三思维与逻辑\_百度搜索](https://www.baidu.com/s?tn=15007414_9_dg&ie=utf-8&wd=%E9%80%89%E5%BF%85%E4%B8%89%E6%80%9D%E7%BB%B4%E4%B8%8E%E9%80%BB%E8%BE%91)
+
+https://www.bilibili.com/video/BV17c411t7op/?spm_id_from=333.1007.tianma.1-1-1.click&vd_source=f8573a6196003ad3683f1c1a403d3431
+
+## 十日终焉
+
+# 上帝悖论的解释
+
+时间 1: 上帝创建了一个自己举不起来的石头
+
+时间 2: 因为上帝无所不能, 所以他强化了自身, 变得可以举起这个石头
