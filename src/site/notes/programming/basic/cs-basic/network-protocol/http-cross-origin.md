@@ -43,6 +43,8 @@ Cookie 是不可跨域的；在没有经过任何处理的情况下，二级域�
 
 ### Domain
 
+[chrome 禁用 domain](https://mp.weixin.qq.com/s?__biz=Mzk0MDMwMzQyOA==&mid=2247492113&idx=1&sn=cacc274e8c8756582e77582388be6665&chksm=c2e1173af5969e2c3513d2e1649f0f09ac79fd011155ae0f92883e4bbb9f9bb3cdb533fee100&token=2132458547&lang=zh_CN#rd)
+
 两个网页一级**域名**相同，只是二级**域名**不同，浏览器允许通过设置 `document.domain` 共享 Cookie。
 
 另外，服务器也可以在设置 Cookie 的时候，指定 Cookie 的所属域名为一级域名，比如 `.example.com`。
@@ -417,6 +419,23 @@ Vary: Origin
 
 ### Access-Control-Allow-Headers
 
+### Cross-Origin-Resource-Policy
+
+### Cross-Origin-Embedder-Policy
+
+Because your site has the Cross-Origin Embedder Policy (COEP) enabled, each embedded iframe must also specify this policy. This behavior protects private data from being exposed to untrusted third party sites.
+
+To solve this, add one of following to the embedded frame’s HTML response header:
+
+- `Cross-Origin-Embedder-Policy: require-corp`
+- `Cross-Origin-Embedder-Policy: credentialless` (Chrome > 96)
+
+引用 iframe 时需要配置. iframe 源网站需要配置, 引用 iframe 的也需要配置
+
+You can only access certain features like [`SharedArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer) objects or [`Performance.now()`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now) with unthrottled timers, if your document has a COEP header with a value of `require-corp` or `credentialless` set.
+
+![http-cross-origin](programming/basic/cs-basic/network-protocol/http-cross-origin.md#shareArrayBuffer)
+
 ## HTTP 请求首部字段
 
 本节列出了可用于发起跨域请求的首部字段。请注意，**这些首部字段无须手动设置。 当开发者使用 XMLHttpRequest 对象发起跨域请求时，它们已经被设置就绪。**
@@ -581,6 +600,20 @@ myJSONPAcross({
 
 [project-init](programming/project/project-init.md#Dev-server%20配置跨域请求)
 
+# COOP 和 COEP
+
+[新的跨域策略：使用COOP、COEP为浏览器创建更安全的环境 - 掘金](https://juejin.cn/post/6855129007906963464?searchId=2023111619452928716436F6F0BA6BAAEE)
+
+[由一个报错引发的浏览器跨域隔离探索 - 掘金](https://juejin.cn/post/7159391029135671333?searchId=2023111619452928716436F6F0BA6BAAEE)
+
+[HTML页面安全策略汇总(1)：同源策略、CORS、COOP、COEP - 掘金](https://juejin.cn/post/7172493262115045383?searchId=2023111619452928716436F6F0BA6BAAEE)
+
+[跨源相关机制综述（三）：crossorigin属性 - 知乎](https://zhuanlan.zhihu.com/p/345564689)a
+
+[匿名 iframe：COEP 的福音！-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/2207623?areaSource=102001.6&traceId=3br1YC1WyO5SLc1z8tkR4)
+
+[更简单的开启 COOP](https://mp.weixin.qq.com/s?__biz=Mzk0MDMwMzQyOA==&mid=2247498661&idx=1&sn=28eb77193affb91021bcdea5c1ef3840&chksm=c2e10e8ef59687981e12b2cbeb42e087aca2a5091a85f223c965f637a16d9a80cc4db3cc99bc&=1638573446&=zh_CN#rd)
+
 # Nginx 反向代理
 
 [nginx](../../../back-end/nginx.md)
@@ -602,3 +635,7 @@ DNS 污染, 改 hosts, 或者反向代理
 而往往开发环境中端口号都是 3000 这种, 图片服务器则默认是 80 或者 443. 因为为了在本地开发环境使用 drawImage() 还得把本地开发环境的端口号设置为 80 或者 443. 然后这是行不通的, 因为这两个端口号往往已经被占用了. 因此需要通过 DNS 映射, 把本地域名的 3000 端口映射成本地开发机域名的 80 端口
 
 [解决canvas图片getImageData,toDataURL跨域问题 « 张鑫旭-鑫空间-鑫生活](https://www.zhangxinxu.com/wordpress/2018/02/crossorigin-canvas-getimagedata-cors/)
+
+### shareArrayBuffer
+
+平面编辑器中使用到了 shareArrayBuffer. 对 COEP 有要求, 于是让工作台的页面也配置上了 COEP
