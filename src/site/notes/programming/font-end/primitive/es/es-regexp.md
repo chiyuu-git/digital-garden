@@ -3320,6 +3320,17 @@ function toHump(str) {
 
 [《前端表单验证常用的 15 个 JS 正则表达式》](http://caibaojian.com/form-regexp.html) [《JS 常用正则汇总》](https://www.jianshu.com/p/1cb5229325a7)
 
+## 匹配中英文及其标点符号
+
+```js
+  /** 匹配除了中英文,数字以及标点符号以为的字符 */
+  const otherLanguage =
+    /[^\u4e00-\u9fa5\u3002\uff1f\uff01\uff0c\u3001\uff1b\uff1a\u201c\u201d\u2018\u2019\uff08\uff09\u300a\u300b\u3008\u3009\u3010\u3011\u300e\u300f\u300c\u300d\ufe43\ufe44\u3014\u3015\u2026\u2014\uff5e\ufe4f\uffe5\w_!@#$%^&*()\[\]{}\-+=|\\:;"',.·<>/?`~\s]/g;
+  const allNum = /^\d+$/;
+  const allPunctuation = /^[^\u4e00-\u9fa5\w\s]+$/;
+  const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+```
+
 # Experience
 
 #programming-experience
