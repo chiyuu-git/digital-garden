@@ -7,23 +7,26 @@
 
 | File                                                                                                 | overview                          |
 | ---------------------------------------------------------------------------------------------------- | --------------------------------- |
-| [[programming/FAQ/performance-optimization/!performance-optimization\|!performance-optimization]] | [[programming/FAQ/performance-optimization/!performance-optimization#faq\|!performance-optimization#faq]] |
-| [[programming/font-end/browser-core/browser-thread\|browser-thread]]                              | [[programming/font-end/browser-core/browser-thread#faq\|browser-thread#faq]]            |
-| [[programming/font-end/framework/typescript/ts-advanced\|ts-advanced]]                            | [[programming/font-end/framework/typescript/ts-advanced#faq\|ts-advanced#faq]]               |
-| [[programming/font-end/primitive/browser-api/bom\|bom]]                                           | [[programming/font-end/primitive/browser-api/bom#faq\|bom#faq]]                       |
-| [[programming/font-end/primitive/browser-api/dom-event\|dom-event]]                               | [[programming/font-end/primitive/browser-api/dom-event#faq\|dom-event#faq]]                 |
-| [[programming/font-end/primitive/browser-api/dom-interface\|dom-interface]]                       | [[programming/font-end/primitive/browser-api/dom-interface#faq\|dom-interface#faq]]             |
+| [[programming/font-end/primitive/es/es-number\|es-number]]                                        | [[programming/font-end/primitive/es/es-number#faq\|es-number#faq]]                 |
+| [[programming/font-end/primitive/es/es-string\|es-string]]                                        | [[programming/font-end/primitive/es/es-string#faq\|es-string#faq]]                 |
+| [[programming/font-end/primitive/es/es-proto\|es-proto]]                                          | [[programming/font-end/primitive/es/es-proto#faq\|es-proto#faq]]                  |
+| [[programming/font-end/primitive/es/es-object\|es-object]]                                        | [[programming/font-end/primitive/es/es-object#faq\|es-object#faq]]                 |
+| [[programming/font-end/primitive/es/es-date\|es-date]]                                            | [[programming/font-end/primitive/es/es-date#faq\|es-date#faq]]                   |
+| [[programming/font-end/primitive/es/es-async/promise\|promise]]                                   | [[programming/font-end/primitive/es/es-async/promise#faq\|promise#faq]]                   |
+| [[programming/font-end/primitive/browser-api/dom-style\|dom-style]]                               | [[programming/font-end/primitive/browser-api/dom-style#faq\|dom-style#faq]]                 |
 | [[programming/font-end/primitive/browser-api/dom-selection\|dom-selection]]                       | [[programming/font-end/primitive/browser-api/dom-selection#faq\|dom-selection#faq]]             |
+| [[programming/font-end/primitive/browser-api/dom-api\|dom-api]]                                   | [[programming/font-end/primitive/browser-api/dom-api#faq\|dom-api#faq]]                   |
+| [[programming/font-end/framework/typescript/ts-advanced\|ts-advanced]]                            | [[programming/font-end/framework/typescript/ts-advanced#faq\|ts-advanced#faq]]               |
+| [[programming/basic/common/color\|color]]                                                         | [[programming/basic/common/color#faq\|color#faq]]                     |
+| [[programming/FAQ/performance-optimization/!performance-optimization\|!performance-optimization]] | [[programming/FAQ/performance-optimization/!performance-optimization#faq\|!performance-optimization#faq]] |
+| [[programming/font-end/primitive/es/es-next-1\|es-next-1]]                                        | [[programming/font-end/primitive/es/es-next-1#faq\|es-next-1#faq]]                 |
+| [[programming/font-end/primitive/es/es-basic\|es-basic]]                                          | [[programming/font-end/primitive/es/es-basic#faq\|es-basic#faq]]                  |
 | [[programming/font-end/primitive/es/es-array\|es-array]]                                          | [[programming/font-end/primitive/es/es-array#faq\|es-array#faq]]                  |
 | [[programming/font-end/primitive/es/es-async/es-async-2\|es-async-2]]                             | [[programming/font-end/primitive/es/es-async/es-async-2#faq\|es-async-2#faq]]                |
-| [[programming/font-end/primitive/es/es-async/promise\|promise]]                                   | [[programming/font-end/primitive/es/es-async/promise#faq\|promise#faq]]                   |
-| [[programming/font-end/primitive/es/es-basic\|es-basic]]                                          | [[programming/font-end/primitive/es/es-basic#faq\|es-basic#faq]]                  |
-| [[programming/font-end/primitive/es/es-date\|es-date]]                                            | [[programming/font-end/primitive/es/es-date#faq\|es-date#faq]]                   |
-| [[programming/font-end/primitive/es/es-next-1\|es-next-1]]                                        | [[programming/font-end/primitive/es/es-next-1#faq\|es-next-1#faq]]                 |
-| [[programming/font-end/primitive/es/es-number\|es-number]]                                        | [[programming/font-end/primitive/es/es-number#faq\|es-number#faq]]                 |
-| [[programming/font-end/primitive/es/es-object\|es-object]]                                        | [[programming/font-end/primitive/es/es-object#faq\|es-object#faq]]                 |
-| [[programming/font-end/primitive/es/es-proto\|es-proto]]                                          | [[programming/font-end/primitive/es/es-proto#faq\|es-proto#faq]]                  |
-| [[programming/font-end/primitive/es/es-string\|es-string]]                                        | [[programming/font-end/primitive/es/es-string#faq\|es-string#faq]]                 |
+| [[programming/font-end/primitive/browser-api/dom-interface\|dom-interface]]                       | [[programming/font-end/primitive/browser-api/dom-interface#faq\|dom-interface#faq]]             |
+| [[programming/font-end/primitive/browser-api/dom-event\|dom-event]]                               | [[programming/font-end/primitive/browser-api/dom-event#faq\|dom-event#faq]]                 |
+| [[programming/font-end/primitive/browser-api/bom\|bom]]                                           | [[programming/font-end/primitive/browser-api/bom#faq\|bom#faq]]                       |
+| [[programming/font-end/browser-core/browser-thread\|browser-thread]]                              | [[programming/font-end/browser-core/browser-thread#faq\|browser-thread#faq]]            |
 | [[programming/font-end/primitive/es/es-regexp\|es-regexp]]                                        | [[programming/font-end/primitive/es/es-regexp#faq\|es-regexp#faq]]                 |
 
 { .block-language-dataview}
@@ -859,7 +862,7 @@ each 函数和 eachWithCall 函数唯一的区别就是 eachWithCall 调用了 c
 
 # Dom 相关问题
 
-因为 DOM 和 BOM 主要是一些独立的 API，彼此之间联系并不紧密，因此 DOM 和 BOM 的 FAQ 不单独放在子文件
+因为 DOM 和 BOM 主要是一些独立的 API，彼此之间联系并不紧密
 
 ## A 标签模拟 Disabled 属性
 
@@ -880,35 +883,6 @@ $('.a').attr('href','javascript:;');
 ```
 
 这个时候则不能进行任何点击,但是样式的话,需要自己自行添加置灰.
-
-## 判断滚动条是否滚动到底
-
-垂直滚动条：`scrollHeight - scrollTop = clientHeight`
-
-水平滚动：`scrollWidth - scrollLeft = clientWidth`
-
-## 容器内拖拽的最长距离
-
-拖拽的最长距离：容器的 clientWidth- 子元素的 offsetWidth
-
-在容器的内部移动，子元素的边框不会被覆盖
-
-## 元素距离左上角的距离
-
-下面的代码可以算出元素左上角相对于整张网页的坐标。
-
-```js
-function getElementPosition(e) {
-  var x = 0;
-  var y = 0;
-  while (e !== null)  {
-    x += e.offsetLeft;
-    y += e.offsetTop;
-    e = e.offsetParent;
-  }
-  return {x: x, y: y};
-}
-```
 
 ## 确认节点类型
 
@@ -947,147 +921,45 @@ if (node.nodeType === Node.ELEMENT_NODE) {
 
 display:inline，或者 float、绝对定位等，总之让字符去撑开容器的宽度，再获取容器宽度除以字符数即可得到单个字符的宽度
 
-## 操作 Style
+# Bom 相关问题
 
-### 重置样式 样式表 的冲突
+## 区分刷新和其他关闭打开行为
 
-```js
-// 如果把宽度设置为0，那么内联样式的特殊性只能在样式表通过!important解决
-// upNodes[i].style.width="0";
-// 把值设为空，在内联样式不会有属性值，样式表的属性就可以正常作用了
-upNodes[i].style.width="";
-```
+通过 navigation 区分刷新和其他打开行为
 
-### 单位
-
-.style.property 需要加 px，如果是 attribute 浏览器会自动加 px
-
-## 隐藏页面中的某个元素
-
-### 隐藏类型
-
-屏幕并不是唯一的输出机制，比如说屏幕上看不见的元素（隐藏的元素），其中一些依然能够被读屏软件阅读出来（因为读屏软件依赖于可访问性树来阐述）。为了消除它们之间的歧义，我们将其归为三大类：
-
-- 完全隐藏：元素从渲染树中消失，不占据空间。
-- 视觉上的隐藏：屏幕中不可见，占据空间。
-- 语义上的隐藏：读屏软件不可读，但正常占据空。
-
-### 完全隐藏
-
-`display` 属性 (不占据空间)
-
-```css
-display: none;
-```
-
-hidden 属性 (不占据空间)
-
-```html
-<div hidden></div>
-```
-
-### 视觉上的隐藏
-
-利用 `position` 和 盒模型 将元素移出可视区范围
-
-+ 设置 `posoition` 为 `absolute` 或 `fixed`，通过设置 `top`、`left` 等值，将其移出可视区域。(可视区域不占位)
-+ 设置 `position` 为 `relative`，通过设置 `top`、`left` 等值，将其移出可视区域。（可视区域占位）
-+ 设置 margin 值，将其移出可视区域范围（可视区域占位）。
-+ 如果希望其在可视区域不占位，需同时设置 `height: 0`;
-
-利用 transfrom
-
-+ 缩放 (占据空间)
-
-    ```css
-    transform: scale(0);
-    ```
-
-+ 移动 `translateX`, `translateY`(占据空间)
-+ 旋转 `rotate` (占据空间)
-
-    ```css
-    transform: rotateY(90deg);
-    ```
-
-设置其大小为 0
-
-+ 宽高为 0，字体大小为 0：
-+ 宽高为 0，超出隐藏:
-
-    ```css
-    height: 0;
-    width: 0;
-    overflow: hidden;
-    ```
-
-设置透明度 opacity 为 0 (占据空间)
-
-visibility 属性 (占据空间)
-
-层级覆盖，`z-index` 属性 (占据空间)
-
-+ ```css
-    position: relative;
-    z-index: -999;
-    ```
-+ 再设置一个层级较高的元素覆盖在此元素上。
-
-clip-path 裁剪 (占据空间)
-
-+ ```css
-    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
-    ```
-
-### 语义上的隐藏
-
-aria-hidden 属性 (占据空间)
-
-读屏软件不可读，占据空间，可见。
-
-```
-<div aria-hidden="true">
-</div>
-```
-
-## 事件
-
-### Addeventlistener
-
-DOM event 原理：https://zhuanlan.zhihu.com/p/50577896>
-
-### Addeventlistener 多次绑定，只执行一次
-
-方案一：每次执行完，再 handler 解绑自己
-
-方案二：使用 once 属性
-
-### addEventListener This
-
-事件监听, this 一定是 dom 本身, 如果是在 class 里面想要指定 this, 有如下实践:
+避免固定串的 url utm 参数的误导
 
 ```ts
-        this.el.addEventListener('mouseup', this.handleMouseUp = () => {
-            if (!this.dragging) {
-                return;
-            }
+  init(page: string) {
+    if (this._inited) {
+      return;
+    }
+    this._inited = true;
+    const pageKey = `_${page}ReflowFlag`;
+    // 监听 beforeunload, 根据 pageFlag 初始化全局变量
+    window.addEventListener('beforeunload', () => {
+      localStorage.setItem(
+        pageKey,
+        window.needReflowToTikTokCreator ? REFLOW_FLAG_VALUE.True : REFLOW_FLAG_VALUE.False,
+      );
+      localStorage.removeItem(REFLOW_FLAG_KEY);
+    });
 
-            this.dragging = false;
-            this.activeSelection = null as any;
-        });
-
-		this.el.removeEventListener('mouseup', this.handleMouseUp);
+    // 还原 needReflowToTikTok
+    const entries = performance.getEntriesByType('navigation');
+    entries.forEach((entry) => {
+      if ((entry as PerformanceNavigationTiming).type === 'reload') {
+        const flag = localStorage.getItem(pageKey) === REFLOW_FLAG_VALUE.True;
+        window.needReflowToTikTokCreator = flag;
+      }
+      localStorage.removeItem(pageKey);
+    });
+  }
 ```
 
-本质上就是那个经典的 react 问题
+[segmentfault.com/q/1010000021563857](https://segmentfault.com/q/1010000021563857)
 
-## 颜色相关操作
-
-### 使得 Rgb 色值变明亮或者变灰暗
-
-https://www.php.cn/css-tutorial-480162.html
-
-# Bom 相关问题
+[PerformanceNavigationTiming: type property - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming/type)
 
 ## 限制浏览器默认行为
 
@@ -1125,10 +997,6 @@ html 开启 hidden 就可以禁止默认滚动条，因为默认滚动条都是 
 
 移动端的固定定位一般都是用绝对定位来模拟的
 
-### 禁用 a 标签
-
-hangUpBtn.style.pointerEvents = 'none'
-
 ## 移动端长按菜单
 
 ### 基础
@@ -1155,7 +1023,7 @@ hangUpBtn.style.pointerEvents = 'none'
 
 对于 image 组件，因为是通过 background-image 方式实现的，因此不弹出菜单是正常的，所以需要 src 逻辑判断使用端的菜单
 
-对于原生的 img 表现，因为 base.styl 通过属性进行了限制，所以 ios 端是没有菜单的，安卓 webview 本身没有实现长按图片弹出菜单的功能，因此也不会有菜单。表现为全局禁用了默认彩蛋
+对于原生的 img 表现，因为 base.styl 通过属性进行了限制，所以 ios 端是没有菜单的，安卓 webview 本身没有实现长按图片弹出菜单的功能，因此也不会有菜单。表现为全局禁用了默认菜单
 
 > https://xiaozhuanlan.com/topic/9874152630
 
@@ -1204,9 +1072,9 @@ image 和 rich-text 下的 img 标签弹出的菜单是 端上给的菜单，因
 
 #### 属性值
 
-**none：**元素及其子元素的文本不可选中。
+**none**：元素及其子元素的文本不可选中。
 
-**auto：**
+**auto**：
 
 - 在 `::before` 和 `::after` 伪元素上，采用的属性值是 `none`
 - 如果元素是可编辑元素，则采用的属性值是 `contain`
@@ -1217,11 +1085,11 @@ image 和 rich-text 下的 img 标签弹出的菜单是 端上给的菜单，因
 
 > 注意：非继承属性与初始值 auto（其使用值取决于父元素）的不寻常组合使创建有效的选择性继承成为可能。这最初是由微软在 IE 中提出的，目的是引入一种类似于继承的行为，
 
-**text：**用户可以选择文本。
+**text**：用户可以选择文本。
 
-**all：**在** 一个 HTML 编辑器**中，当双击子元素或者上下文时，那么包含该子元素的最顶层元素也会被选中。
+**all**：在 一个 HTML 编辑器**中，当双击子元素或者上下文时，那么包含该子元素的最顶层元素也会被选中。
 
-**contain：**允许在元素内选择；但是，选区将被限制在该元素的边界之内。
+**contain**：允许在元素内选择；但是，选区将被限制在该元素的边界之内。
 
 ### -Webkit-touch-callout
 
@@ -1270,6 +1138,16 @@ user-select:none;/*用户是否能够选中文本*/
 
 如果想单独禁用菜单，可以给 document 添加，pc 端和安卓可以做到全局禁用，但是 ios 还是要逐个添加。
 
+## window.open 和 a 标签跳转打开新页面有什么区别?
+
+a 标签可以很方便的设置 referer
+
+window.open 只能在 meta 标签上设置, 会对整个文档起效果
+
+[`<a>`：锚元素 - HTML（超文本标记语言） | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a)
+
+[window.open打开页面会被浏览器拦截问题解决-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/1743495)
+
 # 业务场景
 
 ## 日志
@@ -1315,74 +1193,7 @@ DOM 转换成 canvas
 
 DOM 准换成 svg
 
-## 请求
-
-### 继发请求
-
-for 循环即可
-
-实际开发中，经常遇到一组异步操作，需要按照顺序完成。比如，依次远程读取一组 URL，然后按照读取的顺序输出结果。
-
-**Promise 写法**
-
-```javascript
-function logInOrder(urls) {
-  // 远程读取所有URL
-  const textPromises = urls.map(url => {
-    return fetch(url).then(response => response.text());
-  });
-
-  // 按次序输出
-  textPromises.reduce((chain, textPromise) => {
-    return chain.then(() => textPromise)
-      .then(text => console.log(text))
-  }, Promise.resolve())
-}
-```
-
-上面代码使用 `fetch` 方法，同时远程读取一组 URL。每个 `fetch` 操作都返回一个 Promise 对象，放入 `textPromises` 数组。然后，`reduce` 方法依次处理每个 Promise 对象，然后使用 `then`，将所有 Promise 对象连起来，因此就可以依次输出结果。
-
-**async 函数实现**
-
-这种写法不太直观，可读性比较差。下面是 async 函数实现。
-
-```javascript
-async function logInOrder(urls) {
-  for (const url of urls) {
-    const response = await fetch(url);
-    console.log(await response.text());
-  }
-}
-```
-
-上面代码确实大大简化，问题是所有远程操作都是继发。只有前一个 URL 返回结果，才会去读取下一个 URL
-
-### 并发请求
-
-继发请求效率很差，非常浪费时间。我们需要的是 **并发** 发出远程请求。
-
-```javascript
-async function logInOrder(urls) {
-  // 并发读取远程URL
-  const textPromises = urls.map(async url => {
-    const response = await fetch(url);
-    return response.text();
-  });
-
-  // 按次序输出
-  for (const textPromise of textPromises) {
-    console.log(await textPromise);
-  }
-}
-```
-
-上面代码中，虽然 `map` 方法的参数是 `async` 函数，但它是并发执行的，因为只有 `async` 函数内部是继发执行，外部不受影响。后面的 `for..of` 循环内部使用了 `await`，因此实现了按顺序输出。
-
-### Promise.all
-
-稍微有点反直觉，promise.all 方法，其实保存的是所有 promise 的返回值，在 all 方法之前，其实所有的 promise 就已经在等待执行了，因为微任务的缘故，所以代码看起来是先发送请求，其实是先放在 all 里面了
-
-### 压缩查询字符串
+## 压缩查询字符串
 
 这里以查询字符串（querystring）压缩技术为例，注意下面 `replace` 方法中，回调函数根本没有返回任何东西。
 
@@ -1403,9 +1214,7 @@ console.log( compress("a=1&b=2&a=3&b=4") );
 // => "a=1,3&b=2,4"
 ```
 
-## 功能模块
-
-### 用户登陆验证
+## 用户登陆验证
 
 https://www.nowcoder.com/test/question/done?tid=22865052&qid=13860#summary
 
@@ -1434,84 +1243,3 @@ react-router：query 形式和 state 形式都可以实现持久化
 ## 虚拟列表
 
 https://cloud.tencent.com/developer/article/1533206
-
-# Event
-
-## 监听与解除绑定
-
-class 内部的事件监听与解除绑定, 因为箭头函数 this, 以及 eventListener 的 this 问题, 需要形成一个最佳实践.
-
-```ts
-export const EditorContent = san.defineComponent<EditorContentProps>({
-
-    template: `
-        <div class="editor-san" on-click="handleClick">
-            <slot></slot>
-        </div>`,
-
-    attached() {
-        this.handleEditor(this.data.get('editor'));
-
-        this.watch('editor', this.handleEditor);
-    },
-
-    handleEditor(editor: Editor) {
-        if (editor && editor.options.element) {
-            this.handleValidate(editor);
-        }
-    },
-
-    /**
-     * 处理 santd form validate, 外部直接传入 decorator 即可
-     * 仅在失焦时做校验, 避免频繁获取 html
-     */
-    handleValidate(editor: Editor) {
-
-        this.validateListener = () => {
-            this.dispatch('UI:form-item-interact', {
-                fieldValue: editor.getHTML(),
-                type: 'change'
-            });
-            console.log('editor.getHTML(): ', editor.getHTML());
-        };
-
-        editor.on('blur', this.validateListener);
-    },
-
-    detached() {
-        editor.off('blur', this.validateListener);
-    },
-});
-
-```
-
-动态的改 this 的做法挺好的
-
-## 什么情况下需要解绑?
-
-取决于 dom 节点是否还被引用
-
-If a DOM element which is removed is reference-free (no references pointing to it) then **yes** - the element itself is picked up by the garbage collector as well as any event handlers/listeners associated with it.
-
-```javascript
-var a = document.createElement('div');
-var b = document.createElement('p');
-// Add event listeners to b etc...
-a.appendChild(b);
-a.removeChild(b);
-b = null; 
-// A reference to 'b' no longer exists 
-// Therefore the element and any event listeners attached to it are removed.
-```
-
-However; if there are references that still point to said element, the element and its event listeners are retained in memory.
-
-```javascript
-var a = document.createElement('div');
-var b = document.createElement('p'); 
-// Add event listeners to b etc...
-a.appendChild(b);
-a.removeChild(b); 
-// A reference to 'b' still exists 
-// Therefore the element and any associated event listeners are still retained.
-```
