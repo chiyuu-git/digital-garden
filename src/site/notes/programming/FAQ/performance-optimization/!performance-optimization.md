@@ -696,7 +696,11 @@ preload 加载页面必需的资源如 CDN 上的字体文件，与 prefetch 预
 
 预渲染虽然可以提高页面的加载速度，但是要确保该页面在之后会被用户打开，否则就白白浪费资源去渲染
 
+[新一代预渲染技术](https://mp.weixin.qq.com/s?__biz=Mzk0MDMwMzQyOA==&mid=2247498897&idx=1&sn=faaa02fd616d1488ce81a2d8efe7d613&chksm=c2e109baf59680ac165885b3fc0fc7856250abdadc19aee72063a0cc5e776a38133177379d8c&=1638573446&=zh_CN#rd)
+
 # SSR
+
+[SSR](../../font-end/framework/framwork-common/!framework-common.md#SSR)
 
 # Hybrid App 预取
 
@@ -706,6 +710,16 @@ preload 加载页面必需的资源如 CDN 上的字体文件，与 prefetch 预
 1. 提前将 HTML JS CSS 下载到 App 内部
 2. 在 App webview 中使用 file://协议加载页面文件
 3. 再用 Ajax 获取内容并展示（也结合 App 预取）
+
+# CDN
+
+## Cdn 回源
+
+cdn 回源，包括回源地址和加速域名。当有用户访问某一个 URL 的时候，如果被解析到的那个 CDN 节点没有缓存响应的内容，或者是缓存已经到期，就会回源站去获取。如果没有人访问，那么 CDN 节点不会主动去源站拿的。
+
+回源地址：可以使回源域名，也可以是回源 IP，主要作用是 CDN 加速节点同步更新的一个地址；
+
+加速域名：使用 CDN 服务器需要加速的一个域名，一般会将加速域名做别名解析为 CDN 运营商提供的域名，来做 CDN 加速访问。
 
 # FAQ
 
