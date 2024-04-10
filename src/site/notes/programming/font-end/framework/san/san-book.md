@@ -195,7 +195,3 @@ aNode 与 template 是等价的, 就是 ast 呗
 ## Computed 实现
 
 通过改变 this 来做拦截, 在 computed 内访问了 this.data. 就先去计算依赖的属性
-
-# San-store Skip
-
-# Ssr
