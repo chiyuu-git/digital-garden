@@ -406,6 +406,8 @@ span:nth-of-type(6n+2)
 
 ### Nth-child 和 Nth-of-type 的一个重要的区别
 
+仅作用于标签元素选择器. 类选择器无法生效. 但是 frist-child nth-child 加在类后面也可以
+
 ```html
 <div id="wrap">
  <div class="inner">div</div>
@@ -743,6 +745,12 @@ css3 新增
 background: rgba(0,0,0,.5);
 
 ## 字体
+
+### Lang
+
+[css - How to center punctuation in vertical CJK text? - Stack Overflow](https://stackoverflow.com/questions/54750442/how-to-center-punctuation-in-vertical-cjk-text)
+
+lang 对字体样式的影响
 
 ### Color
 
