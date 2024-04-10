@@ -5,6 +5,31 @@
 
 # API 层面
 
+## setState 是有副作用的
+
+```ts
+  const isInQueue =
+    !enableCreateVideo && accountService?.hasLogin && !isOverseaLimitedCountry && hasFinishVideoQuestion;
+
+  const [createVideoBtnKey, setCreateVideoBtnKey] = useState(
+    isInQueue ? 'dreamina_ai_video_joining_waitlist' : 'frame_change_start_create',
+  );
+
+  useEffect(() => {
+    setCreateVideoBtnKey(isInQueue ? 'dreamina_ai_video_joining_waitlist' : 'frame_change_start_create');
+  }, [isInQueue]);
+```
+
+isInQueue 值的变化, 并不会更新 key 的值. useState 也是一个有副作用的函数. 每次重渲染的时候, useState 虽然都会执行. 但是 useState 只会持有最初的 initialState 和后续 setState 更新的值.
+
+在函数式编程中，纯函数的定义是给定相同的输入，始终产生相同的输出，并且不会产生副作用。从这个角度来看，`useState` 似乎不符合纯函数的定义，因为尽管每次组件重新渲染时 `useState` 被调用，但它却每次都返回相同的值，并且会影响组件的状态。
+
+然而，在 React 中，`useState` 被设计为一种特殊的钩子函数，用于在函数组件中管理状态。虽然它每次都返回相同的值，但这并不违反 React 的设计原则。在 React 中，状态的变化并不依赖于函数的输入，而是由 React 自身的更新机制管理的。当状态发生变化时，React 会负责重新渲染组件，并在必要时更新状态。
+
+因此，虽然从函数式编程的角度来看，`useState` 可能不符合纯函数的定义，但在 React 中，它仍然被认为是一种纯函数的钩子函数，因为它的行为是可预测的，并且不会产生副作用，而状态的变化和更新是由 React 控制和管理的。
+
+> 当然, 你也可以理解为, 所有不同的输入都得到了相同的输出, 所以对于所有不同的输入而言, 每次 rerender 都是相同的输出, 也就可以说 useState 还是纯函数... 有点无语了
+
 ## *setState 是同步还是异步？
 
 ### V18 之前
