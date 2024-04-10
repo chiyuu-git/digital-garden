@@ -92,6 +92,10 @@ Unicode符号范围     |        UTF-8编码方式
 
 http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html
 
+## 常见的乱码
+
+![](/img/user/programming/basic/common/basic/image-20231017230756079.png)
+
 ## 总结
 
 多少个字节表示一个汉字：
