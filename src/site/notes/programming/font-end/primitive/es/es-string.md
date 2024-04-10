@@ -396,7 +396,7 @@ ES6
   + 如果 `fromIndex >= str.length`，则该方法返回 -1。
   + 当**被查找**的字符串是一个空字符串时，无论 position 为和值都返回 true
 
-  > position 和 fromIndex 是两种形参名，因为他们的表现不一致
+> position 和 fromIndex 是两种形参名，因为他们的表现不一致
 
 **返回值**
 
