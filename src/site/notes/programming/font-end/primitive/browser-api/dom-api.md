@@ -231,6 +231,7 @@ Mutation Observer 有以下特点:
     
     observer.observe(article, options);
 ```
+
 + 上面代码中，`observe` 方法接受两个参数，第一个是所要观察的 DOM 元素是 `article`，第二个是所要观察的变动类型（子节点变动和属性变动）。
 
 ```js
@@ -729,3 +730,11 @@ https://github.com/wellyshen/use-web-animations
 https://www.w3cplus.com/react/create-highly-performant-animations-using-web-animations-api-and-reack-hooks.html
 
 https://www.zhangxinxu.com/wordpress/2018/03/web-animations-api-dynamic-feature-animation/
+
+# FAQ
+
+#faq/js
+
+## Dom 体操
+
+[HTML DOM — Phuoc Nguyen](https://phuoc.ng/collection/html-dom/)
