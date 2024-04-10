@@ -3,8 +3,6 @@
 ---
 
 
-2023-02-10
-
 # 事件模型
 
 事件指的是用户和浏览器之间的交互行为。比如：点击按钮、关闭窗口、鼠标移动。。。
@@ -250,6 +248,12 @@ if(event.target.className == );
 ```
 
 this 返回绑定事件的对象: 事件监听绑定在父元素上，事件也是发生在父元素身上，只是点击子元素也可以触发, 因为有冒泡
+
+## 浏览器实现
+
+[前端杂谈: DOM event 原理 - 知乎](https://zhuanlan.zhihu.com/p/50577896)
+
+可以参考这个逻辑, 在 canvas 上实现对齐浏览器的事件模型
 
 # EventTarget 接口
 
@@ -983,7 +987,7 @@ if (
 
 上面代码表示，只要 `Control`、`Alt`、`Meta` 里面，同时按下任意两个或两个以上的键就返回。
 
-# 进度事件
+# ProgressEvent 进度事件
 
 ## 进度事件的种类
 
@@ -1166,6 +1170,14 @@ In the case of `contenteditable` and `designMode`, the event target is the *
 
 相比于 keydown, 最主要的优势就是不需要判断是否是功能按键, 能在用户真正输入时才触发
 
+# Beforeunload
+
+unload deprecated
+
+beforeunload ok
+
+[unload 事件即将废弃](https://mp.weixin.qq.com/s?__biz=Mzk0MDMwMzQyOA==&mid=2247498648&idx=1&sn=0731f8b617f357a12b9905e2dad48bd0&chksm=c2e10eb3f59687a5efd5f2a51a5a3d0cd45cb6bce50907775bcbb18802ac1052e05c2a264bc3&=1638573446&=zh_CN#rd)
+
 # 自定义事件
 
 自定义事件有三种方法,一种是使用 `new Event()`, 另一种是 `createEvent('CustomEvent')` , 另一种是 `new customEvent()`
@@ -1237,3 +1249,106 @@ btn.dispatchEvent(ev);
 
 #faq/js
 
+## Addeventlistener 多次绑定，只执行一次
+
+方案一：每次执行完，再 handler 解绑自己
+
+方案二：使用 once 属性
+
+## addEventListener This
+
+事件监听, this 一定是 dom 本身, 如果是在 class 里面想要指定 this, 有如下实践:
+
+```ts
+        this.el.addEventListener('mouseup', this.handleMouseUp = () => {
+            if (!this.dragging) {
+                return;
+            }
+
+            this.dragging = false;
+            this.activeSelection = null as any;
+        });
+
+		this.el.removeEventListener('mouseup', this.handleMouseUp);
+```
+
+本质上就是那个经典的 react 问题
+
+### 监听与解除绑定
+
+class 内部的事件监听与解除绑定, 因为箭头函数 this, 以及 eventListener 的 this 问题, 需要形成一个最佳实践.
+
+```ts
+export const EditorContent = san.defineComponent<EditorContentProps>({
+
+    template: `
+        <div class="editor-san" on-click="handleClick">
+            <slot></slot>
+        </div>`,
+
+    attached() {
+        this.handleEditor(this.data.get('editor'));
+
+        this.watch('editor', this.handleEditor);
+    },
+
+    handleEditor(editor: Editor) {
+        if (editor && editor.options.element) {
+            this.handleValidate(editor);
+        }
+    },
+
+    /**
+     * 处理 santd form validate, 外部直接传入 decorator 即可
+     * 仅在失焦时做校验, 避免频繁获取 html
+     */
+    handleValidate(editor: Editor) {
+
+        this.validateListener = () => {
+            this.dispatch('UI:form-item-interact', {
+                fieldValue: editor.getHTML(),
+                type: 'change'
+            });
+            console.log('editor.getHTML(): ', editor.getHTML());
+        };
+
+        editor.on('blur', this.validateListener);
+    },
+
+    detached() {
+        editor.off('blur', this.validateListener);
+    },
+});
+
+```
+
+动态的改 this 的做法挺好的
+
+### 什么情况下需要解?
+
+取决于 dom 节点是否还被引用
+
+If a DOM element which is removed is reference-free (no references pointing to it) then **yes** - the element itself is picked up by the garbage collector as well as any event handlers/listeners associated with it.
+
+```javascript
+var a = document.createElement('div');
+var b = document.createElement('p');
+// Add event listeners to b etc...
+a.appendChild(b);
+a.removeChild(b);
+b = null; 
+// A reference to 'b' no longer exists 
+// Therefore the element and any event listeners attached to it are removed.
+```
+
+However; if there are references that still point to said element, the element and its event listeners are retained in memory.
+
+```javascript
+var a = document.createElement('div');
+var b = document.createElement('p'); 
+// Add event listeners to b etc...
+a.appendChild(b);
+a.removeChild(b); 
+// A reference to 'b' still exists 
+// Therefore the element and any associated event listeners are still retained.
+```
