@@ -366,11 +366,13 @@ source .bash_profile
 
 ```
 sudo vi /etc/hosts
-
+
 sudo killall -HUP mDNSResponder
 ```
 
 ### Win
+
+[Win11如何修改hosts文件？Win11修改hosts文件的方法 - 系统之家](https://www.xitongzhijia.net/xtjc/20220526/245151.html)
 
 ```
 ipconfig /flushdns
@@ -647,6 +649,44 @@ Command + shift + L 可以快捷打印 console
 
 然后选择入口文件所在的进程即可
 
+# Chrome 调试
+
+![](/img/user/programming/basic/common/tools/image-20231127211604150.png)
+
+## 调试 Hover Focus 的节点
+
+### 开启 Emulate a Focused Page
+
+此时下拉就出来了。
+
+![](/img/user/programming/basic/common/tools/image-20231127211621206.png)
+
+[【Chrome】控制台查看hover元素样式调试 - 掘金](https://juejin.cn/post/7164702020623368228)
+
+## Source-panel F8
+
+## Source-panel 监听 Keydown 事件断点
+
+随便一个按钮就可以断住
+
+![](/img/user/programming/basic/common/tools/image-20240327145505620.png)
+
+## Element Panel
+
+![](/img/user/programming/basic/common/tools/image-20240327145429631.png)
+
+## 隐藏堆栈中的第三方框架
+
+使用 [Ignore List](https://developer.chrome.com/docs/devtools/settings/ignore-list/#skip-third-party) 忽略一些第三方框架的堆栈信息，可以精简堆栈内容，方便一眼抓🐛。
+
+在控制台设置 > Ignore List 中增加 Custom exclusion rules:
+
+![](/img/user/programming/basic/common/tools/image-20240311191355581.png)
+
+## 覆盖混淆后的文件
+
+大白话地说，就是在线上环境通过 「chrome devtool」-「source」- 「overrides」功能，实现修改源代码 ➕ 刷新后持续生效的调试效果
+
 # Safe Refactoring
 
 ide 提供了丰富的 refactor 选项，不要再复制粘贴然后手动修改 class method error 了
@@ -677,6 +717,16 @@ ctrl+tab 切换标签页
 
 免费版安装包地址：<https://limbopro.com/archives/416.html>
 
+**Windows 离线安装包** [typora-update-x32-1117.exe.zip](https://limbopro.com/usr/uploads/2021/12/1423353763.zip) / [typora-update-x64-1117.exe.zip](https://limbopro.com/usr/uploads/2021/12/1075124544.zip)；
+
+**Mac 离线安装包** [Typora-0.11.18.(5941).dmg](https://limbopro.com/usr/uploads/2021/12/2009290104.dmg)；
+
+**Linux 离线安装包** [typora_0.11.18_amd64.deb.zip](https://limbopro.com/usr/uploads/2021/12/2022339376.zip)；
+
+去官网下载免费版本：[https://typora.io/windows/dev_release.html](https://typora.io/windows/dev_release.html) （Windows/Linux）；
+
+去官网下载免费版本：[https://typora.io/dev_release.html](https://typora.io/dev_release.html) （Mac）；
+
 ## LaTeX
 
 ### 下标和上标
@@ -701,6 +751,14 @@ $A^{1}→A^{2}$
 
 开发计划：<https://trello.com/b/Psqfqp7I/obsidian-roadmap>
 
+## 竞品
+
+affine
+
+感觉在 pdf 读书笔记上, 还是有缺陷
+
+在素材管理上也不如数据库 notion 方便
+
 ## 双向链接
 
 可以使用标准的 markdown 链接
@@ -718,18 +776,6 @@ $A^{1}→A^{2}$
 `<c+r>` reload obsidian
 
 `<c+t>` toggle tabs plugin
-
-## 搜索功能
-
-OR 或
-
-\- 非
-
-task:""
-
-```query
-task-todo:""
-```
 
 ## 标签功能
 
@@ -875,3 +921,13 @@ picGo 太垃圾了, 每次用都要调试很久, 心累了, 再也不碰
 [Mac端Charles+手机端配置\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1xV4y1M7Vb/?spm_id_from=333.337.search-card.all.click&vd_source=db8a4b4129af2e1d7a3e3f6357bb4d45)
 
 注意关闭电脑的其他代理: proxy omega 关闭, 度管家也要退出
+
+# Whistle
+
+[Whistle 开发调试最佳实践 - 知乎](https://zhuanlan.zhihu.com/p/483975945)
+
+# Quicker
+
+[Mac 有没有类似 Quicker 的软件？ - 知乎](https://www.zhihu.com/question/362216392)
+
+alfred workflow
