@@ -471,6 +471,8 @@ div.addEventListener('dragstart', function (e) {
 
 ## 拖拽排序
 
+[手写一个性能比较好的拖拽排序 - 知乎](https://zhuanlan.zhihu.com/p/607001845)
+
 <iframe height="300" style="width: 100%;" scrolling="no" title="darg to sort" src="https://codepen.io/chiyu-git/embed/VwBoQRM?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
 
 ## 预览拖拽的图片
