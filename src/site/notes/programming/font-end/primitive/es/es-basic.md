@@ -1368,7 +1368,7 @@ for (i = 0; i < 3; i++) {      //The first for statement is labeled "loop1"
   + 其他都是 NaN
 + 如果是对象，先调用 valueOf，然后转换，如果结果是 NaN，在调用 toString，再次转换
 
-## 0 空串  Undefined 的经典场景
+## 0 空串 Undefined 的经典场景
 
 ```ts
 	const selectedItem = event?.target as HTMLImageElement;
