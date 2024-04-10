@@ -221,11 +221,11 @@ new Date(dateString)
 
 当前日期对象是几日（1-31）
 
-## getDay()
+## getDay() @@@
 
 返回当前日期对象时周几（0-6）
 
-0 周日，那又相当于是 1base 了，总共只有两个是 1base 的 @@@
+0 周日，那又相当于是 1base 了，总共只有两个是 1base 的
 
 ## getHours()
 
@@ -247,7 +247,9 @@ new Date(dateString)
 
 返回当前日期对象的时间戳
 
-时间戳，指的是从 1970 年月 1 日 0 时 0 分 0 秒，到现在时间的毫秒数
+时间戳，指的是从 1970 年月 1 日 0 时 0 分 0 秒，到现在时间的**毫秒数**
+
+> 虽然 js 保存的是毫秒数. 但是时间戳这个名字没有与毫秒绑定, 可以是 秒或者纳秒
 
 计算机底层保存时间都是以时间戳的形式保存的。
 
@@ -394,7 +396,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects
 from.toJSON().split('T')[0]
 ```
 
-## YYYY-M-D
+## YYYY-M-DD
 
 先转换成 Date，再转换成 YYYY-MM-DD
 
