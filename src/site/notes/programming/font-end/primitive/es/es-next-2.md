@@ -200,6 +200,7 @@ proxy.age // 抛出一个错误
 可以通过这个实现给所有的 proxy 对象都添加统一的属性: 如果访问的是 ReactiveFlags 属性, 可以直接返回对应的值.
 
 > 这种做法和继承相比有啥优势和劣势呢?
+
 ```ts
   return function get(target, key, receiver) {
     const isExistInReactiveMap = () =>
@@ -2354,6 +2355,8 @@ const routeGenerator = (ins: Object) => {
 ## 装饰器（第三版）
 
 前两版是类似于 python decorator 的语义，第三版是静态语义，类似于弱化的宏
+
+[区别](https://mp.weixin.qq.com/s?__biz=Mzk0MDMwMzQyOA==&mid=2247496710&idx=1&sn=e2c2c35f9bcdd361736f28e5ffe6f185&chksm=c2e1012df596883b812ce574272ed419bfb8a8f90e8b41589b514918f1667adabaa769fc2f92&=1638573446&=zh_CN#rd)
 
 # Latest 语法
 
