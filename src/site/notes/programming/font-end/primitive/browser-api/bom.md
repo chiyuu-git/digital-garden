@@ -341,11 +341,15 @@ prompt() 返回的是用户输入的内容的 字符串形式
 
 ## open()
 
+[Window：open() 方法 - Web API 接口参考 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/open)
+
+[HTML页面导航全过程 - 掘金](https://juejin.cn/post/7173513375517769764)
+
 ```js
 let windowObjectReference = window.open(strUrl, strWindowName, [strWindowFeatures]);
 ```
 
-`WindowObjectReference`: 打开的新窗口对象的引用。如果调用失败，返回值会是 `null 。如果` 父子窗口满足“[同源策略](https://developer.mozilla.org/cn/JavaScript的同源策略)”，你可以通过这个引用访问新窗口的属性或方法。
+`WindowObjectReference`: 打开的新窗口对象的引用。如果调用失败，返回值会是 `null`。如果 父子窗口满足“[同源策略](https://developer.mozilla.org/cn/JavaScript的同源策略)”，你可以通过这个引用访问新窗口的属性或方法。
 
 `strUrl`: 新窗口需要载入的 url 地址。strUrl 可以是 web 上的 html 页面也可以是图片文件或者其他任何浏览器支持的文件格式。
 
@@ -469,13 +473,7 @@ JSON 中允许的值：
 
 ### Open 窗口
 
-- `subWindow = window.open(url,name)`
-- `sourceWindow = window.opener`
-- ```js
-  window.addEventListener('load', function(e){
-      e.currentTarget.opener.postMessage('ready', 'https://www.zhangxinxu.com');
-  });
-  ```
+![bom](programming/font-end/primitive/browser-api/bom.md#open)
 
 ### messageEvent.sorce
 
