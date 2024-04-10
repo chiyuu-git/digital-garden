@@ -5,6 +5,8 @@
 
 # 结构化类型
 
+[为什么我总学不好TS？ - 知乎](https://zhuanlan.zhihu.com/p/674803292)
+
 TypeScript 和 C# 有着颇深的渊源，他们都是在微软大神 Anders Hejlsberg 的领导之下产生的编程语言，两者在诸多设计细节方面十分相似。然而，一个非常重要的不同之处在于，C# 采用的是 [Nominal Type System](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Nominal_type_system)（标明类型系统），TypeScript 考虑到 JavaScript 本身的灵活特性，采用的是 [Structural Type System](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Structural_type_system)。
 
 下面我们通过一个例子解释下两者的不同。首先来看一段 C# 代码：
@@ -2444,6 +2446,135 @@ type 定死 pixivTag twitterFollower 不要用 default 了
 因为 seiyuu 不存在 couple，所以 couple 默认是 characterCouple，把所有的 characterCouple 都去除，只保留 couple
 
 chara
+
+## 多个相似的类型, 根据某个字段推导出完成的类型
+
+再加上 useReducer 的类型, 基本圆满了
+
+```ts
+type TReqPlatformInfoMap = {
+  [SharePlatform.Tiktok]: IReqShareToTikTok;
+  [SharePlatform.Youtube]: IReqShareToYoutube;
+  [SharePlatform.Ttam]: IReqShareToTTAM;
+  [SharePlatform.YoutubeShort]: IReqShareToYoutube;
+  // 已废弃, 新接口不去做兼容, 有问题再考虑打开
+  // [SharePlatform.Facebook]: IReqShareToFacebook;
+  [SharePlatform.FacebookGroup]: IReqShareToFacebook;
+  [SharePlatform.FacebookPage]: IReqShareToFacebook;
+  [SharePlatform.Ins]: IReqShareToFacebook;
+};
+
+type TReqPlatformInfo<T> = T extends keyof TReqPlatformInfoMap ? TReqPlatformInfoMap[T] : never;
+
+/**
+ * 890 新增的聚合接口. 基于已有接口的类型聚合出新接口的类型
+ */
+export type TReqShareToThirdPartyPlatform<T extends SharePlatform> = {
+  platform: T;
+} & TReqPlatformInfo<T>;
+
+export interface IResShareToThirdPartyPlatform {
+  share_id: string;
+}
+
+async shareToThirdPartyPlatform<T extends SharePlatform>({
+    platform,
+    ...params
+  }: { platform: T } & TReqShareToThirdPartyPlatform<T>): Promise<IResShareToThirdPartyPlatform> {
+    const url = 'publish_asset_to_third_party_platform';
+
+    return (await service({
+      url,
+      data: { ...params, platform },
+    })) as any;
+  },
+```
+
+## 字段格式转换
+
+[将小驼峰接口类型递归的转成大驼峰：TypeScript 高级类型与 4.1 字符串模板类型实战 - 掘金](https://juejin.cn/post/6934593935335489544)
+
+```ts
+import { camelCase, snakeCase } from 'lodash-es';
+
+/**
+ * 数据转换
+ * @param data 原始数据
+ * @param convertFunc 转换函数
+ * @returns 转换后的数据
+ */
+function convertData<T, K>(data: T, convertFunc: (key: string) => string): K {
+  if (data && typeof data === 'object') {
+    for (const key of Object.keys(data)) {
+      const newKey = convertFunc(key);
+      if (newKey !== key) {
+        (data as any)[newKey] = (data as any)[key];
+        delete (data as any)[key];
+      }
+      convertData((data as any)[newKey], convertFunc);
+    }
+  }
+
+  return data as unknown as K;
+}
+
+type SnakeToPascalCase<T> = T extends string
+  ? T extends `${infer A}_${infer B}`
+    ? `${Capitalize<A>}${SnakeToPascalCase<B>}`
+    : Capitalize<T>
+  : T;
+
+type SnakeToCamelCase<T> = T extends string
+  ? T extends `${infer A}_${infer B}`
+    ? `${Lowercase<A>}${SnakeToPascalCase<B>}`
+    : T
+  : T;
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type SnakeToCamelCasedData<T> = T extends Function
+  ? T
+  : T extends Array<infer U>
+    ? Array<SnakeToCamelCasedData<U>>
+    : {
+        [K in keyof T as SnakeToCamelCase<K>]: SnakeToCamelCasedData<T[K]>;
+      };
+
+/**
+ * 处理 response 参数格式的函数.
+ * 将下划线类型字段名转换为驼峰类型字段名
+ * 类型的处理不是很完备, 特殊 case 可以自己传入泛型 K 定义转换后的类型
+ */
+export const formatResponseSpellParser = <T, K = SnakeToCamelCasedData<T>>(response: T): K => {
+  return convertData(response, camelCase);
+};
+
+type CamelToSnakeCase<T> = T extends `${infer Char}${infer Rest}`
+  ? `${Char extends Uppercase<Char>
+      ? Char extends '_'
+        ? ''
+        : '_'
+      : ''}${Lowercase<Char>}${CamelToSnakeCase<Rest>}`
+  : T;
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type CamelToSnakeCasedData<T> = T extends Function
+  ? T
+  : T extends Array<infer U>
+    ? Array<CamelToSnakeCasedData<U>>
+    : {
+        [K in keyof T as CamelToSnakeCase<K>]: CamelToSnakeCasedData<T[K]>;
+      };
+
+/**
+ * 处理 request 参数格式的函数.
+ * 将驼峰类型字段名转换为下划线类型字段名
+ * 类型的处理不是很完备, 特殊 case 可以自己传入泛型 K 定义转换后的类型
+ */
+export const formatRequestSpellParser = <T, K = CamelToSnakeCasedData<T>>(requestData: T): K => {
+  return convertData(requestData, snakeCase) as K;
+};
+
+```
 
 # FAQ
 
