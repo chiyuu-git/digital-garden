@@ -252,7 +252,7 @@ WHERE 关键字和 HAVING 关键字的区别
 
 ## 小程序 Js 与 Native 通信的方式
 
-[!hybrid](../hybrid/!hybrid.md)
+[!hydrid](../hydrid/!hydrid.md)
 
 ## 请求并发任务队列
 
