@@ -77,7 +77,13 @@ UML
 
 # UML
 
-比较全面的一个介绍：https://www.cnblogs.com/wolf-sun/p/UML-Sequence-diagram.html
+原来 UML 活动图、类图、时序图, 都是 UML
+
+比较全面的一个介绍：
+
+https://www.cnblogs.com/wolf-sun/p/UML-Sequence-diagram.html
+
+[30分钟学会UML类图 - 知乎](https://zhuanlan.zhihu.com/p/109655171)
 
 简单来说就是用来描述 class 之间的关系的
 
@@ -305,6 +311,10 @@ UML
 ## Visual Studio 代码分析功能
 
 https://docs.microsoft.com/zh-cn/visualstudio/debugger/map-methods-on-the-call-stack-while-debugging-in-visual-studio?view=vs-2022
+
+## 依赖可视化工具
+
+madge
 
 # JS 代码可视化工具
 
