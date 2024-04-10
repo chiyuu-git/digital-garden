@@ -183,6 +183,28 @@ wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 
 在 .bash_profile 文件中加入以下代码，配置环境变量。参考下面 zsh 的设置即可
 
+Mac 新版本安装 nvm 之后，出现 nvm command not found 的问题
+
+- 描述：`Mac` 安装 `nvm` 之后，执行 `source ~/.bash_profile`，当前终端可以使用 `nvm`，新 `tab` 或者退出重新打开，还是不能使用 `nvm`，还得再次执行 `source ~/.bash_profile`，才可以使用 `nvm`。
+- 原因：`Mac` 新版本中终端是 `zsh`，所以使用 `.bash_profile` 文件之后，不会生效，需要使用 `zsh` 的文件才行。
+
+解决：
+
+1. `cd ~`
+2. `touch .zshrc`
+3. 打开 `.zshrc` 文件
+4. 写入如下代码
+
+```
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+```
+
+5. 保存
+6. `source ~/.zshrc`
+7. 退出终端，重新打开，使用 `nvm` 命令即可
+
 ### 常用命令
 
 nvm install stable //安装最新版
@@ -207,35 +229,19 @@ nvm 比起 n 更加流行，所以我也选择 nvm：<https://github.com/nvm-sh/
 
 参考: https://cloud.tencent.com/developer/article/1674774
 
+### 指定库的 Node 版本
+
+在安装 nvm 或 fnm 后，然后只要仓库根目录下有内容为 `lts/hydrogen` 的 `.nvmrc` 文件，进入这个仓库时就会自动安装或切换到正确的 Node.js 版本。
+
 ## Windows 环境变量
 
 <https://www.cnblogs.com/biehongli/p/12756256.html>
 
-## Mvnc 常见问题
+## Nvm 常见问题
 
 ### Nvm Command Not Found
 
-Mac 新版本安装 nvm 之后，出现 nvm command not found 的问题
-
-- 描述：`Mac` 安装 `nvm` 之后，执行 `source ~/.bash_profile`，当前终端可以使用 `nvm`，新 `tab` 或者退出重新打开，还是不能使用 `nvm`，还得再次执行 `source ~/.bash_profile`，才可以使用 `nvm`。
-- 原因：`Mac` 新版本中终端是 `zsh`，所以使用 `.bash_profile` 文件之后，不会生效，需要使用 `zsh` 的文件才行。
-
-解决：
-
-1. `cd ~`
-2. `touch .zshrc`
-3. 打开 `.zshrc` 文件
-4. 写入如下代码
-
-```
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-```
-
-5. 保存
-6. `source ~/.zshrc`
-7. 退出终端，重新打开，使用 `nvm` 命令即可
+![node](programming/back-end/node.md#设置环境变量)
 
 ## Vscode 调试 Node
 
@@ -692,6 +698,14 @@ exports 字段声明了一个对应关系，用 import "package" 和 import "pac
 `exports`：Node.js 提出的模块导出提案，好处是可以定义导出的模块路径，支持不同环境（Node.js、浏览器等）下使用不同格式（esm、cjs）的包
 
 `browser` 和 `sideEffects` 含义同上
+
+## Dependcies
+
+- **dependencies**: 该字段记录了项目**运行时**必备的依赖库。其类型为对象，键类型为代表包名的字符串，值类型为约定好的协议，例如语义化版本、git 仓库地址、file 协议或者 workspace 协议等。
+- **devDependencies**: 该字段记录了项目**构建时**使用到的库。
+- **peerDependencies**: 如果项目作为三方库被安装时，希望某些库也被用户安装上，进而保证使用时用到用户自身安装的库，则可将这些库声明到 peerDependencies 字段上，最常见的示例为 [react-dom](https://github.com/facebook/react/blob/main/packages/react-dom/package.json#L23)。
+- **optionalDependencies**: 当安装某个依赖失败时，不会影响整个依赖安装的过程，经典的示例为 [esbuild](https://github.com/evanw/esbuild/blob/master/npm/esbuild/package.json#L17)。
+- **overrides** or **resolutions**: 该字段可以强制指定项目中依赖的依赖的版本。
 
 # Lerna
 
