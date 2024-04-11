@@ -12,11 +12,11 @@
 
 | File                                                              | overview                   |
 | ----------------------------------------------------------------- | -------------------------- |
-| [[programming/font-end/primitive/es/es-number\|es-number]]     | [[programming/font-end/primitive/es/es-number#experience\|es-number#experience]]   |
-| [[programming/font-end/primitive/es/es-function\|es-function]] | [[programming/font-end/primitive/es/es-function#experience\|es-function#experience]] |
 | [[programming/FAQ/performance-optimization/重绘和回流\|重绘和回流]]      | [[programming/FAQ/performance-optimization/重绘和回流#experience\|重绘和回流#experience]]       |
 | [[programming/font-end/primitive/es/es-array\|es-array]]       | [[programming/font-end/primitive/es/es-array#experience\|es-array#experience]]    |
 | [[programming/font-end/primitive/es/es-regexp\|es-regexp]]     | [[programming/font-end/primitive/es/es-regexp#experience\|es-regexp#experience]]   |
+| [[programming/font-end/primitive/es/es-function\|es-function]] | [[programming/font-end/primitive/es/es-function#experience\|es-function#experience]] |
+| [[programming/font-end/primitive/es/es-number\|es-number]]     | [[programming/font-end/primitive/es/es-number#experience\|es-number#experience]]   |
 
 { .block-language-dataview}
 
@@ -31,6 +31,10 @@
 但是上线的代码，还是要做好设计和抽离，不然维护起来成本太大了
 
 了解一个概念的方法：是什么，有哪些作用，实际中怎么使用，为什么会这么设计
+
+## 如何减少 Bug
+
+如果没有集成测试, 需要覆盖 common 功能的所有用例. 消除笔 bug. 其实 qa 不知道我们改了 common 的内容. 我也不知道 common 到底影响了多少内容. 需要明确的回归所有的 common 涉及的用例
 
 ## Debug 方法论
 
