@@ -752,6 +752,10 @@ background: rgba(0,0,0,.5);
 
 lang 对字体样式的影响
 
+dreamina 是用户 cookie 里写的. 请求的时候带上. 服务器再下发. 那么问题是在哪里种下的呢?
+
+[zh-cn 与 zh-hans 是什么关系、有什么区别？ - 知乎](https://www.zhihu.com/question/21980689)
+
 ### Color
 
 设置字体颜色,使用 color 来设置 **文字** 的颜色
