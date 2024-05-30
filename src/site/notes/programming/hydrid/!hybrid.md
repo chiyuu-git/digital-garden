@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/hydrid/hybrid/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-08-25-Fri, 1:35:18 pm","date-modified":"2023-10-02-Mon, 1:48:54 pm","permalink":"/programming/hydrid/!hybrid/","dgPassFrontmatter":true}
 ---
 
 
