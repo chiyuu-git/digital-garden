@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/mobile/modile-form/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:08:20 pm","date-modified":"2023-04-29-Sat, 8:13:51 pm","permalink":"/programming/front-end/mobile/modile-form/","dgPassFrontmatter":true}
 ---
 
 
