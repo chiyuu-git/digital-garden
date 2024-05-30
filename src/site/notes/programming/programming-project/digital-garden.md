@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/programming-project/digital-garden/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-04-27-Thu, 9:22:50 pm","date-modified":"2024-04-17-Wed, 11:55:48 am","permalink":"/programming/programming-project/digital-garden/","dgPassFrontmatter":true}
 ---
 
 
