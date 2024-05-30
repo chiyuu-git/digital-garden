@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/framework/typescript/ts-advanced/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-04-Sun, 2:33:04 pm","date-modified":"2024-02-06-Tue, 2:43:09 pm","permalink":"/programming/front-end/framework/typescript/ts-advanced/","dgPassFrontmatter":true}
 ---
 
 
