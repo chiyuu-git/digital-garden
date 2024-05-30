@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/algorithm/greedy-algoritm/"}
+{"aliases":["贪心算法"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-05-26-Fri, 10:08:45 am","date-modified":"2023-07-14-Fri, 4:41:52 pm","permalink":"/programming/basic/algorithm/greedy-algoritm/","dgPassFrontmatter":true}
 ---
 
 
