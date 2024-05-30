@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/framework/vue/mini-vue3/"}
+{"aliases":["vue3核心原理"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-07-29-Sat, 10:30:31 am","date-modified":"2023-07-29-Sat, 7:49:42 pm","permalink":"/programming/front-end/framework/vue/mini-vue3/","dgPassFrontmatter":true}
 ---
 
 
