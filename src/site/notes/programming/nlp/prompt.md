@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/nlp/prompt/"}
+{"aliases":["如何与gpt交谈"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-06-11-Sun, 7:19:32 pm","date-modified":"2023-06-12-Mon, 10:23:24 am","permalink":"/programming/nlp/prompt/","dgPassFrontmatter":true}
 ---
 
 
