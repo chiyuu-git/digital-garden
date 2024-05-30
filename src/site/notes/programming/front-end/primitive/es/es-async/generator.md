@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/es/es-async/generator/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-08-30-Wed, 8:20:33 am","date-modified":"2023-08-30-Wed, 8:21:01 am","permalink":"/programming/front-end/primitive/es/es-async/generator/","dgPassFrontmatter":true}
 ---
 
 
