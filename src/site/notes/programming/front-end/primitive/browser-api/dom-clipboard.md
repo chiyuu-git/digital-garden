@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/browser-api/dom-clipboard/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-02-17-Fri, 11:21:59 am","date-modified":"2024-04-28-Sun, 11:58:10 am","permalink":"/programming/front-end/primitive/browser-api/dom-clipboard/","dgPassFrontmatter":true}
 ---
 
 
