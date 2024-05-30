@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/operating-system/"}
+{"aliases":["操作系统"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-07-25-Tue, 11:24:46 am","date-modified":"2023-07-25-Tue, 11:26:16 am","permalink":"/programming/basic/cs-basic/operating-system/","dgPassFrontmatter":true}
 ---
 
 
