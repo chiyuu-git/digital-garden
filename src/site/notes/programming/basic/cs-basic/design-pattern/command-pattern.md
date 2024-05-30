@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/design-pattern/command-pattern/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-10-14-Sat, 1:57:35 pm","date-modified":"2023-10-15-Sun, 12:35:23 pm","permalink":"/programming/basic/cs-basic/design-pattern/command-pattern/","dgPassFrontmatter":true}
 ---
 
 
