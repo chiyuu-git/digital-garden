@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/faq/ui-component/image/"}
+{"aliases":["img"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-11-16-Wed, 3:51:43 pm","date-modified":"2023-12-07-Thu, 10:39:59 am","permalink":"/programming/FAQ/ui-component/image/","dgPassFrontmatter":true}
 ---
 
 
