@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-config/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-26-Sun, 8:55:52 pm","date-modified":"2024-05-26-Sun, 8:56:16 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-config/","dgPassFrontmatter":true}
 ---
 
 
