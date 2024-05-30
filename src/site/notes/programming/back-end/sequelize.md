@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/back-end/sequelize/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2020-10-07-Wed, 1:27:00 pm","date-modified":"2023-04-29-Sat, 8:19:15 pm","permalink":"/programming/back-end/sequelize/","dgPassFrontmatter":true}
 ---
 
 
