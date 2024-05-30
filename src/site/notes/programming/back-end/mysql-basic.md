@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/back-end/mysql-basic/"}
+{"aliases":[],"tags":[],"review-dates":["2023-08-21"],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:08:30 pm","date-modified":"2023-08-21-Mon, 12:42:58 pm","permalink":"/programming/back-end/mysql-basic/","dgPassFrontmatter":true}
 ---
 
 
