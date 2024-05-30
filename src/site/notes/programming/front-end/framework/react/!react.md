@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/framework/react/react/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-08-16-Wed, 7:57:53 pm","date-modified":"2023-12-03-Sun, 11:39:10 am","permalink":"/programming/front-end/framework/react/!react/","dgPassFrontmatter":true}
 ---
 
 
