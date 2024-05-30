@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/faq/js-faq/js-faq/"}
+{"aliases":[],"tags":[],"review-dates":["2023-02-06","2023-12-19"],"dg-publish":true,"date-created":"2022-09-04-Sun, 4:25:37 pm","date-modified":"2023-12-28-Thu, 2:56:56 pm","permalink":"/programming/FAQ/js-faq/!js-faq/","dgPassFrontmatter":true}
 ---
 
 
