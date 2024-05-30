@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/faq/ui-faq/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:07:23 pm","date-modified":"2024-04-09-Tue, 8:30:57 pm","permalink":"/programming/FAQ/ui-faq/","dgPassFrontmatter":true}
 ---
 
 
