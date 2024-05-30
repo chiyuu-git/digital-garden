@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/faq/vue-faq/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-08-20-Sun, 5:07:45 pm","date-modified":"2023-08-27-Sun, 12:43:50 pm","permalink":"/programming/FAQ/vue-faq/","dgPassFrontmatter":true}
 ---
 
 
