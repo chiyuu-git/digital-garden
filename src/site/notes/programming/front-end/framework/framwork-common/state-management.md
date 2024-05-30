@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/framework/framwork-common/state-management/"}
+{"aliases":["状态管理"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-08-22-Tue, 2:12:42 pm","date-modified":"2023-08-22-Tue, 6:14:55 pm","permalink":"/programming/front-end/framework/framwork-common/state-management/","dgPassFrontmatter":true}
 ---
 
 
