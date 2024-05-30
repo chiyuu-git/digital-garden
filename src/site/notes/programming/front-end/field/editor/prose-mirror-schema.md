@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/field/editor/prose-mirror-schema/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-12-08-Thu, 9:12:53 am","date-modified":"2024-04-29-Mon, 7:22:30 pm","permalink":"/programming/front-end/field/editor/prose-mirror-schema/","dgPassFrontmatter":true}
 ---
 
 
