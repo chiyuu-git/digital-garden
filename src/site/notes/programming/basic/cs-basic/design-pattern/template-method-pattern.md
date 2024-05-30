@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/design-pattern/template-method-pattern/"}
+{"aliases":["模板方法模式"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-10-17-Tue, 7:34:35 pm","date-modified":"2023-10-17-Tue, 9:13:02 pm","permalink":"/programming/basic/cs-basic/design-pattern/template-method-pattern/","dgPassFrontmatter":true}
 ---
 
 
