@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/ai-generator/stable-diffusion/invoke-ai/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-26-Sun, 9:18:37 pm","date-modified":"2024-05-26-Sun, 9:30:11 pm","permalink":"/programming/ai-generator/stable-diffusion/invokeAI/","dgPassFrontmatter":true}
 ---
 
 
