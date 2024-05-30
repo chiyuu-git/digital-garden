@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/browser-api/dom-style/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-02-16-Thu, 11:01:12 am","date-modified":"2023-12-19-Tue, 2:41:32 pm","permalink":"/programming/front-end/primitive/browser-api/dom-style/","dgPassFrontmatter":true}
 ---
 
 
