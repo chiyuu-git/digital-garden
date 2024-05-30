@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/design-pattern/proxy-pattern/"}
+{"aliases":["代理模式"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-10-19-Thu, 11:33:45 am","date-modified":"2023-10-21-Sat, 9:24:18 am","permalink":"/programming/basic/cs-basic/design-pattern/proxy-pattern/","dgPassFrontmatter":true}
 ---
 
 
