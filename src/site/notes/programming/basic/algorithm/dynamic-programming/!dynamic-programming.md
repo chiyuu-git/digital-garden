@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/algorithm/dynamic-programming/dynamic-programming/"}
+{"aliases":["动态规划","dp"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:06:55 pm","date-modified":"2023-08-18-Fri, 12:48:12 pm","permalink":"/programming/basic/algorithm/dynamic-programming/!dynamic-programming/","dgPassFrontmatter":true}
 ---
 
 
