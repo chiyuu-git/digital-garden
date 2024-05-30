@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/network/tcp/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-08-27-Sun, 7:50:17 pm","date-modified":"2023-08-27-Sun, 8:05:56 pm","permalink":"/programming/basic/cs-basic/network/tcp/","dgPassFrontmatter":true}
 ---
 
 
