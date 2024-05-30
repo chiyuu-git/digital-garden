@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/hydrid/i-os/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-02-16-Wed, 8:14:05 pm","date-modified":"2023-04-29-Sat, 8:18:41 pm","permalink":"/programming/hydrid/iOS/","dgPassFrontmatter":true}
 ---
 
 
