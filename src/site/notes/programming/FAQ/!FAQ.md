@@ -76,6 +76,7 @@
   + float 属性是一种布局方式，定义元素在哪个方向浮动。
   + 类似于优先级机制：position：absolute / fixed 优先级最高，有他们在时，float 不起作用，display 值需要调整。float 或者 absolute 定位的元素，只能是块元素或表格。
 + transform 属性 , 只对 **block 级** 元素生效！
++ 原来 pointer-event: none; 的时候 cursor: not-allowed 会不生效
 
 （1）display 计算值 inline 的非替换元素的垂直 margin 是无效的。对于内联替换元素，垂直 margin 有效，并且没有 ma
 
@@ -85,13 +86,13 @@ rgin 合并的问题。
 
 （4）定高容器的子元素的 margin-bottom 或者宽度定死的子元素的 margin-right 的定位“失效”。
 
-![css-basic](programming/font-end/primitive/css/css-basic.md#^6tu6yz)
+![css-basic](../front-end/primitive/css/css-basic.md#^6tu6yz)
 
-![flex](../font-end/primitive/css/flex.md#^przfr4)
+![flex](../front-end/primitive/css/flex.md#^przfr4)
 
-![flex](../font-end/primitive/css/flex.md#^4tk93x)
+![flex](../front-end/primitive/css/flex.md#^4tk93x)
 
-![grid](programming/font-end/primitive/css/grid.md#^mpbv3x)
+![grid](../front-end/primitive/css/grid.md#^mpbv3x)
 
 ## 嵌套规则
 
