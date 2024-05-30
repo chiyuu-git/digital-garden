@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/algorithm/data-structure-1/"}
+{"aliases":[],"tags":[],"review-dates":["2019-05-03","2019-07-19","2019-09-09"],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:06:52 pm","date-modified":"2023-06-18-Sun, 10:10:34 am","permalink":"/programming/basic/algorithm/data-structure-1/","dgPassFrontmatter":true}
 ---
 
 
