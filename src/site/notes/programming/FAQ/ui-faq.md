@@ -6,17 +6,17 @@
 
 # Global FAQ Collection
 
-| File                                                                                     | overview                       |
-| ---------------------------------------------------------------------------------------- | ------------------------------ |
-| [[programming/FAQ/ui-component/input\|input]]                                         | [[programming/FAQ/ui-component/input#faq\|input#faq]]                  |
-| [[programming/font-end/mobile/mobile-basic\|mobile-basic]]                            | [[programming/font-end/mobile/mobile-basic#faq\|mobile-basic#faq]]           |
-| [[programming/font-end/primitive/css/transition & animation\|transition & animation]] | [[programming/font-end/primitive/css/transition & animation#faq\|transition & animation#faq]] |
-| [[programming/font-end/primitive/css/css-2.1\|css-2.1]]                               | [[programming/font-end/primitive/css/css-2.1#faq\|css-2.1#faq]]                |
-| [[programming/font-end/primitive/browser-api/dom-drag-event\|dom-drag-event]]         | [[programming/font-end/primitive/browser-api/dom-drag-event#faq\|dom-drag-event#faq]]         |
-| [[programming/font-end/primitive/css/flex\|flex]]                                     | [[programming/font-end/primitive/css/flex#faq\|flex#faq]]                   |
-| [[programming/font-end/primitive/css/page-layout\|page-layout]]                       | [[programming/font-end/primitive/css/page-layout#faq\|page-layout#faq]]            |
-| [[programming/font-end/primitive/css/tailwind/tailwind-basic\|tailwind-basic]]        | [[programming/font-end/primitive/css/tailwind/tailwind-basic#faq\|tailwind-basic#faq]]         |
-| [[programming/font-end/primitive/html/html-form\|html-form]]                          | [[programming/font-end/primitive/html/html-form#faq\|html-form#faq]]              |
+| File                                                                                      | overview                       |
+| ----------------------------------------------------------------------------------------- | ------------------------------ |
+| [[programming/front-end/primitive/html/html-form\|html-form]]                          | [[programming/front-end/primitive/html/html-form#faq\|html-form#faq]]              |
+| [[programming/front-end/primitive/css/tailwind/tailwind-basic\|tailwind-basic]]        | [[programming/front-end/primitive/css/tailwind/tailwind-basic#faq\|tailwind-basic#faq]]         |
+| [[programming/front-end/primitive/css/page-layout\|page-layout]]                       | [[programming/front-end/primitive/css/page-layout#faq\|page-layout#faq]]            |
+| [[programming/front-end/primitive/css/flex\|flex]]                                     | [[programming/front-end/primitive/css/flex#faq\|flex#faq]]                   |
+| [[programming/front-end/primitive/browser-api/dom-drag-event\|dom-drag-event]]         | [[programming/front-end/primitive/browser-api/dom-drag-event#faq\|dom-drag-event#faq]]         |
+| [[programming/FAQ/ui-component/input\|input]]                                          | [[programming/FAQ/ui-component/input#faq\|input#faq]]                  |
+| [[programming/front-end/primitive/css/transition & animation\|transition & animation]] | [[programming/front-end/primitive/css/transition & animation#faq\|transition & animation#faq]] |
+| [[programming/front-end/primitive/css/css-2.1\|css-2.1]]                               | [[programming/front-end/primitive/css/css-2.1#faq\|css-2.1#faq]]                |
+| [[programming/front-end/mobile/mobile-basic\|mobile-basic]]                            | [[programming/front-end/mobile/mobile-basic#faq\|mobile-basic#faq]]           |
 
 { .block-language-dataview}
 
@@ -50,7 +50,7 @@ https://github.com/EmilyYoung71415/iCSS/tree/master/4-%E5%BD%A2%E7%8A%B6
 
 ### Canvas
 
-![Canvas 宽高](../font-end/primitive/html/canvas.md#Canvas%20宽高)
+![Canvas 宽高](../front-end/primitive/html/canvas.md#Canvas%20宽高)
 
 ## 宽高由内容决定
 
