@@ -598,7 +598,7 @@ myJSONPAcross({
 
 ## *Webpack 开发环境下跨域
 
-[project-init](programming/project/project-init.md#Dev-server%20配置跨域请求)
+[project-init](../../../programming-project/project-init.md#Dev-server%20配置跨域请求)
 
 # COOP 和 COEP
 
