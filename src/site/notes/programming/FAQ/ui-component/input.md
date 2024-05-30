@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/faq/ui-component/input/"}
+{"tags":[],"aliases":["contenteditable","textarea"],"review-dates":[],"dg-publish":true,"date-created":"2023-03-05-Sun, 1:42:40 pm","date-modified":"2023-07-30-Sun, 3:43:19 pm","permalink":"/programming/FAQ/ui-component/input/","dgPassFrontmatter":true}
 ---
 
 
