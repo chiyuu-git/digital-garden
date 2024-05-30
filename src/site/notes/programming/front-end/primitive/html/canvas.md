@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/html/canvas/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-04-26-Wed, 11:29:58 am","date-modified":"2023-12-03-Sun, 11:30:57 am","permalink":"/programming/front-end/primitive/html/canvas/","dgPassFrontmatter":true}
 ---
 
 
