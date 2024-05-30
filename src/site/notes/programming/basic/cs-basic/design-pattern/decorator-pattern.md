@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/design-pattern/decorator-pattern/"}
+{"aliases":["装饰者模式"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-09-26-Tue, 8:54:18 pm","date-modified":"2023-10-15-Sun, 11:19:10 am","permalink":"/programming/basic/cs-basic/design-pattern/decorator-pattern/","dgPassFrontmatter":true}
 ---
 
 
