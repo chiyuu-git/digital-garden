@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/field/douyin-open/"}
+{"aliases":["抖音开放平台"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-03-18-Mon, 4:56:20 pm","date-modified":"2024-03-19-Tue, 2:26:56 pm","permalink":"/programming/front-end/field/douyin-open/","dgPassFrontmatter":true}
 ---
 
 
