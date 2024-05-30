@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/field/editor/tiptap-advanced/"}
+{"aliases":["tiptap nodeView","tiptap extension"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-11-10-Thu, 2:10:44 pm","date-modified":"2024-05-14-Tue, 11:14:15 am","permalink":"/programming/front-end/field/editor/tiptap-advanced/","dgPassFrontmatter":true}
 ---
 
 
