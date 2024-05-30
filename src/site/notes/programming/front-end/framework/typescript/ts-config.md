@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/framework/typescript/ts-config/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-10-05-Wed, 8:34:29 pm","date-modified":"2023-04-29-Sat, 8:13:25 pm","permalink":"/programming/front-end/framework/typescript/ts-config/","dgPassFrontmatter":true}
 ---
 
 
