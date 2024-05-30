@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/ai-generator/stable-diffusion/comfy-ui/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-24-Fri, 6:40:41 pm","date-modified":"2024-05-27-Mon, 10:36:16 pm","permalink":"/programming/ai-generator/stable-diffusion/comfyUI/","dgPassFrontmatter":true}
 ---
 
 
