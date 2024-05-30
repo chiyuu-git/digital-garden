@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/browser-api/bom/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:07:47 pm","date-modified":"2023-12-15-Fri, 3:48:25 pm","permalink":"/programming/front-end/primitive/browser-api/bom/","dgPassFrontmatter":true}
 ---
 
 
