@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/algorithm/kmp/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-05-18-Thu, 4:35:46 pm","date-modified":"2023-07-21-Fri, 5:01:04 pm","permalink":"/programming/basic/algorithm/kmp/","dgPassFrontmatter":true}
 ---
 
 
