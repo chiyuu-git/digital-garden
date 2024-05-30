@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/network-protocol/http-cross-origin/","tags":["review"]}
+{"aliases":[],"tags":["review"],"review-dates":["2023-08-24","2023-08-27"],"dg-publish":true,"date-created":"2023-07-21-Fri, 2:53:54 pm","date-modified":"2023-12-26-Tue, 3:57:57 pm","sr-due":"2023-09-18","sr-interval":14,"sr-ease":250,"permalink":"/programming/basic/cs-basic/network-protocol/http-cross-origin/","dgPassFrontmatter":true}
 ---
 
 
