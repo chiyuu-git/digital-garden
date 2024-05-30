@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/network-security/","tags":["review"]}
+{"aliases":[],"tags":["review"],"review-dates":["2023-07-27","2023-08-16"],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:07:09 pm","date-modified":"2023-08-31-Thu, 6:39:16 pm","sr-due":"2023-08-30","sr-interval":3,"sr-ease":250,"permalink":"/programming/basic/cs-basic/network-security/","dgPassFrontmatter":true}
 ---
 
 
