@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/network-protocol/http-session/"}
+{"aliases":["http会话"],"tags":[],"review-dates":["2019-05-01","2019-06-29","2023-08-16"],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:07:05 pm","date-modified":"2023-08-27-Sun, 2:32:08 pm","permalink":"/programming/basic/cs-basic/network-protocol/http-session/","dgPassFrontmatter":true}
 ---
 
 
