@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/design-pattern/adapter-pattern/"}
+{"aliases":["适配器模式"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-10-15-Sun, 12:24:09 pm","date-modified":"2023-10-17-Tue, 6:38:07 pm","permalink":"/programming/basic/cs-basic/design-pattern/adapter-pattern/","dgPassFrontmatter":true}
 ---
 
 
