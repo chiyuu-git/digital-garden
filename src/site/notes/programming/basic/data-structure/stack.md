@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/data-structure/stack/"}
+{"aliases":["栈","堆栈"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-05-20-Sat, 9:22:34 pm","date-modified":"2023-05-21-Sun, 6:17:18 pm","permalink":"/programming/basic/data-structure/stack/","dgPassFrontmatter":true}
 ---
 
 
