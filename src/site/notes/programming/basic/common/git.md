@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/common/git/"}
+{"aliases":[],"tags":[],"review-dates":["2019-04-22"],"dg-publish":true,"date-created":"2023-04-29-Sat, 1:08:49 pm","date-modified":"2024-04-12-Fri, 4:02:44 pm","permalink":"/programming/basic/common/git/","dgPassFrontmatter":true}
 ---
 
 
