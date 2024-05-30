@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/algorithm/backtracking/"}
+{"aliases":["回溯算法"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-06-20-Tue, 5:07:46 pm","date-modified":"2023-06-29-Thu, 10:55:35 am","permalink":"/programming/basic/algorithm/backtracking/","dgPassFrontmatter":true}
 ---
 
 
