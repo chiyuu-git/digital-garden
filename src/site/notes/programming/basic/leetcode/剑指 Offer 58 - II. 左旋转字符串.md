@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/leetcode/offer-58-ii/","tags":["leetcode/rotate","leetcode/pointer","leetcode/space/in-place"]}
+{"aliases":[],"tags":["leetcode/rotate","leetcode/pointer","leetcode/space/in-place"],"review-dates":[],"dg-publish":true,"difficulty":"easy","date-created":"2023-07-21-Fri, 4:56:30 pm","date-modified":"2023-07-21-Fri, 4:57:13 pm","permalink":"/programming/basic/leetcode/剑指 Offer 58 - II. 左旋转字符串/","dgPassFrontmatter":true}
 ---
 
 
