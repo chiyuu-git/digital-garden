@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/data-structure/linked-list/"}
+{"aliases":["链表"],"tags":[],"review-dates":["2023-07-20"],"dg-publish":true,"date-created":"2023-05-22-Mon, 10:27:10 am","date-modified":"2023-07-20-Thu, 11:28:41 am","permalink":"/programming/basic/data-structure/linked-list/","dgPassFrontmatter":true}
 ---
 
 
