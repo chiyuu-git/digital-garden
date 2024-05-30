@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/common/vim/vim-config/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-12-03-Sat, 10:52:25 am","date-modified":"2023-11-20-Mon, 11:10:12 am","permalink":"/programming/basic/common/vim/vim-config/","dgPassFrontmatter":true}
 ---
 
 
