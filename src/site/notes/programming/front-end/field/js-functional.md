@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/field/js-functional/"}
+{"aliases":["函数式编程"],"tags":[],"review-dates":["2019-10-16"],"dg-publish":true,"date-created":"2021-08-22-Sun, 6:11:24 am","date-modified":"2023-07-27-Thu, 9:00:38 am","permalink":"/programming/front-end/field/js-functional/","dgPassFrontmatter":true}
 ---
 
 
