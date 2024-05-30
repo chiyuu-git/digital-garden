@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/framework/engineering/babel/"}
+{"aliases":[],"tags":[],"review-dates":["2019-07-05","2020-06-12","2020-07-15"],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:07:52 pm","date-modified":"2023-04-29-Sat, 8:09:49 pm","permalink":"/programming/front-end/framework/engineering/babel/","dgPassFrontmatter":true}
 ---
 
 
