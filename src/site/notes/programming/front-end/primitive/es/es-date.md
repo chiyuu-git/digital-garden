@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/es/es-date/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-04-13-Thu, 2:55:14 pm","date-modified":"2024-01-08-Mon, 8:23:43 pm","permalink":"/programming/front-end/primitive/es/es-date/","dgPassFrontmatter":true}
 ---
 
 
