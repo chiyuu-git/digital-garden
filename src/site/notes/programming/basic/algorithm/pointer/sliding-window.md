@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/algorithm/pointer/sliding-window/","tags":["review"]}
+{"aliases":["滑动窗口"],"tags":["review"],"review-dates":["2023-08-06"],"dg-publish":true,"date-created":"2023-08-06-Sun, 3:05:17 pm","date-modified":"2023-08-28-Mon, 12:23:42 pm","sr-due":"2023-08-31","sr-interval":3,"sr-ease":250,"permalink":"/programming/basic/algorithm/pointer/sliding-window/","dgPassFrontmatter":true}
 ---
 
 
