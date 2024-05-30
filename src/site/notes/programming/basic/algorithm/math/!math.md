@@ -227,4 +227,4 @@ percentile 函数
 
 <http://blog.sina.com.cn/s/blog_6d932f2a0101jgyz.html>
 
-![进制转换算法](../../../font-end/primitive/es/es-number.md#进制转换算法)
+![进制转换算法](../../../front-end/primitive/es/es-number.md#进制转换算法)
