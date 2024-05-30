@@ -308,7 +308,7 @@ google 浏览器 先解析 css 解析完之后再开始给 HTML 渲染可以比�
 
 ### 异步加载脚本
 
-![es-module](programming/font-end/primitive/es/es-module.md#异步加载脚本)
+![es-module](../../front-end/primitive/es/es-module.md#异步加载脚本)
 
 ### 首屏和白屏
 
@@ -700,7 +700,7 @@ preload 加载页面必需的资源如 CDN 上的字体文件，与 prefetch 预
 
 # SSR
 
-[SSR](../../font-end/framework/framwork-common/!framework-common.md#SSR)
+[SSR](../../front-end/framework/framwork-common/!framework-common.md#SSR)
 
 # Hybrid App 预取
 
@@ -735,4 +735,4 @@ cdn 回源，包括回源地址和加速域名。当有用户访问某一个 URL
 
 ### requestIdleCallback
 
-参考 [react-fiber](../../font-end/framework/react/react-fiber.md) 的思路, 在闲时做监控
+参考 [react-fiber](../../front-end/framework/react/react-fiber.md) 的思路, 在闲时做监控
