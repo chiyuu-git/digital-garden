@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/browser-core/browser-thread/","tags":["review"]}
+{"aliases":["浏览器线程机制","js事件机制"],"tags":["review"],"review-dates":["2023-08-16"],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:08:15 pm","date-modified":"2023-09-03-Sun, 8:32:02 pm","permalink":"/programming/front-end/browser-core/browser-thread/","dgPassFrontmatter":true}
 ---
 
 
