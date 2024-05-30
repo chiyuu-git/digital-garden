@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/hydrid/android/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:08:36 pm","date-modified":"2023-04-29-Sat, 8:18:33 pm","permalink":"/programming/hydrid/android/","dgPassFrontmatter":true}
 ---
 
 
