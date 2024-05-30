@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/ai-generator/ai-generator/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-03-28-Thu, 3:10:27 pm","date-modified":"2024-05-29-Wed, 9:11:48 pm","permalink":"/programming/ai-generator/!ai-generator/","dgPassFrontmatter":true}
 ---
 
 
