@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/wasm/wasm/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-12-07-Thu, 10:12:46 am","date-modified":"2023-12-15-Fri, 4:29:11 pm","permalink":"/programming/front-end/primitive/wasm/!wasm/","dgPassFrontmatter":true}
 ---
 
 
