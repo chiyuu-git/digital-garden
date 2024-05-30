@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/leetcode/offer-05/","tags":["leetcode/string","leetcode/pointer/double","leetcode/space/in-place","leetcode/unsolved","leetcode/array/distinct"]}
+{"aliases":[],"tags":["leetcode/string","leetcode/pointer/double","leetcode/space/in-place","leetcode/unsolved","leetcode/array/distinct"],"review-dates":[],"dg-publish":true,"difficulty":"easy","date-created":"2023-07-21-Fri, 4:08:31 pm","date-modified":"2023-07-21-Fri, 4:12:41 pm","permalink":"/programming/basic/leetcode/剑指 Offer 05. 替换空格/","dgPassFrontmatter":true}
 ---
 
 
