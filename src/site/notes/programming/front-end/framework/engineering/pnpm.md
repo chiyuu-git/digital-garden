@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/framework/engineering/pnpm/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-02-01-Wed, 11:24:54 am","date-modified":"2023-10-24-Tue, 7:49:12 pm","permalink":"/programming/front-end/framework/engineering/pnpm/","dgPassFrontmatter":true}
 ---
 
 
