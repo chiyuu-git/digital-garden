@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/es/es-async/promise/","tags":["review"]}
+{"aliases":[],"tags":["review"],"review-dates":["2019-06-21","2019-06-29","2019-09-29","2023-05-02"],"dg-publish":true,"date-created":"2020-09-03-Thu, 3:21:15 pm","date-modified":"2023-12-19-Tue, 4:14:29 pm","permalink":"/programming/front-end/primitive/es/es-async/promise/","dgPassFrontmatter":true}
 ---
 
 
