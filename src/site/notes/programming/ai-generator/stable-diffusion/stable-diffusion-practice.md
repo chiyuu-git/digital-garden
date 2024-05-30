@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/"}
+{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-05-30-Thu, 10:55:19 am","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
 ---
 
 
