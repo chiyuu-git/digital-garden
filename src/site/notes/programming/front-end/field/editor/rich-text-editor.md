@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/field/editor/rich-text-editor/"}
+{"aliases":["富文本编辑器"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-10-10-Mon, 8:39:56 am","date-modified":"2024-04-29-Mon, 10:16:21 am","permalink":"/programming/front-end/field/editor/rich-text-editor/","dgPassFrontmatter":true}
 ---
 
 
