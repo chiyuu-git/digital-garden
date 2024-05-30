@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/algorithm/monotone-satck/"}
+{"aliases":["单调栈"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-07-19-Wed, 10:52:47 am","date-modified":"2023-08-20-Sun, 11:06:27 am","permalink":"/programming/basic/algorithm/monotone-satck/","dgPassFrontmatter":true}
 ---
 
 
