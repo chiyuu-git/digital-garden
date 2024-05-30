@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/network-protocol/dns-basic/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-07-23-Sun, 10:15:21 am","date-modified":"2023-07-23-Sun, 10:45:26 am","permalink":"/programming/basic/cs-basic/network-protocol/dns-basic/","dgPassFrontmatter":true}
 ---
 
 
