@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/framework/framwork-common/reactivity/"}
+{"aliases":["响应式原理"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-08-17-Thu, 3:22:14 pm","date-modified":"2023-08-17-Thu, 3:33:32 pm","permalink":"/programming/front-end/framework/framwork-common/reactivity/","dgPassFrontmatter":true}
 ---
 
 
