@@ -233,15 +233,15 @@ comments2.push({ username, content: encodeHtml(req.body.comment) });
 
 **innerHTML**
 
-![dom-interface](programming/font-end/primitive/browser-api/dom-interface.md#innerHTML)
+![dom-interface](../../front-end/primitive/browser-api/dom-interface.md#innerHTML)
 
 **textContent**
 
-![dom-interface](programming/font-end/primitive/browser-api/dom-interface.md#textContent)
+![dom-interface](../../front-end/primitive/browser-api/dom-interface.md#textContent)
 
 **document.createTextNode**
 
-![dom-interface](programming/font-end/primitive/browser-api/dom-interface.md#document%20createTextNode)
+![dom-interface](../../front-end/primitive/browser-api/dom-interface.md#document%20createTextNode)
 
 **HTML 过滤**
 
