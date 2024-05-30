@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/skill/management-method/knowledge-management/"}
+{"aliases":["知识管理"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-27-Tue, 10:02:39 am","date-modified":"2024-05-12-Sun, 4:07:37 pm","permalink":"/skill/management-method/knowledge-management/","dgPassFrontmatter":true}
 ---
 
 
