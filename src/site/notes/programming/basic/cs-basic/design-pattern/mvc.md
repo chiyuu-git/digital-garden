@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/design-pattern/mvc/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-10-19-Thu, 2:27:59 pm","date-modified":"2023-10-19-Thu, 2:42:32 pm","permalink":"/programming/basic/cs-basic/design-pattern/mvc/","dgPassFrontmatter":true}
 ---
 
 
