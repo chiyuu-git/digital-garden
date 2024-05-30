@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/nlp/gpt-plugin/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-06-11-Sun, 6:51:36 pm","date-modified":"2023-06-12-Mon, 8:24:36 pm","permalink":"/programming/nlp/gpt-plugin/","dgPassFrontmatter":true}
 ---
 
 
