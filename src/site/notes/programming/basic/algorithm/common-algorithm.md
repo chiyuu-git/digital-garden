@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/algorithm/common-algorithm/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:06:51 pm","date-modified":"2023-08-07-Mon, 9:41:08 am","permalink":"/programming/basic/algorithm/common-algorithm/","dgPassFrontmatter":true}
 ---
 
 
