@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/browser-api/dom-drag-event/"}
+{"aliases":[],"tags":[],"review-dates":["2023-02-22"],"dg-publish":true,"date-created":"2023-02-11-Sat, 10:13:52 pm","date-modified":"2024-01-29-Mon, 2:50:52 pm","permalink":"/programming/front-end/primitive/browser-api/dom-drag-event/","dgPassFrontmatter":true}
 ---
 
 
