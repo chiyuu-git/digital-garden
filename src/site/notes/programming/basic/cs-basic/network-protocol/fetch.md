@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/network-protocol/fetch/"}
+{"aliases":[],"tags":[],"review-dates":["2019-04-22","2019-06-29","2019-10-01"],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:07:07 pm","date-modified":"2023-08-27-Sun, 2:35:14 pm","permalink":"/programming/basic/cs-basic/network-protocol/fetch/","dgPassFrontmatter":true}
 ---
 
 
