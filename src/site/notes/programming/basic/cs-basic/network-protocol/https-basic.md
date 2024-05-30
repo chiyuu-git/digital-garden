@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/network-protocol/https-basic/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-07-21-Fri, 11:10:37 am","date-modified":"2023-08-28-Mon, 12:18:40 pm","permalink":"/programming/basic/cs-basic/network-protocol/https-basic/","dgPassFrontmatter":true}
 ---
 
 
