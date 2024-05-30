@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/css/transition-and-animation/"}
+{"tags":[],"aliases":["transition","animation","css animation"],"review-dates":[],"dg-publish":true,"date-created":"2023-02-06-Mon, 3:10:08 pm","date-modified":"2023-08-15-Tue, 10:58:35 am","permalink":"/programming/front-end/primitive/css/transition & animation/","dgPassFrontmatter":true}
 ---
 
 
