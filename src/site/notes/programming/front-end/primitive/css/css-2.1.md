@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/css/css-2-1/"}
+{"aliases":[],"tags":[],"review-dates":["2019-09-20","2023-04-28"],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:07:31 pm","date-modified":"2023-08-24-Thu, 12:29:28 pm","permalink":"/programming/front-end/primitive/css/css-2.1/","dgPassFrontmatter":true}
 ---
 
 
