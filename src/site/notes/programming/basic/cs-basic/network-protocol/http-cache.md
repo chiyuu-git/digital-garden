@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/network-protocol/http-cache/","tags":["review"]}
+{"aliases":["浏览器缓存"],"tags":["review"],"review-dates":["2019-06-30","2019-08-08","2023-07-26"],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:07:10 pm","date-modified":"2023-08-27-Sun, 6:19:24 pm","sr-due":"2023-08-30","sr-interval":3,"sr-ease":250,"permalink":"/programming/basic/cs-basic/network-protocol/http-cache/","dgPassFrontmatter":true}
 ---
 
 
