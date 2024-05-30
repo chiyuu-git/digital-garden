@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/back-end/mongo/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:08:28 pm","date-modified":"2023-04-29-Sat, 8:19:21 pm","permalink":"/programming/back-end/mongo/","dgPassFrontmatter":true}
 ---
 
 
