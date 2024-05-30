@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/framework/react/react-fiber/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-08-17-Thu, 12:02:52 pm","date-modified":"2023-08-23-Wed, 10:04:04 am","permalink":"/programming/front-end/framework/react/react-fiber/","dgPassFrontmatter":true}
 ---
 
 
