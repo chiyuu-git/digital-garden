@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/framework/typescript/ts-best-practice/"}
+{"aliases":["ts最佳实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-09-29-Fri, 11:08:00 pm","date-modified":"2023-09-29-Fri, 7:58:25 pm","permalink":"/programming/front-end/framework/typescript/ts-best-practice/","dgPassFrontmatter":true}
 ---
 
 
