@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/design-pattern/design-pattern/"}
+{"aliases":["设计模式"],"tags":[],"review-dates":["2023-07-27"],"dg-publish":true,"date-created":"2022-09-04-Sun, 2:15:52 pm","date-modified":"2024-01-29-Mon, 3:01:16 pm","permalink":"/programming/basic/cs-basic/design-pattern/!design-pattern/","dgPassFrontmatter":true}
 ---
 
 
