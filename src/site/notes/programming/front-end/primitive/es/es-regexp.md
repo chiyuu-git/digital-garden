@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/es/es-regexp/"}
+{"aliases":[],"tags":[],"review-dates":["2019--0-25","2023-04-29"],"dg-publish":true,"date-created":"2023-04-29-Sat, 3:09:45 pm","date-modified":"2024-04-25-Thu, 8:26:11 pm","permalink":"/programming/front-end/primitive/es/es-regexp/","dgPassFrontmatter":true}
 ---
 
 
