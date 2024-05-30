@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/framework/engineering/webpack/"}
+{"aliases":[],"tags":[],"review-dates":["2019-08-12"],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:07:57 pm","date-modified":"2023-10-02-Mon, 10:53:29 am","permalink":"/programming/front-end/framework/engineering/webpack/","dgPassFrontmatter":true}
 ---
 
 
