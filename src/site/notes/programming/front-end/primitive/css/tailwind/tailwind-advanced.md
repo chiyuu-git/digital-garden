@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/css/tailwind/tailwind-advanced/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-10-30-Sun, 9:37:48 pm","date-modified":"2023-04-29-Sat, 8:17:48 pm","permalink":"/programming/front-end/primitive/css/tailwind/tailwind-advanced/","dgPassFrontmatter":true}
 ---
 
 
