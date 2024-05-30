@@ -86,6 +86,10 @@ rescureTime
 
 sizeUp: 平替: [README.md](https://github.com/S1ngS1ng/HammerSpoon/blob/master/README.md)
 
+magnet 破解版, 无广告
+
+![](key-map/Magnet.zip)
+
 ![](/img/user/programming/basic/common/key-map/image-20231024111403130.png)
 
 mac catchMouse / win double monitor tools
@@ -110,7 +114,7 @@ vscode
 
 node nvm nrm [安装 nvm](programming/back-end/node.md#切换%20Node%20版本)
 
-obsidian config soft link [tools](programming/basic/common/tools.md#软链接和硬链接)
+obsidian config soft link [programming-tools](programming-tools.md#软链接和硬链接)
 
 # Vim
 
@@ -119,3 +123,19 @@ obsidian config soft link [tools](programming/basic/common/tools.md#软链接和
 # Windows 激活
 
 [win10（win11、win8.1)老提示需要激活？真正永久激活的方法在这儿 - 知乎](https://zhuanlan.zhihu.com/p/401418243?utm_id=0)
+
+# Adobe 激活
+
+https://www.cybermania.ws/apps/adobe-genp/ 作者：我爱学习 23333 https://www.bilibili.com/read/cv27584335/?jump_opus=1 出处：bilibili
+
+总之就是下载一个最新版的 Adobe GenP
+
+https://www.cgzy.net/30541.html
+
+# Chrome 实用插件
+
+oneTap
+
+fireShot 捕捉屏幕, 专治各种疑难杂症
+
+vimium c
