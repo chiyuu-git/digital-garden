@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/algorithm/math/math/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:06:57 pm","date-modified":"2023-08-04-Fri, 7:09:31 pm","permalink":"/programming/basic/algorithm/math/!math/","dgPassFrontmatter":true}
 ---
 
 
