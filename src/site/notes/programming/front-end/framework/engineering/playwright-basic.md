@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/framework/engineering/playwright-basic/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-06-03-Fri, 2:58:49 pm","date-modified":"2023-04-29-Sat, 8:10:37 pm","permalink":"/programming/front-end/framework/engineering/playwright-basic/","dgPassFrontmatter":true}
 ---
 
 
