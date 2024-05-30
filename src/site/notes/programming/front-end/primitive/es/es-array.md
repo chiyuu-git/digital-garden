@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/es/es-array/"}
+{"aliases":[],"tags":[],"review-dates":["2023=04-29"],"dg-publish":true,"date-created":"2022-09-13-Tue, 9:06:46 am","date-modified":"2023-07-27-Thu, 8:43:39 am","permalink":"/programming/front-end/primitive/es/es-array/","dgPassFrontmatter":true}
 ---
 
 
