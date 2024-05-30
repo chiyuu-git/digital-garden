@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/common/key-map/"}
+{"aliases":["新电脑初始化"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-11-25-Fri, 2:39:14 pm","date-modified":"2024-05-27-Mon, 10:28:57 am","permalink":"/programming/basic/common/key-map/","dgPassFrontmatter":true}
 ---
 
 
