@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/skill/brainteasers/"}
+{"aliases":["脑筋急转弯"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-08-09-Wed, 9:36:09 am","date-modified":"2024-02-19-Mon, 5:54:25 pm","permalink":"/skill/brainteasers/","dgPassFrontmatter":true}
 ---
 
 
