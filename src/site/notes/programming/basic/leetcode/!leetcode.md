@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/leetcode/leetcode/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-13-Tue, 9:06:50 am","date-modified":"2023-08-28-Mon, 9:40:23 am","permalink":"/programming/basic/leetcode/!leetcode/","dgPassFrontmatter":true}
 ---
 
 
