@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/design-pattern/facade-pattern/"}
+{"aliases":["外观模式"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-10-17-Tue, 6:36:50 pm","date-modified":"2023-10-17-Tue, 6:38:12 pm","permalink":"/programming/basic/cs-basic/design-pattern/facade-pattern/","dgPassFrontmatter":true}
 ---
 
 
