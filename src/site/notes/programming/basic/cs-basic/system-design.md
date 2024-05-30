@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/system-design/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-10-02-Mon, 10:54:22 am","date-modified":"2023-10-02-Mon, 10:54:25 am","permalink":"/programming/basic/cs-basic/system-design/","dgPassFrontmatter":true}
 ---
 
 
