@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/browser-core/garbage-collecion/"}
+{"aliases":["v8 垃圾回收机制"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-07-26-Wed, 2:09:21 pm","date-modified":"2023-09-03-Sun, 8:08:44 pm","permalink":"/programming/front-end/browser-core/garbage-collecion/","dgPassFrontmatter":true}
 ---
 
 
