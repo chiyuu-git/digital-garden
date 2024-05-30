@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/faq/ui-component/form/"}
+{"aliases":["表单组件","表单校验"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-08-05-Sat, 1:30:33 pm","date-modified":"2023-08-13-Sun, 2:21:10 pm","permalink":"/programming/FAQ/ui-component/form/","dgPassFrontmatter":true}
 ---
 
 
