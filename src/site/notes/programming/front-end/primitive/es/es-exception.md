@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/es/es-exception/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:07:40 pm","date-modified":"2023-08-04-Fri, 6:22:03 pm","permalink":"/programming/front-end/primitive/es/es-exception/","dgPassFrontmatter":true}
 ---
 
 
