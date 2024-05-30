@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/back-end/nginx/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2020-09-03-Thu, 3:23:29 pm","date-modified":"2023-07-23-Sun, 10:37:29 am","permalink":"/programming/back-end/nginx/","dgPassFrontmatter":true}
 ---
 
 
