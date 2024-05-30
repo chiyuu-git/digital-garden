@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/browser-api/dom-event/"}
+{"aliases":[],"tags":[],"review-dates":["2023-02-10"],"dg-publish":true,"date-created":"2022-09-04-Sun, 1:07:50 pm","date-modified":"2023-12-26-Tue, 4:08:06 pm","permalink":"/programming/front-end/primitive/browser-api/dom-event/","dgPassFrontmatter":true}
 ---
 
 
