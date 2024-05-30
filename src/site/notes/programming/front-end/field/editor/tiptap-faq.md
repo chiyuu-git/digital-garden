@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/field/editor/tiptap-faq/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-03-16-Thu, 3:33:15 pm","date-modified":"2024-05-08-Wed, 5:01:34 pm","permalink":"/programming/front-end/field/editor/tiptap-faq/","dgPassFrontmatter":true}
 ---
 
 
