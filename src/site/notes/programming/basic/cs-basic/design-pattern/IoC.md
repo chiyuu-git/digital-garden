@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/design-pattern/io-c/"}
+{"aliases":["控制反转","依赖注入"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-08-22-Tue, 3:00:46 pm","date-modified":"2023-08-22-Tue, 4:09:42 pm","permalink":"/programming/basic/cs-basic/design-pattern/IoC/","dgPassFrontmatter":true}
 ---
 
 
