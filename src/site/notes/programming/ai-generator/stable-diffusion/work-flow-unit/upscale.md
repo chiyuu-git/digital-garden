@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:38:48 pm","date-modified":"2024-05-29-Wed, 5:46:12 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/","dgPassFrontmatter":true}
 ---
 
 
