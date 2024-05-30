@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/design-pattern/state-pattern/"}
+{"aliases":["状态模式","状态机"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-10-18-Wed, 7:48:17 pm","date-modified":"2023-11-14-Tue, 9:13:46 pm","permalink":"/programming/basic/cs-basic/design-pattern/state-pattern/","dgPassFrontmatter":true}
 ---
 
 
