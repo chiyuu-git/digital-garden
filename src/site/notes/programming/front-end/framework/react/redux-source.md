@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/framework/react/redux-source/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-09-02-Sat, 7:50:31 pm","date-modified":"2023-09-02-Sat, 7:51:45 pm","permalink":"/programming/front-end/framework/react/redux-source/","dgPassFrontmatter":true}
 ---
 
 
