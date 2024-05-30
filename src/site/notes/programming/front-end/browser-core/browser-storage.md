@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/browser-core/browser-storage/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-07-26-Wed, 10:37:56 am","date-modified":"2023-07-26-Wed, 10:42:47 am","permalink":"/programming/front-end/browser-core/browser-storage/","dgPassFrontmatter":true}
 ---
 
 
