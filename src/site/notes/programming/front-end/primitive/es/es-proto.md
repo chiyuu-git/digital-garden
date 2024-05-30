@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/es/es-proto/"}
+{"aliases":[],"tags":[],"review-dates":["2019-05-19","2023-04-30"],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:07:42 pm","date-modified":"2023-09-24-Sun, 1:09:31 pm","permalink":"/programming/front-end/primitive/es/es-proto/","dgPassFrontmatter":true}
 ---
 
 
