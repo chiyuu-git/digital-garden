@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/design-pattern/event-bus/"}
+{"aliases":["消息总线","发布订阅模式","观察者模式"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-08-21-Mon, 7:09:11 pm","date-modified":"2023-09-26-Tue, 8:49:16 pm","permalink":"/programming/basic/cs-basic/design-pattern/event-bus/","dgPassFrontmatter":true}
 ---
 
 
