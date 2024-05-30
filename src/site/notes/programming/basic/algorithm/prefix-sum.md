@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/algorithm/prefix-sum/","tags":["review"]}
+{"aliases":["前缀和"],"tags":["review"],"review-dates":[],"dg-publish":true,"date-created":"2023-08-08-Tue, 5:10:59 pm","date-modified":"2023-08-19-Sat, 7:37:30 pm","sr-due":"2023-08-31","sr-interval":3,"sr-ease":250,"permalink":"/programming/basic/algorithm/prefix-sum/","dgPassFrontmatter":true}
 ---
 
 
