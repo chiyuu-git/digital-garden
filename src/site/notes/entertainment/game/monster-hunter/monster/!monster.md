@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/entertainment/game/monster-hunter/monster/monster/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-11-06-Mon, 1:22:35 pm","date-modified":"2023-12-24-Sun, 9:28:52 pm","permalink":"/entertainment/game/monster-hunter/monster/!monster/","dgPassFrontmatter":true}
 ---
 
 
@@ -38,3 +38,7 @@ GP 点、登龙点、大解点, 本质都是硬直点
 # 竞速解说
 
 [【MHWI】三个片子，从开始练习到熟练掌握，太刀灭日TA竞速作业解说33\_单机游戏热门视频](https://www.bilibili.com/video/BV1Jw411s7Kp/?spm_id_from=333.1007.tianma.1-1-1.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+# 怪物生态
+
+[【心得】MHWI 翻譯中日英 @魔物獵人 系列 哈啦板 - 巴哈姆特](https://forum.gamer.com.tw/C.php?bsn=5786&snA=151736)
