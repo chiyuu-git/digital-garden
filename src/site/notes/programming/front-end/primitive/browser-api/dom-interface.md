@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/browser-api/dom-interface/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:07:51 pm","date-modified":"2023-08-16-Wed, 11:24:02 am","permalink":"/programming/front-end/primitive/browser-api/dom-interface/","dgPassFrontmatter":true}
 ---
 
 
