@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/faq/ui-component/component-standrad/"}
+{"aliases":["UI组件规范"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-08-05-Sat, 2:13:45 pm","date-modified":"2023-08-05-Sat, 2:15:21 pm","permalink":"/programming/FAQ/ui-component/component-standrad/","dgPassFrontmatter":true}
 ---
 
 
