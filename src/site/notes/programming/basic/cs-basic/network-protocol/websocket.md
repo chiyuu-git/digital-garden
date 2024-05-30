@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/network-protocol/websocket/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:07:12 pm","date-modified":"2023-07-23-Sun, 10:46:47 am","permalink":"/programming/basic/cs-basic/network-protocol/websocket/","dgPassFrontmatter":true}
 ---
 
 
