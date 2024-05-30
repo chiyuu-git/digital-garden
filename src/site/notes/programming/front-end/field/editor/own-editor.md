@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/field/editor/own-editor/"}
+{"aliases":[],"tags":[],"review-dates":["2023-08-21"],"dg-publish":true,"date-created":"2022-12-12-Mon, 8:24:41 am","date-modified":"2024-04-29-Mon, 10:11:56 am","permalink":"/programming/front-end/field/editor/own-editor/","dgPassFrontmatter":true}
 ---
 
 
