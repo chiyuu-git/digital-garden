@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/framework/typescript/ts-basic/"}
+{"aliases":[],"tags":[],"review-dates":["2023-04-23"],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:08:09 pm","date-modified":"2023-12-18-Mon, 2:52:24 pm","permalink":"/programming/front-end/framework/typescript/ts-basic/","dgPassFrontmatter":true}
 ---
 
 
