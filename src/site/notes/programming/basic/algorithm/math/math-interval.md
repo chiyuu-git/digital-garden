@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/algorithm/math/math-interval/"}
+{"aliases":["区间"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-08-29-Tue, 2:38:28 pm","date-modified":"2023-08-29-Tue, 2:42:13 pm","permalink":"/programming/basic/algorithm/math/math-interval/","dgPassFrontmatter":true}
 ---
 
 
