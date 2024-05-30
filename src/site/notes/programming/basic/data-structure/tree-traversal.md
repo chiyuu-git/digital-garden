@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/data-structure/tree-traversal/"}
+{"aliases":["树的遍历"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-06-06-Tue, 7:57:32 pm","date-modified":"2023-09-06-Wed, 2:31:08 pm","permalink":"/programming/basic/data-structure/tree-traversal/","dgPassFrontmatter":true}
 ---
 
 
