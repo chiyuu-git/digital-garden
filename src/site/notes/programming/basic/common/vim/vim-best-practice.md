@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/common/vim/vim-best-practice/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-12-03-Sat, 11:00:15 am","date-modified":"2023-07-28-Fri, 3:09:00 pm","permalink":"/programming/basic/common/vim/vim-best-practice/","dgPassFrontmatter":true}
 ---
 
 
