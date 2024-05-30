@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/common/color/"}
+{"aliases":["色彩理论"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:07:13 pm","date-modified":"2023-12-19-Tue, 3:00:06 pm","permalink":"/programming/basic/common/color/","dgPassFrontmatter":true}
 ---
 
 
