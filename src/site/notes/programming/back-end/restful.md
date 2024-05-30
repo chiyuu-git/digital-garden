@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/back-end/restful/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:08:33 pm","date-modified":"2023-04-29-Sat, 8:19:28 pm","permalink":"/programming/back-end/restful/","dgPassFrontmatter":true}
 ---
 
 
