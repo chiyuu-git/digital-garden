@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/mobile/webview/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2020-09-03-Thu, 3:23:12 pm","date-modified":"2023-04-29-Sat, 8:13:55 pm","permalink":"/programming/front-end/mobile/webview/","dgPassFrontmatter":true}
 ---
 
 
