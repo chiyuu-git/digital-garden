@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/es/es-standrad/"}
+{"aliases":["es规范"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2020-09-06-Sun, 3:54:14 pm","date-modified":"2023-08-04-Fri, 7:00:15 pm","permalink":"/programming/front-end/primitive/es/es-standrad/","dgPassFrontmatter":true}
 ---
 
 
