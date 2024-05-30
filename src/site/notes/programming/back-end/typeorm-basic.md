@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/back-end/typeorm-basic/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-03-22-Tue, 7:02:57 pm","date-modified":"2023-04-29-Sat, 8:19:54 pm","permalink":"/programming/back-end/typeorm-basic/","dgPassFrontmatter":true}
 ---
 
 
