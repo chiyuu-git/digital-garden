@@ -107,7 +107,7 @@ Class 写法和 Hook 写法的区别;;[react-faq](https://digital-garden.chiyuu.
 
 1. 更好的复用逻辑, 通过自定义 hook 进行复用
 2. 业务代码更加聚合, 避免了意大利面条式的代码分散在各种生命周期中
-3. 更加贴合 react 的设计理念 [!framework-common](programming/font-end/framework/framwork-common/!framework-common.md#C%20响应原理%20和%20D%20模型风格%20的关系%20（这是重点！！！）)
+3. 更加贴合 react 的设计理念 [!framework-common](../front-end/framework/framwork-common/!framework-common.md#C%20响应原理%20和%20D%20模型风格%20的关系%20（这是重点！！！）)
 
 ### Hook 的缺点
 
@@ -133,7 +133,7 @@ Class 相比函数式组件的优势, 但是实际中这些都是被忽略不计
 
 1. useEffect 中没有正确设置依赖数组导致死循环
 2. useEffect 中没有清除副作用导致内存泄漏
-3. 在条件语句和循环中使用 Hooks 导致报错 [react-hook-advanced](programming/font-end/framework/react/react-hook-advanced.md#必须按照相同的顺序调用%20Hooks)
+3. 在条件语句和循环中使用 Hooks 导致报错 [react-hook-advanced](../front-end/framework/react/react-hook-advanced.md#必须按照相同的顺序调用%20Hooks)
 4. 闭包陷阱。
 
 ```JS
