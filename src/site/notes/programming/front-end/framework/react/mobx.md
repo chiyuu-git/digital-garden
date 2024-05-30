@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/framework/react/mobx/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-02-01-Thu, 4:52:56 pm","date-modified":"2024-05-08-Wed, 3:31:44 pm","permalink":"/programming/front-end/framework/react/mobx/","dgPassFrontmatter":true}
 ---
 
 
