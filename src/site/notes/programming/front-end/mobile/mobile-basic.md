@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/mobile/mobile-basic/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:08:19 pm","date-modified":"2023-08-23-Wed, 5:11:59 pm","permalink":"/programming/front-end/mobile/mobile-basic/","dgPassFrontmatter":true}
 ---
 
 
