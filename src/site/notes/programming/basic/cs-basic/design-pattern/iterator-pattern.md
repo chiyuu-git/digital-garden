@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/design-pattern/iterator-pattern/"}
+{"aliases":["迭代器模式"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-10-18-Wed, 1:38:36 pm","date-modified":"2023-10-18-Wed, 3:57:00 pm","permalink":"/programming/basic/cs-basic/design-pattern/iterator-pattern/","dgPassFrontmatter":true}
 ---
 
 
