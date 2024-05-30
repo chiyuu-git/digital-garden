@@ -13,6 +13,10 @@ midjourney 出图，runway 图转视频，svd 比较吃显卡，买不起
 
 [第一集：4分钟学会SD超精准控图，利用SD进行电商素材制作，使用Controlnet segment语义精准_哔哩哔哩_bilibili](https://b23.tv/iAkjfB2)
 
+# 批量生成视频的探索
+
+[批量生成视频的探索](https://bytedance.larkoffice.com/docx/VNQIdpdX5oonVMxKR6pctKzVnLd)
+
 # 先实现 Ai 轻小说吧
 
 只有关键的场景是有配图的
@@ -91,6 +95,8 @@ NHK 创业
 
 # 圆滚滚表情包系列
 
+[教程：1分钟10套表情包 - 飞书云文档](https://waytoagi.feishu.cn/wiki/QQzlwOOjtie4hJk6srLcFBMunbg)
+
 # 今天开始我就叫系列
 
 [仙尊人设](https://tieba.baidu.com/p/8647169917?see_lz=1)
@@ -99,4 +105,16 @@ NHK 创业
 
 [方源杀的人越多，可以复活的人就越多，因为人山人海，如果救的人还不够多的话，还可以一个春秋蝉，复活所有已经死的人\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1sD421L7KR/?-Arouter=story&buvid=XY3F7BE3A5297A42BF340C92DC37623DF166A&from_spmid=tm.recommend.0.0&is_story_h5=true&mid=AyhZSf%2Fo%2FX5AWkNSGhjJXw%3D%3D&p=1&plat_id=163&share_from=ugc&share_medium=android&share_plat=android&share_session_id=be02e1a0-6deb-4341-836f-40effa4a4edb&share_source=COPY&share_tag=s_i&spmid=main.ugc-video-detail-vertical.0.0&timestamp=1711779714&unique_k=g3d6mAu&up_id=3493122688420185)
 
-![大爱仙尊](entertainment/小说/大爱仙尊.md#今天开始我就叫系列)
+![大爱仙尊](../../entertainment/novel/大爱仙尊.md#今天开始我就叫系列)
+
+# ASR 视频语音识别技术
+
+# 通往 Agi 之路, 最前沿, 最新的 Ai 动态
+
+[通往 AGI 之路 - 飞书云文档](https://waytoagi.feishu.cn/wiki/QPe5w5g7UisbEkkow8XcDmOpn8e)
+
+wonderstudio 一键出片神器
+
+# 生成音乐 + Ai 制作 MV
+
+[Suno AI 作曲全球爆红！几个月前还觉得 AI 作曲是个笑话，现在觉得 AI 要霸榜热曲也不是不可能了 \~\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV15j421R75g/?spm_id_from=333.1007.tianma.1-1-1.click&vd_source=f8573a6196003ad3683f1c1a403d3431)[Fetching Title#nhkc](https://www.bilibili.com/video/BV15j421R75g/?spm_id_from=333.1007.tianma.1-1-1.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
