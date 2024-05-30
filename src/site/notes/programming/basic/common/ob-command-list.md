@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/common/ob-command-list/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-11-29-Tue, 10:04:40 pm","date-modified":"2023-04-29-Sat, 8:38:35 pm","permalink":"/programming/basic/common/ob-command-list/","dgPassFrontmatter":true}
 ---
 
 
