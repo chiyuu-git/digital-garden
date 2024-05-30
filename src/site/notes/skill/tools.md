@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/skill/tools/"}
+{"aliases":["实用工具","实用软件"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-20-Tue, 3:08:11 pm","date-modified":"2024-05-27-Mon, 10:40:10 am","permalink":"/skill/tools/","dgPassFrontmatter":true}
 ---
 
 
