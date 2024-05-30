@@ -245,7 +245,7 @@ nvm 比起 n 更加流行，所以我也选择 nvm：<https://github.com/nvm-sh/
 
 ## Vscode 调试 Node
 
-[Vscode 调试 Node](../basic/common/tools.md#Vscode%20调试%20Node)
+[Vscode 调试 Node](../basic/common/programming-tools.md#Vscode%20调试%20Node)
 
 # Npm
 
