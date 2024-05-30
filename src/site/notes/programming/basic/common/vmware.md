@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/common/vmware/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-01-10-Tue, 8:06:24 pm","date-modified":"2023-04-29-Sat, 8:38:48 pm","permalink":"/programming/basic/common/vmware/","dgPassFrontmatter":true}
 ---
 
 
