@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/algorithm/pointer/pointer/"}
+{"aliases":["指针","双指针法"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-13-Tue, 9:06:47 am","date-modified":"2023-08-06-Sun, 3:05:54 pm","permalink":"/programming/basic/algorithm/pointer/!pointer/","dgPassFrontmatter":true}
 ---
 
 
