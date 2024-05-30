@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/ai-generator/work-flow/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-04-20-Sat, 2:43:25 pm","date-modified":"2024-04-20-Sat, 10:55:10 pm","permalink":"/programming/ai-generator/work-flow/","dgPassFrontmatter":true}
 ---
 
 
