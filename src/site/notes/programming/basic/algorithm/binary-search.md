@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/algorithm/binary-search/","tags":["review"]}
+{"aliases":["二分查找"],"tags":["review"],"review-dates":["2023-07-20"],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:07:01 pm","date-modified":"2023-09-11-Mon, 8:43:27 am","sr-due":"2023-09-12","sr-interval":1,"sr-ease":230,"permalink":"/programming/basic/algorithm/binary-search/","dgPassFrontmatter":true}
 ---
 
 
