@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/language/java-basic/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:08:34 pm","date-modified":"2023-04-29-Sat, 8:35:59 pm","permalink":"/programming/language/java-basic/","dgPassFrontmatter":true}
 ---
 
 
