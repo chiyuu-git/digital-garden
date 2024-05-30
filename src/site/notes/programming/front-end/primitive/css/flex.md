@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/css/flex/"}
+{"aliases":[],"tags":[],"review-dates":["2023-04-25"],"dg-publish":true,"date-created":"2023-04-20-Thu, 3:16:58 pm","date-modified":"2024-01-16-Tue, 5:32:44 pm","permalink":"/programming/front-end/primitive/css/flex/","dgPassFrontmatter":true}
 ---
 
 
