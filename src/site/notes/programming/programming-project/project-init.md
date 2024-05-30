@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/programming-project/project-init/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:08:38 pm","date-modified":"2023-08-04-Fri, 3:30:23 pm","permalink":"/programming/programming-project/project-init/","dgPassFrontmatter":true}
 ---
 
 
