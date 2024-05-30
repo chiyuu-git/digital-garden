@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/framework/engineering/eslint/lint-js/"}
+{"aliases":["javascrip代码规范"],"tags":[],"review-dates":["2023-08-04"],"dg-publish":true,"date-created":"2023-08-04-Fri, 6:44:55 pm","date-modified":"2023-08-08-Tue, 4:41:57 pm","permalink":"/programming/front-end/framework/engineering/eslint/lint-js/","dgPassFrontmatter":true}
 ---
 
 
