@@ -21,7 +21,7 @@
 
 ![](/img/user/programming/basic/cs-basic/design-pattern/command-pattern/image-20231014143125313.png)
 
-[promise 并发任务队列](programming/font-end/primitive/es/es-async/promise.md#Promise%20all) 实际上就是一种命令模式的实践
+[promise 并发任务队列](../../../front-end/primitive/es/es-async/promise.md#Promise%20all) 实际上就是一种命令模式的实践
 
 # 死机恢复 日志系统 事务系统
 
