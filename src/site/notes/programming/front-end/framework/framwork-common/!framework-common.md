@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/framework/framwork-common/framework-common/"}
+{"aliases":["前端框架的通用机制"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-07-26-Wed, 4:18:23 pm","date-modified":"2023-11-13-Mon, 5:28:04 pm","permalink":"/programming/front-end/framework/framwork-common/!framework-common/","dgPassFrontmatter":true}
 ---
 
 
