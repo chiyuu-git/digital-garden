@@ -25,7 +25,7 @@
 
 ### 可替换元素和不可替换元素
 
-![css-2.1](../font-end/primitive/css/css-2.1.md#可替换元素和不可替换元素)
+![css-2.1](../front-end/primitive/css/css-2.1.md#可替换元素和不可替换元素)
 
 ### 行高
 
@@ -33,11 +33,11 @@ vertical-align baseline 你是怎么理解的
 
 ### 层叠上下文
 
-![css-2.1](../font-end/primitive/css/css-2.1.md#层叠上下文%20https%20developer%20mozilla%20org%20zh-CN%20docs%20Web%20CSS%20CSS_Positioning%20Understanding_z_index%20The_stacking_context)
+![css-2.1](../front-end/primitive/css/css-2.1.md#层叠上下文%20https%20developer%20mozilla%20org%20zh-CN%20docs%20Web%20CSS%20CSS_Positioning%20Understanding_z_index%20The_stacking_context)
 
 ### 为什么行内级元素可以包裹块级元素
 
-![css-2.1](programming/font-end/primitive/css/css-2.1.md#^vkanjg)
+![css-2.1](../front-end/primitive/css/css-2.1.md#^vkanjg)
 
 ## CSS
 
@@ -61,7 +61,7 @@ rem 响应式布局
 
 ### 型变和结构化数据类型
 
-![ts-advanced](../font-end/framework/typescript/ts-advanced.md#型变和结构化类型)
+![ts-advanced](../front-end/framework/typescript/ts-advanced.md#型变和结构化类型)
 
 ### TS Compose
 
@@ -69,7 +69,7 @@ rem 响应式布局
 
 ### 事件机制
 
-![browser-thread](../font-end/browser-core/browser-thread.md#线程机制与事件机制)
+![browser-thread](../front-end/browser-core/browser-thread.md#线程机制与事件机制)
 
 ### 反转链表
 
