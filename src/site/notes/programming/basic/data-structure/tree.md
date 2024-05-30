@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/data-structure/tree/"}
+{"aliases":["二叉树","N叉树"],"tags":[],"review-dates":["2020-09-09","2022-08-05"],"dg-publish":true,"date-created":"2022-08-13-Sat, 6:28:04 pm","date-modified":"2023-06-18-Sun, 10:21:42 am","permalink":"/programming/basic/data-structure/tree/","dgPassFrontmatter":true}
 ---
 
 
