@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/common/programming-tools/"}
+{"aliases":["编程软件"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-10-03-Mon, 9:38:23 pm","date-modified":"2024-05-27-Mon, 10:39:11 am","permalink":"/programming/basic/common/programming-tools/","dgPassFrontmatter":true}
 ---
 
 
