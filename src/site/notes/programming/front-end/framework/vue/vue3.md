@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/framework/vue/vue3/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-07-19-Wed, 4:12:21 pm","date-modified":"2023-07-19-Wed, 4:34:45 pm","permalink":"/programming/front-end/framework/vue/vue3/","dgPassFrontmatter":true}
 ---
 
 
