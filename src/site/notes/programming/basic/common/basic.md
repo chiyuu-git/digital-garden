@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/common/basic/"}
+{"aliases":["计算机基础知识"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2020-09-05-Sat, 9:30:25 pm","date-modified":"2023-10-17-Tue, 11:07:59 pm","permalink":"/programming/basic/common/basic/","dgPassFrontmatter":true}
 ---
 
 
