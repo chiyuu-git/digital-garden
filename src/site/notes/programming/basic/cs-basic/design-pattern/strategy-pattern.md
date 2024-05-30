@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/design-pattern/strategy-pattern/"}
+{"aliases":["策略模式"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-09-26-Tue, 1:18:57 pm","date-modified":"2023-10-18-Wed, 7:49:10 pm","permalink":"/programming/basic/cs-basic/design-pattern/strategy-pattern/","dgPassFrontmatter":true}
 ---
 
 
