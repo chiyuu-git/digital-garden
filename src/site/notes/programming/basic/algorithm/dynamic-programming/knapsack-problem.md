@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/algorithm/dynamic-programming/knapsack-problem/","tags":["review"]}
+{"aliases":["背包问题"],"tags":["review"],"review-dates":[],"dg-publish":true,"date-created":"2023-07-10-Mon, 8:47:23 pm","date-modified":"2023-08-07-Mon, 2:31:39 pm","permalink":"/programming/basic/algorithm/dynamic-programming/knapsack-problem/","dgPassFrontmatter":true}
 ---
 
 
