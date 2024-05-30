@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/css/page-layout/"}
+{"aliases":["布局理论"],"tags":[],"review-dates":["2023-04-28"],"dg-publish":true,"date-created":"2022-10-21-Fri, 5:13:14 pm","date-modified":"2024-04-15-Mon, 9:53:46 am","permalink":"/programming/front-end/primitive/css/page-layout/","dgPassFrontmatter":true}
 ---
 
 
