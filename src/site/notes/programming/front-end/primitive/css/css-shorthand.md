@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/css/css-shorthand/"}
+{"aliases":["css简写属性原理"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-08-07-Mon, 2:58:46 pm","date-modified":"2023-08-07-Mon, 2:59:14 pm","permalink":"/programming/front-end/primitive/css/css-shorthand/","dgPassFrontmatter":true}
 ---
 
 
