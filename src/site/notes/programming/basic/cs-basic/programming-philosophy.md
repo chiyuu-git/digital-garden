@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/basic/cs-basic/programming-philosophy/"}
+{"aliases":["软件设计的哲学"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-10-02-Mon, 1:35:02 pm","date-modified":"2023-10-02-Mon, 1:38:05 pm","permalink":"/programming/basic/cs-basic/programming-philosophy/","dgPassFrontmatter":true}
 ---
 
 
