@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/es/es-number/"}
+{"aliases":[],"tags":[],"review-dates":["2019-05-07","2020-07-21","2023-04-13"],"dg-publish":true,"date-created":"2022-09-04-Sun, 9:13:24 pm","date-modified":"2023-08-16-Wed, 4:46:17 pm","permalink":"/programming/front-end/primitive/es/es-number/","dgPassFrontmatter":true}
 ---
 
 
