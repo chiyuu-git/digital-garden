@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/programming/front-end/primitive/es/es-async/es-async-2/"}
+{"aliases":[],"tags":[],"review-dates":["2023-05-02"],"dg-publish":true,"date-created":"2020-09-06-Sun, 3:54:12 pm","date-modified":"2023-05-02-Tue, 6:30:33 pm","permalink":"/programming/front-end/primitive/es/es-async/es-async-2/","dgPassFrontmatter":true}
 ---
 
 
