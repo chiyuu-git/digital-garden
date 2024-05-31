@@ -1,5 +1,5 @@
 ---
-{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-05-30-Thu, 10:55:19 am","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
+{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-05-30-Thu, 10:03:55 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
 ---
 
 
@@ -11,11 +11,19 @@
 
 文字, logo ,二维码都可以
 
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527183433706.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240528215446720.png)
+
 ## AI 材质艺术字
 
 ## Brightness 和 Illumination
 
 controleNet 模型
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527184059681.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527184454756.png)
 
 ### Brightness
 
@@ -37,17 +45,11 @@ qr toolkit 可以方便的改变二维码的样式
 
 ## controlNet lineArt
 
-基于线稿图生图, 使用不同的风格的大模型即可实现真人化或者动画化
+![control-net](programming/ai-generator/stable-diffusion/work-flow-unit/control-net.md#lineArt)
 
 ## IP-Adapter 实现换肤, 风格迁移
 
-图生图并非一种真正的提示, 只是塑造一种色彩上的相似性.
-
-IP-Adapter 会去真正的理解你输入的图片的含义, 并利用他学习到到的东西去微调输出的结果.
-
-从色彩, 形象, 内容, 已经, 都会更像参考图. 和其他模型组合起来使用, 实现**风格迁移**
-
-不同的 IP-Adapter 模型, 迁移的内容不同, 注意甄别
+![control-net](programming/ai-generator/stable-diffusion/work-flow-unit/control-net.md#IP-Adapter)
 
 ## InPaint 换背景
 
@@ -73,11 +75,15 @@ controlNet 作者的又一力作. 可以生成透明背景的 png 图片.
 
 ## 基本使用
 
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527162728757.png)
+
 ## 抠图的本质区别是什么
 
 和一些智能抠图的工具不同, 在生成阶段久将透明通道的信息加入了运算.
 
 ### 生成半透明素材
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527163033322.png)
 
 透明玻璃瓶的内部也是有 alpha 通道的
 
@@ -91,9 +97,15 @@ controlNet 作者的又一力作. 可以生成透明背景的 png 图片.
 
 ## 前景和背景以及融合
 
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527170253946.png)
+
 ### 前景补充背景生成融合图
 
 在 prompt 里输入完整的提示词, 即是 blending 状态的提示词, 会自动补全背景和光影融合
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527171132468.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527170355636.png)
 
 ### 前景与融合图做 Diff 产出背景
 
@@ -111,6 +123,8 @@ controlNet 作者的又一力作. 可以生成透明背景的 png 图片.
 
 在模型训练的时候, 一个是针对常规注意力层, 另一个是针对卷积层. 参考 github 作者的描述即可
 
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527170957944.png)
+
 ## 与其他模型搭配
 
 并没有要求. 都可以搭配, 效果都挺好的, 多多抽卡
@@ -123,9 +137,13 @@ controlNet 作者的又一力作. 可以生成透明背景的 png 图片.
 
 lora 训练
 
+![stable-diffusion-term](programming/ai-generator/stable-diffusion/stable-diffusion-term.md#EasyPhoto)
+
 # SD 与 PS 结合使用
 
 反复导入导出太浪费时间了
+
+![stable-diffusion-term](programming/ai-generator/stable-diffusion/stable-diffusion-term.md#Auto%20Photoshop%20Stable%20Diffusion%20Plugin)
 
 # 多人场景
 
@@ -135,13 +153,21 @@ lora 训练
 
 ## 放大
 
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529213710070.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529213645043.png)
+
 Tiled diffusion 超分放大, 重构容易造成一些内容的变形
 
 stable SR 真实系的超分扩展
 
 ## 上色
 
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529215402123.png)![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529215335174.png)
+
 传统的上色效果还是生图. 不如 controlNet Recolor.
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529215402123.png)
 
 Recolor 模型的作用原理还是基于扩散对图片内容进行重新生成, 但它会根据黑白照片的亮度 (Luminance) 或者强度 (Intensity) 来指导新的图片进行生成. 生成完了之后, 它会将彩色版本的图片盖在原来的这张图片上 (以某种方式混合), 从而保留原有形象轮廓, 做到只变颜色
 
@@ -159,6 +185,8 @@ Recolor 模型的作用原理还是基于扩散对图片内容进行重新生成
 
 ## AI 印花图案设计
 
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221011605.png)e/image-20240529220911023.png)
+
 logo lora redmond 生成的图片更像是一个简单背景下的小图案
 
 style selector
@@ -171,17 +199,27 @@ Steps: 20, Sampler: DPM++ 2M Karras, CFG scale: 7, Seed: 716255618, Size: 1024x1
 
 作用的本质是往提示词里添加了一系列的前缀词, 后缀词, 从而调用 SDXL 模型原生的艺术风格
 
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221411185.png)
+
 全自动抽卡
 
-## AI 服装设计
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221429462.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221443924.png)
+
+## AI 服装设计![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221602596.png)
 
 服装效果图, 由专业的打板师进行结构, 工艺设计, 再送到工厂手里打样, 生产.
 
 ### Clothes Wildcards
 
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221011605.png)
+
 > [https://civitai.com/models/73184/clothes-wildcards](https://civitai.com/models/73184/clothes-wildcards)
 
 ### Various Wildcards
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221018115.png)
 
 > [https://civitai.com/models/122976/various-wildcards](https://civitai.com/models/122976/various-wildcards)
 
@@ -189,9 +227,13 @@ wildCard 由其他人为你准备好的提示词合集
 
 服装 wildCard
 
-配色 wildCard 通过抽卡寻找灵感
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221835577.png)
+
+配色![](stable-diffusion-practice/漫画助手5.01.rar) wildCard 通过抽卡寻找灵感
 
 在已有的服装上做改造,
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221807087.png)
 
 ## AI 模特
 
@@ -227,6 +269,8 @@ AI 换模特, 用 ai 补足模特的不足, 可以用更便宜的模特
 
 [绘唐科技——用户文档 - 飞书云文档](https://wv5o0g1m55v.feishu.cn/wiki/QDDfwmYJKihDMtkENDfcsNJIn7f)
 
+![](stable-diffusion-practice/漫画助手5.01.rar)
+
 # 控制人物一致性
 
 说白了就是脸要一致, 身材大差不差就行
@@ -257,9 +301,7 @@ Steps: 30, Sampler: Euler a, CFG scale: 10, Seed: 1151986892, Face restoration: 
 
 ![control-net](programming/ai-generator/stable-diffusion/work-flow-unit/control-net.md#^z01ii5)
 
-### Ip-adapter Face Id
-
-[【AI绘画】Stable Diffusion轻松生成一致性角色！一键设定人物长相！强到离谱！（附安装包，插件）\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1Bv421i7cq/?vd_source=f8573a6196003ad3683f1c1a403d3431)
+![control-net](programming/ai-generator/stable-diffusion/work-flow-unit/control-net.md#Ip-adapter%20Face%20Id)
 
 ## Lora
 
