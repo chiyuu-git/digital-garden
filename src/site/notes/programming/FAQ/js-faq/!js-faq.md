@@ -18,7 +18,6 @@
 | [[programming/front-end/primitive/browser-api/dom-api\|dom-api]]                                  | [[programming/front-end/primitive/browser-api/dom-api#faq\|dom-api#faq]]                   |
 | [[programming/front-end/framework/typescript/ts-advanced\|ts-advanced]]                           | [[programming/front-end/framework/typescript/ts-advanced#faq\|ts-advanced#faq]]               |
 | [[programming/basic/common/color\|color]]                                                         | [[programming/basic/common/color#faq\|color#faq]]                     |
-| [[programming/FAQ/performance-optimization/!performance-optimization\|!performance-optimization]] | [[programming/FAQ/performance-optimization/!performance-optimization#faq\|!performance-optimization#faq]] |
 | [[programming/front-end/primitive/es/es-regexp\|es-regexp]]                                       | [[programming/front-end/primitive/es/es-regexp#faq\|es-regexp#faq]]                 |
 | [[programming/front-end/primitive/es/es-next-1\|es-next-1]]                                       | [[programming/front-end/primitive/es/es-next-1#faq\|es-next-1#faq]]                 |
 | [[programming/front-end/primitive/es/es-basic\|es-basic]]                                         | [[programming/front-end/primitive/es/es-basic#faq\|es-basic#faq]]                  |
@@ -28,6 +27,7 @@
 | [[programming/front-end/primitive/browser-api/dom-event\|dom-event]]                              | [[programming/front-end/primitive/browser-api/dom-event#faq\|dom-event#faq]]                 |
 | [[programming/front-end/primitive/browser-api/bom\|bom]]                                          | [[programming/front-end/primitive/browser-api/bom#faq\|bom#faq]]                       |
 | [[programming/front-end/browser-core/browser-thread\|browser-thread]]                             | [[programming/front-end/browser-core/browser-thread#faq\|browser-thread#faq]]            |
+| [[programming/FAQ/performance-optimization/!performance-optimization\|!performance-optimization]] | [[programming/FAQ/performance-optimization/!performance-optimization#faq\|!performance-optimization#faq]] |
 
 { .block-language-dataview}
 
