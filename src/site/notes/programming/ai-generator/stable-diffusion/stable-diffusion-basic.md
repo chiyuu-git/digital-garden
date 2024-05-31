@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-04-05-Fri, 4:57:51 pm","date-modified":"2024-05-30-Thu, 10:28:22 am","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-basic/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-04-05-Fri, 4:57:51 pm","date-modified":"2024-05-30-Thu, 10:30:42 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-basic/","dgPassFrontmatter":true}
 ---
 
 
@@ -199,7 +199,13 @@ https://tags.novelai.dev/
 
 ```text
 1girl,outdoors,skirt,solo,hair ornament,shirt,long hair,hair flower,blonde hair,flower,yellow skirt,smile,white shirt,short sleeves,looking at viewer,bangs,pleated skirt,holding,open mouth,tree,day,blush,cowboy shot,breasts,collarbone,:d,standing,shirt tucked in,braid,white flower,purple eyes,bush,outstretched arms,blurry,hair intakes,outstretched arm,sky,paintbrush,blurry background,blue eyes,arms up,medium breasts,teeth,  
-Negative prompt: NSFW,(worst quality:2),(low quality:2),(normal quality:2),lowres,normal quality,((grayscale)),skin spots,acnes,skin blemishes,age spot,(ugly:1.331),(duplicate:1.331),(morbid:1.21),(mutilated:1.21),(tranny:1.331),mutated hands,(poorly drawn hands:1.5),blurry,(bad anatomy:1.21),(bad proportions:1.331),extra limbs,(disfigured:1.331),(missing arms:1.331),(extra legs:1.331),(fused fingers:1.61051),(too many fingers:1.61051),(unclear eyes:1.331),lowers,bad hands,missing fingers,extra digit,bad hands,missing fingers,(((extra arms and legs))),  
+```
+
+```
+NSFW,(worst quality:2),(low quality:2),(normal quality:2),lowres,normal quality,((grayscale)),skin spots,acnes,skin blemishes,age spot,(ugly:1.331),(duplicate:1.331),(morbid:1.21),(mutilated:1.21),(tranny:1.331),mutated hands,(poorly drawn hands:1.5),blurry,(bad anatomy:1.21),(bad proportions:1.331),extra limbs,(disfigured:1.331),(missing arms:1.331),(extra legs:1.331),(fused fingers:1.61051),(too many fingers:1.61051),(unclear eyes:1.331),lowers,bad hands,missing fingers,extra digit,bad hands,missing fingers,(((extra arms and legs)))  
+```
+
+```
 Steps: 20, Sampler: DPM++ 2M Karras, CFG scale: 7.0, Seed: 1474817915, Size: 512x512, Model: 192_3750_4424@7c819b6d13, Version: 1.8.0-RC
 ```
 
@@ -385,6 +391,8 @@ AI 是无法做到你给他一张图片就直接会照着画出来无数张这�
 1. controlNet
 2. ps script
 3. layerDiffusion
+
+## 如何快速获取骨骼图
 
 # Dreamina 最大的局限性就是政治风险...
 
