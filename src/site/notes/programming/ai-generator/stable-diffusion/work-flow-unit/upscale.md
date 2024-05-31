@@ -85,9 +85,9 @@ tiled 瓷砖, 平铺. 有点点像 up scaler 拆成一块块单独处理, 但是
 
 ## 基本原理
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527174625631.png)
+![](stable-diffusion-practice/image-20240527174625631.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527174743592.png)
+![](stable-diffusion-practice/image-20240527174743592.png)
 
 ## 基本使用
 
@@ -99,7 +99,7 @@ tiled diffusion 的配置就是用默认的就行
 
 但是图生图的重绘幅度需要调整得低一点
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527175302721.png)
+![](stable-diffusion-practice/image-20240527175302721.png)
 
 ## 优点
 
@@ -113,17 +113,17 @@ tiled diffusion 的配置就是用默认的就行
 
 分快大小是降低显存的关键所在. 更多可以参考 github 介绍. 如果变灰了可以开启
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527175554746.png)
+![](stable-diffusion-practice/image-20240527175554746.png)
 
 ### Diffusion
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527175649565.png)
+![](stable-diffusion-practice/image-20240527175649565.png)
 
 如果完全没有重叠, 接缝感会很强
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527182046664.png)
+![](stable-diffusion-practice/image-20240527182046664.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527182125306.png)
+![](stable-diffusion-practice/image-20240527182125306.png)
 
 ## 超高清&细节拉满的放大实践
 
@@ -139,7 +139,7 @@ tiled diffusion 的配置就是用默认的就行
 
 controleNet Tile 在讲大图分块的过程中, 会主动去识别每一张图片的内容. 如果识别出来的内容和全局提示词不匹配, 就会减少全局提示词的影响
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527183105001.png)
+![](stable-diffusion-practice/image-20240527183105001.png)
 
 生成时间会增常, tile 可以让 controlNet 去 CPU 运算
 
