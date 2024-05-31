@@ -1,5 +1,5 @@
 ---
-{"aliases":["装饰者模式"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-09-26-Tue, 8:54:18 pm","date-modified":"2023-10-15-Sun, 11:19:10 am","permalink":"/programming/basic/cs-basic/design-pattern/decorator-pattern/","dgPassFrontmatter":true}
+{"aliases":["装饰者模式"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-09-26-Tue, 8:54:18 pm","date-modified":"2024-05-31-Fri, 11:48:08 am","permalink":"/programming/basic/cs-basic/design-pattern/decorator-pattern/","dgPassFrontmatter":true}
 ---
 
 
@@ -79,8 +79,8 @@
 
 访谈工厂 (Factory) 模式和生成器 (Builder) 模式，我听说他们对这个 问题有很大的帮助
 
-# [[洋葱模型\|洋葱模型]]
+# 洋葱模型
 
-# [[高阶函数\|高阶函数]]
+# 高阶函数
 
 # Processor
