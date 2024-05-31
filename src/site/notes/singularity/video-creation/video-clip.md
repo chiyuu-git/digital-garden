@@ -46,3 +46,7 @@ Pr 可以导出 gif, 但是体积太大了. 即使压缩过后也还是很大..
 [提取码: 2023](https://pan.baidu.com/s/1yI3fWC--ts57nSNPlyKKEA?pwd=2023#list/path=%2Fsharelink4075633725-562294649365442%2FAE%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E8%84%9A%E6%9C%AC&parentPath=%2Fsharelink4075633725-562294649365442)
 
 书生汉化插件
+
+# Aroll 和 Broll
+
+[有哪些Vlog拍摄小技巧？ - 知乎](https://www.zhihu.com/question/347361429/answer/1328750248)
