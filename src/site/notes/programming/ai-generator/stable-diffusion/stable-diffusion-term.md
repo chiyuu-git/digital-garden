@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-25-Sat, 12:56:55 pm","date-modified":"2024-05-29-Wed, 4:24:55 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-term/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-25-Sat, 12:56:55 pm","date-modified":"2024-05-30-Thu, 10:39:04 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-term/","dgPassFrontmatter":true}
 ---
 
 
@@ -105,6 +105,10 @@ sdxl 对标 midjourney 的全能大模型, 但是细节还是差很多
 常规的后缀名: `.ckpt`, `.safetensors`
 
 `.safetensors` 较小是因为剪枝, 量化处理过, 不允许运行脚本, 更安全
+
+## 原理
+
+
 
 ## Sdxl
 
