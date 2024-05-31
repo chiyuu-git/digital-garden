@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-11-06-Mon, 1:22:35 pm","date-modified":"2023-12-24-Sun, 9:28:52 pm","permalink":"/entertainment/game/monster-hunter/monster/!monster/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-11-06-Mon, 1:22:35 pm","date-modified":"2024-05-30-Thu, 4:23:53 pm","permalink":"/entertainment/game/monster-hunter/monster/!monster/","dgPassFrontmatter":true}
 ---
 
 
@@ -42,3 +42,5 @@ GP 点、登龙点、大解点, 本质都是硬直点
 # 怪物生态
 
 [【心得】MHWI 翻譯中日英 @魔物獵人 系列 哈啦板 - 巴哈姆特](https://forum.gamer.com.tw/C.php?bsn=5786&snA=151736)
+
+[访客不能直接访问](https://g.nga.cn/read.php?tid=19132278&rand=914)
