@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:45:05 pm","date-modified":"2024-05-30-Thu, 11:16:39 am","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:45:05 pm","date-modified":"2024-05-31-Fri, 10:00:06 am","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/","dgPassFrontmatter":true}
 ---
 
 
@@ -119,13 +119,29 @@ lineart 专门基于动漫风格的线稿实现上色功能的预处理器于模
 
 线稿上色, 形体固定
 
-![controlNet lineArt](stable-diffusion-practice.md#controlNet%20lineArt)
+基于线稿图生图, 使用不同的风格的大模型即可实现真人化或者动画化
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530213937113.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530213941396.png)
 
 # IP-Adapter
 
 实现换肤, 风格迁移
 
-![stable-diffusion-practice](programming/ai-generator/stable-diffusion/stable-diffusion-practice.md#IP-Adapter%20实现换肤%20风格迁移)
+图生图并非一种真正的提示, 只是塑造一种色彩上的相似性.
+
+IP-Adapter 会去真正的理解你输入的图片的含义, 并利用他学习到到的东西去微调输出的结果.
+
+从色彩, 形象, 内容, 已经, 都会更像参考图. 和其他模型组合起来使用, 实现**风格迁移**
+
+不同的 IP-Adapter 模型, 迁移的内容不同, 注意甄别
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529095654764.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529101426106.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529101415370.png)
 
 # Seg
 
@@ -194,11 +210,49 @@ watercolors portrait of a woman,artistry,
 
 # Reference Only
 
+出现得最早的用于人物一致性的尝试. 效果不好才有了后续的 ip-adapter 和 instand_id
+
 用于固定特征, 也可以用于保持人物一致性, 但是泛用性更强一点. 类似于很多个长得很像的人, 穿搭也是一个调调, 但是仔细看就能发现每次脸都不一样? 但是在小说推文场景, 可以用作角色的创建工作, 作为人物管理的基础. 还是够用的
 { #z01ii5}
 
 
 [如何保证每次画出的都同一张人脸：Stable Diffusion的Reference only教程 - AI魔法学院](https://www.wehelpwin.com/article/4343)
+
+[Stable Diffusion | ControlNet：Reference“垫图”功能，不炼丹也能保持同一人物\_controlnet reference-CSDN博客](https://blog.csdn.net/cxyxx12/article/details/136524175)
+
+[Stable Diffusion仿制神器,Reference Only评测 - 知乎](https://zhuanlan.zhihu.com/p/629980765)
+
+# Ip-adapter Face Id
+
+[【AI绘画】Stable Diffusion轻松生成一致性角色！一键设定人物长相！强到离谱！（附安装包，插件）\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1Bv421i7cq/?vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+很不错. 配合 openpose 使用, 就可以摆 pose 了. 很舒服. 比 reference only 效率高, 泛用性强
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240531093807370.png)
+
+````col
+```col-md
+flexGrow=1
+===
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240531093745838.png)
+```
+```col-md
+flexGrow=1
+===
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240531093741159.png)
+```
+````
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240531093831488.png)
+
+````col
+```col-md
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240531093206635.png)
+```
+```col-md
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530191259074.png)
+```
+````
 
 # Multi ControlNet
 
