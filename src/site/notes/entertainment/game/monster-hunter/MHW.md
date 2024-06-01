@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/entertainment/game/monster-hunter/MHW/"}
+{"aliases":["怪物猎人世界","monster-hunter-world"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"1979-11-30-Fri, 12:00:00 am","date-modified":"2023-11-07-Tue, 10:16:10 am","permalink":"/entertainment/game/monster-hunter/MHW/","dgPassFrontmatter":true}
 ---
 
 
