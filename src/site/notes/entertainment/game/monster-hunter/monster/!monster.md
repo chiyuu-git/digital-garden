@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/entertainment/game/monster-hunter/monster/!monster/"}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-11-06-Mon, 1:22:35 pm","date-modified":"2024-05-30-Thu, 4:23:53 pm","permalink":"/entertainment/game/monster-hunter/monster/!monster/","dgPassFrontmatter":true}
 ---
 
 
