@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/entertainment/game/monster-hunter/mhw/"}
+{"dg-publish":true,"permalink":"/entertainment/game/monster-hunter/MHW/"}
 ---
 
 
