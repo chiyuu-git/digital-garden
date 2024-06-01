@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-04-05-Fri, 4:57:51 pm","date-modified":"2024-05-30-Thu, 10:30:42 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-basic/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-04-05-Fri, 4:57:51 pm","date-modified":"2024-05-31-Fri, 5:40:37 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-basic/","dgPassFrontmatter":true}
 ---
 
 
@@ -393,6 +393,10 @@ AI 是无法做到你给他一张图片就直接会照着画出来无数张这�
 3. layerDiffusion
 
 ## 如何快速获取骨骼图
+
+## Esheep 里有很多其他人给出来的工作流
+
+## TensorRT 支持的已经很好了, 看看怎么用上
 
 # Dreamina 最大的局限性就是政治风险...
 
