@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/entertainment/game/monster-hunter/monster/monster/"}
+{"dg-publish":true,"permalink":"/entertainment/game/monster-hunter/monster/!monster/"}
 ---
 
 
