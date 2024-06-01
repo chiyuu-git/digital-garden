@@ -1,5 +1,5 @@
 ---
-{"aliases":["盾斧"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-10-02-Mon, 6:45:51 pm","date-modified":"2024-05-01-Wed, 11:34:31 am","permalink":"/entertainment/game/monster-hunter/charge-blade/","dgPassFrontmatter":true}
+{"dg-publish":true,"permalink":"/entertainment/game/monster-hunter/charge-blade/"}
 ---
 
 
