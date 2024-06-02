@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-25-Sat, 12:56:55 pm","date-modified":"2024-05-30-Thu, 10:39:04 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-term/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-25-Sat, 12:56:55 pm","date-modified":"2024-06-02-Sun, 6:14:54 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-term/","dgPassFrontmatter":true}
 ---
 
 
@@ -16,6 +16,8 @@
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240525124549573.png)
 
 图生图就是参考图的扩散和去噪, 文生图就是从模型训练的图片里找到符合 prompt 的进行扩散和去噪. 其实本质都是**图生图**
+
+有点像看到一个曼妙的背影, 你会想起无数过往的女人. 但是最终扩散形成的可以是任意一个, 但是只能是一个
 
 ## U-Net
 
@@ -107,8 +109,6 @@ sdxl 对标 midjourney 的全能大模型, 但是细节还是差很多
 `.safetensors` 较小是因为剪枝, 量化处理过, 不允许运行脚本, 更安全
 
 ## 原理
-
-
 
 ## Sdxl
 
@@ -264,9 +264,9 @@ Low-Rank Adaptation Models
 
 ## 原理及作用
 
-在 lora 出现之前, sd 只能通过由 dreambooth 方法训练的大模型. 是一种个性化文本到图像扩散模型的新方法. 可以蜂聚用户的需求将扩散模型特殊化. 给定一个主题的几张图片作为输入, 就可以微调一个预训练的文本到图像模型里, 这样它就学会了将唯一标识符 (某些特定词语) 与特定的主题绑定在一起
+是一种个性化文本到图像扩散模型的新方法. 可以蜂聚用户的需求将扩散模型特殊化. 给定一个主题的几张图片作为输入, 就可以微调一个预训练的文本到图像模型里, 这样它就学会了将唯一标识符 (某些特定词语) 与特定的主题绑定在一起
 
-但是大模型的训练成本很高, 消耗大, 速度慢.
+在 lora 出现之前, sd 只能通过由 dreambooth 方法训练的大模型. 但是大模型的训练成本很高, 消耗大, 速度慢.
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240526134453714.png)
 
@@ -304,7 +304,7 @@ Low-Rank Adaptation Models
 
 ## 画风
 
-吉卜力 lora.
+吉卜力 lora. [Studio Ghibli Style LoRA - offset | Stable Diffusion LoRA | Civitai](https://civitai.com/models/6526/studio-ghibli-style-lora)
 
 多个 lora 叠加使用, 一个负责实现人物的描绘, 一个负责画风.
 
@@ -312,17 +312,23 @@ Low-Rank Adaptation Models
 
 具体的权重, 可以自己多多摸索, 尝试
 
-胶片风和拍立得 lora, 实现摄影效果的画风
+胶片风和拍立得 lora, 实现摄影效果的画风: [tianfeng\_filmgirls 胶片质地女孩 - v3.0 | Stable Diffusion LoRA | Civitai](https://civitai.com/models/91113/tianfengfilmgirls)
 
 [AI再进化，这次竟然学会摄影了！一秒生成胶片风、拍立得，还能智能“修脸”！Stable Diffusion AI绘画真实系人像模型+LoRA推荐\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1DP41167bZ/?spm_id_from=pageDriver&vd_source=f8573a6196003ad3683f1c1a403d3431)
 
-Detail Tweaker Lora
+## Detail Tweaker Lora
+
+泛用性很强的 lora
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240602181059256.png)
 
 ## 概念 Concept
 
 ### Gacha Lora
 
 生成抽卡的立绘的 lora
+
+[Gacha splash LORA - v4.0 | Stable Diffusion LoRA | Civitai](https://civitai.com/models/13090/gacha-splash-lora)
 
 > [!NOTE]
 > 如果想要强化一个概念, 可以尝试使用该 concept 下的多个 lora 叠加使用
@@ -332,6 +338,8 @@ Detail Tweaker Lora
 服饰算是概念的一种延展, 是概念具体到衣服, 裤子, 鞋子, 袜子层面的实现.
 
 Mecha lora, 机甲少女
+
+[A-Mecha Musume A素体机娘 - SSS | Stable Diffusion LoRA | Civitai](https://civitai.com/models/15464/a-mecha-musume-a)
 
 服饰 lora 在训练的时候, 经常会只保留衣服, 因此如果权重过高, 经常会出现一些没头没脚的情况
 
@@ -372,8 +380,6 @@ Mecha lora, 机甲少女
 [一流模型！10个高手都在用的二次元插画绘画风大模型推荐，内附模型下载渠道与出图参数提示词关键词模版 | AI绘画 · StableDiffusion\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1Us4y1M7x4/?spm_id_from=333.999.0.0&vd_source=f8573a6196003ad3683f1c1a403d3431)
 
 ## 真实系模型
-
-![stable-diffusion-practice](programming/ai-generator/stable-diffusion/stable-diffusion-practice.md#AI%20摄影)
 
 # 扩展
 
