@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-04-05-Fri, 4:57:51 pm","date-modified":"2024-05-31-Fri, 5:40:37 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-basic/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-04-05-Fri, 4:57:51 pm","date-modified":"2024-06-01-Sat, 4:03:49 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-basic/","dgPassFrontmatter":true}
 ---
 
 
@@ -157,10 +157,22 @@ Chinese link style
 
 最后一行
 
+### 正面提示词 Preset
+
+```
+(masterpiece:1.2),best quality,highres,extremely detailed CG,perfect lighting,8k,wallpaper,
+```
+
 ### 负面提示词
 
 ```
-lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry
+NSFW,badhandv4,EasyNegativeV2,ng_deepnegative_v1_75t
+```
+
+感觉下面这一串裸写的效果要比 embeddins 好一头
+
+```text
+NSFW,(worst quality:2),(low quality:2),(normal quality:2),lowres,normal quality,((grayscale)),skin spots,acnes,skin blemishes,age spot,(ugly:1.331),(duplicate:1.331),(morbid:1.21),(mutilated:1.21),(tranny:1.331),mutated hands,(poorly drawn hands:1.5),blurry,(bad anatomy:1.21),(bad proportions:1.331),extra limbs,(disfigured:1.331),(missing arms:1.331),(extra legs:1.331),(fused fingers:1.61051),(too many fingers:1.61051),(unclear eyes:1.331),lowers,bad hands,missing fingers,extra digit,bad hands,missing fingers,(((extra arms and legs)))  
 ```
 
 ## Prompt 相关的辅助
@@ -198,7 +210,7 @@ https://tags.novelai.dev/
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/90832dcf5cbe2a88815cba6f54569ae7539e8d601af6596779680e9cd3a34c91.png)
 
 ```text
-1girl,outdoors,skirt,solo,hair ornament,shirt,long hair,hair flower,blonde hair,flower,yellow skirt,smile,white shirt,short sleeves,looking at viewer,bangs,pleated skirt,holding,open mouth,tree,day,blush,cowboy shot,breasts,collarbone,:d,standing,shirt tucked in,braid,white flower,purple eyes,bush,outstretched arms,blurry,hair intakes,outstretched arm,sky,paintbrush,blurry background,blue eyes,arms up,medium breasts,teeth,  
+1girl,outdoors,skirt,solo,hair ornament,long hair,hair flower,blonde hair,flower,smile,white shirt,short sleeves,looking at viewer,bangs,holding,open mouth,tree,day,blush,cowboy shot,breasts,collarbone,standing,shirt tucked in,braid,white flower,purple eyes,bush,outstretched arms,blurry,hair intakes,outstretched arm,sky,paintbrush,blurry background,blue eyes,arms up,medium breasts,teeth,  
 ```
 
 ```
@@ -284,16 +296,6 @@ Tagger 是一个插件，在新版的整合包内也帮你装好了，可以在�
 # ControlNet
 
 ![control-net](work-flow-unit/control-net.md)
-
-# AnimeDiff
-
-## Prompt-tarvel
-
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240408183849502.png)
-
-## 不同版本的区别
-
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240408184101784.png)
 
 # FAQ
 
@@ -397,6 +399,10 @@ AI 是无法做到你给他一张图片就直接会照着画出来无数张这�
 ## Esheep 里有很多其他人给出来的工作流
 
 ## TensorRT 支持的已经很好了, 看看怎么用上
+
+## 个人预测主流的 Ai 产品都会适配到消费级显卡上
+
+就像是 3A 大作一样, 会针对最多的用户做适配. 而不是只有 4090 能跑
 
 # Dreamina 最大的局限性就是政治风险...
 
