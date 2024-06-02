@@ -1,5 +1,5 @@
 ---
-{"aliases":["剪映","Pr","视频剪辑"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-10-30-Mon, 3:03:46 pm","date-modified":"2024-05-30-Thu, 3:41:21 pm","permalink":"/singularity/video-creation/video-clip/","dgPassFrontmatter":true}
+{"aliases":["剪映","Pr","视频剪辑"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-10-30-Mon, 3:03:46 pm","date-modified":"2024-06-01-Sat, 10:04:44 am","permalink":"/singularity/video-creation/video-clip/","dgPassFrontmatter":true}
 ---
 
 
@@ -50,3 +50,7 @@ Pr 可以导出 gif, 但是体积太大了. 即使压缩过后也还是很大..
 # Aroll 和 Broll
 
 [有哪些Vlog拍摄小技巧？ - 知乎](https://www.zhihu.com/question/347361429/answer/1328750248)
+
+# 下载 B 站视频
+
+[哔哩哔哩(bilibili)视频解析下载 - 保存B站视频到手机、电脑](https://snapany.com/zh/bilibili)
