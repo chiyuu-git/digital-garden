@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-26-Sun, 8:55:52 pm","date-modified":"2024-05-26-Sun, 8:56:16 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-config/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-26-Sun, 8:55:52 pm","date-modified":"2024-06-01-Sat, 9:44:17 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-config/","dgPassFrontmatter":true}
 ---
 
 
@@ -10,3 +10,5 @@
 感觉不如 eSheep
 
 [Stable Diffusion模型管理插件Civitai Helper - 知乎](https://zhuanlan.zhihu.com/p/640640313)
+
+animateDiff 依赖 ffmpeg
