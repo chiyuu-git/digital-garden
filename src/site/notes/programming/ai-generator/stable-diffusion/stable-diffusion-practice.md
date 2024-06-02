@@ -1,5 +1,5 @@
 ---
-{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-05-30-Thu, 10:03:55 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
+{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-02-Sun, 1:27:50 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
 ---
 
 
@@ -16,6 +16,26 @@
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240528215446720.png)
 
 ## AI 材质艺术字
+
+controlNet 权重越低, 形体会越自由
+
+引导时机影响生成插手的时间
+
+除了处理文字, 还可以用于处理 logo 等任意形体, 艺术字体
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601212436618.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601212409867.png)
+
+```
+stone,rock,coal,sand,from above,
+```
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601212838687.png)
+
+```
+flower,dappled,sunlight,from above,bunch of flowers,outdoors,grasslands,
+```
 
 ## Brightness 和 Illumination
 
@@ -46,6 +66,10 @@ qr toolkit 可以方便的改变二维码的样式
 ## controlNet lineArt
 
 ![control-net](programming/ai-generator/stable-diffusion/work-flow-unit/control-net.md#lineArt)
+
+要注意画风偏向的问题
+
+![control-net](programming/ai-generator/stable-diffusion/work-flow-unit/control-net.md#画风偏向)
 
 ## IP-Adapter 实现换肤, 风格迁移
 
@@ -185,8 +209,6 @@ Recolor 模型的作用原理还是基于扩散对图片内容进行重新生成
 
 ## AI 印花图案设计
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221011605.png)e/image-20240529220911023.png)
-
 logo lora redmond 生成的图片更像是一个简单背景下的小图案
 
 style selector
@@ -207,9 +229,43 @@ Steps: 20, Sampler: DPM++ 2M Karras, CFG scale: 7, Seed: 716255618, Size: 1024x1
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221443924.png)
 
-## AI 服装设计![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221602596.png)
+```
+A logo of a boy and a girl in astronaut costume traveling around the universe, <lora:LogoRedmond_LogoRedAF:1>, logo, LogoRedAF, minimalist color, (isolated on white background, simple background)
+```
+
+## AI 服装设计
+
+服装设计其实很多时候需要的是灵感, 而 AI 最不缺的就是灵感. 在疯狂抽卡的过程中, 一个又一个灵感会不断迸发出来
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221602596.png)
 
 服装效果图, 由专业的打板师进行结构, 工艺设计, 再送到工厂手里打样, 生产.
+
+在已有的服装上做改造,
+
+```
+concept art (fashion costume design sheet, three views, multi-angle display, clothing design, blueprint),An elegant cocktail dress with a sweetheart neckline,lace details,and a pencil skirt,. digital artwork,illustrative,painterly,matte painting,highly detailed,
+```
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221807087.png)
+
+````col
+```col-md
+flexGrow=1
+===
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221835577.png)
+```
+```col-md
+flexGrow=1
+===
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601215725899.png)
+```
+```col-md
+flexGrow=1
+===
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601220416810.png)
+```
+````
 
 ### Clothes Wildcards
 
@@ -217,39 +273,87 @@ Steps: 20, Sampler: DPM++ 2M Karras, CFG scale: 7, Seed: 716255618, Size: 1024x1
 
 > [https://civitai.com/models/73184/clothes-wildcards](https://civitai.com/models/73184/clothes-wildcards)
 
-### Various Wildcards
+wildCard 由其他人为你准备好的提示词合集.
+
+服装 wildCard, 使用通配符作为 prompt, 拉大生成批次, 就会随机从通配符选择 prompt 生成
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601221026212.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601220837704.png)
+
+### 配色
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221018115.png)
 
 > [https://civitai.com/models/122976/various-wildcards](https://civitai.com/models/122976/various-wildcards)
 
-wildCard 由其他人为你准备好的提示词合集
+在生成了满意的服装之后, 固定 seed, 单批数量拉大. (而不是批次拉大) 通过配色 wildscard 来抽卡. 注意将颜色通配符放在服装款式之前组合为一个完整的 prompt
 
-服装 wildCard
+```
+best quality,masterpiece,detailed,highres,simple background,white background,no humans,(__variousWildcards_v11/colors/Basecolors__) trench coat,
+```
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221835577.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601222740207.png)
 
-配色![](stable-diffusion-practice/漫画助手5.01.rar) wildCard 通过抽卡寻找灵感
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601220020493.png)
 
-在已有的服装上做改造,
+### 展望与局限性
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221807087.png)
+除了外观和配色, 还需要考虑衣服的材料, 结构, 等等很多的东西. 这些不是一张像模像样的效果图就可以解决的. 更多还是提供灵感
+
+做图案, 做款式, 挖掘灵感
 
 ## AI 模特
+
+[靠AI开一家服装店？超详细AI衣服款式设计+“AI模特”换装教程 | Stable Diffusion商业落地实践&男女装电商应用，一秒生成“摄影级”产品图\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1994y1W7Tg/?spm_id_from=333.999.0.0&vd_source=f8573a6196003ad3683f1c1a403d3431)
 
 正面平铺产品图, 结合 controlNet
 
 但是很呆板, 模特动作很僵硬, 无法体现模特的身材
 
+````col
+```col-md
+flexGrow=1
+===
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223012354.png)
+```
+```col-md
+flexGrow=1
+===
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223017708.png)
+```
+```col-md
+flexGrow=1
+===
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223022164.png)
+```
+````
+
 最好的方式是真的把衣服穿到身上. 然后拍照重绘
 
-AI 换模特, 用 ai 补足模特的不足, 可以用更便宜的模特
+AI 换模特, 用 ai 补足模特的不足, 可以用更便宜的模特. 或者用人体模型把衣服套上就行了
 
-## 展望与局限性
+````col
+```col-md
+flexGrow=1
+===
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223225515.png)
+```
+```col-md
+flexGrow=1.4
+===
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223314985.png)
+```
+```col-md
+flexGrow=1.5
+===
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223250158.png)
+```
+````
 
-需要考虑衣服的材料, 结构, 等等很多的东西.
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223325377.png)
 
-做图案, 做款式, 挖掘灵感
+最大的问题还是生图与实物不符, 所以需要配合蒙版抠出衣服并且谨慎使用
 
 # AI 小说推文
 
@@ -270,6 +374,34 @@ AI 换模特, 用 ai 补足模特的不足, 可以用更便宜的模特
 [绘唐科技——用户文档 - 飞书云文档](https://wv5o0g1m55v.feishu.cn/wiki/QDDfwmYJKihDMtkENDfcsNJIn7f)
 
 ![](stable-diffusion-practice/漫画助手5.01.rar)
+
+推文场景人物的一致性, 似乎不那么重要. 只需要头发颜色可以保持一致, 人物的年龄不要波动太大就行.
+
+在抖音上甚至延申除了柳如烟这个网络 meme 角色. 所有的银发大小姐都起名叫柳如烟. 虽然各家的画风可能不太一致. 但是只要叫这个名字的银发女角色, 观众都能立马在脑海中脑补出她的经典角色形象. 也给小说推文的任务一致性降低了要求.
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602090205693.png)
+
+本质上只是一个批量出图的脚本
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602092508145.png)
+
+````col
+```col-md
+flexGrow=1
+===
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602092448163.png)
+```
+```col-md
+flexGrow=1
+===
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602092433813.png)
+```
+```col-md
+flexGrow=1
+===
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602092422401.png)
+```
+````
 
 # 控制人物一致性
 
