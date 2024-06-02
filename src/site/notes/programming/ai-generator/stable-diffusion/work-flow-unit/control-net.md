@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:45:05 pm","date-modified":"2024-05-31-Fri, 10:00:06 am","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:45:05 pm","date-modified":"2024-06-02-Sun, 1:53:23 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/","dgPassFrontmatter":true}
 ---
 
 
@@ -17,9 +17,7 @@ ControlNet 更新至 1.12 版本以后，上方多了一排可以用于快速选
 
 # 基本原理
 
-在原理上, controlnet 和 lora 有很多相似之处. 定位都是对大扩散模型做微调的额外网络
-
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240526200758865.png)
+在原理上, controlnet 和 lora 有很多相似之处. 定位都是对大扩散模型做微调的额外网络. 根据一些额外信息控制扩散生成的走向.
 
 举个例子: 姿势, 如果只是通过提示词输入一个跳舞, 人物可能会有无数的舞蹈姿势. 通过 controlNet 传入一张特殊的图片, 不同的点线颜色代表着不同的含义, 来让模型明白需要怎么样的姿势.
 
@@ -37,9 +35,75 @@ ControlNet 更新至 1.12 版本以后，上方多了一排可以用于快速选
 
 通过预处理器 Annotator 生成 Controlnet 需要的数据
 
+## 控制模式
+
+不光是内容上的偏向, 还有风格上的偏向
+
+### 内容偏向
+
+线稿里面有, 但是提示词里没有.
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240602132525928.png)
+
+弹窗和烟头都是 pormpt 里没有的.
+
+在均衡模式下, 烟没有了.
+
+在偏向提示词的时候, 弹窗和烟都没有了
+
+而偏向 controlNet 时, 两者都得到了保留
+
+### 画风偏向
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240602132821423.png)
+
+balance 和 controlNet mode 生成了真人, 但是头发的线条依然是二次元的.
+
+只有偏向 prompt, 才能生成真人发质的头像
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240602111020242.png)
+
+这里的内容指的是比较微小的差异
+
+> [!question] 如何要生成的内容和参考图差异太大怎么办呢?
+> 这个时候控制模式是无能为了的. 需要依靠引导时机来解决, 以及分辨率
+
 ## 引导时机
 
-默认的 0 - 1 就是全程生效
+默认的 0 - 1 就是全程生效. 可以把时机乘上 step, 就能得到开始介入的步数和终止介入的步数.
+
+### 引导介入的时机
+
+前期的引导特别影响构图, 已经确立了构图之后, 即使提前终止了也不会对构图有太大的影响.
+
+前期确定构图, 后期确定细节.
+
+使用 controlNet 进行微调的一个实例:
+
+1. 对生成的月亮的亮度不太满意
+2. 固定随机种子
+3. 将月亮设置为黑白图, 手动调高月亮的亮度, 然后应用亮度模型
+4. 线稿 CN 提前介入, 把构图固定下来, 然后亮度模型后期才介入, 把月亮的亮度细节确定下来
+
+## 预处理图分辨率
+
+### 完美像素模式
+
+勾选之后, 预处理图的分辨率就会和目标图像保持一致. 通常之下都这样选是没问题的
+
+### 线稿相关模型可以设置预处理图的分辨率
+
+canny 模型, 阈值越高, 线稿就越简洁, 可以用于去除掉主体之外的一些我们不想要的物件.
+
+再把预处理图的分辨率调高, 调整到背景的线条不那么明显, 只保留主体. 再配合 prompt 提示词, 就可以做到在参考图与 prompt 背景内容不一致的情况下换掉背景
+
+## 缩放模式
+
+仅调整大小就是调整宽高比让参考图的像素适应目标像素. 会压扁或者拉长
+
+裁剪后缩放就是截肢, 截掉多余的部分来满足目标像素.
+
+扩充就可以实现 outpaint 了
 
 # Openpose 骨骼图
 
@@ -53,7 +117,9 @@ openpose editor. 编辑骨骼图
 
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529223235296.png)
 
-# Depth 深度图
+# 构图相关模型
+
+## Depth 深度图
 
 对场景还原
 
@@ -65,19 +131,19 @@ openpose editor. 编辑骨骼图
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240526203102744.png)
 
-# Canny / Lineart
+## Canny / Lineart
 
 提取边缘, 草稿, 黑笔白线
 
 controlNet 的作者认为在还原这个领域, Canny 是最重要的模型. 因为识别出来了完整的外形
 
-## 线稿上色
+### 线稿上色
 
 直接 canny 会让边缘模糊. 线稿图直接使用 inrevert 就好了
 
 lineart 专门基于动漫风格的线稿实现上色功能的预处理器于模型的组合
 
-# Hed / Soft Edge
+## Hed / Soft Edge
 
 柔和边缘.
 
@@ -89,7 +155,7 @@ lineart 专门基于动漫风格的线稿实现上色功能的预处理器于模
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240526203758990.png)
 
-# Scribble
+## Scribble
 
 比 HED 更加自由和奔放的描摹. 有时候可以激发一些奇妙的化学反应
 
@@ -101,21 +167,7 @@ lineart 专门基于动漫风格的线稿实现上色功能的预处理器于模
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240526204138227.png)
 
-# inPaint
-
-实现创新型局部重绘
-
-加强重绘区域内外的关联, 让过渡更加自然
-
-# Tile
-
-在放大工作流种增加细节
-
-[Multi Diffusion + Tiled VAE + ControlNet Tile模型，低显存打造AI绘画超高清6K分辨率体验！SD扩展插件教程\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1Su4y1d7Dp/?spm_id_from=333.999.0.0&vd_source=f8573a6196003ad3683f1c1a403d3431)
-
-[配合 controlNet 使用](inpaint.md#配合%20controlNet%20使用)
-
-# lineArt
+## lineArt
 
 线稿上色, 形体固定
 
@@ -125,7 +177,25 @@ lineart 专门基于动漫风格的线稿实现上色功能的预处理器于模
 
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530213941396.png)
 
-# IP-Adapter
+# 重绘修复相关模型
+
+## inPaint
+
+实现创新型局部重绘
+
+加强重绘区域内外的关联, 让过渡更加自然
+
+## Tile
+
+在放大工作流种增加细节
+
+[Multi Diffusion + Tiled VAE + ControlNet Tile模型，低显存打造AI绘画超高清6K分辨率体验！SD扩展插件教程\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1Su4y1d7Dp/?spm_id_from=333.999.0.0&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+[配合 controlNet 使用](inpaint.md#配合%20controlNet%20使用)
+
+# 图像提示相关模型
+
+## IP-Adapter
 
 实现换肤, 风格迁移
 
@@ -143,27 +213,7 @@ IP-Adapter 会去真正的理解你输入的图片的含义, 并利用他学习�
 
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529101415370.png)
 
-# Seg
-
-语义分割, semantic Segmenttation Model. 是一种将标签或类别与图片的像素信息关联的一种深度学习算法
-
-> seg 绘画应该是未来的趋势, 但是还需要简化. 比起单纯用 prompt 描述画面, 如果未来可以通过 sketch seg + 标注描述画面, 那将绝杀. 需要一个自动取色器, prompt seg search 然后可以自动替换画笔颜色即可
-
-利用语义分割去识别一张图片上的每个部分分别是什么东西
-
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529163211164.png)
-
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240527214825521.png)
-
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529163328376.png)
-
-通过 ps 以及 seg, 完成语义分割的画作, 再使用 sd 生成成品
-
-# ReColor
-
-![stable-diffusion-practice](programming/ai-generator/stable-diffusion/stable-diffusion-practice.md#上色)
-
-# InstantId
+## InstantId
 
 保持人物一致性
 
@@ -175,7 +225,7 @@ InstantID 使用 InsightFace 从参考人脸中检测、裁剪和提取人脸 em
 
 注意：InstantID 需要使用 SDXL 大模型，目前还没有 Stable Diffusion 1.5 对应的版本。
 
-## 操作实例
+### 操作实例
 
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530100448628.png)
 
@@ -208,7 +258,7 @@ watercolors portrait of a woman,artistry,
 
 > [!question] 要怎么才能全身像然后人脸也一致呢?
 
-# Reference Only
+## Reference Only
 
 出现得最早的用于人物一致性的尝试. 效果不好才有了后续的 ip-adapter 和 instand_id
 
@@ -222,7 +272,7 @@ watercolors portrait of a woman,artistry,
 
 [Stable Diffusion仿制神器,Reference Only评测 - 知乎](https://zhuanlan.zhihu.com/p/629980765)
 
-# Ip-adapter Face Id
+## Ip-adapter Face Id
 
 [【AI绘画】Stable Diffusion轻松生成一致性角色！一键设定人物长相！强到离谱！（附安装包，插件）\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1Bv421i7cq/?vd_source=f8573a6196003ad3683f1c1a403d3431)
 
@@ -253,6 +303,28 @@ flexGrow=1
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530191259074.png)
 ```
 ````
+
+# 色彩相关模型
+
+## ReColor
+
+![stable-diffusion-practice](programming/ai-generator/stable-diffusion/stable-diffusion-practice.md#上色)
+
+# Seg
+
+语义分割, semantic Segmenttation Model. 是一种将标签或类别与图片的像素信息关联的一种深度学习算法
+
+> seg 绘画应该是未来的趋势, 但是还需要简化. 比起单纯用 prompt 描述画面, 如果未来可以通过 sketch seg + 标注描述画面, 那将绝杀. 需要一个自动取色器, prompt seg search 然后可以自动替换画笔颜色即可
+
+利用语义分割去识别一张图片上的每个部分分别是什么东西
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529163211164.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240527214825521.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529163328376.png)
+
+通过 ps 以及 seg, 完成语义分割的画作, 再使用 sd 生成成品
 
 # Multi ControlNet
 
