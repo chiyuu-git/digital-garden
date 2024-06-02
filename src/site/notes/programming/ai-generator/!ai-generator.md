@@ -118,3 +118,5 @@ wonderstudio 一键出片神器
 # 生成音乐 + Ai 制作 MV
 
 [Suno AI 作曲全球爆红！几个月前还觉得 AI 作曲是个笑话，现在觉得 AI 要霸榜热曲也不是不可能了 \~\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV15j421R75g/?spm_id_from=333.1007.tianma.1-1-1.click&vd_source=f8573a6196003ad3683f1c1a403d3431)[Fetching Title#nhkc](https://www.bilibili.com/video/BV15j421R75g/?spm_id_from=333.1007.tianma.1-1-1.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+[Sina Visitor System](https://weibo.com/1757693565/O25UhAaLM)
