@@ -1,5 +1,5 @@
 ---
-{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-02-Sun, 1:27:50 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
+{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-02-Sun, 10:43:30 pm","Multi-Column Markdown":[{"Number of Columns":2},{"Column Size":"Standard"}],"permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
 ---
 
 
@@ -23,15 +23,30 @@ controlNet 权重越低, 形体会越自由
 
 除了处理文字, 还可以用于处理 logo 等任意形体, 艺术字体
 
+![|300](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602190026647.png)
+
+--- start-multi-column: ID_e0e8
+
+```column-settings
+Number of Columns: 3
+Largest Column: standard
+```
+
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601212436618.png)
 
+--- column-break ---
+
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601212409867.png)
+
+--- column-break ---
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601212838687.png)
+
+--- end-multi-column
 
 ```
 stone,rock,coal,sand,from above,
 ```
-
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601212838687.png)
 
 ```
 flower,dappled,sunlight,from above,bunch of flowers,outdoors,grasslands,
@@ -177,9 +192,20 @@ lora 训练
 
 ## 放大
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529213710070.png)
+--- start-multi-column: ID_adrm
+
+```column-settings
+Number of Columns: 2
+Largest Column: right
+```
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529213645043.png)
+
+--- column-break ---
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529213710070.png)
+
+--- end-multi-column
 
 Tiled diffusion 超分放大, 重构容易造成一些内容的变形
 
@@ -187,11 +213,22 @@ stable SR 真实系的超分扩展
 
 ## 上色
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529215402123.png)![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529215335174.png)
+--- start-multi-column: ID_kztx
 
-传统的上色效果还是生图. 不如 controlNet Recolor.
+```column-settings
+Number of Columns: 2
+Largest Column: standard
+```
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529215402123.png)
+
+--- column-break ---
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529215335174.png)
+
+--- end-multi-column
+
+传统的上色效果还是生图. 不如 controlNet Recolor.
 
 Recolor 模型的作用原理还是基于扩散对图片内容进行重新生成, 但它会根据黑白照片的亮度 (Luminance) 或者强度 (Intensity) 来指导新的图片进行生成. 生成完了之后, 它会将彩色版本的图片盖在原来的这张图片上 (以某种方式混合), 从而保留原有形象轮廓, 做到只变颜色
 
@@ -211,13 +248,19 @@ Recolor 模型的作用原理还是基于扩散对图片内容进行重新生成
 
 logo lora redmond 生成的图片更像是一个简单背景下的小图案
 
-style selector
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602194051763.png)
 
+> [Logo.Redmond - Logo Lora for SD XL 1.0 - v2.0 | Stable Diffusion LoRA | Civitai](https://civitai.com/models/124609/logoredmond-logo-lora-for-sd-xl-10)
+
+![|300](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602193856906.png)
+
+```
 A logo of a boy and a girl in astronaut costume traveling around the universe, <lora:LogoRedmond_LogoRedAF:1>,
-
 logo, LogoRedAF, minimalist color, (isolated on white background, simple background)
-
 Steps: 20, Sampler: DPM++ 2M Karras, CFG scale: 7, Seed: 716255618, Size: 1024x1024, Model hash: 31e35c80fc, Model: Stable Diffusion SDXL_1.0, Style Selector Enabled: True, Style Selector Randomize: False, Style Selector Style: base, Version: v1.5.1
+```
+
+style selector
 
 作用的本质是往提示词里添加了一系列的前缀词, 后缀词, 从而调用 SDXL 模型原生的艺术风格
 
@@ -229,43 +272,34 @@ Steps: 20, Sampler: DPM++ 2M Karras, CFG scale: 7, Seed: 716255618, Size: 1024x1
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221443924.png)
 
-```
-A logo of a boy and a girl in astronaut costume traveling around the universe, <lora:LogoRedmond_LogoRedAF:1>, logo, LogoRedAF, minimalist color, (isolated on white background, simple background)
-```
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221602596.png)
 
 ## AI 服装设计
 
 服装设计其实很多时候需要的是灵感, 而 AI 最不缺的就是灵感. 在疯狂抽卡的过程中, 一个又一个灵感会不断迸发出来
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221602596.png)
-
-服装效果图, 由专业的打板师进行结构, 工艺设计, 再送到工厂手里打样, 生产.
-
-在已有的服装上做改造,
-
 ```
 concept art (fashion costume design sheet, three views, multi-angle display, clothing design, blueprint),An elegant cocktail dress with a sweetheart neckline,lace details,and a pencil skirt,. digital artwork,illustrative,painterly,matte painting,highly detailed,
 ```
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221807087.png)
+ ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221807087.png) --- start-multi-column: ID_cgqx
 
-````col
-```col-md
-flexGrow=1
-===
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221835577.png)
+```column-settings
+Number of Columns: 3
+Largest Column: standard
 ```
-```col-md
-flexGrow=1
-===
+
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601215725899.png)
-```
-```col-md
-flexGrow=1
-===
+
+--- column-break ---
+
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601220416810.png)
-```
-````
+
+--- column-break ---
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221835577.png)
+
+--- end-multi-column
 
 ### Clothes Wildcards
 
@@ -311,45 +345,47 @@ best quality,masterpiece,detailed,highres,simple background,white background,no 
 
 但是很呆板, 模特动作很僵硬, 无法体现模特的身材
 
-````col
-```col-md
-flexGrow=1
-===
+--- start-multi-column: ID_emum
+
+```column-settings
+Number of Columns: 3
+Largest Column: standard
+```
+
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223012354.png)
-```
-```col-md
-flexGrow=1
-===
+
+--- column-break ---
+
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223017708.png)
-```
-```col-md
-flexGrow=1
-===
+
+--- column-break ---
+
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223022164.png)
-```
-````
+
+--- end-multi-column
 
 最好的方式是真的把衣服穿到身上. 然后拍照重绘
 
 AI 换模特, 用 ai 补足模特的不足, 可以用更便宜的模特. 或者用人体模型把衣服套上就行了
 
-````col
-```col-md
-flexGrow=1
-===
+--- start-multi-column: ID_aghc
+
+```column-settings
+Number of Columns: 3
+Largest Column: standard
+```
+
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223225515.png)
-```
-```col-md
-flexGrow=1.4
-===
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223314985.png)
-```
-```col-md
-flexGrow=1.5
-===
+
+--- column-break ---
+
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223250158.png)
-```
-````
+
+--- column-break ---
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223314985.png)
+
+--- end-multi-column
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223325377.png)
 
@@ -385,23 +421,24 @@ flexGrow=1.5
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602092508145.png)
 
-````col
-```col-md
-flexGrow=1
-===
+--- start-multi-column: ID_pefz
+
+```column-settings
+Number of Columns: 3
+Largest Column: standard
+```
+
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602092448163.png)
-```
-```col-md
-flexGrow=1
-===
+
+--- column-break ---
+
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602092433813.png)
-```
-```col-md
-flexGrow=1
-===
+
+--- column-break ---
+
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602092422401.png)
-```
-````
+
+--- end-multi-column
 
 # 控制人物一致性
 
@@ -423,7 +460,26 @@ Negative prompt: helmet
 Steps: 30, Sampler: Euler a, CFG scale: 10, Seed: 1151986892, Face restoration: CodeFormer, Size: 768x512, Model hash: 9aba26abdf, Model: deliberate_v2, Clip skip: 2, ENSD: 31337
 ```
 
-就可以生成这个独特的角色：
+就可以生成这个独特的角色
+
+--- start-multi-column: ID_7fpj
+
+```column-settings
+Number of Columns: 3
+Largest Column: standard
+```
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602195945755.png)
+
+--- column-break ---
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602195935209.png)
+
+--- column-break ---
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602195918942.png)
+
+--- end-multi-column
 
 ## ControlNet
 
