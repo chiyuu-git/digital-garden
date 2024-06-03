@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:38:48 pm","date-modified":"2024-05-29-Wed, 5:46:12 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:38:48 pm","date-modified":"2024-06-03-Mon, 10:01:29 am","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/","dgPassFrontmatter":true}
 ---
 
 
@@ -85,11 +85,15 @@ tiled 瓷砖, 平铺. 有点点像 up scaler 拆成一块块单独处理, 但是
 
 ## 基本原理
 
-![](stable-diffusion-practice/image-20240527174625631.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240602222809592.png)
 
-![](stable-diffusion-practice/image-20240527174743592.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240602222815189.png)
 
 ## 基本使用
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240602222759350.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240602222803837.png)
 
 高清化对真实系照片非常重要, 因为只要足够多的细节, 才能体验出真实性. 相反二次元要求就没有那么高
 { #fdpum6}
@@ -99,7 +103,7 @@ tiled diffusion 的配置就是用默认的就行
 
 但是图生图的重绘幅度需要调整得低一点
 
-![](stable-diffusion-practice/image-20240527175302721.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240602222844390.png)
 
 ## 优点
 
@@ -113,11 +117,7 @@ tiled diffusion 的配置就是用默认的就行
 
 分快大小是降低显存的关键所在. 更多可以参考 github 介绍. 如果变灰了可以开启
 
-![](stable-diffusion-practice/image-20240527175554746.png)
-
 ### Diffusion
-
-![](stable-diffusion-practice/image-20240527175649565.png)
 
 如果完全没有重叠, 接缝感会很强
 
@@ -139,8 +139,8 @@ tiled diffusion 的配置就是用默认的就行
 
 controleNet Tile 在讲大图分块的过程中, 会主动去识别每一张图片的内容. 如果识别出来的内容和全局提示词不匹配, 就会减少全局提示词的影响
 
-![](stable-diffusion-practice/image-20240527183105001.png)
-
 生成时间会增常, tile 可以让 controlNet 去 CPU 运算
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240602222832842.png)
 
 ## 分区提示词
