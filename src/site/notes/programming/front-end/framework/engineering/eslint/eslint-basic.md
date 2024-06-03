@@ -1,5 +1,5 @@
 ---
-{"aliases":["编程经验"],"tags":["gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry"],"review-dates":[],"dg-home":true,"dg-publish":true,"date-created":"2022-09-04-Sun, 9:13:26 pm","date-modified":"2024-04-23-Tue, 8:50:25 pm","permalink":"/programming/front-end/framework/engineering/eslint/eslint-basic/","dgPassFrontmatter":true}
+{"aliases":["编程经验"],"tags":["gardenEntry"],"review-dates":[],"dg-home":true,"dg-publish":true,"date-created":"2022-09-04-Sun, 9:13:26 pm","date-modified":"2024-04-23-Tue, 8:50:25 pm","permalink":"/programming/front-end/framework/engineering/eslint/eslint-basic/","dgPassFrontmatter":true}
 ---
 
 
@@ -12,11 +12,11 @@
 
 | File                                                               | overview                   |
 | ------------------------------------------------------------------ | -------------------------- |
-| [[programming/front-end/primitive/es/es-number\|es-number]]     | [[programming/front-end/primitive/es/es-number#experience\|es-number#experience]]   |
-| [[programming/front-end/primitive/es/es-function\|es-function]] | [[programming/front-end/primitive/es/es-function#experience\|es-function#experience]] |
 | [[programming/FAQ/performance-optimization/重绘和回流\|重绘和回流]]       | [[programming/FAQ/performance-optimization/重绘和回流#experience\|重绘和回流#experience]]       |
-| [[programming/front-end/primitive/es/es-regexp\|es-regexp]]     | [[programming/front-end/primitive/es/es-regexp#experience\|es-regexp#experience]]   |
+| [[programming/front-end/primitive/es/es-function\|es-function]] | [[programming/front-end/primitive/es/es-function#experience\|es-function#experience]] |
+| [[programming/front-end/primitive/es/es-number\|es-number]]     | [[programming/front-end/primitive/es/es-number#experience\|es-number#experience]]   |
 | [[programming/front-end/primitive/es/es-array\|es-array]]       | [[programming/front-end/primitive/es/es-array#experience\|es-array#experience]]    |
+| [[programming/front-end/primitive/es/es-regexp\|es-regexp]]     | [[programming/front-end/primitive/es/es-regexp#experience\|es-regexp#experience]]   |
 
 { .block-language-dataview}
 
