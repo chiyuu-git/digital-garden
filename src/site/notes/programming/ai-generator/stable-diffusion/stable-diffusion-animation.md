@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-31-Fri, 3:52:03 pm","date-modified":"2024-06-02-Sun, 5:51:09 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-animation/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-31-Fri, 3:52:03 pm","date-modified":"2024-06-02-Sun, 10:18:52 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-animation/","dgPassFrontmatter":true}
 ---
 
 
@@ -31,6 +31,8 @@
 
 23 年 6-7 月份出现的. 场景很特定, 就是做瞬息宇宙的效果
 
+都支持 controlNet
+
 只是 AnimaeDiff 镜头控制需要厍模型，Deforum 不需要，直接调参数，Deforum 可以控制 Z 值。
 
 目前火的瞬息全宇宙效果用 Deforum，因为更多的丝滑和患象空间，更过的控制参數，镜头更多的控制。
@@ -39,7 +41,9 @@
 
 而 AnimaeDiff 更多的是保持统一一性，转成很丝滑，但是风格或者人物保持统一，说白了，提示词和下一个提示词自接，发挥想象的空间比较少
 
-一种风格化的视频创作工具, 而非是稳定的生视频
+一种风格化的视频创作工具, 而非是稳定的生视频.
+
+显存要求低. 随便跑的
 
 ## 基本使用
 
@@ -60,6 +64,8 @@
 下方的正反提示词会对每一帧生效. 如果要针对特定的时间写提示词可以在后面加上 `--neg` 参数
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-animation/image-20240601104058194.png)
+
+![](stable-diffusion-animation/20240602205451.mp4)
 
 ## 关键帧
 
@@ -273,18 +279,20 @@ best quality, masterpiece, 1girl, upper body, detailed face, looking at viewer, 
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-animation/image-20240531175350244.png)
 
-````col
-```col-md
-flexGrow=1
-===
+--- start-multi-column: ID_47r7
+
+```column-settings
+Number of Columns: 2
+Largest Column: standard
+```
+
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-animation/74b12e74ae211720160246ba17e3f46defecbe779b3575e56ccde1671686e8bb.gif)
-```
-```col-md
-flexGrow=1
-===
+
+--- column-break ---
+
 ![](stable-diffusion-animation/8e09e41959fb2dc575ba481a62e2b236cc5236e8bbe93488e5524c3ab53c8748.mp4)
-```
-````
+
+--- end-multi-column
 
 ## 配置要求
 
