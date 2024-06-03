@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:45:05 pm","date-modified":"2024-06-02-Sun, 1:53:23 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:45:05 pm","date-modified":"2024-06-02-Sun, 10:21:50 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/","dgPassFrontmatter":true}
 ---
 
 
@@ -197,6 +197,8 @@ lineart 专门基于动漫风格的线稿实现上色功能的预处理器于模
 
 ## IP-Adapter
 
+[GitHub - tencent-ailab/IP-Adapter: The image prompt adapter is designed to enable a pretrained text-to-image diffusion model to generate images with image prompt.](https://github.com/tencent-ailab/IP-Adapter)
+
 实现换肤, 风格迁移
 
 图生图并非一种真正的提示, 只是塑造一种色彩上的相似性.
@@ -207,7 +209,7 @@ IP-Adapter 会去真正的理解你输入的图片的含义, 并利用他学习�
 
 不同的 IP-Adapter 模型, 迁移的内容不同, 注意甄别
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529095654764.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240602190547047.png)
 
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529101426106.png)
 
@@ -219,7 +221,7 @@ IP-Adapter 会去真正的理解你输入的图片的含义, 并利用他学习�
 
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530094537063.png)
 
-InstantID 使用 InsightFace 从参考人脸中检测、裁剪和提取人脸 embedding 。然后 embedding 与 IP-Adapter 一起使用来控制图像生成。这部分与 IP-Adapter Face ID 非常相似。不过，它还使用 ControlNet 检测并修复多个面部标志（眼睛、鼻子和嘴巴）。
+InstantID 使用 InsightFace 从参考人脸中检测、裁剪和提取人脸 embedding 。然后 embedding 与 IP-Adapter 一起使用来控制图像生成。这部分与 IP-Adapter Face ID 非常相似。不过，它还使用 ControlNet 检测并修复多个面部标志（眼睛、鼻子和嘴巴）
 
 结合使用 IP-Adapter Face ID 和 ControlNet，可以高保真度地复制我们提供的参考图像，从而最终实现人物角色的一致性。
 
@@ -280,29 +282,37 @@ watercolors portrait of a woman,artistry,
 
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240531093807370.png)
 
-````col
-```col-md
-flexGrow=1
-===
+--- start-multi-column: ID_iv2g
+
+```column-settings
+Number of Columns: 2
+Largest Column: standard
+```
+
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240531093745838.png)
-```
-```col-md
-flexGrow=1
-===
+
+--- column-break ---
+
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240531093741159.png)
-```
-````
+
+--- end-multi-column
 
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240531093831488.png)
 
-````col
-```col-md
+--- start-multi-column: ID_d6i7
+
+```column-settings
+Number of Columns: 2
+Largest Column: standard
+```
+
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240531093206635.png)
-```
-```col-md
+
+--- column-break ---
+
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530191259074.png)
-```
-````
+
+--- end-multi-column
 
 # 色彩相关模型
 
