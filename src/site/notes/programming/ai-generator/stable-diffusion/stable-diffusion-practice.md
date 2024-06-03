@@ -1,5 +1,5 @@
 ---
-{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-02-Sun, 10:43:30 pm","Multi-Column Markdown":[{"Number of Columns":2},{"Column Size":"Standard"}],"permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
+{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-03-Mon, 10:26:40 am","Multi-Column Markdown":[{"Number of Columns":2},{"Column Size":"Standard"}],"permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
 ---
 
 
@@ -100,6 +100,8 @@ qr toolkit 可以方便的改变二维码的样式
 
 # LayerDiffusion
 
+github.com/layerdiffusion/sd-forge-layerdiffuse
+
 传统的 ps 工作流中, 图片往往是分层的, 但是 sd 的图片虽然精美却无法分层
 
 controlNet 作者的又一力作. 可以生成透明背景的 png 图片.
@@ -118,11 +120,11 @@ controlNet 作者的又一力作. 可以生成透明背景的 png 图片.
 
 ## 抠图的本质区别是什么
 
-和一些智能抠图的工具不同, 在生成阶段久将透明通道的信息加入了运算.
+和一些智能抠图的工具不同, 在生成阶段就将透明通道的信息加入了运算.
 
 ### 生成半透明素材
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527163033322.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240603102630592.png)
 
 透明玻璃瓶的内部也是有 alpha 通道的
 
@@ -131,6 +133,8 @@ controlNet 作者的又一力作. 可以生成透明背景的 png 图片.
 ### 生成粒子素材
 
 极大的减轻抠图难度. 说白了, 就是一些抠图比较困难的场景, 都可以使用 layerDiffusion 直接生成
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240603102639066.png)
 
 ## 进阶操作
 
