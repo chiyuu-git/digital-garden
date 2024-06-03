@@ -1,11 +1,15 @@
 ---
-{"aliases":["局部重绘"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 4:32:31 pm","date-modified":"2024-06-01-Sat, 9:18:04 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/inpaint/","dgPassFrontmatter":true}
+{"aliases":["局部重绘"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 4:32:31 pm","date-modified":"2024-06-02-Sun, 10:48:53 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/inpaint/","dgPassFrontmatter":true}
 ---
 
 
 # 改变人物表情 / 修复人脸 / 修复手崩的问题
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240528114354741.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/inpaint/image-20240602220051661.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/inpaint/image-20240602220106602.png)
+
+> 不知道为什么需要重绘整张图片才能改成闭眼
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240528114402158.png)
 
@@ -57,43 +61,47 @@ embeddings.
 
 sketch 也可以单独使用, 相当于是把蒙版的区域加入到图中, 做一次图生图. 灵魂画手效果
 
-````col
-```col-md
-===
+ --- start-multi-column: ID_60j9
+
+```column-settings
+Number of Columns: 3
+Largest Column: standard
+```
+
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240528114633211.png)
-```
-```col-md
-flexGrow=3
-===
+
+--- column-break ---
+
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240528114725045.png)
-```
-```col-md
-===
+
+--- column-break ---
+
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240528114646397.png)
-```
-````
+
+--- end-multi-column
 
 # 上传重绘蒙版
 
 通过精确的蒙版, 告诉模型哪些部分需要重绘. 因为 webUI 自带的蒙版, 还挺粗糙的. 需要有更专业的
 
-````col
-```col-md
-flexGrow=1
-===
+--- start-multi-column: ID_j30b
+
+```column-settings
+Number of Columns: 3
+Largest Column: standard
+```
+
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240528114047468.png)
-```
-```col-md
-flexGrow=1
-===
+
+--- column-break ---
+
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240528114051948.png)
-```
-```col-md
-flexGrow=1
-===
+
+--- column-break ---
+
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/inpaint/image-20240528164419170.png)
-```
-````
+
+--- end-multi-column
 
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/inpaint/image-20240528164257799.png)
 
