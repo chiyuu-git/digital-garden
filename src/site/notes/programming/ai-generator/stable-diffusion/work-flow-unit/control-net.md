@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:45:05 pm","date-modified":"2024-06-02-Sun, 10:21:50 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:45:05 pm","date-modified":"2024-06-03-Mon, 9:44:44 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/","dgPassFrontmatter":true}
 ---
 
 
@@ -117,6 +117,8 @@ openpose editor. 编辑骨骼图
 
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529223235296.png)
 
+> [!question] 如何快速获取各种各样的骨骼图
+
 # 构图相关模型
 
 ## Depth 深度图
@@ -176,6 +178,16 @@ lineart 专门基于动漫风格的线稿实现上色功能的预处理器于模
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530213937113.png)
 
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530213941396.png)
+
+## 预处理器和模型的搭配
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240603213312266.png)
+
+动漫预处理器只能由动漫线稿模型搭配. 因为动漫预处理保留的内容, 只有动漫先搞模型可以理解并且正确处理. 比如动漫漫画里常见的网点
+
+动漫线稿模型只有使用偏向提示词才有好的效果. 因为线稿模型没有猜测模式, 所以只能选择偏向提示词模型并且加上详细的引导, 因此使用动漫线稿模型的时候 controlNet 的控制效果会被严重削弱, 需要一个比较详细的提示词
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240603214305759.png)
 
 # 重绘修复相关模型
 
