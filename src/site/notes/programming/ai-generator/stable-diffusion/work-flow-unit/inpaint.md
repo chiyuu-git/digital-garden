@@ -1,5 +1,5 @@
 ---
-{"aliases":["局部重绘"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 4:32:31 pm","date-modified":"2024-06-02-Sun, 10:48:53 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/inpaint/","dgPassFrontmatter":true}
+{"aliases":["局部重绘"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 4:32:31 pm","date-modified":"2024-06-03-Mon, 2:56:33 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/inpaint/","dgPassFrontmatter":true}
 ---
 
 
@@ -114,6 +114,10 @@ Largest Column: standard
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240526104258855.png)
 
 确定选取之后, 图层 - 新建填充图层 - 纯色
+
+## Segment Anything
+
+通过语义智能抠图, 比如 the girl 就能把女孩从图中抠出来. 特别适用于工作流场景批量处理
 
 # 配合 controlNet 使用
 
