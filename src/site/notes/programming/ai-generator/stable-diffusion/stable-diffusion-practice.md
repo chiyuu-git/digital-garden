@@ -1,5 +1,5 @@
 ---
-{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-03-Mon, 10:26:40 am","Multi-Column Markdown":[{"Number of Columns":2},{"Column Size":"Standard"}],"permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
+{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-03-Mon, 5:32:40 pm","Multi-Column Markdown":[{"Number of Columns":2},{"Column Size":"Standard"}],"permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
 ---
 
 
@@ -236,6 +236,8 @@ Largest Column: standard
 
 Recolor 模型的作用原理还是基于扩散对图片内容进行重新生成, 但它会根据黑白照片的亮度 (Luminance) 或者强度 (Intensity) 来指导新的图片进行生成. 生成完了之后, 它会将彩色版本的图片盖在原来的这张图片上 (以某种方式混合), 从而保留原有形象轮廓, 做到只变颜色
 
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240603173044626.png)
+
 使用 sketch 来上色
 
 即使不是黑白问题也可以 recolor
@@ -243,6 +245,10 @@ Recolor 模型的作用原理还是基于扩散对图片内容进行重新生成
 需要结合智能画布来做细节处理, 难度很大, 不是光靠 ai 就可以完美处理的. 很多细节都只能导入 ps 中做优化
 
 [我用AI修复了50年前的亚运会老照片！Stable Diffusion智能上色+高清修复教程！StableSR + ControlNetTile&Recolor_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1mm4y1575y/?p=16&spm_id_from=pageDriver)
+
+### 漫画上色
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240603173239091.png)
 
 # AI 电商 / AI 服装设计 / AI 模特
 
