@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-04-05-Fri, 4:57:51 pm","date-modified":"2024-06-01-Sat, 4:03:49 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-basic/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-04-05-Fri, 4:57:51 pm","date-modified":"2024-06-04-Tue, 6:48:42 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-basic/","dgPassFrontmatter":true}
 ---
 
 
@@ -254,6 +254,8 @@ Steps: 20, Sampler: DPM++ 2M Karras, CFG scale: 7.0, Seed: 1474817915, Size: 512
 在某一图片上进行修改（全部修改、部分修改、指定颜色修改）.
 
 使用的表单与文生图基本相同, 只是多了一个输入图片的地方
+
+图生图的高清修复和细节增强
 
 ## 参考图 Prompt 反推
 
