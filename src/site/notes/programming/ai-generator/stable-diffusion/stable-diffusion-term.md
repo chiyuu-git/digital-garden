@@ -1,9 +1,9 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-25-Sat, 12:56:55 pm","date-modified":"2024-06-02-Sun, 6:14:54 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-term/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-25-Sat, 12:56:55 pm","date-modified":"2024-06-05-Wed, 10:00:46 am","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-term/","dgPassFrontmatter":true}
 ---
 
 
-# 原理
+# Diffusion 原理
 
 最基础的原理: 扩散. stable diffusion, 也就是稳定的扩散
 
@@ -241,6 +241,10 @@ embeddings 解决这个问题的做法是, 把模型画错的部分都标记起�
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240527205255927.png)
 
+# Wildcards 通配符
+
+[\[图文对照\]stable diffusion人物发型提示词大全 | 草凡博客](https://caovan.com/tuwenduizhaostable-diffusionrenwufaxingtishicidaquan/.html)
+[Stable Diffusion男性发型百科全书，让你再也无需为头发烦恼\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1XN411D7wp/?vd_source=f8573a6196003ad3683f1c1a403d3431)
 # Lora 模型
 
 [第9节：lora模型训练讲解\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1iZ421z7F9?p=9&vd_source=f8573a6196003ad3683f1c1a403d3431)
