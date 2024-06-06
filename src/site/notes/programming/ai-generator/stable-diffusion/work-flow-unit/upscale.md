@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:38:48 pm","date-modified":"2024-06-03-Mon, 10:01:29 am","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:38:48 pm","date-modified":"2024-06-04-Tue, 6:55:20 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/","dgPassFrontmatter":true}
 ---
 
 
@@ -120,10 +120,6 @@ tiled diffusion 的配置就是用默认的就行
 ### Diffusion
 
 如果完全没有重叠, 接缝感会很强
-
-![](stable-diffusion-practice/image-20240527182046664.png)
-
-![](stable-diffusion-practice/image-20240527182125306.png)
 
 ## 超高清&细节拉满的放大实践
 
