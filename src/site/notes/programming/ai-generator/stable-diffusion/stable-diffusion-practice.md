@@ -1,5 +1,5 @@
 ---
-{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-03-Mon, 5:32:40 pm","Multi-Column Markdown":[{"Number of Columns":2},{"Column Size":"Standard"}],"permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
+{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-06-Thu, 10:53:49 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
 ---
 
 
@@ -73,6 +73,16 @@ controleNet 模型
 ## 二维码
 
 qr toolkit 可以方便的改变二维码的样式
+
+# 风格转换
+
+## SDXL 自带的风格转换功能
+
+通过 prompt 词来切换不同的风格, 搭配 style selector 即可愉快使用.
+
+重点参数就只有一个, 重绘幅度 0.5-0.7. 0.7 基本是一个阈值,超过 0.7 之后就和原图非常不像了
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240606225348850.png)
 
 # 真人化/ 动画化 / 赛博 Coser / 实现风格迁移
 
