@@ -201,7 +201,6 @@ lineart 专门基于动漫风格的线稿实现上色功能的预处理器于模
 
 在放大工作流种增加细节
 
-[Multi Diffusion + Tiled VAE + ControlNet Tile模型，低显存打造AI绘画超高清6K分辨率体验！SD扩展插件教程\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1Su4y1d7Dp/?spm_id_from=333.999.0.0&vd_source=f8573a6196003ad3683f1c1a403d3431)
 
 [配合 controlNet 使用](inpaint.md#配合%20controlNet%20使用)
 
