@@ -210,7 +210,7 @@ https://tags.novelai.dev/
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/90832dcf5cbe2a88815cba6f54569ae7539e8d601af6596779680e9cd3a34c91.png)
 
 ```text
-1girl,outdoors,skirt,solo,hair ornament,long hair,hair flower,blonde hair,flower,smile,white shirt,short sleeves,looking at viewer,bangs,holding,open mouth,tree,day,blush,cowboy shot,breasts,collarbone,standing,shirt tucked in,braid,white flower,purple eyes,bush,outstretched arms,blurry,hair intakes,outstretched arm,sky,paintbrush,blurry background,blue eyes,arms up,medium breasts,teeth,  
+1girl,outdoors,skirt,solo,hair ornament,long hair,hair flower,blonde hair,flower,smile,white shirt,short sleeves,looking at viewer,bangs,holding,open mouth,tree,day,blush,cowboy shot,collarbone,standing,shirt tucked in,braid,white flower,bush,outstretched arms,blurry,hair intakes,sky,paintbrush,blurry background,blue eyes,arms up,medium breasts,teeth,  
 ```
 
 ```
