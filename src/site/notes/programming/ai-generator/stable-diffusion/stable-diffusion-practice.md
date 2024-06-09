@@ -1,5 +1,5 @@
 ---
-{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-06-Thu, 10:53:49 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
+{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-08-Sat, 1:24:56 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
 ---
 
 
@@ -83,6 +83,12 @@ qr toolkit 可以方便的改变二维码的样式
 重点参数就只有一个, 重绘幅度 0.5-0.7. 0.7 基本是一个阈值,超过 0.7 之后就和原图非常不像了
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240606225348850.png)
+
+## 切换大模型或者 Lora 模型改变风格
+
+## controlNet Tile 模型
+
+![Tile](work-flow-unit/control-net.md#Tile)
 
 # 真人化/ 动画化 / 赛博 Coser / 实现风格迁移
 
@@ -504,6 +510,8 @@ Largest Column: standard
 ## ControlNet
 
 [Stable Diffusion 制作一致性角色差异姿势\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV19V411w7iv/?vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+[人物一致性：7分钟掌握ComfyUI InstantID x 云端一键克隆\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1hE421V7yx/?spm_id_from=333.999.0.0&vd_source=f8573a6196003ad3683f1c1a403d3431)
 
 ![control-net](programming/ai-generator/stable-diffusion/work-flow-unit/control-net.md#^9kex7j)
 
