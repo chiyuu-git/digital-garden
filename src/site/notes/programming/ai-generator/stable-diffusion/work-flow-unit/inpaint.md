@@ -1,7 +1,27 @@
 ---
-{"aliases":["局部重绘"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 4:32:31 pm","date-modified":"2024-06-03-Mon, 2:56:33 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/inpaint/","dgPassFrontmatter":true}
+{"aliases":["局部重绘"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 4:32:31 pm","date-modified":"2024-06-07-Fri, 9:15:57 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/inpaint/","dgPassFrontmatter":true}
 ---
 
+
+# 基本参数
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/inpaint/image-20240607191953696.png)
+
+## 蒙版模式
+
+## 蒙版区域内容处理
+
+填充是做无中生有
+
+> 实测最有效的是扩大重绘幅度, prompt 改不改都无所谓的
+
+原本是做修复用的
+
+## 重绘区域
+
+重绘区域一般都是选择整张图片, 含义可以理解为 prompt 是匹配整张图片的, 然后蒙版部分需要重绘, 并且要和周围羽化融合. 不用担心非蒙版区域被修改. 起到协调填充的区域和原图的作用
+
+仅蒙版区域一般是要删改 prompt 专门做修复用的
 
 # 改变人物表情 / 修复人脸 / 修复手崩的问题
 
@@ -80,6 +100,10 @@ Largest Column: standard
 
 --- end-multi-column
 
+最大的特点是可以定义颜色和结构
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/inpaint/image-20240607194941406.png)
+
 # 上传重绘蒙版
 
 通过精确的蒙版, 告诉模型哪些部分需要重绘. 因为 webUI 自带的蒙版, 还挺粗糙的. 需要有更专业的
@@ -118,6 +142,10 @@ Largest Column: standard
 ## Segment Anything
 
 通过语义智能抠图, 比如 the girl 就能把女孩从图中抠出来. 特别适用于工作流场景批量处理
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/inpaint/image-20240607195458033.png)
+
+segment 换衣服感觉没有啥必要. 有涂鸦之类的更好处理的. 具体的用途有点想不明白
 
 # 配合 controlNet 使用
 
