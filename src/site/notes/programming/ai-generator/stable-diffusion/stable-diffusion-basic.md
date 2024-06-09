@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-04-05-Fri, 4:57:51 pm","date-modified":"2024-06-04-Tue, 6:48:42 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-basic/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-04-05-Fri, 4:57:51 pm","date-modified":"2024-06-08-Sat, 1:07:53 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-basic/","dgPassFrontmatter":true}
 ---
 
 
@@ -210,8 +210,30 @@ https://tags.novelai.dev/
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/90832dcf5cbe2a88815cba6f54569ae7539e8d601af6596779680e9cd3a34c91.png)
 
 ```text
-1girl,outdoors,skirt,solo,hair ornament,long hair,hair flower,blonde hair,flower,smile,white shirt,short sleeves,looking at viewer,bangs,holding,open mouth,tree,day,blush,cowboy shot,collarbone,standing,shirt tucked in,braid,white flower,bush,outstretched arms,blurry,hair intakes,sky,paintbrush,blurry background,blue eyes,arms up,medium breasts,teeth,  
+1girl,solo,
+hair ornament, long hair, blonde hair, hair intakes, hair flower, braid,
+blue eyes, smile, open mouth, teeth,
+collarbone,
+medium breasts,
+holding, outstretched arms, arms up,
+standing,
+skirt, white shirt, short sleeves, shirt tucked in,
+bangs,
+cowboy shot,looking at viewer,
+outdoors,flower,tree,day,blush,white flower,bush,sky,paintbrush,blurry background,
 ```
+
+collarbone 锁骨
+
+blonde hair 金发
+
+ornament 装饰
+
+outstretched arms 伸出的手臂
+
+bush 灌木
+
+braid 编织，把（头发）编成辫子;
 
 ```
 NSFW,(worst quality:2),(low quality:2),(normal quality:2),lowres,normal quality,((grayscale)),skin spots,acnes,skin blemishes,age spot,(ugly:1.331),(duplicate:1.331),(morbid:1.21),(mutilated:1.21),(tranny:1.331),mutated hands,(poorly drawn hands:1.5),blurry,(bad anatomy:1.21),(bad proportions:1.331),extra limbs,(disfigured:1.331),(missing arms:1.331),(extra legs:1.331),(fused fingers:1.61051),(too many fingers:1.61051),(unclear eyes:1.331),lowers,bad hands,missing fingers,extra digit,bad hands,missing fingers,(((extra arms and legs)))  
@@ -266,6 +288,38 @@ Steps: 20, Sampler: DPM++ 2M Karras, CFG scale: 7.0, Seed: 1474817915, Size: 512
 ![|300](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240528110409078.jpeg)
 
 ![|300](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240528110413594.png)
+
+## 缩放模式
+
+# 图生图 Outpaint
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/outpatin/image-20240607190503266.png)
+
+## 仅调整大小
+
+压缩比例之后, 再进行图生图
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/outpatin/image-20240607190518796.png)
+
+第四个选项就是直接在潜空间放大
+
+## 裁剪后缩放
+
+原图会被裁剪成和目标尺寸相同宽高比之后放大, 再进行图生图
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/outpatin/image-20240607190539478.png)
+
+## 缩放后填充空白
+
+等比例缩放到目标宽高比, 再把空白的地方填充
+
+重绘幅度基本上要大于 0.6.
+
+> 如果宽高比一样就不存在缩放了, 仅仅是图生图而已
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/outpatin/image-20240607190822788.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240607191030602.png)
 
 ## 灵魂画手, 利用图生图优化
 
@@ -405,6 +459,12 @@ AI 是无法做到你给他一张图片就直接会照着画出来无数张这�
 ## 个人预测主流的 Ai 产品都会适配到消费级显卡上
 
 就像是 3A 大作一样, 会针对最多的用户做适配. 而不是只有 4090 能跑
+
+## 二阶蒸馏效果是最好的. 但是太慢了. 使用 Openpose 修复手指问题, 只是权宜之计? 那更好的方法是什么呢?
+
+## 我有点不理解图生图的意义是什么了
+
+好像与其用图生图, 不如使用 文生图 + controlNet 传入独立控制的图像.
 
 # Dreamina 最大的局限性就是政治风险...
 
