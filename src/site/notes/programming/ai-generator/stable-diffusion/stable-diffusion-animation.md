@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-31-Fri, 3:52:03 pm","date-modified":"2024-06-02-Sun, 10:18:52 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-animation/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-31-Fri, 3:52:03 pm","date-modified":"2024-06-09-Sun, 7:05:28 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-animation/","dgPassFrontmatter":true}
 ---
 
 
@@ -231,9 +231,19 @@ fluttering skirts, flying petals,
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-animation/00007-1474817915.gif)
 
+### 直接使用骨骼图视频即可
+
+直接使用处理完的骨骼图视频
+
+openpose 预处理图序列帧视频, 帧数 8 -12 帧即可
+
+[AI动画：Stable Diffusion X AnimateDiff 的终极奥义\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV11i421Z7DH/?p=15&spm_id_from=pageDriver)
+
 ### 通过 animateDiff 做拆帧处理
 
 通过批量处理来生成单帧的转绘, 只是利用了 animateDiff 所以效果会更好
+
+### 直接开一个 Tile 模型做风格转换就行了
 
 ## Prompt-tarvel
 
@@ -264,6 +274,10 @@ best quality, masterpiece, 1girl, upper body, detailed face, looking at viewer, 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-animation/image-20240601201502498.png)
 
 一般都可以加上, 摸索一下权重, 权重越高, 运动的多样性就会降低
+
+## Animate Diff 转绘工作流
+
+![](stable-diffusion-animation/DomoAI动漫转绘工作流.json)
 
 # SVD
 
