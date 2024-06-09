@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-25-Sat, 12:56:55 pm","date-modified":"2024-06-05-Wed, 10:00:46 am","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-term/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-25-Sat, 12:56:55 pm","date-modified":"2024-06-09-Sun, 10:03:29 am","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-term/","dgPassFrontmatter":true}
 ---
 
 
@@ -144,6 +144,10 @@ sdxl 对标 midjourney 的全能大模型, 但是细节还是差很多
 
 ### 风格选择扩展 + 自动 Refiner 扩展
 
+需要搭配 refiner 使用. 需要先使用 sdxl 出图, 然后到图生图使用 refiner 再出图, 重绘幅度 0.5
+
+refiner 有点类似于高清修复, 会识别出需要细节处理的部分. 额外进行加噪去噪, 来获取更高清的结果
+
 还需要等等 controlNet
 
 style selector, 切换内置的画风, 减少 lora 的使用
@@ -244,7 +248,9 @@ embeddings 解决这个问题的做法是, 把模型画错的部分都标记起�
 # Wildcards 通配符
 
 [\[图文对照\]stable diffusion人物发型提示词大全 | 草凡博客](https://caovan.com/tuwenduizhaostable-diffusionrenwufaxingtishicidaquan/.html)
+
 [Stable Diffusion男性发型百科全书，让你再也无需为头发烦恼\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1XN411D7wp/?vd_source=f8573a6196003ad3683f1c1a403d3431)
+
 # Lora 模型
 
 [第9节：lora模型训练讲解\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1iZ421z7F9?p=9&vd_source=f8573a6196003ad3683f1c1a403d3431)
@@ -425,6 +431,8 @@ Mecha lora, 机甲少女
 
 数量多少并不绝对影响训练成果, 样本质量才是最重要的
 
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240609084738081.png)
+
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240527221258406.png)
 
 面部重绘的关键词, 可以适当补充. 在效果不好的时候再用做永华就行
@@ -438,8 +446,55 @@ Mecha lora, 机甲少女
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240529154320965.png)
 
 ### 提示词
+o
+[香港深圳男生发型介绍！ 🌟适合所有男生的三七短侧分吹爆它，王嘉尔同 款也太帅了吧 🌟男士发型推荐栗子头，不需要怎么打理也很好 看拍照很上镜 🌟二八微分休闲中带有一点商务风，又不会显得 太成熟 🌟微分碎盖发型，微分的刘海能让发型看着更加 蓬松立体，最大的优点就是好打理学生党必备 男生短碎发发型推荐，头发太直太贴剪完需要 稍微吹一下打造凌乱蓬松感，平时吹吹千就好属 实懒人发型了 🌟微分前刺发型推荐，这款发型可以根据个人需 求进行细节调整脸型偏瘦的，两侧不建议太光， 额头高的中间可以少露些额头。 ✅发质细软的可以选择钢夹烫和摩根烫，超级自然 好打理适合多种发质增加蓬松立体感 #发型分享 #深圳发型设计#男士发型 #男士烫发 #摩根烫 #纹理烫 #气垫烫 #深圳小贤老师#东门染发 #香港染髮 #深圳理发店 #深圳理髮店 #香港理发店 #东门理发店#罗湖男士烫发 #羅湖男士髮型 #罗湖男生发型 #羅湖男生髮型推薦 #羅湖男生髮型推薦 - 小红书](https://www.xiaohongshu.com/explore/647f4e19000000002700250f)
 
+[回头率超高发型/根据脸型选发型 - 小红书](https://www.xiaohongshu.com/explore/659a4815000000001200b4f6)
+[Site Unreachable](https://www.xiaohongshu.com/explore/665098be0000000005005048)
 [Notion – The all-in-one workspace for your notes, tasks, wikis, and databases.](https://nenly.notion.site/EasyPhoto-AI-b8cfabb1b82a4a30b49d8d0a37dd4581)
+
+```
+masterpiece,1boy, 1man, male focus,(handsome: 1.5) close-up,portrait,detailed face, delicate face, true skin texture,
+diamond face, high cheekbones,
+```
+
+hair style
+
+```prompt
+very long hair
+long hair
+medium hair
+short hair
+straight hair
+curly/wavy hair
+messy hair
+(half) updo
+bangs
+diagonal bangs
+hair over eyes
+ponytail
+twintails
+french braid
+hair bun
+sidecut
+
+过腰长发
+长发
+中发
+短发
+直发
+卷发
+凌乱的头发
+（半）高髻
+刘海
+斜刘海
+头发遮住眼睛
+马尾辫
+双马尾
+法式编织辫子
+丸子头
+侧切
+```
 
 # 插件
 
