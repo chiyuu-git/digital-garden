@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:45:05 pm","date-modified":"2024-06-03-Mon, 9:44:44 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:45:05 pm","date-modified":"2024-06-08-Sat, 5:41:50 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/","dgPassFrontmatter":true}
 ---
 
 
@@ -119,6 +119,28 @@ openpose editor. 编辑骨骼图
 
 > [!question] 如何快速获取各种各样的骨骼图
 
+## 实际场景
+
+二阶蒸馏效果是最好的. 但是太慢了. 使用 openpose 修复手指问题, 只是权宜之计? 那更好的方法是什么呢?
+
+## 结合局部重绘改变人物动作
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608131126863.png)
+
+## 角色设计图
+
+单人物, 多角度的设计图. 只需要由三视图的 openpose 骨架图就好了
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608131340264.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608131358576.png)
+
+挂载一个 embeddings
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608131422248.png)
+
+prompt: multiple views of the same charater in the same outfit
+
 # 构图相关模型
 
 ## Depth 深度图
@@ -157,7 +179,15 @@ lineart 专门基于动漫风格的线稿实现上色功能的预处理器于模
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240526203758990.png)
 
+### 参数
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608111503436.png)
+
+直接用 hed 就完事了
+
 ## Scribble
+
+### 基本使用
 
 比 HED 更加自由和奔放的描摹. 有时候可以激发一些奇妙的化学反应
 
@@ -168,6 +198,16 @@ lineart 专门基于动漫风格的线稿实现上色功能的预处理器于模
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240526204107926.png)
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240526204138227.png)
+
+涂鸦最大的场景还是和 ps 结合使用
+
+### 参数
+
+hed, pidi, xdog
+
+hed 和 pidi 都是比较粗略的涂鸦, 可以通过控制 resolution 分辨率选项来调节画面的精细程度. 但是我们一般都会开启完美像素模式, 开启了之后就无法调节了
+
+xdog 自带可调节的阈值
 
 ## lineArt
 
@@ -189,6 +229,14 @@ lineart 专门基于动漫风格的线稿实现上色功能的预处理器于模
 
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240603214305759.png)
 
+### 逆向运用
+
+其他参考 + 动漫预处理器 + 动漫模型 + 其他大模型
+
+可以实现构图整体由参考提供, 但是具体的样式取决于 prompt. 因为动漫处理器和动漫模型无法对非动漫参考产生主要影响, 只能定下来构图
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608110547202.png)
+
 # 重绘修复相关模型
 
 ## inPaint
@@ -197,34 +245,99 @@ lineart 专门基于动漫风格的线稿实现上色功能的预处理器于模
 
 加强重绘区域内外的关联, 让过渡更加自然
 
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608141546786.png)
+
+inpaint_only 除了重绘的部分, 其他不改变.
+
+inpaint_only + lama 大模板, 选择选择扩展后填充空白, 可以用于扩图
+
+第三个: 全局融合算法, 会影响蒙版以外的地方. 非蒙版的区域为了协调整体, 也可能会发生局部的改变
+
 ## Tile
 
-在放大工作流种增加细节
+号称是 controlNet 的最强模型
 
+在放大工作流种增加细节.
 
-[配合 controlNet 使用](inpaint.md#配合%20controlNet%20使用)
+除了用作 [upscale](programming/ai-generator/stable-diffusion/work-flow-unit/upscale.md#Tiled%20Diffusion), 还有很多其他作用.
+
+Tile 的本质是一次细节重绘, 既然是重绘
+
+### 用作图片修复
+
+可以配合 ipadapter , 拾取柴犬的图, 辅助一下就 ok 了
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608131914818.png)
+
+### 用作风格迁移
+
+如果仅仅使用大模型进行风格切换, 我们的提示词需要非常精准, 不然结果可能和原图差异比较大
+
+在上者的基础上挂上一个 tile 模型. 并且使用更**偏向 controlNet 模型**, 就可以直接使用大模型完成风格切换了
+
+头发颜色不一致, 只需要补充一下提示词就好了
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240608132120474.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608132800939.png)
+
+### 风格统一
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240608132251260.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240608132304454.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240608132318724.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240608132330192.png)
+
+偏向提示词模型, 还可以做到自动合理化空间透视和光照效果
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608133629221.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608133637937.png)
+
+### 替换内容和修改细节
+
+盔甲变旗袍
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608132635984.png)
+
+不同程度的 down sample rate 会有不同程度的细节重绘. 参考图的缩小倍数, 缩的越小, 重绘之后的细节变化就会越大.
+
+降低参考图的细节, 让模型有更多的空间去重绘新图像的细节
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608132719591.png)
+
+down sample rate = 4, 就可以做到通过提示词修改服装, 并且整体保持一致
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608132951329.png)
+
+结合局部重绘, 保证脸部不发生改变
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608133519107.png)
+
+## InstructP2P
+
+文生图 + controlNet 独立控制 + make it xxx 使用效果应用到图片上
+
+prompt 只需要 make it 的部分就好了? 独立控制图像会和 prompt 互相影响, 选择不同的控制模式来避免这个问题
+
+感觉作用成谜...
+
+但是具体的作用也是基于一张已有的图片, 去做精修. 精细的控制. 希望能在原图的基础上, 做一些改变. 或者补充一些细节
 
 # 图像提示相关模型
 
-## IP-Adapter
+## Reference Only
 
-[GitHub - tencent-ailab/IP-Adapter: The image prompt adapter is designed to enable a pretrained text-to-image diffusion model to generate images with image prompt.](https://github.com/tencent-ailab/IP-Adapter)
+出现得最早的用于人物一致性的尝试. 效果不好才有了后续的 ip-adapter 和 instand_id.
 
-实现换肤, 风格迁移
+**现在比较鸡肋了**
 
-图生图并非一种真正的提示, 只是塑造一种色彩上的相似性.
+用于固定特征, 也可以用于保持人物一致性, 但是泛用性更强一点. 类似于很多个长得很像的人, 穿搭也是一个调调, 但是仔细看就能发现每次脸都不一样? 但是在小说推文场景, 可以用作角色的创建工作, 作为人物管理的基础. 还是够用的
+{ #z01ii5}
 
-IP-Adapter 会去真正的理解你输入的图片的含义, 并利用他学习到到的东西去微调输出的结果.
-
-从色彩, 形象, 内容, 已经, 都会更像参考图. 和其他模型组合起来使用, 实现**风格迁移**
-
-不同的 IP-Adapter 模型, 迁移的内容不同, 注意甄别
-
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240602190547047.png)
-
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529101426106.png)
-
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529101415370.png)
 
 ## InstantId
 
@@ -271,23 +384,83 @@ watercolors portrait of a woman,artistry,
 
 > [!question] 要怎么才能全身像然后人脸也一致呢?
 
-## Reference Only
+## IP-Adapter
 
-出现得最早的用于人物一致性的尝试. 效果不好才有了后续的 ip-adapter 和 instand_id
+[GitHub - tencent-ailab/IP-Adapter: The image prompt adapter is designed to enable a pretrained text-to-image diffusion model to generate images with image prompt.](https://github.com/tencent-ailab/IP-Adapter)
 
-用于固定特征, 也可以用于保持人物一致性, 但是泛用性更强一点. 类似于很多个长得很像的人, 穿搭也是一个调调, 但是仔细看就能发现每次脸都不一样? 但是在小说推文场景, 可以用作角色的创建工作, 作为人物管理的基础. 还是够用的
-{ #z01ii5}
+实现 mj 的垫图效果, 可以参考图片的风格, 构图, 人物特征. 配合 prompt 实现局部的修改
 
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608143956599.png)
 
-[如何保证每次画出的都同一张人脸：Stable Diffusion的Reference only教程 - AI魔法学院](https://www.wehelpwin.com/article/4343)
+图生图并非一种真正的提示, 只是塑造一种色彩上的相似性.
 
-[Stable Diffusion | ControlNet：Reference“垫图”功能，不炼丹也能保持同一人物\_controlnet reference-CSDN博客](https://blog.csdn.net/cxyxx12/article/details/136524175)
+IP-Adapter 会去真正的理解你输入的图片的含义, 并利用他学习到到的东西去微调输出的结果.
 
-[Stable Diffusion仿制神器,Reference Only评测 - 知乎](https://zhuanlan.zhihu.com/p/629980765)
+从色彩, 形象, 内容, 已经, 都会更像参考图.
+
+不同的 IP-Adapter 模型, 迁移的内容不同, 注意甄别
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240602190547047.png)
+
+### 参数
+
+#### 参考面部
+
+ip-adapter face 和 ip-adpater plus face. 效果都不如 face id 的. 我直接删掉了. 需要参考面部的就专门看 face id 章节就行
+
+#### 参考整体
+
+ip-adapter_sd15, ip-adapter_sd15_lingt, ip-adapter-plus_sd15
+
+三个 VIT-H 14 图型编码器, 全图嵌入, 全局嵌入, 捕捉的是整体的特征.
+
+内容的忠诚度: plus > sd1.5 > light.
+
+- plus 适合偏向参考图的要求, 生成的图像更接近原始参考, 但通常无法复刻图片细节, 例如面部特征.
+- light 更适合偏向提示词的.
+- sd1.5 适合在偏向提示词的基础上, 配合 prompt 做一些小修改. 能大致遵循参考图像的内容, 能够捕捉图像整体的宏观特征. 包括颜色特征, 纹理特征和形状特征, 整体亮度, 对比度等
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608171332349.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608172909400.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608173324527.png)
+
+#### 权重的影响
+
+没有 prompt 的时候, 可以直接使用 1, 权重越大肯定是越倾向于参考图的.
+
+想要提示词发挥作用, 0.5-0.8 是比较理想的. 权重与参考图和 prompt 期望的动作也有关系
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608173837912.png)
+
+### 实现风格迁移
+
+实现换肤, 风格迁移
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529101426106.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529101415370.png)
 
 ## Ip-adapter Face Id
 
 [【AI绘画】Stable Diffusion轻松生成一致性角色！一键设定人物长相！强到离谱！（附安装包，插件）\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1Bv421i7cq/?vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+### 模型选择
+
+人脸识别识别模型中的 insightface id 嵌入, 并且可以搭配使用 lora 模型来提高脸部一致性. 权重 0.5-1.0 都可以
+
+ip-adapter-faceid 效果其实是可以的. 但是只有脸, 没有面部的结构支撑. 我都没能下载下来, 可能是官方自己都是已经不推荐了
+
+ip-adapter faceid-plus, 还使用了 clip 图像嵌入用于人脸结构
+
+ip-adapter faceid-plusv2, 还允许调整脸部结构的权重, 但是只能在 comfy ui 上使用
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608172126306.png)
+
+ip-adapter faceid-portrait, 肖像专用模型, 整体作用与 faceid 基础版是相同的, 不需要使用 lora , 可以接受多张参考图, 来提升图片的相似性.
+
+### 基本使用
 
 很不错. 配合 openpose 使用, 就可以摆 pose 了. 很舒服. 比 reference only 效率高, 泛用性强
 
