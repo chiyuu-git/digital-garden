@@ -1,5 +1,5 @@
 ---
-{"aliases":["高清修复","细节增强"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:38:48 pm","date-modified":"2024-06-06-Thu, 10:48:49 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/","dgPassFrontmatter":true}
+{"aliases":["高清修复","细节增强"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:38:48 pm","date-modified":"2024-06-09-Sun, 8:26:39 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/","dgPassFrontmatter":true}
 ---
 
 
@@ -19,11 +19,11 @@ AI 基本上无法生成超级大图，想要生成高清图片正确的做法�
 
 如果你不会用，照抄我的参数就可以了。放大倍数请考虑自己的显存大小调整，太大会爆显存
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240405171852621.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202529184.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240525205424456.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202529322.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/90832dcf5cbe2a88815cba6f54569ae7539e8d601af6596779680e9cd3a34c91.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202647592.png)
 
 ## 本质
 
@@ -35,11 +35,11 @@ AI 基本上无法生成超级大图，想要生成高清图片正确的做法�
 
 具体用哪种, 看模型介绍里作者有没有推荐. 如果没有, 可以用 R-ESRGAN 系列的, 分别对应真人和动画风格
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240525205649789.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202529588.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240525205847912.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202529694.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240525205909383.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202529812.png)
 
 # 图生图 - 高清修复
 
@@ -57,7 +57,7 @@ AI 基本上无法生成超级大图，想要生成高清图片正确的做法�
 
 传统的放大算法
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240528112657890.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202529913.png)
 
 # ~~SD Upscale 脚本 (deprecated)~~
 
@@ -69,7 +69,7 @@ AI 基本上无法生成超级大图，想要生成高清图片正确的做法�
 
 用类似的方式, 可以把图片整得非常大, 但是不会明显的增加显存的压力
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240528112641339.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202530038.png)
 
 ## 缺点
 
@@ -91,15 +91,15 @@ tiled 瓷砖, 平铺. 有点点像 up scaler 拆成一块块单独处理, 但是
 
 ## 基本原理
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240602222809592.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202530152.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240602222815189.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202530335.png)
 
 ## 基本使用
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240602222759350.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202530448.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240602222803837.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202530566.png)
 
 ### 分块区域
 
@@ -117,7 +117,7 @@ tiled diffusion 的配置就是用默认的就行.
 
 保持原图尺寸, 然后通过放大算法来放大倍数就行
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240602222844390.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202530676.png)
 
 ### VAE
 
@@ -149,9 +149,9 @@ tiled diffusion 的配置就是用默认的就行.
 
 ### CFG 最重要的参数
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240606220605896.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202530808.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240606220622518.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202530927.png)
 
 在高清放大的过程中, CFG 可以调动令人惊讶的图像细节
 
@@ -169,11 +169,11 @@ Number of Columns: 2
 Largest Column: standard
 ```
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240606221101977.jpeg)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202531069.jpeg)
 
 --- column-break ---
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240606221612364.jpeg)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202531184.jpeg)
 
 --- end-multi-column
 
@@ -191,19 +191,19 @@ CFG14, 重绘幅度低, 虽然可以增强画质, 但是细节还是不够丰富
 
 这里所有的参数都是用来控制简洁的画面和丰富的细节之间的平衡
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240606221723796.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202531310.png)
 
 反转步数步数越低, 画面越整洁, 步数越高细节越丰富
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240606221907099.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202531423.png)
 
 修复程度, 修复程度越高, 越忠于原图, 在删除一些重绘幅度过高导致原图没有的东西
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240606222308119.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202531550.png)
 
 重复噪声强度, 越高细节越多, 越低画面越整洁
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240606222433094.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202531669.png)
 
 > [!NOTE] 推荐参数: CFG 14, 重绘幅度 0.75, 开启反转噪声, 步数 25, 重铺噪声 0, 修复程度灵活调整
 > 有多余的内容, 就提高修复程度, 或者去局部重绘修复一下
@@ -218,13 +218,13 @@ controleNet Tile 在讲大图分块的过程中, 会主动去识别每一张图�
 
 在 ControlNet Tile 的加持下, 即使直接使用 CFG 14 加高重绘幅度, 也不会出现一些妖魔鬼怪的图片
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240602222832842.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202531800.png)
 
 比 tile diffusion 单独作用, 多了一份细节, 少了一份干净.
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240606223800462.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202531915.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240606222909575.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202532050.png)
 
 > [!NOTE] 最佳实践其一
 > 此时 CFG 7, 重绘幅度 0.75, 重铺噪声强度为 0, 搭配 CN Tile
@@ -239,13 +239,13 @@ Largest Column: standard
 
 CFG 14 的, 树都长出花纹了
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240606224755070.jpeg)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202532164.jpeg)
 
 --- column-break ---
 
 CFG 7 的确实不错
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240606224748834.jpeg)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202532300.jpeg)
 
 --- end-multi-column
 
