@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:45:05 pm","date-modified":"2024-06-08-Sat, 5:41:50 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:45:05 pm","date-modified":"2024-06-10-Mon, 7:24:43 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/","dgPassFrontmatter":true}
 ---
 
 
@@ -11,7 +11,7 @@
 
 在 1.1 版本, 可以实现 14 种不同的控制, 这还不包括不同预处理器和多重控制网 Multi-ControlNet 能产生的复合控制效果.
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240528141603053.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202400401.png)
 
 ControlNet 更新至 1.12 版本以后，上方多了一排可以用于快速选择对应的预处理器和模型的功能按钮，非常方便。选中其中的一个会自动匹配到对应的预处理器和模型上（如果你安装了）
 
@@ -21,7 +21,7 @@ ControlNet 更新至 1.12 版本以后，上方多了一排可以用于快速选
 
 举个例子: 姿势, 如果只是通过提示词输入一个跳舞, 人物可能会有无数的舞蹈姿势. 通过 controlNet 传入一张特殊的图片, 不同的点线颜色代表着不同的含义, 来让模型明白需要怎么样的姿势.
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240526200925427.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202400511.png)
 
 和图生图有点类似, 因为本质上来说, 都是通过一些方式给 AI 提供额外的信息, 但是 controlNet 记录的信息比图片更加纯粹, 排除了图片本身元素..
 
@@ -31,7 +31,7 @@ ControlNet 更新至 1.12 版本以后，上方多了一排可以用于快速选
 
 主要影响的就是控制效果的强弱.
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240526202055852.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202400633.png)
 
 通过预处理器 Annotator 生成 Controlnet 需要的数据
 
@@ -43,7 +43,7 @@ ControlNet 更新至 1.12 版本以后，上方多了一排可以用于快速选
 
 线稿里面有, 但是提示词里没有.
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240602132525928.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202400745.png)
 
 弹窗和烟头都是 pormpt 里没有的.
 
@@ -55,13 +55,13 @@ ControlNet 更新至 1.12 版本以后，上方多了一排可以用于快速选
 
 ### 画风偏向
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240602132821423.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202400868.png)
 
 balance 和 controlNet mode 生成了真人, 但是头发的线条依然是二次元的.
 
 只有偏向 prompt, 才能生成真人发质的头像
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240602111020242.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202401006.png)
 
 这里的内容指的是比较微小的差异
 
@@ -107,15 +107,15 @@ canny 模型, 阈值越高, 线稿就越简洁, 可以用于去除掉主体之�
 
 # Openpose 骨骼图
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240526201806286.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202401111.png)
 
 通过 face, hand, 强调重点
 
 openpose editor. 编辑骨骼图
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529192225459.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202401238.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529223235296.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202401318.png)
 
 > [!question] 如何快速获取各种各样的骨骼图
 
@@ -125,19 +125,19 @@ openpose editor. 编辑骨骼图
 
 ## 结合局部重绘改变人物动作
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608131126863.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202401385.png)
 
 ## 角色设计图
 
 单人物, 多角度的设计图. 只需要由三视图的 openpose 骨架图就好了
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608131340264.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202401501.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608131358576.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202401564.png)
 
 挂载一个 embeddings
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608131422248.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202401664.png)
 
 prompt: multiple views of the same charater in the same outfit
 
@@ -153,9 +153,9 @@ prompt: multiple views of the same charater in the same outfit
 
 因此这种时候使用 Depth 可以识别出来
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240526203102744.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202401749.png)
 
-## Canny / Lineart
+## Canny
 
 提取边缘, 草稿, 黑笔白线
 
@@ -175,13 +175,13 @@ lineart 专门基于动漫风格的线稿实现上色功能的预处理器于模
 
 柔和边缘可以让图片过度更加自然
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240526203738396.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202401846.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240526203758990.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202401918.png)
 
 ### 参数
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608111503436.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202402038.png)
 
 直接用 hed 就完事了
 
@@ -191,13 +191,13 @@ lineart 专门基于动漫风格的线稿实现上色功能的预处理器于模
 
 比 HED 更加自由和奔放的描摹. 有时候可以激发一些奇妙的化学反应
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240526203917886.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202402106.png)
 
 灵魂画手操作案例. 用几笔简化, 就勾勒出一个场景, 让 ai 去帮你丰富
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240526204107926.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202402198.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240526204138227.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202402316.png)
 
 涂鸦最大的场景还是和 ps 结合使用
 
@@ -215,19 +215,19 @@ xdog 自带可调节的阈值
 
 基于线稿图生图, 使用不同的风格的大模型即可实现真人化或者动画化
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530213937113.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202402397.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530213941396.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202402579.png)
 
 ## 预处理器和模型的搭配
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240603213312266.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202402658.png)
 
 动漫预处理器只能由动漫线稿模型搭配. 因为动漫预处理保留的内容, 只有动漫先搞模型可以理解并且正确处理. 比如动漫漫画里常见的网点
 
 动漫线稿模型只有使用偏向提示词才有好的效果. 因为线稿模型没有猜测模式, 所以只能选择偏向提示词模型并且加上详细的引导, 因此使用动漫线稿模型的时候 controlNet 的控制效果会被严重削弱, 需要一个比较详细的提示词
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240603214305759.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202402767.png)
 
 ### 逆向运用
 
@@ -235,7 +235,7 @@ xdog 自带可调节的阈值
 
 可以实现构图整体由参考提供, 但是具体的样式取决于 prompt. 因为动漫处理器和动漫模型无法对非动漫参考产生主要影响, 只能定下来构图
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608110547202.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202402834.png)
 
 # 重绘修复相关模型
 
@@ -245,7 +245,7 @@ xdog 自带可调节的阈值
 
 加强重绘区域内外的关联, 让过渡更加自然
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608141546786.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202402922.png)
 
 inpaint_only 除了重绘的部分, 其他不改变.
 
@@ -267,9 +267,9 @@ Tile 的本质是一次细节重绘, 既然是重绘
 
 可以配合 ipadapter , 拾取柴犬的图, 辅助一下就 ok 了
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608131914818.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202403011.png)
 
-### 用作风格迁移
+### 用作风格转换
 
 如果仅仅使用大模型进行风格切换, 我们的提示词需要非常精准, 不然结果可能和原图差异比较大
 
@@ -277,45 +277,45 @@ Tile 的本质是一次细节重绘, 既然是重绘
 
 头发颜色不一致, 只需要补充一下提示词就好了
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240608132120474.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202403111.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608132800939.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202403182.png)
 
 ### 风格统一
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240608132251260.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202403284.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240608132304454.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202403354.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240608132318724.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202403479.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240608132330192.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202403549.png)
 
 偏向提示词模型, 还可以做到自动合理化空间透视和光照效果
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608133629221.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202403643.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608133637937.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202403732.png)
 
 ### 替换内容和修改细节
 
 盔甲变旗袍
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608132635984.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202403826.png)
 
 不同程度的 down sample rate 会有不同程度的细节重绘. 参考图的缩小倍数, 缩的越小, 重绘之后的细节变化就会越大.
 
 降低参考图的细节, 让模型有更多的空间去重绘新图像的细节
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608132719591.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202403892.png)
 
 down sample rate = 4, 就可以做到通过提示词修改服装, 并且整体保持一致
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608132951329.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404002.png)
 
 结合局部重绘, 保证脸部不发生改变
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608133519107.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404071.png)
 
 ## InstructP2P
 
@@ -343,7 +343,7 @@ prompt 只需要 make it 的部分就好了? 独立控制图像会和 prompt 互
 
 保持人物一致性
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530094537063.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404168.png)
 
 InstantID 使用 InsightFace 从参考人脸中检测、裁剪和提取人脸 embedding 。然后 embedding 与 IP-Adapter 一起使用来控制图像生成。这部分与 IP-Adapter Face ID 非常相似。不过，它还使用 ControlNet 检测并修复多个面部标志（眼睛、鼻子和嘴巴）
 
@@ -353,28 +353,43 @@ InstantID 使用 InsightFace 从参考人脸中检测、裁剪和提取人脸 em
 
 ### 操作实例
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530100448628.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404247.png)
 
 controlNet unit 0 使用 embedding 预处理器 + ip-adapter_instant_id_sdxl
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530100304384.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404371.png)
 
 controlNet unit 0 使用 instant_id_face_keypoints 预处理器 +control_instant_id_sdxl
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530100412262.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404532.png)
 
 ```text
 high quality,masterpiece,rich details,realistic photography,8k,high-definition image quality,
 watercolors portrait of a woman,artistry,
 ```
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530101650787.png)
+--- start-multi-column: ID_hdd8
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530101703450.png)
+```column-settings
+Number of Columns: 4
+Largest Column: standard
+```
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530101709558.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404736.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530101712649.png)
+--- column-break ---
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404839.png)
+
+--- column-break ---
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404989.png)
+
+--- column-break ---
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202405121.png)
+
+--- end-multi-column
 
 切换不同风格, 即可生成同一个人的不同画风的头像
 
@@ -390,7 +405,7 @@ watercolors portrait of a woman,artistry,
 
 实现 mj 的垫图效果, 可以参考图片的风格, 构图, 人物特征. 配合 prompt 实现局部的修改
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608143956599.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202405240.png)
 
 图生图并非一种真正的提示, 只是塑造一种色彩上的相似性.
 
@@ -400,7 +415,7 @@ IP-Adapter 会去真正的理解你输入的图片的含义, 并利用他学习�
 
 不同的 IP-Adapter 模型, 迁移的内容不同, 注意甄别
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240602190547047.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202405333.png)
 
 ### 参数
 
@@ -420,11 +435,11 @@ ip-adapter_sd15, ip-adapter_sd15_lingt, ip-adapter-plus_sd15
 - light 更适合偏向提示词的.
 - sd1.5 适合在偏向提示词的基础上, 配合 prompt 做一些小修改. 能大致遵循参考图像的内容, 能够捕捉图像整体的宏观特征. 包括颜色特征, 纹理特征和形状特征, 整体亮度, 对比度等
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608171332349.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202405472.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608172909400.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202405611.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608173324527.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202405684.png)
 
 #### 权重的影响
 
@@ -432,15 +447,15 @@ ip-adapter_sd15, ip-adapter_sd15_lingt, ip-adapter-plus_sd15
 
 想要提示词发挥作用, 0.5-0.8 是比较理想的. 权重与参考图和 prompt 期望的动作也有关系
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608173837912.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202405821.png)
 
 ### 实现风格迁移
 
 实现换肤, 风格迁移
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529101426106.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202405952.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529101415370.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202406080.png)
 
 ## Ip-adapter Face Id
 
@@ -456,7 +471,7 @@ ip-adapter faceid-plus, 还使用了 clip 图像嵌入用于人脸结构
 
 ip-adapter faceid-plusv2, 还允许调整脸部结构的权重, 但是只能在 comfy ui 上使用
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240608172126306.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202406241.png)
 
 ip-adapter faceid-portrait, 肖像专用模型, 整体作用与 faceid 基础版是相同的, 不需要使用 lora , 可以接受多张参考图, 来提升图片的相似性.
 
@@ -464,7 +479,7 @@ ip-adapter faceid-portrait, 肖像专用模型, 整体作用与 faceid 基础版
 
 很不错. 配合 openpose 使用, 就可以摆 pose 了. 很舒服. 比 reference only 效率高, 泛用性强
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240531093807370.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202406367.png)
 
 --- start-multi-column: ID_iv2g
 
@@ -473,15 +488,15 @@ Number of Columns: 2
 Largest Column: standard
 ```
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240531093745838.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202406490.png)
 
 --- column-break ---
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240531093741159.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202406604.png)
 
 --- end-multi-column
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240531093831488.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202406689.png)
 
 --- start-multi-column: ID_d6i7
 
@@ -490,11 +505,11 @@ Number of Columns: 2
 Largest Column: standard
 ```
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240531093206635.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202406821.png)
 
 --- column-break ---
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240530191259074.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202406949.png)
 
 --- end-multi-column
 
@@ -512,11 +527,11 @@ Largest Column: standard
 
 利用语义分割去识别一张图片上的每个部分分别是什么东西
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529163211164.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202407126.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240527214825521.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202407300.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240529163328376.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202407440.png)
 
 通过 ps 以及 seg, 完成语义分割的画作, 再使用 sd 生成成品
 
@@ -526,6 +541,6 @@ Largest Column: standard
 
 openpose 无法判断手在前还是在后. 而 Depth 可以识别.
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240526204527339.png)
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202407610.png)
 
 权重的调节需要更加谨慎
