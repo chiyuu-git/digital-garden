@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-31-Fri, 3:52:03 pm","date-modified":"2024-06-09-Sun, 7:05:28 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-animation/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-31-Fri, 3:52:03 pm","date-modified":"2024-06-10-Mon, 9:44:26 am","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-animation/","dgPassFrontmatter":true}
 ---
 
 
@@ -277,7 +277,15 @@ best quality, masterpiece, 1girl, upper body, detailed face, looking at viewer, 
 
 ## Animate Diff 转绘工作流
 
+不换背景
+
 ![](stable-diffusion-animation/DomoAI动漫转绘工作流.json)
+
+![](QinNarT小钱-转绘工作流.json)
+
+### 小钱的工作流
+
+给视频单独做了一个工作流, 前期的预处理, 把视频的 opense, depth, mask 全都单独处理到不同的文件夹内了
 
 # SVD
 
