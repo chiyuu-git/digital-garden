@@ -57,13 +57,13 @@ AI 作图知识库 (教程): https://guide.novelai.dev/
 
 ### 括号
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240406162958746.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202646821.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240406163051944.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202646911.png)
 
 ### 尖括号调用 Lora
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240406163133281.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202647018.png)
 
 ### 下划线连接词
 
@@ -73,7 +73,7 @@ AI 作图知识库 (教程): https://guide.novelai.dev/
 
 #### `[FLOWERS: 0.7]`
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240406163656002.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202647089.png)
 
 花这个关键词只在采样进程的**后** 30% 生效, 生成的花朵就会比较少
 
@@ -83,7 +83,7 @@ AI 作图知识库 (教程): https://guide.novelai.dev/
 
 #### `[STONES:FLOWERS:0.7]`
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240406163822655.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202647176.png)
 
 石头为主, 花朵为辅
 
@@ -91,17 +91,17 @@ AI 作图知识库 (教程): https://guide.novelai.dev/
 
 有人说用斜杠才是正确的. 实际试了一下全是, 正反斜杠的交错效果都比 `|` 要好
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240406163903117.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202647260.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240528103225267.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202647343.png)
 
 ## 推荐格式
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240528103151061.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202647422.png)
 
 首行占比最重
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240406170551867.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202647523.png)
 
 ### 画质词
 
@@ -207,7 +207,7 @@ https://tags.novelai.dev/
 
 保存几张生成好的图片 天然就是 prompt 示例了
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/90832dcf5cbe2a88815cba6f54569ae7539e8d601af6596779680e9cd3a34c91.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202647592.png)
 
 ```text
 1girl,solo,
@@ -247,7 +247,7 @@ Steps: 20, Sampler: DPM++ 2M Karras, CFG scale: 7.0, Seed: 1474817915, Size: 512
 
 [【AI绘画】一张图看懂新手入门文生图如何使用 - 哔哩哔哩](https://www.bilibili.com/read/cv22661198/?from=articleDetail)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240405170347406.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202647721.png)
 
 ## 采样步数
 
@@ -285,21 +285,21 @@ Steps: 20, Sampler: DPM++ 2M Karras, CFG scale: 7.0, Seed: 1474817915, Size: 512
 
 [查询图片参数](stable-diffusion-basic.md#查询图片参数)
 
-![|300](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240528110409078.jpeg)
+![|300](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202647794.jpeg)
 
-![|300](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240528110413594.png)
+![|300](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202647858.png)
 
 ## 缩放模式
 
 # 图生图 Outpaint
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/outpatin/image-20240607190503266.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202647938.png)
 
 ## 仅调整大小
 
 压缩比例之后, 再进行图生图
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/outpatin/image-20240607190518796.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202648033.png)
 
 第四个选项就是直接在潜空间放大
 
@@ -307,7 +307,7 @@ Steps: 20, Sampler: DPM++ 2M Karras, CFG scale: 7.0, Seed: 1474817915, Size: 512
 
 原图会被裁剪成和目标尺寸相同宽高比之后放大, 再进行图生图
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/outpatin/image-20240607190539478.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202648157.png)
 
 ## 缩放后填充空白
 
@@ -317,9 +317,9 @@ Steps: 20, Sampler: DPM++ 2M Karras, CFG scale: 7.0, Seed: 1474817915, Size: 512
 
 > 如果宽高比一样就不存在缩放了, 仅仅是图生图而已
 
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/outpatin/image-20240607190822788.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202648271.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240607191030602.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202648388.png)
 
 ## 灵魂画手, 利用图生图优化
 
@@ -335,7 +335,7 @@ AI 生成图片会自动保存全部参数到原图中，可以在 WebUI 的 “
 
 Tagger 是一个插件，在新版的整合包内也帮你装好了，可以在顶栏找到。打开后拖入图片，AI 会识别出一些 tag。如果没有这个插件的话需要你自行安装，安装教程参考下面的插件管理部分。
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240405172017092.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202648475.png)
 
 # 局部重绘
 
