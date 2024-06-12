@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:45:05 pm","date-modified":"2024-06-10-Mon, 7:24:43 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:45:05 pm","date-modified":"2024-06-12-Wed, 9:59:46 am","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/","dgPassFrontmatter":true}
 ---
 
 
@@ -329,6 +329,10 @@ prompt 只需要 make it 的部分就好了? 独立控制图像会和 prompt 互
 
 # 图像提示相关模型
 
+时间线: reference only => faceid => instantid => pulid
+
+有测评表示 instantid 的效果是最好的...
+
 ## Reference Only
 
 出现得最早的用于人物一致性的尝试. 效果不好才有了后续的 ip-adapter 和 instand_id.
@@ -338,66 +342,6 @@ prompt 只需要 make it 的部分就好了? 独立控制图像会和 prompt 互
 用于固定特征, 也可以用于保持人物一致性, 但是泛用性更强一点. 类似于很多个长得很像的人, 穿搭也是一个调调, 但是仔细看就能发现每次脸都不一样? 但是在小说推文场景, 可以用作角色的创建工作, 作为人物管理的基础. 还是够用的
 { #z01ii5}
 
-
-## InstantId
-
-保持人物一致性
-
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404168.png)
-
-InstantID 使用 InsightFace 从参考人脸中检测、裁剪和提取人脸 embedding 。然后 embedding 与 IP-Adapter 一起使用来控制图像生成。这部分与 IP-Adapter Face ID 非常相似。不过，它还使用 ControlNet 检测并修复多个面部标志（眼睛、鼻子和嘴巴）
-
-结合使用 IP-Adapter Face ID 和 ControlNet，可以高保真度地复制我们提供的参考图像，从而最终实现人物角色的一致性。
-
-注意：InstantID 需要使用 SDXL 大模型，目前还没有 Stable Diffusion 1.5 对应的版本。
-
-### 操作实例
-
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404247.png)
-
-controlNet unit 0 使用 embedding 预处理器 + ip-adapter_instant_id_sdxl
-
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404371.png)
-
-controlNet unit 0 使用 instant_id_face_keypoints 预处理器 +control_instant_id_sdxl
-
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404532.png)
-
-```text
-high quality,masterpiece,rich details,realistic photography,8k,high-definition image quality,
-watercolors portrait of a woman,artistry,
-```
-
---- start-multi-column: ID_hdd8
-
-```column-settings
-Number of Columns: 4
-Largest Column: standard
-```
-
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404736.png)
-
---- column-break ---
-
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404839.png)
-
---- column-break ---
-
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404989.png)
-
---- column-break ---
-
-![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202405121.png)
-
---- end-multi-column
-
-切换不同风格, 即可生成同一个人的不同画风的头像
-
-比如 instantid 如果用来做人物头像, 其实是没有问题的, 可以生成同一个人各种各样的人物头像. 或者是半身照, 证件照等等. 但是用作全身像时因为面部采样分配不足, 很难做到继续控制人物一致
-{ #9kex7j}
-
-
-> [!question] 要怎么才能全身像然后人脸也一致呢?
 
 ## IP-Adapter
 
@@ -512,6 +456,69 @@ Largest Column: standard
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202406949.png)
 
 --- end-multi-column
+
+## InstantId
+
+保持人物一致性
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404168.png)
+
+InstantID 使用 InsightFace 从参考人脸中检测、裁剪和提取人脸 embedding 。然后 embedding 与 IP-Adapter 一起使用来控制图像生成。这部分与 IP-Adapter Face ID 非常相似。不过，它还使用 ControlNet 检测并修复多个面部标志（眼睛、鼻子和嘴巴）
+
+结合使用 IP-Adapter Face ID 和 ControlNet，可以高保真度地复制我们提供的参考图像，从而最终实现人物角色的一致性。
+
+注意：InstantID 需要使用 SDXL 大模型，目前还没有 Stable Diffusion 1.5 对应的版本。
+
+### 操作实例
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404247.png)
+
+controlNet unit 0 使用 embedding 预处理器 + ip-adapter_instant_id_sdxl, 主要负责脸型
+
+controlNet unit 1 使用 keypoints 预处理器 + control_instantid_sdxl, 主要负责构图?
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404371.png)
+
+controlNet unit 0 使用 instant_id_face_keypoints 预处理器 +control_instant_id_sdxl
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404532.png)
+
+```text
+high quality,masterpiece,rich details,realistic photography,8k,high-definition image quality,
+watercolors portrait of a woman,artistry,
+```
+
+--- start-multi-column: ID_hdd8
+
+```column-settings
+Number of Columns: 4
+Largest Column: standard
+```
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404736.png)
+
+--- column-break ---
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404839.png)
+
+--- column-break ---
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202404989.png)
+
+--- column-break ---
+
+![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202405121.png)
+
+--- end-multi-column
+
+切换不同风格, 即可生成同一个人的不同画风的头像
+
+比如 instantid 如果用来做人物头像, 其实是没有问题的, 可以生成同一个人各种各样的人物头像. 或者是半身照, 证件照等等. 但是用作全身像时因为面部采样分配不足, 很难做到继续控制人物一致
+{ #9kex7j}
+
+
+> [!question] 要怎么才能全身像然后人脸也一致呢?
+> 第一张图捕捉脸, 第二张图可以控制构图
 
 # 色彩相关模型
 
