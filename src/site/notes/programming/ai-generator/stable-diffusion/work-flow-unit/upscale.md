@@ -1,5 +1,5 @@
 ---
-{"aliases":["高清修复","细节增强"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:38:48 pm","date-modified":"2024-06-09-Sun, 8:26:39 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/","dgPassFrontmatter":true}
+{"aliases":["高清修复","细节增强"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:38:48 pm","date-modified":"2024-06-11-Tue, 7:11:19 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/","dgPassFrontmatter":true}
 ---
 
 
@@ -252,3 +252,11 @@ CFG 7 的确实不错
 > 挂载 tile 模型之后会发生色彩的问题, 这个是模型的特性带来的. 作者也无能为力
 
 #### 分区提示词
+
+# Local Latent Couple 用于局部的精细化 - LLuL
+
+[飞书 - 登录](https://bytedance.larkoffice.com/wiki/Fedewe77gizYuMkiXHRcsQnknkg)
+
+# cutoff
+
+[飞书 - 登录](https://bytedance.larkoffice.com/wiki/HNofwwMhai7cAjkCydkcgmPNn2g)
