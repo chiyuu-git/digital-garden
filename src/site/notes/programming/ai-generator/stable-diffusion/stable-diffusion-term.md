@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-25-Sat, 12:56:55 pm","date-modified":"2024-06-09-Sun, 10:03:29 am","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-term/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-25-Sat, 12:56:55 pm","date-modified":"2024-06-11-Tue, 7:37:39 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-term/","dgPassFrontmatter":true}
 ---
 
 
@@ -399,6 +399,10 @@ Mecha lora, 机甲少女
 
 视频扩展, 用于生成视频, 但是形式与 anime diff 不一样. 是套娃不断放大或不断缩小形式的
 
+[飞书 - 登录](https://bytedance.larkoffice.com/wiki/EQaPwJigyigRoQkV820cXVECnCe)
+
+有点过时了可能...
+
 ## tensorRT
 
 [显卡速度翻3倍，AI绘画进入“秒速时代”？Stable Diffusion究极加速插件，NVIDIA TensorRT扩展安装与使用全方位教程\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1Lv411F7Rr/?p=18&spm_id_from=pageDriver)
@@ -446,11 +450,15 @@ Mecha lora, 机甲少女
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240529154320965.png)
 
 ### 提示词
+
 o
+
 [香港深圳男生发型介绍！ 🌟适合所有男生的三七短侧分吹爆它，王嘉尔同 款也太帅了吧 🌟男士发型推荐栗子头，不需要怎么打理也很好 看拍照很上镜 🌟二八微分休闲中带有一点商务风，又不会显得 太成熟 🌟微分碎盖发型，微分的刘海能让发型看着更加 蓬松立体，最大的优点就是好打理学生党必备 男生短碎发发型推荐，头发太直太贴剪完需要 稍微吹一下打造凌乱蓬松感，平时吹吹千就好属 实懒人发型了 🌟微分前刺发型推荐，这款发型可以根据个人需 求进行细节调整脸型偏瘦的，两侧不建议太光， 额头高的中间可以少露些额头。 ✅发质细软的可以选择钢夹烫和摩根烫，超级自然 好打理适合多种发质增加蓬松立体感 #发型分享 #深圳发型设计#男士发型 #男士烫发 #摩根烫 #纹理烫 #气垫烫 #深圳小贤老师#东门染发 #香港染髮 #深圳理发店 #深圳理髮店 #香港理发店 #东门理发店#罗湖男士烫发 #羅湖男士髮型 #罗湖男生发型 #羅湖男生髮型推薦 #羅湖男生髮型推薦 - 小红书](https://www.xiaohongshu.com/explore/647f4e19000000002700250f)
 
 [回头率超高发型/根据脸型选发型 - 小红书](https://www.xiaohongshu.com/explore/659a4815000000001200b4f6)
+
 [Site Unreachable](https://www.xiaohongshu.com/explore/665098be0000000005005048)
+
 [Notion – The all-in-one workspace for your notes, tasks, wikis, and databases.](https://nenly.notion.site/EasyPhoto-AI-b8cfabb1b82a4a30b49d8d0a37dd4581)
 
 ```
@@ -560,6 +568,10 @@ detail face, close-up, portrait
 
 SD 里面只要有一个功能就是直接发送到 PS 图层
 
+## Cutoff
+
+[upscale](programming/ai-generator/stable-diffusion/work-flow-unit/upscale.md#cutoff)
+
 # 脚本
 
 一些本身并不包含, 但是却非常实用的功能.
@@ -568,7 +580,11 @@ SD 里面只要有一个功能就是直接发送到 PS 图层
 
 ultimate up scale
 
-local latent couple 用于局部的精细化 - LLuL
+[LLuL](programming/ai-generator/stable-diffusion/work-flow-unit/upscale.md#Local%20Latent%20Couple%20用于局部的精细化%20-%20LLuL)
+
+## Xyz 图表
+
+做图表
 
 ## Cut Off
 
