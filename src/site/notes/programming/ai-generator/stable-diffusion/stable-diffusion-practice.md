@@ -1,5 +1,5 @@
 ---
-{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-08-Sat, 1:24:56 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
+{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-12-Wed, 9:55:21 am","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
 ---
 
 
@@ -529,6 +529,39 @@ Largest Column: standard
 
 用到最后还得是 lora 和 reactor。其他的感觉都一般般。
 
+## PulID
+
+## ReActor
+
+## 对比
+
+faceid 出现的最早, 效果也不赖, 主要是显存依赖小
+
+instantdid 有的人认为是效果最好的, 但是显存依赖比较大, 跑起来很慢
+
 # IC_Light
 
 [知乎 IC-Light 介绍](https://www.zhihu.com/question/655431668/answer/3493306758)
+
+```
+cinematic lighting 电影光
+cinematic lighting动感光
+volumetric lighting体积光
+mood lighting气氛光
+bright明亮
+Soft illumination柔光照明
+soft lights瑞光千条
+rays of shimmering light闪烁的光线
+Crepuscular Ray云隙光(耶稣光)
+bioluminescence生物发光
+bisexual lighting气氛光
+Rembrandt Lighting人物的45度角侧向光
+Split Lighting高对比的侧面光
+front lighting正面光顺光
+Back lighting 逆光
+clean background trending 斜逆光
+rimlights边缘光
+global illuminations 全局光
+Warming lighting暖光灯
+Natural lighting 戏剧灯光
+```
