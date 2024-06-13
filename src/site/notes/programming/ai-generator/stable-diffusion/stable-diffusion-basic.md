@@ -211,14 +211,13 @@ https://tags.novelai.dev/
 
 ```text
 1girl,solo,
-hair ornament, long hair, blonde hair, hair intakes, hair flower, braid,
+hair ornament, long hair, blonde hair, hair intakes, hair flower, braid, bangs,
 blue eyes, smile, open mouth, teeth,
 collarbone,
 medium breasts,
 holding, outstretched arms, arms up,
 standing,
 skirt, white shirt, short sleeves, shirt tucked in,
-bangs,
 cowboy shot,looking at viewer,
 outdoors,flower,tree,day,blush,white flower,bush,sky,paintbrush,blurry background,
 ```
