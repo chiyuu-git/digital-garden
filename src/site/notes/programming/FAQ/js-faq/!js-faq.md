@@ -8,9 +8,9 @@
 | File                                                                                                 | overview                          |
 | ---------------------------------------------------------------------------------------------------- | --------------------------------- |
 | [[programming/front-end/primitive/es/es-string\|es-string]]                                       | [[programming/front-end/primitive/es/es-string#faq\|es-string#faq]]                 |
-| [[programming/front-end/primitive/es/es-object\|es-object]]                                       | [[programming/front-end/primitive/es/es-object#faq\|es-object#faq]]                 |
 | [[programming/front-end/primitive/es/es-proto\|es-proto]]                                         | [[programming/front-end/primitive/es/es-proto#faq\|es-proto#faq]]                  |
 | [[programming/front-end/primitive/es/es-number\|es-number]]                                       | [[programming/front-end/primitive/es/es-number#faq\|es-number#faq]]                 |
+| [[programming/front-end/primitive/es/es-object\|es-object]]                                       | [[programming/front-end/primitive/es/es-object#faq\|es-object#faq]]                 |
 | [[programming/front-end/primitive/es/es-date\|es-date]]                                           | [[programming/front-end/primitive/es/es-date#faq\|es-date#faq]]                   |
 | [[programming/front-end/primitive/es/es-async/promise\|promise]]                                  | [[programming/front-end/primitive/es/es-async/promise#faq\|promise#faq]]                   |
 | [[programming/front-end/primitive/browser-api/dom-style\|dom-style]]                              | [[programming/front-end/primitive/browser-api/dom-style#faq\|dom-style#faq]]                 |
