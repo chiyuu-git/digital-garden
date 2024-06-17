@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-03-16-Thu, 3:33:15 pm","date-modified":"2024-05-08-Wed, 5:01:34 pm","permalink":"/programming/front-end/field/editor/tiptap-faq/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-03-16-Thu, 3:33:15 pm","date-modified":"2024-06-13-Thu, 11:29:00 am","permalink":"/programming/front-end/field/editor/tiptap-faq/","dgPassFrontmatter":true}
 ---
 
 
@@ -12,6 +12,10 @@ pnpm i prosemirror-model prosemirror-view prosemirror-state
 ```
 
 先无脑 pnpm add 再执行依赖清除就好
+
+# getNodePosition
+
+[Node Positions – Tiptap](https://tiptap.dev/docs/editor/api/nodepos)
 
 # 在当前 Node 的上方或者下方插入内容
 
