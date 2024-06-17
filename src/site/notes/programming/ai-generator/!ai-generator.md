@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-03-28-Thu, 3:10:27 pm","date-modified":"2024-05-29-Wed, 9:11:48 pm","permalink":"/programming/ai-generator/!ai-generator/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-03-28-Thu, 3:10:27 pm","date-modified":"2024-06-17-Mon, 10:38:19 am","permalink":"/programming/ai-generator/!ai-generator/","dgPassFrontmatter":true}
 ---
 
 
@@ -120,3 +120,16 @@ wonderstudio 一键出片神器
 [Suno AI 作曲全球爆红！几个月前还觉得 AI 作曲是个笑话，现在觉得 AI 要霸榜热曲也不是不可能了 \~\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV15j421R75g/?spm_id_from=333.1007.tianma.1-1-1.click&vd_source=f8573a6196003ad3683f1c1a403d3431)[Fetching Title#nhkc](https://www.bilibili.com/video/BV15j421R75g/?spm_id_from=333.1007.tianma.1-1-1.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
 
 [Sina Visitor System](https://weibo.com/1757693565/O25UhAaLM)
+
+# FAQ
+
+## 一直很想知道以前的一些过时理论, 当下最潮流的观点是如何看待和反驳的
+
+就比如共产主义和马克思理论, 从全球范围来看, 马克思理论很明显是错误的路线了.
+
+现在政治学, 经济学是怎么看待和批判马克思理论的呢?
+
+1. 要么是有足够的证据支撑马克思主义确实是错误的路线
+2. 要么是时代背景的局限性, 需要等待下一波共产主义浪潮. 就像 ai 浪潮, web3 浪潮, 元宇宙浪潮一样
+
+靠 gpt 就好了, 感觉比较符合实际.
