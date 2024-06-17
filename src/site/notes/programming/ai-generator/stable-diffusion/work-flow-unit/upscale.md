@@ -41,6 +41,7 @@ AI 基本上无法生成超级大图，想要生成高清图片正确的做法�
 
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202529812.png)
 
+[知识链接：关于放大中的几种插值处理方式（Antialiasing、Bicubic等） - 飞书云文档](https://gf66fxi6ji.feishu.cn/wiki/B5BUw1L60iIdTvknQHYckOAcncd)
 # 图生图 - 高清修复
 
 没有默认给出的高清修复选项, 因为重本质上来说, 图生图就是一种高清修复
