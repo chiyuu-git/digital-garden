@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-25-Sat, 12:56:55 pm","date-modified":"2024-06-11-Tue, 7:37:39 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-term/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-25-Sat, 12:56:55 pm","date-modified":"2024-06-14-Fri, 5:00:07 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-term/","dgPassFrontmatter":true}
 ---
 
 
@@ -19,11 +19,114 @@
 
 有点像看到一个曼妙的背影, 你会想起无数过往的女人. 但是最终扩散形成的可以是任意一个, 但是只能是一个
 
+SD 会经由随机种子生成一张随机噪声图，然后利用训练好的”噪声预测器“（U-Net），结合输入的提示词等条件（Conditioning），进行“条件去噪”，在这张噪声图上不断添加一些形象，使之成为一张生成的新图片。
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240614165757264.png)
+
 ## U-Net
 
 lora 和 controlNet 都是在对 U-Net 做操作
 
 tensorRT 也是
+
+## 准备素材
+
+在后期处理里面, 有很多为了准备素材而添加的快捷操作, 可以使用
+
+[B站第一套系统的AI绘画模型训练课程！零基础入门“炼丹”，制作属于你的SD模型！模型微调（Dreambooth、LoRA、Embedding）原理分析教学\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1TK411v7Jw/?vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+# 大模型
+
+sd 的大模型分为了三代, v1, v2, sdxl.
+
+sdxl 对标 midjourney 的全能大模型, 但是细节还是差很多
+
+## 模型的作用
+
+存储了大量的学习信息, 把图片给模型学习的过程叫做喂图.
+
+如果喂给模型的图片都是二次元的, 那么无论是让模型画人物还是画风景都会是二次元的
+
+> [!NOTE] Title
+> 这也代表着, 画风不是光靠 prompt 可以决定的
+
+## 模型的存放位置
+
+`D:\stable diffusion\sd-webui-aki-v4.7\models\Stable-diffusion`
+
+这类模型又被称作 check point. 一个大的模型, 训练起来是很消耗算力的, 运算到关键位置的时候, 就会在一个关键点创建一个 checkPoint 保存已经运算的部分
+
+正是基于这种 checkpoint 的特性, 大部分的模型都拥有不断的往下迭代和更新的能力
+
+常规的后缀名: `.ckpt`, `.safetensors`
+
+`.safetensors` 较小是因为剪枝, 量化处理过, 不允许运行脚本, 更安全
+
+## Sdxl
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240407185133464.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240407185204823.png)
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240407185107512.png)
+
+### 特点
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240407185327242.png)
+
+更好的识别自然语言, 更短的 prompt
+
+使用了更大的分辨率的图片做训练, 基础训练 1024 像素
+
+有更多的细节. refiner 优化器
+
+生成文字更加准确
+
+通过提示词切换不同的风格的, 不用搭配 lora
+
+意义更大与作用本身
+
+底模的更新, 会让已经学习的一些更简单, 效果更好, 而不是让学习白费. 因为 controlNet 所解决的问题确实是提示词无法精确控制的
+
+### 降低显存压力
+
+[AI绘画的“显存杀手”？5块全新40系显卡怒测“最强开源大模型”——Stable Diffusion XL效率测试&使用技巧，SDXL低显存Web UI优化指南\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1MG411R7XQ/?spm_id_from=333.999.0.0&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+家用机显卡的水平还是不够. 现阶段云显卡或许才是最经济的方案. 因为以后的显卡一定会在 ai 算力方面继续加强.
+
+### 风格选择扩展 + 自动 Refiner 扩展
+
+需要搭配 refiner 使用. 需要先使用 sdxl 出图, 然后到图生图使用 refiner 再出图, 重绘幅度 0.5
+
+refiner 有点类似于高清修复, 会识别出需要细节处理的部分. 额外进行加噪去噪, 来获取更高清的结果
+
+还需要等等 controlNet
+
+style selector, 切换内置的画风, 减少 lora 的使用
+
+### 如何升级到 Sdxl
+
+与旧 Lora 不通用.
+
+webUI 版本和插件版本直接在秋月启动器一键更新即可
+
+### Sdxl Turbo 模型
+
+已开源. 1 步采样, 但是最佳分辨率是 512 512
+
+## SD3
+
+【Zho】sd3_medium 分别使用不同文本编码器的对比：
+
+1）+ t5xxl
+
+2）+ clip_l + clip_g
+
+3）+ clip_l + clip_g + t5xxl
+
+在属性匹配和文字上，T5XXL 还是非常关键的，在语义理解上三种其实差不太多（当然加了 t5xxl 还是会好一些），这和论文的结论基本一致
+
+日常使用建议：由于 t5xxl 比较大，所以对属性匹配和文字无要求的情况可以不使用 t5xxl，建议找到一个算力和效果的平衡点
 
 # 采样器
 
@@ -81,108 +184,29 @@ Exponential 1.6 版本新增的算法
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240407183141037.png)
 
-# 大模型
+## LCM
 
-sd 的大模型分为了三代, v1, v2, sdxl.
+[【AI绘画】LCM 教程： 超级加速、1秒出图！小显卡的福音 LCM LoRA、采样器 安装使用教程\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1Q94y1E7uc/?spm_id_from=333.337.search-card.all.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
 
-sdxl 对标 midjourney 的全能大模型, 但是细节还是差很多
+23 年底, 有个大佬提出了 lcm 的大模型和 lcm 采样器. 以及相应的 lcm lora. 但是现在基本只用 lcm 采样器和 lcm lora 了
 
-## 模型的作用
+生成速度非常快, 可以用很少的步数就完成采样去噪, 2-8 步.
 
-存储了大量的学习信息, 把图片给模型学习的过程叫做喂图.
+lcm lora 可以适配任意的模型来做加速
 
-如果喂给模型的图片都是二次元的, 那么无论是让模型画人物还是画风景都会是二次元的
+## TCD
 
-> [!NOTE] Title
-> 这也代表着, 画风不是光靠 prompt 可以决定的
+LCM 适用于 1.5 模型. TCD 适用于 SDXL 模型. 有需要的时候再学习吧
 
-## 模型的存放位置
+## Sampler 和 Scheduler
 
-`D:\stable diffusion\sd-webui-aki-v4.7\models\Stable-diffusion`
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240614165809230.png)
 
-这类模型又被称作 check point. 一个大的模型, 训练起来是很消耗算力的, 运算到关键位置的时候, 就会在一个关键点创建一个 checkPoint 保存已经运算的部分
-
-正是基于这种 checkpoint 的特性, 大部分的模型都拥有不断的往下迭代和更新的能力
-
-常规的后缀名: `.ckpt`, `.safetensors`
-
-`.safetensors` 较小是因为剪枝, 量化处理过, 不允许运行脚本, 更安全
-
-## 原理
-
-## Sdxl
-
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240407185133464.png)
-
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240407185204823.png)
-
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240407185107512.png)
-
-### 特点
-
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240407185327242.png)
-
-更好的识别自然语言, 更短的 prompt
-
-使用了更大的分辨率的图片做训练, 基础训练 1024 像素
-
-有更多的细节. refiner 优化器
-
-生成文字更加准确
-
-通过提示词切换不同的风格的, 不用搭配 lora
-
-意义更大与作用本身
-
-底模的更新, 会让已经学习的一些更简单, 效果更好, 而不是让学习白费. 因为 controlNet 所解决的问题确实是提示词无法精确控制的
-
-### 降低显存压力
-
-[AI绘画的“显存杀手”？5块全新40系显卡怒测“最强开源大模型”——Stable Diffusion XL效率测试&使用技巧，SDXL低显存Web UI优化指南\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1MG411R7XQ/?spm_id_from=333.999.0.0&vd_source=f8573a6196003ad3683f1c1a403d3431)
-
-家用机显卡的水平还是不够. 现阶段云显卡或许才是最经济的方案. 因为以后的显卡一定会在 ai 算力方面继续加强.
-
-### 风格选择扩展 + 自动 Refiner 扩展
-
-需要搭配 refiner 使用. 需要先使用 sdxl 出图, 然后到图生图使用 refiner 再出图, 重绘幅度 0.5
-
-refiner 有点类似于高清修复, 会识别出需要细节处理的部分. 额外进行加噪去噪, 来获取更高清的结果
-
-还需要等等 controlNet
-
-style selector, 切换内置的画风, 减少 lora 的使用
-
-## 如何升级到 Sdxl
-
-与旧 Lora 不通用.
-
-webUI 版本和插件版本直接在秋月启动器一键更新即可
-
-## Sdxl Turbo 模型
-
-已开源. 1 步采样, 但是最佳分辨率是 512 512
-
-## Lcm 模型
-
-出图速度超快, 2-4 步出效果
-
-## LCM 采样器
-
-[第13节：LCM模型介绍\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1iZ421z7F9?p=13&spm_id_from=pageDriver&vd_source=f8573a6196003ad3683f1c1a403d3431)
-
-不能加快采样速度
-
-## LCM Lora
-
-能降低采样步数
-
-大批量出图, 再高清化. 结合 animeDiff 效果也很好
+而广义的**采样方法（Sampler）**，即代表在控制这个“去噪”过程的一种算法。简单地去理解，不同的算法会给你带来不同的采样结果，而不同算法对于采样步数的要求也可能会有些许差异。
 
 # VAE
 
-Varitational Auto Encoder
-
-变分自解码器
+VAE 即变分自编码器 (Variational Auto Encoder),可以将一张图片转换为潜空间变量 (或逆向转换),是像素空间与潜空间的桥梁。在 Stable Diffusion 中,我们的所有生成操作都是在潜空间内完成的,因而需要 VAE 将运算的潜空间数据转换为我们肉眼可以辨析的 " 图片 "。
 
 负责将加噪后的潜空间数据转化为正常的图像.
 
@@ -571,6 +595,12 @@ SD 里面只要有一个功能就是直接发送到 PS 图层
 ## Cutoff
 
 [upscale](programming/ai-generator/stable-diffusion/work-flow-unit/upscale.md#cutoff)
+
+## 动态 CFG 插件
+
+暂时不知道有什么用
+
+[GitHub - mcmonkeyprojects/sd-dynamic-thresholding: Dynamic Thresholding (CFG Scale Fix) for Stable Diffusion (StableSwarmUI, ComfyUI, and Auto WebUI)](https://github.com/mcmonkeyprojects/sd-dynamic-thresholding)
 
 # 脚本
 
