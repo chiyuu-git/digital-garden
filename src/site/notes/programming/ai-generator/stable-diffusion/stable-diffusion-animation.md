@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-31-Fri, 3:52:03 pm","date-modified":"2024-06-10-Mon, 9:44:26 am","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-animation/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-31-Fri, 3:52:03 pm","date-modified":"2024-06-16-Sun, 11:13:41 am","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-animation/","dgPassFrontmatter":true}
 ---
 
 
@@ -418,3 +418,9 @@ nenly 实践发现 CFG 不会影响运动的构成, 但是会影响细节. 如�
 ## SVD 和 animeDiff 哪个好?
 
 几乎是同一时间出现的. 支持的能力也有差异. 与其分个高低, 不如都试试, 探索合适的场景, 甚至是互相搭配使用, 取长补短
+
+## 时尚潮流的新品
+
+toonCrafter
+
+muse pose 自动提取 open pose 视频动作帧: [AI视频动画S2：Comfyui-MusePose Comfy工作流 动作驱动图片视频 Animateanyone升级开源\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1mz421h7dH/?spm_id_from=pageDriver&vd_source=f8573a6196003ad3683f1c1a403d3431)
