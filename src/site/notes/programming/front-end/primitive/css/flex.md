@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":["2023-04-25"],"dg-publish":true,"date-created":"2023-04-20-Thu, 3:16:58 pm","date-modified":"2024-01-16-Tue, 5:32:44 pm","permalink":"/programming/front-end/primitive/css/flex/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":["2023-04-25"],"dg-publish":true,"date-created":"2023-04-20-Thu, 3:16:58 pm","date-modified":"2024-06-13-Thu, 10:47:36 am","permalink":"/programming/front-end/primitive/css/flex/","dgPassFrontmatter":true}
 ---
 
 
@@ -683,7 +683,7 @@ width: 100px; //项目宽为50px
 flex-wrap: wrap;
 ```
 
-![1548841107511|200](/img/user/programming/front-end/primitive/css/flex/1548841107511.png) ![1548841110796](F:\OneDrive\JS\assets\1548841110796.png) （图 2 中的 1 开启了 align-self）
+![1548841107511|200](/img/user/programming/front-end/primitive/css/flex/1548841107511.png) （图 2 中的 1 开启了 align-self）
 
 富裕空间的这种表现是因为 align-content 的默认值 normal
 
@@ -694,3 +694,7 @@ normal：每一行之间和最后一行与侧轴的终点之间分配相同的�
 ## Flex 1 能有效的占据剩余空间 但是却没有办法指定 Max-width 匹配 Flex 1 分配到的宽度
 
 这个时候可以考虑使用 calc 动态计算出剩余的空间分配给 max-widht
+
+## Flex-shrink 0 防止高度塌陷
+
+因为 flex-shrink 不为 0 时, item 是可以压缩的, 把内容区全都压缩没了, 高度就塌陷了
