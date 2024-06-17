@@ -1,5 +1,5 @@
 ---
-{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-12-Wed, 9:55:21 am","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
+{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-14-Fri, 4:22:36 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
 ---
 
 
@@ -543,6 +543,12 @@ instantdid 有的人认为是效果最好的, 但是显存依赖比较大, 跑�
 
 [知乎 IC-Light 介绍](https://www.zhihu.com/question/655431668/answer/3493306758)
 
+[IC-Light 控制光源位置 替换背景 ComfyUI工作流\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV12n4y1d7xC/?spm_id_from=333.999.0.0&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+[IC-Light + IPAdapter 控制光源位置 ComfyUI工作流\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1fD421G7VK/?spm_id_from=333.788.0.0&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+[【独家】IC-LIGHT换指定背景时特别假？优化方法来啦！\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV11D421G7K5/?spm_id_from=333.788.0.0&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
 ```
 cinematic lighting 电影光
 cinematic lighting动感光
@@ -565,3 +571,11 @@ global illuminations 全局光
 Warming lighting暖光灯
 Natural lighting 戏剧灯光
 ```
+
+# 加速出图的手段
+
+硬件层的加速就是和 英伟达或者 amd 合作的各种手段: tensorRT
+
+ui 层的加速就是 comfyUI 了
+
+模型层的加速: xl + lora + KSampler [超越LCM，TCD登场！盘点Stable diffusion加速出图四大法宝！\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1gD421L7BQ/?spm_id_from=333.337.search-card.all.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
