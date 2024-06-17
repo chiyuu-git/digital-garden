@@ -1,5 +1,5 @@
 ---
-{"aliases":["局部重绘"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 4:32:31 pm","date-modified":"2024-06-07-Fri, 9:15:57 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/inpaint/","dgPassFrontmatter":true}
+{"aliases":["局部重绘"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 4:32:31 pm","date-modified":"2024-06-15-Sat, 8:22:01 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/inpaint/","dgPassFrontmatter":true}
 ---
 
 
@@ -16,6 +16,8 @@
 > 实测最有效的是扩大重绘幅度, prompt 改不改都无所谓的
 
 原本是做修复用的
+
+![comfyUI](programming/ai-generator/stable-diffusion/comfyUI.md#^6vrcp8)
 
 ## 重绘区域
 
