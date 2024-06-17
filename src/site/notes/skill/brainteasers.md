@@ -1,5 +1,5 @@
 ---
-{"aliases":["脑筋急转弯"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-08-09-Wed, 9:36:09 am","date-modified":"2024-02-19-Mon, 5:54:25 pm","permalink":"/skill/brainteasers/","dgPassFrontmatter":true}
+{"aliases":["脑筋急转弯","思维与逻辑","行测"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-08-09-Wed, 9:36:09 am","date-modified":"2024-06-17-Mon, 11:47:59 am","permalink":"/skill/brainteasers/","dgPassFrontmatter":true}
 ---
 
 
@@ -66,3 +66,7 @@ https://www.bilibili.com/video/BV17c411t7op/?spm_id_from=333.1007.tianma.1-1-1.c
 时间 1: 上帝创建了一个自己举不起来的石头
 
 时间 2: 因为上帝无所不能, 所以他强化了自身, 变得可以举起这个石头
+
+# 帕斯卡的赌注
+
+[zhuanlan.zhihu.com/p/409597405](https://zhuanlan.zhihu.com/p/409597405)
