@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-04-05-Fri, 4:57:51 pm","date-modified":"2024-06-08-Sat, 1:07:53 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-basic/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-04-05-Fri, 4:57:51 pm","date-modified":"2024-06-17-Mon, 11:37:30 am","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-basic/","dgPassFrontmatter":true}
 ---
 
 
@@ -55,9 +55,11 @@ AI 作图知识库 (教程): https://guide.novelai.dev/
 
 ## Prompt 语法
 
-### 括号
+1. 提示词之间用英文逗号,分隔
+2. 提示词之间是可以换行的
+3. 权重默认为 1,越靠前权重越高
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202646821.png)
+### 权重
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240609202646911.png)
 
@@ -169,7 +171,9 @@ Chinese link style
 NSFW,badhandv4,EasyNegativeV2,ng_deepnegative_v1_75t
 ```
 
-感觉下面这一串裸写的效果要比 embeddins 好一头
+感觉下面这一串裸写的效果要比 embeddings 好一头.
+
+这个负面提示词在 comfyUI 里面跑有点问题
 
 ```text
 NSFW,(worst quality:2),(low quality:2),(normal quality:2),lowres,normal quality,((grayscale)),skin spots,acnes,skin blemishes,age spot,(ugly:1.331),(duplicate:1.331),(morbid:1.21),(mutilated:1.21),(tranny:1.331),mutated hands,(poorly drawn hands:1.5),blurry,(bad anatomy:1.21),(bad proportions:1.331),extra limbs,(disfigured:1.331),(missing arms:1.331),(extra legs:1.331),(fused fingers:1.61051),(too many fingers:1.61051),(unclear eyes:1.331),lowers,bad hands,missing fingers,extra digit,bad hands,missing fingers,(((extra arms and legs)))  
@@ -222,17 +226,7 @@ cowboy shot,looking at viewer,
 outdoors,flower,tree,day,blush,white flower,bush,sky,paintbrush,blurry background,
 ```
 
-collarbone 锁骨
-
-blonde hair 金发
-
-ornament 装饰
-
-outstretched arms 伸出的手臂
-
-bush 灌木
-
-braid 编织，把（头发）编成辫子;
+collarbone 锁骨, blonde hair 金发, ornament 装饰, outstretched arms 伸出的手臂, bush 灌木, braid 编织，把（头发）编成辫子;
 
 ```
 NSFW,(worst quality:2),(low quality:2),(normal quality:2),lowres,normal quality,((grayscale)),skin spots,acnes,skin blemishes,age spot,(ugly:1.331),(duplicate:1.331),(morbid:1.21),(mutilated:1.21),(tranny:1.331),mutated hands,(poorly drawn hands:1.5),blurry,(bad anatomy:1.21),(bad proportions:1.331),extra limbs,(disfigured:1.331),(missing arms:1.331),(extra legs:1.331),(fused fingers:1.61051),(too many fingers:1.61051),(unclear eyes:1.331),lowers,bad hands,missing fingers,extra digit,bad hands,missing fingers,(((extra arms and legs)))  
