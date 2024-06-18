@@ -1,5 +1,5 @@
 ---
-{"aliases":["gpt提示词","如何与gpt交谈","llm-prompt"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-06-11-Sun, 7:19:32 pm","date-modified":"2024-06-17-Mon, 4:19:02 pm","permalink":"/programming/ai-generator/agent/gpt-prompt/","dgPassFrontmatter":true}
+{"aliases":["gpt提示词","如何与gpt交谈","llm-prompt"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-06-11-Sun, 7:19:32 pm","date-modified":"2024-06-17-Mon, 8:02:46 pm","permalink":"/programming/ai-generator/agent/gpt-prompt/","dgPassFrontmatter":true}
 ---
 
 
