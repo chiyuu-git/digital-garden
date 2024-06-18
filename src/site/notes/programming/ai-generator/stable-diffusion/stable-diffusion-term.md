@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-25-Sat, 12:56:55 pm","date-modified":"2024-06-14-Fri, 5:00:07 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-term/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-25-Sat, 12:56:55 pm","date-modified":"2024-06-17-Mon, 7:20:10 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-term/","dgPassFrontmatter":true}
 ---
 
 
@@ -127,6 +127,8 @@ webUI 版本和插件版本直接在秋月启动器一键更新即可
 在属性匹配和文字上，T5XXL 还是非常关键的，在语义理解上三种其实差不太多（当然加了 t5xxl 还是会好一些），这和论文的结论基本一致
 
 日常使用建议：由于 t5xxl 比较大，所以对属性匹配和文字无要求的情况可以不使用 t5xxl，建议找到一个算力和效果的平衡点
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240617192012423.png)
 
 # 采样器
 
