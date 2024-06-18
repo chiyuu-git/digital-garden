@@ -1,5 +1,5 @@
 ---
-{"aliases":["知识管理"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-27-Tue, 10:02:39 am","date-modified":"2024-05-12-Sun, 4:07:37 pm","permalink":"/skill/management-method/knowledge-management/","dgPassFrontmatter":true}
+{"aliases":["知识管理"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-27-Tue, 10:02:39 am","date-modified":"2024-06-17-Mon, 10:08:54 pm","permalink":"/skill/management-method/knowledge-management/","dgPassFrontmatter":true}
 ---
 
 
@@ -131,6 +131,8 @@ logseq 和 obsidian 都可以，还支持笔记定位 PDF 原始位置。更倾�
 ## 读书笔记
 
 其实可以直接用 logseq 那种原生支持作读书笔记的, 只要产出的都是 markdown , 应该问题不大
+
+[我的阅读工作流！如何在obsidian中做读书笔记？\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1Ap421X7WQ/?spm_id_from=333.788)
 
 ## 电子书
 
