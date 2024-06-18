@@ -9,15 +9,9 @@
 
 [飞书云文档](https://waytoagi.feishu.cn/wiki/NuRCwmGfyig1QWk4VNmcH0NcnUc)
 
-模型安装使用教程： https://www.bilibili.com/read/cv21362202
+[LiblibAI·哩布哩布AI - 中国领先的AI创作平台](https://www.liblib.art/)
 
-【常用网站】
-
-AI 作图知识库 (教程): https://guide.novelai.dev/
-
-【问题速查】
-
-遇到问题请前往启动器内 - 疑难解答 进行扫描
+[Civitai | Share your models](https://civitai.com/search/models?sortBy=models_v9&query=%E9%97%B9%E5%B8%82)
 
 # Sd 和 Mj 的区别
 
