@@ -1,9 +1,13 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-24-Fri, 6:40:41 pm","date-modified":"2024-06-17-Mon, 1:54:32 pm","permalink":"/programming/ai-generator/stable-diffusion/comfyUI/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-24-Fri, 6:40:41 pm","date-modified":"2024-06-18-Tue, 3:12:37 pm","permalink":"/programming/ai-generator/stable-diffusion/comfyUI/","dgPassFrontmatter":true}
 ---
 
 
 [way to agi 教程](https://waytoagi.feishu.cn/wiki/TERlwXlJTikRwFkOYMqcoFkbnag)
+
+[来来：ComfyUI推荐学习路径 - 飞书云文档](https://waytoagi.feishu.cn/wiki/P3VhwcYL1ia9KkkVbKYc1hKnnxg)
+
+[ComfyUI：入门教程 - 飞书云文档](https://waytoagi.feishu.cn/wiki/YPeLwPNbaiDnjsk9Th4cV52Pndc)
 
 [ComfyUI Workflows - Developer Community](https://openart.ai/workflows/home)
 
