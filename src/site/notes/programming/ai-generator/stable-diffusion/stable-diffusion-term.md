@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-25-Sat, 12:56:55 pm","date-modified":"2024-06-17-Mon, 7:20:10 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-term/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-25-Sat, 12:56:55 pm","date-modified":"2024-06-18-Tue, 3:39:16 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-term/","dgPassFrontmatter":true}
 ---
 
 
@@ -22,6 +22,12 @@
 SD 会经由随机种子生成一张随机噪声图，然后利用训练好的”噪声预测器“（U-Net），结合输入的提示词等条件（Conditioning），进行“条件去噪”，在这张噪声图上不断添加一些形象，使之成为一张生成的新图片。
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240614165757264.png)
+
+在生成图像的过程中，SD 会先在潜变量空间中生成完全随机的噪声。随后，噪声预测器会估计图像中的预测噪声，然后从图像中减去将预测出的噪声。
+
+重复这个过程最终即可获得越来越清晰的图像。去噪的整个过程，被称为采样。
+
+采样过程属于 SD 模型的一部分，其中采样过程中采用的方法，就叫做 sampler，采样器**。**
 
 ## U-Net
 
@@ -479,7 +485,7 @@ Mecha lora, 机甲少女
 
 o
 
-[香港深圳男生发型介绍！ 🌟适合所有男生的三七短侧分吹爆它，王嘉尔同 款也太帅了吧 🌟男士发型推荐栗子头，不需要怎么打理也很好 看拍照很上镜 🌟二八微分休闲中带有一点商务风，又不会显得 太成熟 🌟微分碎盖发型，微分的刘海能让发型看着更加 蓬松立体，最大的优点就是好打理学生党必备 男生短碎发发型推荐，头发太直太贴剪完需要 稍微吹一下打造凌乱蓬松感，平时吹吹千就好属 实懒人发型了 🌟微分前刺发型推荐，这款发型可以根据个人需 求进行细节调整脸型偏瘦的，两侧不建议太光， 额头高的中间可以少露些额头。 ✅发质细软的可以选择钢夹烫和摩根烫，超级自然 好打理适合多种发质增加蓬松立体感 #发型分享 #深圳发型设计#男士发型 #男士烫发 #摩根烫 #纹理烫 #气垫烫 #深圳小贤老师#东门染发 #香港染髮 #深圳理发店 #深圳理髮店 #香港理发店 #东门理发店#罗湖男士烫发 #羅湖男士髮型 #罗湖男生发型 #羅湖男生髮型推薦 #羅湖男生髮型推薦 - 小红书](https://www.xiaohongshu.com/explore/647f4e19000000002700250f)
+[小红书发型](https://www.xiaohongshu.com/explore/647f4e19000000002700250f)
 
 [回头率超高发型/根据脸型选发型 - 小红书](https://www.xiaohongshu.com/explore/659a4815000000001200b4f6)
 
