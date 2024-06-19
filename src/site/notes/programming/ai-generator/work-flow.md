@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-04-20-Sat, 2:43:25 pm","date-modified":"2024-06-17-Mon, 1:42:35 pm","permalink":"/programming/ai-generator/work-flow/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-04-20-Sat, 2:43:25 pm","date-modified":"2024-06-18-Tue, 2:45:33 pm","permalink":"/programming/ai-generator/work-flow/","dgPassFrontmatter":true}
 ---
 
 
@@ -14,6 +14,55 @@
 # 可参考的工作流
 
 [AI免费拍电影！全流程详细教程！0基础0成本AI剧本+分镜+静帧+视频+配音+剪辑\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1cM4m1d7VU/?spm_id_from=333.1007.tianma.1-1-1.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+# AI 小说推文
+
+[zhuanlan.zhihu.com/p/695204247](https://zhuanlan.zhihu.com/p/695204247)
+
+[一键搞定AI小说推文,超详细教程 | Sora最佳学习网站](https://soraor.com/archives/yi-jian-gao-ding-aixiao-shuo-tui-wen-chao-xiang-xi-jiao-cheng)
+
+[Stable Diffusion+Midjourney+chatGPT,这三个工具已经开始帮我全自动赚钱了！-叁心笔记](https://www.5aivip.com/151.html)
+
+[自媒体福音！AI绘画小说推文神器-Stable Diffusion漫画助手插件，一键生成漫画风人物，无脑级操作！（附资料）_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV18e411E7aB/?spm_id_from=333.337.search-card.all.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+[百度网盘 请输入提取码](https://pan.baidu.com/s/1ur04Z5MfGHUaPdmjZ7Q80g?pwd=7799)
+
+[一个插件啥都能画？漫画助手5.0发布~~_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV12k4y1F79k/?spm_id_from=333.999.0.0&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+[当我尝试用AI做小说推文后，真的能搞到钱💰 - 知乎](https://zhuanlan.zhihu.com/p/688062635)
+
+[绘唐科技——用户文档 - 飞书云文档](https://wv5o0g1m55v.feishu.cn/wiki/QDDfwmYJKihDMtkENDfcsNJIn7f)
+
+![](work-flow/image-20240618144525651.rar)
+
+推文场景人物的一致性, 似乎不那么重要. 只需要头发颜色可以保持一致, 人物的年龄不要波动太大就行.
+
+在抖音上甚至延申除了柳如烟这个网络 meme 角色. 所有的银发大小姐都起名叫柳如烟. 虽然各家的画风可能不太一致. 但是只要叫这个名字的银发女角色, 观众都能立马在脑海中脑补出她的经典角色形象. 也给小说推文的任务一致性降低了要求.
+
+![](/img/user/programming/ai-generator/work-flow/image-20240618144525704.png)
+
+本质上只是一个批量出图的脚本
+
+![](/img/user/programming/ai-generator/work-flow/image-20240618144525749.png)
+
+--- start-multi-column: ID_pefz
+
+```column-settings
+Number of Columns: 3
+Largest Column: standard
+```
+
+![](/img/user/programming/ai-generator/work-flow/image-20240618144525797.png)
+
+--- column-break ---
+
+![](/img/user/programming/ai-generator/work-flow/image-20240618144525836.png)
+
+--- column-break ---
+
+![](/img/user/programming/ai-generator/work-flow/image-20240618144525877.png)
+
+--- end-multi-column
 
 # 小说推文
 
@@ -85,7 +134,7 @@ commic ai
 
 推文专用大模型 搜一下, 可能会有
 
-![](/img/user/programming/ai-generator/work-flow/image-20240616212153489.png)
+![](/img/user/programming/ai-generator/work-flow/image-20240618144525911.png)
 
 ![stable-diffusion-practice](programming/ai-generator/stable-diffusion/stable-diffusion-practice.md#AI%20小说推文)
 
@@ -131,7 +180,7 @@ commic ai
 
 所以也不能是小说章节名字、小说名字等
 
-![|300](/img/user/programming/ai-generator/work-flow/image-20240613192911336.png)
+![|300](/img/user/programming/ai-generator/work-flow/image-20240618144525939.png)
 
 ### 填写信息
 
