@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-04-05-Fri, 4:57:51 pm","date-modified":"2024-06-17-Mon, 11:37:30 am","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-basic/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-04-05-Fri, 4:57:51 pm","date-modified":"2024-06-18-Tue, 5:58:03 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-basic/","dgPassFrontmatter":true}
 ---
 
 
@@ -12,6 +12,8 @@
 [LiblibAI·哩布哩布AI - 中国领先的AI创作平台](https://www.liblib.art/)
 
 [Civitai | Share your models](https://civitai.com/search/models?sortBy=models_v9&query=%E9%97%B9%E5%B8%82)
+
+[优秀博主](https://waytoagi.feishu.cn/wiki/NuRCwmGfyig1QWk4VNmcH0NcnUc)
 
 # Sd 和 Mj 的区别
 
@@ -229,6 +231,12 @@ NSFW,(worst quality:2),(low quality:2),(normal quality:2),lowres,normal quality,
 ```
 Steps: 20, Sampler: DPM++ 2M Karras, CFG scale: 7.0, Seed: 1474817915, Size: 512x512, Model: 192_3750_4424@7c819b6d13, Version: 1.8.0-RC
 ```
+
+## Prompt Bot
+
+[扣子: 中文提示词大师](https://www.coze.cn/store/bot/7356881415541391371?bid=6cs82lnd05g1m&panel=1)
+
+[zhuanlan.zhihu.com/p/701238618](https://zhuanlan.zhihu.com/p/701238618)
 
 # 文生图
 
