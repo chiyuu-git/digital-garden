@@ -1,7 +1,11 @@
 ---
-{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-14-Fri, 4:22:36 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
+{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-18-Tue, 3:44:09 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
 ---
 
+
+# 合规指引
+
+![](stable-diffusion-practice/image-20240618154416763.pdf)
 
 # AI 绘画合成文字形体特效
 
@@ -11,9 +15,9 @@
 
 文字, logo ,二维码都可以
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527183433706.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154416901.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240528215446720.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154416959.png)
 
 ## AI 材质艺术字
 
@@ -23,7 +27,7 @@ controlNet 权重越低, 形体会越自由
 
 除了处理文字, 还可以用于处理 logo 等任意形体, 艺术字体
 
-![|300](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602190026647.png)
+![|300](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154417012.png)
 
 --- start-multi-column: ID_e0e8
 
@@ -32,15 +36,15 @@ Number of Columns: 3
 Largest Column: standard
 ```
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601212436618.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154417077.png)
 
 --- column-break ---
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601212409867.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154417118.png)
 
 --- column-break ---
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601212838687.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154417163.png)
 
 --- end-multi-column
 
@@ -56,9 +60,9 @@ flower,dappled,sunlight,from above,bunch of flowers,outdoors,grasslands,
 
 controleNet 模型
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527184059681.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154417214.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527184454756.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154417317.png)
 
 ### Brightness
 
@@ -82,7 +86,7 @@ qr toolkit 可以方便的改变二维码的样式
 
 重点参数就只有一个, 重绘幅度 0.5-0.7. 0.7 基本是一个阈值,超过 0.7 之后就和原图非常不像了
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240606225348850.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154417470.png)
 
 ## 切换大模型或者 Lora 模型改变风格
 
@@ -132,7 +136,7 @@ controlNet 作者的又一力作. 可以生成透明背景的 png 图片.
 
 ## 基本使用
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527162728757.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154417629.png)
 
 ## 抠图的本质区别是什么
 
@@ -140,7 +144,7 @@ controlNet 作者的又一力作. 可以生成透明背景的 png 图片.
 
 ### 生成半透明素材
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240603102630592.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154417671.png)
 
 透明玻璃瓶的内部也是有 alpha 通道的
 
@@ -150,21 +154,21 @@ controlNet 作者的又一力作. 可以生成透明背景的 png 图片.
 
 极大的减轻抠图难度. 说白了, 就是一些抠图比较困难的场景, 都可以使用 layerDiffusion 直接生成
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240603102639066.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154417723.png)
 
 ## 进阶操作
 
 ## 前景和背景以及融合
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527170253946.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154417828.png)
 
 ### 前景补充背景生成融合图
 
 在 prompt 里输入完整的提示词, 即是 blending 状态的提示词, 会自动补全背景和光影融合
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527171132468.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154417907.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527170355636.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154417958.png)
 
 ### 前景与融合图做 Diff 产出背景
 
@@ -182,7 +186,7 @@ controlNet 作者的又一力作. 可以生成透明背景的 png 图片.
 
 在模型训练的时候, 一个是针对常规注意力层, 另一个是针对卷积层. 参考 github 作者的描述即可
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240527170957944.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154418012.png)
 
 ## 与其他模型搭配
 
@@ -219,11 +223,11 @@ Number of Columns: 2
 Largest Column: right
 ```
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529213645043.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154418104.png)
 
 --- column-break ---
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529213710070.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154418183.png)
 
 --- end-multi-column
 
@@ -240,11 +244,11 @@ Number of Columns: 2
 Largest Column: standard
 ```
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529215402123.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154418238.png)
 
 --- column-break ---
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529215335174.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154418288.png)
 
 --- end-multi-column
 
@@ -252,7 +256,7 @@ Largest Column: standard
 
 Recolor 模型的作用原理还是基于扩散对图片内容进行重新生成, 但它会根据黑白照片的亮度 (Luminance) 或者强度 (Intensity) 来指导新的图片进行生成. 生成完了之后, 它会将彩色版本的图片盖在原来的这张图片上 (以某种方式混合), 从而保留原有形象轮廓, 做到只变颜色
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240603173044626.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154418349.png)
 
 使用 sketch 来上色
 
@@ -264,7 +268,7 @@ Recolor 模型的作用原理还是基于扩散对图片内容进行重新生成
 
 ### 漫画上色
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240603173239091.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154418397.png)
 
 # AI 电商 / AI 服装设计 / AI 模特
 
@@ -274,11 +278,11 @@ Recolor 模型的作用原理还是基于扩散对图片内容进行重新生成
 
 logo lora redmond 生成的图片更像是一个简单背景下的小图案
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602194051763.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154418445.png)
 
 > [Logo.Redmond - Logo Lora for SD XL 1.0 - v2.0 | Stable Diffusion LoRA | Civitai](https://civitai.com/models/124609/logoredmond-logo-lora-for-sd-xl-10)
 
-![|300](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602193856906.png)
+![|300](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154418511.png)
 
 ```
 A logo of a boy and a girl in astronaut costume traveling around the universe, <lora:LogoRedmond_LogoRedAF:1>,
@@ -290,15 +294,15 @@ style selector
 
 作用的本质是往提示词里添加了一系列的前缀词, 后缀词, 从而调用 SDXL 模型原生的艺术风格
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221411185.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154418590.png)
 
 全自动抽卡
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221429462.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154418633.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221443924.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154418673.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221602596.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154418730.png)
 
 ## AI 服装设计
 
@@ -308,28 +312,28 @@ style selector
 concept art (fashion costume design sheet, three views, multi-angle display, clothing design, blueprint),An elegant cocktail dress with a sweetheart neckline,lace details,and a pencil skirt,. digital artwork,illustrative,painterly,matte painting,highly detailed,
 ```
 
- ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221807087.png) --- start-multi-column: ID_cgqx
+ ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154418768.png) --- start-multi-column: ID_cgqx
 
 ```column-settings
 Number of Columns: 3
 Largest Column: standard
 ```
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601215725899.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154418810.png)
 
 --- column-break ---
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601220416810.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154418855.png)
 
 --- column-break ---
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221835577.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154418943.png)
 
 --- end-multi-column
 
 ### Clothes Wildcards
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221011605.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154419146.png)
 
 > [https://civitai.com/models/73184/clothes-wildcards](https://civitai.com/models/73184/clothes-wildcards)
 
@@ -337,13 +341,13 @@ wildCard 由其他人为你准备好的提示词合集.
 
 服装 wildCard, 使用通配符作为 prompt, 拉大生成批次, 就会随机从通配符选择 prompt 生成
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601221026212.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154419193.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601220837704.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154419262.png)
 
 ### 配色
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240529221018115.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154419328.png)
 
 > [https://civitai.com/models/122976/various-wildcards](https://civitai.com/models/122976/various-wildcards)
 
@@ -353,9 +357,9 @@ wildCard 由其他人为你准备好的提示词合集.
 best quality,masterpiece,detailed,highres,simple background,white background,no humans,(__variousWildcards_v11/colors/Basecolors__) trench coat,
 ```
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601222740207.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154419407.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601220020493.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154419465.png)
 
 ### 展望与局限性
 
@@ -378,15 +382,15 @@ Number of Columns: 3
 Largest Column: standard
 ```
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223012354.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154419520.png)
 
 --- column-break ---
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223017708.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154419573.png)
 
 --- column-break ---
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223022164.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154419659.png)
 
 --- end-multi-column
 
@@ -401,70 +405,21 @@ Number of Columns: 3
 Largest Column: standard
 ```
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223225515.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154419791.png)
 
 --- column-break ---
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223250158.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154419831.png)
 
 --- column-break ---
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223314985.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154419872.png)
 
 --- end-multi-column
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240601223325377.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154419975.png)
 
 最大的问题还是生图与实物不符, 所以需要配合蒙版抠出衣服并且谨慎使用
-
-# AI 小说推文
-
-[zhuanlan.zhihu.com/p/695204247](https://zhuanlan.zhihu.com/p/695204247)
-
-[一键搞定AI小说推文,超详细教程 | Sora最佳学习网站](https://soraor.com/archives/yi-jian-gao-ding-aixiao-shuo-tui-wen-chao-xiang-xi-jiao-cheng)
-
-[Stable Diffusion+Midjourney+chatGPT,这三个工具已经开始帮我全自动赚钱了！-叁心笔记](https://www.5aivip.com/151.html)
-
-[自媒体福音！AI绘画小说推文神器-Stable Diffusion漫画助手插件，一键生成漫画风人物，无脑级操作！（附资料）_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV18e411E7aB/?spm_id_from=333.337.search-card.all.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
-
-[百度网盘 请输入提取码](https://pan.baidu.com/s/1ur04Z5MfGHUaPdmjZ7Q80g?pwd=7799)
-
-[一个插件啥都能画？漫画助手5.0发布~~_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV12k4y1F79k/?spm_id_from=333.999.0.0&vd_source=f8573a6196003ad3683f1c1a403d3431)
-
-[当我尝试用AI做小说推文后，真的能搞到钱💰 - 知乎](https://zhuanlan.zhihu.com/p/688062635)
-
-[绘唐科技——用户文档 - 飞书云文档](https://wv5o0g1m55v.feishu.cn/wiki/QDDfwmYJKihDMtkENDfcsNJIn7f)
-
-![](stable-diffusion-practice/漫画助手5.01.rar)
-
-推文场景人物的一致性, 似乎不那么重要. 只需要头发颜色可以保持一致, 人物的年龄不要波动太大就行.
-
-在抖音上甚至延申除了柳如烟这个网络 meme 角色. 所有的银发大小姐都起名叫柳如烟. 虽然各家的画风可能不太一致. 但是只要叫这个名字的银发女角色, 观众都能立马在脑海中脑补出她的经典角色形象. 也给小说推文的任务一致性降低了要求.
-
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602090205693.png)
-
-本质上只是一个批量出图的脚本
-
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602092508145.png)
-
---- start-multi-column: ID_pefz
-
-```column-settings
-Number of Columns: 3
-Largest Column: standard
-```
-
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602092448163.png)
-
---- column-break ---
-
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602092433813.png)
-
---- column-break ---
-
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602092422401.png)
-
---- end-multi-column
 
 # 控制人物一致性
 
@@ -495,15 +450,15 @@ Number of Columns: 3
 Largest Column: standard
 ```
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602195945755.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154420155.png)
 
 --- column-break ---
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602195935209.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154420197.png)
 
 --- column-break ---
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240602195918942.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154420249.png)
 
 --- end-multi-column
 
@@ -579,3 +534,5 @@ Natural lighting 戏剧灯光
 ui 层的加速就是 comfyUI 了
 
 模型层的加速: xl + lora + KSampler [超越LCM，TCD登场！盘点Stable diffusion加速出图四大法宝！\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1gD421L7BQ/?spm_id_from=333.337.search-card.all.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+怎么把内存当显存用?
