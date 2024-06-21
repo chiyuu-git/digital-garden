@@ -973,12 +973,12 @@ n 个节点的堆，树高度是 h=floor(log n)。对深度为于 h-1 层的节�
 
 | File                                                                                                           | solution tips overview                                  |
 | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| [[programming/basic/leetcode/628. Maximum Product of Three Numbers\|628. Maximum Product of Three Numbers]] | [[programming/basic/leetcode/628. Maximum Product of Three Numbers#solution tips\|628. Maximum Product of Three Numbers#solution tips]] |
 | [[programming/basic/leetcode/414. Third Maximum Number\|414. Third Maximum Number]]                         | [[programming/basic/leetcode/414. Third Maximum Number#solution tips\|414. Third Maximum Number#solution tips]]             |
 | [[programming/basic/leetcode/4. 寻找两个正序数组的中位数\|4. 寻找两个正序数组的中位数]]                                             | [[programming/basic/leetcode/4. 寻找两个正序数组的中位数#solution tips\|4. 寻找两个正序数组的中位数#solution tips]]                       |
 | [[programming/basic/leetcode/347. 前 K 个高频元素\|347. 前 K 个高频元素]]                                               | [[programming/basic/leetcode/347. 前 K 个高频元素#solution tips\|347. 前 K 个高频元素#solution tips]]                        |
 | [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素\|230. 二叉搜索树中第K小的元素]]                                         | [[programming/basic/leetcode/230. 二叉搜索树中第K小的元素#solution tips\|230. 二叉搜索树中第K小的元素#solution tips]]                     |
 | [[programming/basic/leetcode/215. 数组中的第K个最大元素\|215. 数组中的第K个最大元素]]                                           | [[programming/basic/leetcode/215. 数组中的第K个最大元素#solution tips\|215. 数组中的第K个最大元素#solution tips]]                      |
+| [[programming/basic/leetcode/628. Maximum Product of Three Numbers\|628. Maximum Product of Three Numbers]] | [[programming/basic/leetcode/628. Maximum Product of Three Numbers#solution tips\|628. Maximum Product of Three Numbers#solution tips]] |
 
 { .block-language-dataview}
 
