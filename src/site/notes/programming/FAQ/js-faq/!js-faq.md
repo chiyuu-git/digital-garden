@@ -7,27 +7,27 @@
 
 | File                                                                                                 | overview                          |
 | ---------------------------------------------------------------------------------------------------- | --------------------------------- |
-| [[programming/front-end/primitive/es/es-string\|es-string]]                                       | [[programming/front-end/primitive/es/es-string#faq\|es-string#faq]]                 |
-| [[programming/front-end/primitive/es/es-proto\|es-proto]]                                         | [[programming/front-end/primitive/es/es-proto#faq\|es-proto#faq]]                  |
-| [[programming/front-end/primitive/es/es-object\|es-object]]                                       | [[programming/front-end/primitive/es/es-object#faq\|es-object#faq]]                 |
-| [[programming/front-end/primitive/es/es-number\|es-number]]                                       | [[programming/front-end/primitive/es/es-number#faq\|es-number#faq]]                 |
-| [[programming/front-end/primitive/es/es-date\|es-date]]                                           | [[programming/front-end/primitive/es/es-date#faq\|es-date#faq]]                   |
-| [[programming/front-end/primitive/es/es-async/promise\|promise]]                                  | [[programming/front-end/primitive/es/es-async/promise#faq\|promise#faq]]                   |
-| [[programming/front-end/primitive/browser-api/dom-style\|dom-style]]                              | [[programming/front-end/primitive/browser-api/dom-style#faq\|dom-style#faq]]                 |
-| [[programming/front-end/primitive/browser-api/dom-selection\|dom-selection]]                      | [[programming/front-end/primitive/browser-api/dom-selection#faq\|dom-selection#faq]]             |
-| [[programming/front-end/primitive/browser-api/dom-api\|dom-api]]                                  | [[programming/front-end/primitive/browser-api/dom-api#faq\|dom-api#faq]]                   |
-| [[programming/front-end/framework/typescript/ts-advanced\|ts-advanced]]                           | [[programming/front-end/framework/typescript/ts-advanced#faq\|ts-advanced#faq]]               |
-| [[programming/front-end/primitive/es/es-regexp\|es-regexp]]                                       | [[programming/front-end/primitive/es/es-regexp#faq\|es-regexp#faq]]                 |
-| [[programming/front-end/primitive/es/es-next-1\|es-next-1]]                                       | [[programming/front-end/primitive/es/es-next-1#faq\|es-next-1#faq]]                 |
-| [[programming/front-end/primitive/es/es-basic\|es-basic]]                                         | [[programming/front-end/primitive/es/es-basic#faq\|es-basic#faq]]                  |
-| [[programming/front-end/primitive/es/es-async/es-async-2\|es-async-2]]                            | [[programming/front-end/primitive/es/es-async/es-async-2#faq\|es-async-2#faq]]                |
-| [[programming/front-end/primitive/es/es-array\|es-array]]                                         | [[programming/front-end/primitive/es/es-array#faq\|es-array#faq]]                  |
-| [[programming/front-end/primitive/browser-api/dom-interface\|dom-interface]]                      | [[programming/front-end/primitive/browser-api/dom-interface#faq\|dom-interface#faq]]             |
-| [[programming/front-end/primitive/browser-api/dom-event\|dom-event]]                              | [[programming/front-end/primitive/browser-api/dom-event#faq\|dom-event#faq]]                 |
-| [[programming/front-end/primitive/browser-api/bom\|bom]]                                          | [[programming/front-end/primitive/browser-api/bom#faq\|bom#faq]]                       |
-| [[programming/front-end/browser-core/browser-thread\|browser-thread]]                             | [[programming/front-end/browser-core/browser-thread#faq\|browser-thread#faq]]            |
 | [[programming/basic/common/color\|color]]                                                         | [[programming/basic/common/color#faq\|color#faq]]                     |
 | [[programming/FAQ/performance-optimization/!performance-optimization\|!performance-optimization]] | [[programming/FAQ/performance-optimization/!performance-optimization#faq\|!performance-optimization#faq]] |
+| [[programming/front-end/browser-core/browser-thread\|browser-thread]]                             | [[programming/front-end/browser-core/browser-thread#faq\|browser-thread#faq]]            |
+| [[programming/front-end/primitive/browser-api/bom\|bom]]                                          | [[programming/front-end/primitive/browser-api/bom#faq\|bom#faq]]                       |
+| [[programming/front-end/primitive/browser-api/dom-event\|dom-event]]                              | [[programming/front-end/primitive/browser-api/dom-event#faq\|dom-event#faq]]                 |
+| [[programming/front-end/primitive/browser-api/dom-interface\|dom-interface]]                      | [[programming/front-end/primitive/browser-api/dom-interface#faq\|dom-interface#faq]]             |
+| [[programming/front-end/primitive/es/es-array\|es-array]]                                         | [[programming/front-end/primitive/es/es-array#faq\|es-array#faq]]                  |
+| [[programming/front-end/primitive/es/es-async/es-async-2\|es-async-2]]                            | [[programming/front-end/primitive/es/es-async/es-async-2#faq\|es-async-2#faq]]                |
+| [[programming/front-end/primitive/es/es-basic\|es-basic]]                                         | [[programming/front-end/primitive/es/es-basic#faq\|es-basic#faq]]                  |
+| [[programming/front-end/primitive/es/es-next-1\|es-next-1]]                                       | [[programming/front-end/primitive/es/es-next-1#faq\|es-next-1#faq]]                 |
+| [[programming/front-end/primitive/es/es-regexp\|es-regexp]]                                       | [[programming/front-end/primitive/es/es-regexp#faq\|es-regexp#faq]]                 |
+| [[programming/front-end/framework/typescript/ts-advanced\|ts-advanced]]                           | [[programming/front-end/framework/typescript/ts-advanced#faq\|ts-advanced#faq]]               |
+| [[programming/front-end/primitive/browser-api/dom-api\|dom-api]]                                  | [[programming/front-end/primitive/browser-api/dom-api#faq\|dom-api#faq]]                   |
+| [[programming/front-end/primitive/browser-api/dom-selection\|dom-selection]]                      | [[programming/front-end/primitive/browser-api/dom-selection#faq\|dom-selection#faq]]             |
+| [[programming/front-end/primitive/browser-api/dom-style\|dom-style]]                              | [[programming/front-end/primitive/browser-api/dom-style#faq\|dom-style#faq]]                 |
+| [[programming/front-end/primitive/es/es-async/promise\|promise]]                                  | [[programming/front-end/primitive/es/es-async/promise#faq\|promise#faq]]                   |
+| [[programming/front-end/primitive/es/es-date\|es-date]]                                           | [[programming/front-end/primitive/es/es-date#faq\|es-date#faq]]                   |
+| [[programming/front-end/primitive/es/es-number\|es-number]]                                       | [[programming/front-end/primitive/es/es-number#faq\|es-number#faq]]                 |
+| [[programming/front-end/primitive/es/es-object\|es-object]]                                       | [[programming/front-end/primitive/es/es-object#faq\|es-object#faq]]                 |
+| [[programming/front-end/primitive/es/es-string\|es-string]]                                       | [[programming/front-end/primitive/es/es-string#faq\|es-string#faq]]                 |
+| [[programming/front-end/primitive/es/es-proto\|es-proto]]                                         | [[programming/front-end/primitive/es/es-proto#faq\|es-proto#faq]]                  |
 
 { .block-language-dataview}
 
