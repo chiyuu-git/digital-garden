@@ -1,9 +1,19 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-09-30-Sat, 7:54:09 pm","date-modified":"2023-11-06-Mon, 4:44:55 pm","permalink":"/entertainment/game/monster-hunter/!monster-hunter/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-09-30-Sat, 7:54:09 pm","date-modified":"2024-06-20-Thu, 5:39:24 pm","permalink":"/entertainment/game/monster-hunter/!monster-hunter/","dgPassFrontmatter":true}
 ---
 
 
 [《怪物猎人》系列游玩顺序 - 知乎](https://zhuanlan.zhihu.com/p/582083070)
+
+# 世界观汲取
+
+怪物猎人最好玩的地方在于和不同的龙交手. 是一款比较纯粹的动作游戏, 就像是街霸一样. 感觉没有太多值得参考的世界观设定.
+
+各种古龙, 禁忌啥的, 不过是常规的怪物难度升级, 而且感觉越来越失控了.
+
+各种怪物的生态习性, 也许有一点参考价值. 这部分直接看艾森巴赫的视频就好了. 也有其他 up 主做过不少总结了. 有空可以看一下, 取其精华.
+
+至于故事, 剧情啥的, 一直是怪猎的短板. 没啥值得参考的
 
 # TA 网址
 
@@ -40,6 +50,7 @@
 [[资料]mhr/mhw相关资料站 NGA玩家社区](https://bbs.nga.cn/read.php?tid=20410231)
 
 [在 - 怪物猎人 \~ 咕 啵 \~ - 中的回复 NGA玩家社区](https://bbs.nga.cn/read.php?pid=502552871)
+
 # 伤害计算
 
 [参考](https://tieba.baidu.com/p/6178665639)
