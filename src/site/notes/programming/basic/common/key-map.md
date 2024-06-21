@@ -139,3 +139,5 @@ oneTap
 fireShot 捕捉屏幕, 专治各种疑难杂症
 
 vimium c
+
+youtube 中英双语
