@@ -1,5 +1,5 @@
 ---
-{"aliases":["实用工具","实用软件"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-20-Tue, 3:08:11 pm","date-modified":"2024-05-27-Mon, 10:40:10 am","permalink":"/skill/tools/","dgPassFrontmatter":true}
+{"aliases":["实用工具","实用软件"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-20-Tue, 3:08:11 pm","date-modified":"2024-06-20-Thu, 10:42:51 am","permalink":"/skill/tools/","dgPassFrontmatter":true}
 ---
 
 
@@ -184,6 +184,14 @@ github or share to notion
 ```
 ![[^^花 酒 人]]
 ```
+
+## Ai 能力
+
+[几个 AI 插件 Text Generator, Smart Connections, Copilot 的简单调查 - 经验分享 - Obsidian 中文论坛](https://forum-zh.obsidian.md/t/topic/31483)
+
+关注帖子的最新进展即可. 感觉目前阶段几个 ai 对于中文都不是太好用
+
+![](/img/user/skill/tools/image-20240620104250083.png)
 
 # 如何解决 GitHub 作图床国内无法显示的问题
 
