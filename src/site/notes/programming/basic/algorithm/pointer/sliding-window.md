@@ -145,11 +145,6 @@ while (left <= right && right < len) {
 
 | File                                                                                                     | solution tips overview                               |
 | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| [[programming/basic/leetcode/904. 水果成篮\|904. 水果成篮]]                                                   | [[programming/basic/leetcode/904. 水果成篮#solution tips\|904. 水果成篮#solution tips]]                          |
-| [[programming/basic/leetcode/76. 最小覆盖子串\|76. 最小覆盖子串]]                                                 | [[programming/basic/leetcode/76. 最小覆盖子串#solution tips\|76. 最小覆盖子串#solution tips]]                         |
-| [[programming/basic/leetcode/674. 最长连续递增序列\|674. 最长连续递增序列]]                                           | [[programming/basic/leetcode/674. 最长连续递增序列#solution tips\|674. 最长连续递增序列#solution tips]]                      |
-| [[programming/basic/leetcode/643. 子数组最大平均数 I\|643. 子数组最大平均数 I]]                                       | [[programming/basic/leetcode/643. 子数组最大平均数 I#solution tips\|643. 子数组最大平均数 I#solution tips]]                    |
-| [[programming/basic/leetcode/567. 字符串的排列\|567. 字符串的排列]]                                               | [[programming/basic/leetcode/567. 字符串的排列#solution tips\|567. 字符串的排列#solution tips]]                        |
 | [[programming/basic/leetcode/438. Find All Anagrams in a String\|438. Find All Anagrams in a String]] | [[programming/basic/leetcode/438. Find All Anagrams in a String#solution tips\|438. Find All Anagrams in a String#solution tips]] |
 | [[programming/basic/leetcode/424. 替换后的最长重复字符\|424. 替换后的最长重复字符]]                                       | [[programming/basic/leetcode/424. 替换后的最长重复字符#solution tips\|424. 替换后的最长重复字符#solution tips]]                    |
 | [[programming/basic/leetcode/3. 无重复字符的最长子串\|3. 无重复字符的最长子串]]                                           | [[programming/basic/leetcode/3. 无重复字符的最长子串#solution tips\|3. 无重复字符的最长子串#solution tips]]                      |
@@ -160,5 +155,10 @@ while (left <= right && right < len) {
 | [[programming/basic/leetcode/187. 重复的DNA序列\|187. 重复的DNA序列]]                                           | [[programming/basic/leetcode/187. 重复的DNA序列#solution tips\|187. 重复的DNA序列#solution tips]]                      |
 | [[programming/basic/leetcode/1658. 将 x 减到 0 的最小操作数\|1658. 将 x 减到 0 的最小操作数]]                           | [[programming/basic/leetcode/1658. 将 x 减到 0 的最小操作数#solution tips\|1658. 将 x 减到 0 的最小操作数#solution tips]]              |
 | [[programming/basic/leetcode/1248. 统计「优美子数组」\|1248. 统计「优美子数组」]]                                       | [[programming/basic/leetcode/1248. 统计「优美子数组」#solution tips\|1248. 统计「优美子数组」#solution tips]]                    |
+| [[programming/basic/leetcode/567. 字符串的排列\|567. 字符串的排列]]                                               | [[programming/basic/leetcode/567. 字符串的排列#solution tips\|567. 字符串的排列#solution tips]]                        |
+| [[programming/basic/leetcode/643. 子数组最大平均数 I\|643. 子数组最大平均数 I]]                                       | [[programming/basic/leetcode/643. 子数组最大平均数 I#solution tips\|643. 子数组最大平均数 I#solution tips]]                    |
+| [[programming/basic/leetcode/674. 最长连续递增序列\|674. 最长连续递增序列]]                                           | [[programming/basic/leetcode/674. 最长连续递增序列#solution tips\|674. 最长连续递增序列#solution tips]]                      |
+| [[programming/basic/leetcode/76. 最小覆盖子串\|76. 最小覆盖子串]]                                                 | [[programming/basic/leetcode/76. 最小覆盖子串#solution tips\|76. 最小覆盖子串#solution tips]]                         |
+| [[programming/basic/leetcode/904. 水果成篮\|904. 水果成篮]]                                                   | [[programming/basic/leetcode/904. 水果成篮#solution tips\|904. 水果成篮#solution tips]]                          |
 
 { .block-language-dataview}
