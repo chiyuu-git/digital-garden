@@ -1,5 +1,5 @@
 ---
-{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-18-Tue, 3:44:09 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
+{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-20-Thu, 11:36:31 am","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
 ---
 
 
@@ -494,7 +494,9 @@ faceid 出现的最早, 效果也不赖, 主要是显存依赖小
 
 instantdid 有的人认为是效果最好的, 但是显存依赖比较大, 跑起来很慢
 
-# IC_Light
+# IC-light
+
+[GitHub - lllyasviel/IC-Light: More relighting!](https://github.com/lllyasviel/IC-Light)
 
 [知乎 IC-Light 介绍](https://www.zhihu.com/question/655431668/answer/3493306758)
 
