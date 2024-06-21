@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:45:05 pm","date-modified":"2024-06-12-Wed, 9:59:46 am","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:45:05 pm","date-modified":"2024-06-20-Thu, 4:29:27 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/","dgPassFrontmatter":true}
 ---
 
 
@@ -155,18 +155,6 @@ prompt: multiple views of the same charater in the same outfit
 
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202401749.png)
 
-## Canny
-
-提取边缘, 草稿, 黑笔白线
-
-controlNet 的作者认为在还原这个领域, Canny 是最重要的模型. 因为识别出来了完整的外形
-
-### 线稿上色
-
-直接 canny 会让边缘模糊. 线稿图直接使用 inrevert 就好了
-
-lineart 专门基于动漫风格的线稿实现上色功能的预处理器于模型的组合
-
 ## Hed / Soft Edge
 
 柔和边缘.
@@ -174,6 +162,12 @@ lineart 专门基于动漫风格的线稿实现上色功能的预处理器于模
 在建立边缘信息时, 会比 canny 更模糊, 让 ai 有更多的发挥空间.
 
 柔和边缘可以让图片过度更加自然
+
+## Canny
+
+提取边缘, 草稿, 黑笔白线
+
+controlNet 的作者认为在还原这个领域, Canny 是最重要的模型. 因为识别出来了完整的外形
 
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/control-net/image-20240609202401846.png)
 
