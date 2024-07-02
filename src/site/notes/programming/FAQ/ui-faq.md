@@ -10,8 +10,8 @@
 | ----------------------------------------------------------------------------------------- | ------------------------------ |
 | [[programming/FAQ/ui-component/input\|input]]                                          | [[programming/FAQ/ui-component/input#faq\|input#faq]]                  |
 | [[programming/front-end/mobile/mobile-basic\|mobile-basic]]                            | [[programming/front-end/mobile/mobile-basic#faq\|mobile-basic#faq]]           |
-| [[programming/front-end/primitive/css/css-2.1\|css-2.1]]                               | [[programming/front-end/primitive/css/css-2.1#faq\|css-2.1#faq]]                |
 | [[programming/front-end/primitive/css/transition & animation\|transition & animation]] | [[programming/front-end/primitive/css/transition & animation#faq\|transition & animation#faq]] |
+| [[programming/front-end/primitive/css/css-2.1\|css-2.1]]                               | [[programming/front-end/primitive/css/css-2.1#faq\|css-2.1#faq]]                |
 | [[programming/front-end/primitive/browser-api/dom-drag-event\|dom-drag-event]]         | [[programming/front-end/primitive/browser-api/dom-drag-event#faq\|dom-drag-event#faq]]         |
 | [[programming/front-end/primitive/css/flex\|flex]]                                     | [[programming/front-end/primitive/css/flex#faq\|flex#faq]]                   |
 | [[programming/front-end/primitive/css/page-layout\|page-layout]]                       | [[programming/front-end/primitive/css/page-layout#faq\|page-layout#faq]]            |
