@@ -17,9 +17,8 @@
 
 把游走的任务放在迭代器上，而不是聚合上。 这样简化了聚合的接口和实现，也让责任各得其所
 
-```ad-note
-实际上 js 的 iterator 就是对各种内置的数据结构都实现了 iterator pattern, 这样我们就可以直接使用 for of 循环, 遍历数组, map, set 等多样的数据结构
-```
+> [!note]
+> 实际上 js 的 iterator 就是对各种内置的数据结构都实现了 iterator pattern, 这样我们就可以直接使用 for of 循环, 遍历数组, map, set 等多样的数据结构
 
 ![](/img/user/programming/basic/cs-basic/design-pattern/iterator-pattern/image-20231018135557016.png)
 
