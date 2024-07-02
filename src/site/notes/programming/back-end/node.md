@@ -647,9 +647,8 @@ package.json 的顶级属性
 
 ## Exports
 
-```ad-attention
-ts support of subpath exports requires newer module resolutions such as `Node16` and `NodeNext`
-```
+> [!attention]
+> ts support of subpath exports requires newer module resolutions such as `Node16` and `NodeNext`
 
 ```json
 {
