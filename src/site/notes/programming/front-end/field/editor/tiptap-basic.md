@@ -501,13 +501,12 @@ That’s what the `generateHTML()` is for. It’s a helper function which rend
 
 By the way, the other way is possible, too. The below examples shows how to generate JSON from HTML.
 
-```ad-question
-what does this section mean? I don't understand why we need generateHTML, what's the different between getHTML?
-
-It there some node must be render under the tiptap eidtor? I don't think so.
-
-may be just a optional choice for render HTML.
-```
+> [!question]
+> what does this section mean? I don't understand why we need generateHTML, what's the different between getHTML?
+> 
+> It there some node must be render under the tiptap eidtor? I don't think so.
+> 
+> may be just a optional choice for render HTML.
 
 ## Migration
 
