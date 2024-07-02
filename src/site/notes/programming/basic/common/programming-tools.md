@@ -1,5 +1,5 @@
 ---
-{"aliases":["编程软件"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-10-03-Mon, 9:38:23 pm","date-modified":"2024-05-27-Mon, 10:39:11 am","permalink":"/programming/basic/common/programming-tools/","dgPassFrontmatter":true}
+{"aliases":["编程软件"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-10-03-Mon, 9:38:23 pm","date-modified":"2024-07-02-Tue, 10:31:40 am","permalink":"/programming/basic/common/programming-tools/","dgPassFrontmatter":true}
 ---
 
 
@@ -289,7 +289,7 @@ ln -s /Users/pangjing02/note/remote-note/.obsidian /Users/pangjing02/note/baidu-
 
 因为我们服务器使用的是 Linux 系统，默认的目录权限没有全部开启的，造成执行创建文件的时候报错；
 
-所以解决 mkdir() premission denied 的问题最直接的方式，把 runtime 权限放开，让所有用户都可以创建它。
+所以解决 mkdir() permission denied 的问题最直接的方式，把 runtime 权限放开，让所有用户都可以创建它。
 
 chmod -R 777 runtime（开放权限的目录）
 
@@ -450,7 +450,7 @@ window > save window arrangement > restore
 
 vscode 插件
 
-### Hover Priview
+### Hover Preview
 
 hover 的时候按下 control 可以查看 interface 的详细结构
 
@@ -686,6 +686,10 @@ Command + shift + L 可以快捷打印 console
 ## 覆盖混淆后的文件
 
 大白话地说，就是在线上环境通过 「chrome devtool」-「source」- 「overrides」功能，实现修改源代码 ➕ 刷新后持续生效的调试效果
+
+## 你不知道的 Devtool 技巧
+
+![](programming-tools/你可能不知道的%20chrome%20devTools%20技巧.pdf)
 
 # Safe Refactoring
 
