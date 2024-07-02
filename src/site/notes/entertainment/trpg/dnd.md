@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-06-20-Thu, 5:03:52 pm","date-modified":"2024-06-20-Thu, 5:28:27 pm","permalink":"/entertainment/trpg/dnd/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-06-20-Thu, 5:03:52 pm","date-modified":"2024-06-21-Fri, 10:14:49 am","permalink":"/entertainment/trpg/dnd/","dgPassFrontmatter":true}
 ---
 
 
@@ -52,3 +52,7 @@
 [DND(龙与地下城) 视频个人推荐 入门教学篇 - 哔哩哔哩](https://www.bilibili.com/read/cv11608654/)
 
 通过博得之门 3 入门或许是最好的选择
+
+# 更倾向于对长生种的探讨
+
+而不是精灵这一族群的社会属性. 社会属性这种东西, 往往都是参考人类自身的社会. 没有什么好讲的
