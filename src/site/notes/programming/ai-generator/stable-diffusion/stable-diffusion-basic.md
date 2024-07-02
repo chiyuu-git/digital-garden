@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-04-05-Fri, 4:57:51 pm","date-modified":"2024-06-18-Tue, 5:58:03 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-basic/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-04-05-Fri, 4:57:51 pm","date-modified":"2024-06-23-Sun, 9:35:05 am","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-basic/","dgPassFrontmatter":true}
 ---
 
 
@@ -51,9 +51,9 @@
 
 ## Prompt 语法
 
-1. 提示词之间用英文逗号,分隔
+1. 提示词之间用英文逗号, 分隔
 2. 提示词之间是可以换行的
-3. 权重默认为 1,越靠前权重越高
+3. 权重默认为 1, 越靠前权重越高
 
 ### 权重
 
@@ -249,6 +249,8 @@ Steps: 20, Sampler: DPM++ 2M Karras, CFG scale: 7.0, Seed: 1474817915, Size: 512
 采样步数不需要太大，一般在 50 以内。通常 28 是一个不错的值。
 
 采样器没有优劣之分，但是他们速度不同。全看个人喜好。推荐的是图中圈出来的几个，速度效果都不错
+
+sdxl 需要在 40-60
 
 ## CFG 提示词相关性
 
