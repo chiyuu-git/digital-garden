@@ -1,5 +1,5 @@
 ---
-{"aliases":["编程经验"],"tags":["gardenEntry"],"review-dates":[],"dg-home":true,"dg-publish":true,"date-created":"2022-09-04-Sun, 9:13:26 pm","date-modified":"2024-04-23-Tue, 8:50:25 pm","permalink":"/programming/front-end/framework/engineering/eslint/eslint-basic/","dgPassFrontmatter":true}
+{"aliases":["编程经验"],"tags":["gardenEntry"],"review-dates":[],"dg-home":true,"dg-publish":true,"date-created":"2022-09-04-Sun, 9:13:26 pm","date-modified":"2024-07-02-Tue, 10:49:18 am","permalink":"/programming/front-end/framework/engineering/eslint/eslint-basic/","dgPassFrontmatter":true}
 ---
 
 
@@ -234,6 +234,20 @@ for i len
 2. a 调用 b 的方法, 增加一个回调? 如果 b 要反过来通知 a 就通过回调去通知.
 
 组件 a 其实可以直接依赖 bManager. 不是说 组件 a 的所有逻辑都要放在 aManager 实现的. 而是 manager 负责自己的事情, ui 可以去自由组合 manager 提供的能力.
+
+## Enum Vs Const Obj
+
+不用去引用类型, 有提示的字符串. 过多的 enum, 很臃肿
+
+> 这里本质上是强制约束了使用字面量联合类型, 但是 const obj 其实也可以直接去引用的. 所以应该是反过来说 enum 强制了必须使用 enum. 引用. 方便 refactor
+
+可以快速便利. js 所有的类型都有符合直觉的遍历接口. const enum 不可用
+
+值和类型分离, 可以直接擦除 ts 类型, 编译更快
+
+enum 强制使用 enum.key 去访问字段
+
+const obj 虽然也可以使用 obj.key 去访问. 但是没有强制性. 可能会直接使用 ts 提示的联合类型值. 导致后续值需要变更的时候无法一键重构
 
 # HTML
 
@@ -777,7 +791,7 @@ mvc 模式的命名和意义
 URL 命名通常有三种：
 
 - 驼峰命名法 (serverAddress)，由于 URL 是大小写敏感的，如果用驼峰命名在输入的时候就要求区分大小写，一个是增加输入难度，另外也容易输错，报 404。
-- 蛇形命名法 (server_address)，在输入的时候需要切换 shfit，同时下划线容易被文本编辑器的下划线掩盖，支付宝用的是蛇形命名法
+- 蛇形命名法 (server_address)，在输入的时候需要切换 shift，同时下划线容易被文本编辑器的下划线掩盖，支付宝用的是蛇形命名法
 - 脊柱命名法 (server-address)，stackoverflow.com 和 github.com 用的是脊柱命名法（例如<https://help.github.com/articles/why-are-my-commits-linked-to-the-wrong-user/#commits-are-not-linked-to-any-user 和 (https://stackoverflow.com/questions/5262224/how-are-reddit-and-hacker-news-ranking-algorithms-used>）
 
 在 RESTful 接口中，对于 URI 一个普遍接受的规则是：全部小写，用中划线连接
