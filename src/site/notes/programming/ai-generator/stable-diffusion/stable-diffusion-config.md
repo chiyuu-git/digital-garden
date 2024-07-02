@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-26-Sun, 8:55:52 pm","date-modified":"2024-06-19-Wed, 6:57:22 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-config/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-26-Sun, 8:55:52 pm","date-modified":"2024-06-21-Fri, 6:43:29 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-config/","dgPassFrontmatter":true}
 ---
 
 
@@ -16,3 +16,11 @@ animateDiff 依赖 ffmpeg
 最佳方案: byteartist + esheep
 
 [ByteArtist](https://byteartist-beta.bytedance.net/webui?tab=comfyui&tags=)
+
+# byteArtist 使用指南
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-config/image-20240621182657313.png)
+
+## 有好几个加速节点
+
+可以先用上
