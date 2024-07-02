@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-24-Fri, 6:40:41 pm","date-modified":"2024-06-18-Tue, 3:12:37 pm","permalink":"/programming/ai-generator/stable-diffusion/comfyUI/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-24-Fri, 6:40:41 pm","date-modified":"2024-06-28-Fri, 9:55:04 am","permalink":"/programming/ai-generator/stable-diffusion/comfyUI/","dgPassFrontmatter":true}
 ---
 
 
@@ -9,17 +9,7 @@
 
 [ComfyUI：入门教程 - 飞书云文档](https://waytoagi.feishu.cn/wiki/YPeLwPNbaiDnjsk9Th4cV52Pndc)
 
-[ComfyUI Workflows - Developer Community](https://openart.ai/workflows/home)
-
-[AI Apps](https://openart.ai/flow-apps)
-
-[手稿变动画，AI生成3D贴图，艺术家手里的Stable Diffusion把我惊呆了！SD进阶工作流分享，强势辅助插画线稿上色+Blender建模！\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1ma4y1z7Cs/?spm_id_from=333.788&vd_source=f8573a6196003ad3683f1c1a403d3431)
-
-公司内部的部署渠道
-
-[ByteArtist](https://byteartist.bytedance.net/webui?tab=comfyui&tags=)
-
-一个从输入到输出的完整工作流程, 最大的意义在于提高了我们运用 sd 的自由度.使用其他界面时, 只能按照开发者设定好的 ui 调节有限的参数来进行一个固定流程的生成. 但是在 confyui 里, 各种功能节点可以自由组合, 可以用演变出成百上千种不同的生成方式. 让我们原本需要在不同的板块, 插件里进行的工作, 可以环环相扣的组合在一起. 实现一些复杂工作流程的全自动化运作. 理论上来说绝大部分的 AIGC 应用需要封装 sd 的功能时, 都是基于工作流搭建的.
+一个从输入到输出的完整工作流程, 最大的意义在于提高了我们运用 sd 的自由度. 使用其他界面时, 只能按照开发者设定好的 ui 调节有限的参数来进行一个固定流程的生成. 但是在 confyui 里, 各种功能节点可以自由组合, 可以用演变出成百上千种不同的生成方式. 让我们原本需要在不同的板块, 插件里进行的工作, 可以环环相扣的组合在一起. 实现一些复杂工作流程的全自动化运作. 理论上来说绝大部分的 AIGC 应用需要封装 sd 的功能时, 都是基于工作流搭建的.
 
 一个个节点就像是一个个函数. 管道函数
 
@@ -27,16 +17,11 @@
 
 webUI 生成的图片, 自身带有参数信息, 可以直接导入 comfyUI 的工作流中. 会自动生成该图片生成所需的工作流
 
-ComfyUI 官方示范 https://comfyanonymous.github.io/ComfyUI_examples/
+# 优秀工作流搜集
 
-别人的基础工作流示范
+cuteYou: [CuteYou 工作流升级2.0 - AI卡通画像最佳选择\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1TZ421u7pQ/?spm_id_from=333.1007.tianma.1-2-2.click&vd_source=f8573a6196003ad3683f1c1a403d3431) 一键转绘泡泡马特风格玩偶
 
-- https://github.com/cubiq/ComfyUI_Workflows
-- https://github.com/wyrde/wyrde-comfyui-workflows
-
-工作流分享网站 https://comfyworkflows.com/
-
-Civitai 也有不少工作流分享
+直接上 openart 上面找就行 [ComfyUI Workflows - Developer Community](https://openart.ai/workflows/all)
 
 # UI 操作
 
@@ -53,6 +38,8 @@ Civitai 也有不少工作流分享
 直接从出参端口拉一条线, 松开, 就会提示可用的下一个节点. 不用每个都自己 add 或者 搜索
 
 右键 bypass 忽略节点, 快捷键 C+B
+
+从 workflow 保存列表里拖出来的可以做合并. 也可以右键, save as template
 
 # 最基础的文生图
 
@@ -83,9 +70,9 @@ Save Image
 
 ## Loader
 
-Loaders 分类内的各种节点一般被用于加载 Stable Diffusion 生我过程中需要用到的各种模型一一不只是 Checkpoint 大模型,包括 LoRA、VAE 乃至 ControlNet 在内的各种模型都可以借助它里面的节点来加载。
+Loaders 分类内的各种节点一般被用于加载 Stable Diffusion 生我过程中需要用到的各种模型一一不只是 Checkpoint 大模型, 包括 LoRA、VAE 乃至 ControlNet 在内的各种模型都可以借助它里面的节点来加载。
 
-![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240616111311034.png)
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172203696.png)
 
 ### Load Checkpoint
 
@@ -99,13 +86,13 @@ Loaders 分类内的各种节点一般被用于加载 Stable Diffusion 生我过
 
 接在大模型后面. 因为端口很接近. 而且是在 UNet 层操作的
 
-![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240616111311128.png)
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172203752.png)
 
-这两个权重数值分别被用于调节模型内的 CLIP 与主模型的权重。在大多数 UI 中,这两个选项会被 " 合并 " 为一个数字。例如,将 LoRA 强度设置为 0.8 与将 strength_model 和 strength_clip 都设置为 0.8 相同。
+这两个权重数值分别被用于调节模型内的 CLIP 与主模型的权重。在大多数 UI 中, 这两个选项会被 " 合并 " 为一个数字。例如, 将 LoRA 强度设置为 0.8 与将 strength_model 和 strength_clip 都设置为 0.8 相同。
 
 ## Conditioning
 
-Conditioning 分类内的各种节点一般被用于为 Stable Diffusion 的生成过程添加各种条件, 并对这些条件进行编辑、重组。提示词 (Prompt) 可以被当做一种文本条件,通常是是这些条件里最为核心的一部分.
+Conditioning 分类内的各种节点一般被用于为 Stable Diffusion 的生成过程添加各种条件, 并对这些条件进行编辑、重组。提示词 (Prompt) 可以被当做一种文本条件, 通常是是这些条件里最为核心的一部分.
 
 ## Sampling
 
@@ -125,7 +112,7 @@ increment & decrement will change seed by 1. suitable to fine tuning denoise res
 
 ## Latent
 
-Latent 分类内的各种节点主管与 " 潜空间 " 有关的操作。反映到具体操作上,包括图像的编解码 (VAE)、尺寸定义及缩放等。如果你了解了 Latent 的原理,你会对它在这些流畅中的 " 作用 " 有更清晰的认知。
+Latent 分类内的各种节点主管与 " 潜空间 " 有关的操作。反映到具体操作上, 包括图像的编解码 (VAE)、尺寸定义及缩放等。如果你了解了 Latent 的原理, 你会对它在这些流畅中的 " 作用 " 有更清晰的认知。
 
 ### Empty Latend Image
 
@@ -145,7 +132,7 @@ Latent 分类内的各种节点主管与 " 潜空间 " 有关的操作。反映�
 
 ## Images
 
-Images 分类内的各种节点则主管与像素空间内的 " 图片 " 有关的操作。从基础的图片加载、保存、预览,到对图片做指定的裁切、放大 (运用放大模型),都可以实现。
+Images 分类内的各种节点则主管与像素空间内的 " 图片 " 有关的操作。从基础的图片加载、保存、预览, 到对图片做指定的裁切、放大 (运用放大模型), 都可以实现。
 
 ### Save Image
 
@@ -191,13 +178,13 @@ comfyUI 不支持以提示词的方式来读取 lora
 
 #### Tagger 节点
 
-![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240616111311236.png)
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172203812.png)
 
 clip 文本框转换为接受 text 输入, 就可以接受 tagger 的输出了.
 
 第一次执行完之后 tagger 的反推词会出现在下面, 可以进行手动修改
 
-![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240616111311325.png)
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172203866.png)
 
 ## 节点包
 
@@ -213,7 +200,7 @@ clip 文本框转换为接受 text 输入, 就可以接受 tagger 的输出了.
 
 tinyterraNodes
 
-# 复刻典型工作流
+# 典型工作流拆解
 
 ## Upscale
 
@@ -223,7 +210,7 @@ tinyterraNodes
 
 适当的重绘幅度, 去噪强度 0.5 左右. 因为本质就是更大分辨率的图生图.
 
-![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240616111311415.png)
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172203914.png)
 
 可以看到, 两次 KSampler 最大的区别就是 latent size 的不同. 其他的输入基本上可以说是一致的.
 
@@ -233,7 +220,7 @@ tinyterraNodes
 
 同样是高清修复的一种, 就是 webUI 里经典的那个 RealESTAGN. 上面的 latent 类型的高清修复其实对应的是我们不常用的几个 options
 
-![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240616111311520.png)
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172203956.png)
 
 ## Inpaint
 
@@ -249,7 +236,7 @@ tinyterraNodes
 
 因此利用 vae decode for inpainting 更适合用于对画面进行比较大的, 彻底的修改
 
-![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240616111311607.png)
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172204004.png)
 
 ### Set Latend Noise Mask
 
@@ -257,11 +244,11 @@ tinyterraNodes
 
 将指定区域原图像像素信息转换为潜空间数据之后, 在重新采样.
 
-![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240616111311701.png)
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172204048.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240616111311812.png)
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172204092.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240616111311963.png)
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172204147.png)
 
 > [!NOTE] 对比
 > 重绘编码器相当于是把指定区域单独挖出来做**文生图**, 原图里是什么和新生成的内容没有任何关系. 对应 webUI 里局部重绘的空白前空间模式
@@ -273,13 +260,13 @@ tinyterraNodes
 
 在 webUI 里很多都是默认参数就帮我们解决了. 在 comfyUI 则被分散到了各种节点里面
 
-![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240616111312091.png)
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172204187.png)
 
 #### 扩展
 
-![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240616111312224.png)
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172204223.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240616111312340.png)
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172204257.png)
 
 #### 收缩
 
@@ -289,7 +276,7 @@ mask erode region
 
 默认的 featherMask 只能模糊整个 mask 的边缘, 而不是 mask 边缘与原图的接缝处. 不是很好用
 
-![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240616111312470.png)
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172204299.png)
 
 #### Invert
 
@@ -313,22 +300,148 @@ mask erode region
 
 在 comfyUI 里, 同样的, lora 需要通过连接, 附加到大模型上使用
 
-![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240616111312578.png)
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172204339.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240616111312662.png)
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172204374.png)
 
 > [!NOTE] 所以才会有触发词这种东西
 > 因为 lora 其实同时在文本和 unet 做了训练.
 
-当二者相等的时候, 产生的效果就和在 webUI 里使用 prority 差不多
+当二者相等的时候, 产生的效果就和在 webUI 里使用 priority 差不多
 
 ## controlNet
 
-# 优秀工作流搜集
+# 实践
 
-cuteYou: [CuteYou 工作流升级2.0 - AI卡通画像最佳选择\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1TZ421u7pQ/?spm_id_from=333.1007.tianma.1-2-2.click&vd_source=f8573a6196003ad3683f1c1a403d3431) 一键转绘泡泡马特风格玩偶
+## Condition
 
-直接上 openart 上面找就行 [ComfyUI Workflows - Developer Community](https://openart.ai/workflows/all)
+### Concat
+
+处理提示的一个非常有效的方法是通过**条件连接**节点。
+
+该模型通常不善于理解多个概念和将不同元素的特征情境化。例如，指定不同颜色的对象可能非常困难。
+
+采取提示：`a blue ball a red bucket on the beach`。
+
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172204421.png)
+
+在这种情况下，成功率非常低，大约每 25 张图像中就有 1 张实际上显示的是一个红色桶和一个蓝色的球。
+
+我们可以像这样使用 _concat_ 来增加机会：
+
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172204461.png)
+
+在这种情况下，我们的成功率约为三分之一。
+
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172204508.png)
+
+### Average
+
+Sometimes you want to merge two concept together, like... a zebra-chameleon:
+
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172204545.png)
+
+You can get lucky with simple prompting but a better option is by using the **conditioning average** node.
+
+### Area Conditioning
+
+Sometimes you need to position objects spacially inside your image. The easiest way without using a ControlNet is with the **area conditioning** node. The syntax is very simple:
+
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172204584.png)
+
+1. Use a prompt to describe your scene
+2. Use a second prompt to describe the thing that you want to position
+3. Connect the second prompt to a **conditioning area** node and set the area size and position. In this example we have a 768x512 latent and we want "godzilla" to be on the far right. We set an area conditioning of 512x512 and push it to 256px on the X axis.
+4. Connect the scene prompt and the spacial conditioning with a **Conditioning combine** node.
+
+All left to do is to send the conditioning combine to the KSampler positive prompt and wait for the magic to happen.
+
+Of course you can use this technique to position multiple objects not just one like in this example.
+
+👉 **Note:** the provided workflow does something a little different. It first sets two areas (one on the left and one on the right) and then apply a second pass on the whole image to make everything uniform. This the best way to make it work on SDXL.
+
+## Timestepping
+
+`ConditioningSetTimestepRange` is a new node in ComfyUI and also one of the most powerful text conditioning tools we have.
+
+The node lets you set a start/stop temporal position for each prompt. Let's say we have 20 steps, you can tell the sampler to start "painting" a cat for 5 steps (that are likely the most important) and then forget about the cat and start generating a dog for the remaining 15.
+
+This is an incredibly effective way to mix prompts, possibly the one that grants the higher level of finetuning. Each prompt doesn't need to start where the previous ends, but they can also fade into each other so that in a few steps two concepts will merged.
+
+In this workflow we try to generate an freckled African-American/Japanese woman. To do so we mix 3 concepts (freckels, Japanese, African-American) with different timing inside the denoise phase. The result is pretty impressive.
+
+![](/img/user/programming/ai-generator/stable-diffusion/comfyUI/image-20240626172204624.png)
+
+👉 **Note:** You can have multiple timestep nodes and each can start/stop at different timing but it is important that no timeframe is left unconditioned. Ie: if you have two prompts and the first ends at 0.5, the second should start anywhere between 0 and 0.5 but not at 0.6 otherwise you'll have some steps without conditioning.
+
+# 典型工作流
+
+典型工作流要整理扎实.
+
+ComfyUI 官方示范 https://comfyanonymous.github.io/ComfyUI_examples/
+
++ sdxl 的几个工作流, 效果很惊艳哇
+
+[啊朔：Comfyui工作流 - 飞书云文档](https://waytoagi.feishu.cn/wiki/TERlwXlJTikRwFkOYMqcoFkbnag)
+
+工作流分享网站 https://comfyworkflows.com/
+
+Civitai 也有不少工作流分享
+
+## 反推
+
+[更快更小更精确，新反推模型Florence使用介绍\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1my411q7hz/?spm_id_from=333.1007.tianma.2-1-3.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+## latent_batch
+
+![](comfyUI/latend_batch.json)
+
+先批量出图, 然后 enable 放大节点再次点击就会只放大那一张, 好神奇的逻辑. 因为会把工作流中没有执行完的节点都完整执行完才会结束一轮. 比如在途中有节点报错了. 也不会直接退出, 修改好之后就可以接着执行
+
+## IPAdapter_canny
+
+![](comfyUI/ipadater_canny.json)
+
+[IP-Adapter精准风格迁移,新的权重类型precise style transfer,开发节点mad scientist\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1fs421T7dY/?spm_id_from=333.1007.tianma.1-2-2.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+## Tile controlNet Upscale
+
+[SDXL ControlNet Tile Upscale](https://comfyworkflows.com/workflows/91690876-a404-4a89-b8e5-1f84aaf64c58)
+
+tile diffusion 的核心维护者已经离开了. 所以没有继续提供 sdxl 的 tile diffusion
+
+![](comfyUI/eagleshadow_sdxl_controlnet_tile_upscale_comfyworkflows.json)
+
+![](comfyUI/controlNet_tile.json)
+
+[xl\_more\_art-full / xl\_real / Enhancer - xl\_more\_art-full-v1 | Stable Diffusion LoRA | Civitai](https://civitai.com/models/124347/xlmoreart-full-xlreal-enhancer)
+
+[Stable Diffusion ComfyUI 基础教程（六）图片放大与细节修复\_comfyui怎么用放大算法-CSDN博客](https://blog.csdn.net/qq_41314882/article/details/137107148)
+
+[萤火架构 的个人主页 - 文章 - 掘金](https://juejin.cn/user/2612095358088717/posts)
+
+[图片16倍超清放大工作流,极其激进的组合CCSR+SUPIR+UltimateSDUpscale\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1k6421f7C2/?spm_id_from=333.1007.tianma.1-2-2.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
+## controlNet
+
+![](comfyUI/controlNet_depth.json)
+
+![](comfyUI/controlNet_multiple.json)
+
+![](comfyUI/controlNet_pose.json)
+
+[【实测】SDXL的controlnet救星来了！效果媲美midjourney？\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1iZ421p7o8/?spm_id_from=333.1007.tianma.2-2-4.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+[AnyTest多功能合一SDXL-ControlNet实测,五套工作流分享,重绘+类Tile+线类\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV17m421L7CR/?spm_id_from=333.1007.tianma.2-1-3.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+# 模型对比
+
+[忘了SD3 Medium吧，这些模型效果更好！\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1Fi421v7r1/?spm_id_from=333.1007.tianma.2-1-3.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+[直出2K大场景图像,极具创造力,Lumina Next的ComfyUI实现\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1jW421R7FN/?spm_id_from=333.1007.tianma.1-1-1.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+# 像 webUI 一样使用 Sdxl comfyUI
+
+我要把 sdxl 的基础工作流给搭建起来, 然后给每个选项加上开关, 做到可以像 webUI 一样使用 comfyUI
 
 # 无限可能
 
@@ -338,6 +451,73 @@ cuteYou: [CuteYou 工作流升级2.0 - AI卡通画像最佳选择\_哔哩哔哩\
 
 # FAQ
 
-## Cutom Node Import Failed
+## Custom Node Import Failed
 
 ![comfyUI](programming/ai-generator/stable-diffusion/comfyUI.md#Import%20Failed)
+
+## 现在最让我感到沮丧的就是 Sdxl 的使用太麻烦了
+
+在 webUI 里完全没有办法正常使用, 出来的图都很垃圾
+
+在 comfyUI 里使用起来也很困难, 除了官方的基础示例, 使用其他工作流完全出不了图
+
+我只是想要一个 sdxl comfyUI 的, 支持 lineart, depth, ipadapter / revision 的工作流而已
+
+现阶段有原创能力的 up 主根本就没有几个. 搜一搜 comfyui, 然后过一遍关注一下就齐活了. 和 obsidian 的环境差不多
+
+## Comfyui 最大的问题就是各种不同的实现太多了
+
+需要一个非常灵活的对比方案, 可以快速选择不同的实现.
+
+比如增强细节的 lora 就有一堆. 放大的方法也有一堆. 不知道哪个好, 实测下来, 哪个都不好
+
+# Comfyui 不会爆显存
+
+[\[ComfyUI\]显存够却报错？ComfyUI崩溃消失？我来给你解决方案。\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1Zm41117ZA/?spm_id_from=333.337.search-card.all.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+cpu 都可以跑, 虚拟内存都可以跑
+
+# SDXL Comfyui
+
+sd1.5 的生态直接舍弃了. 因为上限太低了
+
+[GitHub - sepro/SDXL-ComfyUI-workflows: A collection of my own ComfyUI workflows for working with SDXL](https://github.com/sepro/SDXL-ComfyUI-workflows) 非常基础和实用的 sdxl 工作流. 可以作为学习的基础
+
+comfyUI_ipadapter 的基础工作流: [SDXL Lightning + IPAdapter plus](https://flowt.ai/community/sdxl-lightning-ipadapter-plus-umezf)
+
+> [!tip]+ rest
+> [SDXL Workflow Templates for ComfyUI with ControlNet - v2.1 | Stable Diffusion Workflows | Civitai](https://civitai.com/models/118005/sdxl-workflow-templates-for-comfyui-with-controlnet)
+> [SDXL Workflow for ComfyUI with Multi-ControlNet - v1.0 | Stable Diffusion Workflows | Civitai](https://civitai.com/models/129858/sdxl-workflow-for-comfyui-with-multi-controlnet)
+>
+> 原版的 comfyUI ipadatper 节点, 但是好像都是 sd1.5 的. 没有仔细看. 里面还有一个 comfy ui 的理解教程. [GitHub - cubiq/ComfyUI\_IPAdapter\_plus](https://github.com/cubiq/ComfyUI_IPAdapter_plus?tab=readme-ov-file)
+
+## 我现在需要的就是一个 multiControlNet + 风格迁移 + 高清细节的工作流
+
+[ComfyUI 16 Controlnet + IPAdapter Workflow (free download) - YouTube](https://www.youtube.com/watch?v=WD0EmOE4boc)
+
+## Practice
+
+The SDXL base checkpoint can be used like any regular checkpoint in [ComfyUI](https://github.com/comfyanonymous/ComfyUI). The only important thing is that for optimal performance the resolution should be set to 1024x1024 or other resolutions with the same amount of pixels but a different aspect ratio. For example: 896x1152 or 1536x640 are good resolutions.
+
+SDXL 基本检查点可以像 ComfyUI 中的任何常规检查点一样使用。唯一重要的是，为了获得最佳性能，分辨率应设置为 1024x1024 或具有**相同像素数**但不同宽高比的其他分辨率。例如：896x1152 或 1536x640 都是不错的分辨率。
+
+16:9 = 1365* 768
+
++ 5460 * 3072
++ 2730 * 1536
+
+### 优质的参考图也是出图的关键. 需要有一个优秀的图库
+
+### Prompt
+
+[Juggernaut XL - V9+RDPhoto2-Lightning\_4S | Stable Diffusion Checkpoint | Civitai](https://civitai.com/models/133005?modelVersionId=357609)
+
+参考主宰 xl, cfg 要低, 才会真实
+
+# 目前工作流的必备模型
+
+[ByteDance/SDXL-Lightning at main](https://huggingface.co/ByteDance/SDXL-Lightning/tree/main)
+
+[stabilityai/stable-diffusion-xl-refiner-1.0 at main](https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/tree/main)
+
+![](comfyUI/final_workflow.json)
