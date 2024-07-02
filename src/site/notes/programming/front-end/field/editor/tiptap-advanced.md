@@ -441,11 +441,10 @@ As you can see, you can optionally pass a `getAttrs` callback, to add more com
 
 You are wondering what’s that `&& null` doing? [ProseMirror expects `null` or `undefined` if the check is successful.](https://prosemirror.net/docs/ref/version/0.18.0.html#model.ParseRule.getAttrs)
 
-```ad-note
-When it returns null or undefined, that is interpreted as an empty/default set of attributes.
-
-null 相当于是返回所有的 attrs
-```
+> [!note]
+> When it returns null or undefined, that is interpreted as an empty/default set of attributes.
+> 
+> null 相当于是返回所有的 attrs
 
 [Pass priority to a rule](https://prosemirror.net/docs/ref/version/0.18.0.html#model.ParseRule.priority) to **resolve conflicts with other extensions**, for example if you build a custom extension which looks for paragraphs with a class attribute, but you already use the default paragraph extension.
 
@@ -732,9 +731,8 @@ nodeView 可以很好的提高编辑器内的使用体验, 也可以用于只读
 
 Depending on what you would like to build, node views work a little bit different and can have their verify specific capabilities, but also pitfalls. The main question is: How should your custom node look like?
 
-```ad-note
-node views is the most difficult part of tiptap, but also the most esay part of proseMirror
-```
+> [!note]
+> node views is the most difficult part of tiptap, but also the most esay part of proseMirror
 
 ## Editable/non-editable Text
 
@@ -805,9 +803,8 @@ I know, I know, it’s not that easy. Just keep in mind, that you‘re in full c
 
 That doesn’t apply to JSON. In JSON, everything is stored as an object. There is no need to configure the “translation” to and from JSON.
 
-```ad-question
-It's that mean I cau store node view directly in JSON? No, JSON just the other form the structure.
-```
+> [!question]
+> It's that mean I cau store node view directly in JSON? No, JSON just the other form the structure.
 
 ### Render Html
 
@@ -825,9 +822,8 @@ renderHTML({ HTMLAttributes }) {
 
 Make sure it’s something distinguishable, so it’s easier to restore the content from the HTML. If you just need something generic markup like a `<div>` consider to add a `data-type="my-custom-node"`.
 
-```ad-question
-Is it mean that no matter what tag I render, I can render it to totaly diffierent tag name by the 0 element
-```
+> [!question]
+> Is it mean that no matter what tag I render, I can render it to totaly diffierent tag name by the 0 element
 { #pyo1t4}
 
 
@@ -865,11 +861,10 @@ where the node attribute will be, especially in a complex node.
 
 # Node Views with Javascript
 
-```ad-question
-A nodeView must be a node type extension?
-
-Yes
-```
+> [!question]
+> A nodeView must be a node type extension?
+> 
+> Yes
 
 Here is what you need to do to render a node view inside your editor:
 
@@ -977,13 +972,12 @@ return {
 
 Got it? You’re free to do anything you like, as long as you return a container for the node view and another one for the content. Here is the above example in action
 
-```ad-note
-what's the different between dom and  contentDOM ?
-
-dom will be render as contenteditable = false
-
-contentDom will be editable
-```
+> [!note]
+> what's the different between dom and  contentDOM ?
+> 
+> dom will be render as contenteditable = false
+> 
+> contentDom will be editable
 
 Keep in mind that this content is rendered by Tiptap. That means you need to tell what kind of content is allowed, for example with `content: 'inline*'` in your node extension (that’s what we use in the above example).
 { #hajt6t}
@@ -1029,11 +1023,10 @@ Got it? Let’s see it in action. Feel free to copy the below example to get sta
 
 That component doesn’t interact with the editor, though. Time to wire it up.
 
-```ad-note
-in this case, the component tag is magic string, We must write the react-component tag, for the extension to parse and render. 
-
-通过 as 把标签的逻辑 包装在 extension 内?
-```
+> [!note]
+> in this case, the component tag is magic string, We must write the react-component tag, for the extension to parse and render. 
+> 
+> 通过 as 把标签的逻辑 包装在 extension 内?
 { #3n3ix9}
 
 
