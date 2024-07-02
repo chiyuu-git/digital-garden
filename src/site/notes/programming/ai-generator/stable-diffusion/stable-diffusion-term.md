@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-25-Sat, 12:56:55 pm","date-modified":"2024-06-18-Tue, 3:39:16 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-term/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-25-Sat, 12:56:55 pm","date-modified":"2024-06-22-Sat, 1:26:47 pm","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-term/","dgPassFrontmatter":true}
 ---
 
 
@@ -13,7 +13,7 @@
 
 市面上的图像生成模型, 基本都是在使用类似的原理来生成图像. 2023-04
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240525124549573.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131035807.png)
 
 图生图就是参考图的扩散和去噪, 文生图就是从模型训练的图片里找到符合 prompt 的进行扩散和去噪. 其实本质都是**图生图**
 
@@ -21,7 +21,7 @@
 
 SD 会经由随机种子生成一张随机噪声图，然后利用训练好的”噪声预测器“（U-Net），结合输入的提示词等条件（Conditioning），进行“条件去噪”，在这张噪声图上不断添加一些形象，使之成为一张生成的新图片。
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240614165757264.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131035861.png)
 
 在生成图像的过程中，SD 会先在潜变量空间中生成完全随机的噪声。随后，噪声预测器会估计图像中的预测噪声，然后从图像中减去将预测出的噪声。
 
@@ -70,15 +70,15 @@ sdxl 对标 midjourney 的全能大模型, 但是细节还是差很多
 
 ## Sdxl
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240407185133464.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131035907.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240407185204823.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131035952.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240407185107512.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131035989.png)
 
 ### 特点
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240407185327242.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036032.png)
 
 更好的识别自然语言, 更短的 prompt
 
@@ -134,7 +134,7 @@ webUI 版本和插件版本直接在秋月启动器一键更新即可
 
 日常使用建议：由于 t5xxl 比较大，所以对属性匹配和文字无要求的情况可以不使用 t5xxl，建议找到一个算力和效果的平衡点
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240617192012423.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036077.png)
 
 # 采样器
 
@@ -148,13 +148,13 @@ webUI 版本和插件版本直接在秋月启动器一键更新即可
 
 ### 老派采样器
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240407181950507.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036121.png)
 
 #### A 标识的含义
 
 a 代表祖先采样器, ancestor, 不收 敛
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240407181950507.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036121.png)
 
 ### 2022 年发布的 DPM 算法
 
@@ -166,7 +166,7 @@ a 代表祖先采样器, ancestor, 不收 敛
 
 改进. 在第 8 步之后躁点更少
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240407182529915.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036165.png)
 
 #### 2S / 2M
 
@@ -176,7 +176,7 @@ M 代表多步算法, M 是 S 的升级版本
 
 #### 推荐的采样算法
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240407182352361.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036209.png)
 
 DPM++SDE Karras 可以很好的生成高逼真度的图像. 一般在渲染真实系图片, 追求画质的时候会用这个
 
@@ -184,13 +184,13 @@ Exponential 1.6 版本新增的算法
 
 3M 也是 1.6 版本新增的, 需要更多的采样采样部署, 适当调低一点点 CFG 会有更好的效果
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240407182953457.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036265.png)
 
 ### 2023 年新推出的采样器
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240407183046950.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036320.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240407183141037.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036367.png)
 
 ## LCM
 
@@ -208,13 +208,13 @@ LCM 适用于 1.5 模型. TCD 适用于 SDXL 模型. 有需要的时候再学习
 
 ## Sampler 和 Scheduler
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240614165809230.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036415.png)
 
 而广义的**采样方法（Sampler）**，即代表在控制这个“去噪”过程的一种算法。简单地去理解，不同的算法会给你带来不同的采样结果，而不同算法对于采样步数的要求也可能会有些许差异。
 
 # VAE
 
-VAE 即变分自编码器 (Variational Auto Encoder),可以将一张图片转换为潜空间变量 (或逆向转换),是像素空间与潜空间的桥梁。在 Stable Diffusion 中,我们的所有生成操作都是在潜空间内完成的,因而需要 VAE 将运算的潜空间数据转换为我们肉眼可以辨析的 " 图片 "。
+VAE 即变分自编码器 (Variational Auto Encoder), 可以将一张图片转换为潜空间变量 (或逆向转换), 是像素空间与潜空间的桥梁。在 Stable Diffusion 中, 我们的所有生成操作都是在潜空间内完成的, 因而需要 VAE 将运算的潜空间数据转换为我们肉眼可以辨析的 " 图片 "。
 
 负责将加噪后的潜空间数据转化为正常的图像.
 
@@ -239,7 +239,7 @@ VAE 即变分自编码器 (Variational Auto Encoder),可以将一张图片转换
 
 在 c 站中搜索时叫做 text 倒置
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-basic/image-20240406154808468.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036456.png)
 
 就在整合包的 embeddings 目录.
 
@@ -271,11 +271,11 @@ embeddings 解决这个问题的做法是, 把模型画错的部分都标记起�
 
 ## Age Slider 和 Gender Slider
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240527205215875.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036496.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240527205233156.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036536.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240527205255927.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036578.png)
 
 # Wildcards 通配符
 
@@ -310,7 +310,7 @@ Low-Rank Adaptation Models
 
 在 lora 出现之前, sd 只能通过由 dreambooth 方法训练的大模型. 但是大模型的训练成本很高, 消耗大, 速度慢.
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240526134453714.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036619.png)
 
 和大模型一样, 文件同样是 ckpt 后缀或者 safetensor 后缀. 需要与大模型配合使用, 做微调
 
@@ -328,7 +328,7 @@ Low-Rank Adaptation Models
 
 可以在额外的表单里添加 lora
 
-和 webUI 默认的地址不太一样.需要在 设置里设置 lora 目录, 统一 lora 目录
+和 webUI 默认的地址不太一样. 需要在 设置里设置 lora 目录, 统一 lora 目录
 
 无法抄作业
 
@@ -362,7 +362,7 @@ Low-Rank Adaptation Models
 
 泛用性很强的 lora
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240602181059256.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036670.png)
 
 ## 概念 Concept
 
@@ -413,9 +413,9 @@ Mecha lora, 机甲少女
 
 [第7节：最新版高清分辨率stablediffusion weibui 1.6版本功能介绍\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1iZ421z7F9?p=7&spm_id_from=pageDriver&vd_source=f8573a6196003ad3683f1c1a403d3431)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240525195545530.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036720.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240525195624297.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036766.png)
 
 ## 二次元模型
 
@@ -443,7 +443,7 @@ Mecha lora, 机甲少女
 
 英伟达官方出品的加速扩展. 针对每一款模型都需要去操作. 并且便上前不能和一些常用的扩展一起使用
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240527215730081.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036805.png)
 
 ### 自定义预设可以进一步加速引擎
 
@@ -457,9 +457,9 @@ Mecha lora, 机甲少女
 
 ### 训练
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240527220547775.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036845.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240529154259454.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036885.png)
 
 调节训练步数, 可以
 
@@ -467,19 +467,19 @@ Mecha lora, 机甲少女
 
 数量多少并不绝对影响训练成果, 样本质量才是最重要的
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240609084738081.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036925.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240527221258406.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131036963.png)
 
 面部重绘的关键词, 可以适当补充. 在效果不好的时候再用做永华就行
 
 ### 做推理
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240527220858111.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131037002.png)
 
 ### 优势
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240529154320965.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131037041.png)
 
 ### 提示词
 
@@ -570,13 +570,13 @@ detail face, close-up, portrait
 
 [Site Unreachable](https://github.com/AbdullahAlfaraj/Auto-Photoshop-StableDiffusion-Plugin)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240527213047590.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131037080.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240529162438898.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131037117.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240529162455003.png)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131037164.png)
 
-![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/0476e4a6040025346f2ecb862978d715.gif)
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131037210.gif)
 
 ### 局部重绘与外绘扩图
 
@@ -627,3 +627,13 @@ ultimate up scale
 ## Cut Off
 
 避免提示词之前互相干预. 比如颜色
+
+# 生态梳理
+
+![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-term/image-20240622131037257.png)
+
+# 模型基础
+
+clip 模型, 文字和图像之间的桥梁. 文字匹配图像模型
+
+DALLE2 (unCLIP) 也是一种 diffusion model. unClip 指的是反转 CLIP 编码器
