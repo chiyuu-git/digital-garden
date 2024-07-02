@@ -1,5 +1,5 @@
 ---
-{"aliases":["高清修复","细节增强"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:38:48 pm","date-modified":"2024-06-11-Tue, 7:11:19 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/","dgPassFrontmatter":true}
+{"aliases":["高清修复","细节增强"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-28-Tue, 5:38:48 pm","date-modified":"2024-06-21-Fri, 5:44:20 pm","permalink":"/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/","dgPassFrontmatter":true}
 ---
 
 
@@ -42,6 +42,7 @@ AI 基本上无法生成超级大图，想要生成高清图片正确的做法�
 ![](/img/user/programming/ai-generator/stable-diffusion/work-flow-unit/upscale/image-20240609202529812.png)
 
 [知识链接：关于放大中的几种插值处理方式（Antialiasing、Bicubic等） - 飞书云文档](https://gf66fxi6ji.feishu.cn/wiki/B5BUw1L60iIdTvknQHYckOAcncd)
+
 # 图生图 - 高清修复
 
 没有默认给出的高清修复选项, 因为重本质上来说, 图生图就是一种高清修复
@@ -254,10 +255,10 @@ CFG 7 的确实不错
 
 #### 分区提示词
 
-# Local Latent Couple 用于局部的精细化 - LLuL
+# Local Latent Upscaler 用于局部的精细化 - LLuL
 
 [飞书 - 登录](https://bytedance.larkoffice.com/wiki/Fedewe77gizYuMkiXHRcsQnknkg)
 
-# cutoff
+# Cutoff
 
 [飞书 - 登录](https://bytedance.larkoffice.com/wiki/HNofwwMhai7cAjkCydkcgmPNn2g)
