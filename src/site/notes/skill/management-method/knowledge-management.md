@@ -1,5 +1,5 @@
 ---
-{"aliases":["知识管理"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-27-Tue, 10:02:39 am","date-modified":"2024-06-17-Mon, 10:08:54 pm","permalink":"/skill/management-method/knowledge-management/","dgPassFrontmatter":true}
+{"aliases":["知识管理"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-27-Tue, 10:02:39 am","date-modified":"2024-07-02-Tue, 10:36:24 am","permalink":"/skill/management-method/knowledge-management/","dgPassFrontmatter":true}
 ---
 
 
@@ -35,6 +35,12 @@
 
 现在我的 array 文章是总结在 js 的目录下，但是其实 array 就和算法一样，是编程语言的比较通用的结构，可以考虑把算法中的数组相关的题目和 js 的 array 的相关的知识都放在一起
 
+### 费曼学习法
+
+以教代学, 最后能让 8 岁的孩子也能听懂
+
+![](/img/user/skill/management-method/knowledge-management/image-20240623220811242.png)
+
 ### FAQ 原则
 
 1. 直觉原则，遇到一个问题，如果是能划分到已有文档的类目的，就放在已有文档的 FAQ 下
@@ -51,6 +57,12 @@
 所以需要二维、多维的管理模型：只需要 metaInfo 和 tag 其实就够用了，metaInfo 保存文件本身的属性，比如音乐文件的作者、时间信息等固有属性的，最好是能自动生成不用我手动维护。我手动维护的就是 tag
 
 metaInfo 和 tag 都不应该以文件夹的形式去组织，暂时考虑都用 obsidian 去维护，完善 book note 和 video note 即可，音乐和图片再考虑其他办法。
+
+## 剪辑师是如何做素材管理的
+
+同一个音乐片段, 如果因为商业原因不能使用, 如何尽快找到平替?
+
+美国的广告主在 dropbox 和 google drive 管理素材资产
 
 ## 媒体形式
 
@@ -111,6 +123,20 @@ billfish 多媒体素材库
 # 卢曼卡片盒笔记法
 
 灵感笔记、文献笔记、永久笔记
+
+# Video Management
+
+首先需要明确的是, 视频笔记最重要的其实是视频的文案. 因为文案是信息密度最高的载体.
+
+甚至一些重文案的视频, 画面都是搜帧搜出来的. 这个时候只需要文案就足够了. 但是如果是一些制作比较精良的作品, 可能会有和文案配合解说用的思维导图一类的 graph. 这个时候只能希望作者自身贡献出笔记, 不然就只能视频截图了.
+
+视频笔记, 或者是视频教程, 最好是先开过一遍再开始操作. 可以避免一些教程后半部分会提及的坑
+
+## 文案提取工具
+
+bilibili 和 youtube , 有这两个视频网站的文案提取工具基本就够用了
+
+油猴, 搜索字幕, 找到 bilibili cc 字幕下载, 油管中文字幕下载即可. 支持多种不同的格式, 可以选择带不带时间戳
 
 # Book Management
 
