@@ -1,13 +1,19 @@
 ---
-{"aliases":["gpt提示词","如何与gpt交谈","llm-prompt"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-06-11-Sun, 7:19:32 pm","date-modified":"2024-06-17-Mon, 8:02:46 pm","permalink":"/programming/ai-generator/agent/gpt-prompt/","dgPassFrontmatter":true}
+{"aliases":["gpt提示词","如何与gpt交谈","llm-prompt"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-06-11-Sun, 7:19:32 pm","date-modified":"2024-06-24-Mon, 10:46:31 am","permalink":"/programming/ai-generator/agent/gpt-prompt/","dgPassFrontmatter":true}
 ---
 
 
 # Prompt 技巧
 
+## Dimiliter
+
 这里的 Prompt 是一个比较长的描述，所以可以提出了第一个 Prompt 的技巧：**撰写明确而具体的指示**, 对于大段的输入, 可以使用**分隔符**明确指定内容
 
-在第二段中，我还要求它给予详细的实现步骤，并且不需要考虑初始化项目的步骤，因为这不是一个新项目，我们需要在已有代码的基础上去实现新的功能。所以这里的 Prompt 还有一个技巧：`给模型思考的时间`。**Step by step**是一个具有魔力的 Prompt 词汇，可以让 ChatGPT 花更多的时间去计算思考这个问题，而不是直接给出一个答案。
+## CoT
+
+chain of Thought
+
+给模型思考的时间, **Step by step**是一个具有魔力的 Prompt 词汇，可以让 ChatGPT 花更多的时间去计算思考这个问题，而不是直接给出一个答案。
 
 ```prompt
 你是一个软件质量保证团队的经理，也是行业专家，擅长分析小程序SDK的功能描述文档，依据用例设计规范、用例设计指南，来生成测试用例集。你拥有软件领域的专业知识，能够基于专业知识预判用例预期结果。
@@ -25,16 +31,6 @@
 
 ![](/img/user/programming/ai-generator/agent/gpt-prompt/image-20240617161901981.png)
 
-**迭代 Prompt**。如果你发现 ChatGPT 没有正确的理解你的需求，那么你可以继续在这个会话中微调你的 Prompt，直到 ChatGPT 正确的理解你的需求为止。
-
-这里可以提出第四个 Prompt 的技巧：**放弃方案**。如果你发现 ChatGPT 没有给出一个满意的答案，那么你可以放弃这个方案，直接开启新的会话探索另外一种方案。
-
-我们又可以提出第五个 Prompt 的技巧：**给出代码片段**。如果你发现 ChatGPT 给出的代码不完整，那么你可以给出一个代码片段，让 ChatGPT 帮你完成这个代码片段。
-
-我们又可以提出第六个 Prompt 的技巧：**代码解释**。如果你发现 ChatGPT 给出的代码你难以理解，那么你可以要求它给予完整的解释，或者用更简单的方式重写它的代码。这个过程中，还可以提升自己的技术能力，这也是结对编程的一个好处。
-
-我用到了第七个 Prompt 的技巧：**few-shot**。这个 Prompt 的技巧可大有来头，因为这是 GPT-3 的论文 [Language Models are Few-Shot Learners](https://arxiv.org/abs/2005.14165) 标题的由来。如果你发现 ChatGPT 没有给出一个满意的答案，那么你可以给出一个更具体的例子，让 ChatGPT 帮你完成这个例子。
-
 ## 思维树技巧
 
 Tree Of Thought（思维树）。维护一棵思维树，解答问题的过程有一系列中间步骤，让 AI 能够对推理的中间步骤进行评估与验证。
@@ -45,6 +41,18 @@ Tree Of Thought（思维树）。维护一棵思维树，解答问题的过程�
 - 有创意的角色 A，擅长提问的角色 B，思维缜密的角色 C，行业专家角色 D。
 
 ![](/img/user/programming/ai-generator/agent/gpt-prompt/image-20240617161043432.png)
+
+## 其他技巧
+
+**迭代 Prompt**。如果你发现 ChatGPT 没有正确的理解你的需求，那么你可以继续在这个会话中微调你的 Prompt，直到 ChatGPT 正确的理解你的需求为止。
+
+这里可以提出第四个 Prompt 的技巧：**放弃方案**。如果你发现 ChatGPT 没有给出一个满意的答案，那么你可以放弃这个方案，直接开启新的会话探索另外一种方案。
+
+我们又可以提出第五个 Prompt 的技巧：**给出代码片段**。如果你发现 ChatGPT 给出的代码不完整，那么你可以给出一个代码片段，让 ChatGPT 帮你完成这个代码片段。
+
+我们又可以提出第六个 Prompt 的技巧：**代码解释**。如果你发现 ChatGPT 给出的代码你难以理解，那么你可以要求它给予完整的解释，或者用更简单的方式重写它的代码。这个过程中，还可以提升自己的技术能力，这也是结对编程的一个好处。
+
+我用到了第七个 Prompt 的技巧：**few-shot**。这个 Prompt 的技巧可大有来头，因为这是 GPT-3 的论文 [Language Models are Few-Shot Learners](https://arxiv.org/abs/2005.14165) 标题的由来。如果你发现 ChatGPT 没有给出一个满意的答案，那么你可以给出一个更具体的例子，让 ChatGPT 帮你完成这个例子。
 
 # 基于提示词框架编写 Prompt
 
@@ -149,6 +157,6 @@ Prompt Chaining，链式提示。对于一个复杂问题，一个推理任务�
 
 向量数据库在人工智能、机器学习、大数据等领域有着广泛的应用，它可以帮助用户快速地检索和分析大规模的向量数据，从而提高数据处理的效率和准确性。
 
-# prompt 测评
+# Prompt 测评
 
 [Fornax](https://fornax.bytedance.net/space/7373572885333409804/application/knowledge)
