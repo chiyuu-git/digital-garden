@@ -1,5 +1,5 @@
 ---
-{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-20-Thu, 11:36:31 am","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
+{"aliases":["sd实际应用","sd实践"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2024-05-27-Mon, 4:12:43 pm","date-modified":"2024-06-24-Mon, 11:03:14 am","permalink":"/programming/ai-generator/stable-diffusion/stable-diffusion-practice/","dgPassFrontmatter":true}
 ---
 
 
@@ -13,7 +13,7 @@
 
 用一些东西汇聚成文字形体: Depth Midas + Depth 组合
 
-文字, logo ,二维码都可以
+文字, logo , 二维码都可以
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154416901.png)
 
@@ -84,7 +84,7 @@ qr toolkit 可以方便的改变二维码的样式
 
 通过 prompt 词来切换不同的风格, 搭配 style selector 即可愉快使用.
 
-重点参数就只有一个, 重绘幅度 0.5-0.7. 0.7 基本是一个阈值,超过 0.7 之后就和原图非常不像了
+重点参数就只有一个, 重绘幅度 0.5-0.7. 0.7 基本是一个阈值, 超过 0.7 之后就和原图非常不像了
 
 ![](/img/user/programming/ai-generator/stable-diffusion/stable-diffusion-practice/image-20240618154417470.png)
 
@@ -178,7 +178,7 @@ controlNet 作者的又一力作. 可以生成透明背景的 png 图片.
 
 对于透视的理解不够, 人物比例和背景的融合度不足. 需要一些微调
 
-### SD 1.5 Anyhing Together
+### SD 1.5 Anything Together
 
 一次输出三张图. 单次生成需要是 3 的倍数. 因为 sd1.5 语义理解偏弱, 所以需要有三个额外的 prompt 提示框. 上方的提示词, 此时只需要保留一些基本的画质词就好了. 其他可以拆分到下面
 
@@ -537,4 +537,11 @@ ui 层的加速就是 comfyUI 了
 
 模型层的加速: xl + lora + KSampler [超越LCM，TCD登场！盘点Stable diffusion加速出图四大法宝！\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1gD421L7BQ/?spm_id_from=333.337.search-card.all.click&vd_source=f8573a6196003ad3683f1c1a403d3431)
 
+sdxl lightning 模型. 可以加速出图
++ juggernautXL [Juggernaut XL - V9+RDPhoto2-Lightning\_4S | Stable Diffusion Checkpoint | Civitai](https://civitai.com/models/133005?modelVersionId=357609)
+
 怎么把内存当显存用?
+
+# Local Latent Couple
+
+用来画 cp 的
