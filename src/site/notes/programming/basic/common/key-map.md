@@ -1,5 +1,5 @@
 ---
-{"aliases":["新电脑初始化"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-11-25-Fri, 2:39:14 pm","date-modified":"2024-05-27-Mon, 10:28:57 am","permalink":"/programming/basic/common/key-map/","dgPassFrontmatter":true}
+{"aliases":["新电脑初始化"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-11-25-Fri, 2:39:14 pm","date-modified":"2024-07-01-Mon, 11:03:45 am","permalink":"/programming/basic/common/key-map/","dgPassFrontmatter":true}
 ---
 
 
@@ -64,7 +64,7 @@ nmap ]l :forward
 
 ### Win
 
- [将CapsLock键在单击和长按时分别映射为Esc和Ctrl | OURONGXING (orxing.top)](https://orxing.top/post/d3c3145e.html#windows)
+[将CapsLock键在单击和长按时分别映射为Esc和Ctrl | OURONGXING (orxing.top)](https://orxing.top/post/d3c3145e.html#windows)
 
 [Release v1.0.1 · oblitum/Interception · GitHub](https://github.com/oblitum/interception/releases/tag/v1.0.1)
 
@@ -123,6 +123,11 @@ obsidian config soft link [programming-tools](programming-tools.md#软链接和�
 # Windows 激活
 
 [win10（win11、win8.1)老提示需要激活？真正永久激活的方法在这儿 - 知乎](https://zhuanlan.zhihu.com/p/401418243?utm_id=0)
+
+## 如何让 Parsec、Zerotier 等软件开启启动？
+
+1. 按 Windows 徽标键  + R，键入“shell:startup”，然后选择“确定”。这将打开“启动”文件夹。
+2. 将想要开启启动软件的 快捷方式 拖入到 启动文件夹即可。
 
 # Adobe 激活
 
