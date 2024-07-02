@@ -73,9 +73,8 @@ tailwind 定义的样式均为原子类, 原子类覆盖是否有必要避免? �
 
 给 tailwind 的样式增加前缀
 
-```ad-warning
-权衡: 增加前缀后目前无法使用 linter 工具
-```
+> [!warning]
+> 权衡: 增加前缀后目前无法使用 linter 工具
 
 ## Debug Screens Plugin
 
@@ -347,15 +346,14 @@ https://tailwindcss.com/docs/hover-focus-and-other-states
 
 ### Avoiding Premature Abstraction
 
-```ad-note
-Adam Wathan (Tailwind’s creator), [said this in a tweet](https://twitter.com/adamwathan/status/1226511611592085504?lang=en):
-
-> Confession: The `apply` feature in Tailwind only exists to trick people who are put off by long lists of classes into trying the framework. You should almost never use it. Reuse your utility-littered HTML instead.
-
-In a nutshell, this can result in maintainability issues. I built several projects, and I seldom had to rely on them. So trust me, this is possible!
-
-If you are using a framework like Vue.js or React (where you define everything as components), it will be simple to avoid using the `@apply` feature. I rarely (if ever) use it.
-```
+> [!note]
+> Adam Wathan (Tailwind’s creator), [said this in a tweet](https://twitter.com/adamwathan/status/1226511611592085504?lang=en):
+> 
+> > Confession: The `apply` feature in Tailwind only exists to trick people who are put off by long lists of classes into trying the framework. You should almost never use it. Reuse your utility-littered HTML instead.
+> 
+> In a nutshell, this can result in maintainability issues. I built several projects, and I seldom had to rely on them. So trust me, this is possible!
+> 
+> If you are using a framework like Vue.js or React (where you define everything as components), it will be simple to avoid using the `@apply` feature. I rarely (if ever) use it.
 
 Whatever you do, **don’t use `@apply` just to make things look “cleaner”**. Yes, HTML templates littered with Tailwind classes are kind of ugly. Making changes in a project that has tons of custom CSS is worse.
 
@@ -432,9 +430,8 @@ Here in the above code you can observe multiple utility classes are being used t
 </div>
 ```
 
-```ad-warning
-这个问题可以通过 cssnano 等工具在生产环境解决, 所以开发时使用等效的短类名更多是为了便于维护.
-```
+> [!warning]
+> 这个问题可以通过 cssnano 等工具在生产环境解决, 所以开发时使用等效的短类名更多是为了便于维护.
 
 ### 查看样式是由哪个类名指定的
 
