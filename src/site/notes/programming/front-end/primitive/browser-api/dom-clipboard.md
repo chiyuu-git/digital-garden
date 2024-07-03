@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-02-17-Fri, 11:21:59 am","date-modified":"2024-04-28-Sun, 11:58:10 am","permalink":"/programming/front-end/primitive/browser-api/dom-clipboard/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-02-17-Fri, 11:21:59 am","date-modified":"2024-07-02-Tue, 11:39:50 am","permalink":"/programming/front-end/primitive/browser-api/dom-clipboard/","dgPassFrontmatter":true}
 ---
 
 
@@ -124,4 +124,28 @@ target.addEventListener('paste', (event) => {
     selection.collapseToEnd();
 });
 
+```
+
+# 同时粘贴 Html 和文本到 Input
+
+用户主动粘贴. 是可以同时粘贴 html 和文本的?
+
+```ts
+/**
+ * 复制 html 内容到剪贴板. 同时写入 html 和纯文本
+ */
+export function copyHTML(htmlContent: string) {
+  const htmlType = 'text/html';
+  const htmlBlob = new Blob([htmlContent], { type: htmlType });
+
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(htmlContent, 'text/html');
+  const textContent = doc.body.textContent || '';
+
+  const textType = 'text/plain';
+  const textBlob = new Blob([textContent], { type: textType });
+
+  const data = [new ClipboardItem({ [textType]: textBlob, [htmlType]: htmlBlob })];
+  return navigator.clipboard.write(data);
+}
 ```
