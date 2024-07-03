@@ -1,5 +1,5 @@
 ---
-{"aliases":["计算机基础知识"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2020-09-05-Sat, 9:30:25 pm","date-modified":"2023-10-17-Tue, 11:07:59 pm","permalink":"/programming/basic/common/basic/","dgPassFrontmatter":true}
+{"aliases":["计算机基础知识"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2020-09-05-Sat, 9:30:25 pm","date-modified":"2024-07-02-Tue, 11:34:23 am","permalink":"/programming/basic/common/basic/","dgPassFrontmatter":true}
 ---
 
 
@@ -284,3 +284,7 @@ kebab-case（短横线命名），都是小写的，区分与驼峰式
   - 文件上传下载服务：VsFtp 等
   - 邮箱服务：SendMail 等
   - 数据存储服务：Mysql、Oracle 等
+
+# 开源协议
+
+![](/img/user/programming/basic/common/basic/image-20240702113419229.png)
