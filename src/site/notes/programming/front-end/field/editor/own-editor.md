@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":["2023-08-21"],"dg-publish":true,"date-created":"2022-12-12-Mon, 8:24:41 am","date-modified":"2024-04-29-Mon, 10:11:56 am","permalink":"/programming/front-end/field/editor/own-editor/","dgPassFrontmatter":true}
+{"aliases":["my-editor"],"tags":[],"review-dates":["2023-08-21"],"dg-publish":true,"date-created":"2022-12-12-Mon, 8:24:41 am","date-modified":"2024-07-02-Tue, 11:32:32 am","permalink":"/programming/front-end/field/editor/own-editor/","dgPassFrontmatter":true}
 ---
 
 
@@ -240,7 +240,7 @@ span + contenteditable
 
 [javascript - 限制input输入的方法（监听键盘事件） - 个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000023543967)
 
-如果基于 input ,现在还不知道怎么拦截
+如果基于 input , 现在还不知道怎么拦截
 
 同时拦截 paste 事件就好了, 如果是正常输入就用 key 拦截, 如果是 paste 就从 paste 上拿就好了
 
@@ -274,7 +274,7 @@ editor 的 commands 行不通, 那就只能使用 dom api 了, san 的 api 也�
 
 现在只能使用 selection 方案了, 先用 dom selection , 然后用 editor deleteview
 
-直接用 selection range 虽然可以删掉 node ,但是这个和用 dom api 删除是一个道理, 没有触发 nodeview 的生命周期, 可能还是会有内存泄漏
+直接用 selection range 虽然可以删掉 node , 但是这个和用 dom api 删除是一个道理, 没有触发 nodeview 的生命周期, 可能还是会有内存泄漏
 
 最后方案: 使用 node 的 pos 选中后再进行删除
 
@@ -405,7 +405,7 @@ hover 的时候, gallery 显示一个浅色的 border
 
 根据 selected porps, 如果被 selected 了再做内部的点击态. 当 selected 为 false 时要重置所有的点击态.
 
-拖拽结束之后应该选中当前的 node ,这样才能触发 selected false
+拖拽结束之后应该选中当前的 node , 这样才能触发 selected false
 
 的取消逻辑.
 
@@ -506,7 +506,7 @@ sortablejs 为我提供了什么? 提供了 sort 和 threshold, 但是我还是�
 
 ### Container & Item
 
-item 要通过 message 派发给 container ,如果是通过 冒泡, 有可能 开发者在传入的 img 上绑定了相应的事件, 那冒泡上去的 currentTarget 就会变成开发者的那个节点, 而不是 item, 只有 message 可以保障到了 container 可以操作的一定是 item
+item 要通过 message 派发给 container , 如果是通过 冒泡, 有可能 开发者在传入的 img 上绑定了相应的事件, 那冒泡上去的 currentTarget 就会变成开发者的那个节点, 而不是 item, 只有 message 可以保障到了 container 可以操作的一定是 item
 
 ### 如何知道 Item 确实 Drop 了, 需要把 Item 删除?
 
@@ -545,7 +545,7 @@ sort 的时候, itemIndex 可以正确维护, 因为 san 只会更新 src, 所�
 如果我依然想把空 item 放在末尾, 就需要解决 dropin item 晚进去, index 却要大于空 item 的问题, 他们实际插入的位置还是在空 item 之前的, 因为 slot 一定是在空 item 之前, 所以我只需要根据他们实际的 dom 位置更新 index 就行.
 
 > 有一个解决方案就是 i 让 s-for 来指定 itemIndex, 但是这样好像会增加用户的使用成本, 而且会导致空 item 没有 item-index
-> 还有一个方案就是更新的时候先销毁空 item ,插入完再重新创建, 这个方案的问题是无法感知 upload 形态的插入, 好像空 item 的存在导致 upload 插入的 itemIndex 一定是错误的, 而且无法感知更新, 每次 list 更新的时候销毁 空 item, 更新完重新创建
+> 还有一个方案就是更新的时候先销毁空 item , 插入完再重新创建, 这个方案的问题是无法感知 upload 形态的插入, 好像空 item 的存在导致 upload 插入的 itemIndex 一定是错误的, 而且无法感知更新, 每次 list 更新的时候销毁 空 item, 更新完重新创建
 
 s-for 有时候会通过触发 detached 的方式来更新列表, 就算自己完全维护好 itemIndex 也不一定能处理好这个问题. dragLvel 一旦过早更新就特别容易复现.
 
@@ -617,7 +617,7 @@ editor 的 dragStart 会先 clear dataTransfer 然后再设置自己的, 导致�
 
 如果是自己的 dragStart 发现有 uri-list, html ,special
 
-即是去掉了两个我自己写的 也依然是还有 uri-list 和 html ,冒泡关系和覆盖关系是怎么样的?
+即是去掉了两个我自己写的 也依然是还有 uri-list 和 html , 冒泡关系和覆盖关系是怎么样的?
 
 最终方案: 统一使用自定义的 dragStart, gallery 通过 imageSource, editor 自行通过 parseHTML 解析拖拽的 datatransfer 中的 html
 
@@ -689,7 +689,7 @@ word 文档其实只需要把后缀改为 `.zip`。然后打开对应的目录�
 
 `clipdata.getData('text/html')` 也就是我们富文本用的方法，获取粘贴的内容的 html 代码
 
-`clipdata.getData('text/rtf')` 获取的东西更加乱了，不过里面就记载着我们的图片信息（我的文档就 2 张图片，11mb.可怕）
+`clipdata.getData('text/rtf')` 获取的东西更加乱了，不过里面就记载着我们的图片信息（我的文档就 2 张图片，11mb. 可怕）
 
 ### replaceImagesSourceWithBase64 方法
 
@@ -967,7 +967,7 @@ tiptap 自身的 copy & paste 已经足够好用了, selected image 然后复制
 
 监听 document 的 copy 事件感觉不太合适, 可能得监听 editor 的事事, 如果还是没有就不实现了
 
-editor 的 copy 可以监听到, 但是这样的话, 每个 iamge 都会监听一遍, 感觉还是有点问题, 不太合适的
+editor 的 copy 可以监听到, 但是这样的话, 每个 image 都会监听一遍, 感觉还是有点问题, 不太合适的
 
 之后再考虑支持吧, 现在能做到插入到下一行已经不错了, 天然的就实现了 prev 插入到前方, next 插入到后方, 太强了
 
@@ -1013,7 +1013,7 @@ https://github.com/ueberdosis/tiptap/issues/143
 
 ## Rest
 
-- [x] 执行了 destory 就会解绑所有事件, 所以没有必要一个个 off, 关键是找时机 destory
+- [x] 执行了 destroy 就会解绑所有事件, 所以没有必要一个个 off, 关键是找时机 destroy
 - [x] 确认 active-button 事件监听的时机: editor change 的时候是否会重新绑定监听? 其实不会, 因为没有触发 san 的 attached 了, 只 attached 了一次
 - [x] 空白区域的左右两侧点击聚焦, 在 firefox 上点击 margin 也会聚焦, 也许用 ProseMirror padding 更好
 - [x] indent
@@ -1049,7 +1049,7 @@ menu-bar 层级改到高于 image tool bar
 
 node-view attrs 类型优化, 没有地方可以传入范型, 只能是 extension 自己定义好 attrs 的类型, 然后在 san 组件指定好
 
-清理 uploader node ,避免 拖拽时再次出发上传
+清理 uploader node , 避免 拖拽时再次出发上传
 
 文本自动换行, 不能无限输入
 
@@ -1057,7 +1057,7 @@ active-button ts 类型
 
 indent 的 0px 是否有必要?
 
-disabled Checker 逻辑不太对, 是不是应该 editor udpated 的时候触发 san 的 rerender ? 把这个逻辑写在 tiptap-san 里?
+disabled Checker 逻辑不太对, 是不是应该 editor updated 的时候触发 san 的 rerender ? 把这个逻辑写在 tiptap-san 里?
 
 下划线和删除线互斥的问题, 同样需要确认, 在技术方案描述先不互斥, 后期有必要再处理
 
@@ -1155,7 +1155,7 @@ p>img 问题复盘, 不应该用 skip, 会导致空行消失, 可以利用这个
 
 ## Think Todo
 
-~~placehoder & focus ~~
+~~placeholder & focus ~~
 
 bubble menu
 
@@ -1303,7 +1303,7 @@ splice 11[]
 2. 拖拽过程中复杂的 DOM 状态变化都被封装叫做 sortable-container 的 san 组件中
 3. image component 本身只需要根据拖拽的结果调用编辑器的能力更新编辑器状态即可.
 
-> 拖拽过程中复杂的状态变化, 通过事件一一确定, 现在回过头来看,这里是不是可以用状态机来限定一下节点的行为?
+> 拖拽过程中复杂的状态变化, 通过事件一一确定, 现在回过头来看, 这里是不是可以用状态机来限定一下节点的行为?
 > 编一下状态机的思想, 感觉不好编, 更多的是 DOM drag api 的运用
 >
 > 做的比较巧妙的一点就是哨兵节点的逻辑, 极大简化了
