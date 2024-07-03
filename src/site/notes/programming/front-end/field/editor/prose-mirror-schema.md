@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-12-08-Thu, 9:12:53 am","date-modified":"2024-04-29-Mon, 7:22:30 pm","permalink":"/programming/front-end/field/editor/prose-mirror-schema/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-12-08-Thu, 9:12:53 am","date-modified":"2024-07-02-Tue, 11:37:20 am","permalink":"/programming/front-end/field/editor/prose-mirror-schema/","dgPassFrontmatter":true}
 ---
 
 
@@ -23,14 +23,14 @@ schema 是非常严格的, 没有事先在 schema 中定义的 html 结构将会
 
 > [!question]
 > why we need schema to strict structure?
-> 
+>
 > 回顾一下 RTE 的调研或许会有一些思路, 再慢慢处理吧
-> 
+>
 > 保证数据迁移的编辑体验, 如果允许随意输入 html, 很可能会遇到匪夷所思的编辑问题, 该节点是否可以删除, 是否可以选中, 是否可以应用粗体, 斜体等样式, 要如何处理撤销和恢复撤销都会很困难. 像 UEditor 等编辑器遇到一个问题, 对于通过 api 上传的 html 进行二次编辑会很困难.
-> 
+>
 > 通过 parseHTML 和 renderHTML 可以保证数据的整洁, 爱速搭复制来的图片, 也会被转换成 tiptap 适用的格式储存
-> 
-> 担心 schema 变动带来的影响, 今天是 p>img 以后如果想要变成其他可能就得考虑兼容性了, 从这一点来看的话, node-view 都用特殊的 tag 会比较好 
+>
+> 担心 schema 变动带来的影响, 今天是 p>img 以后如果想要变成其他可能就得考虑兼容性了, 从这一点来看的话, node-view 都用特殊的 tag 会比较好
 { #moa0wn}
 
 
@@ -88,7 +88,7 @@ In Tiptap every node, mark and extension is living in its own file. This allows 
 { #65gr16}
 
 
-在 tiptap 中,每个 node, mark, extension 都维护在单独的文件中, 这可以让我们更好的解藕逻辑. 最终, 所有 extension 定义的 schema 会被合并
+在 tiptap 中, 每个 node, mark, extension 都维护在单独的文件中, 这可以让我们更好的解藕逻辑. 最终, 所有 extension 定义的 schema 会被合并
 
 ```js
 // the Tiptap schema API
@@ -163,6 +163,10 @@ Node.create({
 默认情况下 p 标签下只能放 inilne node, 而 img 默认是 block 元素, 因此复制过来的 img 都丢失了
 
 修复方法就是把 img 定义成 inline node
+
+### Custom Node Name as Content
+
+自定义的节点的 name , 可以作为另一个节点的 content 去指定
 
 ## Marks
 
