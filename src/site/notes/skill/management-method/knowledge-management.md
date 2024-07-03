@@ -1,5 +1,5 @@
 ---
-{"aliases":["知识管理"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-27-Tue, 10:02:39 am","date-modified":"2024-07-02-Tue, 10:36:24 am","permalink":"/skill/management-method/knowledge-management/","dgPassFrontmatter":true}
+{"aliases":["知识管理"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-27-Tue, 10:02:39 am","date-modified":"2024-07-02-Tue, 11:07:47 am","permalink":"/skill/management-method/knowledge-management/","dgPassFrontmatter":true}
 ---
 
 
@@ -63,6 +63,8 @@ metaInfo 和 tag 都不应该以文件夹的形式去组织，暂时考虑都用
 同一个音乐片段, 如果因为商业原因不能使用, 如何尽快找到平替?
 
 美国的广告主在 dropbox 和 google drive 管理素材资产
+
+[关键素材被删！找不到素材？影视飓风是如何摆脱丢数据噩梦的\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1yA4y1U77y/?vd_source=f8573a6196003ad3683f1c1a403d3431)
 
 ## 媒体形式
 
