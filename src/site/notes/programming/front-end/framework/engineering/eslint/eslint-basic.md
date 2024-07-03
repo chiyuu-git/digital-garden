@@ -12,11 +12,11 @@
 
 | File                                                               | overview                   |
 | ------------------------------------------------------------------ | -------------------------- |
-| [[programming/FAQ/performance-optimization/重绘和回流\|重绘和回流]]       | [[programming/FAQ/performance-optimization/重绘和回流#experience\|重绘和回流#experience]]       |
-| [[programming/front-end/primitive/es/es-array\|es-array]]       | [[programming/front-end/primitive/es/es-array#experience\|es-array#experience]]    |
-| [[programming/front-end/primitive/es/es-regexp\|es-regexp]]     | [[programming/front-end/primitive/es/es-regexp#experience\|es-regexp#experience]]   |
-| [[programming/front-end/primitive/es/es-function\|es-function]] | [[programming/front-end/primitive/es/es-function#experience\|es-function#experience]] |
 | [[programming/front-end/primitive/es/es-number\|es-number]]     | [[programming/front-end/primitive/es/es-number#experience\|es-number#experience]]   |
+| [[programming/front-end/primitive/es/es-function\|es-function]] | [[programming/front-end/primitive/es/es-function#experience\|es-function#experience]] |
+| [[programming/FAQ/performance-optimization/重绘和回流\|重绘和回流]]       | [[programming/FAQ/performance-optimization/重绘和回流#experience\|重绘和回流#experience]]       |
+| [[programming/front-end/primitive/es/es-regexp\|es-regexp]]     | [[programming/front-end/primitive/es/es-regexp#experience\|es-regexp#experience]]   |
+| [[programming/front-end/primitive/es/es-array\|es-array]]       | [[programming/front-end/primitive/es/es-array#experience\|es-array#experience]]    |
 
 { .block-language-dataview}
 
@@ -234,6 +234,7 @@ for i len
 2. a 调用 b 的方法, 增加一个回调? 如果 b 要反过来通知 a 就通过回调去通知.
 
 组件 a 其实可以直接依赖 bManager. 不是说 组件 a 的所有逻辑都要放在 aManager 实现的. 而是 manager 负责自己的事情, ui 可以去自由组合 manager 提供的能力.
+
 
 ## Enum Vs Const Obj
 
