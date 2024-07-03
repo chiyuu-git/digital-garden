@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-03-16-Thu, 3:33:15 pm","date-modified":"2024-06-13-Thu, 11:29:00 am","permalink":"/programming/front-end/field/editor/tiptap-faq/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-03-16-Thu, 3:33:15 pm","date-modified":"2024-07-02-Tue, 11:40:43 am","permalink":"/programming/front-end/field/editor/tiptap-faq/","dgPassFrontmatter":true}
 ---
 
 
@@ -98,3 +98,13 @@ prosemirror 已经帮忙拦截了默认的复制行为. 现在的复制行为是
 2. 通过 editorView slice 获取 content, 然后 getHTML from content?
 
 ## 如何影响编辑器外的复制行为?
+
+## disableEnter
+
+晋勇默认的 enter 换行. 有的时候 input 只是一行的. 希望 enter 的时候直接提交. 此时需要先禁用再写自己的逻辑
+
+[Ability to disable \`Enter\` · ueberdosis/tiptap · Discussion #2948 · GitHub](https://github.com/ueberdosis/tiptap/discussions/2948)
+
+[Switch Default enter behavior and shift enter behaviour · Issue #2755 · ueberdosis/tiptap · GitHub](https://github.com/ueberdosis/tiptap/issues/2755)
+
+实现 enter 提交, S+enter 换行. enter 提交通过 onKeydown 实现. S+enter 换行 hardBreak 插件自带了
