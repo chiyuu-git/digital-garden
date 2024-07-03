@@ -1,5 +1,5 @@
 ---
-{"aliases":["tiptap nodeView","tiptap extension"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-11-10-Thu, 2:10:44 pm","date-modified":"2024-05-14-Tue, 11:14:15 am","permalink":"/programming/front-end/field/editor/tiptap-advanced/","dgPassFrontmatter":true}
+{"aliases":["tiptap nodeView","tiptap extension"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-11-10-Thu, 2:10:44 pm","date-modified":"2024-07-02-Tue, 11:38:10 am","permalink":"/programming/front-end/field/editor/tiptap-advanced/","dgPassFrontmatter":true}
 ---
 
 
@@ -302,7 +302,7 @@ const CustomParagraph = Paragraph.extend({
 // <p data-color="pink" style="color: pink">Example Text</p>
 ```
 
-You can completly disable the rendering of attributes with `rendered: false`.
+You can completely disable the rendering of attributes with `rendered: false`.
 
 ### Global Attributes
 
@@ -443,7 +443,7 @@ You are wondering what’s that `&& null` doing? [ProseMirror expects `null`
 
 > [!note]
 > When it returns null or undefined, that is interpreted as an empty/default set of attributes.
-> 
+>
 > null 相当于是返回所有的 attrs
 
 [Pass priority to a rule](https://prosemirror.net/docs/ref/version/0.18.0.html#model.ParseRule.priority) to **resolve conflicts with other extensions**, for example if you build a custom extension which looks for paragraphs with a class attribute, but you already use the default paragraph extension.
@@ -823,7 +823,7 @@ renderHTML({ HTMLAttributes }) {
 Make sure it’s something distinguishable, so it’s easier to restore the content from the HTML. If you just need something generic markup like a `<div>` consider to add a `data-type="my-custom-node"`.
 
 > [!question]
-> Is it mean that no matter what tag I render, I can render it to totaly diffierent tag name by the 0 element
+> Is it mean that no matter what tag I render, I can render it to totally diffierent tag name by the 0 element
 { #pyo1t4}
 
 
@@ -863,7 +863,7 @@ where the node attribute will be, especially in a complex node.
 
 > [!question]
 > A nodeView must be a node type extension?
-> 
+>
 > Yes
 
 Here is what you need to do to render a node view inside your editor:
@@ -973,10 +973,10 @@ return {
 Got it? You’re free to do anything you like, as long as you return a container for the node view and another one for the content. Here is the above example in action
 
 > [!note]
-> what's the different between dom and  contentDOM ?
-> 
+> what's the different between dom and contentDOM ?
+>
 > dom will be render as contenteditable = false
-> 
+>
 > contentDom will be editable
 
 Keep in mind that this content is rendered by Tiptap. That means you need to tell what kind of content is allowed, for example with `content: 'inline*'` in your node extension (that’s what we use in the above example).
@@ -1024,8 +1024,8 @@ Got it? Let’s see it in action. Feel free to copy the below example to get sta
 That component doesn’t interact with the editor, though. Time to wire it up.
 
 > [!note]
-> in this case, the component tag is magic string, We must write the react-component tag, for the extension to parse and render. 
-> 
+> in this case, the component tag is magic string, We must write the react-component tag, for the extension to parse and render.
+>
 > 通过 as 把标签的逻辑 包装在 extension 内?
 { #3n3ix9}
 
@@ -1054,7 +1054,7 @@ export default props => {
 }
 ```
 
-And yes, all of that is reactive, too. A pretty seemless communication, isn’t it?
+And yes, all of that is reactive, too. A pretty seamless communication, isn’t it?
 
 ## As Tag Name
 
@@ -1113,14 +1113,216 @@ as 字段一直没有很好的处理, 按道理来讲, 可以通过 san.defiendC
 
 decorationClasses 也是一个看不懂的字段
 
-# Schema
+# Markdown Link
 
-[Schema – Tiptap Editor](https://tiptap.dev/api/schema/#content)
+```ts
+import { InputRule, markInputRule, markPasteRule, PasteRule } from '@tiptap/react';
+import { Link } from '@tiptap/extension-link';
+import type { LinkOptions } from '@tiptap/extension-link';
+/**
+ * The input regex for Markdown links with title support, and multiple quotation marks (required
+ * in case the `Typography` extension is being included).
+ */
+const inputRegex = /(?:^|\s)\[([^\]]*)?\]\((\S+)(?: ["“](.+)["”])?\)$/i;
+/**
+ * The paste regex for Markdown links with title support, and multiple quotation marks (required
+ * in case the `Typography` extension is being included).
+ */
+const pasteRegex = /(?:^|\s)\[([^\]]*)?\]\((\S+)(?: ["“](.+)["”])?\)/gi;
+/**
+ * Input rule built specifically for the `Link` extension, which ignores the auto-linked URL in
+ * parentheses (e.g., `(https://doist.dev)`).
+ *
+ * @see https://github.com/ueberdosis/tiptap/discussions/1865
+ */
+function linkInputRule(config: Parameters<typeof markInputRule>[0]) {
+  const defaultMarkInputRule = markInputRule(config);
+  return new InputRule({
+    find: config.find,
+    handler(props) {
+      const { tr } = props.state;
+      defaultMarkInputRule.handler(props);
+      tr.setMeta('preventAutolink', true);
+    },
+  });
+}
+/**
+ * Paste rule built specifically for the `Link` extension, which ignores the auto-linked URL in
+ * parentheses (e.g., `(https://doist.dev)`). This extension was inspired from the multiple
+ * implementations found in a Tiptap discussion at GitHub.
+ *
+ * @see https://github.com/ueberdosis/tiptap/discussions/1865
+ */
+function linkPasteRule(config: Parameters<typeof markPasteRule>[0]) {
+  const defaultMarkPasteRule = markPasteRule(config);
+  return new PasteRule({
+    find: config.find,
+    handler(props) {
+      const { tr } = props.state;
+      defaultMarkPasteRule.handler(props);
+      tr.setMeta('preventAutolink', true);
+    },
+  });
+}
+/**
+ * Custom extension that extends the built-in `Link` extension to add additional input/paste rules
+ * for converting the Markdown link syntax (i.e. `[Doist](https://doist.com)`) into links, and also
+ * adds support for the `title` attribute.
+ */
+const RichTextLink = Link.extend({
+  inclusive: false,
+  addAttributes() {
+    return {
+      ...this.parent?.(),
+      title: {
+        default: null,
+      },
+    };
+  },
+  addInputRules() {
+    return [
+      linkInputRule({
+        find: inputRegex,
+        type: this.type,
+        // We need to use `pop()` to remove the last capture groups from the match to
+        // satisfy Tiptap's `markPasteRule` expectation of having the content as the last
+        // capture group in the match (this makes the attribute order important)
+        getAttributes(match) {
+          return {
+            title: match.pop()?.trim(),
+            href: match.pop()?.trim(),
+          };
+        },
+      }),
+    ];
+  },
+  addPasteRules() {
+    return [
+      linkPasteRule({
+        find: pasteRegex,
+        type: this.type,
+        // We need to use `pop()` to remove the last capture groups from the match to
+        // satisfy Tiptap's `markInputRule` expectation of having the content as the last
+        // capture group in the match (this makes the attribute order important)
+        getAttributes(match) {
+          return {
+            title: match.pop()?.trim(),
+            href: match.pop()?.trim(),
+          };
+        },
+      }),
+    ];
+  },
+});
+export { RichTextLink };
+export type { LinkOptions as RichTextLinkOptions };
+```
 
-[ProseMirror Guide](https://prosemirror.net/docs/guide/#schema)
+# Inline Node View
 
-Unlike many other editors, Tiptap is based on a [schema](https://prosemirror.net/docs/guide/#schema) that defines how your content is structured. That enables you to define the kind of nodes that may occur in the document, its attributes and the way they can be nested.
+参考 customLink, 基本已经没有 bug 了
 
-This schema is _very_ strict. You can’t use any HTML element or attribute that is not defined in your schema.
+```ts
+import { mergeAttributes, Node, ReactNodeViewRenderer, wrappingInputRule } from '@tiptap/react';
+import { LinkComponent } from './component';
 
-Let me give you one example: If you paste something like `This is <strong>important</strong>` into Tiptap, but don’t have any extension that handles `strong` tags, you’ll only see `This is important` – without the strong tags.
+export interface CustomLinkOptions {
+  HTMLAttributes: {
+    href: string;
+    target: string;
+    rel: string;
+    class: string;
+    title: string;
+  };
+}
+
+export const inputRegex = /(?:^|\s)\[([^\]]*)?\]\((\S+)(?: ["“](.+)["”])?\)$/i;
+
+export const CustomLink = Node.create<CustomLinkOptions>({
+  name: 'custom-link',
+  group: 'inline',
+  inline: true,
+  content: 'text*',
+  atom: true,
+
+  addOptions() {
+    return {
+      HTMLAttributes: {
+        target: '_blank',
+        rel: 'noopener noreferrer nofollow',
+        class: '',
+        href: '',
+        title: '',
+      },
+    };
+  },
+
+  addAttributes() {
+    return {
+      href: {
+        default: null,
+      },
+      target: {
+        default: this.options.HTMLAttributes.target,
+      },
+      rel: {
+        default: this.options.HTMLAttributes.rel,
+      },
+      class: {
+        default: this.options.HTMLAttributes.class,
+      },
+      title: {
+        default: this.options.HTMLAttributes.title,
+      },
+    };
+  },
+  parseHTML() {
+    return [{ tag: 'a[href]:not([href *= "javascript:" i])' }];
+  },
+
+  renderHTML({ HTMLAttributes }) {
+    // False positive; we're explicitly checking for javascript: links to ignore them
+    // eslint-disable-next-line no-script-url
+    if (HTMLAttributes.href?.startsWith('javascript:')) {
+      // strip out the href
+      return ['a', mergeAttributes(this.options.HTMLAttributes, { ...HTMLAttributes, href: '' }), 0];
+    }
+    return ['a', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0];
+  },
+
+  addNodeView() {
+    return ReactNodeViewRenderer(LinkComponent, {
+      attrs: {
+        contenteditable: 'false',
+      },
+    });
+  },
+
+  /**
+   * group: 'block',
+   * content: 'paragraph block*',
+   * 时才能生效, 不知道为什么
+   */
+  addInputRules() {
+    return [
+      wrappingInputRule({
+        find: inputRegex,
+        type: this.type,
+        getAttributes(match) {
+          // We need to use `pop()` to remove the last capture groups from the match to
+          // satisfy Tiptap's `markPasteRule` expectation of having the content as the last
+          // capture group in the match (this makes the attribute order important)
+          // md 语法中的可选 title. 暂时用不上
+          const optionalTitle = match.pop()?.trim();
+          return {
+            // title: match.pop()?.trim(),
+            href: match.pop()?.trim(),
+            title: match.pop()?.trim(),
+          };
+        },
+      }),
+    ];
+  },
+});
+
+```
