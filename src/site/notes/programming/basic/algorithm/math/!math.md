@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:06:57 pm","date-modified":"2023-08-04-Fri, 7:09:31 pm","permalink":"/programming/basic/algorithm/math/!math/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-03-Sat, 10:06:57 pm","date-modified":"2024-07-08-Mon, 5:42:57 pm","permalink":"/programming/basic/algorithm/math/!math/","dgPassFrontmatter":true}
 ---
 
 
@@ -96,7 +96,7 @@ function getGreatestCommonDivisor(a,b){
 
 # 最小公倍数
 
-least commom multiple
+least common multiple
 
 lcm
 
@@ -116,9 +116,11 @@ function getMinCommonMultiple(a, b){
 
 ## 开根
 
+![69. x 的平方根](../../leetcode/69.%20x%20的平方根.md)
+
 ### 牛顿法
 
-![69. x 的平方根](../../leetcode/69.%20x%20的平方根.md)
+[Go 语言之旅](https://tour.go-zh.org/flowcontrol/8)
 
 ## 除法
 
