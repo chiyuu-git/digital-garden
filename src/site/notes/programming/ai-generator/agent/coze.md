@@ -77,3 +77,7 @@
 # 插件 / Function Call
 
 [扣子 - 文档中心: 插件](https://www.coze.cn/docs/guides/create_plugin)
+
+# Agent pattern
+
+[Agent魂多坯楞憔绪棱(操肿+摆囱) - 知乎](https://zhuanlan.zhihu.com/p/692971105)
