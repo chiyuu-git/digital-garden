@@ -1,5 +1,5 @@
 ---
-{"aliases":["富文本编辑器"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-10-10-Mon, 8:39:56 am","date-modified":"2024-04-29-Mon, 10:16:21 am","permalink":"/programming/front-end/field/editor/rich-text-editor/","dgPassFrontmatter":true}
+{"aliases":["富文本编辑器"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-10-10-Mon, 8:39:56 am","date-modified":"2024-07-05-Fri, 10:36:56 am","permalink":"/programming/front-end/field/editor/rich-text-editor/","dgPassFrontmatter":true}
 ---
 
 
@@ -219,7 +219,7 @@ beforeinput event 能让开发者在输入反馈到 UI 之前，通过事件的�
 而 Android 因为其生态紊乱，系统版本分布广泛，使用不同内核的浏览器众多，应用市场的第三方输入法层出不穷，让基于事件进行同步的策略更加脆弱。举个例子，我们在 Android 下使用某个第三方浏览器配合上某个第三方输入法编写内容时，可能遇到：
 
 - **浏览器不会抛出 beforeinput 事件**：编辑器无法通过 beforeinput 事件中的 inputType 属性知悉用户行为
-- **浏览器没有传递正确的虚拟键盘响应**：很多 Andorid 输入法都支持字词联想，当虚拟键盘呼出后，开始进入 Composing 状态，此时 keydown 事件的 `keyCode` 都会被设置为 229，那么编辑器无法也无法从 keydown 事件知悉用户行为
+- **浏览器没有传递正确的虚拟键盘响应**：很多 Android 输入法都支持字词联想，当虚拟键盘呼出后，开始进入 Composing 状态，此时 keydown 事件的 `keyCode` 都会被设置为 229，那么编辑器无法也无法从 keydown 事件知悉用户行为
 
 > [W3C KeyCode 规范](https://link.zhihu.com/?target=https%3A//lists.w3.org/Archives/Public/www-dom/2010JulSep/att-0182/keyCode-spec.html) 定义了 keyCode 为 229 的 Keyboard Event 是表示输入法正在处理按键输入
 
@@ -469,7 +469,7 @@ an commercial editor base on editor.js
 
 ## 缺点
 
-虽然 star 数量很多,但是 npm 下载量很一般, 社区感觉也不够强大
+虽然 star 数量很多, 但是 npm 下载量很一般, 社区感觉也不够强大
 
 类型声明不完善, 最常用的插件模块, header list, 都没有人维护类型声明
 
@@ -705,7 +705,11 @@ Map 结构存储的内容能够很快增删改某个特定节点，而对于树�
 
 ### 缺点
 
-相应地，由于存储 Map 的结构不能够很好地表达实际渲染出来 DOM 结果的层次，所以在每次渲染的时候，需要做一次协调（Reconcilation）去生成层次结构，[可以把它想象成 React](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Ffacebook%2Flexical%2Fblob%2Fmain%2Fdocs%2Fdesign.md "https://github.com/facebook/lexical/blob/main/docs/design.md")，它通过双重缓存实现单向数据流渲染。
+相应地，由于存储 Map 的结构不能够很好地表达实际渲染出来 DOM 结果的层次，所以在每次渲染的时候，需要做一次协调（Reconciliation）去生成层次结构，[可以把它想象成 React](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Ffacebook%2Flexical%2Fblob%2Fmain%2Fdocs%2Fdesign.md "https://github.com/facebook/lexical/blob/main/docs/design.md")，它通过双重缓存实现单向数据流渲染。
+
+# BlockSuite
+
+[Working with Block Tree | BlockSuite](https://blocksuite.io/guide/working-with-block-tree.html#block-tree-basics)
 
 # FAQ
 
