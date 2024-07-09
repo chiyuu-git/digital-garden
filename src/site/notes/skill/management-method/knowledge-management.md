@@ -1,5 +1,5 @@
 ---
-{"aliases":["知识管理"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-27-Tue, 10:02:39 am","date-modified":"2024-07-02-Tue, 11:07:47 am","permalink":"/skill/management-method/knowledge-management/","dgPassFrontmatter":true}
+{"aliases":["知识管理"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-27-Tue, 10:02:39 am","date-modified":"2024-07-09-Tue, 2:37:57 pm","permalink":"/skill/management-method/knowledge-management/","dgPassFrontmatter":true}
 ---
 
 
@@ -156,6 +156,8 @@ pdf 阅读器、纯文本、markdown 所有的电子书形式都要可以索引�
 
 logseq 和 obsidian 都可以，还支持笔记定位 PDF 原始位置。更倾向阅读的 bookxnote 也可以很完美实现
 
+[7本后悔没早点读的书！读完终身受益的宝藏书单推荐 | 历史，社科，哲学，心理，鲁迅，文学，商业\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV16z421B7Fz/?-Arouter=story&buvid=XY3F7BE3A5297A42BF340C92DC37623DF166A&from_spmid=tm.recommend.0.0&is_story_h5=false&mid=AyhZSf%2Fo%2FX5AWkNSGhjJXw%3D%3D&p=1&plat_id=163&share_from=ugc&share_medium=android&share_plat=android&share_session_id=becddcee-a3bf-43cc-814c-b09749536df8&share_source=GENERIC&share_tag=s_i&spmid=main.ugc-video-detail-vertical.0.0&timestamp=1720272657&unique_k=64p7roc&up_id=34618458&vd_source=f8573a6196003ad3683f1c1a403d3431)
+
 ## 读书笔记
 
 其实可以直接用 logseq 那种原生支持作读书笔记的, 只要产出的都是 markdown , 应该问题不大
@@ -164,11 +166,7 @@ logseq 和 obsidian 都可以，还支持笔记定位 PDF 原始位置。更倾�
 
 ## 电子书
 
-电子书资源：https://www.zhihu.com/question/460822842/answer/2395045519
-
-https://search.zhelper.net/
-
-https://docs.zhelper.net/search/
+直接在 google 搜索 pdf 就行. 现在那些电子书网站都挂得差不多了. 还不如 github 里的存货
 
 ### 微信读书
 
@@ -341,6 +339,17 @@ I can use unique IDE, such as InJ IDEA VS
 
 aggregation website , such as bilibili and zhihu, I will using it to take entertainment or learning . this kind of website has a strong feature, fragmented. It is hard to tell what you are doing.
 
+# Habit Management
+
+目标管理拆散, 日记也拆散. 但是习惯跟踪还是需要归类到每一天里面? 这样就需要把每一天都新建一个 note 作为存储的基本单位.
+
+现在的 heatmap 插件都是基于 dataviewjs 查询 note 来作为数据的
+
+如果能有像 kanban 那种类型的就好了. 存在一个 note 里面. 自己记录数据就行
+
+[obsidian 表格任务打卡，积分自动计算汇总\_ 哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1d84y1U7Ty/?vd_source=f8573a6196003ad3683f1c1a403d3431)
+
+虽然打卡的内容因为具有 daily 属性, 所以 plugin 都是天然的和 daily 做了整合. 但是我是bu xp
 # 碎片知识 & Todo 知识管理
 
 平时逛知乎的时候, 刷到的技术文章, 或者搜索问题遗留下来的深入文章, 需要有一个地方统一管理, 方便无遗漏的回顾, 目前就是 notion 的 todo list, 先把知乎的清空了. 然后后续有新增的都统一放到 notion 上
