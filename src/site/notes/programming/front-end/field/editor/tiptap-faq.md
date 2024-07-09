@@ -108,3 +108,11 @@ prosemirror 已经帮忙拦截了默认的复制行为. 现在的复制行为是
 [Switch Default enter behavior and shift enter behaviour · Issue #2755 · ueberdosis/tiptap · GitHub](https://github.com/ueberdosis/tiptap/issues/2755)
 
 实现 enter 提交, S+enter 换行. enter 提交通过 onKeydown 实现. S+enter 换行 hardBreak 插件自带了
+
+# 发现一个高手啦
+
+[king王一帅 的个人主页 - 文章 - 掘金](https://juejin.cn/user/395479917018408/posts)
+
+# block note
+
+[GitHub - TypeCellOS/BlockNote: A React Rich Text Editor that's block-based (Notion style) and extensible. Built on top of Prosemirror and Tiptap.](https://github.com/TypeCellOS/BlockNote)
