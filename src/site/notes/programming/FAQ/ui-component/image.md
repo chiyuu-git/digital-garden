@@ -1,11 +1,12 @@
 ---
-{"aliases":["img"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-11-16-Wed, 3:51:43 pm","date-modified":"2023-12-07-Thu, 10:39:59 am","permalink":"/programming/FAQ/ui-component/image/","dgPassFrontmatter":true}
+{"aliases":["img"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-11-16-Wed, 3:51:43 pm","date-modified":"2024-07-23-Tue, 4:23:04 pm","permalink":"/programming/FAQ/ui-component/image/","dgPassFrontmatter":true}
 ---
 
 
 客户端和后端都是不需要 base64 头的. 他么只关注二进制数据部分. 有点屌.
 
-因为他们总是接受二进制头+文件类型
+因为他们总是接受二进制头 + 文件类型
+
 # 图像数据转换
 
 [浏览器图像转换手册 - vivaxy's Blog](https://vivaxyblog.github.io/2019/11/08/comprehensive-image-processing-on-browsers-cn.html)
@@ -34,7 +35,6 @@ file 如何转换 二进制数据 给后端
 [使用FileReader对象的readAsDataURL方法来读取图像文件-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/2165999)
 
 [FileReader.readAsDataURL() - Web API 接口参考 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader/readAsDataURL)
-
 
 ## base64ToBlob
 
@@ -271,7 +271,7 @@ WebP 图片是一种新的图像格式，由 Google 开发。与 png、jpg 相�
 
 [前端玩转GIF图片压缩 - 掘金](https://juejin.cn/post/6935627673989283848)
 
-## Ndoe 方案
+## Node 方案
 
 [图片不压缩，前端要背锅 🍳 - 掘金](https://juejin.cn/post/7153086294409609229)
 
