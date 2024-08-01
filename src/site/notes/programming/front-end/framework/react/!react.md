@@ -1,5 +1,5 @@
 ---
-{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-08-16-Wed, 7:57:53 pm","date-modified":"2023-12-03-Sun, 11:39:10 am","permalink":"/programming/front-end/framework/react/!react/","dgPassFrontmatter":true}
+{"aliases":[],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2023-08-16-Wed, 7:57:53 pm","date-modified":"2024-07-16-Tue, 10:44:51 am","permalink":"/programming/front-end/framework/react/!react/","dgPassFrontmatter":true}
 ---
 
 
@@ -38,7 +38,32 @@
 # Portal
 
 [你真的知道 React Portal 吗？ - 掘金](https://juejin.cn/post/6844904024378982413)
+
 [javascript - Deprecation notice: ReactDOM.render is no longer supported in React 18 - Stack Overflow](https://stackoverflow.com/questions/71668256/deprecation-notice-reactdom-render-is-no-longer-supported-in-react-18)
+
 只能是原本就在组件树的组件去使用, 让一个在树中的 react 组件, 渲染到指定位置去
 
 无法动态的插入一个 react 组件到 dom 树中.
+
+# FAQ
+
+## activePanel.panelRender Vs activePanel.panel
+
+```ts
+  const leftSidePanelConfig: PanelConfiguration[] = [
+    { id: 'copywriting', title: '文案', icon: <IconCopywriting size={20} />, panelRender: () => <Outline /> },
+    {
+      id: 'storyboard',
+      title: '分镜',
+      icon: <IconStoryBoard size={20} />,
+      panelRender: () => <Storyboard />,
+    },
+    { id: 'textToSpeech', title: '配音', icon: <IconSpeech size={20} />, panelRender: () => <InfoSearch /> },
+    { id: 'caption', title: '字幕', icon: <IconCaption size={20} />, panelRender: () => <Copilot /> },
+    { id: 'music', title: '音乐', icon: <IconMusic size={20} />, panelRender: () => <InfoSearch /> },
+  ];
+```
+
+为什么这里要使用 panelRender ? 因为遇到了直接渲染 panel 会导致无法 hmr 的问题. 可能是一些引用之类的乱七八糟的没有更新导致的吧?
+
+
