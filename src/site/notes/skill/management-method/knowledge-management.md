@@ -1,5 +1,5 @@
 ---
-{"aliases":["知识管理"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-27-Tue, 10:02:39 am","date-modified":"2024-07-09-Tue, 2:37:57 pm","permalink":"/skill/management-method/knowledge-management/","dgPassFrontmatter":true}
+{"aliases":["知识管理"],"tags":[],"review-dates":[],"dg-publish":true,"date-created":"2022-09-27-Tue, 10:02:39 am","date-modified":"2024-07-09-Tue, 3:46:15 pm","permalink":"/skill/management-method/knowledge-management/","dgPassFrontmatter":true}
 ---
 
 
@@ -349,7 +349,14 @@ aggregation website , such as bilibili and zhihu, I will using it to take entert
 
 [obsidian 表格任务打卡，积分自动计算汇总\_ 哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1d84y1U7Ty/?vd_source=f8573a6196003ad3683f1c1a403d3431)
 
-虽然打卡的内容因为具有 daily 属性, 所以 plugin 都是天然的和 daily 做了整合. 但是我是bu xp
+虽然打卡的内容因为具有 daily 属性, 所以 plugin 都是天然的和 daily 做了整合. 但是我是不写 daily 的. 因为 daily 分散之后不好整合进已有的领域. 不如直接在对应的领域写作, 或者我就是写在 okr-2024 其实那些闪念, 应该分散到日记里面.
+
+关于 habit management 是否有必要记录, 其实是没有必要的. 记录的目的反而是为了给其他人看. 对于自己而言, 并没有太大的意义的样子. 至少目前来看我需要记录的几项是没有的
+
++ 炸鸡, 次数太少了, 自己就能记录清楚? 但也是最有必要记录的一项了. 方便自己做对比
++ 阅读, 强制自己每天阅读意义不大吧. 作为娱乐主线, 闲时阅读即可
++ 健身, 每周的健身计划是固定的. 现在工作这么忙碌, 能做就做, 累了就不去就是了.
+
 # 碎片知识 & Todo 知识管理
 
 平时逛知乎的时候, 刷到的技术文章, 或者搜索问题遗留下来的深入文章, 需要有一个地方统一管理, 方便无遗漏的回顾, 目前就是 notion 的 todo list, 先把知乎的清空了. 然后后续有新增的都统一放到 notion 上
